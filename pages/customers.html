@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Customers | BRIQONA OS</title>
+
+  <meta
+    name="description"
+    content="Manage customers, contacts, relationships and business activity from BRIQONA OS."
+  >
+  <meta name="author" content="Yawar Abbas Bhatti">
+  <meta name="robots" content="noindex, nofollow">
+
+  <link
+    rel="canonical"
+    href="https://briqona-os.vercel.app/pages/customers.html"
+  >
+
+  <meta property="og:title" content="Customers | BRIQONA OS">
+  <meta
+    property="og:description"
+    content="A unified customer management workspace inside BRIQONA OS."
+  >
+  <meta property="og:type" content="website">
+
+  <link rel="stylesheet" href="../css/style.css">
+
+  <style>
+    .app-page {
+      min-height: 100vh;
+      background:
+        radial-gradient(
+          circle at 70% 0%,
+          rgba(216, 255, 69, 0.045),
+          transparent 30%
+        ),
+        var(--bg);
+    }
+
+    .app-topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      min-height: 70px;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid var(--line);
+      background: rgba(7, 8, 11, 0.86);
+      backdrop-filter: blur(18px);
+    }
+
+    .app-topbar-inner {
+      width: min(calc(100% - 32px), 1240px);
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .app-topbar-left {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .app-back {
+      color: var(--text-muted);
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .app-back:hover {
+      color: var(--accent);
+    }
+
+    .app-user {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .app-avatar {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: #080a0b;
+      background: var(--accent);
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .app-user small {
+      display: block;
+      color: var(--text-muted);
+      font-size: 9px;
+    }
+
+    .app-user strong {
+      display: block;
+      margin-top: 1px;
+      color: var(--text);
+      font-size: 11px;
+    }
+
+    .customers-page {
+      width: min(calc(100% - 32px), 1240px);
+      margin: auto;
+      padding: 55px 0 100px;
+    }
+
+    .page-heading {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 30px;
+      margin-bottom: 35px;
+    }
+
+    .page-heading h1 {
+      margin: 10px 0 8px;
+      font-size: clamp(38px, 5vw, 58px);
+      line-height: .95;
+      letter-spacing: -.06em;
+    }
+
+    .page-heading p {
+      max-width: 560px;
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 25px;
+    }
+
+    .stat-card {
+      padding: 21px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: var(--surface);
+    }
+
+    .stat-card small {
+      color: var(--text-muted);
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .stat-card strong {
+      display: block;
+      margin-top: 9px;
+      font-size: 26px;
+      letter-spacing: -.05em;
+    }
+
+    .stat-card span {
+      color: var(--success);
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    .workspace {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: var(--surface);
+    }
+
+    .workspace-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      padding: 18px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .search-box {
+      min-width: 280px;
+      flex: 1;
+      max-width: 480px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      height: 44px;
+      padding: 0 13px;
+      border: 1px solid var(--line);
+      border-radius: 11px;
+      background: #0a0c10;
+    }
+
+    .search-box span {
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+
+    .search-box input {
+      width: 100%;
+      min-width: 0;
+      border: 0;
+      outline: 0;
+      color: var(--text);
+      background: transparent;
+      font-size: 12px;
+    }
+
+    .toolbar-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .filter-select {
+      height: 44px;
+      padding: 0 12px;
+      border: 1px solid var(--line);
+      border-radius: 11px;
+      outline: none;
+      color: var(--text-soft);
+      background: #0a0c10;
+      font-size: 11px;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+    }
+
+    .customer-table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 760px;
+    }
+
+    .customer-table th {
+      padding: 15px 18px;
+      border-bottom: 1px solid var(--line);
+      color: var(--text-muted);
+      text-align: left;
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .customer-table td {
+      padding: 17px 18px;
+      border-bottom: 1px solid var(--line);
+      color: var(--text-soft);
+      font-size: 11px;
+    }
+
+    .customer-table tbody tr {
+      transition: background var(--transition);
+    }
+
+    .customer-table tbody tr:hover {
+      background: rgba(255, 255, 255, .018);
+    }
+
+    .customer-name {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      color: var(--text);
+      font-weight: 750;
+    }
+
+    .customer-avatar {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      flex: 0 0 34px;
+      border-radius: 10px;
+      color: var(--accent);
+      background: var(--accent-soft);
+      font-size: 10px;
+      font-weight: 900;
+    }
+
+    .customer-name small {
+      display: block;
+      margin-top: 2px;
+      color: var(--text-muted);
+      font-size: 9px;
+      font-weight: 500;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 8px;
+      border-radius: 999px;
+      font-size: 9px;
+      font-weight: 750;
+    }
+
+    .status::before {
+      content: "";
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: currentColor;
+    }
+
+    .status.active {
+      color: var(--success);
+      background: rgba(120, 230, 161, .08);
+    }
+
+    .status.pending {
+      color: var(--warning);
+      background: rgba(255, 211, 106, .08);
+    }
+
+    .table-action {
+      padding: 6px 9px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      color: var(--text-muted);
+      background: transparent;
+      font-size: 9px;
+      cursor: pointer;
+    }
+
+    .table-action:hover {
+      color: var(--accent);
+      border-color: var(--accent-border);
+    }
+
+    .empty-state {
+      display: none;
+      padding: 60px 20px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 12px;
+    }
+
+    .empty-state.show {
+      display: block;
+    }
+
+    .add-panel {
+      position: fixed;
+      z-index: 500;
+      inset: 0;
+      display: none;
+      place-items: center;
+      padding: 20px;
+      background: rgba(0, 0, 0, .7);
+      backdrop-filter: blur(8px);
+    }
+
+    .add-panel.open {
+      display: grid;
+    }
+
+    .add-card {
+      width: min(100%, 470px);
+      padding: 30px;
+      border: 1px solid var(--line-strong);
+      border-radius: 24px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .add-card-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 25px;
+    }
+
+    .add-card h2 {
+      margin: 0;
+      font-size: 24px;
+      letter-spacing: -.04em;
+    }
+
+    .close-panel {
+      width: 34px;
+      height: 34px;
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      color: var(--text-soft);
+      background: transparent;
+      cursor: pointer;
+    }
+
+    .close-panel:hover {
+      color: var(--accent);
+    }
+
+    .add-form {
+      display: grid;
+      gap: 15px;
+    }
+
+    .form-field {
+      display: grid;
+      gap: 7px;
+    }
+
+    .form-field label {
+      color: var(--text-soft);
+      font-size: 10px;
+      font-weight: 750;
+    }
+
+    .form-field input,
+    .form-field select {
+      width: 100%;
+      height: 46px;
+      padding: 0 13px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      outline: none;
+      color: var(--text);
+      background: #0a0c10;
+      font-size: 11px;
+    }
+
+    .form-field input:focus,
+    .form-field select:focus {
+      border-color: var(--accent-border);
+    }
+
+    .form-message {
+      min-height: 16px;
+      margin: 0;
+      color: var(--success);
+      font-size: 10px;
+      text-align: center;
+    }
+
+    @media (max-width: 850px) {
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .page-heading {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .app-topbar-left {
+        gap: 12px;
+      }
+
+      .app-back {
+        display: none;
+      }
+
+      .app-user > div {
+        display: none;
+      }
+
+      .customers-page {
+        padding-top: 35px;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .workspace-toolbar {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .search-box {
+        max-width: none;
+        min-width: 0;
+      }
+
+      .toolbar-actions {
+        width: 100%;
+      }
+
+      .toolbar-actions .btn {
+        flex: 1;
+      }
+
+      .filter-select {
+        flex: 1;
+      }
+
+      .add-card {
+        padding: 23px 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="app-page">
+
+    <header class="app-topbar">
+      <div class="app-topbar-inner">
+
+        <div class="app-topbar-left">
+
+          <a
+            class="brand"
+            href="../index.html"
+            aria-label="BRIQONA OS home"
+          >
+            <span class="brand-mark">B</span>
+            <span class="brand-name">
+              BRIQONA<span>OS</span>
+            </span>
+          </a>
+
+          <a
+            class="app-back"
+            href="../index.html"
+          >
+            ← Back to website
+          </a>
+
+        </div>
+
+        <div class="app-user">
+
+          <div class="app-avatar">
+            YA
+          </div>
+
+          <div>
+            <small>Workspace owner</small>
+            <strong>Yawar Abbas Bhatti</strong>
+          </div>
+
+        </div>
+
+      </div>
+    </header>
+
+
+    <main class="customers-page">
+
+      <section class="page-heading">
+
+        <div>
+
+          <span class="eyebrow">
+            <span class="status-dot"></span>
+            Customer intelligence
+          </span>
+
+          <h1>Customers.</h1>
+
+          <p>
+            Keep every customer, relationship and interaction
+            organized in one intelligent workspace.
+          </p>
+
+        </div>
+
+        <button
+          class="btn btn-primary"
+          type="button"
+          id="openAddCustomer"
+        >
+          + Add customer
+        </button>
+
+      </section>
+
+
+      <section
+        class="stats-grid"
+        aria-label="Customer statistics"
+      >
+
+        <article class="stat-card">
+          <small>Total customers</small>
+          <strong id="totalCustomers">2,481</strong>
+          <span>↑ 12.4% this month</span>
+        </article>
+
+        <article class="stat-card">
+          <small>Active customers</small>
+          <strong>2,104</strong>
+          <span>↑ 8.2% this month</span>
+        </article>
+
+        <article class="stat-card">
+          <small>New this month</small>
+          <strong>186</strong>
+          <span>↑ 18.7% this month</span>
+        </article>
+
+        <article class="stat-card">
+          <small>Retention</small>
+          <strong>94.8%</strong>
+          <span>↑ 2.1% this month</span>
+        </article>
+
+      </section>
+
+
+      <section class="workspace">
+
+        <div class="workspace-toolbar">
+
+          <div class="search-box">
+
+            <span aria-hidden="true">⌕</span>
+
+            <label
+              class="sr-only"
+              for="customerSearch"
+            >
+              Search customers
+            </label>
+
+            <input
+              id="customerSearch"
+              type="search"
+              placeholder="Search customers..."
+              autocomplete="off"
+            >
+
+          </div>
+
+          <div class="toolbar-actions">
+
+            <select
+              class="filter-select"
+              id="statusFilter"
+              aria-label="Filter customers by status"
+            >
+              <option value="all">All status</option>
+              <option value="active">Active</option>
+              <option value="pending">Pending</option>
+            </select>
+
+            <button
+              class="btn btn-secondary btn-small"
+              type="button"
+              id="exportCustomers"
+            >
+              Export
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <div class="table-wrap">
+
+          <table class="customer-table">
+
+            <thead>
+              <tr>
+                <th>Customer</th>
+                <th>Company</th>
+                <th>Status</th>
+                <th>Last activity</th>
+                <th>Value</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+
+            <tbody id="customerRows">
+
+              <tr
+                data-status="active"
+                data-search="amina khan vertex labs amina@vertexlabs.com"
+              >
+
+                <td>
+                  <div class="customer-name">
+
+                    <span class="customer-avatar">
+                      AK
+                    </span>
+
+                    <div>
+                      Amina Khan
+                      <small>amina@vertexlabs.com</small>
+                    </div>
+
+                  </div>
+                </td>
+
+                <td>Vertex Labs</td>
+
+                <td>
+                  <span class="status active">
+                    Active
+                  </span>
+                </td>
+
+                <td>Today, 10:42</td>
+
+                <td>$24,800</td>
+
+                <td>
+                  <button
+                    class="table-action view-customer"
+                    type="button"
+                  >
+                    View
+                  </button>
+                </td>
+
+              </tr>
+
+
+              <tr
+                data-status="active"
+                data-search="omar ali northstar retail omar@northstar.com"
+              >
+
+                <td>
+                  <div class="customer-name">
+
+                    <span class="customer-avatar">
+                      OA
+                    </span>
+
+                    <div>
+                      Omar Ali
+                      <small>omar@northstar.com</small>
+                    </div>
+
+                  </div>
+                </td>
+
+                <td>Northstar Retail</td>
+
+                <td>
+                  <span class="status active">
+                    Active
+                  </span>
+                </td>
+
+                <td>Yesterday</td>
+
+                <td>$18,450</td>
+
+                <td>
+                  <button
+                    class="table-action view-customer"
+                    type="button"
+                  >
+                    View
+                  </button>
+                </td>
+
+              </tr>
+
+
+              <tr
+                data-status="pending"
+                data-search="sara malik lumina health sara@luminahealth.com"
+              >
+
+                <td>
+                  <div class="customer-name">
+
+                    <span class="customer-avatar">
+                      SM
+                    </span>
+
+                    <div>
+                      Sara Malik
+                      <small>sara@luminahealth.com</small>
+                    </div>
+
+                  </div>
+                </td>
+
+                <td>Lumina Health</td>
+
+                <td>
+                  <span class="status pending">
+                    Pending
+                  </span>
+                </td>
+
+                <td>2 days ago</td>
+
+                <td>$9,700</td>
+
+                <td>
+                  <button
+                    class="table-action view-customer"
+                    type="button"
+                  >
+                    View
+                  </button>
+                </td>
+
+              </tr>
+
+
+              <tr
+                data-status="active"
+                data-search="daniel shah orbit systems daniel@orbit.io"
+              >
+
+                <td>
+                  <div class="customer-name">
+
+                    <span class="customer-avatar">
+                      DS
+                    </span>
+
+                    <div>
+                      Daniel Shah
+                      <small>daniel@orbit.io</small>
+                    </div>
+
+                  </div>
+                </td>
+
+                <td>Orbit Systems</td>
+
+                <td>
+                  <span class="status active">
+                    Active
+                  </span>
+                </td>
+
+                <td>3 days ago</td>
+
+                <td>$31,200</td>
+
+                <td>
+                  <button
+                    class="table-action view-customer"
+                    type="button"
+                  >
+                    View
+                  </button>
+                </td>
+
+              </tr>
+
+
+              <tr
+                data-status="pending"
+                data-search="hira aslam nova studios hira@novastudios.com"
+              >
+
+                <td>
+                  <div class="customer-name">
+
+                    <span class="customer-avatar">
+                      HA
+                    </span>
+
+                    <div>
+                      Hira Aslam
+                      <small>hira@novastudios.com</small>
+                    </div>
+
+                  </div>
+                </td>
+
+                <td>Nova Studios</td>
+
+                <td>
+                  <span class="status pending">
+                    Pending
+                  </span>
+                </td>
+
+                <td>5 days ago</td>
+
+                <td>$6,850</td>
+
+                <td>
+                  <button
+                    class="table-action view-customer"
+                    type="button"
+                  >
+                    View
+                  </button>
+                </td>
+
+              </tr>
+
+            </tbody>
+
+          </table>
+
+          <div
+            class="empty-state"
+            id="emptyState"
+          >
+            No customers match your search or filter.
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+
+  <!-- ADD CUSTOMER PANEL -->
+
+  <div
+    class="add-panel"
+    id="addPanel"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="addCustomerTitle"
+  >
+
+    <div class="add-card">
+
+      <div class="add-card-head">
+
+        <div>
+
+          <span class="eyebrow">
+            New record
+          </span>
+
+          <h2 id="addCustomerTitle">
+            Add customer
+          </h2>
+
+        </div>
+
+        <button
+          class="close-panel"
+          type="button"
+          id="closeAddCustomer"
+          aria-label="Close add customer"
+        >
+          ×
+        </button>
+
+      </div>
+
+
+      <form
+        class="add-form"
+        id="addCustomerForm"
+      >
+
+        <div class="form-field">
+
+          <label for="newName">
+            Full name
+          </label>
+
+          <input
+            id="newName"
+            type="text"
+            placeholder="Customer name"
+            required
+          >
+
+        </div>
+
+
+        <div class="form-field">
+
+          <label for="newEmail">
+         
