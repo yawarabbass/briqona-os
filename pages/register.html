@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Create Account | BRIQONA OS</title>
+  <meta
+    name="description"
+    content="Create your BRIQONA OS workspace and start your 3-day free trial."
+  >
+
+  <link rel="stylesheet" href="../css/style.css">
+
+  <style>
+    .auth-page {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 40px 20px;
+    }
+
+    .auth-shell {
+      width: min(100%, 500px);
+    }
+
+    .auth-brand {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 28px;
+    }
+
+    .auth-card {
+      padding: 36px;
+      border: 1px solid var(--line-strong);
+      border-radius: 26px;
+      background:
+        radial-gradient(
+          circle at 50% 0%,
+          rgba(216, 255, 69, 0.08),
+          transparent 40%
+        ),
+        var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .auth-heading {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .auth-heading h1 {
+      margin: 12px 0 8px;
+      font-size: 36px;
+      line-height: 1;
+      letter-spacing: -0.05em;
+    }
+
+    .auth-heading p {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+
+    .trial-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 14px;
+      padding: 7px 11px;
+      border: 1px solid var(--accent-border);
+      border-radius: 999px;
+      color: var(--accent);
+      background: var(--accent-soft);
+      font-size: 10px;
+      font-weight: 800;
+    }
+
+    .auth-form {
+      display: grid;
+      gap: 16px;
+    }
+
+    .field {
+      display: grid;
+      gap: 8px;
+    }
+
+    .field label {
+      color: var(--text-soft);
+      font-size: 11px;
+      font-weight: 750;
+    }
+
+    .field input {
+      width: 100%;
+      height: 50px;
+      padding: 0 15px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      outline: none;
+      color: var(--text);
+      background: #0a0c10;
+      font-size: 13px;
+      transition:
+        border-color var(--transition),
+        box-shadow var(--transition);
+    }
+
+    .field input:focus {
+      border-color: var(--accent-border);
+      box-shadow: 0 0 0 3px var(--accent-soft);
+    }
+
+    .password-row {
+      position: relative;
+    }
+
+    .password-row input {
+      padding-right: 78px;
+    }
+
+    .password-toggle {
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+      padding: 6px 8px;
+      border-radius: 7px;
+      color: var(--text-muted);
+      background: transparent;
+      font-size: 10px;
+      font-weight: 750;
+      cursor: pointer;
+    }
+
+    .password-toggle:hover {
+      color: var(--accent);
+    }
+
+    .terms {
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+      color: var(--text-muted);
+      font-size: 10px;
+      line-height: 1.6;
+    }
+
+    .terms input {
+      margin-top: 3px;
+      flex: 0 0 auto;
+      accent-color: var(--accent);
+    }
+
+    .terms a {
+      color: var(--accent);
+    }
+
+    .auth-submit {
+      width: 100%;
+      margin-top: 4px;
+    }
+
+    .auth-message {
+      min-height: 18px;
+      margin: 0;
+      color: var(--success);
+      text-align: center;
+      font-size: 11px;
+    }
+
+    .auth-divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 25px 0;
+      color: var(--text-muted);
+      font-size: 9px;
+    }
+
+    .auth-divider::before,
+    .auth-divider::after {
+      content: "";
+      height: 1px;
+      flex: 1;
+      background: var(--line);
+    }
+
+    .auth-switch {
+      margin: 0;
+      color: var(--text-muted);
+      text-align: center;
+      font-size: 11px;
+    }
+
+    .auth-switch a {
+      color: var(--accent);
+      font-weight: 750;
+    }
+
+    .back-home {
+      display: block;
+      margin-top: 18px;
+      color: var(--text-muted);
+      text-align: center;
+      font-size: 11px;
+    }
+
+    .back-home:hover {
+      color: var(--text);
+    }
+
+    .auth-footer {
+      margin-top: 22px;
+      color: #555b66;
+      text-align: center;
+      font-size: 9px;
+    }
+
+    @media (max-width: 520px) {
+      .auth-page {
+        padding: 25px 14px;
+      }
+
+      .auth-card {
+        padding: 25px 18px;
+        border-radius: 20px;
+      }
+
+      .auth-heading h1 {
+        font-size: 31px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="auth-page">
+
+    <div class="auth-shell">
+
+      <div class="auth-brand">
+        <a
+          class="brand"
+          href="../index.html"
+          aria-label="BRIQONA OS home"
+        >
+          <span class="brand-mark">B</span>
+          <span class="brand-name">
+            BRIQONA<span>OS</span>
+          </span>
+        </a>
+      </div>
+
+      <section
+        class="auth-card"
+        aria-labelledby="register-title"
+      >
+
+        <div class="auth-heading">
+
+          <span class="eyebrow">
+            <span class="status-dot"></span>
+            Create your workspace
+          </span>
+
+          <h1 id="register-title">
+            Start building.
+          </h1>
+
+          <p>
+            Create your BRIQONA OS workspace and get started today.
+          </p>
+
+          <span class="trial-badge">
+            3-DAY FREE TRIAL
+          </span>
+
+        </div>
+
+        <form
+          class="auth-form"
+          id="registerForm"
+          action="#"
+          method="post"
+        >
+
+          <div class="field">
+            <label for="fullName">
+              Full name
+            </label>
+
+            <input
+              id="fullName"
+              name="fullName"
+              type="text"
+              autocomplete="name"
+              placeholder="Your full name"
+              required
+            >
+          </div>
+
+          <div class="field">
+            <label for="email">
+              Work email
+            </label>
+
+            <input
+              id="email"
+              name="email"
+              type="email"
+              autocomplete="email"
+              placeholder="you@company.com"
+              required
+            >
+          </div>
+
+          <div class="field">
+            <label for="company">
+              Company name
+            </label>
+
+            <input
+              id="company"
+              name="company"
+              type="text"
+              autocomplete="organization"
+              placeholder="Your company"
+              required
+            >
+          </div>
+
+          <div class="field">
+            <label for="password">
+              Password
+            </label>
+
+            <div class="password-row">
+
+              <input
+                id="password"
+                name="password"
+                type="password"
+                autocomplete="new-password"
+                placeholder="Minimum 8 characters"
+                minlength="8"
+                required
+              >
+
+              <button
+                class="password-toggle"
+                type="button"
+                id="passwordToggle"
+                aria-label="Show password"
+              >
+                Show
+              </button>
+
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="confirmPassword">
+              Confirm password
+            </label>
+
+            <div class="password-row">
+
+              <input
+                id="confirmPassword"
+                name="confirmPassword"
+                type="password"
+                autocomplete="new-password"
+                placeholder="Repeat your password"
+                minlength="8"
+                required
+              >
+
+              <button
+                class="password-toggle"
+                type="button"
+                id="confirmPasswordToggle"
+                aria-label="Show password"
+              >
+                Show
+              </button>
+
+            </div>
+          </div>
+
+          <label class="terms">
+
+            <input
+              id="terms"
+              name="terms"
+              type="checkbox"
+              required
+            >
+
+            <span>
+              I agree to the BRIQONA OS
+              <a href="#">Terms</a>
+              and
+              <a href="#">Privacy Policy</a>.
+            </span>
+
+          </label>
+
+          <button
+            class="btn btn-primary auth-submit"
+            type="submit"
+          >
+            Create account
+            <span aria-hidden="true">→</span>
+          </button>
+
+          <p
+            class="auth-message"
+            id="authMessage"
+            aria-live="polite"
+          ></p>
+
+        </form>
+
+        <div class="auth-divider">
+          OR
+        </div>
+
+        <p class="auth-switch">
+          Already have an account?
+          <a href="login.html">
+            Sign in
+          </a>
+        </p>
+
+        <a
+          class="back-home"
+          href="../index.html"
+        >
+          ← Back to BRIQONA OS
+        </a>
+
+      </section>
+
+      <p class="auth-footer">
+        BRIQONA OS · Business operating system
+      </p>
+
+    </div>
+
+  </main>
+
+
+  <script>
+
+    const registerForm =
+      document.getElementById("registerForm");
+
+    const passwordInput =
+      document.getElementById("password");
+
+    const confirmPasswordInput =
+      document.getElementById("confirmPassword");
+
+    const passwordToggle =
+      document.getElementById("passwordToggle");
+
+    const confirmPasswordToggle =
+      document.getElementById("confirmPasswordToggle");
+
+    const authMessage =
+      document.getElementById("authMessage");
+
+
+    passwordToggle.addEventListener("click", () => {
+
+      const isPassword =
+        passwordInput.type === "password";
+
+      passwordInput.type =
+        isPassword ? "text" : "password";
+
+      passwordToggle.textContent =
+        isPassword ? "Hide" : "Show";
+
+    });
+
+
+    confirmPasswordToggle.addEventListener("click", () => {
+
+      const isPassword =
+        confirmPasswordInput.type === "password";
+
+      confirmPasswordInput.type =
+        isPassword ? "text" : "password";
+
+      confirmPasswordToggle.textContent =
+        isPassword ? "Hide" : "Show";
+
+    });
+
+
+    registerForm.addEventListener("submit", (event) => {
+
+      event.preventDefault();
+
+      if (!registerForm.checkValidity()) {
+        registerForm.reportValidity();
+        return;
+      }
+
+      if (
+        passwordInput.value !==
+        confirmPasswordInput.value
+      ) {
+
+        authMessage.textContent =
+          "Passwords do not match.";
+
+        confirmPasswordInput.focus();
+
+        return;
+      }
+
+      authMessage.textContent =
+        "Account interface ready — authentication will be connected to the BRIQONA OS backend.";
+
+    });
+
+  </script>
+
+</body>
+              </html>
