@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Book a Demo | BRIQONA OS</title>
+
+  <meta
+    name="description"
+    content="Book a BRIQONA OS demo and explore how your business can operate from one unified workspace."
+  >
+
+  <link rel="stylesheet" href="../css/style.css">
+
+  <style>
+    .demo-page {
+      min-height: 100vh;
+      padding: 45px 20px;
+    }
+
+    .demo-shell {
+      width: min(100%, 1050px);
+      margin: 0 auto;
+    }
+
+    .demo-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+      margin-bottom: 45px;
+    }
+
+    .demo-top .brand {
+      flex: 0 0 auto;
+    }
+
+    .demo-back {
+      color: var(--text-muted);
+      font-size: 11px;
+      font-weight: 650;
+    }
+
+    .demo-back:hover {
+      color: var(--accent);
+    }
+
+    .demo-layout {
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .demo-intro,
+    .demo-card {
+      border: 1px solid var(--line-strong);
+      border-radius: 26px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .demo-intro {
+      position: relative;
+      overflow: hidden;
+      padding: 42px;
+      background:
+        radial-gradient(
+          circle at 20% 0%,
+          rgba(216, 255, 69, .10),
+          transparent 42%
+        ),
+        var(--surface);
+    }
+
+    .demo-intro h1 {
+      max-width: 500px;
+      margin: 18px 0;
+      font-size: clamp(43px, 6vw, 70px);
+      line-height: .94;
+      letter-spacing: -.065em;
+    }
+
+    .demo-intro h1 span {
+      display: block;
+      color: var(--text-muted);
+    }
+
+    .demo-intro > p {
+      max-width: 470px;
+      margin: 0;
+      color: var(--text-soft);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .demo-points {
+      display: grid;
+      gap: 12px;
+      margin-top: 35px;
+    }
+
+    .demo-point {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: rgba(255,255,255,.018);
+    }
+
+    .demo-point-icon {
+      width: 30px;
+      height: 30px;
+      display: grid;
+      place-items: center;
+      flex: 0 0 30px;
+      border-radius: 9px;
+      color: var(--accent);
+      background: var(--accent-soft);
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .demo-point strong {
+      display: block;
+      color: var(--text);
+      font-size: 11px;
+    }
+
+    .demo-point span {
+      display: block;
+      margin-top: 3px;
+      color: var(--text-muted);
+      font-size: 10px;
+      line-height: 1.5;
+    }
+
+    .demo-trial {
+      margin-top: 28px;
+      padding: 13px 15px;
+      border: 1px solid var(--accent-border);
+      border-radius: 13px;
+      color: var(--accent);
+      background: var(--accent-soft);
+      font-size: 10px;
+      font-weight: 750;
+    }
+
+    .demo-card {
+      padding: 36px;
+    }
+
+    .demo-heading {
+      margin-bottom: 25px;
+    }
+
+    .demo-heading h2 {
+      margin: 12px 0 7px;
+      color: var(--text);
+      font-size: 28px;
+      line-height: 1;
+      letter-spacing: -.045em;
+    }
+
+    .demo-heading p {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 11px;
+      line-height: 1.7;
+    }
+
+    .demo-form {
+      display: grid;
+      gap: 15px;
+    }
+
+    .demo-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 13px;
+    }
+
+    .demo-field {
+      display: grid;
+      gap: 7px;
+    }
+
+    .demo-field label {
+      color: var(--text-soft);
+      font-size: 10px;
+      font-weight: 750;
+    }
+
+    .demo-field input,
+    .demo-field select,
+    .demo-field textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 11px;
+      outline: none;
+      color: var(--text);
+      background: #0a0c10;
+      font-size: 12px;
+      transition:
+        border-color var(--transition),
+        box-shadow var(--transition);
+    }
+
+    .demo-field input,
+    .demo-field select {
+      height: 48px;
+      padding: 0 13px;
+    }
+
+    .demo-field textarea {
+      min-height: 105px;
+      padding: 13px;
+      resize: vertical;
+      line-height: 1.6;
+    }
+
+    .demo-field input:focus,
+    .demo-field select:focus,
+    .demo-field textarea:focus {
+      border-color: var(--accent-border);
+      box-shadow: 0 0 0 3px var(--accent-soft);
+    }
+
+    .demo-field select {
+      appearance: auto;
+    }
+
+    .demo-field input[type="date"] {
+      color-scheme: dark;
+    }
+
+    .demo-submit {
+      width: 100%;
+      margin-top: 5px;
+    }
+
+    .demo-message {
+      min-height: 18px;
+      margin: 0;
+      color: var(--success);
+      text-align: center;
+      font-size: 10px;
+      line-height: 1.5;
+    }
+
+    .demo-links {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      margin-top: 20px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+    }
+
+    .demo-links a {
+      color: var(--text-muted);
+      font-size: 10px;
+      font-weight: 650;
+    }
+
+    .demo-links a:hover {
+      color: var(--accent);
+    }
+
+    .demo-footer {
+      margin-top: 25px;
+      color: #555b66;
+      text-align: center;
+      font-size: 9px;
+    }
+
+    @media (max-width: 850px) {
+      .demo-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .demo-intro {
+        padding: 32px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .demo-page {
+        padding: 25px 14px;
+      }
+
+      .demo-top {
+        margin-bottom: 28px;
+      }
+
+      .demo-top .back-home {
+        display: none;
+      }
+
+      .demo-intro,
+      .demo-card {
+        border-radius: 20px;
+      }
+
+      .demo-intro {
+        padding: 27px 20px;
+      }
+
+      .demo-card {
+        padding: 22px 18px;
+      }
+
+      .demo-row {
+        grid-template-columns: 1fr;
+      }
+
+      .demo-intro h1 {
+        font-size: 46px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="demo-page">
+
+    <div class="demo-shell">
+
+      <header class="demo-top">
+
+        <a
+          class="brand"
+          href="../index.html"
+          aria-label="BRIQONA OS home"
+        >
+          <span class="brand-mark">B</span>
+          <span class="brand-name">
+            BRIQONA<span>OS</span>
+          </span>
+        </a>
+
+        <a
+          class="demo-back"
+          href="../index.html"
+        >
+          ← Back to home
+        </a>
+
+      </header>
+
+
+      <div class="demo-layout">
+
+        <section class="demo-intro">
+
+          <span class="eyebrow">
+            <span class="status-dot"></span>
+            Book a private demo
+          </span>
+
+          <h1>
+            See how your
+            <span>business can run.</span>
+          </h1>
+
+          <p>
+            Tell us a little about your business and our team can
+            walk you through the BRIQONA OS workspace, workflows,
+            analytics and intelligence layer.
+          </p>
+
+
+          <div class="demo-points">
+
+            <div class="demo-point">
+
+              <div class="demo-point-icon">01</div>
+
+              <div>
+                <strong>Personalized walkthrough</strong>
+                <span>
+                  Explore the areas most relevant to your business.
+                </span>
+              </div>
+
+            </div>
+
+
+            <div class="demo-point">
+
+              <div class="demo-point-icon">02</div>
+
+              <div>
+                <strong>Operations overview</strong>
+                <span>
+                  See customers, products, orders, inventory and reports.
+                </span>
+              </div>
+
+            </div>
+
+
+            <div class="demo-point">
+
+              <div class="demo-point-icon">03</div>
+
+              <div>
+                <strong>AI intelligence layer</strong>
+                <span>
+                  Understand how business insights can fit into one workspace.
+                </span>
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="demo-trial">
+            ✦ Prefer to try it yourself? Start your 3-day free trial.
+          </div>
+
+        </section>
+
+
+        <section
+          class="demo-card"
+          aria-labelledby="demo-title"
+        >
+
+          <div class="demo-heading">
+
+            <span class="eyebrow">
+              <span class="status-dot"></span>
+              Demo request
+            </span>
+
+            <h2 id="demo-title">
+              Book your demo
+            </h2>
+
+            <p>
+              Submit the form below. This frontend form is ready
+              for backend/calendar integration later.
+            </p>
+
+          </div>
+
+
+          <form
+            class="demo-form"
+            id="demoForm"
+            action="#"
+            method="post"
+          >
+
+            <div class="demo-row">
+
+              <div class="demo-field">
+
+                <label for="fullName">
+                  Full name
+                </label>
+
+                <input
+                  id="fullName"
+                  name="fullName"
+                  type="text"
+                  autocomplete="name"
+                  placeholder="Your full name"
+                  required
+                >
+
+              </div>
+
+
+              <div class="demo-field">
+
+                <label for="email">
+                  Work email
+                </label>
+
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  autocomplete="email"
+                  placeholder="you@company.com"
+                  required
+                >
+
+              </div>
+
+            </div>
+
+
+            <div class="demo-row">
+
+              <div class="demo-field">
+
+                <label for="company">
+                  Company name
+                </label>
+
+                <input
+                  id="company"
+                  name="company"
+                  type="text"
+                  autocomplete="organization"
+                  placeholder="Your company"
+                  required
+                >
+
+              </div>
+
+
+              <div class="demo-field">
+
+                <label for="phone">
+                  Phone number
+                </label>
+
+                <input
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  autocomplete="tel"
+                  placeholder="+1 555 000 0000"
+                >
+
+              </div>
+
+            </div>
+
+
+            <div class="demo-row">
+
+              <div class="demo-field">
+
+                <label for="companySize">
+                  Company size
+                </label>
+
+                <select
+                  id="companySize"
+                  name="companySize"
+                  required
+                >
+
+                  <option value="">
+                    Select company size
+                  </option>
+
+                  <option value="1-10">
+                    1–10 employees
+                  </option>
+
+                  <option value="11-50">
+                    11–50 employees
+                  </option>
+
+                  <option value="51-200">
+                    51–200 employees
+                  </option>
+
+                  <option value="201-500">
+                    201–500 employees
+                  </option>
+
+                  <option value="500+">
+                    500+ employees
+                  </option>
+
+                </select>
+
+              </div>
+
+
+              <div class="demo-field">
+
+                <label for="demoDate">
+                  Preferred date
+                </label>
+
+                <input
+                  id="demoDate"
+                  name="demoDate"
+                  type="date"
+                  required
+                >
+
+              </div>
+
+            </div>
+
+
+            <div class="demo-field">
+
+              <label for="interest">
+                What would you like to explore?
+              </label>
+
+              <select
+                id="interest"
+                name="interest"
+                required
+              >
+
+                <option value="">
+                  Select an area
+                </option>
+
+                <option value="platform">
+                  Full platform overview
+                </option>
+
+                <option value="operations">
+                  Business operations
+                </option>
+
+                <option value="inventory">
+                  Inventory & products
+                </option>
+
+                <option value="analytics">
+                  Analytics & reports
+                </option>
+
+                <option value="ai">
+                  AI intelligence
+                </option>
+
+                <option value="automation">
+                  Workflow automation
+                </option>
+
+              </select>
+
+            </div>
+
+
+            <div class="demo-field">
+
+              <label for="message">
+                Anything else?
+              </label>
+
+              <textarea
+                id="message"
+                name="message"
+                placeholder="Tell us what you want to see in the demo..."
+              ></textarea>
+
+            </div>
+
+
+            <button
+              class="btn btn-primary demo-submit"
+              type="submit"
+            >
+              Book Demo
+              <span aria-hidden="true">→</span>
+            </button>
+
+
+            <p
+              class="demo-message"
+              id="demoMessage"
+              aria-live="polite"
+            ></p>
+
+          </form>
+
+
+          <div class="demo-links">
+
+            <a href="login.html">
+              Sign in
+            </a>
+
+            <a href="register.html">
+              Create account
+            </a>
+
+            <a href="pricing.html">
+              View pricing
+            </a>
+
+          </div>
+
+        </section>
+
+      </div>
+
+
+      <p class="demo-footer">
+        BRIQONA OS · Business operating system
+      </p>
+
+    </div>
+
+  </main>
+
+
+  <script>
+
+    const demoForm =
+      document.getElementById("demoForm");
+
+    const demoMessage =
+      document.getElementById("demoMessage");
+
+    const demoDate =
+      document.getElementById("demoDate");
+
+
+    // Prevent selecting a date in the past.
+    const today =
+      new Date().toISOString().split("T")[0];
+
+    demoDate.min = today;
+
+
+    demoForm.addEventListener("submit", (event) => {
+
+      event.preventDefault();
+
+      if (!demoForm.checkValidity()) {
+        demoForm.reportValidity();
+        return;
+      }
+
+      demoMessage.textContent =
+        "Demo request received — calendar and email integration can be connected to the backend later.";
+
+      demoForm.reset();
+
+      demoDate.min = today;
+
+    });
+
+  </script>
+
+</body>
+  </html>
