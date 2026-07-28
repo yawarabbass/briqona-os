@@ -1,10 +1,17 @@
 import React from "react";
+import Sidebar from "./components/Sidebar.jsx";
+import Topbar from "./components/Topbar.jsx";
+import Dashboard from "./pages/Dashboard.jsx";
 
 function App() {
   return (
-    <div>
-      <h1>BRIQONA OS</h1>
-      <p>Intelligent Business Operating System</p>
+    <div className="app-shell">
+      <Sidebar />
+
+      <div className="main-area">
+        <Topbar />
+        <Dashboard />
+      </div>
     </div>
   );
 }
