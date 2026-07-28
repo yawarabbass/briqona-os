@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Pricing | BRIQONA OS</title>
+<meta name="description" content="Explore BRIQONA OS plans and choose the workspace that fits your business.">
+
+<link rel="stylesheet" href="../css/style.css">
+
+<style>
+body{margin:0}
+.page{min-height:100vh;background:var(--bg)}
+
+.bar{
+height:70px;
+border-bottom:1px solid var(--line);
+display:flex;
+align-items:center;
+background:rgba(7,8,11,.9)
+}
+
+.bar-in,.main{
+width:min(calc(100% - 32px),1200px);
+margin:auto
+}
+
+.bar-in{
+display:flex;
+align-items:center;
+justify-content:space-between
+}
+
+.left{
+display:flex;
+align-items:center;
+gap:25px
+}
+
+.back{
+font-size:11px;
+color:var(--text-muted)
+}
+
+.user{
+display:flex;
+align-items:center;
+gap:9px
+}
+
+.avatar{
+width:34px;
+height:34px;
+border-radius:50%;
+display:grid;
+place-items:center;
+background:var(--accent);
+color:#080a0b;
+font-size:10px;
+font-weight:900
+}
+
+.main{
+padding:75px 0 100px
+}
+
+.hero{
+text-align:center;
+max-width:780px;
+margin:auto
+}
+
+h1{
+font-size:clamp(45px,7vw,76px);
+line-height:.92;
+letter-spacing:-.065em;
+margin:12px 0 20px
+}
+
+.desc{
+max-width:650px;
+margin:auto;
+color:var(--text-muted);
+font-size:14px;
+line-height:1.7
+}
+
+.pricing{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:14px;
+margin-top:60px
+}
+
+.plan{
+position:relative;
+padding:28px;
+border:1px solid var(--line);
+border-radius:20px;
+background:var(--surface)
+}
+
+.plan.featured{
+border-color:var(--accent-border);
+box-shadow:0 0 35px rgba(255,255,255,.03)
+}
+
+.popular{
+position:absolute;
+top:15px;
+right:15px;
+font-size:8px;
+font-weight:800;
+color:var(--accent);
+background:var(--accent-soft);
+padding:6px 8px;
+border-radius:20px;
+text-transform:uppercase
+}
+
+.plan h2{
+color:var(--text);
+font-size:19px;
+margin:0 0 7px
+}
+
+.plan-desc{
+color:var(--text-muted);
+font-size:10px;
+line-height:1.6;
+min-height:34px
+}
+
+.price{
+margin:25px 0;
+color:var(--text);
+font-size:38px;
+font-weight:800;
+letter-spacing:-.04em
+}
+
+.price span{
+font-size:10px;
+font-weight:400;
+color:var(--text-muted)
+}
+
+.plan .btn{
+width:100%;
+box-sizing:border-box;
+text-align:center
+}
+
+.features{
+margin:25px 0 0;
+padding:0;
+list-style:none
+}
+
+.features li{
+padding:10px 0;
+border-bottom:1px solid var(--line);
+color:var(--text-soft);
+font-size:10px
+}
+
+.features li:before{
+content:"✓";
+color:var(--accent);
+margin-right:8px;
+font-weight:900
+}
+
+.note{
+margin-top:25px;
+text-align:center;
+color:var(--text-muted);
+font-size:9px
+}
+
+.faq{
+margin-top:65px;
+border:1px solid var(--line);
+border-radius:18px;
+background:var(--surface);
+padding:25px
+}
+
+.faq h2{
+color:var(--text);
+font-size:20px;
+margin:0 0 18px
+}
+
+details{
+border-bottom:1px solid var(--line);
+padding:15px 0
+}
+
+details:last-child{
+border-bottom:0
+}
+
+summary{
+cursor:pointer;
+color:var(--text);
+font-size:11px;
+font-weight:700
+}
+
+details p{
+color:var(--text-muted);
+font-size:10px;
+line-height:1.7;
+margin:10px 0 0
+}
+
+@media(max-width:850px){
+.pricing{grid-template-columns:1fr}
+}
+
+@media(max-width:600px){
+.back,.user div{display:none}
+.plan{padding:22px}
+}
+</style>
+</head>
+
+<body>
+
+<div class="page">
+
+<header class="bar">
+
+<div class="bar-in">
+
+<div class="left">
+
+<a class="brand" href="../index.html">
+<span class="brand-mark">B</span>
+<span class="brand-name">BRIQONA<span>OS</span></span>
+</a>
+
+<a class="back" href="../index.html">← Back</a>
+
+</div>
+
+<div class="user">
+
+<span class="avatar">B</span>
+
+<div>
+<small style="display:block;color:var(--text-muted);font-size:9px">
+Simple pricing
+</small>
+
+<strong style="display:block;color:var(--text);font-size:11px">
+BRIQONA OS
+</strong>
+</div>
+
+</div>
+
+</div>
+
+</header>
+
+
+<main class="main">
+
+<section class="hero">
+
+<span class="eyebrow">
+<span class="status-dot"></span>
+Simple, scalable pricing
+</span>
+
+<h1>
+Choose your<br>
+operating layer.
+</h1>
+
+<p class="desc">
+Start with the tools your business needs today and scale your
+workspace as your operations grow.
+</p>
+
+</section>
+
+
+<section class="pricing">
+
+
+<article class="plan">
+
+<h2>Starter</h2>
+
+<p class="plan-desc">
+For small teams getting their operations organized.
+</p>
+
+<div class="price">
+$29<span>/month</span>
+</div>
+
+<a class="btn btn-secondary" href="login.html">
+Get started
+</a>
+
+<ul class="features">
+<li>Business dashboard</li>
+<li>Customer management</li>
+<li>Order management</li>
+<li>Product catalog</li>
+<li>Basic inventory</li>
+<li>Standard support</li>
+</ul>
+
+</article>
+
+
+<article class="plan featured">
+
+<span class="popular">Most popular</span>
+
+<h2>Growth</h2>
+
+<p class="plan-desc">
+For growing businesses that need more intelligence.
+</p>
+
+<div class="price">
+$79<span>/month</span>
+</div>
+
+<a class="btn btn-primary" href="login.html">
+Start Growth →
+</a>
+
+<ul class="features">
+<li>Everything in Starter</li>
+<li>Advanced inventory</li>
+<li>Analytics & reports</li>
+<li>AI intelligence layer</li>
+<li>Workflow automation</li>
+<li>Priority support</li>
+</ul>
+
+</article>
+
+
+<article class="plan">
+
+<h2>Scale</h2>
+
+<p class="plan-desc">
+For larger teams with advanced operating needs.
+</p>
+
+<div class="price">
+$199<span>/month</span>
+</div>
+
+<a class="btn btn-secondary" href="login.html">
+Talk to us
+</a>
+
+<ul class="features">
+<li>Everything in Growth</li>
+<li>Advanced automation</li>
+<li>Custom workflows</li>
+<li>Expanded intelligence</li>
+<li>Team controls</li>
+<li>Dedicated support</li>
+</ul>
+
+</article>
+
+
+</section>
+
+
+<p class="note">
+Plans shown are frontend product examples. Billing and payment processing
+can be connected to a backend later.
+</p>
+
+
+<section class="faq">
+
+<h2>Frequently asked questions</h2>
+
+<details>
+<summary>Can I change plans later?</summary>
+<p>
+Yes. Your workspace can be designed to move between plans as your
+business requirements change.
+</p>
+</details>
+
+<details>
+<summary>Is AI included?</summary>
+<p>
+AI intelligence is included in the Growth plan example above.
+Actual AI usage limits can be configured when the backend is connected.
+</p>
+</details>
+
+<details>
+<summary>Can I cancel?</summary>
+<p>
+A future billing system can support cancellation and subscription
+management directly from your workspace.
+</p>
+</details>
+
+<details>
+<summary>Are these prices connected to payments?</summary>
+<p>
+Not yet. These are frontend pricing cards. Stripe or another payment
+provider can be connected later when the billing backend is ready.
+</p>
+</details>
+
+</section>
+
+</main>
+
+</div>
+
+</body>
+  </html>
