@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Inventory | BRIQONA OS</title>
+<meta name="description" content="Monitor stock levels, inventory movement, low-stock alerts and warehouse operations with BRIQONA OS.">
+<meta name="author" content="Yawar Abbas Bhatti">
+<meta name="robots" content="noindex,nofollow">
+<link rel="stylesheet" href="../css/style.css">
+
+<style>
+body{margin:0}
+.page{min-height:100vh;background:var(--bg)}
+.bar{height:70px;border-bottom:1px solid var(--line);background:rgba(7,8,11,.9);display:flex;align-items:center}
+.bar-in,.main{width:min(calc(100% - 32px),1240px);margin:auto}
+.bar-in{display:flex;align-items:center;justify-content:space-between}
+.left{display:flex;align-items:center;gap:25px}.back{color:var(--text-muted);font-size:11px}
+.user{display:flex;align-items:center;gap:9px}.avatar{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--accent);color:#080a0b;font-size:10px;font-weight:900}
+.user small{display:block;color:var(--text-muted);font-size:9px}.user strong{display:block;color:var(--text);font-size:11px;margin-top:2px}
+.main{padding:55px 0 100px}
+.head{display:flex;justify-content:space-between;align-items:end;gap:25px;margin-bottom:32px}
+h1{margin:10px 0 8px;font-size:clamp(40px,6vw,58px);line-height:.95;letter-spacing:-.06em}
+.desc{max-width:620px;color:var(--text-muted);font-size:13px;margin:0}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px}
+.stat,.card{border:1px solid var(--line);background:var(--surface);border-radius:18px}
+.stat{padding:20px}.stat small{color:var(--text-muted);font-size:9px;text-transform:uppercase;font-weight:800}
+.stat strong{display:block;color:var(--text);font-size:27px;margin:8px 0 3px}.stat span{font-size:10px;color:var(--success)}
+.warn{color:var(--accent)!important}.danger{color:#ff7b7b!important}
+.card{overflow:hidden;border-radius:22px}
+.tools{padding:18px;border-bottom:1px solid var(--line);display:flex;gap:10px;justify-content:space-between}
+.search{height:44px;max-width:500px;flex:1;display:flex;align-items:center;padding:0 12px;border:1px solid var(--line);border-radius:10px;background:#0a0c10}
+.search input{width:100%;border:0;outline:0;background:transparent;color:var(--text);font-size:12px;margin-left:8px}
+select{height:44px;border:1px solid var(--line);border-radius:10px;background:#0a0c10;color:var(--text-soft);padding:0 12px;font-size:10px}
+.table{overflow-x:auto}table{width:100%;min-width:920px;border-collapse:collapse}
+th,td{padding:16px 18px;border-bottom:1px solid var(--line);text-align:left}
+th{color:var(--text-muted);font-size:9px;text-transform:uppercase;letter-spacing:.1em}td{color:var(--text-soft);font-size:11px}
+.item{display:flex;align-items:center;gap:10px}.pic{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;background:var(--accent-soft);color:var(--accent);font-size:10px;font-weight:900}
+.item b{display:block;color:var(--text);font-size:11px}.item small{display:block;color:var(--text-muted);font-size:9px;margin-top:3px}
+.number{color:var(--text);font-weight:800}.good{color:var(--success);font-weight:800}.low{color:var(--accent);font-weight:800}.out{color:#ff7b7b;font-weight:800}
+.status{font-size:9px;font-weight:800}.status:before{content:"●";margin-right:5px}
+.ok{color:var(--success)}.attention{color:var(--accent)}.critical{color:#ff7b7b}
+.action{border:1px solid var(--line);background:transparent;color:var(--text-muted);padding:7px 10px;border-radius:8px;font-size:9px;cursor:pointer}
+.action:hover{color:var(--accent);border-color:var(--accent-border)}
+.empty{display:none;padding:50px;text-align:center;color:var(--text-muted);font-size:11px}.empty.show{display:block}
+.drawer-bg{position:fixed;inset:0;z-index:20;background:rgba(0,0,0,.7);display:none;justify-content:flex-end}.drawer-bg.open{display:flex}
+.drawer{width:min(100%,430px);height:100%;box-sizing:border-box;padding:28px;background:var(--surface);border-left:1px solid var(--line);overflow:auto}
+.dhead{display:flex;justify-content:space-between;align-items:start}.close{border:1px solid var(--line);background:transparent;color:var(--text);border-radius:8px;width:34px;height:34px;cursor:pointer}
+.item-box{padding:18px;margin:25px 0 15px;border:1px solid var(--line);border-radius:14px;background:#0a0c10}
+.item-box .pic{width:50px;height:50px;margin-bottom:12px}.item-box b{display:block;color:var(--text);font-size:16px}.item-box small{display:block;color:var(--text-muted);font-size:9px;margin-top:5px}
+.details{display:grid;gap:9px}.detail{display:flex;justify-content:space-between;padding:13px;border:1px solid var(--line);border-radius:9px;background:#0a0c10;font-size:10px}
+.detail span:first-child{color:var(--text-muted)}.detail span:last-child{color:var(--text);font-weight:800}
+.adjust{margin-top:20px;padding:15px;border:1px solid var(--line);border-radius:12px;background:#0a0c10}
+.adjust label{display:block;color:var(--text-muted);font-size:9px;margin-bottom:8px}.adjust input{box-sizing:border-box;width:100%;height:40px;border:1px solid var(--line);border-radius:8px;background:#080a0d;color:var(--text);padding:0 10px}
+.drawer .btn{width:100%;margin-top:12px}
+@media(max-width:800px){.stats{grid-template-columns:repeat(2,1fr)}.head{align-items:start;flex-direction:column}}
+@media(max-width:600px){.back,.user div{display:none}.tools{flex-direction:column}.search{max-width:none}.stats{grid-template-columns:1fr 1fr}.drawer{padding:22px 18px}}
+</style>
+</head>
+
+<body>
+<div class="page">
+
+<header class="bar">
+<div class="bar-in">
+<div class="left">
+<a class="brand" href="../index.html"><span class="brand-mark">B</span><span class="brand-name">BRIQONA<span>OS</span></span></a>
+<a class="back" href="../index.html">← Back</a>
+</div>
+<div class="user">
+<span class="avatar">YA</span>
+<div><small>Workspace owner</small><strong>Yawar Abbas Bhatti</strong></div>
+</div>
+</div>
+</header>
+
+<main class="main">
+
+<section class="head">
+<div>
+<span class="eyebrow"><span class="status-dot"></span> Stock intelligence</span>
+<h1>Inventory.</h1>
+<p class="desc">Know what is available, what needs attention and where every unit is moving.</p>
+</div>
+<button class="btn btn-primary" id="receive">+ Receive stock</button>
+</section>
+
+<section class="stats">
+<div class="stat"><small>Total units</small><strong>18,642</strong><span>↑ 6.8% this month</span></div>
+<div class="stat"><small>Inventory value</small><strong>$482K</strong><span>↑ 11.2% this month</span></div>
+<div class="stat"><small>Low stock</small><strong class="warn">42</strong><span class="warn">Needs attention</span></div>
+<div class="stat"><small>Out of stock</small><strong class="danger">8</strong><span class="danger">Critical items</span></div>
+</section>
+
+<section class="card">
+
+<div class="tools">
+<div class="search">⌕<input id="search" type="search" placeholder="Search product, SKU or category..."></div>
+<select id="stockFilter">
+<option value="all">All stock</option>
+<option value="good">In stock</option>
+<option value="low">Low stock</option>
+<option value="out">Out of stock</option>
+</select>
+<select id="category">
+<option value="all">All categories</option>
+<option value="hardware">Hardware</option>
+<option value="office">Office</option>
+<option value="medical">Medical</option>
+<option value="retail">Retail</option>
+</select>
+</div>
+
+<div class="table">
+<table>
+<thead>
+<tr><th>Item</th><th>Category</th><th>Available</th><th>Reserved</th><th>Reorder point</th><th>Value</th><th></th></tr>
+</thead>
+
+<tbody id="rows">
+
+<tr data-stock="good" data-category="hardware" data-search="smart terminal st-3200 hardware terminal">
+<td><div class="item"><span class="pic">ST</span><div><b>Smart Terminal</b><small>SKU: ST-3200</small></div></div></td>
+<td>Hardware</td><td class="good">248</td><td class="number">31</td><td class="number">50</td><td class="number">$61,752</td>
+<td><button class="action manage">Manage</button></td>
+</tr>
+
+<tr data-stock="low" data-category="office" data-search="thermal paper tp-1100 office paper">
+<td><div class="item"><span class="pic">TP</span><div><b>Thermal Paper Roll</b><small>SKU: TP-1100</small></div></div></td>
+<td>Office</td><td class="low">18</td><td class="number">7</td><td class="number">30</td><td class="number">$540</td>
+<td><button class="action manage">Manage</button></td>
+</tr>
+
+<tr data-stock="good" data-category="medical" data-search="clinic kit ck-2100 medical kit">
+<td><div class="item"><span class="pic">CK</span><div><b>Clinic Starter Kit</b><small>SKU: CK-2100</small></div></div></td>
+<td>Medical</td><td class="good">420</td><td class="number">52</td><td class="number">100</td><td class="number">$31,500</td>
+<td><button class="action manage">Manage</button></td>
+</tr>
+
+<tr data-stock="out" data-category="retail" data-search="smart display sd-4000 retail display">
+<td><div class="item"><span class="pic">SD</span><div><b>Smart Display</b><small>SKU: SD-4000</small></div></div></td>
+<td>Retail</td><td class="out">0</td><td class="number">12</td><td class="number">25</td><td class="number">$0</td>
+<td><button class="action manage">Manage</button></td>
+</tr>
+
+<tr data-stock="low" data-category="hardware" data-search="nexora scanner ns-5100 hardware scanner">
+<td><div class="item"><span class="pic">NS</span><div><b>Nexora Scanner</b><small>SKU: NS-5100</small></div></div></td>
+<td>Hardware</td><td class="low">24</td><td class="number">9</td><td class="number">40</td><td class="number">$4,776</td>
+<td><button class="action manage">Manage</button></td>
+</tr>
+
+<tr data-stock="good" data-category="retail" data-search="smart shelf ss-6200 retail shelf">
+<td><div class="item"><span class="pic">SS</span><div><b>Smart Shelf Unit</b><small>SKU: SS-6200</small></div></div></td>
+<td>Retail</td><td class="good">96</td><td class="number">14</td><td class="number">20</td><td class="number">$18,240</td>
+<td><button class="action manage">Manage</button></td>
+</tr>
+
+</tbody>
+</table>
+</div>
+
+<div class="empty" id="empty">No inventory items match your search or filters.</div>
+</section>
+</main>
+</div>
+
+<div class="drawer-bg" id="drawer">
+<aside class="drawer">
+
+<div class="dhead">
+<div><span class="eyebrow">Inventory item</span><h2 id="title">Item</h2></div>
+<button class="close" id="close">×</button>
+</div>
+
+<div class="item-box">
+<span class="pic" id="icon">I</span>
+<b id="name">Inventory item</b>
+<small id="sku">SKU: —</small>
+</div>
+
+<div class="details">
+<div class="detail"><span>Category</span><span id="cat">—</span></div>
+<div class="detail"><span>Available</span><span id="available">—</span></div>
+<div class="detail"><span>Reserved</span><span id="reserved">—</span></div>
+<div class="detail"><span>Reorder point</span><span id="reorder">—</span></div>
+<div class="detail"><span>Inventory value</span><span id="value">—</span></div>
+</div>
+
+<div class="adjust">
+<label for="qty">Stock adjustment</label>
+<input id="qty" type="number" placeholder="Enter quantity e.g. +20 or -5">
+</div>
+
+<button class="btn btn-primary" id="save">Apply adjustment →</button>
+<button class="btn btn-secondary" id="copy">Copy SKU</button>
+
+</aside>
+</div>
+
+<script>
+const rows=[...document.querySelectorAll("#rows tr")],
+search=document.getElementById("search"),
+stockFilter=document.getElementById("stockFilter"),
+category=document.getElementById("category"),
+empty=document.getElementById("empty"),
+drawer=document.getElementById("drawer");
+
+function filter(){
+let q=search.value.toLowerCase().trim(),s=stockFilter.value,c=category.value,n=0;
+rows.forEach(r=>{
+let show=(!q||r.dataset.search.includes(q))&&(s==="all"||r.dataset.stock===s)&&(c==="all"||r.dataset.category===c);
+r.style.display=show?"":"none";if(show)n++;
+});
+empty.classList.toggle("show",n===0);
+}
+search.oninput=filter;
+stockFilter.onchange=filter;
+category.onchange=filter;
+
+document.querySelectorAll(".manage").forEach(btn=>{
+btn.onclick=()=>{
+let r=btn.closest("tr"),c=r.querySelectorAll("td"),
+name=c[0].querySelector("b").textContent,
+sku=c[0].querySelector("small").textContent;
+
+document.getElementById("title").textContent=name;
+document.getElementById("name").textContent=name;
+document.getElementById("icon").textContent=c[0].querySelector(".pic").textContent;
+document.getElementById("sku").textContent=sku;
+document.getElementById("cat").textContent=c[1].textContent.trim();
+document.getElementById("available").textContent=c[2].textContent.trim();
+document.getElementById("reserved").textContent=c[3].textContent.trim();
+document.getElementById("reorder").textContent=c[4].textContent.trim();
+document.getElementById("value").textContent=c[5].textContent.trim();
+drawer.classList.add("open");
+};
+});
+
+function closeDrawer(){drawer.classList.remove("open")}
+document.getElementById("close").onclick=closeDrawer;
+drawer.onclick=e=>{if(e.target===drawer)closeDrawer()};
+document.onkeydown=e=>{if(e.key==="Escape")closeDrawer()};
+
+document.getElementById("receive").onclick=()=>{
+alert("Stock receiving module is ready for backend connection.");
+};
+
+document.getElementById("save").onclick=()=>{
+let q=document.getElementById("qty").value;
+if(!q)return alert("Enter a stock quantity first.");
+alert("Stock adjustment "+q+" is ready for backend connection.");
+};
+
+document.getElementById("copy").onclick=async()=>{
+let sku=document.getElementById("sku").textContent.replace("SKU:","").trim();
+try{
+await navigator.clipboard.writeText(sku);
+document.getElementById("copy").textContent="Copied ✓";
+setTimeout(()=>document.getElementById("copy").textContent="Copy SKU",1000);
+}catch(e){alert("SKU: "+sku)}
+};
+</script>
+
+</body>
+                    </html>
