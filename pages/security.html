@@ -1,0 +1,1432 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1"
+>
+
+<title>Security | BRIQONA OS</title>
+
+<meta
+  name="description"
+  content="Learn how BRIQONA OS approaches data protection, access control, privacy and secure business operations."
+>
+
+<meta
+  name="keywords"
+  content="BRIQONA OS security, business security, data protection, access control, business platform security"
+>
+
+<meta
+  name="author"
+  content="Yawar Abbas Bhatti"
+>
+
+<meta
+  name="robots"
+  content="index, follow"
+>
+
+<link
+  rel="canonical"
+  href="https://yawarabbass.github.io/briqona-os/pages/security.html"
+>
+
+<meta
+  property="og:title"
+  content="Security | BRIQONA OS"
+>
+
+<meta
+  property="og:description"
+  content="Security principles for the BRIQONA OS business operating platform."
+>
+
+<meta
+  property="og:type"
+  content="website"
+>
+
+<meta
+  property="og:url"
+  content="https://yawarabbass.github.io/briqona-os/pages/security.html"
+>
+
+<link
+  rel="stylesheet"
+  href="../css/style.css"
+>
+
+
+<style>
+
+/* =========================================================
+   BRIQONA OS — SECURITY PAGE
+   ========================================================= */
+
+body{
+  margin:0;
+}
+
+.security-page{
+  min-height:100vh;
+  background:var(--bg);
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.security-header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+
+  border-bottom:1px solid var(--line);
+
+  background:rgba(7,8,11,.88);
+
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+}
+
+.security-header-inner{
+  width:min(calc(100% - 32px),1200px);
+  min-height:72px;
+  margin:auto;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  gap:25px;
+}
+
+.security-nav{
+  display:flex;
+  align-items:center;
+  gap:25px;
+}
+
+.security-nav a{
+  color:var(--text-muted);
+  font-size:11px;
+  font-weight:700;
+  text-decoration:none;
+
+  transition:color .2s ease;
+}
+
+.security-nav a:hover,
+.security-nav a.active{
+  color:var(--text);
+}
+
+.security-header-action{
+  display:flex;
+  align-items:center;
+  gap:9px;
+}
+
+.security-menu-toggle{
+  display:none;
+
+  width:40px;
+  height:40px;
+
+  border:1px solid var(--line);
+  border-radius:10px;
+
+  background:var(--surface);
+  color:var(--text);
+
+  cursor:pointer;
+  font-size:18px;
+}
+
+
+/* =========================================================
+   MAIN
+   ========================================================= */
+
+.security-main{
+  width:min(calc(100% - 32px),1200px);
+  margin:auto;
+
+  padding:90px 0 110px;
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.security-hero{
+  max-width:850px;
+}
+
+.security-hero h1{
+  max-width:800px;
+
+  margin:15px 0 22px;
+
+  font-size:clamp(48px,7vw,82px);
+  line-height:.92;
+
+  letter-spacing:-.065em;
+}
+
+.security-description{
+  max-width:720px;
+
+  margin:0;
+
+  color:var(--text-muted);
+
+  font-size:14px;
+  line-height:1.8;
+}
+
+.security-actions{
+  display:flex;
+  align-items:center;
+  gap:10px;
+
+  margin-top:30px;
+}
+
+
+/* =========================================================
+   MOBILE HEADER
+   ========================================================= */
+
+@media(max-width:900px){
+
+  .security-nav{
+    position:absolute;
+
+    top:72px;
+    left:16px;
+    right:16px;
+
+    display:none;
+    flex-direction:column;
+    align-items:stretch;
+
+    padding:15px;
+
+    border:1px solid var(--line);
+    border-radius:16px;
+
+    background:var(--surface);
+
+    box-shadow:var(--shadow);
+  }
+
+  .security-nav.open{
+    display:flex;
+  }
+
+  .security-nav a{
+    padding:12px 10px;
+  }
+
+  .security-menu-toggle{
+    display:block;
+  }
+
+  .security-header-action{
+    display:none;
+  }
+
+}
+
+
+@media(max-width:600px){
+
+  .security-header-inner{
+    min-height:65px;
+  }
+
+  .security-main{
+    padding:65px 0 80px;
+  }
+
+  .security-hero h1{
+    font-size:clamp(44px,14vw,62px);
+  }
+
+  .security-actions{
+    flex-direction:column;
+    align-items:stretch;
+  }
+
+  .security-actions .btn{
+    width:100%;
+    box-sizing:border-box;
+    text-align:center;
+  }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<div class="security-page">
+
+
+<!-- =====================================================
+     HEADER
+     ===================================================== -->
+
+<header class="security-header">
+
+  <div class="security-header-inner">
+
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="BRIQONA OS Home"
+    >
+
+      <span class="brand-mark">B</span>
+
+      <span class="brand-name">
+        BRIQONA<span>OS</span>
+      </span>
+
+    </a>
+
+
+    <nav
+      class="security-nav"
+      id="securityNav"
+      aria-label="Main navigation"
+    >
+
+      <a href="platform.html">
+        Platform
+      </a>
+
+      <a href="ai.html">
+        AI
+      </a>
+
+      <a href="industries.html">
+        Industries
+      </a>
+
+      <a href="features.html">
+        Features
+      </a>
+
+      <a href="pricing.html">
+        Pricing
+      </a>
+
+      <a
+        href="security.html"
+        class="active"
+        aria-current="page"
+      >
+        Security
+      </a>
+
+    </nav>
+
+
+    <div class="security-header-action">
+
+      <a
+        class="btn btn-primary"
+        href="register.html"
+      >
+        Start Free →
+      </a>
+
+    </div>
+
+
+    <button
+      class="security-menu-toggle"
+      id="securityMenuToggle"
+      type="button"
+      aria-label="Open menu"
+      aria-expanded="false"
+      aria-controls="securityNav"
+    >
+      ☰
+    </button>
+
+
+  </div>
+
+</header>
+
+
+<!-- =====================================================
+     MAIN
+     ===================================================== -->
+
+<main class="security-main">
+
+
+<section class="security-hero">
+
+  <span class="eyebrow">
+
+    <span class="status-dot"></span>
+
+    Security & trust
+
+  </span>
+
+
+  <h1>
+    Security built<br>
+    into the operation.
+  </h1>
+
+
+  <p class="security-description">
+
+    BRIQONA OS is designed with security and responsible
+    data handling in mind. Our approach focuses on protecting
+    business information, controlling access and creating a
+    reliable foundation for modern operations.
+
+  </p>
+
+
+  <div class="security-actions">
+
+    <a
+      class="btn btn-primary"
+      href="register.html"
+    >
+      Start Free →
+    </a>
+
+    <a
+      class="btn btn-secondary"
+      href="privacy.html"
+    >
+      Privacy Policy
+    </a>
+
+  </div>
+
+
+  </section>
+  <!-- =====================================================
+     SECURITY PRINCIPLES
+     ===================================================== -->
+
+<style>
+
+.security-principles{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
+
+  margin-top:70px;
+}
+
+.security-card{
+  min-height:215px;
+  padding:27px;
+  box-sizing:border-box;
+
+  border:1px solid var(--line);
+  border-radius:20px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.025),
+      transparent 55%
+    ),
+    var(--surface);
+
+  transition:
+    transform .25s ease,
+    border-color .25s ease,
+    box-shadow .25s ease;
+}
+
+.security-card:hover{
+  transform:translateY(-5px);
+
+  border-color:var(--accent-border);
+
+  box-shadow:
+    0 18px 50px rgba(0,0,0,.22);
+}
+
+.security-icon{
+  width:44px;
+  height:44px;
+
+  display:grid;
+  place-items:center;
+
+  border:1px solid var(--accent-border);
+  border-radius:12px;
+
+  background:var(--accent-soft);
+  color:var(--accent);
+
+  font-size:10px;
+  font-weight:900;
+}
+
+.security-card h2{
+  margin:22px 0 9px;
+
+  color:var(--text);
+
+  font-size:17px;
+  line-height:1.2;
+}
+
+.security-card p{
+  margin:0;
+
+  color:var(--text-muted);
+
+  font-size:11px;
+  line-height:1.75;
+}
+
+
+/* =====================================================
+   SECURITY NOTE
+   ===================================================== */
+
+.security-note{
+  margin-top:18px;
+  padding:28px;
+
+  border:1px solid var(--line);
+  border-radius:20px;
+
+  background:var(--surface);
+}
+
+.security-note h2{
+  margin:0 0 10px;
+
+  color:var(--text);
+
+  font-size:21px;
+  line-height:1.2;
+}
+
+.security-note p{
+  max-width:850px;
+
+  margin:0;
+
+  color:var(--text-muted);
+
+  font-size:11px;
+  line-height:1.8;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+
+@media(max-width:900px){
+
+  .security-principles{
+    grid-template-columns:repeat(2,1fr);
+    margin-top:55px;
+  }
+
+}
+
+@media(max-width:600px){
+
+  .security-principles{
+    grid-template-columns:1fr;
+    gap:12px;
+    margin-top:48px;
+  }
+
+  .security-card{
+    min-height:auto;
+    padding:23px;
+  }
+
+  .security-note{
+    padding:22px;
+  }
+
+}
+
+</style>
+
+
+<section
+  class="security-principles"
+  aria-label="BRIQONA OS security principles"
+>
+
+
+  <!-- 01 -->
+
+  <article class="security-card">
+
+    <div class="security-icon">
+      01
+    </div>
+
+    <h2>
+      Data protection
+    </h2>
+
+    <p>
+      Business information should be handled carefully,
+      with security and responsible data practices considered
+      throughout the platform experience.
+    </p>
+
+  </article>
+
+
+  <!-- 02 -->
+
+  <article class="security-card">
+
+    <div class="security-icon">
+      02
+    </div>
+
+    <h2>
+      Access control
+    </h2>
+
+    <p>
+      Access should be limited to the people and systems
+      that need it, helping businesses maintain appropriate
+      control over their workspace.
+    </p>
+
+  </article>
+
+
+  <!-- 03 -->
+
+  <article class="security-card">
+
+    <div class="security-icon">
+      03
+    </div>
+
+    <h2>
+      Secure operations
+    </h2>
+
+    <p>
+      Security considerations are incorporated into the
+      operational experience so protection remains part
+      of the overall platform design.
+    </p>
+
+  </article>
+
+
+  <!-- 04 -->
+
+  <article class="security-card">
+
+    <div class="security-icon">
+      04
+    </div>
+
+    <h2>
+      Privacy focused
+    </h2>
+
+    <p>
+      Privacy and responsible handling of information are
+      important considerations when building and operating
+      BRIQONA OS.
+    </p>
+
+  </article>
+
+
+  <!-- 05 -->
+
+  <article class="security-card">
+
+    <div class="security-icon">
+      05
+    </div>
+
+    <h2>
+      AI responsibility
+    </h2>
+
+    <p>
+      AI features should be connected to appropriate
+      controls and business context, with sensitive
+      information handled responsibly.
+    </p>
+
+  </article>
+
+
+  <!-- 06 -->
+
+  <article class="security-card">
+
+    <div class="security-icon">
+      06
+    </div>
+
+    <h2>
+      Continuous improvement
+    </h2>
+
+    <p>
+      Security is an ongoing process. BRIQONA OS can
+      continue improving its protection, controls and
+      operational practices as the platform grows.
+    </p>
+
+  </article>
+
+
+</section>
+
+
+<section class="security-note">
+
+  <h2>
+    Security is an ongoing responsibility.
+  </h2>
+
+  <p>
+    BRIQONA OS is being developed with security,
+    privacy and responsible data handling as important
+    considerations. Specific technical controls and
+    security capabilities may evolve as the platform
+    and its infrastructure develop.
+  </p>
+
+</section>
+<!-- =====================================================
+     SECURITY DETAILS
+     ===================================================== -->
+
+<style>
+
+.security-details{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:15px;
+
+  margin-top:18px;
+}
+
+.security-detail{
+  padding:28px;
+
+  border:1px solid var(--line);
+  border-radius:20px;
+
+  background:var(--surface);
+}
+
+.security-detail h2{
+  margin:0 0 10px;
+
+  color:var(--text);
+
+  font-size:20px;
+  line-height:1.25;
+}
+
+.security-detail p{
+  margin:0;
+
+  color:var(--text-muted);
+
+  font-size:11px;
+  line-height:1.8;
+}
+
+.security-list{
+  margin:17px 0 0;
+  padding:0;
+
+  list-style:none;
+}
+
+.security-list li{
+  position:relative;
+
+  padding:10px 0 10px 20px;
+
+  border-bottom:1px solid var(--line);
+
+  color:var(--text-soft);
+
+  font-size:10px;
+  line-height:1.6;
+}
+
+.security-list li:last-child{
+  border-bottom:0;
+}
+
+.security-list li::before{
+  content:"✓";
+
+  position:absolute;
+  left:0;
+  top:10px;
+
+  color:var(--accent);
+
+  font-weight:900;
+}
+
+
+/* SECURITY CTA */
+
+.security-cta{
+  margin-top:18px;
+  padding:30px;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  gap:25px;
+
+  border:1px solid var(--accent-border);
+  border-radius:20px;
+
+  background:
+    radial-gradient(
+      circle at 90% 50%,
+      rgba(216,255,69,.07),
+      transparent 38%
+    ),
+    var(--surface);
+}
+
+.security-cta-copy{
+  max-width:700px;
+}
+
+.security-cta h2{
+  margin:0 0 9px;
+
+  color:var(--text);
+
+  font-size:22px;
+  line-height:1.2;
+}
+
+.security-cta p{
+  margin:0;
+
+  color:var(--text-muted);
+
+  font-size:10px;
+  line-height:1.7;
+}
+
+.security-cta .btn{
+  flex-shrink:0;
+}
+
+
+/* RESPONSIVE */
+
+@media(max-width:800px){
+
+  .security-details{
+    grid-template-columns:1fr;
+  }
+
+  .security-cta{
+    align-items:flex-start;
+    flex-direction:column;
+  }
+
+  .security-cta .btn{
+    width:100%;
+    box-sizing:border-box;
+    text-align:center;
+  }
+
+}
+
+@media(max-width:600px){
+
+  .security-detail{
+    padding:23px;
+  }
+
+  .security-cta{
+    padding:23px;
+  }
+
+}
+
+</style>
+
+
+<section
+  class="security-details"
+  aria-label="Security details"
+>
+
+
+  <!-- DATA & ACCESS -->
+
+  <article class="security-detail">
+
+    <h2>
+      Data & access
+    </h2>
+
+    <p>
+      A secure business workspace depends on appropriate
+      access controls and careful handling of operational
+      information.
+    </p>
+
+    <ul class="security-list">
+
+      <li>
+        Workspace access should be limited to authorized users.
+      </li>
+
+      <li>
+        Business information should be handled responsibly.
+      </li>
+
+      <li>
+        Account permissions can be expanded as platform
+        capabilities develop.
+      </li>
+
+      <li>
+        Security controls should evolve alongside the product.
+      </li>
+
+    </ul>
+
+  </article>
+
+
+  <!-- AI & PRIVACY -->
+
+  <article class="security-detail">
+
+    <h2>
+      AI & privacy
+    </h2>
+
+    <p>
+      BRIQONA AI is designed as an intelligence layer for
+      business operations. AI capabilities should operate
+      with appropriate privacy and security considerations.
+    </p>
+
+    <ul class="security-list">
+
+      <li>
+        Avoid exposing unnecessary sensitive information.
+      </li>
+
+      <li>
+        AI outputs should be reviewed when business decisions
+        require human judgment.
+      </li>
+
+      <li>
+        Backend AI integrations should use appropriate
+        authentication and access controls.
+      </li>
+
+      <li>
+        AI security practices can evolve as integrations
+        and infrastructure mature.
+      </li>
+
+    </ul>
+
+  </article>
+
+
+</section>
+
+
+<!-- =====================================================
+     SECURITY CTA
+     ===================================================== -->
+
+<section class="security-cta">
+
+  <div class="security-cta-copy">
+
+    <h2>
+      Have a security question?
+    </h2>
+
+    <p>
+      For questions about privacy, security or responsible
+      handling of business information, contact the BRIQONA OS
+      team through the available support channel.
+    </p>
+
+  </div>
+
+
+  <a
+    class="btn btn-primary"
+    href="contact.html"
+  >
+    Contact us →
+  </a>
+
+</section>
+<!-- =====================================================
+     FOOTER
+     ===================================================== -->
+
+<style>
+
+.security-footer{
+  border-top:1px solid var(--line);
+  background:#07080b;
+}
+
+.security-footer-inner{
+  width:min(calc(100% - 32px),1200px);
+  margin:auto;
+  padding:55px 0 25px;
+}
+
+.security-footer-top{
+  display:grid;
+  grid-template-columns:1.5fr 1fr 1fr 1fr;
+  gap:35px;
+}
+
+.security-footer-brand{
+  max-width:300px;
+}
+
+.security-footer-brand .brand{
+  display:inline-flex;
+  margin-bottom:16px;
+}
+
+.security-footer-brand p{
+  margin:0;
+  color:var(--text-muted);
+  font-size:10px;
+  line-height:1.8;
+}
+
+.security-footer-column h3{
+  margin:0 0 15px;
+  color:var(--text);
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
+
+.security-footer-column a{
+  display:block;
+  margin:0 0 10px;
+  color:var(--text-muted);
+  font-size:10px;
+  text-decoration:none;
+}
+
+.security-footer-column a:hover{
+  color:var(--text);
+}
+
+.security-footer-bottom{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+
+  margin-top:45px;
+  padding-top:20px;
+
+  border-top:1px solid var(--line);
+}
+
+.security-footer-bottom p{
+  margin:0;
+  color:#555b66;
+  font-size:9px;
+  line-height:1.6;
+}
+
+.security-footer-credit{
+  text-align:right;
+}
+
+.security-footer-credit strong{
+  color:var(--text-soft);
+}
+
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+  .security-footer-top{
+    grid-template-columns:1fr 1fr;
+    gap:30px;
+  }
+
+}
+
+@media(max-width:600px){
+
+  .security-footer-inner{
+    padding:45px 0 22px;
+  }
+
+  .security-footer-top{
+    grid-template-columns:1fr;
+    gap:25px;
+  }
+
+  .security-footer-brand{
+    max-width:100%;
+  }
+
+  .security-footer-bottom{
+    align-items:flex-start;
+    flex-direction:column;
+    margin-top:35px;
+  }
+
+  .security-footer-credit{
+    text-align:left;
+  }
+
+}
+
+</style>
+
+
+</main>
+
+
+<!-- =====================================================
+     FOOTER
+     ===================================================== -->
+
+<footer class="security-footer">
+
+  <div class="security-footer-inner">
+
+
+    <div class="security-footer-top">
+
+
+      <!-- BRAND -->
+
+      <div class="security-footer-brand">
+
+        <a
+          class="brand"
+          href="../index.html"
+          aria-label="BRIQONA OS Home"
+        >
+
+          <span class="brand-mark">B</span>
+
+          <span class="brand-name">
+            BRIQONA<span>OS</span>
+          </span>
+
+        </a>
+
+        <p>
+          A unified operating layer for modern businesses,
+          bringing operations, intelligence and automation
+          together in one workspace.
+        </p>
+
+      </div>
+
+
+      <!-- PLATFORM -->
+
+      <div class="security-footer-column">
+
+        <h3>
+          Platform
+        </h3>
+
+        <a href="platform.html">
+          Platform
+        </a>
+
+        <a href="ai.html">
+          AI Intelligence
+        </a>
+
+        <a href="analytics.html">
+          Analytics
+        </a>
+
+        <a href="dashboard.html">
+          Dashboard
+        </a>
+
+      </div>
+
+
+      <!-- COMPANY -->
+
+      <div class="security-footer-column">
+
+        <h3>
+          Company
+        </h3>
+
+        <a href="industries.html">
+          Industries
+        </a>
+
+        <a href="features.html">
+          Features
+        </a>
+
+        <a href="pricing.html">
+          Pricing
+        </a>
+
+        <a href="register.html">
+          Start Free
+        </a>
+
+      </div>
+
+
+      <!-- LEGAL -->
+
+      <div class="security-footer-column">
+
+        <h3>
+          Legal
+        </h3>
+
+        <a href="security.html">
+          Security
+        </a>
+
+        <a href="privacy.html">
+          Privacy Policy
+        </a>
+
+        <a href="terms.html">
+          Terms & Conditions
+        </a>
+
+        <a href="contact.html">
+          Contact
+        </a>
+
+      </div>
+
+
+    </div>
+
+
+    <!-- FOOTER BOTTOM -->
+
+    <div class="security-footer-bottom">
+
+      <p>
+        ©
+        <span data-security-year></span>
+        BRIQONA OS. All rights reserved.
+      </p>
+
+      <p class="security-footer-credit">
+        Designed & developed with care by
+        <strong>Yawar Abbas Bhatti</strong>
+      </p>
+
+    </div>
+
+
+  </div>
+
+</footer>
+
+
+</div>
+
+
+<!-- =====================================================
+     JAVASCRIPT
+     ===================================================== -->
+
+<script>
+
+/* =========================================================
+   MOBILE MENU
+   ========================================================= */
+
+const securityMenuToggle =
+  document.getElementById("securityMenuToggle");
+
+const securityNav =
+  document.getElementById("securityNav");
+
+
+if(securityMenuToggle && securityNav){
+
+  securityMenuToggle.addEventListener("click",()=>{
+
+    const isOpen =
+      securityNav.classList.toggle("open");
+
+    securityMenuToggle.setAttribute(
+      "aria-expanded",
+      String(isOpen)
+    );
+
+    securityMenuToggle.setAttribute(
+      "aria-label",
+      isOpen ? "Close menu" : "Open menu"
+    );
+
+  });
+
+
+  /* Close after selecting a page */
+
+  securityNav
+    .querySelectorAll("a")
+    .forEach(link=>{
+
+      link.addEventListener("click",()=>{
+
+        securityNav.classList.remove("open");
+
+        securityMenuToggle.setAttribute(
+          "aria-expanded",
+          "false"
+        );
+
+        securityMenuToggle.setAttribute(
+          "aria-label",
+          "Open menu"
+        );
+
+      });
+
+    });
+
+
+  /* Close menu when clicking outside */
+
+  document.addEventListener("click",(event)=>{
+
+    if(
+      !securityNav.contains(event.target) &&
+      !securityMenuToggle.contains(event.target)
+    ){
+
+      securityNav.classList.remove("open");
+
+      securityMenuToggle.setAttribute(
+        "aria-expanded",
+        "false"
+      );
+
+      securityMenuToggle.setAttribute(
+        "aria-label",
+        "Open menu"
+      );
+
+    }
+
+  });
+
+}
+
+
+/* =========================================================
+   ESC KEY
+   ========================================================= */
+
+document.addEventListener("keydown",(event)=>{
+
+  if(event.key !== "Escape"){
+    return;
+  }
+
+  if(securityNav){
+    securityNav.classList.remove("open");
+  }
+
+  if(securityMenuToggle){
+
+    securityMenuToggle.setAttribute(
+      "aria-expanded",
+      "false"
+    );
+
+    securityMenuToggle.setAttribute(
+      "aria-label",
+      "Open menu"
+    );
+
+  }
+
+});
+
+
+/* =========================================================
+   CURRENT YEAR
+   ========================================================= */
+
+document
+  .querySelectorAll("[data-security-year]")
+  .forEach(element=>{
+
+    element.textContent =
+      new Date().getFullYear();
+
+  });
+
+</script>
+
+
+</body>
+</html>
