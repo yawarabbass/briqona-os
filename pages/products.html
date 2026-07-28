@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Products | BRIQONA OS</title>
+<meta name="description" content="Manage products, inventory, pricing and stock with BRIQONA OS.">
+<meta name="author" content="Yawar Abbas Bhatti">
+<meta name="robots" content="noindex,nofollow">
+<link rel="stylesheet" href="../css/style.css">
+
+<style>
+body{margin:0}
+.page{min-height:100vh;background:var(--bg)}
+.bar{height:70px;border-bottom:1px solid var(--line);background:rgba(7,8,11,.9);display:flex;align-items:center}
+.bar-in,.main{width:min(calc(100% - 32px),1240px);margin:auto}
+.bar-in{display:flex;align-items:center;justify-content:space-between}
+.left{display:flex;align-items:center;gap:25px}.back{color:var(--text-muted);font-size:11px}
+.user{display:flex;align-items:center;gap:9px}.avatar{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--accent);color:#080a0b;font-size:10px;font-weight:900}
+.user small{display:block;color:var(--text-muted);font-size:9px}.user strong{display:block;color:var(--text);font-size:11px;margin-top:2px}
+.main{padding:55px 0 100px}
+.head{display:flex;justify-content:space-between;align-items:end;gap:25px;margin-bottom:32px}
+h1{margin:10px 0 8px;font-size:clamp(40px,6vw,58px);line-height:.95;letter-spacing:-.06em}
+.desc{max-width:620px;color:var(--text-muted);font-size:13px;margin:0}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px}
+.stat,.card{border:1px solid var(--line);background:var(--surface);border-radius:18px}
+.stat{padding:20px}.stat small{color:var(--text-muted);font-size:9px;text-transform:uppercase;font-weight:800}
+.stat strong{display:block;color:var(--text);font-size:27px;margin:8px 0 3px}.stat span{color:var(--success);font-size:10px}
+.card{overflow:hidden;border-radius:22px}
+.tools{padding:18px;border-bottom:1px solid var(--line);display:flex;gap:10px;justify-content:space-between}
+.search{height:44px;max-width:500px;flex:1;display:flex;align-items:center;padding:0 12px;border:1px solid var(--line);border-radius:10px;background:#0a0c10}
+.search input{width:100%;border:0;outline:0;background:transparent;color:var(--text);font-size:12px;margin-left:8px}
+select{height:44px;border:1px solid var(--line);border-radius:10px;background:#0a0c10;color:var(--text-soft);padding:0 12px;font-size:10px}
+.table{overflow-x:auto}table{width:100%;min-width:900px;border-collapse:collapse}
+th,td{padding:16px 18px;border-bottom:1px solid var(--line);text-align:left}
+th{color:var(--text-muted);font-size:9px;text-transform:uppercase;letter-spacing:.1em}td{color:var(--text-soft);font-size:11px}
+.product{display:flex;align-items:center;gap:10px}.pic{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;background:var(--accent-soft);color:var(--accent);font-size:10px;font-weight:900}
+.product b{display:block;color:var(--text);font-size:11px}.product small{display:block;color:var(--text-muted);font-size:9px;margin-top:3px}
+.price,.stock{color:var(--text);font-weight:800}
+.stock-low{color:var(--accent)}.stock-out{color:#ff7b7b}.stock-good{color:var(--success)}
+.status{font-size:9px;font-weight:800}.status:before{content:"●";margin-right:5px}
+.live{color:var(--success)}.draft{color:var(--text-muted)}.archived{color:#ff7b7b}
+.action{border:1px solid var(--line);background:transparent;color:var(--text-muted);padding:7px 10px;border-radius:8px;font-size:9px;cursor:pointer}
+.action:hover{color:var(--accent);border-color:var(--accent-border)}
+.empty{display:none;padding:50px;text-align:center;color:var(--text-muted);font-size:11px}.empty.show{display:block}
+.drawer-bg{position:fixed;inset:0;z-index:20;background:rgba(0,0,0,.7);display:none;justify-content:flex-end}.drawer-bg.open{display:flex}
+.drawer{width:min(100%,430px);height:100%;box-sizing:border-box;padding:28px;background:var(--surface);border-left:1px solid var(--line);overflow:auto}
+.dhead{display:flex;justify-content:space-between;align-items:start}.close{border:1px solid var(--line);background:transparent;color:var(--text);border-radius:8px;width:34px;height:34px;cursor:pointer}
+.product-box{padding:18px;margin:25px 0 15px;border:1px solid var(--line);border-radius:14px;background:#0a0c10}
+.product-box .pic{width:50px;height:50px;margin-bottom:12px}.product-box b{display:block;color:var(--text);font-size:16px}.product-box small{display:block;color:var(--text-muted);font-size:9px;margin-top:5px}
+.details{display:grid;gap:9px}.detail{display:flex;justify-content:space-between;padding:13px;border:1px solid var(--line);border-radius:9px;background:#0a0c10;font-size:10px}
+.detail span:first-child{color:var(--text-muted)}.detail span:last-child{color:var(--text);font-weight:800}
+.drawer .btn{width:100%;margin-top:18px}
+@media(max-width:800px){.stats{grid-template-columns:repeat(2,1fr)}.head{align-items:start;flex-direction:column}}
+@media(max-width:600px){.back,.user div{display:none}.tools{flex-direction:column}.search{max-width:none}.stats{grid-template-columns:1fr 1fr}.drawer{padding:22px 18px}}
+</style>
+</head>
+
+<body>
+<div class="page">
+
+<header class="bar">
+<div class="bar-in">
+<div class="left">
+<a class="brand" href="../index.html"><span class="brand-mark">B</span><span class="brand-name">BRIQONA<span>OS</span></span></a>
+<a class="back" href="../index.html">← Back</a>
+</div>
+<div class="user"><span class="avatar">YA</span><div><small>Workspace owner</small><strong>Yawar Abbas Bhatti</strong></div></div>
+</div>
+</header>
+
+<main class="main">
+
+<section class="head">
+<div>
+<span class="eyebrow"><span class="status-dot"></span> Product intelligence</span>
+<h1>Products.</h1>
+<p class="desc">Control your catalog, pricing and inventory from one clean operating layer.</p>
+</div>
+<button class="btn btn-primary" id="add">+ Add product</button>
+</section>
+
+<section class="stats">
+<div class="stat"><small>Total products</small><strong>2,486</strong><span>↑ 8.4% this month</span></div>
+<div class="stat"><small>Active products</small><strong>2,184</strong><span>87.9% of catalog</span></div>
+<div class="stat"><small>Low stock</small><strong>42</strong><span>Needs attention</span></div>
+<div class="stat"><small>Catalog value</small><strong>$482K</strong><span>↑ 16.2% this month</span></div>
+</section>
+
+<section class="card">
+
+<div class="tools">
+<div class="search">⌕<input id="search" type="search" placeholder="Search product, SKU or category..."></div>
+<select id="status">
+<option value="all">All status</option>
+<option value="live">Live</option>
+<option value="draft">Draft</option>
+<option value="archived">Archived</option>
+</select>
+</div>
+
+<div class="table">
+<table>
+<thead>
+<tr><th>Product</th><th>Category</th><th>Status</th><th>Stock</th><th>Price</th><th>Updated</th><th></th></tr>
+</thead>
+
+<tbody id="rows">
+
+<tr data-status="live" data-search="nexora pro workspace nw-1001 software">
+<td><div class="product"><span class="pic">NP</span><div><b>Nexora Pro Workspace</b><small>SKU: NW-1001</small></div></div></td>
+<td>Software</td><td><span class="status live">Live</span></td><td><span class="stock-good">Unlimited</span></td><td class="price">$49/mo</td><td>Today</td>
+<td><button class="action manage">View</button></td>
+</tr>
+
+<tr data-status="live" data-search="business command center bc-2040 software">
+<td><div class="product"><span class="pic">BC</span><div><b>Business Command Center</b><small>SKU: BC-2040</small></div></div></td>
+<td>Software</td><td><span class="status live">Live</span></td><td><span class="stock-good">Unlimited</span></td><td class="price">$99/mo</td><td>Today</td>
+<td><button class="action manage">View</button></td>
+</tr>
+
+<tr data-status="live" data-search="smart terminal st-3200 hardware">
+<td><div class="product"><span class="pic">ST</span><div><b>Smart Terminal</b><small>SKU: ST-3200</small></div></div></td>
+<td>Hardware</td><td><span class="status live">Live</span></td><td><span class="stock-low">18 units</span></td><td class="price">$249</td><td>Yesterday</td>
+<td><button class="action manage">View</button></td>
+</tr>
+
+<tr data-status="draft" data-search="clinic flow cf-4100 healthcare">
+<td><div class="product"><span class="pic">CF</span><div><b>Clinic Flow</b><small>SKU: CF-4100</small></div></div></td>
+<td>Healthcare</td><td><span class="status draft">Draft</span></td><td><span class="stock-good">Unlimited</span></td><td class="price">$79/mo</td><td>Jul 26</td>
+<td><button class="action manage">View</button></td>
+</tr>
+
+<tr data-status="archived" data-search="legacy hr suite hr-1100 hr">
+<td><div class="product"><span class="pic">HR</span><div><b>Legacy HR Suite</b><small>SKU: HR-1100</small></div></div></td>
+<td>HR</td><td><span class="status archived">Archived</span></td><td><span class="stock-out">0</span></td><td class="price">$39/mo</td><td>Jul 22</td>
+<td><button class="action manage">View</button></td>
+</tr>
+
+<tr data-status="live" data-search="hotel operations hub ho-5100 hospitality">
+<td><div class="product"><span class="pic">HO</span><div><b>Hotel Operations Hub</b><small>SKU: HO-5100</small></div></div></td>
+<td>Hospitality</td><td><span class="status live">Live</span></td><td><span class="stock-good">Unlimited</span></td><td class="price">$129/mo</td><td>Jul 21</td>
+<td><button class="action manage">View</button></td>
+</tr>
+
+</tbody>
+</table>
+</div>
+
+<div class="empty" id="empty">No products match your search or filter.</div>
+</section>
+</main>
+</div>
+
+<div class="drawer-bg" id="drawer">
+<aside class="drawer">
+
+<div class="dhead">
+<div><span class="eyebrow">Product details</span><h2 id="title">Product</h2></div>
+<button class="close" id="close">×</button>
+</div>
+
+<div class="product-box">
+<span class="pic" id="picon">P</span>
+<b id="pname">Product</b>
+<small id="sku">SKU: —</small>
+</div>
+
+<div class="details">
+<div class="detail"><span>Category</span><span id="category">—</span></div>
+<div class="detail"><span>Status</span><span id="stat">—</span></div>
+<div class="detail"><span>Stock</span><span id="stock">—</span></div>
+<div class="detail"><span>Price</span><span id="price">—</span></div>
+<div class="detail"><span>Updated</span><span id="updated">—</span></div>
+</div>
+
+<button class="btn btn-primary" id="edit">Edit product →</button>
+<button class="btn btn-secondary" id="copy">Copy SKU</button>
+
+</aside>
+</div>
+
+<script>
+const rows=[...document.querySelectorAll("#rows tr")],
+search=document.getElementById("search"),
+status=document.getElementById("status"),
+empty=document.getElementById("empty"),
+drawer=document.getElementById("drawer");
+
+function filter(){
+let q=search.value.toLowerCase().trim(),s=status.value,n=0;
+rows.forEach(r=>{
+let show=(!q||r.dataset.search.includes(q))&&(s==="all"||r.dataset.status===s);
+r.style.display=show?"":"none";if(show)n++;
+});
+empty.classList.toggle("show",n===0);
+}
+search.oninput=filter;
+status.onchange=filter;
+
+document.querySelectorAll(".manage").forEach(btn=>{
+btn.onclick=()=>{
+let r=btn.closest("tr"),c=r.querySelectorAll("td"),
+p=c[0].querySelector("b").textContent,
+sku=c[0].querySelector("small").textContent;
+document.getElementById("title").textContent=p;
+document.getElementById("pname").textContent=p;
+document.getElementById("picon").textContent=c[0].querySelector(".pic").textContent;
+document.getElementById("sku").textContent=sku;
+document.getElementById("category").textContent=c[1].textContent.trim();
+document.getElementById("stat").textContent=c[2].textContent.trim();
+document.getElementById("stock").textContent=c[3].textContent.trim();
+document.getElementById("price").textContent=c[4].textContent.trim();
+document.getElementById("updated").textContent=c[5].textContent.trim();
+drawer.classList.add("open");
+};
+});
+
+function closeDrawer(){drawer.classList.remove("open")}
+document.getElementById("close").onclick=closeDrawer;
+drawer.onclick=e=>{if(e.target===drawer)closeDrawer()};
+document.onkeydown=e=>{if(e.key==="Escape")closeDrawer()};
+
+document.getElementById("add").onclick=()=>alert("Product creation module is ready for backend connection.");
+document.getElementById("edit").onclick=()=>alert("Product editor is ready for backend connection.");
+
+document.getElementById("copy").onclick=async()=>{
+let sku=document.getElementById("sku").textContent.replace("SKU:","").trim();
+try{
+await navigator.clipboard.writeText(sku);
+document.getElementById("copy").textContent="Copied ✓";
+setTimeout(()=>document.getElementById("copy").textContent="Copy SKU",1000);
+}catch(e){alert("SKU: "+sku)}
+};
+</script>
+
+</body>
+  </html>
