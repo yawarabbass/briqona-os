@@ -36,12 +36,18 @@ function Sidebar() {
 
       <div className="sidebar-bottom">
         <button className="nav-item">
+          <span className="nav-icon">✦</span>
+          <span>BRIQONA AI</span>
+        </button>
+
+        <button className="nav-item">
           <span className="nav-icon">?</span>
           <span>Help & Support</span>
         </button>
 
         <div className="user-card">
-          <div className="user-avatar">Y</div>
+          <div className="user-avatar">A</div>
+
           <div>
             <div className="user-name">Business Admin</div>
             <div className="user-role">Administrator</div>
