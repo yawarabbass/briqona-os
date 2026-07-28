@@ -1,137 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
   <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Pricing | BRIQONA OS</title>
 
   <meta
     name="description"
-    content="Simple and affordable BRIQONA OS plans for modern businesses."
+    content="Simple and affordable BRIQONA OS plans starting at $5 per month."
   >
 
   <link rel="stylesheet" href="../css/style.css">
 
   <style>
+    /* =====================================================
+       PRICING PAGE
+       ===================================================== */
+
     .pricing-page {
       min-height: 100vh;
       background: var(--bg);
     }
 
-    .pricing-bar {
-      min-height: 70px;
+    /* =====================================================
+       NAVBAR
+       ===================================================== */
+
+    .pricing-header {
+      position: fixed;
+      z-index: 1000;
+      top: 0;
+      left: 0;
+      width: 100%;
       border-bottom: 1px solid var(--line);
-      background: rgba(7, 8, 11, 0.9);
+      background: rgba(7, 8, 11, 0.88);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
     }
 
-    .pricing-bar-inner {
-      width: min(calc(100% - 32px), 1180px);
-      min-height: 70px;
-      margin: auto;
+    .pricing-nav {
+      min-height: 76px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 20px;
-    }
-
-    .pricing-left {
-      display: flex;
-      align-items: center;
       gap: 25px;
     }
 
-    .pricing-back {
-      color: var(--text-muted);
-      font-size: 11px;
-    }
-
-    .pricing-back:hover {
-      color: var(--text);
-    }
-
-    .pricing-brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .pricing-brand-mark {
-      width: 34px;
-      height: 34px;
-      display: grid;
-      place-items: center;
-      border-radius: 10px;
-      background: var(--accent);
-      color: #080a0b;
-      font-size: 17px;
-      font-weight: 900;
-    }
-
-    .pricing-brand-name {
-      color: var(--text);
-      font-size: 15px;
-      font-weight: 850;
-      letter-spacing: -0.035em;
-    }
-
-    .pricing-brand-name span {
-      color: var(--accent);
-      margin-left: 2px;
-    }
-
-    .pricing-user {
+    .pricing-nav .nav-menu {
       display: flex;
       align-items: center;
-      gap: 9px;
+      gap: 28px;
     }
 
-    .pricing-avatar {
-      width: 34px;
-      height: 34px;
-      display: grid;
-      place-items: center;
-      border-radius: 50%;
-      background: var(--accent);
-      color: #080a0b;
-      font-size: 10px;
-      font-weight: 900;
+    .pricing-nav .nav-menu a {
+      color: var(--text-soft);
+      font-size: 13px;
+      font-weight: 600;
     }
 
-    .pricing-user small {
-      display: block;
-      color: var(--text-muted);
-      font-size: 9px;
-    }
-
-    .pricing-user strong {
-      display: block;
+    .pricing-nav .nav-menu a:hover {
       color: var(--text);
-      font-size: 11px;
     }
 
-    .pricing-main {
-      width: min(calc(100% - 32px), 1180px);
-      margin: auto;
-      padding: 80px 0 110px;
+    .pricing-nav .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding-left: 20px;
+      border-left: 1px solid var(--line);
     }
+
+    .pricing-nav .nav-login {
+      color: var(--text-soft);
+      font-size: 13px;
+      font-weight: 650;
+    }
+
+    .pricing-nav .menu-toggle {
+      display: none;
+    }
+
+    /* =====================================================
+       HERO
+       ===================================================== */
 
     .pricing-hero {
-      max-width: 780px;
-      margin: auto;
+      position: relative;
+      padding: 170px 0 90px;
+      overflow: hidden;
       text-align: center;
     }
 
+    .pricing-hero::before {
+      content: "";
+      position: absolute;
+      z-index: 0;
+      top: 70px;
+      left: 50%;
+      width: 700px;
+      height: 450px;
+      transform: translateX(-50%);
+      border-radius: 50%;
+      background: rgba(216, 255, 69, 0.055);
+      filter: blur(100px);
+      pointer-events: none;
+    }
+
+    .pricing-hero > .container {
+      position: relative;
+      z-index: 1;
+    }
+
+    .pricing-hero .eyebrow {
+      margin-bottom: 22px;
+    }
+
     .pricing-hero h1 {
-      margin: 15px 0 20px;
-      font-size: clamp(45px, 7vw, 76px);
-      line-height: 0.92;
-      letter-spacing: -0.065em;
+      max-width: 850px;
+      margin: 0 auto;
+      color: var(--text);
+      font-size: clamp(52px, 8vw, 92px);
+      line-height: 0.9;
+      letter-spacing: -0.075em;
+      font-weight: 800;
     }
 
     .pricing-hero h1 span {
@@ -139,506 +131,854 @@
       color: var(--text-muted);
     }
 
-    .pricing-description {
+    .pricing-hero p {
       max-width: 650px;
-      margin: auto;
+      margin: 28px auto 0;
+      color: var(--text-soft);
+      font-size: 17px;
+      line-height: 1.75;
+    }
+
+    .trial-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 25px;
+      padding: 8px 13px;
+      border: 1px solid var(--accent-border);
+      border-radius: 999px;
+      color: var(--accent);
+      background: var(--accent-soft);
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    /* =====================================================
+       PRICING AREA
+       ===================================================== */
+
+    .pricing-area {
+      padding: 20px 0 100px;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      align-items: stretch;
+    }
+
+    .price-card {
+      position: relative;
+      min-height: 500px;
+      display: flex;
+      flex-direction: column;
+      padding: 30px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: var(--surface);
+      transition:
+        transform var(--transition),
+        border-color var(--transition),
+        background var(--transition);
+    }
+
+    .price-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--line-strong);
+      background: var(--surface-2);
+    }
+
+    .price-card.featured {
+      border-color: var(--accent-border);
+      background:
+        radial-gradient(
+          circle at 50% 0%,
+          rgba(216, 255, 69, 0.09),
+          transparent 45%
+        ),
+        var(--surface);
+    }
+
+    .popular-badge {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      padding: 6px 9px;
+      border-radius: 999px;
+      color: var(--accent);
+      background: var(--accent-soft);
+      font-size: 8px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .plan-label {
       color: var(--text-muted);
-      font-size: 14px;
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .price-card h2 {
+      margin: 12px 0 7px;
+      color: var(--text);
+      font-size: 24px;
+      letter-spacing: -0.04em;
+    }
+
+    .plan-description {
+      min-height: 45px;
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 11px;
       line-height: 1.7;
     }
-  </style>
 
+    .price-value {
+      margin: 25px 0;
+      color: var(--text);
+      font-size: 48px;
+      line-height: 1;
+      font-weight: 800;
+      letter-spacing: -0.055em;
+    }
+
+    .price-value span {
+      color: var(--text-muted);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0;
+    }
+
+    .price-card .btn {
+      width: 100%;
+    }
+
+    /* =====================================================
+       RESPONSIVE
+       ===================================================== */
+
+    @media (max-width: 1000px) {
+
+      .pricing-nav .nav-menu {
+        gap: 18px;
+      }
+
+      .pricing-nav .nav-menu a {
+        font-size: 12px;
+      }
+
+      .pricing-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .price-card {
+        min-height: auto;
+      }
+    }
+
+    @media (max-width: 800px) {
+
+      .pricing-nav {
+        min-height: 68px;
+      }
+
+      .pricing-nav .menu-toggle {
+        display: block;
+      }
+
+      .pricing-nav .nav-menu {
+        position: absolute;
+        top: calc(100% + 8px);
+        right: 16px;
+        left: 16px;
+
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+
+        padding: 12px;
+
+        border: 1px solid var(--line-strong);
+        border-radius: 18px;
+
+        background: rgba(12, 14, 19, 0.98);
+        box-shadow: var(--shadow);
+      }
+
+      .pricing-nav .nav-menu.open {
+        display: flex;
+      }
+
+      .pricing-nav .nav-menu a {
+        padding: 13px 10px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .pricing-nav .nav-actions {
+        margin: 10px 0 0;
+        padding: 10px 0 0;
+        border: 0;
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .pricing-nav .nav-actions .btn {
+        width: 100%;
+      }
+
+      .pricing-nav .nav-login {
+        padding: 10px;
+        text-align: center;
+      }
+
+      .pricing-hero {
+        padding-top: 130px;
+      }
+    }
+
+    @media (max-width: 560px) {
+
+      .pricing-hero {
+        padding-top: 115px;
+        padding-bottom: 60px;
+      }
+
+      .pricing-hero h1 {
+        font-size: clamp(48px, 15vw, 70px);
+      }
+
+      .pricing-hero p {
+        font-size: 15px;
+      }
+
+      .price-card {
+        padding: 24px;
+        border-radius: 20px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
 <div class="pricing-page">
 
-  <header class="pricing-bar">
+  <!-- ===================================================
+       HEADER / NAVBAR
+       =================================================== -->
 
-    <div class="pricing-bar-inner">
+  <header class="pricing-header site-header">
 
-      <div class="pricing-left">
+    <div class="container pricing-nav">
 
-        <a
-          class="pricing-brand"
-          href="../index.html"
-          aria-label="BRIQONA OS home"
-        >
+      <a
+        class="brand"
+        href="../index.html"
+        aria-label="BRIQONA OS home"
+      >
+        <span class="brand-mark">B</span>
 
-          <span class="pricing-brand-mark">B</span>
+        <span class="brand-name">
+          BRIQONA<span>OS</span>
+        </span>
+      </a>
 
-          <span class="pricing-brand-name">
-            BRIQONA<span>OS</span>
-          </span>
 
-        </a>
+      <nav class="nav-menu" aria-label="Main navigation">
 
-        <a
-          class="pricing-back"
-          href="../index.html"
-        >
-          ← Back
-        </a>
+        <a href="../index.html">Home</a>
 
-      </div>
+        <a href="features.html">Platform</a>
 
-      <div class="pricing-user">
+        <a href="pricing.html">Pricing</a>
 
-        <span class="pricing-avatar">B</span>
+        <a href="book-demo.html">Book Demo</a>
 
-        <div>
+        <div class="nav-actions">
 
-          <small>
-            Simple pricing
-          </small>
+          <a
+            class="nav-login"
+            href="login.html"
+          >
+            Login
+          </a>
 
-          <strong>
-            BRIQONA OS
-          </strong>
+          <a
+            class="btn btn-primary btn-small"
+            href="register.html"
+          >
+            Get Started
+          </a>
 
         </div>
 
-      </div>
+      </nav>
+
+
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-label="Open navigation"
+        aria-expanded="false"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
 
     </div>
 
   </header>
 
 
-  <main class="pricing-main">
+  <!-- ===================================================
+       HERO
+       =================================================== -->
+
+  <main>
 
     <section class="pricing-hero">
 
-      <span class="eyebrow">
-        <span class="status-dot"></span>
-        Simple, affordable pricing
-      </span>
+      <div class="container">
 
-      <h1>
-        Choose your
-        <span>operating layer.</span>
-      </h1>
-
-      <p class="pricing-description">
-        Start small, grow when you need to.
-        Choose the BRIQONA OS plan that fits your
-        business today.
-      </p>
-
-    </section>
-        <section class="pricing-cards">
-
-      <!-- STARTER -->
-      <article class="pricing-plan">
-
-        <span class="plan-label">
-          STARTER
+        <span class="eyebrow">
+          <span class="status-dot"></span>
+          Simple, affordable pricing
         </span>
 
-        <h2>Starter</h2>
 
-        <p class="plan-description">
-          For small businesses getting organized.
+        <h1>
+          Start small.
+          <span>Scale smarter.</span>
+        </h1>
+
+
+        <p>
+          Powerful business operations without expensive
+          software costs. Choose the plan that fits your
+          business and upgrade when you grow.
         </p>
 
-        <div class="plan-price">
-          $19
-          <span>/month</span>
+
+        <div class="trial-badge">
+          ✓ 3-day free demo on every plan
         </div>
 
-        <a
-          class="btn btn-secondary"
-          href="register.html?plan=starter"
-        >
-          Start Starter →
-        </a>
-
-        <ul class="plan-features">
-          <li>Business dashboard</li>
-          <li>Customer management</li>
-          <li>Order management</li>
-          <li>Product catalog</li>
-          <li>Basic inventory</li>
-          <li>Standard support</li>
-        </ul>
-
-      </article>
-
-
-      <!-- GROWTH -->
-      <article class="pricing-plan pricing-featured">
-
-        <span class="popular-badge">
-          MOST POPULAR
-        </span>
-
-        <span class="plan-label">
-          GROWTH
-        </span>
-
-        <h2>Growth</h2>
-
-        <p class="plan-description">
-          For growing businesses ready to scale.
-        </p>
-
-        <div class="plan-price">
-          $49
-          <span>/month</span>
-        </div>
-
-        <a
-          class="btn btn-primary"
-          href="register.html?plan=growth"
-        >
-          Start Growth →
-        </a>
-
-        <ul class="plan-features">
-          <li>Everything in Starter</li>
-          <li>Advanced inventory</li>
-          <li>Analytics & reports</li>
-          <li>AI intelligence layer</li>
-          <li>Workflow automation</li>
-          <li>Priority support</li>
-        </ul>
-
-      </article>
-
-
-      <!-- SCALE -->
-      <article class="pricing-plan">
-
-        <span class="plan-label">
-          SCALE
-        </span>
-
-        <h2>Scale</h2>
-
-        <p class="plan-description">
-          For established teams with advanced needs.
-        </p>
-
-        <div class="plan-price">
-          $99
-          <span>/month</span>
-        </div>
-
-        <a
-          class="btn btn-secondary"
-          href="register.html?plan=scale"
-        >
-          Start Scale →
-        </a>
-
-        <ul class="plan-features">
-          <li>Everything in Growth</li>
-          <li>Advanced automation</li>
-          <li>Custom workflows</li>
-          <li>Expanded intelligence</li>
-          <li>Team controls</li>
-          <li>Dedicated support</li>
-        </ul>
-
-      </article>
+      </div>
 
     </section>
 
 
-    <p class="pricing-note">
-      Start with a simple plan and upgrade as your business grows.
-          </p>
-              <style>
+    <!-- =================================================
+         PRICING CARDS — START
+         ================================================= -->
 
-      .pricing-cards {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 14px;
-        margin-top: 60px;
-      }
+    <section class="pricing-area">
 
-      .pricing-plan {
-        position: relative;
-        padding: 30px;
-        border: 1px solid var(--line);
-        border-radius: 24px;
-        background: var(--surface);
-        transition:
-          transform var(--transition),
-          border-color var(--transition);
-      }
+      <div class="container">
 
-      .pricing-plan:hover {
-        transform: translateY(-5px);
-        border-color: var(--line-strong);
-      }
-
-      .pricing-featured {
-        border-color: var(--accent-border);
-        background:
-          radial-gradient(
-            circle at 50% 0%,
-            rgba(216, 255, 69, 0.09),
-            transparent 45%
-          ),
-          var(--surface);
-      }
-
-      .popular-badge {
-        position: absolute;
-        top: 18px;
-        right: 18px;
-        padding: 6px 9px;
-        border-radius: 999px;
-        color: var(--accent);
-        background: var(--accent-soft);
-        font-size: 8px;
-        font-weight: 800;
-        letter-spacing: .08em;
-      }
-
-      .plan-label {
-        color: var(--text-muted);
-        font-size: 9px;
-        font-weight: 800;
-        letter-spacing: .14em;
-      }
-
-      .pricing-plan h2 {
-        margin: 12px 0 7px;
-        color: var(--text);
-        font-size: 22px;
-        letter-spacing: -.04em;
-      }
-
-      .plan-description {
-        min-height: 42px;
-        margin: 0;
-        color: var(--text-muted);
-        font-size: 11px;
-        line-height: 1.6;
-      }
-
-      .plan-price {
-        margin: 25px 0;
-        color: var(--text);
-        font-size: 42px;
-        font-weight: 800;
-        letter-spacing: -.05em;
-      }
-
-      .plan-price span {
-        color: var(--text-muted);
-        font-size: 10px;
-        font-weight: 400;
-        letter-spacing: 0;
-      }
-
-      .pricing-plan .btn {
-        width: 100%;
-      }
-
-      .plan-features {
-        margin: 25px 0 0;
-        padding: 0;
-        list-style: none;
-      }
-
-      .plan-features li {
-        padding: 10px 0;
-        border-bottom: 1px solid var(--line);
-        color: var(--text-soft);
-        font-size: 10px;
-      }
-
-      .plan-features li::before {
-        content: "✓";
-        margin-right: 8px;
-        color: var(--accent);
-        font-weight: 900;
-      }
-
-      .pricing-note {
-        margin: 25px 0 0;
-        color: var(--text-muted);
-        text-align: center;
-        font-size: 9px;
-      }
-
-      .pricing-faq {
-        margin-top: 70px;
-        padding: 28px;
-        border: 1px solid var(--line);
-        border-radius: 22px;
-        background: var(--surface);
-      }
-
-      .pricing-faq h2 {
-        margin: 0 0 20px;
-        color: var(--text);
-        font-size: 21px;
-      }
-
-      .pricing-faq details {
-        padding: 16px 0;
-        border-bottom: 1px solid var(--line);
-      }
-
-      .pricing-faq details:last-child {
-        border-bottom: 0;
-      }
-
-      .pricing-faq summary {
-        color: var(--text);
-        font-size: 12px;
-        font-weight: 700;
-        cursor: pointer;
-      }
-
-      .pricing-faq details p {
-        margin: 10px 0 0;
-        color: var(--text-muted);
-        font-size: 10px;
-        line-height: 1.7;
-      }
-
-      .pricing-bottom {
-        margin-top: 55px;
-        text-align: center;
-      }
-
-      .pricing-bottom p {
-        margin: 0 0 18px;
-        color: var(--text-soft);
-        font-size: 13px;
-      }
-
-      @media (max-width: 850px) {
-
-        .pricing-cards {
-          grid-template-columns: 1fr;
-        }
-
-        .pricing-plan {
-          max-width: 600px;
-          width: 100%;
-          margin-inline: auto;
-        }
-
-      }
-
-      @media (max-width: 600px) {
-
-        .pricing-main {
-          width: min(calc(100% - 24px), 1180px);
-          padding-top: 55px;
-        }
-
-        .pricing-left {
-          gap: 12px;
-        }
-
-        .pricing-back,
-        .pricing-user div {
-          display: none;
-        }
-
-        .pricing-user {
-          gap: 0;
-        }
-
-        .pricing-cards {
-          margin-top: 40px;
-        }
-
-        .pricing-plan {
-          padding: 23px;
-        }
-
-        .pricing-faq {
-          padding: 20px;
-        }
-
-      }
-
-    </style>
+        <div class="pricing-grid">
 
 
-    <section class="pricing-faq">
+          <!-- STARTER CARD -->
 
-      <h2>
-        Frequently asked questions
-      </h2>
+          <article class="price-card">
 
-      <details>
-        <summary>
-          Can I change my plan later?
-        </summary>
+            <span class="plan-label">
+              For getting started
+            </span>
 
-        <p>
-          Yes. You can upgrade or change your workspace
-          plan as your business grows.
-        </p>
-      </details>
+            <h2>Starter</h2>
 
-      <details>
-        <summary>
-          Is there a free trial?
-        </summary>
+            <p class="plan-description">
+              Essential tools for small businesses
+              beginning to organize operations.
+            </p>
 
-        <p>
-          The frontend is prepared for a future
-          free-trial system. Trial settings can be
-          connected when the backend is added.
-        </p>
-      </details>
+            <div class="price-value">
+              $5<span>/month</span>
+            </div>
 
-      <details>
-        <summary>
-          What happens after I click Start?
-        </summary>
+            <a
+              class="btn btn-secondary"
+              href="register.html?plan=starter"
+            >
+              Start 3-Day Demo →
+            </a>
 
-        <p>
-          You will continue to the BRIQONA OS registration
-          page where your selected plan can be prepared
-          for your workspace.
-        </p>
-      </details>
+            <!-- Part 2 continues here -->
 
-      <details>
-        <summary>
-          Can I cancel later?
-        </summary>
-
-        <p>
-          Subscription cancellation can be connected
-          to the billing backend when payments are enabled.
-        </p>
-      </details>
-
-    </section>
+          </article>
 
 
-    <section class="pricing-bottom">
+          <!-- GROWTH CARD -->
+
+          <article class="price-card featured">
+
+            <span class="popular-badge">
+              Most Popular
+            </span>
+
+            <span class="plan-label">
+              For growing businesses
+            </span>
+
+            <h2>Growth</h2>
+
+            <p class="plan-description">
+              More automation, intelligence and
+              control for growing teams.
+            </p>
+
+            <div class="price-value">
+              $15<span>/month</span>
+            </div>
+
+            <a
+              class="btn btn-primary"
+              href="register.html?plan=growth"
+            >
+              Start 3-Day Demo →
+            </a>
+
+            <!-- Part 2 continues here -->
+
+          </article>
+
+
+          <!-- SCALE CARD -->
+
+          <article class="price-card">
+
+            <span class="plan-label">
+              For established teams
+            </span>
+
+            <h2>Scale</h2>
+
+            <p class="plan-description">
+              Advanced operating tools for teams
+              ready to scale their business.
+            </p>
+
+            <div class="price-value">
+              $35<span>/month</span>
+            </div>
+
+            <a
+              class="btn btn-secondary"
+              href="register.html?plan=scale"
+            >
+              Start 3-Day Demo →
+            </a>
+
+            <!-- Part 2 continues here -->
+
+  </article>
+  <!-- ================= PRICING CARDS ================= -->
+
+<section class="pricing-section" id="pricing">
+
+  <div class="section-heading centered">
+    <span class="eyebrow">
+      <span class="status-dot"></span>
+      Simple pricing
+    </span>
+
+    <h2>
+      Start small.
+      <span>Scale when ready.</span>
+    </h2>
+
+    <p>
+      Choose the plan that fits your business today.
+      Upgrade whenever your operations grow.
+    </p>
+  </div>
+
+  <div class="pricing-grid">
+
+    <!-- STARTER -->
+    <article class="price-card">
+
+      <small>STARTER</small>
+
+      <h3>Starter</h3>
 
       <p>
-        Ready to organize your business with BRIQONA OS?
+        Essential tools for small businesses
+        getting organized.
       </p>
+
+      <div class="price">
+        $5<span>/month</span>
+      </div>
+
+      <a
+        class="btn btn-secondary"
+        href="register.html"
+      >
+        Start Starter →
+      </a>
+
+      <ul class="features">
+        <li>Business dashboard</li>
+        <li>Customer management</li>
+        <li>Order management</li>
+        <li>Product catalog</li>
+        <li>Basic inventory</li>
+        <li>Standard support</li>
+      </ul>
+
+    </article>
+
+
+    <!-- GROWTH -->
+    <article class="price-card featured">
+
+      <span class="popular">
+        Most popular
+      </span>
+
+      <small>GROWTH</small>
+
+      <h3>Growth</h3>
+
+      <p>
+        More intelligence and automation
+        for growing businesses.
+      </p>
+
+      <div class="price">
+        $15<span>/month</span>
+      </div>
 
       <a
         class="btn btn-primary"
         href="register.html"
       >
-        Create your workspace →
+        Start Growth →
       </a>
 
-    </section>
+      <ul class="features">
+        <li>Everything in Starter</li>
+        <li>Advanced inventory</li>
+        <li>Analytics & reports</li>
+        <li>AI intelligence layer</li>
+        <li>Workflow automation</li>
+        <li>Priority support</li>
+      </ul>
 
-  </main>
+    </article>
 
 
-</div>
+    <!-- SCALE -->
+    <article class="price-card">
+
+      <small>SCALE</small>
+
+      <h3>Scale</h3>
+
+      <p>
+        Advanced operating tools for
+        larger teams and businesses.
+      </p>
+
+      <div class="price">
+        $35<span>/month</span>
+      </div>
+
+      <a
+        class="btn btn-secondary"
+        href="register.html"
+      >
+        Start Scale →
+      </a>
+
+      <ul class="features">
+        <li>Everything in Growth</li>
+        <li>Advanced automation</li>
+        <li>Custom workflows</li>
+        <li>Expanded intelligence</li>
+        <li>Team controls</li>
+        <li>Dedicated support</li>
+      </ul>
+
+    </article>
+
+  </div>
+
+  </section>
+  <!-- ================= FAQ ================= -->
+
+<section class="faq-section section" id="faq">
+
+  <div class="section-heading centered">
+
+    <span class="eyebrow">
+      <span class="status-dot"></span>
+      FAQ
+    </span>
+
+    <h2>
+      Questions?
+      <span>We've got answers.</span>
+    </h2>
+
+  </div>
+
+  <div class="faq-list">
+
+    <details>
+      <summary>
+        Can I change my plan later?
+        <span>+</span>
+      </summary>
+
+      <p>
+        Yes. You can upgrade or change your plan
+        as your business grows.
+      </p>
+    </details>
+
+
+    <details>
+      <summary>
+        Is there a free trial?
+        <span>+</span>
+      </summary>
+
+      <p>
+        You can offer a 3-day demo period before
+        connecting the full billing system.
+      </p>
+    </details>
+
+
+    <details>
+      <summary>
+        Can I cancel anytime?
+        <span>+</span>
+      </summary>
+
+      <p>
+        Yes. Subscription cancellation can be
+        connected when the billing backend is enabled.
+      </p>
+    </details>
+
+
+    <details>
+      <summary>
+        Are payments connected already?
+        <span>+</span>
+      </summary>
+
+      <p>
+        The pricing interface is ready on the frontend.
+        Payment processing can be connected later.
+      </p>
+    </details>
+
+  </div>
+
+</section>
+
+
+<!-- ================= CTA ================= -->
+
+<section class="cta-section section">
+
+  <div class="container">
+
+    <div class="cta-box">
+
+      <div class="cta-glow"></div>
+
+      <span class="eyebrow">
+        <span class="status-dot"></span>
+        Ready when you are
+      </span>
+
+      <h2>
+        Build a smarter
+        <span>business today.</span>
+      </h2>
+
+      <p>
+        Start with BRIQONA OS and bring your
+        business operations into one workspace.
+      </p>
+
+      <div class="hero-actions">
+
+        <a
+          class="btn btn-primary"
+          href="register.html"
+        >
+          Start for $5 →
+        </a>
+
+        <a
+          class="btn btn-secondary"
+          href="book-demo.html"
+        >
+          Book a 3-day demo
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="site-footer">
+
+  <div class="container footer-main">
+
+    <div class="footer-brand">
+
+      <a
+        class="brand"
+        href="../index.html"
+      >
+        <span class="brand-mark">B</span>
+
+        <span class="brand-name">
+          BRIQONA<span>OS</span>
+        </span>
+      </a>
+
+      <p>
+        The unified operating system for
+        modern businesses.
+      </p>
+
+      <small>
+        Business operations. Simplified.
+      </small>
+
+    </div>
+
+
+    <!-- PRODUCT -->
+
+    <div class="footer-column">
+
+      <h4>Product</h4>
+
+      <a href="../index.html#platform">
+        Platform
+      </a>
+
+      <a href="../index.html#industries">
+        Industries
+      </a>
+
+      <a href="../index.html#security">
+        Security
+      </a>
+
+      <a href="pricing.html">
+        Pricing
+      </a>
+
+    </div>
+
+
+    <!-- COMPANY -->
+
+    <div class="footer-column">
+
+      <h4>Company</h4>
+
+      <a href="book-demo.html">
+        Book Demo
+      </a>
+
+      <a href="register.html">
+        Register
+      </a>
+
+      <a href="login.html">
+        Login
+      </a>
+
+      <a href="../index.html#faq">
+        FAQ
+      </a>
+
+    </div>
+
+
+    <!-- GET STARTED -->
+
+    <div class="footer-column">
+
+      <h4>Get Started</h4>
+
+      <a href="register.html">
+        Start for $5
+      </a>
+
+      <a href="pricing.html">
+        View Plans
+      </a>
+
+      <a href="book-demo.html">
+        3-Day Demo
+      </a>
+
+      <a href="../index.html">
+        Home
+      </a>
+
+    </div>
+
+  </div>
+
+
+  <div class="container footer-bottom">
+
+    <p>
+      © <span data-year></span> BRIQONA OS.
+      All rights reserved.
+    </p>
+
+    <div>
+
+      <a href="#">
+        Privacy
+      </a>
+
+      <a href="#">
+        Terms
+      </a>
+
+      <a href="#">
+        Security
+      </a>
+
+    </div>
+
+  </div>
+
+</footer>
+
+
+<!-- ================= JS ================= -->
+
+<script src="../js/app.js"></script>
 
 </body>
-</html>
+  </html>
