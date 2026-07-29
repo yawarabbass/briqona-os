@@ -319,3 +319,41 @@ document.addEventListener("DOMContentLoaded", function () {
     };
   });
 });
+
+/* =========================================
+   BRIQONA HEADER — ACTUAL IDs FIX
+========================================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+  const menuToggle = document.getElementById("menuToggle");
+  const navMenu = document.getElementById("navMenu");
+
+  if (!menuToggle || !navMenu) {
+    return;
+  }
+
+  menuToggle.addEventListener("click", function (event) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    const isOpen =
+      menuToggle.getAttribute("aria-expanded") === "true";
+
+    menuToggle.setAttribute(
+      "aria-expanded",
+      String(!isOpen)
+    );
+
+    menuToggle.setAttribute(
+      "aria-label",
+      isOpen
+        ? "Open navigation"
+        : "Close navigation"
+    );
+
+    navMenu.classList.toggle(
+      "active",
+      !isOpen
+    );
+  });
+});
