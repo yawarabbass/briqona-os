@@ -1,0 +1,3302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="theme-color"
+    content="#08090d"
+  >
+
+  <title>BRIQONA OS — One Core. Every Business.</title>
+
+  <meta
+    name="description"
+    content="BRIQONA OS is an intelligent business operating system that connects customers, sales, operations, inventory, finance, people and business intelligence."
+  >
+
+  <meta
+    name="keywords"
+    content="BRIQONA OS, business operating system, CRM, ERP, inventory, finance, HR, business AI, SaaS"
+  >
+
+  <meta
+    name="author"
+    content="Yawar Abbas Bhatti"
+  >
+
+  <meta
+    name="robots"
+    content="index, follow"
+  >
+
+  <link
+    rel="canonical"
+    href="https://briqona-os.vercel.app/"
+  >
+
+
+  <!-- ================= OPEN GRAPH ================= -->
+
+  <meta
+    property="og:type"
+    content="website"
+  >
+
+  <meta
+    property="og:title"
+    content="BRIQONA OS — One Core. Every Business."
+  >
+
+  <meta
+    property="og:description"
+    content="One intelligent operating system for modern businesses."
+  >
+
+  <meta
+    property="og:url"
+    content="https://briqona-os.vercel.app/"
+  >
+
+  <meta
+    property="og:site_name"
+    content="BRIQONA OS"
+  >
+
+
+  <!-- ================= TWITTER ================= -->
+
+  <meta
+    name="twitter:card"
+    content="summary_large_image"
+  >
+
+  <meta
+    name="twitter:title"
+    content="BRIQONA OS — One Core. Every Business."
+  >
+
+  <meta
+    name="twitter:description"
+    content="The intelligent operating system for modern businesses."
+  >
+
+
+  <!-- ================= FAVICON ================= -->
+
+  <link
+    rel="icon"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%2308090d'/%3E%3Ctext x='50' y='68' font-size='55' text-anchor='middle' fill='white' font-family='Arial'%3EB%3C/text%3E%3C/svg%3E"
+  >
+
+
+  <!-- ================= STRUCTURED DATA ================= -->
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "BRIQONA OS",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web",
+    "description": "An intelligent business operating system for modern businesses.",
+    "author": {
+      "@type": "Person",
+      "name": "Yawar Abbas Bhatti"
+    }
+  }
+  </script>
+
+
+  <!-- ================= MASTER CSS ================= -->
+
+  <link
+    rel="stylesheet"
+    href="css/style.css"
+  >
+
+
+  <!-- ================= INDEX-ONLY CSS ================= -->
+
+  <style>
+
+    /*
+      BRIQONA INDEX
+      Header-only additions.
+
+      Existing css/style.css is NOT replaced.
+    */
+
+    .bq-nav-dropdown{
+      position:relative;
+    }
+
+    .bq-nav-dropdown-toggle{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+
+      padding:0;
+
+      border:0;
+      outline:0;
+
+      background:transparent;
+      color:inherit;
+
+      font:inherit;
+
+      cursor:pointer;
+    }
+
+    .bq-nav-dropdown-arrow{
+      display:inline-block;
+
+      font-size:9px;
+
+      transition:
+        transform .2s ease;
+    }
+
+    .bq-nav-dropdown.open
+    .bq-nav-dropdown-arrow{
+      transform:rotate(180deg);
+    }
+
+    .bq-nav-dropdown-menu{
+      position:absolute;
+
+      top:calc(100% + 12px);
+      left:50%;
+
+      min-width:190px;
+
+      padding:8px;
+
+      opacity:0;
+      visibility:hidden;
+
+      transform:
+        translate(-50%, -5px);
+
+      border:1px solid var(--line);
+      border-radius:12px;
+
+      background:#090b0f;
+
+      box-shadow:
+        0 18px 45px rgba(0,0,0,.35);
+
+      transition:
+        opacity .18s ease,
+        visibility .18s ease,
+        transform .18s ease;
+
+      z-index:1000;
+    }
+
+    .bq-nav-dropdown.open
+    .bq-nav-dropdown-menu{
+      opacity:1;
+      visibility:visible;
+
+      transform:
+        translate(-50%, 0);
+    }
+
+    .bq-nav-dropdown-menu a{
+      display:block;
+
+      padding:9px 10px;
+
+      border-radius:7px;
+
+      color:var(--text-muted);
+
+      font-size:9px;
+
+      text-decoration:none;
+
+      transition:
+        background .18s ease,
+        color .18s ease;
+    }
+
+    .bq-nav-dropdown-menu a:hover{
+      background:var(--accent-soft);
+      color:var(--text);
+    }
+
+
+    /*
+      Mobile dropdown
+    */
+
+    @media(max-width:800px){
+
+      .bq-nav-dropdown{
+        width:100%;
+      }
+
+      .bq-nav-dropdown-toggle{
+        width:100%;
+
+        justify-content:space-between;
+
+        padding:10px 0;
+      }
+
+      .bq-nav-dropdown-menu{
+        position:static;
+
+        width:100%;
+        min-width:0;
+
+        box-sizing:border-box;
+
+        margin:4px 0 8px;
+
+        transform:none;
+
+        box-shadow:none;
+
+        opacity:0;
+        visibility:hidden;
+
+        max-height:0;
+
+        overflow:hidden;
+
+        padding:0;
+
+        transition:
+          max-height .2s ease,
+          opacity .2s ease,
+          visibility .2s ease,
+          padding .2s ease;
+      }
+
+      .bq-nav-dropdown.open
+      .bq-nav-dropdown-menu{
+
+        max-height:400px;
+
+        opacity:1;
+        visibility:visible;
+
+        padding:6px;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+  <!-- =================================================
+       HEADER
+       ================================================= -->
+
+  <header
+    class="site-header"
+    id="top"
+  >
+
+    <nav
+      class="navbar container"
+      aria-label="Main navigation"
+    >
+
+
+      <!-- ================= BRAND ================= -->
+
+      <a
+        class="brand"
+        href="index.html"
+        aria-label="BRIQONA OS home"
+      >
+
+        <span class="brand-mark">
+          B
+        </span>
+
+        <span class="brand-name">
+          BRIQONA<span>OS</span>
+        </span>
+
+      </a>
+
+
+      <!-- ================= MOBILE MENU ================= -->
+
+      <button
+        class="menu-toggle"
+        id="menuToggle"
+        type="button"
+        aria-label="Open navigation"
+        aria-expanded="false"
+        aria-controls="navMenu"
+      >
+
+        <span></span>
+        <span></span>
+        <span></span>
+
+      </button>
+
+
+      <!-- ================= NAVIGATION ================= -->
+
+      <div
+        class="nav-menu"
+        id="navMenu"
+      >
+
+
+        <a
+          href="pages/platform.html"
+        >
+          Platform
+        </a>
+
+
+        <a
+          href="pages/ai.html"
+        >
+          AI
+        </a>
+
+
+        <a
+          href="pages/industries.html"
+        >
+          Industries
+        </a>
+
+
+        <a
+          href="pages/features.html"
+        >
+          Features
+        </a>
+
+
+        <a
+          href="pages/pricing.html"
+        >
+          Pricing
+        </a>
+
+
+        <!-- ================= RESOURCES ================= -->
+
+        <div
+          class="bq-nav-dropdown"
+          id="bqResources"
+        >
+
+          <button
+            class="bq-nav-dropdown-toggle"
+            id="bqResourcesToggle"
+            type="button"
+            aria-expanded="false"
+            aria-haspopup="true"
+          >
+
+            <span>
+              Resources
+            </span>
+
+            <span
+              class="bq-nav-dropdown-arrow"
+              aria-hidden="true"
+            >
+              ▾
+            </span>
+
+          </button>
+
+
+          <div
+            class="bq-nav-dropdown-menu"
+            id="bqResourcesMenu"
+          >
+
+            <a href="pages/analytics.html">
+              Analytics
+            </a>
+
+            <a href="pages/reports.html">
+              Reports
+            </a>
+
+            <a href="pages/documentation.html">
+              Documentation
+            </a>
+
+            <a href="pages/api.html">
+              API
+            </a>
+
+            <a href="pages/faq.html">
+              FAQ
+            </a>
+
+            <a href="pages/contact.html">
+              Contact
+            </a>
+
+          </div>
+
+        </div>
+
+
+        <!-- ================= ACTIONS ================= -->
+
+        <div class="nav-actions">
+
+          <a
+            class="nav-login"
+            href="pages/login.html"
+          >
+            Log in
+          </a>
+
+
+          <a
+            class="btn btn-primary btn-small"
+            href="pages/register.html"
+          >
+            Start Free
+          </a>
+
+        </div>
+
+
+      </div>
+
+    </nav>
+
+  </header>
+
+
+  <!-- =================================================
+       MAIN START
+       ================================================= -->
+
+  <main>
+
+    <!--
+      PART 2 WILL START HERE:
+      HERO
+    -->
+        <!-- =================================================
+         HERO
+         ================================================= -->
+
+    <section
+      class="hero bq-hero"
+      id="home"
+      aria-labelledby="hero-title"
+    >
+
+      <div
+        class="hero-grid"
+        aria-hidden="true"
+      ></div>
+
+
+      <div class="container hero-content">
+
+
+        <!-- EYEBROW -->
+
+        <div class="eyebrow">
+
+          <span
+            class="status-dot"
+            aria-hidden="true"
+          ></span>
+
+          THE INTELLIGENT BUSINESS OS
+
+        </div>
+
+
+        <!-- HEADING -->
+
+        <h1 id="hero-title">
+
+          One Core.
+
+          <span>
+            Every Business.
+          </span>
+
+        </h1>
+
+
+        <!-- DESCRIPTION -->
+
+        <p class="hero-text">
+
+          BRIQONA brings your customers, sales, operations,
+          inventory, finance, people and business intelligence
+          into one connected operating system.
+
+        </p>
+
+
+        <!-- ACTIONS -->
+
+        <div class="hero-actions">
+
+          <a
+            class="btn btn-primary"
+            href="pages/register.html"
+          >
+
+            Start Free
+
+            <span aria-hidden="true">
+              →
+            </span>
+
+          </a>
+
+
+          <a
+            class="btn btn-secondary"
+            href="pages/platform.html"
+          >
+
+            Explore Platform
+
+          </a>
+
+        </div>
+
+
+        <!-- NOTE -->
+
+        <p class="hero-note">
+
+          Built for ambitious businesses.
+          Designed to grow with you.
+
+        </p>
+
+      </div>
+
+
+
+      <!-- =================================================
+           HERO PRODUCT PREVIEW
+           ================================================= -->
+
+      <div class="container hero-product">
+
+        <div class="window">
+
+
+          <!-- WINDOW BAR -->
+
+          <div class="window-bar">
+
+            <div
+              class="window-dots"
+              aria-hidden="true"
+            >
+
+              <span></span>
+              <span></span>
+              <span></span>
+
+            </div>
+
+
+            <div class="window-title">
+
+              BRIQONA Command
+
+            </div>
+
+
+            <div class="window-status">
+
+              <span aria-hidden="true">
+                ●
+              </span>
+
+              Live
+
+            </div>
+
+          </div>
+
+
+
+          <!-- =================================================
+               DASHBOARD PREVIEW
+               ================================================= -->
+
+          <div class="dashboard-preview">
+
+
+            <!-- SIDEBAR -->
+
+            <aside
+              class="preview-sidebar"
+              aria-label="Dashboard preview navigation"
+            >
+
+              <div
+                class="preview-logo"
+                aria-hidden="true"
+              >
+                B
+              </div>
+
+
+              <div
+                class="preview-nav active"
+                aria-hidden="true"
+              >
+                ⌂
+              </div>
+
+              <div
+                class="preview-nav"
+                aria-hidden="true"
+              >
+                ◫
+              </div>
+
+              <div
+                class="preview-nav"
+                aria-hidden="true"
+              >
+                ◎
+              </div>
+
+              <div
+                class="preview-nav"
+                aria-hidden="true"
+              >
+                ▣
+              </div>
+
+              <div
+                class="preview-nav"
+                aria-hidden="true"
+              >
+                ◌
+              </div>
+
+              <div
+                class="preview-nav"
+                aria-hidden="true"
+              >
+                ◈
+              </div>
+
+            </aside>
+
+
+
+            <!-- MAIN PREVIEW -->
+
+            <div class="preview-main">
+
+
+              <!-- TOP -->
+
+              <div class="preview-top">
+
+                <div>
+
+                  <small>
+                    BUSINESS COMMAND
+                  </small>
+
+                  <h3>
+                    Good morning.
+                  </h3>
+
+                </div>
+
+
+                <div class="preview-date">
+                  Today
+                </div>
+
+              </div>
+
+
+
+              <!-- BUSINESS PULSE -->
+
+              <div class="pulse-card">
+
+                <div class="pulse-heading">
+
+                  <div>
+
+                    <small>
+                      BUSINESS PULSE
+                    </small>
+
+                    <strong>
+
+                      92
+
+                      <span>
+                        / 100
+                      </span>
+
+                    </strong>
+
+                  </div>
+
+
+                  <div class="pulse-label">
+                    Healthy
+                  </div>
+
+                </div>
+
+
+                <div
+                  class="pulse-line"
+                  aria-hidden="true"
+                >
+
+                  <span
+                    style="width:92%;"
+                  ></span>
+
+                </div>
+
+              </div>
+
+
+
+              <!-- METRICS -->
+
+              <div class="metric-grid">
+
+
+                <div class="metric-card">
+
+                  <small>
+                    Revenue
+                  </small>
+
+                  <strong>
+                    $48,290
+                  </strong>
+
+                  <span class="positive">
+                    ↑ 18.4%
+                  </span>
+
+                </div>
+
+
+                <div class="metric-card">
+
+                  <small>
+                    Customers
+                  </small>
+
+                  <strong>
+                    2,841
+                  </strong>
+
+                  <span class="positive">
+                    ↑ 12.1%
+                  </span>
+
+                </div>
+
+
+                <div class="metric-card">
+
+                  <small>
+                    Orders
+                  </small>
+
+                  <strong>
+                    1,284
+                  </strong>
+
+                  <span class="positive">
+                    ↑ 8.7%
+                  </span>
+
+                </div>
+
+
+                <div class="metric-card">
+
+                  <small>
+                    Inventory
+                  </small>
+
+                  <strong>
+                    87%
+                  </strong>
+
+                  <span class="warning">
+                    Attention
+                  </span>
+
+                </div>
+
+              </div>
+
+
+
+              <!-- ASK BRIQONA -->
+
+              <div class="command-card">
+
+                <div
+                  class="command-icon"
+                  aria-hidden="true"
+                >
+                  ✦
+                </div>
+
+
+                <div class="command-content">
+
+                  <small>
+                    ASK BRIQONA
+                  </small>
+
+                  <p>
+                    What needs my attention today?
+                  </p>
+
+                </div>
+
+
+                <div
+                  class="command-arrow"
+                  aria-hidden="true"
+                >
+                  →
+                </div>
+
+              </div>
+
+
+
+              <!-- AI PRIORITIES -->
+
+              <div class="attention-row">
+
+                <div>
+
+                  <small>
+                    AI PRIORITIES
+                  </small>
+
+                </div>
+
+
+                <div class="priority">
+
+                  <span>
+                    01
+                  </span>
+
+                  Low inventory detected
+
+                </div>
+
+
+                <div class="priority">
+
+                  <span>
+                    02
+                  </span>
+
+                  7 invoices need attention
+
+                </div>
+
+
+                <div class="priority">
+
+                  <span>
+                    03
+                  </span>
+
+                  Sales opportunity found
+
+                </div>
+
+              </div>
+
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+                    </section>
+                        <!-- =================================================
+         TRUST STRIP
+         ================================================= -->
+
+    <section
+      class="trust-strip"
+      aria-label="BRIQONA OS business capabilities"
+    >
+
+      <div class="container">
+
+        <p>
+          ONE PLATFORM FOR
+        </p>
+
+        <div class="trust-items">
+
+          <span>OPERATIONS</span>
+          <span>SALES</span>
+          <span>FINANCE</span>
+          <span>PEOPLE</span>
+          <span>INVENTORY</span>
+          <span>INTELLIGENCE</span>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         PLATFORM
+         ================================================= -->
+
+    <section
+      class="section platform-section"
+      id="platform"
+      aria-labelledby="platform-title"
+    >
+
+      <div class="container">
+
+
+        <!-- SECTION HEADING -->
+
+        <div class="section-heading">
+
+          <div class="eyebrow">
+
+            <span
+              class="status-dot"
+              aria-hidden="true"
+            ></span>
+
+            ONE CONNECTED CORE
+
+          </div>
+
+
+          <h2 id="platform-title">
+
+            Stop managing your business
+
+            <span>
+              across disconnected tools.
+            </span>
+
+          </h2>
+
+
+          <p>
+
+            BRIQONA connects the moving parts of your
+            business so your team can work from one
+            source of truth.
+
+          </p>
+
+        </div>
+
+
+
+        <!-- =================================================
+             PLATFORM CARDS
+             ================================================= -->
+
+        <div class="platform-grid">
+
+
+          <!-- 01 CUSTOMERS -->
+
+          <article class="feature-card feature-large">
+
+            <div class="card-number">
+              01
+            </div>
+
+            <div
+              class="card-icon"
+              aria-hidden="true"
+            >
+              ◉
+            </div>
+
+
+            <h3>
+              Customers
+            </h3>
+
+
+            <p>
+
+              Keep customer profiles, activity,
+              conversations and relationships connected
+              in one place.
+
+            </p>
+
+
+            <a
+              href="pages/customers.html"
+              aria-label="Explore Customers"
+            >
+              Explore Customers →
+            </a>
+
+          </article>
+
+
+
+          <!-- 02 SALES -->
+
+          <article class="feature-card">
+
+            <div class="card-number">
+              02
+            </div>
+
+            <div
+              class="card-icon"
+              aria-hidden="true"
+            >
+              ◇
+            </div>
+
+
+            <h3>
+              Sales &amp; Orders
+            </h3>
+
+
+            <p>
+
+              Track your sales pipeline, orders and
+              revenue without switching between systems.
+
+            </p>
+
+
+            <a
+              href="pages/orders.html"
+              aria-label="Explore Sales and Orders"
+            >
+              Explore Sales →
+            </a>
+
+          </article>
+
+
+
+          <!-- 03 INVENTORY -->
+
+          <article class="feature-card">
+
+            <div class="card-number">
+              03
+            </div>
+
+            <div
+              class="card-icon"
+              aria-hidden="true"
+            >
+              ▦
+            </div>
+
+
+            <h3>
+              Inventory
+            </h3>
+
+
+            <p>
+
+              Know what you have, what is moving and
+              what needs attention before it becomes
+              a problem.
+
+            </p>
+
+
+            <a
+              href="pages/inventory.html"
+              aria-label="Explore Inventory"
+            >
+              Explore Inventory →
+            </a>
+
+          </article>
+
+
+
+          <!-- 04 FINANCE -->
+
+          <article class="feature-card">
+
+            <div class="card-number">
+              04
+            </div>
+
+            <div
+              class="card-icon"
+              aria-hidden="true"
+            >
+              ₿
+            </div>
+
+
+            <h3>
+              Finance
+            </h3>
+
+
+            <p>
+
+              Bring billing, payments and financial
+              visibility into the same business system.
+
+            </p>
+
+
+            <a
+              href="pages/billing.html"
+              aria-label="Explore Finance"
+            >
+              Explore Finance →
+            </a>
+
+          </article>
+
+
+
+          <!-- 05 PEOPLE -->
+
+          <article class="feature-card">
+
+            <div class="card-number">
+              05
+            </div>
+
+            <div
+              class="card-icon"
+              aria-hidden="true"
+            >
+              ◎
+            </div>
+
+
+            <h3>
+              People &amp; HR
+            </h3>
+
+
+            <p>
+
+              Manage employees, teams, roles and
+              workforce operations from one connected
+              workspace.
+
+            </p>
+
+
+            <a
+              href="pages/employees.html"
+              aria-label="Explore People and HR"
+            >
+              Explore People →
+            </a>
+
+          </article>
+
+
+
+          <!-- 06 REPORTS -->
+
+          <article class="feature-card">
+
+            <div class="card-number">
+              06
+            </div>
+
+            <div
+              class="card-icon"
+              aria-hidden="true"
+            >
+              ⌁
+            </div>
+
+
+            <h3>
+              Reports &amp; Insights
+            </h3>
+
+
+            <p>
+
+              Turn operational data into clear reports
+              and decisions your team can act on.
+
+            </p>
+
+
+            <a
+              href="pages/reports.html"
+              aria-label="Explore Reports and Insights"
+            >
+              Explore Insights →
+            </a>
+
+          </article>
+
+
+        </div>
+
+      </div>
+
+  </section>
+      <!-- =================================================
+         BRIQONA INTELLIGENCE / AI
+         ================================================= -->
+
+    <section
+      class="section intelligence-section"
+      id="intelligence"
+      aria-labelledby="intelligence-title"
+    >
+
+      <div class="container intelligence-layout">
+
+
+        <!-- ================= AI COPY ================= -->
+
+        <div class="intelligence-copy">
+
+          <div class="eyebrow">
+
+            <span
+              class="status-dot"
+              aria-hidden="true"
+            ></span>
+
+            BRIQONA INTELLIGENCE
+
+          </div>
+
+
+          <h2 id="intelligence-title">
+
+            Your business
+
+            <span>
+              should explain itself.
+            </span>
+
+          </h2>
+
+
+          <p>
+
+            BRIQONA is designed to move beyond dashboards.
+            It helps turn business activity into priorities,
+            explanations and actions.
+
+          </p>
+
+
+
+          <!-- ================= AI FLOW ================= -->
+
+          <div class="intelligence-flow">
+
+
+            <div>
+
+              <strong>
+                01
+              </strong>
+
+              <span>
+                Detect
+              </span>
+
+            </div>
+
+
+            <div
+              class="flow-line"
+              aria-hidden="true"
+            ></div>
+
+
+            <div>
+
+              <strong>
+                02
+              </strong>
+
+              <span>
+                Explain
+              </span>
+
+            </div>
+
+
+            <div
+              class="flow-line"
+              aria-hidden="true"
+            ></div>
+
+
+            <div>
+
+              <strong>
+                03
+              </strong>
+
+              <span>
+                Recommend
+              </span>
+
+            </div>
+
+
+            <div
+              class="flow-line"
+              aria-hidden="true"
+            ></div>
+
+
+            <div>
+
+              <strong>
+                04
+              </strong>
+
+              <span>
+                Act
+              </span>
+
+            </div>
+
+
+          </div>
+
+
+
+          <!-- ================= AI LINK ================= -->
+
+          <a
+            class="text-link"
+            href="pages/ai.html"
+          >
+            Explore BRIQONA AI →
+          </a>
+
+        </div>
+
+
+
+        <!-- =================================================
+             AI CONSOLE
+             ================================================= -->
+
+        <div
+          class="ai-console"
+          aria-label="BRIQONA Intelligence preview"
+        >
+
+
+          <!-- CONSOLE HEADER -->
+
+          <div class="console-top">
+
+            <span>
+              BRIQONA INTELLIGENCE
+            </span>
+
+            <span class="console-live">
+
+              <span aria-hidden="true">
+                ●
+              </span>
+
+              ACTIVE
+
+            </span>
+
+          </div>
+
+
+
+          <!-- QUESTION -->
+
+          <div class="console-question">
+
+            What needs my attention today?
+
+          </div>
+
+
+
+          <!-- ANSWER -->
+
+          <div class="console-answer">
+
+
+            <div
+              class="ai-avatar"
+              aria-hidden="true"
+            >
+              ✦
+            </div>
+
+
+            <div>
+
+              <small>
+                BRIQONA ANALYSIS
+              </small>
+
+
+              <p>
+                I found three areas worth reviewing today.
+              </p>
+
+
+
+              <!-- RESULT 01 -->
+
+              <div class="ai-result">
+
+                <span>
+                  01
+                </span>
+
+                Inventory for Product A may need
+                replenishment.
+
+              </div>
+
+
+
+              <!-- RESULT 02 -->
+
+              <div class="ai-result">
+
+                <span>
+                  02
+                </span>
+
+                Seven invoices are approaching
+                their due date.
+
+              </div>
+
+
+
+              <!-- RESULT 03 -->
+
+              <div class="ai-result">
+
+                <span>
+                  03
+                </span>
+
+                Branch 02 has an unusual
+                sales pattern.
+
+              </div>
+
+
+            </div>
+
+          </div>
+
+
+
+          <!-- ================= CONSOLE INPUT ================= -->
+
+          <div class="console-input">
+
+            <span>
+              Ask BRIQONA anything about your business...
+            </span>
+
+
+            <button
+              type="button"
+              aria-label="Ask BRIQONA"
+            >
+              →
+            </button>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </section>
+        <!-- =================================================
+         INDUSTRIES
+         ================================================= -->
+
+    <section
+      class="section industries-section"
+      id="industries"
+      aria-labelledby="industries-title"
+    >
+
+      <div class="container">
+
+
+        <!-- ================= HEADING ================= -->
+
+        <div class="section-heading centered">
+
+          <div class="eyebrow">
+
+            <span
+              class="status-dot"
+              aria-hidden="true"
+            ></span>
+
+            ADAPTIVE BY DESIGN
+
+          </div>
+
+
+          <h2 id="industries-title">
+
+            One OS.
+
+            <span>
+              Built for every industry.
+            </span>
+
+          </h2>
+
+
+          <p>
+
+            Start with the business you run.
+            BRIQONA adapts its workspace, workflows
+            and modules around your operation.
+
+          </p>
+
+        </div>
+
+
+
+        <!-- =================================================
+             INDUSTRY GRID
+             ================================================= -->
+
+        <div class="industry-grid">
+
+
+          <!-- RESTAURANT -->
+
+          <a
+            class="industry-card"
+            href="industries/restaurant.html"
+          >
+
+            <span>
+              01
+            </span>
+
+            <strong>
+              Restaurant
+            </strong>
+
+            <small>
+              Orders · Tables · Inventory
+            </small>
+
+            <b aria-hidden="true">
+              →
+            </b>
+
+          </a>
+
+
+
+          <!-- CLINIC -->
+
+          <a
+            class="industry-card"
+            href="industries/clinic.html"
+          >
+
+            <span>
+              02
+            </span>
+
+            <strong>
+              Clinic
+            </strong>
+
+            <small>
+              Patients · Appointments · Billing
+            </small>
+
+            <b aria-hidden="true">
+              →
+            </b>
+
+          </a>
+
+
+
+          <!-- HOTEL -->
+
+          <a
+            class="industry-card"
+            href="industries/hotel.html"
+          >
+
+            <span>
+              03
+            </span>
+
+            <strong>
+              Hotel
+            </strong>
+
+            <small>
+              Guests · Rooms · Operations
+            </small>
+
+            <b aria-hidden="true">
+              →
+            </b>
+
+          </a>
+
+
+
+          <!-- RETAIL -->
+
+          <a
+            class="industry-card"
+            href="industries/retail.html"
+          >
+
+            <span>
+              04
+            </span>
+
+            <strong>
+              Retail
+            </strong>
+
+            <small>
+              Products · Sales · Stock
+            </small>
+
+            <b aria-hidden="true">
+              →
+            </b>
+
+          </a>
+
+
+
+          <!-- HR -->
+
+          <a
+            class="industry-card"
+            href="industries/hr.html"
+          >
+
+            <span>
+              05
+            </span>
+
+            <strong>
+              HR
+            </strong>
+
+            <small>
+              People · Payroll · Teams
+            </small>
+
+            <b aria-hidden="true">
+              →
+            </b>
+
+          </a>
+
+
+
+          <!-- AGENCY -->
+
+          <a
+            class="industry-card"
+            href="industries/agency.html"
+          >
+
+            <span>
+              06
+            </span>
+
+            <strong>
+              Agency
+            </strong>
+
+            <small>
+              Clients · Projects · Finance
+            </small>
+
+            <b aria-hidden="true">
+              →
+            </b>
+
+          </a>
+
+
+
+          <!-- EDUCATION -->
+
+          <a
+            class="industry-card"
+            href="industries/education.html"
+          >
+
+            <span>
+              07
+            </span>
+
+            <strong>
+              Education
+            </strong>
+
+            <small>
+              Students · Staff · Operations
+            </small>
+
+            <b aria-hidden="true">
+              →
+            </b>
+
+          </a>
+
+
+
+          <!-- LOGISTICS -->
+
+          <a
+            class="industry-card"
+            href="industries/logistics.html"
+          >
+
+            <span>
+              08
+            </span>
+
+            <strong>
+              Logistics
+            </strong>
+
+            <small>
+              Shipments · Fleet · Operations
+            </small>
+
+            <b aria-hidden="true">
+              →
+            </b>
+
+          </a>
+
+
+        </div>
+
+
+
+        <!-- =================================================
+             CUSTOM BUSINESS CTA
+             ================================================= -->
+
+        <div class="custom-business">
+
+
+          <div>
+
+            <small>
+              DON'T SEE YOUR INDUSTRY?
+            </small>
+
+
+            <h3>
+              BRIQONA can adapt to your business.
+            </h3>
+
+          </div>
+
+
+          <a
+            class="btn btn-secondary"
+            href="pages/contact.html"
+          >
+            Talk to Us →
+          </a>
+
+
+        </div>
+        
+      </div>
+
+    </section>
+        <!-- =================================================
+         FEATURES
+         ================================================= -->
+
+    <section
+      class="section features-section"
+      id="features"
+      aria-labelledby="features-title"
+    >
+
+      <div class="container">
+
+
+        <!-- ================= HEADING ================= -->
+
+        <div class="section-heading">
+
+          <div class="eyebrow">
+
+            <span
+              class="status-dot"
+              aria-hidden="true"
+            ></span>
+
+            BUILT TO OPERATE
+
+          </div>
+
+
+          <h2 id="features-title">
+
+            Everything your business needs.
+
+            <span>
+              Nothing scattered.
+            </span>
+
+          </h2>
+
+        </div>
+
+
+
+        <!-- =================================================
+             CAPABILITY LIST
+             ================================================= -->
+
+        <div class="capability-list">
+
+
+          <!-- 01 -->
+
+          <div class="capability">
+
+            <span>
+              01
+            </span>
+
+
+            <div>
+
+              <h3>
+                Unified Data
+              </h3>
+
+              <p>
+                Connect the information your teams use
+                every day.
+              </p>
+
+            </div>
+
+
+            <b aria-hidden="true">
+              →
+            </b>
+
+          </div>
+
+
+
+          <!-- 02 -->
+
+          <div class="capability">
+
+            <span>
+              02
+            </span>
+
+
+            <div>
+
+              <h3>
+                Smart Automation
+              </h3>
+
+              <p>
+                Reduce repetitive work with connected
+                workflows.
+              </p>
+
+            </div>
+
+
+            <b aria-hidden="true">
+              →
+            </b>
+
+          </div>
+
+
+
+          <!-- 03 -->
+
+          <div class="capability">
+
+            <span>
+              03
+            </span>
+
+
+            <div>
+
+              <h3>
+                Real-time Visibility
+              </h3>
+
+              <p>
+                Understand what is happening across
+                your business.
+              </p>
+
+            </div>
+
+
+            <b aria-hidden="true">
+              →
+            </b>
+
+          </div>
+
+
+
+          <!-- 04 -->
+
+          <div class="capability">
+
+            <span>
+              04
+            </span>
+
+
+            <div>
+
+              <h3>
+                Role-based Workspaces
+              </h3>
+
+              <p>
+                Give every team member the tools they
+                actually need.
+              </p>
+
+            </div>
+
+
+            <b aria-hidden="true">
+              →
+            </b>
+
+          </div>
+
+
+
+          <!-- 05 -->
+
+          <div class="capability">
+
+            <span>
+              05
+            </span>
+
+
+            <div>
+
+              <h3>
+                Multi-location Ready
+              </h3>
+
+              <p>
+                Manage branches, teams and operations
+                from one core.
+              </p>
+
+            </div>
+
+
+            <b aria-hidden="true">
+              →
+            </b>
+
+          </div>
+
+
+
+          <!-- 06 -->
+
+          <div class="capability">
+
+            <span>
+              06
+            </span>
+
+
+            <div>
+
+              <h3>
+                Business Intelligence
+              </h3>
+
+              <p>
+                Transform operational data into
+                decisions.
+              </p>
+
+            </div>
+
+
+            <b aria-hidden="true">
+              →
+            </b>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </section>
+        <!-- =================================================
+         SECURITY
+         ================================================= -->
+
+    <section
+      class="section security-section"
+      id="security"
+      aria-labelledby="security-title"
+    >
+
+      <div class="container security-layout">
+
+
+        <!-- ================= SECURITY COPY ================= -->
+
+        <div>
+
+          <div class="eyebrow">
+
+            <span
+              class="status-dot"
+              aria-hidden="true"
+            ></span>
+
+            TRUST BY DESIGN
+
+          </div>
+
+
+          <h2 id="security-title">
+
+            Your business data
+
+            <span>
+              deserves a serious home.
+            </span>
+
+          </h2>
+
+
+          <p>
+
+            BRIQONA is being designed with security,
+            permissions, privacy and scalable business
+            architecture at its core.
+
+          </p>
+
+        </div>
+
+
+
+        <!-- ================= SECURITY GRID ================= -->
+
+        <div class="security-grid">
+
+
+          <!-- ACCESS CONTROL -->
+
+          <div class="security-card">
+
+            <span aria-hidden="true">
+              ◈
+            </span>
+
+            <h3>
+              Access Control
+            </h3>
+
+            <p>
+              Role-based access designed for teams
+              and organizations.
+            </p>
+
+          </div>
+
+
+
+          <!-- DATA PROTECTION -->
+
+          <div class="security-card">
+
+            <span aria-hidden="true">
+              ◇
+            </span>
+
+            <h3>
+              Data Protection
+            </h3>
+
+            <p>
+              Architecture built around responsible
+              data handling.
+            </p>
+
+          </div>
+
+
+
+          <!-- AUDIT VISIBILITY -->
+
+          <div class="security-card">
+
+            <span aria-hidden="true">
+              ⌁
+            </span>
+
+            <h3>
+              Audit Visibility
+            </h3>
+
+            <p>
+              Keep important operational activity
+              visible and traceable.
+            </p>
+
+          </div>
+
+
+
+          <!-- SCALABLE CORE -->
+
+          <div class="security-card">
+
+            <span aria-hidden="true">
+              ○
+            </span>
+
+            <h3>
+              Scalable Core
+            </h3>
+
+            <p>
+              Built to grow from one business to many
+              locations and teams.
+            </p>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </section>
+        <!-- =================================================
+         PRICING
+         ================================================= -->
+
+    <section
+      class="section pricing-section"
+      id="pricing"
+      aria-labelledby="pricing-title"
+    >
+
+      <div class="container">
+
+
+        <!-- ================= HEADING ================= -->
+
+        <div class="section-heading centered">
+
+          <div class="eyebrow">
+
+            <span
+              class="status-dot"
+              aria-hidden="true"
+            ></span>
+
+            SIMPLE START
+
+          </div>
+
+
+          <h2 id="pricing-title">
+
+            Start simple.
+
+            <span>
+              Scale when you are ready.
+            </span>
+
+          </h2>
+
+
+          <p>
+
+            Flexible plans will grow with your business
+            as BRIQONA evolves into a complete business
+            operating system.
+
+          </p>
+
+        </div>
+
+
+
+        <!-- =================================================
+             PRICING GRID
+             ================================================= -->
+
+        <div class="pricing-grid">
+
+
+          <!-- ================= STARTER ================= -->
+
+          <article class="price-card">
+
+            <small>
+              STARTER
+            </small>
+
+
+            <h3>
+              For growing teams
+            </h3>
+
+
+            <div class="price">
+
+              <strong>
+                Coming Soon
+              </strong>
+
+            </div>
+
+
+            <p>
+              Core tools for getting your business
+              organized.
+            </p>
+
+
+            <a
+              class="btn btn-secondary"
+              href="pages/register.html"
+            >
+              Join Early Access
+            </a>
+
+          </article>
+
+
+
+          <!-- ================= GROWTH ================= -->
+
+          <article class="price-card featured">
+
+
+            <div class="popular">
+              MOST FLEXIBLE
+            </div>
+
+
+            <small>
+              GROWTH
+            </small>
+
+
+            <h3>
+              For ambitious businesses
+            </h3>
+
+
+            <div class="price">
+
+              <strong>
+                Coming Soon
+              </strong>
+
+            </div>
+
+
+            <p>
+              Connected operations, intelligence
+              and advanced tools.
+            </p>
+
+
+            <a
+              class="btn btn-primary"
+              href="pages/register.html"
+            >
+              Join Early Access
+            </a>
+
+          </article>
+
+
+
+          <!-- ================= ENTERPRISE ================= -->
+
+          <article class="price-card">
+
+            <small>
+              ENTERPRISE
+            </small>
+
+
+            <h3>
+              For complex operations
+            </h3>
+
+
+            <div class="price">
+
+              <strong>
+                Let's Talk
+              </strong>
+
+            </div>
+
+
+            <p>
+              Advanced control for teams, branches
+              and organizations.
+            </p>
+
+
+            <a
+              class="btn btn-secondary"
+              href="pages/contact.html"
+            >
+              Contact Us
+            </a>
+
+          </article>
+
+
+        </div>
+
+      </div>
+
+    </section>
+        <!-- =================================================
+         FAQ
+         ================================================= -->
+
+    <section
+      class="section faq-section"
+      id="faq"
+      aria-labelledby="faq-title"
+    >
+
+      <div class="container faq-layout">
+
+
+        <!-- ================= FAQ HEADING ================= -->
+
+        <div class="section-heading">
+
+          <div class="eyebrow">
+
+            <span
+              class="status-dot"
+              aria-hidden="true"
+            ></span>
+
+            FAQ
+
+          </div>
+
+
+          <h2 id="faq-title">
+
+            Questions,
+
+            <span>
+              answered.
+            </span>
+
+          </h2>
+
+        </div>
+
+
+
+        <!-- ================= FAQ LIST ================= -->
+
+        <div class="faq-list">
+
+
+          <!-- 01 -->
+
+          <details>
+
+            <summary>
+
+              <span>
+                What is BRIQONA OS?
+              </span>
+
+              <span
+                aria-hidden="true"
+              >
+                +
+              </span>
+
+            </summary>
+
+
+            <p>
+
+              BRIQONA OS is an adaptive business
+              operating system designed to connect
+              customers, sales, operations, inventory,
+              finance, people and intelligence in one place.
+
+            </p>
+
+          </details>
+
+
+
+          <!-- 02 -->
+
+          <details>
+
+            <summary>
+
+              <span>
+                What types of businesses can use BRIQONA?
+              </span>
+
+              <span
+                aria-hidden="true"
+              >
+                +
+              </span>
+
+            </summary>
+
+
+            <p>
+
+              BRIQONA is being designed to support
+              businesses across industries including
+              restaurants, clinics, hotels, retail,
+              HR, agencies, education, logistics and more.
+
+            </p>
+
+          </details>
+
+
+
+          <!-- 03 -->
+
+          <details>
+
+            <summary>
+
+              <span>
+                Is BRIQONA an ERP or CRM?
+              </span>
+
+              <span
+                aria-hidden="true"
+              >
+                +
+              </span>
+
+            </summary>
+
+
+            <p>
+
+              BRIQONA goes beyond a single category.
+              The goal is to bring core business
+              operations into one adaptive system
+              instead of forcing businesses to manage
+              disconnected tools.
+
+            </p>
+
+          </details>
+
+
+
+          <!-- 04 -->
+
+          <details>
+
+            <summary>
+
+              <span>
+                What is BRIQONA Intelligence?
+              </span>
+
+              <span
+                aria-hidden="true"
+              >
+                +
+              </span>
+
+            </summary>
+
+
+            <p>
+
+              BRIQONA Intelligence is the planned
+              intelligence layer that helps businesses
+              detect important patterns, understand
+              what they mean and identify possible actions.
+
+            </p>
+
+          </details>
+
+
+
+          <!-- 05 -->
+
+          <details>
+
+            <summary>
+
+              <span>
+                When will BRIQONA launch?
+              </span>
+
+              <span
+                aria-hidden="true"
+              >
+                +
+              </span>
+
+            </summary>
+
+
+            <p>
+
+              BRIQONA is currently being developed.
+              Join the early access list to follow
+              the launch and product updates.
+
+            </p>
+
+          </details>
+
+
+        </div>
+
+      </div>
+
+    </section>
+        <!-- =================================================
+         FINAL CTA / EARLY ACCESS
+         ================================================= -->
+
+    <section
+      class="section cta-section"
+      id="start"
+      aria-labelledby="cta-title"
+    >
+
+      <div class="container">
+
+        <div class="cta-box">
+
+          <div
+            class="cta-glow"
+            aria-hidden="true"
+          ></div>
+
+
+          <!-- ================= EYEBROW ================= -->
+
+          <div class="eyebrow">
+
+            <span
+              class="status-dot"
+              aria-hidden="true"
+            ></span>
+
+            BUILDING THE FUTURE OF BUSINESS
+
+          </div>
+
+
+          <!-- ================= TITLE ================= -->
+
+          <h2 id="cta-title">
+
+            Your business has enough tools.
+
+            <span>
+              It needs one core.
+            </span>
+
+          </h2>
+
+
+          <!-- ================= DESCRIPTION ================= -->
+
+          <p>
+
+            Join the early access list and be among
+            the first to experience BRIQONA OS.
+
+          </p>
+
+
+
+          <!-- =================================================
+               EARLY ACCESS FORM
+               ================================================= -->
+
+          <form
+            class="early-access-form"
+            id="earlyAccessForm"
+            action="pages/register.html"
+            method="get"
+          >
+
+            <label
+              class="sr-only"
+              for="earlyAccessEmail"
+            >
+              Business email address
+            </label>
+
+
+            <input
+              id="earlyAccessEmail"
+              name="email"
+              type="email"
+              placeholder="Enter your business email"
+              autocomplete="email"
+              inputmode="email"
+              required
+            >
+
+
+            <button
+              class="btn btn-primary"
+              type="submit"
+            >
+
+              Get Early Access
+              <span aria-hidden="true">
+                →
+              </span>
+
+            </button>
+
+          </form>
+
+
+          <!-- ================= NOTE ================= -->
+
+          <small class="form-note">
+
+            No spam. Just BRIQONA updates and launch news.
+
+          </small>
+
+
+          <!-- ================= SECONDARY CTA ================= -->
+
+          <div class="cta-secondary">
+
+            <span>
+              Prefer to talk first?
+            </span>
+
+            <a href="pages/contact.html">
+              Talk to Us →
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+        <!-- =================================================
+         FOOTER
+         ================================================= -->
+
+    <footer class="site-footer">
+
+      <div class="container">
+
+
+        <div class="footer-main">
+
+
+          <!-- ================= BRAND ================= -->
+
+          <div class="footer-brand">
+
+            <a
+              class="brand"
+              href="index.html"
+              aria-label="BRIQONA OS home"
+            >
+
+              <span class="brand-mark">
+                B
+              </span>
+
+              <span class="brand-name">
+                BRIQONA<span>OS</span>
+              </span>
+
+            </a>
+
+
+            <p>
+              One intelligent core for every business.
+            </p>
+
+
+            <small>
+              Founded by Yawar Abbas Bhatti
+            </small>
+
+          </div>
+
+
+
+          <!-- ================= PLATFORM ================= -->
+
+          <div class="footer-column">
+
+            <h4>
+              Platform
+            </h4>
+
+            <a href="pages/platform.html">
+              Platform
+            </a>
+
+            <a href="pages/ai.html">
+              AI
+            </a>
+
+            <a href="pages/features.html">
+              Features
+            </a>
+
+            <a href="pages/pricing.html">
+              Pricing
+            </a>
+
+          </div>
+
+
+
+          <!-- ================= BUSINESS ================= -->
+
+          <div class="footer-column">
+
+            <h4>
+              Business
+            </h4>
+
+            <a href="pages/customers.html">
+              Customers
+            </a>
+
+            <a href="pages/orders.html">
+              Orders
+            </a>
+
+            <a href="pages/inventory.html">
+              Inventory
+            </a>
+
+            <a href="pages/employees.html">
+              Employees
+            </a>
+
+            <a href="pages/billing.html">
+              Billing
+            </a>
+
+            <a href="pages/reports.html">
+              Reports
+            </a>
+
+          </div>
+
+
+
+          <!-- ================= RESOURCES ================= -->
+
+          <div class="footer-column">
+
+            <h4>
+              Resources
+            </h4>
+
+            <a href="pages/analytics.html">
+              Analytics
+            </a>
+
+            <a href="pages/documentation.html">
+              Documentation
+            </a>
+
+            <a href="pages/api.html">
+              API
+            </a>
+
+            <a href="pages/faq.html">
+              FAQ
+            </a>
+
+            <a href="pages/contact.html">
+              Contact
+            </a>
+
+          </div>
+
+
+
+          <!-- ================= COMPANY & LEGAL ================= -->
+
+          <div class="footer-column">
+
+            <h4>
+              Company &amp; Legal
+            </h4>
+
+            <a href="pages/about.html">
+              About
+            </a>
+
+            <a href="pages/security.html">
+              Security
+            </a>
+
+            <a href="pages/privacy.html">
+              Privacy
+            </a>
+
+            <a href="pages/terms.html">
+              Terms
+            </a>
+
+            <a href="pages/cookies.html">
+              Cookies
+            </a>
+
+            <a href="pages/book-demo.html">
+              Book a Demo
+            </a>
+
+          </div>
+
+
+        </div>
+
+
+
+        <!-- =================================================
+             FOOTER BOTTOM
+             ================================================= -->
+
+        <div class="footer-bottom">
+
+
+          <p>
+            © 2026 BRIQONA OS. All rights reserved.
+          </p>
+
+
+          <div>
+
+            <a href="pages/privacy.html">
+              Privacy
+            </a>
+
+            <a href="pages/terms.html">
+              Terms
+            </a>
+
+            <a href="pages/cookies.html">
+              Cookies
+            </a>
+
+          </div>
+
+
+        </div>
+
+
+      </div>
+
+    </footer>
+        <!-- =================================================
+         INDEX-ONLY JAVASCRIPT
+         ================================================= -->
+
+    <script>
+
+      (() => {
+
+        "use strict";
+
+
+        /* =================================================
+           MOBILE NAVIGATION
+           ================================================= */
+
+        const menuToggle =
+          document.getElementById("menuToggle");
+
+        const navMenu =
+          document.getElementById("navMenu");
+
+
+        if (menuToggle && navMenu) {
+
+          menuToggle.addEventListener(
+            "click",
+            () => {
+
+              const isOpen =
+                menuToggle.getAttribute(
+                  "aria-expanded"
+                ) === "true";
+
+
+              menuToggle.setAttribute(
+                "aria-expanded",
+                String(!isOpen)
+              );
+
+
+              menuToggle.setAttribute(
+                "aria-label",
+                isOpen
+                  ? "Open navigation"
+                  : "Close navigation"
+              );
+
+
+              navMenu.classList.toggle(
+                "active",
+                !isOpen
+              );
+
+            }
+          );
+
+
+          /*
+            Close mobile menu when a normal
+            navigation link is selected.
+          */
+
+          navMenu
+            .querySelectorAll(
+              "a:not(.bq-nav-dropdown-menu a)"
+            )
+            .forEach((link) => {
+
+              link.addEventListener(
+                "click",
+                () => {
+
+                  menuToggle.setAttribute(
+                    "aria-expanded",
+                    "false"
+                  );
+
+                  menuToggle.setAttribute(
+                    "aria-label",
+                    "Open navigation"
+                  );
+
+                  navMenu.classList.remove(
+                    "active"
+                  );
+
+                }
+              );
+
+            });
+
+        }
+
+
+
+        /* =================================================
+           RESOURCES DROPDOWN
+           ================================================= */
+
+        const resources =
+          document.getElementById(
+            "bqResources"
+          );
+
+        const resourcesToggle =
+          document.getElementById(
+            "bqResourcesToggle"
+          );
+
+
+        if (
+          resources &&
+          resourcesToggle
+        ) {
+
+          resourcesToggle.addEventListener(
+            "click",
+            (event) => {
+
+              event.stopPropagation();
+
+
+              const isOpen =
+                resources.classList.contains(
+                  "open"
+                );
+
+
+              resources.classList.toggle(
+                "open",
+                !isOpen
+              );
+
+
+              resourcesToggle.setAttribute(
+                "aria-expanded",
+                String(!isOpen)
+              );
+
+            }
+          );
+
+
+          /*
+            Prevent clicks inside the dropdown
+            from closing it immediately.
+          */
+
+          resources
+            .querySelector(
+              ".bq-nav-dropdown-menu"
+            )
+            ?.addEventListener(
+              "click",
+              (event) => {
+
+                event.stopPropagation();
+
+              }
+            );
+
+        }
+
+
+
+        /* =================================================
+           CLOSE DROPDOWN WHEN CLICKING OUTSIDE
+           ================================================= */
+
+        document.addEventListener(
+          "click",
+          (event) => {
+
+            if (
+              resources &&
+              !resources.contains(event.target)
+            ) {
+
+              resources.classList.remove(
+                "open"
+              );
+
+
+              resourcesToggle?.setAttribute(
+                "aria-expanded",
+                "false"
+              );
+
+            }
+
+          }
+        );
+
+
+
+        /* =================================================
+           ESCAPE KEY
+           ================================================= */
+
+        document.addEventListener(
+          "keydown",
+          (event) => {
+
+            if (event.key !== "Escape") {
+              return;
+            }
+
+
+            /* Close Resources */
+
+            if (resources) {
+
+              resources.classList.remove(
+                "open"
+              );
+
+              resourcesToggle?.setAttribute(
+                "aria-expanded",
+                "false"
+              );
+
+            }
+
+
+            /* Close mobile navigation */
+
+            if (
+              menuToggle &&
+              navMenu
+            ) {
+
+              menuToggle.setAttribute(
+                "aria-expanded",
+                "false"
+              );
+
+              menuToggle.setAttribute(
+                "aria-label",
+                "Open navigation"
+              );
+
+              navMenu.classList.remove(
+                "active"
+              );
+
+            }
+
+          }
+        );
+
+
+      })();
+
+    </script>
+
+
+
+    <!-- =================================================
+         EXISTING PROJECT JAVASCRIPT
+         ================================================= -->
+
+    <script
+      src="js/app.js"
+      defer
+    ></script>
+
+
+  </body>
+
+</html>
+    
+    
