@@ -294,3 +294,28 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 });
+/* =========================================
+   MOBILE MENU FINAL FIX
+========================================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+  const menuButton = document.querySelector(".mobile-menu-button");
+  const mobileNav = document.querySelector(".mobile-nav");
+
+  if (!menuButton || !mobileNav) return;
+
+  menuButton.onclick = function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    const opened = mobileNav.classList.toggle("is-open");
+    menuButton.classList.toggle("is-open", opened);
+  };
+
+  mobileNav.querySelectorAll("a").forEach(function (link) {
+    link.onclick = function () {
+      mobileNav.classList.remove("is-open");
+      menuButton.classList.remove("is-open");
+    };
+  });
+});
