@@ -2581,3 +2581,59 @@ small {
     z-index: 9999 !important;
   }
 }
+/* =========================================
+   MOBILE MENU BUTTON — FINAL VISUAL FIX
+========================================= */
+
+.mobile-menu-button {
+  width: 58px !important;
+  height: 58px !important;
+  padding: 0 !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+
+  background: #090b0f !important;
+  border: 1px solid #090b0f !important;
+  border-radius: 14px !important;
+
+  cursor: pointer !important;
+  pointer-events: auto !important;
+  position: relative !important;
+  z-index: 10001 !important;
+}
+
+.mobile-menu-button span {
+  display: block !important;
+
+  width: 25px !important;
+  height: 3px !important;
+  min-width: 25px !important;
+  min-height: 3px !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  background: #ffffff !important;
+  border-radius: 10px !important;
+
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Desktop */
+@media (min-width: 801px) {
+  .mobile-menu-button {
+    display: none !important;
+  }
+}
+
+/* Mobile */
+@media (max-width: 800px) {
+  .mobile-menu-button {
+    display: flex !important;
+  }
+}
