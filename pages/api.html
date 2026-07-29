@@ -1,1 +1,1632 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1"
+>
+
+<title>API | BRIQONA OS</title>
+
+<meta
+  name="description"
+  content="Explore the BRIQONA OS API, integrations, developer capabilities and business automation infrastructure."
+>
+
+<meta
+  name="robots"
+  content="index, follow"
+>
+
+<link
+  rel="canonical"
+  href="https://yawarabbass.github.io/briqona-os/pages/api.html"
+>
+
+<link
+  rel="stylesheet"
+  href="../css/style.css"
+>
+
+
+<style>
+
+/* =========================================================
+   API PAGE
+   ========================================================= */
+
+body{
+  margin:0;
+}
+
+.api-page{
+  min-height:100vh;
+  background:var(--bg);
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.api-header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+
+  border-bottom:1px solid var(--line);
+
+  background:rgba(7,8,11,.88);
+
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+}
+
+.api-header-inner{
+  width:min(calc(100% - 32px),1200px);
+  min-height:72px;
+  margin:auto;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  gap:25px;
+}
+
+.api-nav{
+  display:flex;
+  align-items:center;
+  gap:25px;
+}
+
+.api-nav a{
+  color:var(--text-muted);
+  font-size:11px;
+  font-weight:700;
+  text-decoration:none;
+
+  transition:color .2s ease;
+}
+
+.api-nav a:hover,
+.api-nav a.active{
+  color:var(--text);
+}
+
+.api-header-action{
+  display:flex;
+  align-items:center;
+}
+
+.api-menu-toggle{
+  display:none;
+
+  width:40px;
+  height:40px;
+
+  border:1px solid var(--line);
+  border-radius:10px;
+
+  background:var(--surface);
+  color:var(--text);
+
+  cursor:pointer;
+  font-size:18px;
+}
+
+
+/* =========================================================
+   MAIN
+   ========================================================= */
+
+.api-main{
+  width:min(calc(100% - 32px),1200px);
+  margin:auto;
+
+  padding:90px 0 110px;
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.api-hero{
+  max-width:900px;
+}
+
+.api-hero h1{
+  max-width:850px;
+
+  margin:15px 0 22px;
+
+  font-size:clamp(48px,7vw,82px);
+  line-height:.92;
+
+  letter-spacing:-.065em;
+}
+
+.api-description{
+  max-width:730px;
+
+  margin:0;
+
+  color:var(--text-muted);
+
+  font-size:14px;
+  line-height:1.8;
+}
+
+.api-actions{
+  display:flex;
+  align-items:center;
+  gap:10px;
+
+  margin-top:30px;
+}
+
+
+/* =========================================================
+   MOBILE HEADER
+   ========================================================= */
+
+@media(max-width:900px){
+
+  .api-nav{
+    position:absolute;
+
+    top:72px;
+    left:16px;
+    right:16px;
+
+    display:none;
+    flex-direction:column;
+    align-items:stretch;
+
+    padding:15px;
+
+    border:1px solid var(--line);
+    border-radius:16px;
+
+    background:var(--surface);
+  }
+
+  .api-nav.open{
+    display:flex;
+  }
+
+  .api-nav a{
+    padding:12px 10px;
+  }
+
+  .api-menu-toggle{
+    display:block;
+  }
+
+  .api-header-action{
+    display:none;
+  }
+
+}
+
+
+@media(max-width:600px){
+
+  .api-header-inner{
+    min-height:65px;
+  }
+
+  .api-main{
+    padding:65px 0 80px;
+  }
+
+  .api-hero h1{
+    font-size:clamp(44px,14vw,62px);
+  }
+
+  .api-actions{
+    flex-direction:column;
+    align-items:stretch;
+  }
+
+  .api-actions .btn{
+    width:100%;
+    box-sizing:border-box;
+    text-align:center;
+  }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<div class="api-page">
+
+
+<!-- =====================================================
+     HEADER
+     ===================================================== -->
+
+<header class="api-header">
+
+  <div class="api-header-inner">
+
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="BRIQONA OS Home"
+    >
+
+      <span class="brand-mark">B</span>
+
+      <span class="brand-name">
+        BRIQONA<span>OS</span>
+      </span>
+
+    </a>
+
+
+    <nav
+      class="api-nav"
+      id="apiNav"
+      aria-label="Main navigation"
+    >
+
+      <a href="platform.html">
+        Platform
+      </a>
+
+      <a href="ai.html">
+        AI
+      </a>
+
+      <a href="industries.html">
+        Industries
+      </a>
+
+      <a href="features.html">
+        Features
+      </a>
+
+      <a href="pricing.html">
+        Pricing
+      </a>
+
+      <a
+        href="api.html"
+        class="active"
+        aria-current="page"
+      >
+        API
+      </a>
+
+    </nav>
+
+
+    <div class="api-header-action">
+
+      <a
+        class="btn btn-primary"
+        href="register.html"
+      >
+        Start Free →
+      </a>
+
+    </div>
+
+
+    <button
+      class="api-menu-toggle"
+      id="apiMenuToggle"
+      type="button"
+      aria-label="Open menu"
+      aria-expanded="false"
+      aria-controls="apiNav"
+    >
+      ☰
+    </button>
+
+
+  </div>
+
+</header>
+
+
+<!-- =====================================================
+     MAIN / HERO
+     ===================================================== -->
+
+<main class="api-main">
+
+<section class="api-hero">
+
+  <span class="eyebrow">
+
+    <span class="status-dot"></span>
+
+    Developer infrastructure
+
+  </span>
+
+
+  <h1>
+    Connect your business<br>
+    to BRIQONA OS.
+  </h1>
+
+
+  <p class="api-description">
+
+    The BRIQONA OS API is designed to provide a
+    structured way for applications, services and
+    business workflows to connect with the platform.
+
+  </p>
+
+
+  <div class="api-actions">
+
+    <a
+      class="btn btn-primary"
+      href="#api-overview"
+    >
+      Explore API →
+    </a>
+
+    <a
+      class="btn btn-secondary"
+      href="documentation.html"
+    >
+      Read Documentation
+    </a>
+
+  </div>
+
+
+</section>
+
+  <!-- =====================================================
+     API OVERVIEW
+     ===================================================== -->
+
+<style>
+
+.api-overview{
+  margin-top:70px;
+}
+
+.api-section-heading{
+  max-width:700px;
+  margin-bottom:25px;
+}
+
+.api-section-heading h2{
+  margin:0 0 9px;
+  color:var(--text);
+  font-size:25px;
+  letter-spacing:-.035em;
+}
+
+.api-section-heading p{
+  margin:0;
+  color:var(--text-muted);
+  font-size:10px;
+  line-height:1.8;
+}
+
+.api-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+}
+
+.api-card{
+  padding:25px;
+
+  border:1px solid var(--line);
+  border-radius:18px;
+
+  background:var(--surface);
+
+  transition:
+    transform .25s ease,
+    border-color .25s ease;
+}
+
+.api-card:hover{
+  transform:translateY(-3px);
+  border-color:var(--accent-border);
+}
+
+.api-card-number{
+  color:var(--accent);
+  font-size:9px;
+  font-weight:900;
+  letter-spacing:.08em;
+}
+
+.api-card h3{
+  margin:17px 0 8px;
+  color:var(--text);
+  font-size:16px;
+}
+
+.api-card p{
+  margin:0;
+  color:var(--text-muted);
+  font-size:10px;
+  line-height:1.75;
+}
+
+
+/* =====================================================
+   ENDPOINT PREVIEW
+   ===================================================== */
+
+.api-endpoint{
+  margin-top:18px;
+
+  padding:25px;
+
+  border:1px solid var(--line);
+  border-radius:18px;
+
+  background:var(--surface);
+}
+
+.api-endpoint-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+
+  margin-bottom:15px;
+}
+
+.api-endpoint-head h2{
+  margin:0;
+  color:var(--text);
+  font-size:18px;
+}
+
+.api-status{
+  padding:6px 9px;
+
+  border:1px solid var(--accent-border);
+  border-radius:7px;
+
+  color:var(--accent);
+  background:var(--accent-soft);
+
+  font-size:8px;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:.07em;
+}
+
+.api-code{
+  overflow:auto;
+
+  margin:0;
+  padding:18px;
+
+  border:1px solid var(--line);
+  border-radius:11px;
+
+  background:#080a0d;
+
+  color:var(--text-muted);
+
+  font-family:
+    ui-monospace,
+    SFMono-Regular,
+    Menlo,
+    Monaco,
+    Consolas,
+    monospace;
+
+  font-size:10px;
+  line-height:1.7;
+}
+
+.api-code .method{
+  color:var(--accent);
+}
+
+.api-code .path{
+  color:var(--text);
+}
+
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+
+@media(max-width:850px){
+
+  .api-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+}
+
+@media(max-width:600px){
+
+  .api-grid{
+    grid-template-columns:1fr;
+  }
+
+  .api-endpoint{
+    padding:20px;
+  }
+
+  .api-endpoint-head{
+    align-items:flex-start;
+    flex-direction:column;
+  }
+
+}
+
+</style>
+
+
+<section
+  class="api-overview"
+  id="api-overview"
+>
+
+
+  <div class="api-section-heading">
+
+    <span class="about-label">
+      API foundation
+    </span>
+
+    <h2>
+      Built for connected business workflows.
+    </h2>
+
+    <p>
+      The API layer is intended to make it easier for
+      applications and services to work with business
+      capabilities through structured integrations.
+    </p>
+
+  </div>
+
+
+  <div class="api-grid">
+
+
+    <article class="api-card">
+
+      <span class="api-card-number">
+        01 / ACCESS
+      </span>
+
+      <h3>
+        Authentication
+      </h3>
+
+      <p>
+        Secure application access can be structured
+        around authenticated requests and controlled
+        credentials.
+      </p>
+
+    </article>
+
+
+    <article class="api-card">
+
+      <span class="api-card-number">
+        02 / DATA
+      </span>
+
+      <h3>
+        Business Data
+      </h3>
+
+      <p>
+        Connect applications with relevant business
+        information and operational data as supported
+        by the platform.
+      </p>
+
+    </article>
+
+
+    <article class="api-card">
+
+      <span class="api-card-number">
+        03 / WORKFLOWS
+      </span>
+
+      <h3>
+        Automation
+      </h3>
+
+      <p>
+        Integrate API capabilities with repeatable
+        workflows to reduce manual operational work.
+      </p>
+
+    </article>
+
+
+    <article class="api-card">
+
+      <span class="api-card-number">
+        04 / INTELLIGENCE
+      </span>
+
+      <h3>
+        AI Services
+      </h3>
+
+      <p>
+        AI-powered capabilities can be connected to
+        applications where supported by the BRIQONA
+        intelligence layer.
+      </p>
+
+    </article>
+
+
+    <article class="api-card">
+
+      <span class="api-card-number">
+        05 / ANALYTICS
+      </span>
+
+      <h3>
+        Insights
+      </h3>
+
+      <p>
+        Connect operational information with reporting
+        and analytics experiences for deeper business
+        visibility.
+      </p>
+
+    </article>
+
+
+    <article class="api-card">
+
+      <span class="api-card-number">
+        06 / INTEGRATIONS
+      </span>
+
+      <h3>
+        Connected Systems
+      </h3>
+
+      <p>
+        Build connections between BRIQONA OS and other
+        applications as supported by available
+        integration capabilities.
+      </p>
+
+    </article>
+
+
+  </div>
+
+
+  <!-- =================================================
+       ENDPOINT PREVIEW
+       ================================================= -->
+
+  <div class="api-endpoint">
+
+    <div class="api-endpoint-head">
+
+      <h2>
+        API request example
+      </h2>
+
+      <span class="api-status">
+        Preview
+      </span>
+
+    </div>
+
+
+    <pre class="api-code"><code><span class="method">GET</span> <span class="path">/api/v1/business/overview</span>
+
+Accept: application/json
+Authorization: Bearer YOUR_API_KEY
+
+{
+  "status": "example",
+  "message": "API integration preview"
+}</code></pre>
+
+  </div>
+
+
+</section>
+  <!-- =====================================================
+     API REQUEST BUILDER
+     ===================================================== -->
+
+<style>
+
+.api-builder{
+  margin-top:18px;
+
+  padding:28px;
+
+  border:1px solid var(--line);
+  border-radius:20px;
+
+  background:var(--surface);
+}
+
+.api-builder-head{
+  max-width:700px;
+  margin-bottom:22px;
+}
+
+.api-builder-head h2{
+  margin:0 0 9px;
+
+  color:var(--text);
+
+  font-size:23px;
+  letter-spacing:-.035em;
+}
+
+.api-builder-head p{
+  margin:0;
+
+  color:var(--text-muted);
+
+  font-size:10px;
+  line-height:1.8;
+}
+
+.api-builder-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+}
+
+.api-builder-panel{
+  padding:20px;
+
+  border:1px solid var(--line);
+  border-radius:14px;
+
+  background:#080a0d;
+}
+
+.api-builder-panel h3{
+  margin:0 0 15px;
+
+  color:var(--text);
+
+  font-size:12px;
+}
+
+.api-field{
+  margin-bottom:14px;
+}
+
+.api-field:last-child{
+  margin-bottom:0;
+}
+
+.api-field label{
+  display:block;
+
+  margin-bottom:7px;
+
+  color:var(--text-muted);
+
+  font-size:9px;
+  font-weight:700;
+}
+
+.api-field select,
+.api-field input{
+  width:100%;
+  height:42px;
+
+  box-sizing:border-box;
+
+  padding:0 11px;
+
+  border:1px solid var(--line);
+  border-radius:8px;
+
+  outline:none;
+
+  background:#07090c;
+  color:var(--text);
+
+  font-family:inherit;
+  font-size:10px;
+}
+
+.api-field select:focus,
+.api-field input:focus{
+  border-color:var(--accent-border);
+}
+
+.api-request-preview{
+  min-height:180px;
+
+  box-sizing:border-box;
+
+  margin:0;
+  padding:15px;
+
+  overflow:auto;
+
+  border:1px solid var(--line);
+  border-radius:9px;
+
+  background:#06080a;
+
+  color:var(--text-muted);
+
+  font-family:
+    ui-monospace,
+    SFMono-Regular,
+    Menlo,
+    Monaco,
+    Consolas,
+    monospace;
+
+  font-size:9px;
+  line-height:1.7;
+  white-space:pre-wrap;
+  word-break:break-word;
+}
+
+.api-builder-actions{
+  display:flex;
+  align-items:center;
+  gap:10px;
+
+  margin-top:15px;
+}
+
+.api-test-result{
+  display:none;
+
+  margin-top:14px;
+
+  padding:13px;
+
+  border:1px solid var(--accent-border);
+  border-radius:9px;
+
+  color:var(--accent);
+  background:var(--accent-soft);
+
+  font-size:9px;
+  line-height:1.7;
+}
+
+.api-test-result.show{
+  display:block;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+
+@media(max-width:750px){
+
+  .api-builder-grid{
+    grid-template-columns:1fr;
+  }
+
+}
+
+@media(max-width:600px){
+
+  .api-builder{
+    padding:21px;
+  }
+
+  .api-builder-actions{
+    flex-direction:column;
+    align-items:stretch;
+  }
+
+  .api-builder-actions .btn{
+    width:100%;
+    box-sizing:border-box;
+    text-align:center;
+  }
+
+}
+
+</style>
+
+
+<section class="api-builder">
+
+  <div class="api-builder-head">
+
+    <span class="about-label">
+      Developer preview
+    </span>
+
+    <h2>
+      Build a request.
+    </h2>
+
+    <p>
+      Configure an example request below to preview
+      how an integration could be structured. This
+      frontend demo does not send data to a live API.
+    </p>
+
+  </div>
+
+
+  <div class="api-builder-grid">
+
+
+    <!-- =================================================
+         REQUEST SETTINGS
+         ================================================= -->
+
+    <div class="api-builder-panel">
+
+      <h3>
+        Request settings
+      </h3>
+
+
+      <div class="api-field">
+
+        <label for="apiMethod">
+          Method
+        </label>
+
+        <select id="apiMethod">
+
+          <option value="GET">
+            GET
+          </option>
+
+          <option value="POST">
+            POST
+          </option>
+
+          <option value="PUT">
+            PUT
+          </option>
+
+          <option value="DELETE">
+            DELETE
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <div class="api-field">
+
+        <label for="apiEndpoint">
+          Endpoint
+        </label>
+
+        <select id="apiEndpoint">
+
+          <option value="/api/v1/business/overview">
+            Business Overview
+          </option>
+
+          <option value="/api/v1/analytics">
+            Analytics
+          </option>
+
+          <option value="/api/v1/ai/insights">
+            AI Insights
+          </option>
+
+          <option value="/api/v1/workflows">
+            Workflows
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <div class="api-field">
+
+        <label for="apiKey">
+          API key placeholder
+        </label>
+
+        <input
+          id="apiKey"
+          type="text"
+          value="YOUR_API_KEY"
+          autocomplete="off"
+        >
+
+      </div>
+
+
+      <div class="api-builder-actions">
+
+        <button
+          class="btn btn-primary"
+          id="apiGenerate"
+          type="button"
+        >
+          Generate Request →
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- =================================================
+         REQUEST PREVIEW
+         ================================================= -->
+
+    <div class="api-builder-panel">
+
+      <h3>
+        Request preview
+      </h3>
+
+      <pre
+        class="api-request-preview"
+        id="apiRequestPreview"
+      ></pre>
+
+      <div
+        class="api-test-result"
+        id="apiTestResult"
+      >
+        Request preview generated successfully.
+        This is a frontend demonstration; no external
+        API request was sent.
+      </div>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     API BUILDER JAVASCRIPT
+     ===================================================== -->
+
+<script>
+
+const apiMethod =
+  document.getElementById("apiMethod");
+
+const apiEndpoint =
+  document.getElementById("apiEndpoint");
+
+const apiKey =
+  document.getElementById("apiKey");
+
+const apiGenerate =
+  document.getElementById("apiGenerate");
+
+const apiRequestPreview =
+  document.getElementById("apiRequestPreview");
+
+const apiTestResult =
+  document.getElementById("apiTestResult");
+
+
+function generateApiRequest(){
+
+  const method =
+    apiMethod.value;
+
+  const endpoint =
+    apiEndpoint.value;
+
+  const key =
+    apiKey.value.trim() || "YOUR_API_KEY";
+
+
+  let request =
+`${method} ${endpoint}
+
+Accept: application/json
+Authorization: Bearer ${key}`;
+
+
+  if(
+    method === "POST" ||
+    method === "PUT"
+  ){
+
+    request +=
+`
+
+Content-Type: application/json
+
+{
+  "example": true
+}`;
+
+  }
+
+
+  apiRequestPreview.textContent =
+    request;
+
+
+  apiTestResult.classList.add("show");
+
+}
+
+
+if(apiGenerate){
+
+  apiGenerate.addEventListener(
+    "click",
+    generateApiRequest
+  );
+
+}
+
+
+/* Generate the initial preview */
+
+generateApiRequest();
+
+</script>
+  <!-- =====================================================
+     FOOTER
+     ===================================================== -->
+
+<style>
+
+.api-footer{
+  border-top:1px solid var(--line);
+  background:#07080b;
+}
+
+.api-footer-inner{
+  width:min(calc(100% - 32px),1200px);
+  margin:auto;
+  padding:55px 0 25px;
+}
+
+.api-footer-top{
+  display:grid;
+  grid-template-columns:1.5fr 1fr 1fr 1fr;
+  gap:35px;
+}
+
+.api-footer-brand{
+  max-width:300px;
+}
+
+.api-footer-brand .brand{
+  display:inline-flex;
+  margin-bottom:16px;
+}
+
+.api-footer-brand p{
+  margin:0;
+  color:var(--text-muted);
+  font-size:10px;
+  line-height:1.8;
+}
+
+.api-footer-column h3{
+  margin:0 0 15px;
+  color:var(--text);
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
+
+.api-footer-column a{
+  display:block;
+  margin:0 0 10px;
+  color:var(--text-muted);
+  font-size:10px;
+  text-decoration:none;
+}
+
+.api-footer-column a:hover{
+  color:var(--text);
+}
+
+.api-footer-bottom{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+
+  margin-top:45px;
+  padding-top:20px;
+
+  border-top:1px solid var(--line);
+}
+
+.api-footer-bottom p{
+  margin:0;
+  color:#555b66;
+  font-size:9px;
+  line-height:1.6;
+}
+
+.api-footer-credit{
+  text-align:right;
+}
+
+.api-footer-credit strong{
+  color:var(--text-soft);
+}
+
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+
+@media(max-width:800px){
+
+  .api-footer-top{
+    grid-template-columns:1fr 1fr;
+    gap:30px;
+  }
+
+}
+
+@media(max-width:600px){
+
+  .api-footer-inner{
+    padding:45px 0 22px;
+  }
+
+  .api-footer-top{
+    grid-template-columns:1fr;
+    gap:25px;
+  }
+
+  .api-footer-brand{
+    max-width:100%;
+  }
+
+  .api-footer-bottom{
+    align-items:flex-start;
+    flex-direction:column;
+    margin-top:35px;
+  }
+
+  .api-footer-credit{
+    text-align:left;
+  }
+
+}
+
+</style>
+
+
+</main>
+
+
+<!-- =====================================================
+     FOOTER
+     ===================================================== -->
+
+<footer class="api-footer">
+
+  <div class="api-footer-inner">
+
+
+    <div class="api-footer-top">
+
+
+      <!-- BRAND -->
+
+      <div class="api-footer-brand">
+
+        <a
+          class="brand"
+          href="../index.html"
+          aria-label="BRIQONA OS Home"
+        >
+
+          <span class="brand-mark">B</span>
+
+          <span class="brand-name">
+            BRIQONA<span>OS</span>
+          </span>
+
+        </a>
+
+        <p>
+          A unified operating layer for modern businesses,
+          bringing operations, intelligence and automation
+          together in one workspace.
+        </p>
+
+      </div>
+
+
+      <!-- PLATFORM -->
+
+      <div class="api-footer-column">
+
+        <h3>Platform</h3>
+
+        <a href="platform.html">
+          Platform
+        </a>
+
+        <a href="ai.html">
+          AI Intelligence
+        </a>
+
+        <a href="analytics.html">
+          Analytics
+        </a>
+
+        <a href="dashboard.html">
+          Dashboard
+        </a>
+
+      </div>
+
+
+      <!-- RESOURCES -->
+
+      <div class="api-footer-column">
+
+        <h3>Resources</h3>
+
+        <a href="documentation.html">
+          Documentation
+        </a>
+
+        <a href="api.html">
+          API
+        </a>
+
+        <a href="faq.html">
+          FAQ
+        </a>
+
+        <a href="reports.html">
+          Reports
+        </a>
+
+        <a href="contact.html">
+          Contact
+        </a>
+
+      </div>
+
+
+      <!-- LEGAL -->
+
+      <div class="api-footer-column">
+
+        <h3>Legal</h3>
+
+        <a href="security.html">
+          Security
+        </a>
+
+        <a href="privacy.html">
+          Privacy Policy
+        </a>
+
+        <a href="terms.html">
+          Terms & Conditions
+        </a>
+
+        <a href="cookies.html">
+          Cookies
+        </a>
+
+      </div>
+
+
+    </div>
+
+
+    <!-- =================================================
+         FOOTER BOTTOM
+         ================================================= -->
+
+    <div class="api-footer-bottom">
+
+      <p>
+        ©
+        <span data-api-year></span>
+        BRIQONA OS. All rights reserved.
+      </p>
+
+      <p class="api-footer-credit">
+        Designed & developed with care by
+        <strong>Yawar Abbas Bhatti</strong>
+      </p>
+
+    </div>
+
+
+  </div>
+
+</footer>
+
+
+</div>
+
+
+<!-- =====================================================
+     MOBILE MENU
+     ===================================================== -->
+
+<script>
+
+const apiMenuToggle =
+  document.getElementById("apiMenuToggle");
+
+const apiNav =
+  document.getElementById("apiNav");
+
+
+if(apiMenuToggle && apiNav){
+
+  apiMenuToggle.addEventListener(
+    "click",
+    ()=>{
+
+      const isOpen =
+        apiNav.classList.toggle("open");
+
+      apiMenuToggle.setAttribute(
+        "aria-expanded",
+        String(isOpen)
+      );
+
+      apiMenuToggle.setAttribute(
+        "aria-label",
+        isOpen ? "Close menu" : "Open menu"
+      );
+
+    }
+  );
+
+
+  /* Close menu after navigation */
+
+  apiNav
+    .querySelectorAll("a")
+    .forEach(link=>{
+
+      link.addEventListener(
+        "click",
+        ()=>{
+
+          apiNav.classList.remove("open");
+
+          apiMenuToggle.setAttribute(
+            "aria-expanded",
+            "false"
+          );
+
+          apiMenuToggle.setAttribute(
+            "aria-label",
+            "Open menu"
+          );
+
+        }
+      );
+
+    });
+
+
+  /* Close menu when clicking outside */
+
+  document.addEventListener(
+    "click",
+    (event)=>{
+
+      if(
+        !apiNav.contains(event.target) &&
+        !apiMenuToggle.contains(event.target)
+      ){
+
+        apiNav.classList.remove("open");
+
+        apiMenuToggle.setAttribute(
+          "aria-expanded",
+          "false"
+        );
+
+        apiMenuToggle.setAttribute(
+          "aria-label",
+          "Open menu"
+        );
+
+      }
+
+    }
+  );
+
+}
+
+
+/* =====================================================
+   ESC KEY
+   ===================================================== */
+
+document.addEventListener(
+  "keydown",
+  (event)=>{
+
+    if(event.key !== "Escape"){
+      return;
+    }
+
+    if(apiNav){
+      apiNav.classList.remove("open");
+    }
+
+    if(apiMenuToggle){
+
+      apiMenuToggle.setAttribute(
+        "aria-expanded",
+        "false"
+      );
+
+      apiMenuToggle.setAttribute(
+        "aria-label",
+        "Open menu"
+      );
+
+    }
+
+  }
+);
+
+
+/* =====================================================
+   CURRENT YEAR
+   ===================================================== */
+
+document
+  .querySelectorAll("[data-api-year]")
+  .forEach(element=>{
+
+    element.textContent =
+      new Date().getFullYear();
+
+  });
+
+</script>
+
+
+</body>
+  </html>
