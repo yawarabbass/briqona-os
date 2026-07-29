@@ -2246,3 +2246,110 @@ button {
     background: #ffffff;
   }
 }
+/* =========================================
+   FOOTER READABILITY + PAYMENT CARDS FIX
+========================================= */
+
+.footer-brand p {
+  color: #aeb6bd;
+  font-size: 11px;
+  line-height: 1.85;
+}
+
+.footer-column h4,
+.footer-contact h4 {
+  color: #ffffff;
+  font-size: 11px;
+}
+
+.footer-column a {
+  color: #aeb6bd;
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.footer-column a:hover {
+  color: #ffffff;
+}
+
+.footer-contact > a span {
+  color: #8f99a2;
+  font-size: 9px;
+}
+
+.footer-contact > a strong {
+  color: #ffffff;
+  font-size: 11px;
+}
+
+.footer-bottom {
+  color: #89939c;
+  font-size: 9px;
+}
+
+.footer-bottom a {
+  color: #aeb6bd;
+}
+
+.footer-bottom a:hover {
+  color: #ffffff;
+}
+
+
+/* Payment cards */
+
+.payment-method-grid {
+  grid-template-columns: repeat(3, minmax(130px, 1fr));
+  gap: 12px;
+}
+
+.payment-card {
+  min-height: 100px;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 17px;
+  background: #ffffff;
+  border: 1px solid #dfe3e6;
+}
+
+.payment-card strong {
+  color: #171b20;
+  font-size: 14px;
+  font-weight: 850;
+}
+
+.payment-card small {
+  color: #707a83;
+  font-size: 9px;
+}
+
+.payment-card-brand strong {
+  font-size: 18px;
+  letter-spacing: 0.5px;
+}
+
+.payment-card:hover {
+  border-color: #bfc7cd;
+  box-shadow: 0 8px 20px rgba(15, 20, 24, 0.06);
+}
+
+
+/* Mobile payment cards */
+
+@media (max-width: 650px) {
+  .payment-method-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer-brand p {
+    font-size: 10px;
+  }
+
+  .footer-column a {
+    font-size: 10px;
+  }
+
+  .footer-bottom {
+    font-size: 8px;
+  }
+}
