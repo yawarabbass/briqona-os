@@ -1,1 +1,1667 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1"
+>
+
+<title>Billing | BRIQONA OS</title>
+
+<meta
+  name="description"
+  content="Manage billing, subscription details, invoices and account payment information with BRIQONA OS."
+>
+
+<meta
+  name="robots"
+  content="index, follow"
+>
+
+<link
+  rel="canonical"
+  href="https://yawarabbass.github.io/briqona-os/pages/billing.html"
+>
+
+<link
+  rel="stylesheet"
+  href="../css/style.css"
+>
+
+
+<style>
+
+/* =========================================================
+   BILLING PAGE
+   ========================================================= */
+
+body{
+  margin:0;
+}
+
+.billing-page{
+  min-height:100vh;
+  background:var(--bg);
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.billing-header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+
+  border-bottom:1px solid var(--line);
+
+  background:rgba(7,8,11,.88);
+
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+}
+
+.billing-header-inner{
+  width:min(calc(100% - 32px),1200px);
+  min-height:72px;
+  margin:auto;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  gap:25px;
+}
+
+.billing-nav{
+  display:flex;
+  align-items:center;
+  gap:25px;
+}
+
+.billing-nav a{
+  color:var(--text-muted);
+  font-size:11px;
+  font-weight:700;
+  text-decoration:none;
+
+  transition:color .2s ease;
+}
+
+.billing-nav a:hover,
+.billing-nav a.active{
+  color:var(--text);
+}
+
+.billing-header-action{
+  display:flex;
+  align-items:center;
+}
+
+.billing-menu-toggle{
+  display:none;
+
+  width:40px;
+  height:40px;
+
+  border:1px solid var(--line);
+  border-radius:10px;
+
+  background:var(--surface);
+  color:var(--text);
+
+  cursor:pointer;
+  font-size:18px;
+}
+
+
+/* =========================================================
+   MAIN
+   ========================================================= */
+
+.billing-main{
+  width:min(calc(100% - 32px),1200px);
+  margin:auto;
+
+  padding:90px 0 110px;
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.billing-hero{
+  max-width:900px;
+}
+
+.billing-hero h1{
+  max-width:850px;
+
+  margin:15px 0 22px;
+
+  font-size:clamp(48px,7vw,82px);
+  line-height:.92;
+
+  letter-spacing:-.065em;
+}
+
+.billing-description{
+  max-width:730px;
+
+  margin:0;
+
+  color:var(--text-muted);
+
+  font-size:14px;
+  line-height:1.8;
+}
+
+.billing-actions{
+  display:flex;
+  align-items:center;
+  gap:10px;
+
+  margin-top:30px;
+}
+
+
+/* =========================================================
+   MOBILE HEADER
+   ========================================================= */
+
+@media(max-width:900px){
+
+  .billing-nav{
+    position:absolute;
+
+    top:72px;
+    left:16px;
+    right:16px;
+
+    display:none;
+    flex-direction:column;
+    align-items:stretch;
+
+    padding:15px;
+
+    border:1px solid var(--line);
+    border-radius:16px;
+
+    background:var(--surface);
+  }
+
+  .billing-nav.open{
+    display:flex;
+  }
+
+  .billing-nav a{
+    padding:12px 10px;
+  }
+
+  .billing-menu-toggle{
+    display:block;
+  }
+
+  .billing-header-action{
+    display:none;
+  }
+
+}
+
+
+@media(max-width:600px){
+
+  .billing-header-inner{
+    min-height:65px;
+  }
+
+  .billing-main{
+    padding:65px 0 80px;
+  }
+
+  .billing-hero h1{
+    font-size:clamp(44px,14vw,62px);
+  }
+
+  .billing-actions{
+    flex-direction:column;
+    align-items:stretch;
+  }
+
+  .billing-actions .btn{
+    width:100%;
+    box-sizing:border-box;
+    text-align:center;
+  }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<div class="billing-page">
+
+
+<!-- =====================================================
+     HEADER
+     ===================================================== -->
+
+<header class="billing-header">
+
+  <div class="billing-header-inner">
+
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="BRIQONA OS Home"
+    >
+
+      <span class="brand-mark">B</span>
+
+      <span class="brand-name">
+        BRIQONA<span>OS</span>
+      </span>
+
+    </a>
+
+
+    <nav
+      class="billing-nav"
+      id="billingNav"
+      aria-label="Main navigation"
+    >
+
+      <a href="platform.html">
+        Platform
+      </a>
+
+      <a href="ai.html">
+        AI
+      </a>
+
+      <a href="industries.html">
+        Industries
+      </a>
+
+      <a href="features.html">
+        Features
+      </a>
+
+      <a href="pricing.html">
+        Pricing
+      </a>
+
+      <a
+        href="billing.html"
+        class="active"
+        aria-current="page"
+      >
+        Billing
+      </a>
+
+    </nav>
+
+
+    <div class="billing-header-action">
+
+      <a
+        class="btn btn-primary"
+        href="register.html"
+      >
+        Start Free →
+      </a>
+
+    </div>
+
+
+    <button
+      class="billing-menu-toggle"
+      id="billingMenuToggle"
+      type="button"
+      aria-label="Open menu"
+      aria-expanded="false"
+      aria-controls="billingNav"
+    >
+      ☰
+    </button>
+
+
+  </div>
+
+</header>
+
+
+<!-- =====================================================
+     MAIN / HERO
+     ===================================================== -->
+
+<main class="billing-main">
+
+<section class="billing-hero">
+
+  <span class="eyebrow">
+
+    <span class="status-dot"></span>
+
+    Account billing
+
+  </span>
+
+
+  <h1>
+    Simple billing<br>
+    for your workspace.
+  </h1>
+
+
+  <p class="billing-description">
+
+    Manage your BRIQONA OS subscription, review
+    account billing information and keep payment
+    details organized from one workspace.
+
+  </p>
+
+
+  <div class="billing-actions">
+
+    <a
+      class="btn btn-primary"
+      href="#billing-overview"
+    >
+      View Billing →
+    </a>
+
+    <a
+      class="btn btn-secondary"
+      href="pricing.html"
+    >
+      View Plans
+    </a>
+
+  </div>
+
+
+</section>
+  <style>
+
+/* =====================================================
+   BILLING OVERVIEW
+   ===================================================== */
+
+.billing-overview{
+  margin-top:70px;
+}
+
+.billing-heading{
+  max-width:700px;
+  margin-bottom:25px;
+}
+
+.billing-heading h2{
+  margin:0 0 9px;
+  color:var(--text);
+  font-size:25px;
+  letter-spacing:-.035em;
+}
+
+.billing-heading p{
+  margin:0;
+  color:var(--text-muted);
+  font-size:10px;
+  line-height:1.8;
+}
+
+
+/* =====================================================
+   CURRENT PLAN
+   ===================================================== */
+
+.billing-plan{
+  padding:25px;
+
+  border:1px solid var(--line);
+  border-radius:18px;
+
+  background:var(--surface);
+}
+
+.billing-plan-top{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:20px;
+}
+
+.billing-plan-label{
+  color:var(--text-muted);
+  font-size:8px;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
+
+.billing-plan h3{
+  margin:10px 0 7px;
+
+  color:var(--text);
+  font-size:24px;
+  letter-spacing:-.04em;
+}
+
+.billing-plan p{
+  max-width:600px;
+
+  margin:0;
+
+  color:var(--text-muted);
+
+  font-size:10px;
+  line-height:1.75;
+}
+
+.billing-status{
+  flex-shrink:0;
+
+  padding:7px 10px;
+
+  border:1px solid var(--accent-border);
+  border-radius:7px;
+
+  color:var(--accent);
+  background:var(--accent-soft);
+
+  font-size:8px;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+}
+
+
+/* =====================================================
+   BILLING METRICS
+   ===================================================== */
+
+.billing-metrics{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+
+  margin-top:14px;
+}
+
+.billing-metric{
+  padding:18px;
+
+  border:1px solid var(--line);
+  border-radius:14px;
+
+  background:#080a0d;
+}
+
+.billing-metric span{
+  display:block;
+
+  color:var(--text-muted);
+
+  font-size:8px;
+  text-transform:uppercase;
+  letter-spacing:.07em;
+}
+
+.billing-metric strong{
+  display:block;
+
+  margin-top:8px;
+
+  color:var(--text);
+
+  font-size:21px;
+  letter-spacing:-.04em;
+}
+
+.billing-metric small{
+  display:block;
+
+  margin-top:5px;
+
+  color:var(--text-muted);
+
+  font-size:8px;
+}
+
+
+/* =====================================================
+   PLAN FEATURES
+   ===================================================== */
+
+.billing-features{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+
+  margin-top:18px;
+}
+
+.billing-feature{
+  padding:22px;
+
+  border:1px solid var(--line);
+  border-radius:16px;
+
+  background:var(--surface);
+}
+
+.billing-feature-number{
+  color:var(--accent);
+
+  font-size:9px;
+  font-weight:900;
+}
+
+.billing-feature h3{
+  margin:15px 0 7px;
+
+  color:var(--text);
+
+  font-size:15px;
+}
+
+.billing-feature p{
+  margin:0;
+
+  color:var(--text-muted);
+
+  font-size:10px;
+  line-height:1.75;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+
+@media(max-width:850px){
+
+  .billing-metrics{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .billing-features{
+    grid-template-columns:1fr 1fr;
+  }
+
+}
+
+@media(max-width:600px){
+
+  .billing-plan-top{
+    align-items:flex-start;
+    flex-direction:column;
+  }
+
+  .billing-metrics{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .billing-features{
+    grid-template-columns:1fr;
+  }
+
+}
+
+</style>
+
+
+<section
+  class="billing-overview"
+  id="billing-overview"
+>
+
+
+  <div class="billing-heading">
+
+    <span class="about-label">
+      Billing overview
+    </span>
+
+    <h2>
+      Keep your subscription information clear.
+    </h2>
+
+    <p>
+      Review your current workspace plan, billing
+      status and account usage from a single,
+      structured billing view.
+    </p>
+
+  </div>
+
+
+  <!-- =================================================
+       CURRENT PLAN
+       ================================================= -->
+
+  <div class="billing-plan">
+
+    <div class="billing-plan-top">
+
+      <div>
+
+        <span class="billing-plan-label">
+          Current workspace plan
+        </span>
+
+        <h3>
+          BRIQONA OS Workspace
+        </h3>
+
+        <p>
+          Your workspace subscription and billing
+          information can be managed from this area.
+          Live payment processing can be connected
+          to a secure billing provider later.
+        </p>
+
+      </div>
+
+
+      <span class="billing-status">
+        Active
+      </span>
+
+    </div>
+
+
+    <!-- =================================================
+         BILLING METRICS
+         ================================================= -->
+
+    <div class="billing-metrics">
+
+
+      <div class="billing-metric">
+
+        <span>
+          Billing cycle
+        </span>
+
+        <strong>
+          Monthly
+        </strong>
+
+        <small>
+          Example account
+        </small>
+
+      </div>
+
+
+      <div class="billing-metric">
+
+        <span>
+          Next billing
+        </span>
+
+        <strong>
+          — 
+        </strong>
+
+        <small>
+          Connect billing provider
+        </small>
+
+      </div>
+
+
+      <div class="billing-metric">
+
+        <span>
+          Workspace
+        </span>
+
+        <strong>
+          Active
+        </strong>
+
+        <small>
+          Example status
+        </small>
+
+      </div>
+
+
+      <div class="billing-metric">
+
+        <span>
+          Payment
+        </span>
+
+        <strong>
+          Secure
+        </strong>
+
+        <small>
+          Provider integration ready
+        </small>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+
+  <!-- =================================================
+       BILLING FEATURES
+       ================================================= -->
+
+  <div class="billing-features">
+
+
+    <article class="billing-feature">
+
+      <span class="billing-feature-number">
+        01
+      </span>
+
+      <h3>
+        Subscription management
+      </h3>
+
+      <p>
+        Keep workspace plan information organized
+        and make it easier to manage subscription
+        status from one location.
+      </p>
+
+    </article>
+
+
+    <article class="billing-feature">
+
+      <span class="billing-feature-number">
+        02
+      </span>
+
+      <h3>
+        Payment information
+      </h3>
+
+      <p>
+        Provide a structured place for payment and
+        account billing information when a secure
+        payment provider is connected.
+      </p>
+
+    </article>
+
+
+    <article class="billing-feature">
+
+      <span class="billing-feature-number">
+        03
+      </span>
+
+      <h3>
+        Invoice history
+      </h3>
+
+      <p>
+        Give workspace administrators a clear view
+        of billing records and invoice history as
+        the billing system is integrated.
+      </p>
+
+    </article>
+
+
+  </div>
+
+
+</section>
+  <style>
+
+/* =====================================================
+   INVOICES
+   ===================================================== */
+
+.billing-invoices{
+  margin-top:18px;
+
+  padding:25px;
+
+  border:1px solid var(--line);
+  border-radius:18px;
+
+  background:var(--surface);
+}
+
+.billing-invoices-head{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:20px;
+
+  margin-bottom:20px;
+}
+
+.billing-invoices-head h2{
+  margin:0 0 8px;
+
+  color:var(--text);
+
+  font-size:22px;
+  letter-spacing:-.035em;
+}
+
+.billing-invoices-head p{
+  max-width:620px;
+
+  margin:0;
+
+  color:var(--text-muted);
+
+  font-size:10px;
+  line-height:1.8;
+}
+
+
+/* =====================================================
+   INVOICE LIST
+   ===================================================== */
+
+.invoice-list{
+  display:grid;
+  gap:9px;
+}
+
+.invoice-row{
+  display:grid;
+  grid-template-columns:1.2fr 1fr auto auto;
+  align-items:center;
+  gap:18px;
+
+  padding:16px;
+
+  border:1px solid var(--line);
+  border-radius:12px;
+
+  background:#080a0d;
+}
+
+.invoice-main strong{
+  display:block;
+
+  color:var(--text);
+
+  font-size:10px;
+}
+
+.invoice-main span{
+  display:block;
+
+  margin-top:4px;
+
+  color:var(--text-muted);
+
+  font-size:8px;
+}
+
+.invoice-date{
+  color:var(--text-muted);
+  font-size:9px;
+}
+
+.invoice-amount{
+  color:var(--text);
+  font-size:10px;
+  font-weight:800;
+}
+
+.invoice-status{
+  padding:6px 9px;
+
+  border:1px solid var(--accent-border);
+  border-radius:6px;
+
+  color:var(--accent);
+  background:var(--accent-soft);
+
+  font-size:8px;
+  font-weight:800;
+  text-transform:uppercase;
+}
+
+
+/* =====================================================
+   BILLING ACTIONS
+   ===================================================== */
+
+.billing-actions-panel{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+
+  margin-top:18px;
+}
+
+.billing-action-card{
+  padding:23px;
+
+  border:1px solid var(--line);
+  border-radius:16px;
+
+  background:var(--surface);
+}
+
+.billing-action-card h3{
+  margin:0 0 8px;
+
+  color:var(--text);
+
+  font-size:15px;
+}
+
+.billing-action-card p{
+  margin:0;
+
+  color:var(--text-muted);
+
+  font-size:10px;
+  line-height:1.75;
+}
+
+.billing-action-card .btn{
+  margin-top:18px;
+}
+
+
+/* =====================================================
+   NOTICE
+   ===================================================== */
+
+.billing-notice{
+  margin-top:14px;
+
+  padding:15px 17px;
+
+  border:1px solid var(--line);
+  border-radius:10px;
+
+  color:var(--text-muted);
+
+  background:#080a0d;
+
+  font-size:9px;
+  line-height:1.7;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+
+@media(max-width:800px){
+
+  .invoice-row{
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+  }
+
+  .invoice-status{
+    justify-self:start;
+  }
+
+}
+
+@media(max-width:600px){
+
+  .billing-invoices-head{
+    align-items:flex-start;
+    flex-direction:column;
+  }
+
+  .invoice-row{
+    grid-template-columns:1fr;
+  }
+
+  .invoice-status{
+    justify-self:start;
+  }
+
+  .billing-actions-panel{
+    grid-template-columns:1fr;
+  }
+
+}
+
+</style>
+
+
+<!-- =====================================================
+     INVOICE HISTORY
+     ===================================================== -->
+
+<section class="billing-invoices">
+
+
+  <div class="billing-invoices-head">
+
+    <div>
+
+      <span class="about-label">
+        Billing history
+      </span>
+
+      <h2>
+        Invoice history
+      </h2>
+
+      <p>
+        Keep billing records organized and easy to
+        review. The entries below are demonstration
+        data for the frontend interface.
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <div class="invoice-list">
+
+
+    <div class="invoice-row">
+
+      <div class="invoice-main">
+
+        <strong>
+          INV-2026-003
+        </strong>
+
+        <span>
+          Workspace subscription
+        </span>
+
+      </div>
+
+      <div class="invoice-date">
+        July 2026
+      </div>
+
+      <div class="invoice-amount">
+        —
+      </div>
+
+      <span class="invoice-status">
+        Example
+      </span>
+
+    </div>
+
+
+    <div class="invoice-row">
+
+      <div class="invoice-main">
+
+        <strong>
+          INV-2026-002
+        </strong>
+
+        <span>
+          Workspace subscription
+        </span>
+
+      </div>
+
+      <div class="invoice-date">
+        June 2026
+      </div>
+
+      <div class="invoice-amount">
+        —
+      </div>
+
+      <span class="invoice-status">
+        Example
+      </span>
+
+    </div>
+
+
+    <div class="invoice-row">
+
+      <div class="invoice-main">
+
+        <strong>
+          INV-2026-001
+        </strong>
+
+        <span>
+          Workspace subscription
+        </span>
+
+      </div>
+
+      <div class="invoice-date">
+        May 2026
+      </div>
+
+      <div class="invoice-amount">
+        —
+      </div>
+
+      <span class="invoice-status">
+        Example
+      </span>
+
+    </div>
+
+
+  </div>
+
+
+  <div class="billing-notice">
+
+    Billing and payment processing are not active in
+    this frontend demonstration. When BRIQONA OS is
+    connected to a secure payment provider, real
+    invoices and payment information can be displayed
+    here.
+
+  </div>
+
+
+  <!-- =================================================
+       BILLING ACTIONS
+       ================================================= -->
+
+  <div class="billing-actions-panel">
+
+
+    <article class="billing-action-card">
+
+      <h3>
+        Change your plan
+      </h3>
+
+      <p>
+        Review available plans and choose the workspace
+        setup that fits your organization's needs.
+      </p>
+
+      <a
+        class="btn btn-secondary"
+        href="pricing.html"
+      >
+        View Pricing →
+      </a>
+
+    </article>
+
+
+    <article class="billing-action-card">
+
+      <h3>
+        Need billing help?
+      </h3>
+
+      <p>
+        Contact the BRIQONA OS team for questions
+        about subscriptions, billing or account setup.
+      </p>
+
+      <a
+        class="btn btn-primary"
+        href="contact.html"
+      >
+        Contact Support →
+      </a>
+
+    </article>
+
+
+  </div>
+
+
+</section>
+  
+  <style>
+
+/* =====================================================
+   FOOTER
+   ===================================================== */
+
+.billing-footer{
+  border-top:1px solid var(--line);
+  background:#07080b;
+}
+
+.billing-footer-inner{
+  width:min(calc(100% - 32px),1200px);
+  margin:auto;
+  padding:55px 0 25px;
+}
+
+.billing-footer-top{
+  display:grid;
+  grid-template-columns:1.5fr 1fr 1fr 1fr;
+  gap:35px;
+}
+
+.billing-footer-brand{
+  max-width:300px;
+}
+
+.billing-footer-brand .brand{
+  display:inline-flex;
+  margin-bottom:16px;
+}
+
+.billing-footer-brand p{
+  margin:0;
+  color:var(--text-muted);
+  font-size:10px;
+  line-height:1.8;
+}
+
+.billing-footer-column h3{
+  margin:0 0 15px;
+  color:var(--text);
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
+
+.billing-footer-column a{
+  display:block;
+  margin:0 0 10px;
+  color:var(--text-muted);
+  font-size:10px;
+  text-decoration:none;
+}
+
+.billing-footer-column a:hover{
+  color:var(--text);
+}
+
+.billing-footer-bottom{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+
+  margin-top:45px;
+  padding-top:20px;
+
+  border-top:1px solid var(--line);
+}
+
+.billing-footer-bottom p{
+  margin:0;
+  color:#555b66;
+  font-size:9px;
+  line-height:1.6;
+}
+
+.billing-footer-credit{
+  text-align:right;
+}
+
+.billing-footer-credit strong{
+  color:var(--text-soft);
+}
+
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+
+@media(max-width:800px){
+
+  .billing-footer-top{
+    grid-template-columns:1fr 1fr;
+    gap:30px;
+  }
+
+}
+
+@media(max-width:600px){
+
+  .billing-footer-inner{
+    padding:45px 0 22px;
+  }
+
+  .billing-footer-top{
+    grid-template-columns:1fr;
+    gap:25px;
+  }
+
+  .billing-footer-brand{
+    max-width:100%;
+  }
+
+  .billing-footer-bottom{
+    align-items:flex-start;
+    flex-direction:column;
+    margin-top:35px;
+  }
+
+  .billing-footer-credit{
+    text-align:left;
+  }
+
+}
+
+</style>
+
+
+</main>
+
+
+<!-- =====================================================
+     FOOTER
+     ===================================================== -->
+
+<footer class="billing-footer">
+
+  <div class="billing-footer-inner">
+
+    <div class="billing-footer-top">
+
+
+      <!-- BRAND -->
+
+      <div class="billing-footer-brand">
+
+        <a
+          class="brand"
+          href="../index.html"
+          aria-label="BRIQONA OS Home"
+        >
+
+          <span class="brand-mark">B</span>
+
+          <span class="brand-name">
+            BRIQONA<span>OS</span>
+          </span>
+
+        </a>
+
+        <p>
+          A unified operating layer for modern businesses,
+          bringing operations, intelligence and automation
+          together in one workspace.
+        </p>
+
+      </div>
+
+
+      <!-- PLATFORM -->
+
+      <div class="billing-footer-column">
+
+        <h3>Platform</h3>
+
+        <a href="platform.html">
+          Platform
+        </a>
+
+        <a href="ai.html">
+          AI Intelligence
+        </a>
+
+        <a href="analytics.html">
+          Analytics
+        </a>
+
+        <a href="dashboard.html">
+          Dashboard
+        </a>
+
+      </div>
+
+
+      <!-- RESOURCES -->
+
+      <div class="billing-footer-column">
+
+        <h3>Resources</h3>
+
+        <a href="documentation.html">
+          Documentation
+        </a>
+
+        <a href="api.html">
+          API
+        </a>
+
+        <a href="faq.html">
+          FAQ
+        </a>
+
+        <a href="reports.html">
+          Reports
+        </a>
+
+        <a href="contact.html">
+          Contact
+        </a>
+
+      </div>
+
+
+      <!-- LEGAL -->
+
+      <div class="billing-footer-column">
+
+        <h3>Legal</h3>
+
+        <a href="security.html">
+          Security
+        </a>
+
+        <a href="privacy.html">
+          Privacy Policy
+        </a>
+
+        <a href="terms.html">
+          Terms & Conditions
+        </a>
+
+        <a href="cookies.html">
+          Cookies
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <!-- =================================================
+         FOOTER BOTTOM
+         ================================================= -->
+
+    <div class="billing-footer-bottom">
+
+      <p>
+        ©
+        <span data-billing-year></span>
+        BRIQONA OS. All rights reserved.
+      </p>
+
+      <p class="billing-footer-credit">
+        Designed & developed with care by
+        <strong>Yawar Abbas Bhatti</strong>
+      </p>
+
+    </div>
+
+  </div>
+
+</footer>
+
+
+</div>
+
+
+<!-- =====================================================
+     MOBILE MENU JAVASCRIPT
+     ===================================================== -->
+
+<script>
+
+const billingMenuToggle =
+  document.getElementById("billingMenuToggle");
+
+const billingNav =
+  document.getElementById("billingNav");
+
+
+if(billingMenuToggle && billingNav){
+
+  billingMenuToggle.addEventListener(
+    "click",
+    ()=>{
+
+      const isOpen =
+        billingNav.classList.toggle("open");
+
+      billingMenuToggle.setAttribute(
+        "aria-expanded",
+        String(isOpen)
+      );
+
+      billingMenuToggle.setAttribute(
+        "aria-label",
+        isOpen ? "Close menu" : "Open menu"
+      );
+
+    }
+  );
+
+
+  /* Close after navigation */
+
+  billingNav
+    .querySelectorAll("a")
+    .forEach(link=>{
+
+      link.addEventListener(
+        "click",
+        ()=>{
+
+          billingNav.classList.remove("open");
+
+          billingMenuToggle.setAttribute(
+            "aria-expanded",
+            "false"
+          );
+
+          billingMenuToggle.setAttribute(
+            "aria-label",
+            "Open menu"
+          );
+
+        }
+      );
+
+    });
+
+
+  /* Close when clicking outside */
+
+  document.addEventListener(
+    "click",
+    (event)=>{
+
+      if(
+        !billingNav.contains(event.target) &&
+        !billingMenuToggle.contains(event.target)
+      ){
+
+        billingNav.classList.remove("open");
+
+        billingMenuToggle.setAttribute(
+          "aria-expanded",
+          "false"
+        );
+
+        billingMenuToggle.setAttribute(
+          "aria-label",
+          "Open menu"
+        );
+
+      }
+
+    }
+  );
+
+}
+
+
+/* =====================================================
+   ESC KEY
+   ===================================================== */
+
+document.addEventListener(
+  "keydown",
+  (event)=>{
+
+    if(event.key !== "Escape"){
+      return;
+    }
+
+    if(billingNav){
+      billingNav.classList.remove("open");
+    }
+
+    if(billingMenuToggle){
+
+      billingMenuToggle.setAttribute(
+        "aria-expanded",
+        "false"
+      );
+
+      billingMenuToggle.setAttribute(
+        "aria-label",
+        "Open menu"
+      );
+
+    }
+
+  }
+);
+
+
+/* =====================================================
+   CURRENT YEAR
+   ===================================================== */
+
+document
+  .querySelectorAll("[data-billing-year]")
+  .forEach(element=>{
+
+    element.textContent =
+      new Date().getFullYear();
+
+  });
+
+</script>
+
+
+</body>
+</html>
 
