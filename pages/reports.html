@@ -1,1 +1,1833 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1"
+>
+
+<title>Reports | BRIQONA OS</title>
+
+<meta
+  name="description"
+  content="Explore business reporting, operational summaries, performance insights and analytics with BRIQONA OS."
+>
+
+<meta
+  name="robots"
+  content="index, follow"
+>
+
+<link
+  rel="canonical"
+  href="https://yawarabbass.github.io/briqona-os/pages/reports.html"
+>
+
+<link
+  rel="stylesheet"
+  href="../css/style.css"
+>
+
+
+<style>
+
+/* =========================================================
+   REPORTS PAGE
+   ========================================================= */
+
+body{
+  margin:0;
+}
+
+.reports-page{
+  min-height:100vh;
+  background:var(--bg);
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.reports-header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+
+  border-bottom:1px solid var(--line);
+
+  background:rgba(7,8,11,.88);
+
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+}
+
+.reports-header-inner{
+  width:min(calc(100% - 32px),1200px);
+  min-height:72px;
+  margin:auto;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  gap:25px;
+}
+
+.reports-nav{
+  display:flex;
+  align-items:center;
+  gap:25px;
+}
+
+.reports-nav a{
+  color:var(--text-muted);
+  font-size:11px;
+  font-weight:700;
+  text-decoration:none;
+
+  transition:color .2s ease;
+}
+
+.reports-nav a:hover,
+.reports-nav a.active{
+  color:var(--text);
+}
+
+.reports-header-action{
+  display:flex;
+  align-items:center;
+}
+
+.reports-menu-toggle{
+  display:none;
+
+  width:40px;
+  height:40px;
+
+  border:1px solid var(--line);
+  border-radius:10px;
+
+  background:var(--surface);
+  color:var(--text);
+
+  cursor:pointer;
+  font-size:18px;
+}
+
+
+/* =========================================================
+   MAIN
+   ========================================================= */
+
+.reports-main{
+  width:min(calc(100% - 32px),1200px);
+  margin:auto;
+
+  padding:90px 0 110px;
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.reports-hero{
+  max-width:900px;
+}
+
+.reports-hero h1{
+  max-width:850px;
+
+  margin:15px 0 22px;
+
+  font-size:clamp(48px,7vw,82px);
+  line-height:.92;
+
+  letter-spacing:-.065em;
+}
+
+.reports-description{
+  max-width:730px;
+
+  margin:0;
+
+  color:var(--text-muted);
+
+  font-size:14px;
+  line-height:1.8;
+}
+
+.reports-actions{
+  display:flex;
+  align-items:center;
+  gap:10px;
+
+  margin-top:30px;
+}
+
+
+/* =========================================================
+   MOBILE HEADER
+   ========================================================= */
+
+@media(max-width:900px){
+
+  .reports-nav{
+    position:absolute;
+
+    top:72px;
+    left:16px;
+    right:16px;
+
+    display:none;
+    flex-direction:column;
+    align-items:stretch;
+
+    padding:15px;
+
+    border:1px solid var(--line);
+    border-radius:16px;
+
+    background:var(--surface);
+  }
+
+  .reports-nav.open{
+    display:flex;
+  }
+
+  .reports-nav a{
+    padding:12px 10px;
+  }
+
+  .reports-menu-toggle{
+    display:block;
+  }
+
+  .reports-header-action{
+    display:none;
+  }
+
+}
+
+
+@media(max-width:600px){
+
+  .reports-header-inner{
+    min-height:65px;
+  }
+
+  .reports-main{
+    padding:65px 0 80px;
+  }
+
+  .reports-hero h1{
+    font-size:clamp(44px,14vw,62px);
+  }
+
+  .reports-actions{
+    flex-direction:column;
+    align-items:stretch;
+  }
+
+  .reports-actions .btn{
+    width:100%;
+    box-sizing:border-box;
+    text-align:center;
+  }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<div class="reports-page">
+
+
+<!-- =====================================================
+     HEADER
+     ===================================================== -->
+
+<header class="reports-header">
+
+  <div class="reports-header-inner">
+
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="BRIQONA OS Home"
+    >
+
+      <span class="brand-mark">B</span>
+
+      <span class="brand-name">
+        BRIQONA<span>OS</span>
+      </span>
+
+    </a>
+
+
+    <nav
+      class="reports-nav"
+      id="reportsNav"
+      aria-label="Main navigation"
+    >
+
+      <a href="platform.html">
+        Platform
+      </a>
+
+      <a href="ai.html">
+        AI
+      </a>
+
+      <a href="industries.html">
+        Industries
+      </a>
+
+      <a href="features.html">
+        Features
+      </a>
+
+      <a href="pricing.html">
+        Pricing
+      </a>
+
+      <a
+        href="reports.html"
+        class="active"
+        aria-current="page"
+      >
+        Reports
+      </a>
+
+    </nav>
+
+
+    <div class="reports-header-action">
+
+      <a
+        class="btn btn-primary"
+        href="register.html"
+      >
+        Start Free →
+      </a>
+
+    </div>
+
+
+    <button
+      class="reports-menu-toggle"
+      id="reportsMenuToggle"
+      type="button"
+      aria-label="Open menu"
+      aria-expanded="false"
+      aria-controls="reportsNav"
+    >
+      ☰
+    </button>
+
+
+  </div>
+
+</header>
+
+
+<!-- =====================================================
+     MAIN / HERO
+     ===================================================== -->
+
+<main class="reports-main">
+
+<section class="reports-hero">
+
+  <span class="eyebrow">
+
+    <span class="status-dot"></span>
+
+    Business reporting
+
+  </span>
+
+
+  <h1>
+    Turn business data<br>
+    into clear reports.
+  </h1>
+
+
+  <p class="reports-description">
+
+    BRIQONA OS reports are designed to bring
+    operational information, performance signals
+    and business activity into clear, useful views
+    for faster decision-making.
+
+  </p>
+
+
+  <div class="reports-actions">
+
+    <a
+      class="btn btn-primary"
+      href="#reports-overview"
+    >
+      Explore Reports →
+    </a>
+
+    <a
+      class="btn btn-secondary"
+      href="analytics.html"
+    >
+      View Analytics
+    </a>
+
+  </div>
+
+
+</section>
+<style>
+
+.reports-overview{
+  margin-top:70px;
+}
+
+.reports-heading{
+  max-width:700px;
+  margin-bottom:25px;
+}
+
+.reports-heading h2{
+  margin:0 0 9px;
+  color:var(--text);
+  font-size:25px;
+  letter-spacing:-.035em;
+}
+
+.reports-heading p{
+  margin:0;
+  color:var(--text-muted);
+  font-size:10px;
+  line-height:1.8;
+}
+
+.reports-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+}
+
+.report-card{
+  padding:25px;
+  border:1px solid var(--line);
+  border-radius:18px;
+  background:var(--surface);
+  transition:
+    transform .25s ease,
+    border-color .25s ease;
+}
+
+.report-card:hover{
+  transform:translateY(-3px);
+  border-color:var(--accent-border);
+}
+
+.report-number{
+  color:var(--accent);
+  font-size:9px;
+  font-weight:900;
+  letter-spacing:.08em;
+}
+
+.report-card h3{
+  margin:17px 0 8px;
+  color:var(--text);
+  font-size:16px;
+}
+
+.report-card p{
+  margin:0;
+  color:var(--text-muted);
+  font-size:10px;
+  line-height:1.75;
+}
+
+.report-tag{
+  display:inline-block;
+  margin-top:17px;
+  padding:5px 8px;
+  border:1px solid var(--line);
+  border-radius:6px;
+  color:var(--text-muted);
+  font-size:8px;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+}
+
+
+/* =====================================================
+   REPORT PREVIEW
+   ===================================================== */
+
+.report-preview{
+  margin-top:18px;
+  padding:25px;
+  border:1px solid var(--line);
+  border-radius:18px;
+  background:var(--surface);
+}
+
+.report-preview-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+  margin-bottom:20px;
+}
+
+.report-preview-head h2{
+  margin:0;
+  color:var(--text);
+  font-size:18px;
+}
+
+.report-period{
+  padding:7px 10px;
+  border:1px solid var(--line);
+  border-radius:7px;
+  color:var(--text-muted);
+  background:#080a0d;
+  font-size:9px;
+}
+
+.report-metrics{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+}
+
+.report-metric{
+  padding:16px;
+  border:1px solid var(--line);
+  border-radius:11px;
+  background:#080a0d;
+}
+
+.report-metric span{
+  display:block;
+  color:var(--text-muted);
+  font-size:8px;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+}
+
+.report-metric strong{
+  display:block;
+  margin-top:8px;
+  color:var(--text);
+  font-size:20px;
+  letter-spacing:-.04em;
+}
+
+.report-metric small{
+  display:block;
+  margin-top:5px;
+  color:var(--accent);
+  font-size:8px;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+
+@media(max-width:850px){
+
+  .reports-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .report-metrics{
+    grid-template-columns:1fr 1fr;
+  }
+
+}
+
+@media(max-width:600px){
+
+  .reports-grid{
+    grid-template-columns:1fr;
+  }
+
+  .report-metrics{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .report-preview{
+    padding:20px;
+  }
+
+  .report-preview-head{
+    align-items:flex-start;
+    flex-direction:column;
+  }
+
+}
+
+</style>
+
+
+<section
+  class="reports-overview"
+  id="reports-overview"
+>
+
+
+  <div class="reports-heading">
+
+    <span class="about-label">
+      Report library
+    </span>
+
+    <h2>
+      Reports built around business activity.
+    </h2>
+
+    <p>
+      Organize important operational information
+      into focused report views that make trends,
+      activity and performance easier to understand.
+    </p>
+
+  </div>
+
+
+  <div class="reports-grid">
+
+
+    <article class="report-card">
+
+      <span class="report-number">
+        01 / PERFORMANCE
+      </span>
+
+      <h3>
+        Performance Report
+      </h3>
+
+      <p>
+        Review key business performance indicators
+        and understand how activity is changing over
+        a selected period.
+      </p>
+
+      <span class="report-tag">
+        Management
+      </span>
+
+    </article>
+
+
+    <article class="report-card">
+
+      <span class="report-number">
+        02 / SALES
+      </span>
+
+      <h3>
+        Sales Report
+      </h3>
+
+      <p>
+        Bring sales activity into a structured view
+        to help teams understand orders, revenue
+        patterns and performance.
+      </p>
+
+      <span class="report-tag">
+        Revenue
+      </span>
+
+    </article>
+
+
+    <article class="report-card">
+
+      <span class="report-number">
+        03 / CUSTOMERS
+      </span>
+
+      <h3>
+        Customer Report
+      </h3>
+
+      <p>
+        Review customer activity and business
+        relationships through organized operational
+        information.
+      </p>
+
+      <span class="report-tag">
+        Customers
+      </span>
+
+    </article>
+
+
+    <article class="report-card">
+
+      <span class="report-number">
+        04 / OPERATIONS
+      </span>
+
+      <h3>
+        Operations Report
+      </h3>
+
+      <p>
+        Summarize operational activity and surface
+        information that may require attention from
+        your team.
+      </p>
+
+      <span class="report-tag">
+        Operations
+      </span>
+
+    </article>
+
+
+    <article class="report-card">
+
+      <span class="report-number">
+        05 / INVENTORY
+      </span>
+
+      <h3>
+        Inventory Report
+      </h3>
+
+      <p>
+        Organize inventory-related information so
+        teams can monitor product activity and
+        operational availability.
+      </p>
+
+      <span class="report-tag">
+        Inventory
+      </span>
+
+    </article>
+
+
+    <article class="report-card">
+
+      <span class="report-number">
+        06 / AI INSIGHTS
+      </span>
+
+      <h3>
+        Intelligence Report
+      </h3>
+
+      <p>
+        Bring important signals and business insights
+        together in a concise view designed to support
+        better decisions.
+      </p>
+
+      <span class="report-tag">
+        AI
+      </span>
+
+    </article>
+
+
+  </div>
+
+
+  <!-- =================================================
+       REPORT PREVIEW
+       ================================================= -->
+
+  <div class="report-preview">
+
+    <div class="report-preview-head">
+
+      <h2>
+        Business performance preview
+      </h2>
+
+      <span class="report-period">
+        Example · Current period
+      </span>
+
+    </div>
+
+
+    <div class="report-metrics">
+
+      <div class="report-metric">
+
+        <span>
+          Revenue
+        </span>
+
+        <strong>
+          $84.2K
+        </strong>
+
+        <small>
+          Example metric
+        </small>
+
+      </div>
+
+
+      <div class="report-metric">
+
+        <span>
+          Orders
+        </span>
+
+        <strong>
+          1,284
+        </strong>
+
+        <small>
+          Example metric
+        </small>
+
+      </div>
+
+
+      <div class="report-metric">
+
+        <span>
+          Customers
+        </span>
+
+        <strong>
+          642
+        </strong>
+
+        <small>
+          Example metric
+        </small>
+
+      </div>
+
+
+      <div class="report-metric">
+
+        <span>
+          Operations
+        </span>
+
+        <strong>
+          96.4%
+        </strong>
+
+        <small>
+          Example metric
+        </small>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+</section>
+  <style>
+
+/* =====================================================
+   REPORT CONTROLS
+   ===================================================== */
+
+.report-controls{
+  margin-top:18px;
+
+  padding:22px;
+
+  border:1px solid var(--line);
+  border-radius:18px;
+
+  background:var(--surface);
+}
+
+.report-controls-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr auto;
+  gap:10px;
+  align-items:end;
+}
+
+.report-control label{
+  display:block;
+  margin-bottom:7px;
+
+  color:var(--text-muted);
+
+  font-size:9px;
+  font-weight:700;
+}
+
+.report-control input,
+.report-control select{
+  width:100%;
+  height:42px;
+
+  box-sizing:border-box;
+
+  padding:0 11px;
+
+  border:1px solid var(--line);
+  border-radius:8px;
+
+  outline:none;
+
+  background:#080a0d;
+  color:var(--text);
+
+  font-family:inherit;
+  font-size:10px;
+}
+
+.report-control input:focus,
+.report-control select:focus{
+  border-color:var(--accent-border);
+}
+
+.report-control-button{
+  height:42px;
+  white-space:nowrap;
+}
+
+
+/* =====================================================
+   REPORT LIST
+   ===================================================== */
+
+.report-results{
+  margin-top:14px;
+}
+
+.report-result{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+
+  padding:18px;
+
+  border:1px solid var(--line);
+  border-radius:12px;
+
+  background:#080a0d;
+
+  margin-bottom:9px;
+
+  transition:
+    border-color .2s ease,
+    transform .2s ease;
+}
+
+.report-result:hover{
+  border-color:var(--accent-border);
+  transform:translateY(-2px);
+}
+
+.report-result-main{
+  min-width:0;
+}
+
+.report-result-main strong{
+  display:block;
+
+  margin-bottom:5px;
+
+  color:var(--text);
+
+  font-size:11px;
+}
+
+.report-result-main span{
+  color:var(--text-muted);
+
+  font-size:9px;
+}
+
+.report-result-meta{
+  flex-shrink:0;
+
+  padding:6px 9px;
+
+  border:1px solid var(--line);
+  border-radius:6px;
+
+  color:var(--text-muted);
+
+  font-size:8px;
+  text-transform:uppercase;
+  letter-spacing:.05em;
+}
+
+.report-empty{
+  display:none;
+
+  padding:18px;
+
+  border:1px solid var(--line);
+  border-radius:12px;
+
+  color:var(--text-muted);
+
+  background:#080a0d;
+
+  font-size:10px;
+  line-height:1.7;
+}
+
+.report-empty.show{
+  display:block;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+
+@media(max-width:700px){
+
+  .report-controls-grid{
+    grid-template-columns:1fr;
+  }
+
+  .report-control-button{
+    width:100%;
+  }
+
+}
+
+@media(max-width:500px){
+
+  .report-result{
+    align-items:flex-start;
+    flex-direction:column;
+    gap:12px;
+  }
+
+}
+
+</style>
+
+
+<!-- =====================================================
+     REPORT FILTERS
+     ===================================================== -->
+
+<section class="report-controls">
+
+  <div class="reports-heading">
+
+    <span class="about-label">
+      Report explorer
+    </span>
+
+    <h2>
+      Find the report you need.
+    </h2>
+
+    <p>
+      Use the controls below to filter the example
+      report library by category or search term.
+    </p>
+
+  </div>
+
+
+  <div class="report-controls-grid">
+
+
+    <div class="report-control">
+
+      <label for="reportSearch">
+        Search
+      </label>
+
+      <input
+        id="reportSearch"
+        type="search"
+        placeholder="Search reports..."
+        autocomplete="off"
+      >
+
+    </div>
+
+
+    <div class="report-control">
+
+      <label for="reportCategory">
+        Category
+      </label>
+
+      <select id="reportCategory">
+
+        <option value="all">
+          All reports
+        </option>
+
+        <option value="performance">
+          Performance
+        </option>
+
+        <option value="sales">
+          Sales
+        </option>
+
+        <option value="customers">
+          Customers
+        </option>
+
+        <option value="operations">
+          Operations
+        </option>
+
+        <option value="inventory">
+          Inventory
+        </option>
+
+        <option value="ai">
+          AI Insights
+        </option>
+
+      </select>
+
+    </div>
+
+
+    <button
+      class="btn btn-primary report-control-button"
+      id="reportFilterButton"
+      type="button"
+    >
+      Filter Reports →
+    </button>
+
+
+  </div>
+
+
+  <!-- =================================================
+       RESULTS
+       ================================================= -->
+
+  <div
+    class="report-results"
+    id="reportResults"
+  >
+
+
+    <div
+      class="report-result"
+      data-report-category="performance"
+    >
+
+      <div class="report-result-main">
+
+        <strong>
+          Performance Report
+        </strong>
+
+        <span>
+          Business performance and key operational indicators.
+        </span>
+
+      </div>
+
+      <span class="report-result-meta">
+        Performance
+      </span>
+
+    </div>
+
+
+    <div
+      class="report-result"
+      data-report-category="sales"
+    >
+
+      <div class="report-result-main">
+
+        <strong>
+          Sales Report
+        </strong>
+
+        <span>
+          Sales activity, orders and revenue-related information.
+        </span>
+
+      </div>
+
+      <span class="report-result-meta">
+        Sales
+      </span>
+
+    </div>
+
+
+    <div
+      class="report-result"
+      data-report-category="customers"
+    >
+
+      <div class="report-result-main">
+
+        <strong>
+          Customer Report
+        </strong>
+
+        <span>
+          Customer activity and relationship information.
+        </span>
+
+      </div>
+
+      <span class="report-result-meta">
+        Customers
+      </span>
+
+    </div>
+
+
+    <div
+      class="report-result"
+      data-report-category="operations"
+    >
+
+      <div class="report-result-main">
+
+        <strong>
+          Operations Report
+        </strong>
+
+        <span>
+          Operational activity and areas requiring attention.
+        </span>
+
+      </div>
+
+      <span class="report-result-meta">
+        Operations
+      </span>
+
+    </div>
+
+
+    <div
+      class="report-result"
+      data-report-category="inventory"
+    >
+
+      <div class="report-result-main">
+
+        <strong>
+          Inventory Report
+        </strong>
+
+        <span>
+          Product activity and inventory-related information.
+        </span>
+
+      </div>
+
+      <span class="report-result-meta">
+        Inventory
+      </span>
+
+    </div>
+
+
+    <div
+      class="report-result"
+      data-report-category="ai"
+    >
+
+      <div class="report-result-main">
+
+        <strong>
+          Intelligence Report
+        </strong>
+
+        <span>
+          Important signals and AI-supported business insights.
+        </span>
+
+      </div>
+
+      <span class="report-result-meta">
+        AI
+      </span>
+
+    </div>
+
+
+    <div
+      class="report-empty"
+      id="reportEmpty"
+    >
+      No reports match your search. Try another keyword
+      or choose a different category.
+    </div>
+
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     REPORT FILTER JAVASCRIPT
+     ===================================================== -->
+
+<script>
+
+const reportSearch =
+  document.getElementById("reportSearch");
+
+const reportCategory =
+  document.getElementById("reportCategory");
+
+const reportFilterButton =
+  document.getElementById("reportFilterButton");
+
+const reportItems =
+  document.querySelectorAll(".report-result");
+
+const reportEmpty =
+  document.getElementById("reportEmpty");
+
+
+function filterReports(){
+
+  const searchTerm =
+    reportSearch.value
+      .trim()
+      .toLowerCase();
+
+  const category =
+    reportCategory.value;
+
+  let visibleCount = 0;
+
+
+  reportItems.forEach(item=>{
+
+    const itemCategory =
+      item.dataset.reportCategory || "";
+
+    const itemText =
+      item.textContent.toLowerCase();
+
+
+    const categoryMatch =
+      category === "all" ||
+      itemCategory === category;
+
+
+    const searchMatch =
+      !searchTerm ||
+      itemText.includes(searchTerm);
+
+
+    const visible =
+      categoryMatch &&
+      searchMatch;
+
+
+    item.style.display =
+      visible ? "flex" : "none";
+
+
+    if(visible){
+      visibleCount++;
+    }
+
+  });
+
+
+  reportEmpty.classList.toggle(
+    "show",
+    visibleCount === 0
+  );
+
+}
+
+
+/* Button */
+
+reportFilterButton.addEventListener(
+  "click",
+  filterReports
+);
+
+
+/* Live search */
+
+reportSearch.addEventListener(
+  "input",
+  filterReports
+);
+
+
+/* Category change */
+
+reportCategory.addEventListener(
+  "change",
+  filterReports
+);
+
+
+/* Initial state */
+
+filterReports();
+
+  </script>
+  
+  <style>
+
+/* =====================================================
+   FOOTER
+   ===================================================== */
+
+.reports-footer{
+  border-top:1px solid var(--line);
+  background:#07080b;
+}
+
+.reports-footer-inner{
+  width:min(calc(100% - 32px),1200px);
+  margin:auto;
+  padding:55px 0 25px;
+}
+
+.reports-footer-top{
+  display:grid;
+  grid-template-columns:1.5fr 1fr 1fr 1fr;
+  gap:35px;
+}
+
+.reports-footer-brand{
+  max-width:300px;
+}
+
+.reports-footer-brand .brand{
+  display:inline-flex;
+  margin-bottom:16px;
+}
+
+.reports-footer-brand p{
+  margin:0;
+  color:var(--text-muted);
+  font-size:10px;
+  line-height:1.8;
+}
+
+.reports-footer-column h3{
+  margin:0 0 15px;
+  color:var(--text);
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
+
+.reports-footer-column a{
+  display:block;
+  margin:0 0 10px;
+  color:var(--text-muted);
+  font-size:10px;
+  text-decoration:none;
+}
+
+.reports-footer-column a:hover{
+  color:var(--text);
+}
+
+.reports-footer-bottom{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+
+  margin-top:45px;
+  padding-top:20px;
+
+  border-top:1px solid var(--line);
+}
+
+.reports-footer-bottom p{
+  margin:0;
+  color:#555b66;
+  font-size:9px;
+  line-height:1.6;
+}
+
+.reports-footer-credit{
+  text-align:right;
+}
+
+.reports-footer-credit strong{
+  color:var(--text-soft);
+}
+
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+
+@media(max-width:800px){
+
+  .reports-footer-top{
+    grid-template-columns:1fr 1fr;
+    gap:30px;
+  }
+
+}
+
+@media(max-width:600px){
+
+  .reports-footer-inner{
+    padding:45px 0 22px;
+  }
+
+  .reports-footer-top{
+    grid-template-columns:1fr;
+    gap:25px;
+  }
+
+  .reports-footer-brand{
+    max-width:100%;
+  }
+
+  .reports-footer-bottom{
+    align-items:flex-start;
+    flex-direction:column;
+    margin-top:35px;
+  }
+
+  .reports-footer-credit{
+    text-align:left;
+  }
+
+}
+
+</style>
+
+
+</main>
+
+
+<!-- =====================================================
+     FOOTER
+     ===================================================== -->
+
+<footer class="reports-footer">
+
+  <div class="reports-footer-inner">
+
+    <div class="reports-footer-top">
+
+
+      <!-- BRAND -->
+
+      <div class="reports-footer-brand">
+
+        <a
+          class="brand"
+          href="../index.html"
+          aria-label="BRIQONA OS Home"
+        >
+
+          <span class="brand-mark">B</span>
+
+          <span class="brand-name">
+            BRIQONA<span>OS</span>
+          </span>
+
+        </a>
+
+        <p>
+          A unified operating layer for modern businesses,
+          bringing operations, intelligence and automation
+          together in one workspace.
+        </p>
+
+      </div>
+
+
+      <!-- PLATFORM -->
+
+      <div class="reports-footer-column">
+
+        <h3>Platform</h3>
+
+        <a href="platform.html">
+          Platform
+        </a>
+
+        <a href="ai.html">
+          AI Intelligence
+        </a>
+
+        <a href="analytics.html">
+          Analytics
+        </a>
+
+        <a href="dashboard.html">
+          Dashboard
+        </a>
+
+      </div>
+
+
+      <!-- RESOURCES -->
+
+      <div class="reports-footer-column">
+
+        <h3>Resources</h3>
+
+        <a href="documentation.html">
+          Documentation
+        </a>
+
+        <a href="api.html">
+          API
+        </a>
+
+        <a href="faq.html">
+          FAQ
+        </a>
+
+        <a href="reports.html">
+          Reports
+        </a>
+
+        <a href="contact.html">
+          Contact
+        </a>
+
+      </div>
+
+
+      <!-- LEGAL -->
+
+      <div class="reports-footer-column">
+
+        <h3>Legal</h3>
+
+        <a href="security.html">
+          Security
+        </a>
+
+        <a href="privacy.html">
+          Privacy Policy
+        </a>
+
+        <a href="terms.html">
+          Terms & Conditions
+        </a>
+
+        <a href="cookies.html">
+          Cookies
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <!-- =================================================
+         FOOTER BOTTOM
+         ================================================= -->
+
+    <div class="reports-footer-bottom">
+
+      <p>
+        ©
+        <span data-reports-year></span>
+        BRIQONA OS. All rights reserved.
+      </p>
+
+      <p class="reports-footer-credit">
+        Designed & developed with care by
+        <strong>Yawar Abbas Bhatti</strong>
+      </p>
+
+    </div>
+
+  </div>
+
+</footer>
+
+
+</div>
+
+
+<!-- =====================================================
+     MOBILE MENU JAVASCRIPT
+     ===================================================== -->
+
+<script>
+
+const reportsMenuToggle =
+  document.getElementById("reportsMenuToggle");
+
+const reportsNav =
+  document.getElementById("reportsNav");
+
+
+if(reportsMenuToggle && reportsNav){
+
+  reportsMenuToggle.addEventListener(
+    "click",
+    ()=>{
+
+      const isOpen =
+        reportsNav.classList.toggle("open");
+
+      reportsMenuToggle.setAttribute(
+        "aria-expanded",
+        String(isOpen)
+      );
+
+      reportsMenuToggle.setAttribute(
+        "aria-label",
+        isOpen ? "Close menu" : "Open menu"
+      );
+
+    }
+  );
+
+
+  /* Close after navigation */
+
+  reportsNav
+    .querySelectorAll("a")
+    .forEach(link=>{
+
+      link.addEventListener(
+        "click",
+        ()=>{
+
+          reportsNav.classList.remove("open");
+
+          reportsMenuToggle.setAttribute(
+            "aria-expanded",
+            "false"
+          );
+
+          reportsMenuToggle.setAttribute(
+            "aria-label",
+            "Open menu"
+          );
+
+        }
+      );
+
+    });
+
+
+  /* Close outside */
+
+  document.addEventListener(
+    "click",
+    (event)=>{
+
+      if(
+        !reportsNav.contains(event.target) &&
+        !reportsMenuToggle.contains(event.target)
+      ){
+
+        reportsNav.classList.remove("open");
+
+        reportsMenuToggle.setAttribute(
+          "aria-expanded",
+          "false"
+        );
+
+        reportsMenuToggle.setAttribute(
+          "aria-label",
+          "Open menu"
+        );
+
+      }
+
+    }
+  );
+
+}
+
+
+/* =====================================================
+   ESC KEY
+   ===================================================== */
+
+document.addEventListener(
+  "keydown",
+  (event)=>{
+
+    if(event.key !== "Escape"){
+      return;
+    }
+
+    if(reportsNav){
+      reportsNav.classList.remove("open");
+    }
+
+    if(reportsMenuToggle){
+
+      reportsMenuToggle.setAttribute(
+        "aria-expanded",
+        "false"
+      );
+
+      reportsMenuToggle.setAttribute(
+        "aria-label",
+        "Open menu"
+      );
+
+    }
+
+  }
+);
+
+
+/* =====================================================
+   CURRENT YEAR
+   ===================================================== */
+
+document
+  .querySelectorAll("[data-reports-year]")
+  .forEach(element=>{
+
+    element.textContent =
+      new Date().getFullYear();
+
+  });
+
+</script>
+
+
+</body>
+</html>
