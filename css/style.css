@@ -2441,3 +2441,36 @@ small {
     font-weight: 700;
   }
 }
+/* GET STARTED BUTTON — VISIBILITY FIX */
+.site-header .primary-button,
+.site-header .get-started,
+.site-header a[href*="get-started"] {
+  background: #0b0d10 !important;
+  color: #ffffff !important;
+  border-color: #0b0d10 !important;
+}
+
+.site-header .primary-button:hover,
+.site-header .get-started:hover {
+  background: #20242a !important;
+  color: #ffffff !important;
+}
+
+/* MOBILE MENU BUTTON */
+.mobile-menu-button {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer !important;
+  pointer-events: auto !important;
+  position: relative;
+  z-index: 10001;
+}
+
+/* OPEN MENU */
+.mobile-nav.is-open {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
