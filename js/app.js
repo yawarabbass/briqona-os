@@ -95,102 +95,52 @@ document.addEventListener("DOMContentLoaded", () => {
     ".mobile-menu-button"
   );
 
-  const mainNav = document.querySelector(
-    ".main-nav"
-  );
+  const mobileNav = document.querySelector(
+  ".mobile-nav"
+);
 
-  const navActions = document.querySelector(
-    ".nav-actions"
-  );
-
-  if (menuButton && mainNav && navActions) {
-
+if (menuButton && mobileNav) {
     menuButton.setAttribute(
       "aria-expanded",
       "false"
     );
 
     menuButton.addEventListener("click", (event) => {
-      event.preventDefault();
-      event.stopPropagation();
+  event.preventDefault();
+  event.stopPropagation();
 
-      const isOpen =
-        menuButton.classList.contains("is-open");
+  const isOpen =
+    menuButton.classList.contains("is-open");
 
-      menuButton.classList.toggle(
-        "is-open",
-        !isOpen
-      );
+  menuButton.classList.toggle(
+    "is-open",
+    !isOpen
+  );
 
-      mainNav.classList.toggle(
-        "is-open",
-        !isOpen
-      );
+  mobileNav.classList.toggle(
+    "is-open",
+    !isOpen
+  );
 
-      navActions.classList.toggle(
-        "is-open",
-        !isOpen
-      );
+  menuButton.setAttribute(
+    "aria-expanded",
+    String(!isOpen)
+  );
 
-      menuButton.setAttribute(
-        "aria-expanded",
-        String(!isOpen)
-      );
-
-      menuButton.setAttribute(
-        "aria-label",
-        isOpen
-          ? "Open menu"
-          : "Close menu"
-      );
-    });
+  menuButton.setAttribute(
+    "aria-label",
+    isOpen
+      ? "Open menu"
+      : "Close menu"
+  );
+});
 
 
     // Close menu when a navigation link is clicked
-    const menuLinks = mainNav.querySelectorAll("a");
-
-    menuLinks.forEach((link) => {
-      link.addEventListener("click", () => {
-        menuButton.classList.remove("is-open");
-        mainNav.classList.remove("is-open");
-        navActions.classList.remove("is-open");
-
-        menuButton.setAttribute(
-          "aria-expanded",
-          "false"
-        );
-
-        menuButton.setAttribute(
-          "aria-label",
-          "Open menu"
-        );
-      });
-    });
+    
 
 
     // Close menu when Login/Get Started is clicked
-    const actionLinks =
-      navActions.querySelectorAll("a");
-
-    actionLinks.forEach((link) => {
-      link.addEventListener("click", () => {
-        menuButton.classList.remove("is-open");
-        mainNav.classList.remove("is-open");
-        navActions.classList.remove("is-open");
-
-        menuButton.setAttribute(
-          "aria-expanded",
-          "false"
-        );
-
-        menuButton.setAttribute(
-          "aria-label",
-          "Open menu"
-        );
-      });
-    });
-  }
-
 
   // =========================================
   // 6. DASHBOARD NAVIGATION
