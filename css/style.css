@@ -2195,3 +2195,54 @@ button {
   }
 
   }
+/* =========================================
+   MOBILE MENU FIX
+========================================= */
+
+@media (max-width: 850px) {
+  .mobile-nav.is-open {
+    display: flex;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 100;
+
+    flex-direction: column;
+    gap: 0;
+
+    padding: 12px 18px 18px;
+
+    background: #ffffff;
+    border-bottom: 1px solid #e4e7ea;
+
+    box-shadow: 0 15px 30px rgba(15, 20, 24, 0.08);
+  }
+
+  .mobile-nav.is-open a {
+    display: block;
+    padding: 13px 5px;
+
+    color: #252b30;
+    border-bottom: 1px solid #eef0f1;
+
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  .mobile-nav.is-open a:last-child {
+    border-bottom: 0;
+  }
+
+  .site-header {
+    position: relative;
+  }
+
+  .mobile-menu-button.is-open {
+    background: #11151a;
+  }
+
+  .mobile-menu-button.is-open span {
+    background: #ffffff;
+  }
+}
