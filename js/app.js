@@ -1,416 +1,271 @@
-/* =========================================================
-   BRIQONA OS — MASTER APP.JS
-   ========================================================= */
+// =========================================
+// BRIQONA — MASTER JAVASCRIPT
+// PART 1
+// =========================================
 
-"use strict";
+document.addEventListener("DOMContentLoaded", () => {
+  /*
+   * Smooth scrolling
+   */
+  const links = document.querySelectorAll(
+    'a[href^="#"]'
+  );
 
+  links.forEach((link) => {
+    link.addEventListener("click", (event) => {
+      const targetId = link.getAttribute("href");
 
-/* =========================================================
-   DOM HELPERS
-   ========================================================= */
+      if (
+        !targetId ||
+        targetId === "#" ||
+        targetId.length < 2
+      ) {
+        return;
+      }
 
-const $ = (selector, parent = document) => parent.querySelector(selector);
-const $$ = (selector, parent = document) => [
-  ...parent.querySelectorAll(selector)
-];
+      const target = document.querySelector(targetId);
 
+      if (!target) {
+        return;
+      }
 
-/* =========================================================
-   HEADER SCROLL STATE
-   ========================================================= */
+      event.preventDefault();
 
-const header = $(".site-header");
-
-const updateHeader = () => {
-  if (!header) return;
-
-  header.classList.toggle("scrolled", window.scrollY > 20);
-};
-
-window.addEventListener("scroll", updateHeader, {
-  passive: true
-});
-
-updateHeader();
-
-
-/* =========================================================
-   MOBILE MENU
-   ========================================================= */
-
-const menuToggle = $(".menu-toggle");
-const navMenu = $(".nav-menu");
-
-if (menuToggle && navMenu) {
-  menuToggle.setAttribute("aria-expanded", "false");
-
-  menuToggle.addEventListener("click", () => {
-    const isOpen = navMenu.classList.toggle("open");
-
-    menuToggle.setAttribute(
-      "aria-expanded",
-      String(isOpen)
-    );
-  });
-
-  $$(".nav-menu a").forEach((link) => {
-    link.addEventListener("click", () => {
-      navMenu.classList.remove("open");
-      menuToggle.setAttribute("aria-expanded", "false");
-    });
-  });
-
-  document.addEventListener("click", (event) => {
-    if (
-      !navMenu.contains(event.target) &&
-      !menuToggle.contains(event.target)
-    ) {
-      navMenu.classList.remove("open");
-      menuToggle.setAttribute("aria-expanded", "false");
-    }
-  });
-}
-
-
-/* =========================================================
-   SMOOTH ANCHOR NAVIGATION
-   ========================================================= */
-
-$$('a[href^="#"]').forEach((link) => {
-  link.addEventListener("click", (event) => {
-    const targetId = link.getAttribute("href");
-
-    if (!targetId || targetId === "#") return;
-
-    const target = document.querySelector(targetId);
-
-    if (!target) return;
-
-    event.preventDefault();
-
-    target.scrollIntoView({
-      behavior: "smooth",
-      block: "start"
-    });
-
-    history.replaceState(null, "", targetId);
-  });
-});
-
-
-/* =========================================================
-   ACTIVE NAVIGATION
-   ========================================================= */
-
-const sections = $$("section[id]");
-const navLinks = $$('.nav-menu a[href^="#"]');
-
-if (sections.length && navLinks.length) {
-  const sectionObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-
-        navLinks.forEach((link) => {
-          link.classList.remove("active");
-        });
-
-        const activeLink = $(
-          `.nav-menu a[href="#${entry.target.id}"]`
-        );
-
-        if (activeLink) {
-          activeLink.classList.add("active");
-        }
+      target.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
       });
-    },
-    {
-      rootMargin: "-35% 0px -55% 0px",
-      threshold: 0
+    });
+  });
+
+
+  /*
+   * Current year
+   */
+  const yearElements = document.querySelectorAll(
+    "[data-current-year]"
+  );
+
+  yearElements.forEach((element) => {
+    element.textContent = new Date().getFullYear();
+  });
+
+
+  /*
+   * Header shadow on scroll
+   */
+  const header = document.querySelector(
+    ".site-header"
+  );
+
+  if (header) {
+    const updateHeader = () => {
+      if (window.scrollY > 10) {
+        header.classList.add("header-scrolled");
+      } else {
+        header.classList.remove("header-scrolled");
+      }
+    };
+
+    window.addEventListener(
+      "scroll",
+      updateHeader,
+      { passive: true }
+    );
+
+    updateHeader();
+  }
+
+
+  /*
+   * Prevent empty placeholder links
+   */
+  const emptyLinks = document.querySelectorAll(
+    'a[href="#"]'
+  );
+
+  emptyLinks.forEach((link) => {
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+    });
+  });
+
+
+  /*
+   * Simple page-ready state
+   */
+  document.documentElement.classList.add(
+    "briqona-ready"
+  );
+});
+// =========================================
+// BRIQONA — MOBILE MENU
+// PART 2
+// =========================================
+
+const mobileMenuButton = document.querySelector(
+  ".mobile-menu-button"
+);
+
+const mobileNav = document.querySelector(
+  ".mobile-nav"
+);
+
+if (mobileMenuButton && mobileNav) {
+  mobileMenuButton.addEventListener(
+    "click",
+    () => {
+      const isOpen =
+        mobileNav.classList.toggle("is-open");
+
+      mobileMenuButton.setAttribute(
+        "aria-expanded",
+        String(isOpen)
+      );
+
+      mobileMenuButton.classList.toggle(
+        "is-open",
+        isOpen
+      );
     }
   );
 
-  sections.forEach((section) => {
-    sectionObserver.observe(section);
-  });
-}
 
+  // Mobile menu link click
+  const mobileLinks =
+    mobileNav.querySelectorAll("a");
 
-/* =========================================================
-   REVEAL ANIMATION
-   ========================================================= */
+  mobileLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      mobileNav.classList.remove("is-open");
 
-const revealElements = $$(
-  ".section-heading, .feature-card, .industry-card, .capability, .security-card, .price-card, .faq-list, .ai-console, .custom-business"
-);
+      mobileMenuButton.classList.remove(
+        "is-open"
+      );
 
-revealElements.forEach((element) => {
-  element.style.opacity = "0";
-  element.style.transform = "translateY(20px)";
-  element.style.transition =
-    "opacity 600ms ease, transform 600ms ease";
-});
-
-const revealObserver = new IntersectionObserver(
-  (entries, observer) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-
-      entry.target.style.opacity = "1";
-      entry.target.style.transform = "translateY(0)";
-
-      observer.unobserve(entry.target);
-    });
-  },
-  {
-    threshold: 0.08
-  }
-);
-
-revealElements.forEach((element) => {
-  revealObserver.observe(element);
-});
-
-
-/* =========================================================
-   FAQ — ONLY ONE OPEN AT A TIME
-   ========================================================= */
-
-const faqDetails = $$(".faq-list details");
-
-faqDetails.forEach((item) => {
-  item.addEventListener("toggle", () => {
-    if (!item.open) return;
-
-    faqDetails.forEach((otherItem) => {
-      if (otherItem !== item) {
-        otherItem.removeAttribute("open");
-      }
+      mobileMenuButton.setAttribute(
+        "aria-expanded",
+        "false"
+      );
     });
   });
-});
-
-
-/* =========================================================
-   EARLY ACCESS FORM
-   ========================================================= */
-
-const accessForm = $(".early-access-form");
-
-if (accessForm) {
-  accessForm.addEventListener("submit", (event) => {
-    event.preventDefault();
-
-    const input = $("input[type='email']", accessForm);
-
-    if (!input) return;
-
-    const email = input.value.trim();
-
-    if (!email) {
-      input.focus();
-      return;
     }
+// =========================================
+// BRIQONA — DASHBOARD INTERACTIONS
+// PART 3
+// =========================================
 
-    if (!input.checkValidity()) {
-      input.reportValidity();
-      return;
-    }
+document.addEventListener("DOMContentLoaded", () => {
+  // Mock dashboard navigation
+  const mockNavItems = document.querySelectorAll(
+    ".mock-nav"
+  );
 
-    const button = $("button[type='submit']", accessForm);
+  mockNavItems.forEach((item) => {
+    item.addEventListener("click", () => {
+      mockNavItems.forEach((nav) => {
+        nav.classList.remove("active");
+      });
 
-    if (!button) return;
-
-    const originalText = button.textContent;
-
-    button.disabled = true;
-    button.textContent = "Request received";
-
-    input.value = "";
-
-    setTimeout(() => {
-      button.disabled = false;
-      button.textContent = originalText;
-    }, 3500);
+      item.classList.add("active");
+    });
   });
-}
 
 
-/* =========================================================
-   AI CONSOLE DEMO
-   ========================================================= */
+  // Dashboard action buttons
+  const dashboardButtons =
+    document.querySelectorAll(
+      ".mock-new-button"
+    );
 
-const consoleInput = $(".console-input");
+  dashboardButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      button.textContent = "Created";
+      
+      setTimeout(() => {
+        button.textContent = "New";
+      }, 1400);
+    });
+  });
 
-if (consoleInput) {
-  const consoleButton = $("button", consoleInput);
 
-  if (consoleButton) {
-    consoleButton.addEventListener("click", () => {
-      const original = consoleButton.textContent;
+  // Pricing buttons
+  const planButtons =
+    document.querySelectorAll(
+      ".plan-button"
+    );
 
-      consoleButton.textContent = "✓";
+  planButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const originalText =
+        button.textContent;
+
+      button.textContent = "Selected ✓";
 
       setTimeout(() => {
-        consoleButton.textContent = original;
-      }, 1500);
+        button.textContent =
+          originalText;
+      }, 1400);
     });
-  }
-}
-
-
-/* =========================================================
-   DASHBOARD PULSE LINE
-   ========================================================= */
-
-const pulseLine = $(".pulse-line span");
-
-if (pulseLine) {
-  let progress = 78;
-  let direction = 1;
-
-  setInterval(() => {
-    progress += direction * 0.15;
-
-    if (progress >= 84) {
-      direction = -1;
-    }
-
-    if (progress <= 75) {
-      direction = 1;
-    }
-
-    pulseLine.style.width = `${progress}%`;
-  }, 120);
-}
-
-
-/* =========================================================
-   YEAR
-   ========================================================= */
-
-const yearElements = $$("[data-year]");
-
-yearElements.forEach((element) => {
-  element.textContent = new Date().getFullYear();
-});
-
-
-/* =========================================================
-   COPY / COMMAND INTERACTION
-   ========================================================= */
-
-const commandCards = $$(".command-card");
-
-commandCards.forEach((card) => {
-  card.addEventListener("click", async () => {
-    const text = $(".command-content p", card);
-
-    if (!text) return;
-
-    const value = text.textContent.trim();
-
-    try {
-      await navigator.clipboard.writeText(value);
-
-      card.dataset.copied = "true";
-
-      setTimeout(() => {
-        delete card.dataset.copied;
-      }, 1200);
-    } catch {
-      // Clipboard may be unavailable in some browsers.
-    }
   });
 });
+// =========================================
+// BRIQONA — CONTACT ACTIONS
+// PART 4
+// =========================================
 
+document.addEventListener("DOMContentLoaded", () => {
+  // WhatsApp
+  const whatsappButtons =
+    document.querySelectorAll(
+      '[data-whatsapp], .whatsapp-button'
+    );
 
-/* =========================================================
-   BUTTON FEEDBACK
-   ========================================================= */
+  whatsappButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const number = "923348101110";
+      const message =
+        "Hello Briqona, I would like to know more about your platform.";
 
-$$(".btn").forEach((button) => {
-  button.addEventListener("pointerdown", () => {
-    button.style.transform = "translateY(0)";
+      const url =
+        "https://wa.me/" +
+        number +
+        "?text=" +
+        encodeURIComponent(message);
+
+      window.open(
+        url,
+        "_blank",
+        "noopener,noreferrer"
+      );
+    });
   });
 
-  button.addEventListener("pointerup", () => {
-    button.style.transform = "";
+
+  // Support phone
+  const supportButtons =
+    document.querySelectorAll(
+      '[data-support-phone]'
+    );
+
+  supportButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      window.location.href =
+        "tel:+923355551218";
+    });
   });
 
-  button.addEventListener("pointerleave", () => {
-    button.style.transform = "";
+
+  // WhatsApp phone
+  const whatsappPhoneButtons =
+    document.querySelectorAll(
+      '[data-whatsapp-phone]'
+    );
+
+  whatsappPhoneButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      window.location.href =
+        "tel:+923348101110";
+    });
   });
 });
-
-
-/* =========================================================
-   ESCAPE KEY — CLOSE MOBILE MENU
-   ========================================================= */
-
-document.addEventListener("keydown", (event) => {
-  if (event.key !== "Escape") return;
-
-  if (navMenu) {
-    navMenu.classList.remove("open");
-  }
-
-  if (menuToggle) {
-    menuToggle.setAttribute("aria-expanded", "false");
-  }
-});
-
-
-/* =========================================================
-   IMAGE LAZY LOADING
-   ========================================================= */
-
-$$("img").forEach((image) => {
-  if (!image.hasAttribute("loading")) {
-    image.setAttribute("loading", "lazy");
-  }
-
-  if (!image.hasAttribute("decoding")) {
-    image.setAttribute("decoding", "async");
-  }
-});
-
-
-/* =========================================================
-   EXTERNAL LINKS
-   ========================================================= */
-
-$$('a[href^="http"]').forEach((link) => {
-  try {
-    const url = new URL(link.href);
-
-    if (url.hostname !== window.location.hostname) {
-      link.setAttribute("target", "_blank");
-      link.setAttribute("rel", "noopener noreferrer");
-    }
-  } catch {
-    // Ignore invalid URLs.
-  }
-});
-
-
-/* =========================================================
-   PAGE READY
-   ========================================================= */
-
-document.documentElement.classList.add("js-enabled");
-
-window.addEventListener("load", () => {
-  document.body.classList.add("page-loaded");
-});
-
-
-/* =========================================================
-   BRIQONA OS READY
-   ========================================================= */
-
-console.log(
-  "%cBRIQONA OS%c — Interface initialized.",
-  "color:#d8ff45;font-weight:800;",
-  "color:#a8afbd;"
-);
