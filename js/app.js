@@ -269,3 +269,28 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+// =========================================
+// MOBILE MENU + STICKY HEADER FIX
+// =========================================
+
+document.addEventListener("DOMContentLoaded", function () {
+  const menuButton = document.querySelector(".mobile-menu-button");
+  const mobileNav = document.querySelector(".mobile-nav");
+
+  if (menuButton && mobileNav) {
+    menuButton.addEventListener("click", function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+
+      menuButton.classList.toggle("is-open");
+      mobileNav.classList.toggle("is-open");
+    });
+
+    mobileNav.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        menuButton.classList.remove("is-open");
+        mobileNav.classList.remove("is-open");
+      });
+    });
+  }
+});
