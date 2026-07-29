@@ -295,28 +295,35 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 /* =========================================
-   MOBILE MENU FINAL FIX
+   BRIQONA MOBILE MENU — FINAL
 ========================================= */
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
   const menuButton = document.querySelector(".mobile-menu-button");
-  const mobileNav = document.querySelector(".mobile-nav");
+  const mainNav = document.querySelector(".main-nav");
+  const navActions = document.querySelector(".nav-actions");
 
-  if (!menuButton || !mobileNav) return;
+  if (!menuButton || !mainNav || !navActions) return;
 
-  menuButton.onclick = function (e) {
-    e.preventDefault();
-    e.stopPropagation();
+  menuButton.addEventListener("click", () => {
+    const isOpen = menuButton.classList.toggle("is-open");
 
-    const opened = mobileNav.classList.toggle("is-open");
-    menuButton.classList.toggle("is-open", opened);
-  };
+    mainNav.classList.toggle("is-open", isOpen);
+    navActions.classList.toggle("is-open", isOpen);
 
-  mobileNav.querySelectorAll("a").forEach(function (link) {
-    link.onclick = function () {
-      mobileNav.classList.remove("is-open");
+    menuButton.setAttribute(
+      "aria-label",
+      isOpen ? "Close menu" : "Open menu"
+    );
+  });
+
+  mainNav.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
       menuButton.classList.remove("is-open");
-    };
+      mainNav.classList.remove("is-open");
+      navActions.classList.remove("is-open");
+      menuButton.setAttribute("aria-label", "Open menu");
+    });
   });
 });
 
