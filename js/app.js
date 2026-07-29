@@ -1,25 +1,21 @@
 // =========================================
 // BRIQONA — MASTER JAVASCRIPT
-// PART 1
+// FINAL CLEAN VERSION
 // =========================================
 
 document.addEventListener("DOMContentLoaded", () => {
-  /*
-   * Smooth scrolling
-   */
-  const links = document.querySelectorAll(
-    'a[href^="#"]'
-  );
+
+  // =========================================
+  // 1. SMOOTH SCROLLING
+  // =========================================
+
+  const links = document.querySelectorAll('a[href^="#"]');
 
   links.forEach((link) => {
     link.addEventListener("click", (event) => {
       const targetId = link.getAttribute("href");
 
-      if (
-        !targetId ||
-        targetId === "#" ||
-        targetId.length < 2
-      ) {
+      if (!targetId || targetId === "#" || targetId.length < 2) {
         return;
       }
 
@@ -39,9 +35,10 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 
-  /*
-   * Current year
-   */
+  // =========================================
+  // 2. CURRENT YEAR
+  // =========================================
+
   const yearElements = document.querySelectorAll(
     "[data-current-year]"
   );
@@ -51,20 +48,18 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 
-  /*
-   * Header shadow on scroll
-   */
-  const header = document.querySelector(
-    ".site-header"
-  );
+  // =========================================
+  // 3. STICKY HEADER SHADOW
+  // =========================================
+
+  const header = document.querySelector(".site-header");
 
   if (header) {
     const updateHeader = () => {
-      if (window.scrollY > 10) {
-        header.classList.add("header-scrolled");
-      } else {
-        header.classList.remove("header-scrolled");
-      }
+      header.classList.toggle(
+        "header-scrolled",
+        window.scrollY > 10
+      );
     };
 
     window.addEventListener(
@@ -77,9 +72,10 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  /*
-   * Prevent empty placeholder links
-   */
+  // =========================================
+  // 4. EMPTY LINKS
+  // =========================================
+
   const emptyLinks = document.querySelectorAll(
     'a[href="#"]'
   );
@@ -91,78 +87,121 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 
-  /*
-   * Simple page-ready state
-   */
-  document.documentElement.classList.add(
-    "briqona-ready"
+  // =========================================
+  // 5. MOBILE MENU
+  // =========================================
+
+  const menuButton = document.querySelector(
+    ".mobile-menu-button"
   );
-});
-// =========================================
-// BRIQONA — MOBILE MENU
-// PART 2
-// =========================================
 
-const mobileMenuButton = document.querySelector(
-  ".mobile-menu-button"
-);
+  const mainNav = document.querySelector(
+    ".main-nav"
+  );
 
-const mobileNav = document.querySelector(
-  ".mobile-nav"
-);
+  const navActions = document.querySelector(
+    ".nav-actions"
+  );
 
-if (mobileMenuButton && mobileNav) {
-  mobileMenuButton.addEventListener(
-    "click",
-    () => {
+  if (menuButton && mainNav && navActions) {
+
+    menuButton.setAttribute(
+      "aria-expanded",
+      "false"
+    );
+
+    menuButton.addEventListener("click", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+
       const isOpen =
-        mobileNav.classList.toggle("is-open");
+        menuButton.classList.contains("is-open");
 
-      mobileMenuButton.setAttribute(
-        "aria-expanded",
-        String(isOpen)
-      );
-
-      mobileMenuButton.classList.toggle(
+      menuButton.classList.toggle(
         "is-open",
-        isOpen
-      );
-    }
-  );
-
-
-  // Mobile menu link click
-  const mobileLinks =
-    mobileNav.querySelectorAll("a");
-
-  mobileLinks.forEach((link) => {
-    link.addEventListener("click", () => {
-      mobileNav.classList.remove("is-open");
-
-      mobileMenuButton.classList.remove(
-        "is-open"
+        !isOpen
       );
 
-      mobileMenuButton.setAttribute(
+      mainNav.classList.toggle(
+        "is-open",
+        !isOpen
+      );
+
+      navActions.classList.toggle(
+        "is-open",
+        !isOpen
+      );
+
+      menuButton.setAttribute(
         "aria-expanded",
-        "false"
+        String(!isOpen)
+      );
+
+      menuButton.setAttribute(
+        "aria-label",
+        isOpen
+          ? "Open menu"
+          : "Close menu"
       );
     });
-  });
-    }
-// =========================================
-// BRIQONA — DASHBOARD INTERACTIONS
-// PART 3
-// =========================================
 
-document.addEventListener("DOMContentLoaded", () => {
-  // Mock dashboard navigation
-  const mockNavItems = document.querySelectorAll(
-    ".mock-nav"
-  );
+
+    // Close menu when a navigation link is clicked
+    const menuLinks = mainNav.querySelectorAll("a");
+
+    menuLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        menuButton.classList.remove("is-open");
+        mainNav.classList.remove("is-open");
+        navActions.classList.remove("is-open");
+
+        menuButton.setAttribute(
+          "aria-expanded",
+          "false"
+        );
+
+        menuButton.setAttribute(
+          "aria-label",
+          "Open menu"
+        );
+      });
+    });
+
+
+    // Close menu when Login/Get Started is clicked
+    const actionLinks =
+      navActions.querySelectorAll("a");
+
+    actionLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        menuButton.classList.remove("is-open");
+        mainNav.classList.remove("is-open");
+        navActions.classList.remove("is-open");
+
+        menuButton.setAttribute(
+          "aria-expanded",
+          "false"
+        );
+
+        menuButton.setAttribute(
+          "aria-label",
+          "Open menu"
+        );
+      });
+    });
+  }
+
+
+  // =========================================
+  // 6. DASHBOARD NAVIGATION
+  // =========================================
+
+  const mockNavItems =
+    document.querySelectorAll(".mock-nav");
 
   mockNavItems.forEach((item) => {
     item.addEventListener("click", () => {
+
       mockNavItems.forEach((nav) => {
         nav.classList.remove("active");
       });
@@ -172,7 +211,10 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 
-  // Dashboard action buttons
+  // =========================================
+  // 7. DASHBOARD NEW BUTTON
+  // =========================================
+
   const dashboardButtons =
     document.querySelectorAll(
       ".mock-new-button"
@@ -180,42 +222,44 @@ document.addEventListener("DOMContentLoaded", () => {
 
   dashboardButtons.forEach((button) => {
     button.addEventListener("click", () => {
+
+      const originalText = button.textContent;
+
       button.textContent = "Created";
-      
+
       setTimeout(() => {
-        button.textContent = "New";
+        button.textContent = originalText;
       }, 1400);
     });
   });
 
 
-  // Pricing buttons
+  // =========================================
+  // 8. PRICING BUTTONS
+  // =========================================
+
   const planButtons =
-    document.querySelectorAll(
-      ".plan-button"
-    );
+    document.querySelectorAll(".plan-button");
 
   planButtons.forEach((button) => {
     button.addEventListener("click", () => {
+
       const originalText =
         button.textContent;
 
       button.textContent = "Selected ✓";
 
       setTimeout(() => {
-        button.textContent =
-          originalText;
+        button.textContent = originalText;
       }, 1400);
     });
   });
-});
-// =========================================
-// BRIQONA — CONTACT ACTIONS
-// PART 4
-// =========================================
 
-document.addEventListener("DOMContentLoaded", () => {
-  // WhatsApp
+
+  // =========================================
+  // 9. WHATSAPP
+  // =========================================
+
   const whatsappButtons =
     document.querySelectorAll(
       '[data-whatsapp], .whatsapp-button'
@@ -223,7 +267,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   whatsappButtons.forEach((button) => {
     button.addEventListener("click", () => {
+
       const number = "923348101110";
+
       const message =
         "Hello Briqona, I would like to know more about your platform.";
 
@@ -242,7 +288,10 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 
-  // Support phone
+  // =========================================
+  // 10. SUPPORT PHONE
+  // =========================================
+
   const supportButtons =
     document.querySelectorAll(
       '[data-support-phone]'
@@ -256,7 +305,10 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 
-  // WhatsApp phone
+  // =========================================
+  // 11. WHATSAPP PHONE
+  // =========================================
+
   const whatsappPhoneButtons =
     document.querySelectorAll(
       '[data-whatsapp-phone]'
@@ -268,99 +320,14 @@ document.addEventListener("DOMContentLoaded", () => {
         "tel:+923348101110";
     });
   });
-});
-// =========================================
-// MOBILE MENU + STICKY HEADER FIX
-// =========================================
 
-document.addEventListener("DOMContentLoaded", function () {
-  const menuButton = document.querySelector(".mobile-menu-button");
-  const mobileNav = document.querySelector(".mobile-nav");
 
-  if (menuButton && mobileNav) {
-    menuButton.addEventListener("click", function (event) {
-      event.preventDefault();
-      event.stopPropagation();
+  // =========================================
+  // 12. PAGE READY
+  // =========================================
 
-      menuButton.classList.toggle("is-open");
-      mobileNav.classList.toggle("is-open");
-    });
+  document.documentElement.classList.add(
+    "briqona-ready"
+  );
 
-    mobileNav.querySelectorAll("a").forEach(function (link) {
-      link.addEventListener("click", function () {
-        menuButton.classList.remove("is-open");
-        mobileNav.classList.remove("is-open");
-      });
-    });
-  }
-});
-/* =========================================
-   BRIQONA MOBILE MENU — FINAL
-========================================= */
-
-document.addEventListener("DOMContentLoaded", () => {
-  const menuButton = document.querySelector(".mobile-menu-button");
-  const mainNav = document.querySelector(".main-nav");
-  const navActions = document.querySelector(".nav-actions");
-
-  if (!menuButton || !mainNav || !navActions) return;
-
-  menuButton.addEventListener("click", () => {
-    const isOpen = menuButton.classList.toggle("is-open");
-
-    mainNav.classList.toggle("is-open", isOpen);
-    navActions.classList.toggle("is-open", isOpen);
-
-    menuButton.setAttribute(
-      "aria-label",
-      isOpen ? "Close menu" : "Open menu"
-    );
-  });
-
-  mainNav.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => {
-      menuButton.classList.remove("is-open");
-      mainNav.classList.remove("is-open");
-      navActions.classList.remove("is-open");
-      menuButton.setAttribute("aria-label", "Open menu");
-    });
-  });
-});
-
-/* =========================================
-   BRIQONA HEADER — ACTUAL IDs FIX
-========================================= */
-
-document.addEventListener("DOMContentLoaded", function () {
-  const menuToggle = document.getElementById("menuToggle");
-  const navMenu = document.getElementById("navMenu");
-
-  if (!menuToggle || !navMenu) {
-    return;
-  }
-
-  menuToggle.addEventListener("click", function (event) {
-    event.preventDefault();
-    event.stopPropagation();
-
-    const isOpen =
-      menuToggle.getAttribute("aria-expanded") === "true";
-
-    menuToggle.setAttribute(
-      "aria-expanded",
-      String(!isOpen)
-    );
-
-    menuToggle.setAttribute(
-      "aria-label",
-      isOpen
-        ? "Open navigation"
-        : "Close navigation"
-    );
-
-    navMenu.classList.toggle(
-      "active",
-      !isOpen
-    );
-  });
 });
