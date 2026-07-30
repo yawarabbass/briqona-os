@@ -1,78 +1,110 @@
 /* =========================================================
-   BRIQONA OS
-   GLOBAL COMPONENT LOADER + MOBILE MENU
+   BRIQONA OS — GLOBAL APP
+   Header + Footer + Mobile Navigation
    ========================================================= */
 
 document.addEventListener("DOMContentLoaded", async () => {
 
-  const isPagesDirectory =
+  /* -------------------------------------------------------
+     Detect current location
+     Root:
+       /index.html
+
+     Pages:
+       /pages/platform.html
+       /pages/about.html
+       etc.
+  ------------------------------------------------------- */
+
+  const isInsidePages =
     window.location.pathname.includes("/pages/");
 
+
+  /* -------------------------------------------------------
+     Components are inside:
+       /src/components/
+  ------------------------------------------------------- */
+
   const componentPath =
-    isPagesDirectory
-      ? "../components/"
-      : "./components/";
+    isInsidePages
+      ? "../src/components/"
+      : "./src/components/";
 
 
-  /* =======================================================
-     LOAD COMPONENT
-  ======================================================= */
+  /* -------------------------------------------------------
+     Fix component links depending on page location
+  ------------------------------------------------------- */
 
-  async function loadComponent(name) {
+  const prepareComponent = (html) => {
 
-    const placeholder =
-      document.querySelector(
-        `[data-component="${name}"]`
-      );
-
-    if (!placeholder) {
-      return null;
+    if (isInsidePages) {
+      return html;
     }
+
+    return html
+      .replaceAll('href="../index.html"', 'href="./index.html"')
+      .replaceAll('href="../pages/', 'href="./pages/');
+
+  };
+
+
+  /* -------------------------------------------------------
+     Load component
+  ------------------------------------------------------- */
+
+  const loadComponent = async (fileName) => {
 
     try {
 
       const response = await fetch(
-        `${componentPath}${name}.html`,
-        {
-          cache: "no-cache"
-        }
+        componentPath + fileName
       );
 
       if (!response.ok) {
+
         throw new Error(
-          `${name}.html returned ${response.status}`
-        );
-      }
-
-      let html = await response.text();
-
-
-      /*
-       * Root index.html uses ./ paths.
-       * Pages inside /pages/ use ../ paths.
-       */
-      if (!isPagesDirectory) {
-
-        html = html.replaceAll(
-          'href="../',
-          'href="./'
+          `Could not load ${componentPath + fileName}`
         );
 
       }
 
+      const html = await response.text();
 
-      placeholder.outerHTML = html;
-
-      return html;
+      return prepareComponent(html);
 
     } catch (error) {
 
       console.error(
-        `BRIQONA component error: ${name}`,
+        "Briqona component error:",
         error
       );
 
-      return null;
+      return "";
+
+    }
+
+  };
+
+
+  /* =======================================================
+     HEADER
+  ======================================================= */
+
+  const headerPlaceholder =
+    document.querySelector(
+      "[data-component='header']"
+    );
+
+
+  if (headerPlaceholder) {
+
+    const headerHTML =
+      await loadComponent("header.html");
+
+    if (headerHTML) {
+
+      headerPlaceholder.outerHTML =
+        headerHTML;
 
     }
 
@@ -80,22 +112,62 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 
   /* =======================================================
-     LOAD ALL COMPONENTS
-     ======================================================= */
+     MOBILE NAV
+  ======================================================= */
 
-  await loadComponent("header");
+  const mobilePlaceholder =
+    document.querySelector(
+      "[data-component='mobile-nav']"
+    );
 
-  await loadComponent("mobile-nav");
 
-  await loadComponent("footer");
+  if (mobilePlaceholder) {
+
+    const mobileHTML =
+      await loadComponent("mobile-nav.html");
+
+    if (mobileHTML) {
+
+      mobilePlaceholder.outerHTML =
+        mobileHTML;
+
+    }
+
+  }
+
+
+  /* =======================================================
+     FOOTER
+  ======================================================= */
+
+  const footerPlaceholder =
+    document.querySelector(
+      "[data-component='footer']"
+    );
+
+
+  if (footerPlaceholder) {
+
+    const footerHTML =
+      await loadComponent("footer.html");
+
+    if (footerHTML) {
+
+      footerPlaceholder.outerHTML =
+        footerHTML;
+
+    }
+
+  }
 
 
   /* =======================================================
      MOBILE MENU
-     ======================================================= */
+  ======================================================= */
 
   const hamburger =
     document.getElementById("hamburger");
+
 
   const mobileNav =
     document.getElementById("mobileNav");
@@ -103,8 +175,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   if (!hamburger || !mobileNav) {
 
-    console.warn(
-      "BRIQONA: Mobile navigation elements not found."
+    console.log(
+      "Briqona: Mobile navigation elements not found."
     );
 
     return;
@@ -112,54 +184,71 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
 
-  function closeMenu() {
+  /* -------------------------------------------------------
+     Close menu
+  ------------------------------------------------------- */
+
+  const closeMenu = () => {
 
     document.body.classList.remove(
       "menu-open"
     );
+
 
     hamburger.setAttribute(
       "aria-expanded",
       "false"
     );
 
+
     hamburger.setAttribute(
       "aria-label",
       "Open menu"
     );
 
-  }
+  };
 
 
-  function openMenu() {
+  /* -------------------------------------------------------
+     Open menu
+  ------------------------------------------------------- */
+
+  const openMenu = () => {
 
     document.body.classList.add(
       "menu-open"
     );
+
 
     hamburger.setAttribute(
       "aria-expanded",
       "true"
     );
 
+
     hamburger.setAttribute(
       "aria-label",
       "Close menu"
     );
 
-  }
+  };
 
+
+  /* -------------------------------------------------------
+     Hamburger click
+  ------------------------------------------------------- */
 
   hamburger.addEventListener(
     "click",
     () => {
 
-      const menuIsOpen =
+      const isOpen =
         document.body.classList.contains(
           "menu-open"
         );
 
-      if (menuIsOpen) {
+
+      if (isOpen) {
 
         closeMenu();
 
@@ -173,9 +262,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   );
 
 
-  /* =======================================================
-     CLOSE WHEN LINK IS CLICKED
-     ======================================================= */
+  /* -------------------------------------------------------
+     Close after clicking mobile link
+  ------------------------------------------------------- */
 
   mobileNav
     .querySelectorAll("a")
@@ -189,9 +278,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
 
 
-  /* =======================================================
-     ESCAPE KEY
-     ======================================================= */
+  /* -------------------------------------------------------
+     ESC closes menu
+  ------------------------------------------------------- */
 
   document.addEventListener(
     "keydown",
@@ -207,9 +296,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   );
 
 
-  /* =======================================================
-     CLOSE WHEN GOING BACK TO DESKTOP
-     ======================================================= */
+  /* -------------------------------------------------------
+     Close when returning to desktop
+  ------------------------------------------------------- */
 
   window.addEventListener(
     "resize",
