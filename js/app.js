@@ -91,58 +91,54 @@ document.addEventListener("DOMContentLoaded", () => {
   // 5. MOBILE MENU
   // =========================================
 
-  const menuButton = document.querySelector(
-    ".mobile-menu-button"
-  );
+  const menuButton = document.querySelector(".mobile-menu-button");
+  const mobileNav = document.querySelector(".mobile-nav");
 
-  const mobileNav = document.querySelector(
-  ".mobile-nav"
-);
-
-if (menuButton && mobileNav) {
-    menuButton.setAttribute(
-      "aria-expanded",
-      "false"
-    );
+  if (menuButton && mobileNav) {
+    menuButton.setAttribute("aria-expanded", "false");
 
     menuButton.addEventListener("click", (event) => {
-  event.preventDefault();
-  event.stopPropagation();
+      event.preventDefault();
+      event.stopPropagation();
 
-  const isOpen =
-    menuButton.classList.contains("is-open");
+      const isOpen = menuButton.classList.contains("is-open");
+      const shouldOpen = !isOpen;
 
-  menuButton.classList.toggle(
-    "is-open",
-    !isOpen
-  );
+      menuButton.classList.toggle("is-open", shouldOpen);
+      mobileNav.classList.toggle("is-open", shouldOpen);
 
-  mobileNav.classList.toggle(
-    "is-open",
-    !isOpen
-  );
+      menuButton.setAttribute("aria-expanded", String(shouldOpen));
+      menuButton.setAttribute(
+        "aria-label",
+        shouldOpen ? "Close menu" : "Open menu"
+      );
+    });
 
-  menuButton.setAttribute(
-    "aria-expanded",
-    String(!isOpen)
-  );
+    // Close menu when a mobile navigation link is clicked
+    mobileNav.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        menuButton.classList.remove("is-open");
+        mobileNav.classList.remove("is-open");
+        menuButton.setAttribute("aria-expanded", "false");
+        menuButton.setAttribute("aria-label", "Open menu");
+      });
+    });
 
-  menuButton.setAttribute(
-    "aria-label",
-    isOpen
-      ? "Open menu"
-      : "Close menu"
-  );
-});
+    // Close menu when clicking outside the header/menu
+    document.addEventListener("click", (event) => {
+      if (
+        !mobileNav.contains(event.target) &&
+        !menuButton.contains(event.target)
+      ) {
+        menuButton.classList.remove("is-open");
+        mobileNav.classList.remove("is-open");
+        menuButton.setAttribute("aria-expanded", "false");
+        menuButton.setAttribute("aria-label", "Open menu");
+      }
+    });
+  }
 
 
-    // Close menu when a navigation link is clicked
-    
-
-
-    // Close menu when Login/Get Started is clicked
-
-  // =========================================
   // 6. DASHBOARD NAVIGATION
   // =========================================
 
