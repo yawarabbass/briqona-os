@@ -1,181 +1,213 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Login | Briqona OS</title>
 
 <link rel="stylesheet" href="../css/style.css">
 
-<style>
-.login-page{
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background:#f7f8fc;
-    padding:40px 20px;
-}
-
-.login-card{
-    width:100%;
-    max-width:450px;
-    background:white;
-    border-radius:28px;
-    padding:45px 35px;
-    box-shadow:0 20px 60px rgba(0,0,0,.08);
-}
-
-.login-logo{
-    text-align:center;
-    font-size:28px;
-    font-weight:800;
-    margin-bottom:10px;
-}
-
-.login-logo span{
-    color:#5b4bdb;
-}
-
-.login-title{
-    text-align:center;
-    font-size:32px;
-    color:#101828;
-    margin-bottom:10px;
-}
-
-.login-text{
-    text-align:center;
-    color:#667085;
-    margin-bottom:35px;
-}
-
-.form-group{
-    margin-bottom:20px;
-}
-
-.form-group label{
-    display:block;
-    margin-bottom:8px;
-    color:#344054;
-    font-weight:600;
-}
-
-.form-group input{
-    width:100%;
-    padding:15px;
-    border:1px solid #ddd;
-    border-radius:14px;
-    font-size:16px;
-}
-
-.login-btn{
-    width:100%;
-    padding:16px;
-    border:none;
-    border-radius:14px;
-    background:#5b4bdb;
-    color:white;
-    font-size:17px;
-    font-weight:700;
-    cursor:pointer;
-}
-
-.login-options{
-    display:flex;
-    justify-content:space-between;
-    margin:18px 0;
-    font-size:14px;
-}
-
-.login-options a{
-    color:#5b4bdb;
-    text-decoration:none;
-}
-
-.signup-text{
-    text-align:center;
-    margin-top:25px;
-    color:#667085;
-}
-
-.signup-text a{
-    color:#5b4bdb;
-    font-weight:700;
-}
-</style>
+<link rel="stylesheet" href="./css/login.css">
 
 </head>
+
 
 <body>
 
 
-<div class="login-page">
+<!-- HEADER -->
+<div data-component="header"></div>
 
-<div class="login-card">
 
-<div class="login-logo">
+
+<main class="login-page">
+
+
+<section class="login-wrapper">
+
+
+<!-- Left Brand Panel -->
+
+<div class="login-brand">
+
+
+<div class="brand-box">
+
+<span class="brand-mark">
+B
+</span>
+
+<strong>
 BRIQONA<span>OS</span>
+</strong>
+
 </div>
 
-<h1 class="login-title">
-Welcome Back
+
+<h1>
+Welcome back to your
+<span>business OS.</span>
 </h1>
 
-<p class="login-text">
-Login to manage your business operating system.
+
+<p>
+Manage your customers, products,
+operations and analytics from one
+intelligent platform.
 </p>
 
 
-<form>
+<div class="login-points">
 
-<div class="form-group">
-<label>Email Address</label>
-<input type="email" placeholder="Enter your email">
+<div>
+✓ Secure business workspace
+</div>
+
+<div>
+✓ Real-time operations
+</div>
+
+<div>
+✓ Built for modern teams
+</div>
+
 </div>
 
 
-<div class="form-group">
-<label>Password</label>
-<input type="password" placeholder="Enter your password">
 </div>
 
 
-<div class="login-options">
+
+
+<!-- Login Card -->
+
+<div class="login-card">
+
+
+<h2>
+Sign in
+</h2>
+
+
+<p class="login-subtitle">
+Enter your account details to continue.
+</p>
+
+
+
+<form id="loginForm">
+
+
+<div class="input-group">
+
+<label>
+Email Address
+</label>
+
+<input 
+type="email"
+placeholder="name@company.com"
+required>
+
+</div>
+
+
+
+<div class="input-group">
+
+<label>
+Password
+</label>
+
+<input 
+type="password"
+placeholder="Enter password"
+required>
+
+</div>
+
+
+
+<div class="login-row">
+
 
 <label>
 <input type="checkbox">
- Remember me
+Remember me
 </label>
 
-<a href="forgot-password.html">
+
+<a href="#">
 Forgot password?
 </a>
+
 
 </div>
 
 
-<button class="login-btn">
+
+<button class="btn btn-primary login-button">
+
 Login
+
 </button>
+
+
+
+<p class="register-link">
+
+Don't have an account?
+
+<a href="register.html">
+Start Free
+</a>
+
+</p>
+
 
 
 </form>
 
 
-<p class="signup-text">
-Don't have an account?
-<a href="register.html">
-Create account
+</div>
+
+
+</section>
+
+
+</main>
+
+
+
+<!-- WHATSAPP / CALL -->
+<a class="floating-whatsapp" href="https://wa.me/923348101110">
+
+<span class="whatsapp-icon">
+●
+</span>
+
+<span class="whatsapp-text">
+WhatsApp
+</span>
+
 </a>
-</p>
 
 
-</div>
+<!-- FOOTER -->
 
-</div>
+<div data-component="footer"></div>
+
+
+
+<script src="../js/app.js"></script>
+
+<script src="./js/login.js"></script>
 
 
 </body>
+
 </html>
