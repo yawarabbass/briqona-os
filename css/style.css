@@ -2025,13 +2025,53 @@ p {
   }
 
 }
-<link
-  rel="stylesheet"
-  href="./css/style.css"
->
+@media (max-width: 520px) {
 
-<link
-  rel="stylesheet"
-  href="./css/pricing-home.css"
->
-<link rel="stylesheet" href="./css/about.css">
+  .footer-payments {
+    display: block;
+    padding: 20px 0;
+  }
+
+  .payment-title {
+    margin-bottom: 12px;
+    font-size: 13px;
+  }
+
+  .payment-methods {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 6px;
+    overflow: hidden;
+  }
+
+  .payment-logo {
+    flex: 0 0 auto;
+    width: 66px;
+    min-width: 66px;
+    height: 29px;
+    padding: 0 6px;
+    font-size: 9px;
+    border-radius: 6px;
+  }
+
+  .visa-logo {
+    font-size: 14px;
+  }
+
+  .mastercard-logo {
+    font-size: 7px;
+  }
+
+  .mastercard-logo b {
+    width: 10px;
+    height: 10px;
+  }
+
+  .easypaisa-logo,
+  .jazzcash-logo {
+    font-size: 8px;
+  }
+
+}
+
