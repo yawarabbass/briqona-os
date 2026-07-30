@@ -206,12 +206,39 @@ transform:translateY(-12px);
 
 @media(max-width:900px){
 
-
 .hero-floating-card {
 
-display:none;
+    display:flex;
+
+    transform:scale(.75);
 
 }
 
 
-  }
+.growth-card {
+
+    top:20px;
+
+    right:-20px;
+
+}
+
+
+.ai-card {
+
+    bottom:90px;
+
+    left:-20px;
+
+}
+
+
+.qr-card {
+
+    bottom:20px;
+
+    right:-10px;
+
+}
+
+}
