@@ -130,3 +130,11 @@ grid-template-columns:1fr;
 
 
 }
+
+.trusted-section {
+    display:block !important;
+    background:#f5f5ff;
+    min-height:200px;
+}
+
+
