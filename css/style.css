@@ -1392,3 +1392,94 @@ p {
   }
 
   }
+/* =========================================================
+   BRIQONA OS — FLOATING WHATSAPP BUTTON
+   ========================================================= */
+
+.floating-whatsapp {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 9999;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 12px 17px;
+
+  border-radius: 999px;
+
+  background: #25D366;
+  color: #ffffff;
+
+  text-decoration: none;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.18);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.floating-whatsapp:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 14px 35px rgba(0, 0, 0, 0.24);
+}
+
+.whatsapp-icon {
+  width: 28px;
+  height: 28px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.18);
+
+  font-size: 18px;
+}
+
+.whatsapp-text {
+  white-space: nowrap;
+}
+
+
+/* Mobile */
+
+@media (max-width: 720px) {
+
+  .floating-whatsapp {
+    right: 15px;
+    bottom: 15px;
+
+    width: 50px;
+    height: 50px;
+
+    padding: 0;
+
+    justify-content: center;
+
+    border-radius: 50%;
+  }
+
+  .whatsapp-text {
+    display: none;
+  }
+
+  .whatsapp-icon {
+    width: 34px;
+    height: 34px;
+
+    font-size: 21px;
+  }
+
+}
