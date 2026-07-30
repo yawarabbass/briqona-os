@@ -348,3 +348,30 @@ document.addEventListener("DOMContentLoaded", async () => {
   document.body.appendChild(whatsappButton);
 
 })();
+/* =========================================================
+   BRIQONA OS — FLOATING CALL SUPPORT
+   ========================================================= */
+
+(function () {
+
+  const callNumber = "923355551218";
+
+  const callButton = document.createElement("a");
+
+  callButton.href = `tel:+${callNumber}`;
+
+  callButton.className = "floating-call";
+
+  callButton.setAttribute(
+    "aria-label",
+    "Call Briqona OS Support"
+  );
+
+  callButton.innerHTML = `
+    <span class="call-icon">☎</span>
+    <span class="call-text">Call Support</span>
+  `;
+
+  document.body.appendChild(callButton);
+
+})();
