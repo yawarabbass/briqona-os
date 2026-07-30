@@ -4,1477 +4,157 @@
 <head>
 
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta
-  name="viewport"
-  content="width=device-width, initial-scale=1"
->
+<title>Briqona OS — Contact</title>
 
-<title>Contact | BRIQONA OS</title>
-
-<meta
-  name="description"
-  content="Contact BRIQONA OS for questions about the platform, partnerships, support, privacy and business inquiries."
->
-
-<meta
-  name="robots"
-  content="index, follow"
->
-
-<link
-  rel="canonical"
-  href="https://yawarabbass.github.io/briqona-os/pages/contact.html"
->
-
-<link
-  rel="stylesheet"
-  href="../css/style.css"
->
-
-
-<style>
-
-/* =========================================================
-   CONTACT PAGE
-   ========================================================= */
-
-body{
-  margin:0;
-}
-
-.contact-page{
-  min-height:100vh;
-  background:var(--bg);
-}
-
-
-/* =========================================================
-   HEADER
-   ========================================================= */
-
-.contact-header{
-  position:sticky;
-  top:0;
-  z-index:1000;
-
-  border-bottom:1px solid var(--line);
-
-  background:rgba(7,8,11,.88);
-
-  backdrop-filter:blur(18px);
-  -webkit-backdrop-filter:blur(18px);
-}
-
-.contact-header-inner{
-  width:min(calc(100% - 32px),1200px);
-  min-height:72px;
-  margin:auto;
-
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-
-  gap:25px;
-}
-
-.contact-nav{
-  display:flex;
-  align-items:center;
-  gap:25px;
-}
-
-.contact-nav a{
-  color:var(--text-muted);
-  font-size:11px;
-  font-weight:700;
-  text-decoration:none;
-
-  transition:color .2s ease;
-}
-
-.contact-nav a:hover,
-.contact-nav a.active{
-  color:var(--text);
-}
-
-.contact-header-action{
-  display:flex;
-  align-items:center;
-}
-
-.contact-menu-toggle{
-  display:none;
-
-  width:40px;
-  height:40px;
-
-  border:1px solid var(--line);
-  border-radius:10px;
-
-  background:var(--surface);
-  color:var(--text);
-
-  cursor:pointer;
-  font-size:18px;
-}
-
-
-/* =========================================================
-   MAIN
-   ========================================================= */
-
-.contact-main{
-  width:min(calc(100% - 32px),1200px);
-  margin:auto;
-
-  padding:90px 0 110px;
-}
-
-
-/* =========================================================
-   HERO
-   ========================================================= */
-
-.contact-hero{
-  max-width:850px;
-}
-
-.contact-hero h1{
-  max-width:800px;
-
-  margin:15px 0 22px;
-
-  font-size:clamp(48px,7vw,82px);
-  line-height:.92;
-
-  letter-spacing:-.065em;
-}
-
-.contact-description{
-  max-width:720px;
-
-  margin:0;
-
-  color:var(--text-muted);
-
-  font-size:14px;
-  line-height:1.8;
-}
-
-.contact-actions{
-  display:flex;
-  align-items:center;
-  gap:10px;
-
-  margin-top:30px;
-}
-
-
-/* =========================================================
-   RESPONSIVE HEADER
-   ========================================================= */
-
-@media(max-width:900px){
-
-  .contact-nav{
-    position:absolute;
-
-    top:72px;
-    left:16px;
-    right:16px;
-
-    display:none;
-    flex-direction:column;
-    align-items:stretch;
-
-    padding:15px;
-
-    border:1px solid var(--line);
-    border-radius:16px;
-
-    background:var(--surface);
-  }
-
-  .contact-nav.open{
-    display:flex;
-  }
-
-  .contact-nav a{
-    padding:12px 10px;
-  }
-
-  .contact-menu-toggle{
-    display:block;
-  }
-
-  .contact-header-action{
-    display:none;
-  }
-
-}
-
-
-@media(max-width:600px){
-
-  .contact-header-inner{
-    min-height:65px;
-  }
-
-  .contact-main{
-    padding:65px 0 80px;
-  }
-
-  .contact-hero h1{
-    font-size:clamp(44px,14vw,62px);
-  }
-
-  .contact-actions{
-    flex-direction:column;
-    align-items:stretch;
-  }
-
-  .contact-actions .btn{
-    width:100%;
-    box-sizing:border-box;
-    text-align:center;
-  }
-
-}
-
-</style>
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/contact.css">
 
 </head>
 
 
 <body>
 
-<div class="contact-page">
+
+<div data-component="header"></div>
 
 
-<!-- =====================================================
-     HEADER
-     ===================================================== -->
 
-<header class="contact-header">
+<main class="contact-page">
 
-  <div class="contact-header-inner">
-
-
-    <a
-      class="brand"
-      href="../index.html"
-      aria-label="BRIQONA OS Home"
-    >
-
-      <span class="brand-mark">B</span>
-
-      <span class="brand-name">
-        BRIQONA<span>OS</span>
-      </span>
-
-    </a>
-
-
-    <nav
-      class="contact-nav"
-      id="contactNav"
-      aria-label="Main navigation"
-    >
-
-      <a href="platform.html">
-        Platform
-      </a>
-
-      <a href="ai.html">
-        AI
-      </a>
-
-      <a href="industries.html">
-        Industries
-      </a>
-
-      <a href="features.html">
-        Features
-      </a>
-
-      <a href="pricing.html">
-        Pricing
-      </a>
-
-      <a
-        href="contact.html"
-        class="active"
-        aria-current="page"
-      >
-        Contact
-      </a>
-
-    </nav>
-
-
-    <div class="contact-header-action">
-
-      <a
-        class="btn btn-primary"
-        href="register.html"
-      >
-        Start Free →
-      </a>
-
-    </div>
-
-
-    <button
-      class="contact-menu-toggle"
-      id="contactMenuToggle"
-      type="button"
-      aria-label="Open menu"
-      aria-expanded="false"
-      aria-controls="contactNav"
-    >
-      ☰
-    </button>
-
-
-  </div>
-
-</header>
-
-
-<!-- =====================================================
-     MAIN / HERO
-     ===================================================== -->
-
-<main class="contact-main">
 
 <section class="contact-hero">
 
-  <span class="eyebrow">
+<span>
+CONTACT BRIQONA
+</span>
 
-    <span class="status-dot"></span>
-
-    Contact BRIQONA OS
-
-  </span>
-
-
-  <h1>
-    Let's talk<br>
-    about your business.
-  </h1>
+<h1>
+Let's build something
+<span>smarter together.</span>
+</h1>
 
 
-  <p class="contact-description">
-
-    Have a question about BRIQONA OS, need help with
-    the platform, or want to discuss a business opportunity?
-    Get in touch with the team.
-
-  </p>
-
-
-  <div class="contact-actions">
-
-    <a
-      class="btn btn-primary"
-      href="#contact-form"
-    >
-      Send a message →
-    </a>
-
-    <a
-      class="btn btn-secondary"
-      href="faq.html"
-    >
-      Visit FAQ
-    </a>
-
-  </div>
+<p>
+Have questions about Briqona OS?
+Our team is ready to help you.
+</p>
 
 
 </section>
-  <!-- =====================================================
-     CONTACT OPTIONS + FORM
-     ===================================================== -->
 
-<style>
 
-.contact-content{
-  display:grid;
-  grid-template-columns:.8fr 1.2fr;
-  gap:15px;
 
-  margin-top:70px;
-}
 
+<section class="contact-grid">
 
-/* =====================================================
-   CONTACT INFO
-   ===================================================== */
 
-.contact-info{
-  display:grid;
-  gap:15px;
-}
 
-.contact-card{
-  padding:25px;
+<div class="contact-info">
 
-  border:1px solid var(--line);
-  border-radius:18px;
 
-  background:var(--surface);
-}
+<div class="contact-card">
 
-.contact-card-icon{
-  width:42px;
-  height:42px;
+<h3>
+📞 Phone
+</h3>
 
-  display:grid;
-  place-items:center;
+<p>
++92 300 0000000
+</p>
 
-  border-radius:11px;
+</div>
 
-  background:var(--accent-soft);
-  color:var(--accent);
 
-  font-size:10px;
-  font-weight:900;
-}
 
-.contact-card h2{
-  margin:18px 0 8px;
+<div class="contact-card">
 
-  color:var(--text);
+<h3>
+💬 WhatsApp
+</h3>
 
-  font-size:16px;
-}
+<p>
+Chat with our support team
+</p>
 
-.contact-card p{
-  margin:0;
+<a href="https://wa.me/923000000000">
+Open WhatsApp
+</a>
 
-  color:var(--text-muted);
+</div>
 
-  font-size:10px;
-  line-height:1.7;
-}
 
-.contact-card a{
-  display:inline-block;
 
-  margin-top:12px;
+<div class="contact-card">
 
-  color:var(--accent);
+<h3>
+✉ Email
+</h3>
 
-  font-size:10px;
-  font-weight:700;
-  text-decoration:none;
-}
+<p>
+support@briqona.com
+</p>
 
-.contact-card a:hover{
-  text-decoration:underline;
-}
+</div>
 
-
-/* =====================================================
-   CONTACT FORM
-   ===================================================== */
-
-.contact-form-box{
-  padding:28px;
-
-  border:1px solid var(--line);
-  border-radius:20px;
-
-  background:var(--surface);
-}
-
-.contact-form-box h2{
-  margin:0 0 8px;
-
-  color:var(--text);
-
-  font-size:22px;
-}
-
-.contact-form-intro{
-  margin:0 0 25px;
-
-  color:var(--text-muted);
-
-  font-size:10px;
-  line-height:1.7;
-}
-
-.contact-form{
-  display:grid;
-  gap:15px;
-}
-
-.contact-field{
-  display:grid;
-  gap:7px;
-}
-
-.contact-field label{
-  color:var(--text-soft);
-
-  font-size:10px;
-  font-weight:700;
-}
-
-.contact-field input,
-.contact-field textarea,
-.contact-field select{
-
-  width:100%;
-  box-sizing:border-box;
-
-  border:1px solid var(--line);
-  border-radius:10px;
-
-  background:#080a0d;
-  color:var(--text);
-
-  padding:12px;
-
-  outline:none;
-
-  font-family:inherit;
-  font-size:11px;
-
-  transition:border-color .2s ease;
-}
-
-.contact-field input{
-  height:44px;
-}
-
-.contact-field textarea{
-  min-height:125px;
-  resize:vertical;
-}
-
-.contact-field select{
-  height:44px;
-}
-
-.contact-field input:focus,
-.contact-field textarea:focus,
-.contact-field select:focus{
-  border-color:var(--accent-border);
-}
-
-.contact-field input::placeholder,
-.contact-field textarea::placeholder{
-  color:#555b66;
-}
-
-.contact-submit{
-  margin-top:3px;
-}
-
-.contact-submit button{
-  border:0;
-  cursor:pointer;
-}
-
-
-/* =====================================================
-   FORM RESPONSE
-   ===================================================== */
-
-.contact-response{
-  display:none;
-
-  padding:12px 14px;
-
-  border:1px solid var(--accent-border);
-  border-radius:10px;
-
-  background:var(--accent-soft);
-
-  color:var(--accent);
-
-  font-size:10px;
-  line-height:1.6;
-}
-
-.contact-response.show{
-  display:block;
-}
-
-
-/* =====================================================
-   RESPONSIVE
-   ===================================================== */
-
-@media(max-width:850px){
-
-  .contact-content{
-    grid-template-columns:1fr;
-    margin-top:55px;
-  }
-
-}
-
-@media(max-width:600px){
-
-  .contact-form-box{
-    padding:22px;
-  }
-
-}
-
-</style>
-
-
-<section class="contact-content">
-
-
-  <!-- =================================================
-       CONTACT INFORMATION
-       ================================================= -->
-
-  <div class="contact-info">
-
-
-    <article class="contact-card">
-
-      <div class="contact-card-icon">
-        01
-      </div>
-
-      <h2>
-        General questions
-      </h2>
-
-      <p>
-        Questions about BRIQONA OS, its features,
-        roadmap or how the platform works.
-      </p>
-
-      <a href="faq.html">
-        Browse FAQ →
-      </a>
-
-    </article>
-
-
-    <article class="contact-card">
-
-      <div class="contact-card-icon">
-        02
-      </div>
-
-      <h2>
-        Product & support
-      </h2>
-
-      <p>
-        Need help understanding a product feature
-        or have an issue you would like to discuss?
-      </p>
-
-      <a href="documentation.html">
-        View documentation →
-      </a>
-
-    </article>
-
-
-    <article class="contact-card">
-
-      <div class="contact-card-icon">
-        03
-      </div>
-
-      <h2>
-        Privacy & security
-      </h2>
-
-      <p>
-        For questions concerning privacy, security
-        or responsible handling of information.
-      </p>
-
-      <a href="security.html">
-        Security information →
-      </a>
-
-    </article>
-
-
-  </div>
-
-
-  <!-- =================================================
-       FORM
-       ================================================= -->
-
-  <div
-    class="contact-form-box"
-    id="contact-form"
-  >
-
-    <h2>
-      Send us a message
-    </h2>
-
-    <p class="contact-form-intro">
-      Fill out the form below. This frontend form is
-      ready to be connected to a secure backend or
-      email service when one is configured.
-    </p>
-
-
-    <form
-      class="contact-form"
-      id="contactForm"
-    >
-
-
-      <div class="contact-field">
-
-        <label for="contactName">
-          Name
-        </label>
-
-        <input
-          id="contactName"
-          name="name"
-          type="text"
-          placeholder="Your name"
-          autocomplete="name"
-          required
-        >
-
-      </div>
-
-
-      <div class="contact-field">
-
-        <label for="contactEmail">
-          Email
-        </label>
-
-        <input
-          id="contactEmail"
-          name="email"
-          type="email"
-          placeholder="you@example.com"
-          autocomplete="email"
-          required
-        >
-
-      </div>
-
-
-      <div class="contact-field">
-
-        <label for="contactTopic">
-          Topic
-        </label>
-
-        <select
-          id="contactTopic"
-          name="topic"
-          required
-        >
-
-          <option value="">
-            Select a topic
-          </option>
-
-          <option value="general">
-            General question
-          </option>
-
-          <option value="product">
-            Product & support
-          </option>
-
-          <option value="business">
-            Business inquiry
-          </option>
-
-          <option value="privacy">
-            Privacy & security
-          </option>
-
-          <option value="partnership">
-            Partnership
-          </option>
-
-        </select>
-
-      </div>
-
-
-      <div class="contact-field">
-
-        <label for="contactMessage">
-          Message
-        </label>
-
-        <textarea
-          id="contactMessage"
-          name="message"
-          placeholder="How can we help?"
-          required
-        ></textarea>
-
-      </div>
-
-
-      <div class="contact-submit">
-
-        <button
-          class="btn btn-primary"
-          type="submit"
-        >
-          Send Message →
-        </button>
-
-      </div>
-
-
-      <div
-        class="contact-response"
-        id="contactResponse"
-        role="status"
-        aria-live="polite"
-      ></div>
-
-
-    </form>
-
-  </div>
-
-
-</section>
-  <!-- =====================================================
-     CONTACT CTA
-     ===================================================== -->
-
-<style>
-
-.contact-cta{
-  margin-top:18px;
-
-  padding:30px;
-
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-
-  gap:25px;
-
-  border:1px solid var(--accent-border);
-  border-radius:20px;
-
-  background:
-    radial-gradient(
-      circle at 90% 50%,
-      rgba(216,255,69,.07),
-      transparent 38%
-    ),
-    var(--surface);
-}
-
-.contact-cta-copy{
-  max-width:750px;
-}
-
-.contact-cta h2{
-  margin:0 0 9px;
-
-  color:var(--text);
-
-  font-size:23px;
-  line-height:1.2;
-}
-
-.contact-cta p{
-  margin:0;
-
-  color:var(--text-muted);
-
-  font-size:10px;
-  line-height:1.8;
-}
-
-.contact-cta .btn{
-  flex-shrink:0;
-}
-
-
-/* =====================================================
-   RESPONSIVE
-   ===================================================== */
-
-@media(max-width:700px){
-
-  .contact-cta{
-    align-items:flex-start;
-    flex-direction:column;
-  }
-
-  .contact-cta .btn{
-    width:100%;
-    box-sizing:border-box;
-    text-align:center;
-  }
-
-}
-
-@media(max-width:600px){
-
-  .contact-cta{
-    padding:23px;
-  }
-
-}
-
-</style>
-
-
-<section class="contact-cta">
-
-  <div class="contact-cta-copy">
-
-    <h2>
-      Looking for answers first?
-    </h2>
-
-    <p>
-      Explore the BRIQONA OS FAQ and documentation
-      for more information about the platform,
-      features and workflows.
-    </p>
-
-  </div>
-
-
-  <a
-    class="btn btn-primary"
-    href="documentation.html"
-  >
-    Explore Documentation →
-  </a>
-
-</section>
-
-
-<!-- =====================================================
-     CONTACT FORM JAVASCRIPT
-     ===================================================== -->
-
-<script>
-
-const contactForm =
-  document.getElementById("contactForm");
-
-const contactResponse =
-  document.getElementById("contactResponse");
-
-
-if(contactForm && contactResponse){
-
-  contactForm.addEventListener("submit",(event)=>{
-
-    event.preventDefault();
-
-
-    const name =
-      document
-        .getElementById("contactName")
-        .value
-        .trim();
-
-    const email =
-      document
-        .getElementById("contactEmail")
-        .value
-        .trim();
-
-    const topic =
-      document
-        .getElementById("contactTopic")
-        .value;
-
-    const message =
-      document
-        .getElementById("contactMessage")
-        .value
-        .trim();
-
-
-    if(
-      !name ||
-      !email ||
-      !topic ||
-      !message
-    ){
-
-      contactResponse.textContent =
-        "Please complete all required fields.";
-
-      contactResponse.classList.add("show");
-
-      return;
-
-    }
-
-
-    /*
-      Frontend demo only.
-
-      No message is sent to a server here.
-      Connect this form to a secure backend,
-      email service or API when available.
-    */
-
-    contactResponse.textContent =
-      "Thanks, " +
-      name +
-      ". Your message is ready to be connected " +
-      "to the BRIQONA OS support system.";
-
-    contactResponse.classList.add("show");
-
-
-    contactForm.reset();
-
-  });
-
-}
-
-</script>
-  
-<!-- =====================================================
-     FOOTER
-     ===================================================== -->
-
-<style>
-
-.contact-footer{
-  border-top:1px solid var(--line);
-  background:#07080b;
-}
-
-.contact-footer-inner{
-  width:min(calc(100% - 32px),1200px);
-  margin:auto;
-  padding:55px 0 25px;
-}
-
-.contact-footer-top{
-  display:grid;
-  grid-template-columns:1.5fr 1fr 1fr 1fr;
-  gap:35px;
-}
-
-.contact-footer-brand{
-  max-width:300px;
-}
-
-.contact-footer-brand .brand{
-  display:inline-flex;
-  margin-bottom:16px;
-}
-
-.contact-footer-brand p{
-  margin:0;
-  color:var(--text-muted);
-  font-size:10px;
-  line-height:1.8;
-}
-
-.contact-footer-column h3{
-  margin:0 0 15px;
-  color:var(--text);
-  font-size:10px;
-  text-transform:uppercase;
-  letter-spacing:.08em;
-}
-
-.contact-footer-column a{
-  display:block;
-  margin:0 0 10px;
-  color:var(--text-muted);
-  font-size:10px;
-  text-decoration:none;
-}
-
-.contact-footer-column a:hover{
-  color:var(--text);
-}
-
-.contact-footer-bottom{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:20px;
-
-  margin-top:45px;
-  padding-top:20px;
-
-  border-top:1px solid var(--line);
-}
-
-.contact-footer-bottom p{
-  margin:0;
-  color:#555b66;
-  font-size:9px;
-  line-height:1.6;
-}
-
-.contact-footer-credit{
-  text-align:right;
-}
-
-.contact-footer-credit strong{
-  color:var(--text-soft);
-}
-
-
-/* =====================================================
-   FOOTER RESPONSIVE
-   ===================================================== */
-
-@media(max-width:800px){
-
-  .contact-footer-top{
-    grid-template-columns:1fr 1fr;
-    gap:30px;
-  }
-
-}
-
-@media(max-width:600px){
-
-  .contact-footer-inner{
-    padding:45px 0 22px;
-  }
-
-  .contact-footer-top{
-    grid-template-columns:1fr;
-    gap:25px;
-  }
-
-  .contact-footer-brand{
-    max-width:100%;
-  }
-
-  .contact-footer-bottom{
-    align-items:flex-start;
-    flex-direction:column;
-    margin-top:35px;
-  }
-
-  .contact-footer-credit{
-    text-align:left;
-  }
-
-}
-
-</style>
-
-
-</main>
-
-
-<!-- =====================================================
-     FOOTER
-     ===================================================== -->
-
-<footer class="contact-footer">
-
-  <div class="contact-footer-inner">
-
-
-    <div class="contact-footer-top">
-
-
-      <!-- BRAND -->
-
-      <div class="contact-footer-brand">
-
-        <a
-          class="brand"
-          href="../index.html"
-          aria-label="BRIQONA OS Home"
-        >
-
-          <span class="brand-mark">B</span>
-
-          <span class="brand-name">
-            BRIQONA<span>OS</span>
-          </span>
-
-        </a>
-
-        <p>
-          A unified operating layer for modern businesses,
-          bringing operations, intelligence and automation
-          together in one workspace.
-        </p>
-
-      </div>
-
-
-      <!-- PLATFORM -->
-
-      <div class="contact-footer-column">
-
-        <h3>
-          Platform
-        </h3>
-
-        <a href="platform.html">
-          Platform
-        </a>
-
-        <a href="ai.html">
-          AI Intelligence
-        </a>
-
-        <a href="analytics.html">
-          Analytics
-        </a>
-
-        <a href="dashboard.html">
-          Dashboard
-        </a>
-
-      </div>
-
-
-      <!-- COMPANY -->
-
-      <div class="contact-footer-column">
-
-        <h3>
-          Company
-        </h3>
-
-        <a href="about.html">
-          About
-        </a>
-
-        <a href="industries.html">
-          Industries
-        </a>
-
-        <a href="features.html">
-          Features
-        </a>
-
-        <a href="pricing.html">
-          Pricing
-        </a>
-
-        <a href="register.html">
-          Start Free
-        </a>
-
-      </div>
-
-
-      <!-- LEGAL -->
-
-      <div class="contact-footer-column">
-
-        <h3>
-          Legal
-        </h3>
-
-        <a href="security.html">
-          Security
-        </a>
-
-        <a href="privacy.html">
-          Privacy Policy
-        </a>
-
-        <a href="terms.html">
-          Terms & Conditions
-        </a>
-
-        <a href="contact.html">
-          Contact
-        </a>
-
-      </div>
-
-
-    </div>
-
-
-    <!-- FOOTER BOTTOM -->
-
-    <div class="contact-footer-bottom">
-
-      <p>
-        ©
-        <span data-contact-year></span>
-        BRIQONA OS. All rights reserved.
-      </p>
-
-      <p class="contact-footer-credit">
-        Designed & developed with care by
-        <strong>Yawar Abbas Bhatti</strong>
-      </p>
-
-    </div>
-
-
-  </div>
-
-</footer>
 
 
 </div>
 
 
-<!-- =====================================================
-     JAVASCRIPT
-     ===================================================== -->
-
-<script>
-
-/* =========================================================
-   MOBILE MENU
-   ========================================================= */
-
-const contactMenuToggle =
-  document.getElementById("contactMenuToggle");
-
-const contactNav =
-  document.getElementById("contactNav");
 
 
-if(contactMenuToggle && contactNav){
-
-  contactMenuToggle.addEventListener("click",()=>{
-
-    const isOpen =
-      contactNav.classList.toggle("open");
-
-    contactMenuToggle.setAttribute(
-      "aria-expanded",
-      String(isOpen)
-    );
-
-    contactMenuToggle.setAttribute(
-      "aria-label",
-      isOpen ? "Close menu" : "Open menu"
-    );
-
-  });
+<div class="contact-form">
 
 
-  /* Close menu after clicking a link */
-
-  contactNav
-    .querySelectorAll("a")
-    .forEach(link=>{
-
-      link.addEventListener("click",()=>{
-
-        contactNav.classList.remove("open");
-
-        contactMenuToggle.setAttribute(
-          "aria-expanded",
-          "false"
-        );
-
-        contactMenuToggle.setAttribute(
-          "aria-label",
-          "Open menu"
-        );
-
-      });
-
-    });
+<h2>
+Send us a message
+</h2>
 
 
-  /* Close menu when clicking outside */
-
-  document.addEventListener("click",(event)=>{
-
-    if(
-      !contactNav.contains(event.target) &&
-      !contactMenuToggle.contains(event.target)
-    ){
-
-      contactNav.classList.remove("open");
-
-      contactMenuToggle.setAttribute(
-        "aria-expanded",
-        "false"
-      );
-
-      contactMenuToggle.setAttribute(
-        "aria-label",
-        "Open menu"
-      );
-
-    }
-
-  });
-
-}
+<form>
 
 
-/* =========================================================
-   ESC KEY
-   ========================================================= */
-
-document.addEventListener("keydown",(event)=>{
-
-  if(event.key !== "Escape"){
-    return;
-  }
-
-  if(contactNav){
-    contactNav.classList.remove("open");
-  }
-
-  if(contactMenuToggle){
-
-    contactMenuToggle.setAttribute(
-      "aria-expanded",
-      "false"
-    );
-
-    contactMenuToggle.setAttribute(
-      "aria-label",
-      "Open menu"
-    );
-
-  }
-
-});
+<input type="text" placeholder="Your Name">
 
 
-/* =========================================================
-   CURRENT YEAR
-   ========================================================= */
+<input type="email" placeholder="Email Address">
 
-document
-  .querySelectorAll("[data-contact-year]")
-  .forEach(element=>{
 
-    element.textContent =
-      new Date().getFullYear();
+<input type="text" placeholder="Company Name">
 
-  });
 
-</script>
+<textarea placeholder="Your Message"></textarea>
+
+
+<button type="submit">
+Send Message
+</button>
+
+
+</form>
+
+
+
+</div>
+
+
+</section>
+
+
+
+</main>
+
+
+
+<div data-component="footer"></div>
+
+
+
+<script src="../js/app.js"></script>
 
 
 </body>
+
 </html>
