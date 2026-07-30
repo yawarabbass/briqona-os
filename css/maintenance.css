@@ -135,3 +135,22 @@ padding:35px 25px;
 }
 
 }
+.maintenance-btn{
+
+display:inline-block;
+
+margin-top:30px;
+
+padding:14px 35px;
+
+border-radius:15px;
+
+background:#5b4bdb;
+
+color:white;
+
+font-weight:700;
+
+text-decoration:none;
+
+  }
