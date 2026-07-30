@@ -315,3 +315,36 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 
 });
+/* =========================================================
+   BRIQONA OS — FLOATING WHATSAPP SUPPORT
+   ========================================================= */
+
+(function () {
+
+  const whatsappNumber = "923348101110";
+
+  const whatsappButton = document.createElement("a");
+
+  whatsappButton.href =
+    `https://wa.me/${whatsappNumber}`;
+
+  whatsappButton.target = "_blank";
+
+  whatsappButton.rel = "noopener";
+
+  whatsappButton.className =
+    "floating-whatsapp";
+
+  whatsappButton.setAttribute(
+    "aria-label",
+    "Chat with Briqona OS on WhatsApp"
+  );
+
+  whatsappButton.innerHTML = `
+    <span class="whatsapp-icon">✆</span>
+    <span class="whatsapp-text">WhatsApp Support</span>
+  `;
+
+  document.body.appendChild(whatsappButton);
+
+})();
