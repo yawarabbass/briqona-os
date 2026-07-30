@@ -1607,7 +1607,16 @@ p {
   .hero {
     padding: 65px 0 75px;
   }
+.hero-grid {
+  grid-template-columns: 1fr;
+  gap: 32px;
+}
 
+.hero-content,
+.hero-visual {
+  width: 100%;
+  min-width: 0;
+}
 
   h1 {
     font-size: clamp(40px, 12vw, 58px);
