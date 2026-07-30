@@ -1,6 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 
 function Header() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const closeMenu = () => {
+    setMenuOpen(false);
+  };
+
   return (
     <header className="site-header">
       <div className="container nav-inner">
@@ -24,7 +30,7 @@ function Header() {
           <a href="/contact">Contact</a>
         </nav>
 
-        {/* Actions */}
+        {/* Desktop Actions */}
         <div className="nav-actions">
           <a href="/login" className="nav-login">
             Login
@@ -38,9 +44,10 @@ function Header() {
         {/* Mobile Menu Button */}
         <button
           type="button"
-          className="mobile-menu-button"
-          aria-label="Open navigation menu"
-          aria-expanded="false"
+          className={`mobile-menu-button ${menuOpen ? "is-open" : ""}`}
+          aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
+          aria-expanded={menuOpen}
+          onClick={() => setMenuOpen(!menuOpen)}
         >
           <span></span>
           <span></span>
@@ -48,6 +55,26 @@ function Header() {
         </button>
 
       </div>
+
+      {/* Mobile Navigation */}
+      {menuOpen && (
+        <nav className="mobile-nav is-open" aria-label="Mobile navigation">
+          <a href="/" onClick={closeMenu}>Home</a>
+          <a href="/platform" onClick={closeMenu}>Platform</a>
+          <a href="/pricing" onClick={closeMenu}>Pricing</a>
+          <a href="/about" onClick={closeMenu}>About</a>
+          <a href="/contact" onClick={closeMenu}>Contact</a>
+          <a href="/login" onClick={closeMenu}>Login</a>
+
+          <a
+            href="/get-started"
+            className="btn btn-primary"
+            onClick={closeMenu}
+          >
+            Get Started
+          </a>
+        </nav>
+      )}
     </header>
   );
 }
