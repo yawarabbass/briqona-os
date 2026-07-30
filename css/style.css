@@ -2075,3 +2075,195 @@ p {
 
 }
 
+/* =====================================================
+   BRIQONA OS — MOBILE FOOTER PATCH 2
+   ===================================================== */
+
+@media (max-width: 768px) {
+
+  .site-footer {
+    width: 100%;
+    margin: 0;
+    padding: 48px 20px 24px !important;
+    overflow: hidden;
+  }
+
+  .site-footer .container {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 !important;
+  }
+
+  /* Brand */
+  .footer-main {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 38px 28px !important;
+    margin: 0 !important;
+  }
+
+  .footer-brand {
+    grid-column: 1 / -1 !important;
+    width: 100%;
+    margin-bottom: 8px;
+  }
+
+  .footer-brand .brand {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .footer-brand .brand-mark {
+    width: 48px !important;
+    height: 48px !important;
+    min-width: 48px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 14px;
+    font-size: 25px;
+  }
+
+  .footer-brand .brand-name {
+    font-size: 25px !important;
+    white-space: nowrap;
+  }
+
+  .footer-brand p {
+    max-width: 340px;
+    margin: 20px 0 !important;
+    font-size: 16px !important;
+    line-height: 1.6 !important;
+  }
+
+  .footer-whatsapp {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 9px;
+    font-size: 15px !important;
+  }
+
+  /* Footer columns */
+  .footer-column {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .footer-column h4 {
+    margin: 0 0 18px !important;
+    font-size: 17px !important;
+  }
+
+  .footer-column a {
+    display: block !important;
+    margin: 0 0 13px !important;
+    font-size: 15px !important;
+    line-height: 1.4 !important;
+  }
+
+  /* Payments */
+  .footer-payments {
+    width: 100%;
+    margin-top: 34px !important;
+    padding-top: 25px !important;
+    border-top: 1px solid rgba(255,255,255,.12);
+  }
+
+  .footer-payments > div {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: center;
+    gap: 10px !important;
+  }
+
+  .footer-payments strong {
+    width: 100%;
+    display: block;
+    margin-bottom: 5px;
+    font-size: 15px !important;
+  }
+
+  .footer-payments span {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    min-width: 72px;
+    height: 34px;
+    padding: 5px 10px !important;
+    border-radius: 7px;
+    background: #fff;
+    color: #111827;
+    font-size: 11px !important;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  /* Bottom */
+  .footer-bottom {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 14px !important;
+    margin-top: 25px !important;
+    padding-top: 20px !important;
+    border-top: 1px solid rgba(255,255,255,.12);
+  }
+
+  .footer-bottom p {
+    margin: 0 !important;
+    font-size: 12px !important;
+    line-height: 1.5 !important;
+  }
+
+  .footer-legal {
+    display: flex !important;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 18px !important;
+  }
+
+  .footer-legal a {
+    font-size: 12px !important;
+  }
+
+  .footer-credit {
+    opacity: .65;
+  }
+}
+
+
+/* Extra-small phones */
+@media (max-width: 430px) {
+
+  .site-footer {
+    padding: 40px 18px 22px !important;
+  }
+
+  .footer-main {
+    gap: 32px 20px !important;
+  }
+
+  .footer-brand .brand-name {
+    font-size: 22px !important;
+  }
+
+  .footer-brand p {
+    font-size: 15px !important;
+  }
+
+  .footer-column h4 {
+    font-size: 16px !important;
+  }
+
+  .footer-column a {
+    font-size: 14px !important;
+  }
+
+  .footer-payments span {
+    min-width: 68px;
+    font-size: 10px !important;
+  }
+   }
