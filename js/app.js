@@ -1,164 +1,99 @@
 /* =========================================================
-   BRIQONA OS — GLOBAL APP
-   Components + Mobile Navigation
+   BRIQONA OS
+   GLOBAL COMPONENT LOADER + MOBILE MENU
    ========================================================= */
 
 document.addEventListener("DOMContentLoaded", async () => {
 
-  /*
-   * Detect whether the current page is inside /pages/
-   */
-  const isInsidePages =
+  const isPagesDirectory =
     window.location.pathname.includes("/pages/");
 
   const componentPath =
-    isInsidePages ? "../components/" : "./components/";
+    isPagesDirectory
+      ? "../components/"
+      : "./components/";
 
-  /*
-   * Fix links coming from reusable components.
-   * Components use ../ paths because they are stored inside
-   * the components folder.
-   */
-  const prepareComponent = (html) => {
 
-    if (isInsidePages) {
-      return html;
+  /* =======================================================
+     LOAD COMPONENT
+  ======================================================= */
+
+  async function loadComponent(name) {
+
+    const placeholder =
+      document.querySelector(
+        `[data-component="${name}"]`
+      );
+
+    if (!placeholder) {
+      return null;
     }
-
-    return html.replaceAll(
-      'href="../',
-      'href="./'
-    );
-
-  };
-
-
-  /*
-   * Load one reusable component
-   */
-  const loadComponent = async (fileName) => {
 
     try {
 
       const response = await fetch(
-        componentPath + fileName
+        `${componentPath}${name}.html`,
+        {
+          cache: "no-cache"
+        }
       );
 
       if (!response.ok) {
         throw new Error(
-          `Could not load ${fileName}`
+          `${name}.html returned ${response.status}`
         );
       }
 
-      const html = await response.text();
+      let html = await response.text();
 
-      return prepareComponent(html);
+
+      /*
+       * Root index.html uses ./ paths.
+       * Pages inside /pages/ use ../ paths.
+       */
+      if (!isPagesDirectory) {
+
+        html = html.replaceAll(
+          'href="../',
+          'href="./'
+        );
+
+      }
+
+
+      placeholder.outerHTML = html;
+
+      return html;
 
     } catch (error) {
 
       console.error(
-        `Briqona component error:`,
+        `BRIQONA component error: ${name}`,
         error
       );
 
-      return "";
+      return null;
 
-    }
-
-  };
-
-
-  /*
-   * Load reusable Header
-   */
-  const headerPlaceholder =
-    document.querySelector("[data-component='header']");
-
-  const oldHeader =
-    document.querySelector(".site-header");
-
-  if (headerPlaceholder) {
-
-    const headerHTML =
-      await loadComponent("header.html");
-
-    headerPlaceholder.outerHTML = headerHTML;
-
-  } else if (oldHeader) {
-
-    const headerHTML =
-      await loadComponent("header.html");
-
-    if (headerHTML) {
-      oldHeader.outerHTML = headerHTML;
     }
 
   }
 
 
-  /*
-   * Load reusable Mobile Navigation
-   */
-  const mobilePlaceholder =
-    document.querySelector(
-      "[data-component='mobile-nav']"
-    );
+  /* =======================================================
+     LOAD ALL COMPONENTS
+     ======================================================= */
 
-  const oldMobileNav =
-    document.querySelector(".mobile-nav");
+  await loadComponent("header");
 
-  if (mobilePlaceholder) {
+  await loadComponent("mobile-nav");
 
-    const mobileHTML =
-      await loadComponent("mobile-nav.html");
-
-    mobilePlaceholder.outerHTML = mobileHTML;
-
-  } else if (oldMobileNav) {
-
-    const mobileHTML =
-      await loadComponent("mobile-nav.html");
-
-    if (mobileHTML) {
-      oldMobileNav.outerHTML = mobileHTML;
-    }
-
-  }
+  await loadComponent("footer");
 
 
-  /*
-   * Load reusable Footer
-   */
-  const footerPlaceholder =
-    document.querySelector(
-      "[data-component='footer']"
-    );
+  /* =======================================================
+     MOBILE MENU
+     ======================================================= */
 
-  const oldFooter =
-    document.querySelector(".site-footer");
-
-  if (footerPlaceholder) {
-
-    const footerHTML =
-      await loadComponent("footer.html");
-
-    footerPlaceholder.outerHTML = footerHTML;
-
-  } else if (oldFooter) {
-
-    const footerHTML =
-      await loadComponent("footer.html");
-
-    if (footerHTML) {
-      oldFooter.outerHTML = footerHTML;
-    }
-
-  }
-
-
-  /*
-   * MOBILE MENU
-   */
   const hamburger =
     document.getElementById("hamburger");
 
@@ -167,11 +102,17 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 
   if (!hamburger || !mobileNav) {
+
+    console.warn(
+      "BRIQONA: Mobile navigation elements not found."
+    );
+
     return;
+
   }
 
 
-  const closeMenu = () => {
+  function closeMenu() {
 
     document.body.classList.remove(
       "menu-open"
@@ -187,10 +128,10 @@ document.addEventListener("DOMContentLoaded", async () => {
       "Open menu"
     );
 
-  };
+  }
 
 
-  const openMenu = () => {
+  function openMenu() {
 
     document.body.classList.add(
       "menu-open"
@@ -206,31 +147,36 @@ document.addEventListener("DOMContentLoaded", async () => {
       "Close menu"
     );
 
-  };
+  }
 
 
   hamburger.addEventListener(
     "click",
     () => {
 
-      const isOpen =
+      const menuIsOpen =
         document.body.classList.contains(
           "menu-open"
         );
 
-      if (isOpen) {
+      if (menuIsOpen) {
+
         closeMenu();
+
       } else {
+
         openMenu();
+
       }
 
     }
   );
 
 
-  /*
-   * Close menu after selecting a page
-   */
+  /* =======================================================
+     CLOSE WHEN LINK IS CLICKED
+     ======================================================= */
+
   mobileNav
     .querySelectorAll("a")
     .forEach((link) => {
@@ -243,33 +189,40 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
 
 
-  /*
-   * ESC closes menu
-   */
+  /* =======================================================
+     ESCAPE KEY
+     ======================================================= */
+
   document.addEventListener(
     "keydown",
     (event) => {
 
       if (event.key === "Escape") {
+
         closeMenu();
+
       }
 
     }
   );
 
 
-  /*
-   * Close menu when returning to desktop
-   */
+  /* =======================================================
+     CLOSE WHEN GOING BACK TO DESKTOP
+     ======================================================= */
+
   window.addEventListener(
     "resize",
     () => {
 
       if (window.innerWidth > 720) {
+
         closeMenu();
+
       }
 
     }
   );
+
 
 });
