@@ -4,6 +4,7 @@ import WhatsApp from "./components/WhatsApp/WhatsApp";
 import Demo from "./pages/Demo/Demo";
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
+import Register from "./pages/Register/Register";
 
 function App() {
   const path = window.location.pathname;
@@ -14,6 +15,10 @@ function App() {
 
 if (path === "/demo") {
   return <Demo />;
+}
+
+if (path === "/register") {
+  return <Register />;
 }
   
 
