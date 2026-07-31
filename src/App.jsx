@@ -1,7 +1,7 @@
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import WhatsApp from "./components/WhatsApp/WhatsApp";
-
+import Demo from "./pages/Demo/Demo";
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 
@@ -11,6 +11,11 @@ function App() {
   if (path === "/login") {
     return <Login />;
   }
+
+if (path === "/demo") {
+  return <Demo />;
+}
+  
 
   return (
     <div className="app">
