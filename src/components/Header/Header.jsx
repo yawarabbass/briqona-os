@@ -5,8 +5,30 @@ import "./Header.css";
 const navItems = [
   { label: "Home", href: "/" },
   { label: "Platform", href: "#platform" },
-  { label: "Solutions", href: "#solutions" },
-  { label: "Industries", href: "#industries" },
+
+  {
+    label: "Solutions",
+    dropdown: [
+      "CRM",
+      "Finance",
+      "Inventory",
+      "Analytics",
+      "Briqona AI"
+    ]
+  },
+
+  {
+    label: "Industries",
+    dropdown: [
+      "Healthcare",
+      "Construction",
+      "Real Estate",
+      "Retail & E-commerce",
+      "Education",
+      "Other"
+    ]
+  },
+
   { label: "Pricing", href: "#pricing" },
   { label: "About", href: "#about" },
 ];
@@ -73,15 +95,46 @@ function Header() {
 
           {navItems.map((item)=>(
 
-            <a
-              key={item.label}
-              href={item.href}
-              onClick={closeMenu}
-            >
-              {item.label}
-            </a>
+item.dropdown ? (
 
-          ))}
+<div 
+className="nav-dropdown"
+key={item.label}
+>
+
+<a href="#">
+{item.label} ▾
+</a>
+
+
+<div className="dropdown-menu">
+
+{item.dropdown.map((sub)=>(
+
+<a key={sub} href="#">
+{sub}
+</a>
+
+))}
+
+</div>
+
+
+</div>
+
+) : (
+
+<a
+key={item.label}
+href={item.href}
+onClick={closeMenu}
+>
+{item.label}
+</a>
+
+)
+
+))}
 
 
 
