@@ -671,7 +671,7 @@ main.innerHTML = `
        END HOME CONTENT
        ===================================================== -->
 
-
+`;
 /* =========================================================
    FOOTER
    ========================================================= */
@@ -1086,4 +1086,4 @@ initializeDashboardMotion();
 document.documentElement.classList.add(
   "briqona-ready"
 );
-`;
+
