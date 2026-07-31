@@ -50,31 +50,59 @@ function Demo() {
           />
 
 
-          <select>
+          
+           <select>
 
-            <option>
-              Select Industry
-            </option>
+  <option>
+    Select Industry
+  </option>
 
-            <option>
-              Healthcare
-            </option>
+  <option>
+    Healthcare
+  </option>
 
-            <option>
-              Retail
-            </option>
+  <option>
+    Retail & E-commerce
+  </option>
 
-            <option>
-              Finance
-            </option>
+  <option>
+    Finance & Banking
+  </option>
 
-            <option>
-              Manufacturing
-            </option>
+  <option>
+    Manufacturing
+  </option>
 
-          </select>
+  <option>
+    Real Estate
+  </option>
 
+  <option>
+    Education
+  </option>
 
+  <option>
+    Healthcare
+  </option>
+
+  <option>
+    Technology
+  </option>
+
+  <option>
+    Logistics
+  </option>
+
+  <option>
+    Hospitality
+  </option>
+
+  <option>
+    Other / Not Listed
+  </option>
+
+</select>       
+    
 
           <textarea
             placeholder="Tell us about your business"
