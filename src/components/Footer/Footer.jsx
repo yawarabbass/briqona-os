@@ -1,139 +1,149 @@
 import "./Footer.css";
 
-const footerColumns = [
-  {
-    title: "Platform",
-    links: [
-      ["Overview", "#platform"],
-      ["Features", "#features"],
-      ["Integrations", "#integrations"],
-      ["Security", "#security"],
-    ],
-  },
-  {
-    title: "Solutions",
-    links: [
-      ["CRM", "#solutions"],
-      ["Projects", "#solutions"],
-      ["Finance", "#solutions"],
-      ["AI & Automation", "#solutions"],
-    ],
-  },
-  {
-    title: "Industries",
-    links: [
-      ["Healthcare", "#industries"],
-      ["Construction", "#industries"],
-      ["Real Estate", "#industries"],
-      ["Agencies", "#industries"],
-    ],
-  },
-  {
-    title: "Company",
-    links: [
-      ["About Us", "#about"],
-      ["Careers", "#careers"],
-      ["Contact", "#contact"],
-      ["Partners", "#partners"],
-    ],
-  },
-];
-
 function Footer() {
+
   return (
-    <footer className="site-footer" id="about">
-      <div className="container site-footer__grid">
 
-        <div className="site-footer__brand">
-          <a
-            className="site-footer__logo"
-            href="/"
-            aria-label="Briqona OS Home"
-          >
-            <span className="site-footer__mark">
-              <i />
-              <i />
-              <i />
-              <i />
-            </span>
+    <footer className="footer">
 
-            <span className="site-footer__brand-text">
-              <strong>
-                BRIQONA <em>OS</em>
-              </strong>
+      <div className="container">
 
-              <small>Business Operating System</small>
-            </span>
-          </a>
 
-          <p>
-            The intelligent operating system
-            for modern businesses.
-          </p>
+        <div className="footer__grid">
 
-          <div className="site-footer__socials">
-            <a href="#linkedin" aria-label="LinkedIn">
-              in
-            </a>
 
-            <a href="#x" aria-label="X">
-              𝕏
-            </a>
+          <div className="footer__brand">
 
-            <a href="#facebook" aria-label="Facebook">
-              f
-            </a>
+            <h3>
+              BRIQONA <span>OS</span>
+            </h3>
+
+            <p>
+              AI-powered Business Operating System helping
+              modern companies automate workflows, understand
+              data, and grow smarter.
+            </p>
+
+
           </div>
+
+
+
+          <div>
+
+            <h4>
+              Product
+            </h4>
+
+            <a href="#platform">
+              Platform
+            </a>
+
+            <a href="#solutions">
+              Solutions
+            </a>
+
+            <a href="#pricing">
+              Pricing
+            </a>
+
+            <a href="#features">
+              Features
+            </a>
+
+          </div>
+
+
+
+          <div>
+
+            <h4>
+              Company
+            </h4>
+
+            <a href="#about">
+              About Us
+            </a>
+
+            <a href="#careers">
+              Careers
+            </a>
+
+            <a href="#contact">
+              Contact
+            </a>
+
+            <a href="#partners">
+              Partners
+            </a>
+
+          </div>
+
+
+
+          <div>
+
+            <h4>
+              Resources
+            </h4>
+
+            <a href="#blog">
+              Blog
+            </a>
+
+            <a href="#help">
+              Help Center
+            </a>
+
+            <a href="#security">
+              Security
+            </a>
+
+            <a href="#privacy">
+              Privacy
+            </a>
+
+          </div>
+
+
         </div>
 
-        {footerColumns.map((column) => (
-          <div
-            className="site-footer__column"
-            key={column.title}
-          >
-            <h3>{column.title}</h3>
 
-            {column.links.map(([label, href]) => (
-              <a href={href} key={label}>
-                {label}
-              </a>
-            ))}
+
+        <div className="footer__bottom">
+
+          <span>
+            © 2026 Briqona OS. All rights reserved.
+          </span>
+
+
+          <div>
+
+            <a href="#">
+              LinkedIn
+            </a>
+
+            <a href="#">
+              X
+            </a>
+
+            <a href="#">
+              YouTube
+            </a>
+
           </div>
-        ))}
 
-        <div className="site-footer__newsletter">
-          <h3>Stay in the loop</h3>
 
-          <p>
-            Product updates and business insights.
-          </p>
-
-          <form>
-            <input
-              type="email"
-              placeholder="Your email"
-              aria-label="Email address"
-            />
-
-            <button type="submit">
-              Subscribe
-            </button>
-          </form>
         </div>
+
 
       </div>
 
-      <div className="container site-footer__bottom">
-        <span>
-          © 2026 Briqona OS. All rights reserved.
-        </span>
-
-        <span>
-          Built for businesses worldwide.
-        </span>
-      </div>
     </footer>
+
   );
+
 }
+
 
 export default Footer;
