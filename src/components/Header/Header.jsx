@@ -1,68 +1,53 @@
 import { useState } from "react";
 import "./Header.css";
 
+
 const navItems = [
-  {
-    label: "Platform",
-    dropdown: [
-      "Dashboard",
-      "CRM",
-      "Projects",
-      "Finance",
-      "Inventory",
-      "Analytics",
-    ],
-  },
-  {
-    label: "Solutions",
-    dropdown: [
-      "Business Management",
-      "Workflow Automation",
-      "Data Intelligence",
-      "AI Assistant",
-    ],
-  },
-  {
-    label: "Industries",
-    dropdown: [
-      "Healthcare",
-      "Construction",
-      "Real Estate",
-      "Retail & E-commerce",
-      "Education",
-      "Hospitality",
-      "Agencies",
-      "Legal",
-    ],
-  },
+  { label: "Home", href: "/" },
+  { label: "Platform", href: "#platform" },
+  { label: "Solutions", href: "#solutions" },
+  { label: "Industries", href: "#industries" },
+  { label: "Pricing", href: "#pricing" },
+  { label: "About", href: "#about" },
 ];
 
+
 function Header() {
+
   const [menuOpen, setMenuOpen] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState(null);
+
 
   const closeMenu = () => {
     setMenuOpen(false);
-    setActiveDropdown(null);
   };
 
+
   return (
+
     <header className="site-header">
+
+
       <div className="container site-header__inner">
+
 
         <a
           className="site-header__brand"
           href="/"
           onClick={closeMenu}
         >
+
           <span className="site-header__logo">
+
             <i />
             <i />
             <i />
             <i />
+
           </span>
 
+
           <span className="site-header__brand-text">
+
             <strong>
               BRIQONA <em>OS</em>
             </strong>
@@ -70,84 +55,55 @@ function Header() {
             <small>
               Business Operating System
             </small>
+
           </span>
+
+
         </a>
 
 
+
         <nav
-          className={`site-header__nav ${
-            menuOpen ? "site-header__nav--open" : ""
-          }`}
+          className={
+            menuOpen
+            ? "site-header__nav site-header__nav--open"
+            : "site-header__nav"
+          }
         >
 
-          <a href="/" onClick={closeMenu}>
-            Home
-          </a>
+          {navItems.map((item)=>(
 
-
-          {navItems.map((item, index) => (
-            <div
-              className="nav-dropdown"
+            <a
               key={item.label}
-              onMouseEnter={() =>
-                setActiveDropdown(index)
-              }
-              onMouseLeave={() =>
-                setActiveDropdown(null)
-              }
+              href={item.href}
+              onClick={closeMenu}
             >
+              {item.label}
+            </a>
 
-              <button
-                className="nav-dropdown__button"
-                onClick={() =>
-                  setActiveDropdown(
-                    activeDropdown === index
-                      ? null
-                      : index
-                  )
-                }
-              >
-                {item.label}
-                <span>⌄</span>
-              </button>
-
-
-              {activeDropdown === index && (
-                <div className="nav-dropdown__menu">
-
-                  {item.dropdown.map((subItem) => (
-                    <a
-                      key={subItem}
-                      href="#"
-                      onClick={closeMenu}
-                    >
-                      {subItem}
-                    </a>
-                  ))}
-
-                </div>
-              )}
-
-            </div>
           ))}
 
 
-          <a href="#pricing" onClick={closeMenu}>
-            Pricing
+
+          <a
+            className="mobile-start"
+            href="#start"
+          >
+            Start Free →
           </a>
 
-          <a href="#about" onClick={closeMenu}>
-            About
-          </a>
 
         </nav>
 
 
+
+
         <div className="site-header__actions">
+
 
           <a
             className="site-header__login"
-            href="#login"
+            href="/login"
           >
             Log in
           </a>
@@ -155,34 +111,62 @@ function Header() {
 
           <a
             className="site-header__button"
-            href="#start"
+            href="/register"
           >
             Start Free
-            <span>→</span>
+            <span>
+              →
+            </span>
           </a>
+
 
         </div>
 
 
+
+
+        <div className="mobile-login">
+
+
+          <a href="/login">
+            Log in
+          </a>
+
+
+        </div>
+
+
+
         <button
-          className={`site-header__menu ${
+
+          className={
             menuOpen
-              ? "site-header__menu--open"
-              : ""
-          }`}
-          type="button"
+            ? "site-header__menu site-header__menu--open"
+            : "site-header__menu"
+          }
+
           onClick={() =>
             setMenuOpen(!menuOpen)
           }
+
         >
+
           <span />
           <span />
           <span />
+
+
         </button>
 
+
       </div>
+
+
     </header>
+
   );
+
 }
+
 
 export default Header;
