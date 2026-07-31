@@ -10,15 +10,33 @@ function App() {
   const path = window.location.pathname;
 
   if (path === "/login") {
-    return <Login />;
-  }
+  return (
+    <div className="app">
+      <Header />
+      <Login />
+      <Footer />
+    </div>
+  );
+}
 
 if (path === "/demo") {
-  return <Demo />;
+  return (
+    <div className="app">
+      <Header />
+      <Demo />
+      <Footer />
+    </div>
+  );
 }
 
 if (path === "/register") {
-  return <Register />;
+  return (
+    <div className="app">
+      <Header />
+      <Register />
+      <Footer />
+    </div>
+  );
 }
   
 
