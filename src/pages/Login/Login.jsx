@@ -49,11 +49,11 @@ function Login() {
 
 
         <small>
-          Don't have an account?
-          <a href="/register">
-            Create Account
-          </a>
-        </small>
+  Need access?
+  <a href="#pricing">
+    Choose a plan →
+  </a>
+</small>
 
 
       </div>
