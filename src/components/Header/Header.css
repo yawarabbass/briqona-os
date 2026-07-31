@@ -476,3 +476,48 @@
   }
 
 }
+@media(max-width:900px){
+
+.site-header__nav{
+
+  position:fixed;
+
+  top:75px;
+
+  left:15px;
+
+  right:15px;
+
+  display:none;
+
+  flex-direction:column;
+
+  padding:15px;
+
+  background:
+  rgba(5,15,28,.96);
+
+  border:1px solid var(--border);
+
+  border-radius:18px;
+
+}
+
+
+.site-header__nav--open{
+
+  display:flex;
+
+}
+
+
+.site-header__nav a{
+
+  padding:14px;
+
+  border-bottom:
+  1px solid rgba(255,255,255,.08);
+
+}
+
+}
