@@ -108,7 +108,31 @@ function Footer() {
 
         </div>
 
+<div className="footer__payments">
 
+  <span>
+    Secure Payments
+  </span>
+
+  <div className="payment-logos">
+
+    <div>VISA</div>
+
+    <div>
+      Mastercard
+    </div>
+
+    <div>
+      JazzCash
+    </div>
+
+    <div>
+      Easypaisa
+    </div>
+
+  </div>
+
+</div>
 
         <div className="footer__bottom">
 
