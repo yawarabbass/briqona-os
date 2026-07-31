@@ -34,34 +34,39 @@ if (header) {
    ========================================================= */
 
 main.innerHTML = `
+      
+       
+<!-- =====================================================
+     BRIQONA COMMAND CENTER HERO
+     ===================================================== -->
 
-  <!-- =====================================================
-       HERO
-       ===================================================== -->
+<section class="hero briqona-hero">
 
-  <section class="hero" id="home">
+  <div class="hero-grid container">
 
-    <div class="container hero-content" data-reveal>
+    <!-- LEFT CONTENT -->
+    <div class="hero-content">
 
-      <div class="hero-badge">
+      <div class="eyebrow">
+        <span class="status-dot"></span>
         AI-powered business operating system
       </div>
 
       <h1>
-        Run your business
-        <span>smarter.</span>
+        Run your business.
+        <span>Think smarter.</span>
       </h1>
 
       <p class="hero-description">
-        Briqona brings operations, analytics, workflows,
-        automation, and growth tools together in one
-        intelligent business operating system.
+        Briqona connects operations, customers, analytics,
+        workflows, and AI intelligence in one powerful
+        business operating system.
       </p>
 
       <div class="hero-actions">
 
         <a
-          class="button button-primary"
+          class="btn btn-primary btn-large"
           href="./pages/book-demo.html"
         >
           Book a demo
@@ -69,10 +74,10 @@ main.innerHTML = `
         </a>
 
         <a
-          class="button hero-secondary-button"
+          class="btn btn-secondary btn-large"
           href="#solutions"
         >
-          Explore solutions
+          Explore Briqona
         </a>
 
       </div>
@@ -80,84 +85,152 @@ main.innerHTML = `
       <div class="hero-note">
         <span>●</span>
         Built for modern businesses
+        <b>•</b>
+        AI-powered
+        <b>•</b>
+        Scalable
       </div>
 
+    </div>
 
-      <!-- HERO DASHBOARD -->
 
-      <div class="hero-dashboard" data-reveal>
+    <!-- RIGHT COMMAND CENTER -->
+    <div class="hero-visual">
 
-        <div class="dashboard-header">
+      <div class="command-center">
 
-          <div>
-            <small>Business overview</small>
+        <!-- Ambient glow -->
+        <div class="command-glow"></div>
 
-            <strong>
-              Good morning, your business is growing.
-            </strong>
+
+        <!-- TOP BAR -->
+        <div class="command-topbar">
+
+          <div class="command-brand">
+
+            <span class="command-logo">B</span>
+
+            <div>
+              <strong>Briqona OS</strong>
+              <small>Command Center</small>
+            </div>
+
           </div>
 
-          <span class="dashboard-live">
-            ● Live
+          <span class="command-live">
+            <i></i>
+            LIVE
           </span>
 
         </div>
 
 
-        <div class="dashboard-stats">
+        <!-- CENTER CORE -->
+        <div class="command-core">
+
+          <div class="core-ring ring-one"></div>
+          <div class="core-ring ring-two"></div>
+
+          <div class="core-center">
+            <span>✦</span>
+            <strong>BRIQONA</strong>
+            <small>AI CORE</small>
+          </div>
+
+        </div>
+
+
+        <!-- AI CARD -->
+        <div class="floating-card ai-card">
+
+          <div class="floating-icon">✦</div>
 
           <div>
-            <small>Revenue</small>
-            <strong>$84,240</strong>
+            <small>AI INTELLIGENCE</small>
+            <strong>3 growth opportunities</strong>
+            <span>Detected just now</span>
+          </div>
+
+          <b class="card-arrow">↗</b>
+
+        </div>
+
+
+        <!-- REVENUE CARD -->
+        <div class="floating-card revenue-card">
+
+          <div class="card-heading">
+            <small>REVENUE</small>
             <span>↑ 18.4%</span>
           </div>
 
+          <strong class="revenue-number">$84,240</strong>
+
+          <div class="mini-chart">
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+          </div>
+
+        </div>
+
+
+        <!-- WORKFLOW CARD -->
+        <div class="floating-card workflow-card">
+
+          <div class="floating-icon">⚡</div>
+
           <div>
-            <small>Active customers</small>
-            <strong>2,846</strong>
-            <span>↑ 12.8%</span>
+            <small>AUTOMATION</small>
+            <strong>12 workflows</strong>
+            <span>Running smoothly</span>
           </div>
 
-          <div>
-            <small>Operations</small>
-            <strong>94.6%</strong>
-            <span>↑ 7.2%</span>
+          <div class="workflow-status"></div>
+
+        </div>
+
+
+        <!-- CUSTOMER CARD -->
+        <div class="floating-card customer-card">
+
+          <div class="customer-top">
+            <small>ACTIVE CUSTOMERS</small>
+            <span>+12.8%</span>
+          </div>
+
+          <strong>2,846</strong>
+
+          <div class="customer-users">
+            <span>JD</span>
+            <span>AK</span>
+            <span>MR</span>
+            <b>+2k</b>
           </div>
 
         </div>
 
 
-        <div class="dashboard-chart">
-
-          <div class="chart-title">
-            <span>Business performance</span>
-            <span>Last 30 days</span>
-          </div>
-
-          <div class="chart-line"></div>
-
-        </div>
-
-
-        <div class="dashboard-insight">
-
-          <span>✦</span>
-
-          <p>
-            AI insight: Revenue is trending upward.
-            Your strongest growth is coming from
-            returning customers.
-          </p>
-
-        </div>
+        <!-- DATA ORBIT DOTS -->
+        <span class="orbit-dot dot-one"></span>
+        <span class="orbit-dot dot-two"></span>
+        <span class="orbit-dot dot-three"></span>
 
       </div>
 
     </div>
 
-  </section>
+  </div>
+
+</section>
+  
 
 
+            
   <!-- =====================================================
        TRUST
        ===================================================== -->
