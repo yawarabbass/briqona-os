@@ -4,16 +4,19 @@ import "./Register.css";
 const plans = [
   {
     name: "Starter",
-    price: "$5/month",
+    price: "$5 / month",
+    desc: "For individuals & small teams",
   },
   {
     name: "Business",
-    price: "$15/month",
+    price: "$15 / month",
+    desc: "For growing companies",
     popular: true,
   },
   {
     name: "Enterprise",
-    price: "$30/month",
+    price: "$30 / month",
+    desc: "For advanced businesses",
   },
 ];
 
@@ -32,30 +35,35 @@ function Register() {
 
 
         <span className="register-tag">
-          CREATE YOUR ACCOUNT
+          CREATE YOUR BRIQONA OS ACCOUNT
         </span>
 
 
         <h1>
           Start Your
-          <strong> Briqona OS Journey</strong>
+          <strong> Business Journey</strong>
         </h1>
 
 
         <p>
-          Select your plan and create your business account.
+          Choose your plan, create your account and
+          start managing your business smarter.
         </p>
 
 
 
-        <div className="plan-select">
+        <h3>
+          Select Your Plan
+        </h3>
 
+
+        <div className="plan-select">
 
           {plans.map((plan)=>(
 
             <button
-              type="button"
               key={plan.name}
+              type="button"
               className={
                 selectedPlan === plan.name
                 ? "active"
@@ -68,7 +76,7 @@ function Register() {
 
               {plan.popular && (
                 <small>
-                  Popular
+                  Most Popular
                 </small>
               )}
 
@@ -76,15 +84,17 @@ function Register() {
                 {plan.name}
               </b>
 
-              <span>
+              <strong>
                 {plan.price}
-              </span>
+              </strong>
 
+              <span>
+                {plan.desc}
+              </span>
 
             </button>
 
           ))}
-
 
         </div>
 
@@ -93,66 +103,182 @@ function Register() {
         <form>
 
 
+          <h3>
+            Account Information
+          </h3>
+
+
           <input
-            type="text"
             placeholder="Full Name"
           />
 
 
           <input
-            type="text"
-            placeholder="Company Name"
+            placeholder="Job Title / Role"
           />
 
 
           <input
-            type="email"
             placeholder="Business Email"
+            type="email"
           />
 
 
           <input
-            type="password"
-            placeholder="Create Password"
+            placeholder="Mobile Number"
+            type="tel"
           />
 
 
 
           <h3>
-            Payment Method
+            Company Information
           </h3>
 
+
+          <input
+            placeholder="Company Name"
+          />
+
+
+          <input
+            placeholder="Website (Optional)"
+          />
+
+
+          <select>
+
+            <option>
+              Select Industry
+            </option>
+
+            <option>
+              Healthcare
+            </option>
+
+            <option>
+              Retail & E-commerce
+            </option>
+
+            <option>
+              Finance
+            </option>
+
+            <option>
+              Technology
+            </option>
+
+            <option>
+              Manufacturing
+            </option>
+
+            <option>
+              Other / Not Listed
+            </option>
+
+          </select>
+
+
+
+          <input
+            placeholder="Country"
+          />
+
+
+          <input
+            placeholder="Business Address (Optional)"
+          />
+
+
+
+          <h3>
+            Security
+          </h3>
+
+
+          <input
+            placeholder="Create Password"
+            type="password"
+          />
+
+
+          <input
+            placeholder="Confirm Password"
+            type="password"
+          />
+
+
+
+          <h3>
+            Secure Payment Method
+          </h3>
 
 
           <div className="payments">
 
-
             <label>
-              <input type="radio" name="pay" />
-              Visa / Mastercard
+              💳 Visa / Mastercard
             </label>
 
 
             <label>
-              <input type="radio" name="pay" />
-              JazzCash
+              🟢 JazzCash
             </label>
 
 
             <label>
-              <input type="radio" name="pay" />
-              Easypaisa
+              🟢 Easypaisa
             </label>
-
 
           </div>
 
 
 
-          <button
-            className="register-submit"
-          >
-            Create Account & Continue →
+          <div className="support-box">
+
+            <b>
+              Don't have online payment?
+            </b>
+
+            <p>
+              Contact our support team and we
+              will help you complete your subscription.
+            </p>
+
+            <a href="#">
+              Talk to Support →
+            </a>
+
+          </div>
+
+
+
+          <div className="security-box">
+
+            🔒 SSL Encrypted <br />
+
+            🛡 Secure Payments <br />
+
+            ⚡ Account Activation After Payment
+
+          </div>
+
+
+
+          <label className="terms">
+
+            <input type="checkbox" />
+
+            I agree to Terms & Privacy Policy
+
+          </label>
+
+
+
+          <button className="register-submit">
+
+            Create Account & Secure Checkout →
+
           </button>
 
 
