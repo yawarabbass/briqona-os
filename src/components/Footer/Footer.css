@@ -1,0 +1,375 @@
+/* =========================================================
+   BRIQONA OS — FOOTER COMPONENT
+========================================================= */
+
+.site-footer {
+  margin-top: 80px;
+
+  padding: 70px 0 25px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #020712,
+      #030a14
+    );
+
+  border-top:
+    1px solid var(--border);
+}
+
+
+/* ---------- Main Grid ---------- */
+
+.site-footer__grid {
+
+  display: grid;
+
+  grid-template-columns:
+    1.5fr
+    repeat(4, 1fr)
+    1.4fr;
+
+  gap: 35px;
+}
+
+
+/* ---------- Brand ---------- */
+
+
+.site-footer__logo {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+}
+
+
+.site-footer__mark {
+
+  width: 36px;
+  height: 36px;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(2,1fr);
+
+  gap: 3px;
+
+  transform: rotate(30deg);
+}
+
+
+.site-footer__mark i {
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--cyan),
+      var(--green)
+    );
+
+  clip-path:
+    polygon(
+      50% 0,
+      100% 25%,
+      100% 75%,
+      50% 100%,
+      0 75%,
+      0 25%
+    );
+}
+
+
+.site-footer__brand-text {
+
+  display:flex;
+
+  flex-direction:column;
+
+}
+
+
+.site-footer__brand-text strong {
+
+  font-size:17px;
+
+}
+
+
+.site-footer__brand-text em {
+
+  color:var(--green);
+
+  font-style:normal;
+
+}
+
+
+.site-footer__brand-text small {
+
+  margin-top:4px;
+
+  font-size:9px;
+
+  color:var(--text-muted);
+
+}
+
+
+.site-footer__brand p {
+
+  max-width:240px;
+
+  margin:20px 0;
+
+  color:var(--text-muted);
+
+  font-size:13px;
+
+  line-height:1.7;
+}
+
+
+/* ---------- Social ---------- */
+
+
+.site-footer__socials {
+
+  display:flex;
+
+  gap:10px;
+
+}
+
+
+.site-footer__socials a {
+
+  width:32px;
+
+  height:32px;
+
+  display:grid;
+
+  place-items:center;
+
+  border-radius:8px;
+
+  border:
+    1px solid var(--border);
+
+  color:#b9c7da;
+
+  font-size:13px;
+
+  transition:.25s;
+}
+
+
+.site-footer__socials a:hover {
+
+  border-color:var(--cyan);
+
+  color:var(--cyan);
+
+}
+
+
+/* ---------- Columns ---------- */
+
+
+.site-footer__column h3,
+.site-footer__newsletter h3 {
+
+  margin:0 0 18px;
+
+  font-size:14px;
+
+}
+
+
+.site-footer__column a {
+
+  display:block;
+
+  margin-bottom:12px;
+
+  color:#8391a6;
+
+  font-size:13px;
+
+  transition:.25s;
+
+}
+
+
+.site-footer__column a:hover {
+
+  color:var(--cyan);
+
+}
+
+
+/* ---------- Newsletter ---------- */
+
+
+.site-footer__newsletter p {
+
+  color:var(--text-muted);
+
+  font-size:12px;
+
+  line-height:1.6;
+
+}
+
+
+.site-footer__newsletter form {
+
+  margin-top:15px;
+
+  display:flex;
+
+  padding:4px;
+
+  gap:5px;
+
+  border:
+
+    1px solid var(--border);
+
+  border-radius:12px;
+
+  background:#07111f;
+
+}
+
+
+.site-footer__newsletter input {
+
+  width:100%;
+
+  min-width:0;
+
+  border:0;
+
+  background:transparent;
+
+  color:white;
+
+  padding:10px;
+
+}
+
+
+.site-footer__newsletter button {
+
+  border:0;
+
+  padding:0 14px;
+
+  border-radius:9px;
+
+  font-size:12px;
+
+  font-weight:600;
+
+  color:#021018;
+
+  background:
+
+    linear-gradient(
+      100deg,
+      var(--green),
+      var(--cyan)
+    );
+
+}
+
+
+/* ---------- Bottom ---------- */
+
+
+.site-footer__bottom {
+
+  margin-top:50px;
+
+  padding-top:20px;
+
+  display:flex;
+
+  justify-content:space-between;
+
+  border-top:
+
+    1px solid var(--border);
+
+  color:#68758a;
+
+  font-size:12px;
+
+}
+
+
+/* ---------- Responsive ---------- */
+
+
+@media(max-width:1100px){
+
+  .site-footer__grid {
+
+    grid-template-columns:
+      repeat(3,1fr);
+
+  }
+
+
+  .site-footer__brand,
+  .site-footer__newsletter {
+
+    grid-column:
+      span 3;
+
+  }
+
+}
+
+
+@media(max-width:700px){
+
+  .site-footer {
+
+    padding-top:50px;
+
+  }
+
+
+  .site-footer__grid {
+
+    grid-template-columns:1fr;
+
+    gap:35px;
+
+  }
+
+
+  .site-footer__brand,
+  .site-footer__newsletter {
+
+    grid-column:auto;
+
+  }
+
+
+  .site-footer__bottom {
+
+    flex-direction:column;
+
+    gap:10px;
+
+  }
+
+    }
