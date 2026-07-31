@@ -122,21 +122,6 @@ function Header() {
 
         </div>
 
-
-
-
-        <div className="mobile-login">
-
-
-          <a href="/login">
-            Log in
-          </a>
-
-
-        </div>
-
-
-
         <button
 
           className={
