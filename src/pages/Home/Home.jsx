@@ -466,8 +466,9 @@ function Home() {
         </div>
 
       </section>
-      <Platform />
+      
 <Features />
+      <Platform />
     </main>
   );
 }
