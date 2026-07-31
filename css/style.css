@@ -1969,3 +1969,931 @@ p {
   }
 
 }
+/* =========================================================
+   BRIQONA — UNIQUE AI COMMAND CENTER HERO
+   ========================================================= */
+
+.briqona-hero {
+  position: relative;
+  overflow: hidden;
+  min-height: 720px;
+
+  background:
+    radial-gradient(
+      circle at 78% 45%,
+      rgba(91, 75, 219, 0.14),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 15% 30%,
+      rgba(91, 75, 219, 0.06),
+      transparent 28%
+    ),
+    var(--bg);
+}
+
+
+/* Animated background glow */
+
+.briqona-hero::before {
+  content: "";
+  position: absolute;
+
+  width: 520px;
+  height: 520px;
+
+  right: 8%;
+  top: 15%;
+
+  border-radius: 50%;
+
+  background: rgba(91, 75, 219, 0.08);
+
+  filter: blur(90px);
+
+  animation: briqonaGlow 8s ease-in-out infinite alternate;
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   COMMAND CENTER
+   ========================================================= */
+
+.command-center {
+  position: relative;
+
+  width: 100%;
+  min-height: 540px;
+
+  overflow: hidden;
+
+  border: 1px solid rgba(91, 75, 219, 0.16);
+
+  border-radius: 30px;
+
+  background:
+    radial-gradient(
+      circle at 50% 45%,
+      rgba(91, 75, 219, 0.12),
+      transparent 36%
+    ),
+    #10111b;
+
+  box-shadow:
+    0 35px 90px rgba(17, 24, 39, 0.18);
+
+  animation: commandEntrance 900ms ease both;
+}
+
+
+/* Grid */
+
+.command-center::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background-image:
+    linear-gradient(
+      rgba(255,255,255,0.035) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255,255,255,0.035) 1px,
+      transparent 1px
+    );
+
+  background-size: 42px 42px;
+
+  mask-image:
+    radial-gradient(
+      circle at center,
+      black,
+      transparent 78%
+    );
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   TOP BAR
+   ========================================================= */
+
+.command-topbar {
+  position: relative;
+  z-index: 5;
+
+  height: 72px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 22px;
+
+  border-bottom:
+    1px solid rgba(255,255,255,0.07);
+}
+
+
+.command-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  color: #ffffff;
+}
+
+
+.command-brand > div {
+  display: grid;
+  gap: 1px;
+}
+
+
+.command-brand strong {
+  font-size: 12px;
+}
+
+
+.command-brand small {
+  color: #85899b;
+  font-size: 9px;
+}
+
+
+.command-logo {
+  width: 34px;
+  height: 34px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 10px;
+
+  background: var(--primary);
+
+  color: #ffffff;
+
+  font-weight: 900;
+
+  box-shadow:
+    0 0 25px rgba(91, 75, 219, 0.45);
+}
+
+
+.command-live {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  padding: 6px 9px;
+
+  border:
+    1px solid rgba(52,211,153,0.15);
+
+  border-radius: 999px;
+
+  color: #7ee7bd;
+
+  font-size: 8px;
+  font-weight: 800;
+
+  letter-spacing: 0.08em;
+}
+
+
+.command-live i {
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+
+  background: #34d399;
+
+  animation: livePulse 1.7s infinite;
+}
+
+
+/* =========================================================
+   AI CORE
+   ========================================================= */
+
+.command-core {
+  position: absolute;
+
+  left: 50%;
+  top: 51%;
+
+  width: 230px;
+  height: 230px;
+
+  transform: translate(-50%, -50%);
+
+  display: grid;
+  place-items: center;
+}
+
+
+.core-ring {
+  position: absolute;
+
+  border-radius: 50%;
+
+  border: 1px solid rgba(143, 126, 255, 0.24);
+}
+
+
+.ring-one {
+  width: 190px;
+  height: 190px;
+
+  animation: orbitRotate 15s linear infinite;
+}
+
+
+.ring-two {
+  width: 145px;
+  height: 145px;
+
+  border-style: dashed;
+
+  animation:
+    orbitRotateReverse 10s linear infinite;
+}
+
+
+.core-center {
+  width: 100px;
+  height: 100px;
+
+  display: grid;
+  place-items: center;
+  align-content: center;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      #7161ec,
+      #4b3ac8
+    );
+
+  color: #ffffff;
+
+  box-shadow:
+    0 0 35px rgba(91, 75, 219, 0.5),
+    inset 0 0 25px rgba(255,255,255,0.12);
+
+  animation: corePulse 3s ease-in-out infinite;
+}
+
+
+.core-center span {
+  font-size: 20px;
+}
+
+
+.core-center strong {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+}
+
+
+.core-center small {
+  font-size: 7px;
+  opacity: 0.7;
+  letter-spacing: 0.15em;
+}
+
+
+/* =========================================================
+   FLOATING CARDS
+   ========================================================= */
+
+.floating-card {
+  position: absolute;
+  z-index: 10;
+
+  padding: 15px;
+
+  border:
+    1px solid rgba(255,255,255,0.09);
+
+  border-radius: 15px;
+
+  background:
+    rgba(25, 26, 38, 0.88);
+
+  backdrop-filter: blur(14px);
+
+  box-shadow:
+    0 18px 40px rgba(0,0,0,0.28);
+
+  color: #ffffff;
+}
+
+
+.floating-card small {
+  display: block;
+
+  color: #85899b;
+
+  font-size: 7px;
+  font-weight: 800;
+
+  letter-spacing: 0.09em;
+}
+
+
+.floating-card strong {
+  display: block;
+
+  margin-top: 4px;
+
+  font-size: 12px;
+}
+
+
+.floating-card span {
+  display: block;
+
+  margin-top: 3px;
+
+  color: #969aaa;
+
+  font-size: 8px;
+}
+
+
+/* AI */
+
+.ai-card {
+  left: 5%;
+  top: 27%;
+
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  width: 205px;
+
+  animation:
+    cardFloatOne 5s ease-in-out infinite;
+}
+
+
+.floating-icon {
+  width: 31px;
+  height: 31px;
+
+  flex: 0 0 auto;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 9px;
+
+  background: rgba(91,75,219,0.2);
+
+  color: #a89cff;
+
+  font-size: 14px;
+}
+
+
+.card-arrow {
+  margin-left: auto;
+
+  color: #8f82ff;
+
+  font-size: 17px;
+}
+
+
+/* REVENUE */
+
+.revenue-card {
+  right: 5%;
+  top: 24%;
+
+  width: 160px;
+
+  animation:
+    cardFloatTwo 6s ease-in-out infinite;
+}
+
+
+.card-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+.card-heading span,
+.customer-top span {
+  color: #55d69d;
+
+  font-size: 8px;
+  font-weight: 800;
+}
+
+
+.revenue-number {
+  margin-top: 7px;
+
+  font-size: 20px !important;
+}
+
+
+.mini-chart {
+  height: 38px;
+
+  display: flex;
+  align-items: flex-end;
+
+  gap: 5px;
+
+  margin-top: 10px;
+}
+
+
+.mini-chart i {
+  flex: 1;
+
+  min-height: 6px;
+
+  border-radius: 4px 4px 0 0;
+
+  background: var(--primary);
+
+  animation: chartGrow 2.5s ease-in-out infinite alternate;
+}
+
+
+.mini-chart i:nth-child(1) { height: 30%; }
+.mini-chart i:nth-child(2) { height: 48%; }
+.mini-chart i:nth-child(3) { height: 40%; }
+.mini-chart i:nth-child(4) { height: 65%; }
+.mini-chart i:nth-child(5) { height: 56%; }
+.mini-chart i:nth-child(6) { height: 82%; }
+.mini-chart i:nth-child(7) { height: 100%; }
+
+
+/* WORKFLOW */
+
+.workflow-card {
+  left: 9%;
+  bottom: 17%;
+
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  width: 190px;
+
+  animation:
+    cardFloatThree 5.5s ease-in-out infinite;
+}
+
+
+.workflow-status {
+  width: 7px;
+  height: 7px;
+
+  margin-left: auto;
+
+  border-radius: 50%;
+
+  background: #34d399;
+
+  box-shadow:
+    0 0 12px rgba(52,211,153,0.8);
+}
+
+
+/* CUSTOMER */
+
+.customer-card {
+  right: 7%;
+  bottom: 14%;
+
+  width: 175px;
+
+  animation:
+    cardFloatOne 6.5s ease-in-out infinite reverse;
+}
+
+
+.customer-top {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.customer-card > strong {
+  margin-top: 6px;
+
+  font-size: 22px;
+}
+
+
+.customer-users {
+  display: flex;
+
+  margin-top: 10px;
+}
+
+
+.customer-users span,
+.customer-users b {
+  width: 23px;
+  height: 23px;
+
+  display: grid;
+  place-items: center;
+
+  margin-left: -4px;
+
+  border: 2px solid #191a26;
+
+  border-radius: 50%;
+
+  background: #35364a;
+
+  color: #ffffff;
+
+  font-size: 6px;
+}
+
+
+.customer-users b {
+  width: auto;
+
+  padding: 0 7px;
+
+  border-radius: 999px;
+
+  color: #aaa2ff;
+}
+
+
+/* =========================================================
+   ORBIT DOTS
+   ========================================================= */
+
+.orbit-dot {
+  position: absolute;
+
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+
+  background: #9d91ff;
+
+  box-shadow:
+    0 0 15px rgba(157,145,255,0.8);
+}
+
+
+.dot-one {
+  left: 50%;
+  top: 19%;
+
+  animation: dotMoveOne 5s linear infinite;
+}
+
+
+.dot-two {
+  left: 29%;
+  top: 51%;
+
+  animation: dotMoveTwo 7s linear infinite;
+}
+
+
+.dot-three {
+  right: 26%;
+  top: 65%;
+
+  animation: dotMoveThree 6s linear infinite;
+}
+
+
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+
+@keyframes commandEntrance {
+
+  from {
+    opacity: 0;
+    transform: translateY(35px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+}
+
+
+@keyframes briqonaGlow {
+
+  from {
+    transform: translate(0, 0) scale(1);
+  }
+
+  to {
+    transform: translate(-35px, 25px) scale(1.15);
+  }
+
+}
+
+
+@keyframes corePulse {
+
+  0%, 100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.06);
+  }
+
+}
+
+
+@keyframes orbitRotate {
+
+  to {
+    transform: rotate(360deg);
+  }
+
+}
+
+
+@keyframes orbitRotateReverse {
+
+  to {
+    transform: rotate(-360deg);
+  }
+
+}
+
+
+@keyframes livePulse {
+
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.4;
+    transform: scale(0.7);
+  }
+
+}
+
+
+@keyframes cardFloatOne {
+
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-9px);
+  }
+
+}
+
+
+@keyframes cardFloatTwo {
+
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(-7px, -11px);
+  }
+
+}
+
+
+@keyframes cardFloatThree {
+
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(10px);
+  }
+
+}
+
+
+@keyframes chartGrow {
+
+  from {
+    opacity: 0.55;
+    transform: scaleY(0.75);
+    transform-origin: bottom;
+  }
+
+  to {
+    opacity: 1;
+    transform: scaleY(1);
+    transform-origin: bottom;
+  }
+
+}
+
+
+@keyframes dotMoveOne {
+
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(30px, 20px);
+  }
+
+}
+
+
+@keyframes dotMoveTwo {
+
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(-20px, -25px);
+  }
+
+}
+
+
+@keyframes dotMoveThree {
+
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(25px, -20px);
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+  .briqona-hero {
+    min-height: auto;
+  }
+
+  .command-center {
+    min-height: 500px;
+  }
+
+}
+
+
+@media (max-width: 720px) {
+
+  .briqona-hero {
+    padding: 65px 0 80px;
+  }
+
+  .command-center {
+    min-height: 460px;
+    border-radius: 23px;
+  }
+
+  .command-topbar {
+    height: 60px;
+    padding: 0 15px;
+  }
+
+  .command-core {
+    width: 190px;
+    height: 190px;
+  }
+
+  .ring-one {
+    width: 160px;
+    height: 160px;
+  }
+
+  .ring-two {
+    width: 120px;
+    height: 120px;
+  }
+
+  .core-center {
+    width: 82px;
+    height: 82px;
+  }
+
+  .ai-card {
+    left: 3%;
+    top: 22%;
+    width: 175px;
+  }
+
+  .revenue-card {
+    right: 3%;
+    top: 19%;
+    width: 135px;
+  }
+
+  .workflow-card {
+    left: 3%;
+    bottom: 10%;
+    width: 165px;
+  }
+
+  .customer-card {
+    right: 3%;
+    bottom: 8%;
+    width: 150px;
+  }
+
+}
+
+
+@media (max-width: 520px) {
+
+  .command-center {
+    min-height: 430px;
+  }
+
+  .command-core {
+    top: 50%;
+  }
+
+  .ai-card {
+    transform: scale(0.88);
+    transform-origin: left top;
+  }
+
+  .revenue-card {
+    transform: scale(0.85);
+    transform-origin: right top;
+  }
+
+  .workflow-card {
+    transform: scale(0.86);
+    transform-origin: left bottom;
+  }
+
+  .customer-card {
+    transform: scale(0.82);
+    transform-origin: right bottom;
+  }
+
+  .floating-card strong {
+    font-size: 10px;
+  }
+
+}
+
+
+/* Reduced motion */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .briqona-hero::before,
+  .command-center,
+  .core-center,
+  .ring-one,
+  .ring-two,
+  .command-live i,
+  .floating-card,
+  .mini-chart i,
+  .orbit-dot {
+    animation: none !important;
+  }
+
+}
