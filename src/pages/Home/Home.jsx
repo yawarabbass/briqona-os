@@ -1,5 +1,5 @@
 import "./Home.css";
-
+import Features from "./sections/Features/Features";
 function Home() {
   return (
     <main className="home-page">
@@ -465,7 +465,7 @@ function Home() {
         </div>
 
       </section>
-
+<Features />
     </main>
   );
 }
