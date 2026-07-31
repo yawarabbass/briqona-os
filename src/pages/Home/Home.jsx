@@ -1,6 +1,7 @@
 import "./Home.css";
 import Features from "./sections/Features/Features";
 import Platform from "./sections/Platform/Platform";
+import Solutions from "./sections/Solutions/Solutions";
 function Home() {
   return (
     <main className="home-page">
@@ -469,6 +470,7 @@ function Home() {
       
 <Features />
       <Platform />
+      <Solutions />
     </main>
   );
 }
