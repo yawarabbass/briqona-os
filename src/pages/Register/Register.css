@@ -1,0 +1,275 @@
+.register-page {
+
+  min-height:100vh;
+
+  padding:60px 20px;
+
+  display:flex;
+
+  justify-content:center;
+
+  background:
+
+  radial-gradient(
+    circle at top,
+    rgba(22,217,255,.15),
+    transparent 45%
+  ),
+  var(--bg);
+
+}
+
+
+
+.register-card {
+
+  width:100%;
+
+  max-width:720px;
+
+  padding:45px;
+
+  border-radius:30px;
+
+  background:
+
+  rgba(255,255,255,.05);
+
+  border:
+
+  1px solid var(--border);
+
+  backdrop-filter:blur(18px);
+
+}
+
+
+
+.register-tag {
+
+  color:var(--cyan);
+
+  font-size:12px;
+
+  letter-spacing:.15em;
+
+}
+
+
+
+.register-card h1 {
+
+  margin:20px 0 10px;
+
+  font-size:clamp(32px,5vw,48px);
+
+}
+
+
+
+.register-card h1 strong {
+
+  display:block;
+
+  color:var(--green);
+
+}
+
+
+
+.register-card p {
+
+  color:var(--text-soft);
+
+}
+
+
+
+.plan-select {
+
+  display:grid;
+
+  grid-template-columns:repeat(3,1fr);
+
+  gap:15px;
+
+  margin:35px 0;
+
+}
+
+
+
+.plan-select button {
+
+  position:relative;
+
+  padding:25px 15px;
+
+  border-radius:18px;
+
+  border:1px solid var(--border);
+
+  background:rgba(255,255,255,.04);
+
+  color:white;
+
+  cursor:pointer;
+
+}
+
+
+
+.plan-select button.active {
+
+  border-color:var(--green);
+
+  background:rgba(141,242,61,.08);
+
+}
+
+
+
+.plan-select small {
+
+  position:absolute;
+
+  top:-12px;
+
+  right:15px;
+
+  background:var(--green);
+
+  color:#031018;
+
+  padding:5px 10px;
+
+  border-radius:20px;
+
+  font-size:11px;
+
+}
+
+
+
+.plan-select b {
+
+  display:block;
+
+  font-size:18px;
+
+  margin-bottom:10px;
+
+}
+
+
+
+.plan-select span {
+
+  color:var(--cyan);
+
+}
+
+
+
+.register-card form input {
+
+  width:100%;
+
+  padding:15px;
+
+  margin-bottom:15px;
+
+  border-radius:12px;
+
+  border:1px solid var(--border);
+
+  background:rgba(255,255,255,.04);
+
+  color:white;
+
+}
+
+
+
+.register-card h3 {
+
+  margin-top:25px;
+
+}
+
+
+
+.payments {
+
+  display:flex;
+
+  flex-wrap:wrap;
+
+  gap:15px;
+
+  margin:20px 0;
+
+}
+
+
+
+.payments label {
+
+  padding:14px 18px;
+
+  border-radius:12px;
+
+  border:1px solid var(--border);
+
+  color:#dbe7f5;
+
+}
+
+
+
+.register-submit {
+
+  width:100%;
+
+  padding:16px;
+
+  margin-top:20px;
+
+  border:0;
+
+  border-radius:12px;
+
+  font-weight:700;
+
+  cursor:pointer;
+
+  color:#031018;
+
+  background:
+
+  linear-gradient(
+    100deg,
+    var(--green),
+    var(--cyan)
+  );
+
+}
+
+
+
+@media(max-width:700px){
+
+  .plan-select {
+
+    grid-template-columns:1fr;
+
+  }
+
+
+  .register-card {
+
+    padding:30px 20px;
+
+  }
+
+}
