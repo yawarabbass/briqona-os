@@ -2,19 +2,48 @@ import { useState } from "react";
 import "./Header.css";
 
 const navItems = [
-  { label: "Home", href: "/" },
-  { label: "Platform", href: "#platform" },
-  { label: "Solutions", href: "#solutions" },
-  { label: "Industries", href: "#industries" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "About", href: "#about" },
+  {
+    label: "Platform",
+    dropdown: [
+      "Dashboard",
+      "CRM",
+      "Projects",
+      "Finance",
+      "Inventory",
+      "Analytics",
+    ],
+  },
+  {
+    label: "Solutions",
+    dropdown: [
+      "Business Management",
+      "Workflow Automation",
+      "Data Intelligence",
+      "AI Assistant",
+    ],
+  },
+  {
+    label: "Industries",
+    dropdown: [
+      "Healthcare",
+      "Construction",
+      "Real Estate",
+      "Retail & E-commerce",
+      "Education",
+      "Hospitality",
+      "Agencies",
+      "Legal",
+    ],
+  },
 ];
 
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState(null);
 
   const closeMenu = () => {
     setMenuOpen(false);
+    setActiveDropdown(null);
   };
 
   return (
@@ -25,7 +54,6 @@ function Header() {
           className="site-header__brand"
           href="/"
           onClick={closeMenu}
-          aria-label="Briqona OS Home"
         >
           <span className="site-header__logo">
             <i />
@@ -39,34 +67,91 @@ function Header() {
               BRIQONA <em>OS</em>
             </strong>
 
-            <small>Business Operating System</small>
+            <small>
+              Business Operating System
+            </small>
           </span>
         </a>
+
 
         <nav
           className={`site-header__nav ${
             menuOpen ? "site-header__nav--open" : ""
           }`}
-          aria-label="Main navigation"
         >
-          {navItems.map((item) => (
-            <a
+
+          <a href="/" onClick={closeMenu}>
+            Home
+          </a>
+
+
+          {navItems.map((item, index) => (
+            <div
+              className="nav-dropdown"
               key={item.label}
-              href={item.href}
-              onClick={closeMenu}
+              onMouseEnter={() =>
+                setActiveDropdown(index)
+              }
+              onMouseLeave={() =>
+                setActiveDropdown(null)
+              }
             >
-              {item.label}
-            </a>
+
+              <button
+                className="nav-dropdown__button"
+                onClick={() =>
+                  setActiveDropdown(
+                    activeDropdown === index
+                      ? null
+                      : index
+                  )
+                }
+              >
+                {item.label}
+                <span>⌄</span>
+              </button>
+
+
+              {activeDropdown === index && (
+                <div className="nav-dropdown__menu">
+
+                  {item.dropdown.map((subItem) => (
+                    <a
+                      key={subItem}
+                      href="#"
+                      onClick={closeMenu}
+                    >
+                      {subItem}
+                    </a>
+                  ))}
+
+                </div>
+              )}
+
+            </div>
           ))}
+
+
+          <a href="#pricing" onClick={closeMenu}>
+            Pricing
+          </a>
+
+          <a href="#about" onClick={closeMenu}>
+            About
+          </a>
+
         </nav>
 
+
         <div className="site-header__actions">
+
           <a
             className="site-header__login"
             href="#login"
           >
             Log in
           </a>
+
 
           <a
             className="site-header__button"
@@ -75,18 +160,20 @@ function Header() {
             Start Free
             <span>→</span>
           </a>
+
         </div>
+
 
         <button
           className={`site-header__menu ${
-            menuOpen ? "site-header__menu--open" : ""
+            menuOpen
+              ? "site-header__menu--open"
+              : ""
           }`}
           type="button"
-          aria-label={
-            menuOpen ? "Close navigation" : "Open navigation"
+          onClick={() =>
+            setMenuOpen(!menuOpen)
           }
-          aria-expanded={menuOpen}
-          onClick={() => setMenuOpen((current) => !current)}
         >
           <span />
           <span />
