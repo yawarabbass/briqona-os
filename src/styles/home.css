@@ -1762,3 +1762,150 @@
   }
 
     }
+/* =========================================================
+   FLOATING WHATSAPP + CALL
+   ========================================================= */
+
+.bq-floating-contact {
+  position: fixed;
+
+  right: 22px;
+  bottom: 22px;
+
+  z-index: 9999;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.bq-floating-contact a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  min-width: 118px;
+  min-height: 46px;
+
+  padding: 10px 15px;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+
+  color: #ffffff;
+
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+
+  box-shadow:
+    0 12px 35px rgba(0, 0, 0, 0.35);
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.bq-floating-contact a:hover {
+  transform: translateY(-4px);
+
+  box-shadow:
+    0 18px 45px rgba(0, 0, 0, 0.45);
+}
+
+.bq-floating-contact a span {
+  display: grid;
+
+  width: 25px;
+  height: 25px;
+
+  place-items: center;
+
+  border-radius: 50%;
+
+  font-size: 14px;
+}
+
+.bq-floating-whatsapp {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(37, 211, 102, 0.95),
+      rgba(20, 150, 72, 0.95)
+    );
+}
+
+.bq-floating-whatsapp:hover {
+  border-color:
+    rgba(37, 211, 102, 0.65);
+
+  box-shadow:
+    0 18px 45px rgba(37, 211, 102, 0.22);
+}
+
+.bq-floating-whatsapp span {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.bq-floating-call {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(139, 92, 246, 0.98),
+      rgba(91, 53, 180, 0.98)
+    );
+}
+
+.bq-floating-call:hover {
+  border-color:
+    rgba(167, 139, 250, 0.6);
+
+  box-shadow:
+    0 18px 45px rgba(139, 92, 246, 0.28);
+}
+
+.bq-floating-call span {
+  background: rgba(255, 255, 255, 0.14);
+}
+
+
+/* =========================================================
+   FLOATING BUTTON MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+  .bq-floating-contact {
+    right: 14px;
+    bottom: 14px;
+    gap: 8px;
+  }
+
+  .bq-floating-contact a {
+    min-width: 52px;
+    width: 52px;
+    height: 52px;
+
+    padding: 0;
+
+    border-radius: 50%;
+  }
+
+  .bq-floating-contact a strong {
+    display: none;
+  }
+
+  .bq-floating-contact a span {
+    width: 30px;
+    height: 30px;
+
+    font-size: 16px;
+  }
+
+   }
+
