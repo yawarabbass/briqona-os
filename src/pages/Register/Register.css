@@ -2,17 +2,16 @@
 
   min-height:100vh;
 
-  padding:60px 20px;
+  padding:70px 20px;
 
   display:flex;
 
   justify-content:center;
 
   background:
-
   radial-gradient(
     circle at top,
-    rgba(22,217,255,.15),
+    rgba(21,217,255,.18),
     transparent 45%
   ),
   var(--bg);
@@ -25,18 +24,16 @@
 
   width:100%;
 
-  max-width:720px;
+  max-width:760px;
 
   padding:45px;
 
   border-radius:30px;
 
   background:
-
   rgba(255,255,255,.05);
 
   border:
-
   1px solid var(--border);
 
   backdrop-filter:blur(18px);
@@ -51,7 +48,7 @@
 
   font-size:12px;
 
-  letter-spacing:.15em;
+  letter-spacing:.14em;
 
 }
 
@@ -59,9 +56,11 @@
 
 .register-card h1 {
 
+  font-size:clamp(32px,5vw,48px);
+
   margin:20px 0 10px;
 
-  font-size:clamp(32px,5vw,48px);
+  line-height:1.15;
 
 }
 
@@ -81,9 +80,23 @@
 
   color:var(--text-soft);
 
+  line-height:1.7;
+
 }
 
 
+
+.register-card h3 {
+
+  margin-top:30px;
+
+  margin-bottom:15px;
+
+}
+
+
+
+/* Plans */
 
 .plan-select {
 
@@ -93,7 +106,7 @@
 
   gap:15px;
 
-  margin:35px 0;
+  margin:25px 0;
 
 }
 
@@ -115,6 +128,8 @@
 
   cursor:pointer;
 
+  text-align:left;
+
 }
 
 
@@ -135,15 +150,15 @@
 
   top:-12px;
 
-  right:15px;
-
-  background:var(--green);
-
-  color:#031018;
+  right:12px;
 
   padding:5px 10px;
 
   border-radius:20px;
+
+  background:var(--green);
+
+  color:#021018;
 
   font-size:11px;
 
@@ -163,15 +178,33 @@
 
 
 
-.plan-select span {
+.plan-select strong {
+
+  display:block;
 
   color:var(--cyan);
+
+  margin-bottom:8px;
 
 }
 
 
 
-.register-card form input {
+.plan-select span {
+
+  color:var(--text-muted);
+
+  font-size:13px;
+
+}
+
+
+
+/* Inputs */
+
+
+.register-card input,
+.register-card select {
 
   width:100%;
 
@@ -191,12 +224,15 @@
 
 
 
-.register-card h3 {
+.register-card select option {
 
-  margin-top:25px;
+  color:#000;
 
 }
 
+
+
+/* Payment */
 
 
 .payments {
@@ -205,9 +241,7 @@
 
   flex-wrap:wrap;
 
-  gap:15px;
-
-  margin:20px 0;
+  gap:12px;
 
 }
 
@@ -221,23 +255,109 @@
 
   border:1px solid var(--border);
 
-  color:#dbe7f5;
+  background:rgba(255,255,255,.03);
 
 }
 
+
+
+/* Support */
+
+
+.support-box {
+
+  margin-top:25px;
+
+  padding:20px;
+
+  border-radius:18px;
+
+  border:1px solid rgba(21,217,255,.25);
+
+  background:rgba(21,217,255,.05);
+
+}
+
+
+
+.support-box p {
+
+  margin:10px 0;
+
+}
+
+
+
+.support-box a {
+
+  color:var(--cyan);
+
+}
+
+
+
+/* Security */
+
+
+.security-box {
+
+  margin-top:20px;
+
+  padding:20px;
+
+  border-radius:18px;
+
+  background:rgba(141,242,61,.06);
+
+  border:1px solid rgba(141,242,61,.2);
+
+  line-height:2;
+
+}
+
+
+
+/* Terms */
+
+
+.terms {
+
+  display:flex;
+
+  gap:10px;
+
+  align-items:center;
+
+  margin:25px 0;
+
+  color:var(--text-soft);
+
+}
+
+
+
+.terms input {
+
+  width:auto;
+
+}
+
+
+
+/* Button */
 
 
 .register-submit {
 
   width:100%;
 
-  padding:16px;
-
-  margin-top:20px;
+  padding:17px;
 
   border:0;
 
-  border-radius:12px;
+  border-radius:14px;
+
+  font-size:15px;
 
   font-weight:700;
 
@@ -246,7 +366,6 @@
   color:#031018;
 
   background:
-
   linear-gradient(
     100deg,
     var(--green),
@@ -259,6 +378,13 @@
 
 @media(max-width:700px){
 
+  .register-card {
+
+    padding:30px 20px;
+
+  }
+
+
   .plan-select {
 
     grid-template-columns:1fr;
@@ -266,10 +392,11 @@
   }
 
 
-  .register-card {
+  .register-card h1 {
 
-    padding:30px 20px;
+    font-size:32px;
 
   }
+
 
 }
