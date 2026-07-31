@@ -521,3 +521,131 @@
 }
 
 }
+/* =========================
+   DROPDOWN MENU
+========================= */
+
+.nav-dropdown {
+
+  position: relative;
+
+}
+
+
+.nav-dropdown > a {
+
+  cursor:pointer;
+
+}
+
+
+.dropdown-menu {
+
+  position:absolute;
+
+  top:35px;
+
+  left:0;
+
+  min-width:220px;
+
+  padding:12px;
+
+  display:none;
+
+  flex-direction:column;
+
+  gap:5px;
+
+
+  background:
+  rgba(5,15,28,.98);
+
+
+  border:1px solid var(--border);
+
+  border-radius:16px;
+
+  box-shadow:
+  0 20px 50px rgba(0,0,0,.4);
+
+}
+
+
+.dropdown-menu a {
+
+  padding:12px;
+
+  border-radius:10px;
+
+  color:#dbe7f5;
+
+  font-size:14px;
+
+}
+
+
+.dropdown-menu a:hover {
+
+  background:rgba(141,242,61,.1);
+
+  color:var(--green);
+
+}
+
+
+/* Desktop Hover */
+
+@media(min-width:901px){
+
+.nav-dropdown:hover .dropdown-menu {
+
+  display:flex;
+
+}
+
+}
+
+
+
+/* Mobile */
+
+@media(max-width:900px){
+
+
+.nav-dropdown {
+
+  width:100%;
+
+}
+
+
+.dropdown-menu {
+
+  position:static;
+
+  display:flex;
+
+  margin-top:5px;
+
+  background:transparent;
+
+  border:0;
+
+  box-shadow:none;
+
+  padding-left:15px;
+
+}
+
+
+.nav-dropdown > a {
+
+  padding:14px;
+
+  display:block;
+
+}
+
+
+}
