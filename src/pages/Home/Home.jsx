@@ -3,6 +3,7 @@ import Features from "./sections/Features/Features";
 import Platform from "./sections/Platform/Platform";
 import Solutions from "./sections/Solutions/Solutions";
 import Industries from "./sections/Industries/Industries";
+import Pricing from "./sections/Pricing/Pricing";
 function Home() {
   return (
     <main className="home-page">
@@ -473,6 +474,7 @@ function Home() {
       <Platform />
       <Solutions />
       <Industries />
+      <Pricing />
     </main>
   );
 }
