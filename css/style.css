@@ -1342,6 +1342,7 @@ p {
 .call-text {
 
   white-space: nowrap;
+}
   /* =========================================================
    RESPONSIVE — TABLET
    ========================================================= */
@@ -1765,6 +1766,206 @@ p {
   .easypaisa-logo,
   .jazzcash-logo {
     font-size: 8px;
+  }
+
+}
+/* =========================================================
+   BRIQONA OS — HERO ANIMATION
+   ========================================================= */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Soft background movement */
+.hero::before {
+  content: "";
+  position: absolute;
+  width: 520px;
+  height: 520px;
+  top: -180px;
+  right: -120px;
+  border-radius: 50%;
+  background: rgba(91, 75, 219, 0.10);
+  filter: blur(70px);
+  pointer-events: none;
+  animation: heroGlow 7s ease-in-out infinite alternate;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  width: 380px;
+  height: 380px;
+  left: -180px;
+  bottom: -160px;
+  border-radius: 50%;
+  background: rgba(91, 75, 219, 0.06);
+  filter: blur(70px);
+  pointer-events: none;
+  animation: heroGlow 9s ease-in-out infinite alternate-reverse;
+}
+
+
+/* Hero content entrance */
+
+.hero-content {
+  animation: heroContentIn 900ms ease both;
+}
+
+
+/* Dashboard floating animation */
+
+.hero-dashboard,
+.dashboard-window {
+  animation:
+    heroDashboardIn 1000ms ease 180ms both,
+    heroDashboardFloat 6s ease-in-out 1.2s infinite;
+}
+
+
+/* Badge */
+
+.hero-badge,
+.eyebrow {
+  animation: heroBadgeIn 700ms ease 100ms both;
+}
+
+
+/* Buttons */
+
+.hero-actions {
+  animation: heroActionsIn 800ms ease 350ms both;
+}
+
+
+/* =========================================================
+   KEYFRAMES
+   ========================================================= */
+
+@keyframes heroContentIn {
+
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+}
+
+
+@keyframes heroBadgeIn {
+
+  from {
+    opacity: 0;
+    transform: translateY(-12px) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+}
+
+
+@keyframes heroActionsIn {
+
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+}
+
+
+@keyframes heroDashboardIn {
+
+  from {
+    opacity: 0;
+    transform:
+      perspective(1400px)
+      translateY(45px)
+      rotateY(-4deg)
+      scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform:
+      perspective(1400px)
+      translateY(0)
+      rotateY(-2deg)
+      scale(1);
+  }
+
+}
+
+
+@keyframes heroDashboardFloat {
+
+  0% {
+    transform:
+      perspective(1400px)
+      rotateY(-2deg)
+      translateY(0);
+  }
+
+  50% {
+    transform:
+      perspective(1400px)
+      rotateY(-1deg)
+      translateY(-8px);
+  }
+
+  100% {
+    transform:
+      perspective(1400px)
+      rotateY(-2deg)
+      translateY(0);
+  }
+
+}
+
+
+@keyframes heroGlow {
+
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  to {
+    transform: translate3d(25px, 20px, 0) scale(1.12);
+  }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .hero-content,
+  .hero-badge,
+  .eyebrow,
+  .hero-actions,
+  .hero-dashboard,
+  .dashboard-window,
+  .hero::before,
+  .hero::after {
+    animation: none !important;
   }
 
 }
