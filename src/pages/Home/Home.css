@@ -1,0 +1,185 @@
+/* =========================================================
+   BRIQONA OS — HOME PAGE
+   Home-only styles.
+========================================================= */
+
+.home-page {
+  min-height: 100vh;
+  background:
+    radial-gradient(
+      circle at 78% 18%,
+      rgba(17, 170, 220, 0.12),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 18% 42%,
+      rgba(90, 70, 220, 0.08),
+      transparent 25%
+    ),
+    var(--bg);
+
+  overflow: hidden;
+}
+
+/* ---------- Hero ---------- */
+
+.home-hero {
+  position: relative;
+  min-height: calc(100vh - 80px);
+
+  display: flex;
+  align-items: center;
+
+  padding: 100px 0 120px;
+}
+
+.home-hero::before {
+  content: "";
+
+  position: absolute;
+  width: 520px;
+  height: 520px;
+
+  right: -180px;
+  top: 60px;
+
+  background: rgba(17, 217, 255, 0.08);
+
+  border-radius: 50%;
+
+  filter: blur(100px);
+
+  pointer-events: none;
+}
+
+.home-hero .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* ---------- Eyebrow ---------- */
+
+.home-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+
+  padding: 8px 14px;
+
+  border: 1px solid rgba(22, 217, 255, 0.22);
+  border-radius: 999px;
+
+  background: rgba(8, 24, 39, 0.72);
+
+  color: #b9d8e0;
+
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+}
+
+.home-eyebrow::before {
+  content: "";
+
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: var(--cyan);
+
+  box-shadow:
+    0 0 8px rgba(22, 217, 255, 0.8),
+    0 0 18px rgba(22, 217, 255, 0.45);
+}
+
+/* ---------- Heading ---------- */
+
+.home-hero h1 {
+  max-width: 820px;
+
+  margin: 26px 0 22px;
+
+  color: var(--text);
+
+  font-size: clamp(48px, 6vw, 82px);
+  line-height: 1.02;
+
+  letter-spacing: -0.055em;
+
+  font-weight: 800;
+}
+
+.home-hero h1 span {
+  background:
+    linear-gradient(
+      100deg,
+      var(--green) 0%,
+      #42e9bd 42%,
+      var(--cyan) 100%
+    );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  color: transparent;
+}
+
+/* ---------- Description ---------- */
+
+.home-hero p {
+  max-width: 610px;
+
+  margin: 0;
+
+  color: var(--text-soft);
+
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+/* ---------- Tablet ---------- */
+
+@media (max-width: 900px) {
+  .home-hero {
+    min-height: auto;
+
+    padding:
+      80px
+      0
+      90px;
+  }
+
+  .home-hero h1 {
+    font-size: clamp(44px, 8vw, 68px);
+  }
+}
+
+/* ---------- Mobile ---------- */
+
+@media (max-width: 600px) {
+  .home-hero {
+    padding:
+      65px
+      0
+      75px;
+  }
+
+  .home-eyebrow {
+    font-size: 8px;
+    letter-spacing: 0.1em;
+  }
+
+  .home-hero h1 {
+    margin-top: 20px;
+
+    font-size: clamp(42px, 13vw, 58px);
+
+    letter-spacing: -0.06em;
+  }
+
+  .home-hero p {
+    font-size: 14px;
+    line-height: 1.65;
+  }
+}
