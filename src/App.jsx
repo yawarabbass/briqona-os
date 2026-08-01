@@ -49,7 +49,15 @@ if (path === "/pricing") {
     </div>
   );
 }
-
+if (path === "/about") {
+  return (
+    <div className="app">
+      <Header />
+      <About />
+      <Footer />
+    </div>
+  );
+}
   return (
     <div className="app">
       <Header />
