@@ -1,0 +1,340 @@
+/* =====================================
+   BRIQONA OS — PRICING PAGE
+===================================== */
+
+.pricing-page {
+
+  min-height:100vh;
+
+  padding:100px 20px;
+
+  background:
+  radial-gradient(
+    circle at top,
+    rgba(22,217,255,.12),
+    transparent 40%
+  );
+
+}
+
+
+/* HERO */
+
+.pricing-hero {
+
+  max-width:800px;
+
+  margin:0 auto 70px;
+
+  text-align:center;
+
+}
+
+
+.pricing-hero span {
+
+  color:var(--cyan);
+
+  font-size:12px;
+
+  letter-spacing:2px;
+
+}
+
+
+.pricing-hero h1 {
+
+  margin-top:20px;
+
+  font-size:52px;
+
+  line-height:1.1;
+
+}
+
+
+.pricing-hero em {
+
+  color:var(--green);
+
+  font-style:normal;
+
+}
+
+
+.pricing-hero p {
+
+  margin-top:20px;
+
+  color:var(--text-muted);
+
+  font-size:18px;
+
+}
+
+
+
+/* CARDS */
+
+
+.pricing-cards {
+
+  max-width:1100px;
+
+  margin:auto;
+
+  display:grid;
+
+  grid-template-columns:repeat(3,1fr);
+
+  gap:25px;
+
+}
+
+
+
+.pricing-card {
+
+  position:relative;
+
+  padding:35px 30px;
+
+  border-radius:24px;
+
+  background:
+  rgba(8,20,34,.75);
+
+
+  border:
+
+  1px solid rgba(143,184,224,.15);
+
+
+  backdrop-filter:blur(15px);
+
+  transition:.3s;
+
+}
+
+
+
+.pricing-card:hover {
+
+  transform:translateY(-8px);
+
+  border-color:var(--cyan);
+
+}
+
+
+
+.pricing-card h2 {
+
+  font-size:25px;
+
+}
+
+
+.pricing-card h3 {
+
+  margin:20px 0;
+
+  font-size:42px;
+
+  color:var(--cyan);
+
+}
+
+
+
+.pricing-card h3 small {
+
+  font-size:15px;
+
+  color:white;
+
+}
+
+
+
+.pricing-card p {
+
+  color:var(--text-muted);
+
+}
+
+
+.pricing-card ul {
+
+  list-style:none;
+
+  padding:25px 0;
+
+}
+
+
+
+.pricing-card li {
+
+  margin:12px 0;
+
+  color:#dbe7f5;
+
+}
+
+
+
+.pricing-card a {
+
+  display:block;
+
+  text-align:center;
+
+  padding:14px;
+
+  border-radius:12px;
+
+  background:
+  linear-gradient(
+    100deg,
+    var(--green),
+    var(--cyan)
+  );
+
+
+  color:#031018;
+
+  font-weight:700;
+
+}
+
+
+
+/* POPULAR */
+
+
+.pricing-card.popular {
+
+  border:
+
+  1px solid var(--green);
+
+}
+
+
+
+.badge {
+
+  position:absolute;
+
+  top:-15px;
+
+  right:20px;
+
+  padding:6px 15px;
+
+  border-radius:20px;
+
+  background:var(--green);
+
+  color:#031018;
+
+  font-size:12px;
+
+  font-weight:bold;
+
+}
+
+
+
+/* PAYMENT */
+
+
+.payment-trust {
+
+  margin:90px auto 0;
+
+  text-align:center;
+
+}
+
+
+.payment-trust h2 {
+
+  font-size:32px;
+
+}
+
+
+.payment-trust p {
+
+  color:var(--text-muted);
+
+}
+
+
+.payment-box {
+
+  margin-top:30px;
+
+  display:flex;
+
+  justify-content:center;
+
+  gap:20px;
+
+  flex-wrap:wrap;
+
+}
+
+
+
+.payment-box span {
+
+  padding:15px 30px;
+
+  border-radius:14px;
+
+  background:
+
+  rgba(255,255,255,.05);
+
+
+  border:
+
+  1px solid var(--border);
+
+}
+
+
+
+/* MOBILE */
+
+
+@media(max-width:900px){
+
+
+.pricing-hero h1 {
+
+ font-size:36px;
+
+}
+
+
+.pricing-cards {
+
+ grid-template-columns:1fr;
+
+ max-width:420px;
+
+}
+
+
+.pricing-page {
+
+ padding-top:70px;
+
+}
+
+
+  }
