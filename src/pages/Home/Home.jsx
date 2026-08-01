@@ -38,7 +38,7 @@ function Home() {
 
               <a
                 className="home-button home-button--primary"
-                href="#start"
+                href="/start"
               >
                 Start Free
                 <span>→</span>
@@ -46,7 +46,7 @@ function Home() {
 
               <a
                 className="home-button home-button--secondary"
-                href="#demo"
+                href="/demo"
               >
                 <span>▣</span>
                 Book a Demo
