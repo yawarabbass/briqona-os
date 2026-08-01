@@ -1,126 +1,130 @@
 import "./About.css";
 
-const values = [
-  {
-    title: "Innovation",
-    text: "Building intelligent solutions that help businesses work smarter.",
-    icon: "🚀",
-  },
-  {
-    title: "Simplicity",
-    text: "Making complex business operations simple and easy to manage.",
-    icon: "⚡",
-  },
-  {
-    title: "Trust",
-    text: "Security, reliability, and transparency are at the core of everything we build.",
-    icon: "🔒",
-  },
-  {
-    title: "Growth",
-    text: "Helping businesses scale faster with powerful technology.",
-    icon: "📈",
-  },
-];
-
-
-function About(){
-
+function About() {
   return (
-
     <main className="about-page">
 
-
       <section className="about-hero">
-
-        <span>
-          ABOUT BRIQONA OS
-        </span>
+        <span>ABOUT BRIQONA OS</span>
 
         <h1>
-          The Future of
-          <em> Business Operations </em>
-          Starts Here
+          Building The Future Of
+          <br />
+          <strong>Intelligent Business Operations</strong>
         </h1>
 
         <p>
-          Briqona OS is a next-generation Business Operating System
-          designed to connect your teams, automate workflows, and help
-          businesses make smarter decisions with intelligent technology.
+          Briqona OS is an AI-powered Business Operating System designed
+          to help modern companies automate workflows, manage operations,
+          and make smarter decisions.
         </p>
-
       </section>
 
 
+      <section className="about-story">
 
-      <section className="about-section">
-
-        <div className="about-box">
-
-          <h2>
-            Our Mission
-          </h2>
+        <div>
+          <h2>Our Story</h2>
 
           <p>
-            Our mission is to remove complexity from business management.
-            We create powerful tools that allow companies to focus on
-            growth while Briqona OS manages automation, operations,
-            and insights.
+            Businesses today face complex challenges with disconnected
+            systems, manual processes, and growing data needs.
+          </p>
+
+          <p>
+            Briqona OS was created to bring everything together into one
+            intelligent platform where teams can automate tasks, analyze
+            information, and improve productivity.
           </p>
 
         </div>
 
 
-
         <div className="about-box">
-
-          <h2>
-            Our Vision
-          </h2>
-
+          <h3>AI Powered Platform</h3>
           <p>
-            We believe the future belongs to connected businesses where
-            people, processes, and technology work together seamlessly.
+            One complete operating system for smarter business management.
           </p>
-
         </div>
-
 
       </section>
 
 
 
-      <section className="why-section">
+      <section className="mission">
 
-        <h2>
-          Why Choose Briqona OS?
-        </h2>
+        <div className="card">
+          <h2>Our Mission</h2>
+          <p>
+            To empower businesses with intelligent automation,
+            secure technology, and powerful tools that simplify
+            everyday operations.
+          </p>
+        </div>
 
 
-        <div className="value-grid">
+        <div className="card">
+          <h2>Our Vision</h2>
+          <p>
+            To become a leading global business operating system
+            that helps organizations grow faster and smarter.
+          </p>
+        </div>
 
-          {values.map((item)=>(
+      </section>
 
-            <div className="value-card" key={item.title}>
 
-              <div className="value-icon">
-                {item.icon}
-              </div>
 
-              <h3>
-                {item.title}
-              </h3>
+      <section className="what-we-do">
 
-              <p>
-                {item.text}
-              </p>
+        <h2>What We Do</h2>
 
-            </div>
+        <div className="grid">
 
-          ))}
+          <div>
+            <h3>Business Automation</h3>
+            <p>
+              Automate repetitive tasks and improve workflow efficiency.
+            </p>
+          </div>
+
+          <div>
+            <h3>AI Operations</h3>
+            <p>
+              Use artificial intelligence to optimize business decisions.
+            </p>
+          </div>
+
+          <div>
+            <h3>Data Intelligence</h3>
+            <p>
+              Convert business data into valuable insights.
+            </p>
+          </div>
+
+          <div>
+            <h3>Secure Platform</h3>
+            <p>
+              Enterprise-level security for modern organizations.
+            </p>
+          </div>
 
         </div>
 
+      </section>
+
+
+
+      <section className="why">
+
+        <h2>Why Choose Briqona OS?</h2>
+
+        <ul>
+          <li>AI-powered business management</li>
+          <li>Scalable enterprise solutions</li>
+          <li>Smart workflow automation</li>
+          <li>Secure and reliable technology</li>
+        </ul>
 
       </section>
 
@@ -129,34 +133,22 @@ function About(){
       <section className="about-cta">
 
         <h2>
-          Ready to Transform Your Business?
+          Build A Smarter Business With Briqona OS
         </h2>
 
         <p>
-          Start building a smarter, faster, and more connected business today.
+          Experience the future of intelligent business management.
         </p>
 
-        <div>
-
-          <a href="/register">
-            Start Free →
-          </a>
-
-          <a href="/demo">
-            Book Demo
-          </a>
-
-        </div>
-
+        <button>
+          Start Free
+        </button>
 
       </section>
 
 
     </main>
-
   );
-
 }
-
 
 export default About;
