@@ -74,7 +74,9 @@ function Footer() {
             <a href="/partners">
               Partners
             </a>
-
+<a href="/terms">
+  Terms & Conditions
+</a>
           </div>
 
 
