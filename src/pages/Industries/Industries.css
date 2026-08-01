@@ -1,274 +1,170 @@
-/* =====================================
-   BRIQONA OS — INDUSTRIES PAGE
-===================================== */
+.industries-page{
 
-
-.industries-page {
-
-  min-height:100vh;
-
-  padding:100px 20px;
-
-  background:
-  radial-gradient(
-    circle at top,
-    rgba(21,217,255,.10),
-    transparent 45%
-  );
+background:#020817;
+color:white;
+padding:80px 8%;
 
 }
 
 
 
-/* HERO */
+.industries-hero{
 
-.industries-hero {
-
-  max-width:850px;
-
-  margin:auto;
-
-  text-align:center;
-
-}
-
-
-.industries-hero span {
-
-  color:var(--cyan);
-
-  font-size:12px;
-
-  letter-spacing:2px;
+text-align:center;
+max-width:900px;
+margin:auto;
 
 }
 
 
 
-.industries-hero h1 {
+.industries-hero span{
 
-  margin-top:25px;
-
-  font-size:52px;
-
-  line-height:1.1;
+color:#39d9ff;
+letter-spacing:3px;
 
 }
 
 
-
-.industries-hero em {
-
-  color:var(--green);
-
-  font-style:normal;
-
-}
-
-
-
-.industries-hero p {
-
-  margin:25px auto;
-
-  max-width:720px;
-
-  color:var(--text-muted);
-
-  font-size:18px;
-
-  line-height:1.7;
-
-}
-
-
-
-/* GRID */
-
-.industries-grid {
-
-  max-width:1100px;
-
-  margin:70px auto;
-
-  display:grid;
-
-  grid-template-columns:repeat(3,1fr);
-
-  gap:25px;
-
-}
-
-
-
-.industry-card {
-
-  padding:32px 25px;
-
-  border-radius:24px;
-
-  background:
-
-  rgba(8,20,34,.78);
-
-
-  border:
-
-  1px solid rgba(143,184,224,.15);
-
-  transition:.3s;
-
-}
-
-
-
-.industry-card:hover {
-
-  transform:translateY(-8px);
-
-  border-color:var(--cyan);
-
-}
-
-
-
-.industry-icon {
-
-  font-size:40px;
-
-}
-
-
-
-.industry-card h3 {
-
-  margin:20px 0 12px;
-
-  font-size:21px;
-
-}
-
-
-
-.industry-card p {
-
-  color:var(--text-muted);
-
-  line-height:1.6;
-
-}
-
-
-
-.industry-card a {
-
-  display:inline-block;
-
-  margin-top:20px;
-
-  color:var(--cyan);
-
-  font-weight:600;
-
-}
-
-
-
-/* CTA */
-
-
-.industries-cta {
-
-  max-width:900px;
-
-  margin:80px auto 20px;
-
-  padding:45px 30px;
-
-  text-align:center;
-
-  border-radius:28px;
-
-
-  background:
-
-  linear-gradient(
-    135deg,
-    rgba(21,217,255,.12),
-    rgba(141,242,61,.08)
-  );
-
-}
-
-
-
-.industries-cta h2 {
-
-  font-size:36px;
-
-}
-
-
-
-.industries-cta p {
-
-  color:var(--text-muted);
-
-  margin:15px 0 30px;
-
-}
-
-
-
-.industries-cta a {
-
-  display:inline-flex;
-
-  padding:14px 28px;
-
-  border-radius:12px;
-
-
-  background:
-
-  linear-gradient(
-    100deg,
-    var(--green),
-    var(--cyan)
-  );
-
-
-  color:#031018;
-
-  font-weight:700;
-
-}
-
-
-
-/* MOBILE */
-
-
-@media(max-width:900px){
 
 .industries-hero h1{
+
+font-size:52px;
+margin:25px 0;
+
+}
+
+
+
+.industries-hero strong{
+
+color:#8cff3d;
+
+}
+
+
+
+.industries-hero p{
+
+color:#9ca3af;
+font-size:18px;
+line-height:1.7;
+
+}
+
+
+
+
+.industries-section{
+
+margin-top:90px;
+
+}
+
+
+
+.industries-section h2,
+.industry-benefits h2{
 
 font-size:38px;
 
 }
 
 
+
+
 .industries-grid{
+
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:25px;
+margin-top:40px;
+
+}
+
+
+
+.industry-card,
+.industry-box{
+
+background:#071525;
+border:1px solid #183044;
+padding:30px;
+border-radius:20px;
+
+}
+
+
+
+.industry-card p,
+.industry-benefits p{
+
+color:#9ca3af;
+line-height:1.7;
+
+}
+
+
+
+
+.industry-benefits{
+
+margin:90px 0;
+display:grid;
+grid-template-columns:1fr 350px;
+gap:40px;
+
+}
+
+
+
+
+.industry-cta{
+
+text-align:center;
+background:#06252c;
+padding:60px;
+border-radius:30px;
+
+}
+
+
+
+.industry-cta button{
+
+margin-top:20px;
+padding:14px 35px;
+border:none;
+border-radius:30px;
+background:#8cff3d;
+font-weight:bold;
+
+}
+
+
+
+
+@media(max-width:768px){
+
+.industries-page{
+
+padding:50px 20px;
+
+}
+
+
+.industries-hero h1{
+
+font-size:34px;
+
+}
+
+
+.industries-grid,
+.industry-benefits{
 
 grid-template-columns:1fr;
 
 }
 
-
-.industries-cta h2{
-
-font-size:28px;
-
-}
-
-  }
+                             }
