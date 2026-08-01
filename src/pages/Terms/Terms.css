@@ -1,246 +1,178 @@
-/* =====================================
-   BRIQONA OS — TERMS PAGE
-===================================== */
+.terms-page{
 
-
-.terms-page {
-
-  min-height:100vh;
-
-  padding:100px 20px;
-
-  background:
-  radial-gradient(
-    circle at top,
-    rgba(141,242,61,.10),
-    transparent 45%
-  );
+background:#020817;
+color:white;
+padding:80px 8%;
 
 }
 
 
 
-/* HERO */
+.terms-hero{
 
-.terms-hero {
-
-  max-width:850px;
-
-  margin:auto;
-
-  text-align:center;
-
-}
-
-
-.terms-hero span {
-
-  color:var(--cyan);
-
-  font-size:12px;
-
-  letter-spacing:2px;
+text-align:center;
+max-width:900px;
+margin:auto;
 
 }
 
 
 
-.terms-hero h1 {
+.terms-hero span{
 
-  margin-top:25px;
-
-  font-size:52px;
-
-  line-height:1.1;
+color:#39d9ff;
+letter-spacing:3px;
 
 }
 
 
-
-.terms-hero em {
-
-  color:var(--green);
-
-  font-style:normal;
-
-}
-
-
-
-.terms-hero p {
-
-  max-width:720px;
-
-  margin:25px auto;
-
-  color:var(--text-muted);
-
-  font-size:18px;
-
-  line-height:1.7;
-
-}
-
-
-
-/* CONTENT */
-
-.terms-content {
-
-  max-width:900px;
-
-  margin:70px auto;
-
-  display:flex;
-
-  flex-direction:column;
-
-  gap:20px;
-
-}
-
-
-
-.terms-box {
-
-  padding:30px;
-
-  border-radius:22px;
-
-
-  background:
-
-  rgba(8,20,34,.78);
-
-
-  border:
-
-  1px solid rgba(143,184,224,.15);
-
-
-  transition:.3s;
-
-}
-
-
-
-.terms-box:hover {
-
-  border-color:var(--cyan);
-
-  transform:translateY(-4px);
-
-}
-
-
-
-.terms-box h2 {
-
-  margin-bottom:12px;
-
-  font-size:22px;
-
-}
-
-
-
-.terms-box p {
-
-  color:var(--text-muted);
-
-  line-height:1.7;
-
-}
-
-
-
-/* CTA */
-
-
-.terms-cta {
-
-  max-width:900px;
-
-  margin:80px auto 20px;
-
-  padding:45px 30px;
-
-  text-align:center;
-
-  border-radius:28px;
-
-
-  background:
-
-  linear-gradient(
-    135deg,
-    rgba(21,217,255,.12),
-    rgba(141,242,61,.08)
-  );
-
-}
-
-
-
-.terms-cta h2 {
-
-  font-size:36px;
-
-}
-
-
-
-.terms-cta p {
-
-  color:var(--text-muted);
-
-  margin:15px 0 30px;
-
-}
-
-
-
-.terms-cta a {
-
-  display:inline-flex;
-
-  padding:14px 28px;
-
-  border-radius:12px;
-
-
-  background:
-
-  linear-gradient(
-    100deg,
-    var(--green),
-    var(--cyan)
-  );
-
-
-  color:#031018;
-
-  font-weight:700;
-
-}
-
-
-
-/* MOBILE */
-
-
-@media(max-width:900px){
 
 .terms-hero h1{
+
+font-size:55px;
+margin:25px 0;
+
+}
+
+
+
+.terms-hero strong{
+
+color:#8cff3d;
+
+}
+
+
+
+.terms-hero p{
+
+color:#9ca3af;
+font-size:18px;
+line-height:1.7;
+
+}
+
+
+
+
+.terms-content{
+
+margin-top:90px;
+
+}
+
+
+
+.terms-content h2,
+.terms-cta h2{
 
 font-size:38px;
 
 }
 
 
-.terms-cta h2{
 
-font-size:28px;
+.terms-content>p{
+
+color:#9ca3af;
+
+}
+
+
+
+.terms-grid{
+
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:25px;
+margin-top:40px;
+
+}
+
+
+
+.terms-card{
+
+background:#071525;
+border:1px solid #183044;
+
+padding:30px;
+
+border-radius:20px;
+
+}
+
+
+
+.terms-card p{
+
+color:#9ca3af;
+line-height:1.7;
+
+}
+
+
+
+.terms-cta{
+
+margin-top:90px;
+text-align:center;
+
+background:#06252c;
+
+padding:60px;
+
+border-radius:30px;
+
+}
+
+
+
+.terms-cta p{
+
+color:#9ca3af;
+
+}
+
+
+
+.terms-cta button{
+
+margin-top:20px;
+
+padding:14px 35px;
+
+border:none;
+
+border-radius:30px;
+
+background:#8cff3d;
+
+font-weight:bold;
+
+}
+
+
+
+@media(max-width:768px){
+
+.terms-page{
+
+padding:50px 20px;
+
+}
+
+
+.terms-hero h1{
+
+font-size:34px;
+
+}
+
+
+.terms-grid{
+
+grid-template-columns:1fr;
 
 }
 
