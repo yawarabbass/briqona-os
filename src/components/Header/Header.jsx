@@ -135,15 +135,7 @@ onClick={closeMenu}
 )
 
 ))}
-
-
-
-          <a
-            className="mobile-start"
-            href="#start"
-          >
-            Start Free →
-          </a>
+          
 
 
         </nav>
