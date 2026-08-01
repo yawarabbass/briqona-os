@@ -1,127 +1,159 @@
 import "./Security.css";
 
+function Security() {
 
-const securityFeatures = [
-  {
-    icon:"🔒",
-    title:"Data Protection",
-    text:"Your business information is protected with modern security practices."
-  },
-
-  {
-    icon:"🛡️",
-    title:"Enterprise Security",
-    text:"Built with security standards designed for growing organizations."
-  },
-
-  {
-    icon:"👤",
-    title:"Access Control",
-    text:"Manage user permissions and keep sensitive information secure."
-  },
-
-  {
-    icon:"☁️",
-    title:"Secure Cloud",
-    text:"Reliable cloud infrastructure for safe and scalable operations."
-  },
-
-];
+  const securityFeatures = [
+    {
+      icon: "🔐",
+      title: "Data Encryption",
+      text: "Business information is protected with modern security practices and encrypted data protection."
+    },
+    {
+      icon: "🛡️",
+      title: "Access Control",
+      text: "Manage user permissions and keep sensitive business operations secure."
+    },
+    {
+      icon: "⚡",
+      title: "Secure Authentication",
+      text: "Strong authentication systems help protect accounts and prevent unauthorized access."
+    },
+    {
+      icon: "📊",
+      title: "Continuous Monitoring",
+      text: "Monitor systems and operations to maintain reliability and security."
+    }
+  ];
 
 
-function Security(){
-
-return (
-
-<main className="security-page">
+  return (
+    <main className="security-page">
 
 
-<section className="security-hero">
+      <section className="security-hero">
 
-<span>
-BRIQONA OS SECURITY
-</span>
+        <span>BRIQONA OS SECURITY</span>
 
+        <h1>
+          Secure Intelligence For
+          <br />
+          <strong>Modern Businesses</strong>
+        </h1>
 
-<h1>
-Security You Can
-<em> Trust</em>
-</h1>
+        <p>
+          Briqona OS provides a secure AI-powered business operating
+          system designed to protect data, improve control, and support
+          reliable business operations.
+        </p>
 
-
-<p>
-Your business data deserves the highest level of protection.
-Briqona OS is designed with security, reliability and privacy
-at its core.
-</p>
-
-
-</section>
+      </section>
 
 
 
+      <section className="security-trust">
 
-<section className="security-grid">
+        <div>
+          <h2>
+            Enterprise Grade Security
+          </h2>
 
+          <p>
+            Security is built into every part of Briqona OS. 
+            Our platform helps businesses manage operations with
+            confidence through secure technology and responsible
+            data practices.
+          </p>
 
-{securityFeatures.map((item)=>(
-
-<div 
-className="security-card"
-key={item.title}
->
-
-<div className="security-icon">
-{item.icon}
-</div>
-
-
-<h3>
-{item.title}
-</h3>
+        </div>
 
 
-<p>
-{item.text}
-</p>
+        <div className="security-box">
 
+          <h3>
+            Your Business. Protected.
+          </h3>
 
-</div>
+          <p>
+            Reliable infrastructure designed for growing organizations.
+          </p>
 
-))}
+        </div>
 
-
-</section>
+      </section>
 
 
 
+      <section className="security-features">
 
-<section className="security-cta">
-
-
-<h2>
-Your Business. Protected Always.
-</h2>
+        <h2>
+          Security Features
+        </h2>
 
 
-<p>
-Operate confidently with a secure business operating system.
-</p>
+        <div className="security-grid">
+
+          {securityFeatures.map((item,index)=>(
+            <div className="security-card" key={index}>
+
+              <div className="icon">
+                {item.icon}
+              </div>
+
+              <h3>
+                {item.title}
+              </h3>
+
+              <p>
+                {item.text}
+              </p>
+
+            </div>
+          ))}
+
+        </div>
+
+      </section>
 
 
-<a href="/contact">
-Contact Security Team →
-</a>
 
 
-</section>
+      <section className="security-compliance">
+
+        <h2>
+          Privacy & Compliance
+        </h2>
+
+        <p>
+          Briqona OS follows responsible security practices to help
+          businesses maintain control over their information and
+          digital operations.
+        </p>
+
+      </section>
 
 
 
-</main>
 
-);
+      <section className="security-cta">
 
+        <h2>
+          Build A More Secure Business Today
+        </h2>
+
+        <p>
+          Experience intelligent business management with confidence.
+        </p>
+
+
+        <button>
+          Start Free
+        </button>
+
+      </section>
+
+
+    </main>
+  );
 }
 
 
