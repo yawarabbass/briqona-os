@@ -1,155 +1,142 @@
 import "./Pricing.css";
 
-const plans = [
-  {
-    name: "Starter",
-    price: "$5",
-    text: "For small businesses getting started",
-    features: [
-      "Basic Business Dashboard",
-      "AI Automation Tools",
-      "Customer Management",
-      "Email Support",
-    ],
-  },
-  {
-    name: "Business",
-    price: "$15",
-    popular: true,
-    text: "Best choice for growing companies",
-    features: [
-      "Advanced Dashboard",
-      "Smart Analytics",
-      "CRM Management",
-      "Workflow Automation",
-      "Priority Support",
-    ],
-  },
-  {
-    name: "Enterprise",
-    price: "$30",
-    text: "For large organizations",
-    features: [
-      "All Business Features",
-      "Enterprise Security",
-      "Advanced Integrations",
-      "Dedicated Support",
-    ],
-  },
-];
+function Pricing() {
 
+  const plans = [
+    {
+      name: "Starter",
+      price: "$19",
+      description: "Perfect for small teams starting with digital business management.",
+      features: [
+        "Basic Business Tools",
+        "Workflow Management",
+        "Essential Analytics",
+        "Email Support"
+      ]
+    },
 
-function Pricing(){
+    {
+      name: "Professional",
+      price: "$49",
+      description: "Powerful tools for growing businesses that need automation.",
+      features: [
+        "AI Automation",
+        "Advanced Analytics",
+        "Team Collaboration",
+        "Priority Support",
+        "Business Integrations"
+      ],
+      popular:true
+    },
+
+    {
+      name: "Enterprise",
+      price: "Custom",
+      description: "Advanced solutions for large organizations and complex operations.",
+      features: [
+        "Enterprise Security",
+        "Custom Solutions",
+        "Dedicated Support",
+        "Advanced Integrations"
+      ]
+    }
+  ];
+
 
   return (
 
     <main className="pricing-page">
 
+
       <section className="pricing-hero">
 
         <span>
-          SIMPLE & TRANSPARENT PRICING
+          BRIQONA OS PRICING
         </span>
 
         <h1>
-          Choose Your <em>Briqona OS</em> Plan
+          Flexible Plans For
+          <br />
+          <strong>Every Growing Business</strong>
         </h1>
 
         <p>
-          Powerful business operating system plans designed
-          to help your business grow faster.
+          Choose a plan that fits your business needs and scale
+          with powerful AI-driven tools and automation.
         </p>
 
       </section>
 
 
 
-      <section className="pricing-cards">
 
-        {
-          plans.map((plan)=>(
-
-            <div
-              className={
-                plan.popular
-                ? "pricing-card popular"
-                : "pricing-card"
-              }
-              key={plan.name}
-            >
-
-              {
-                plan.popular &&
-                <div className="badge">
-                  Most Popular
-                </div>
-              }
+      <section className="pricing-section">
 
 
-              <h2>
-                {plan.name}
-              </h2>
+        <div className="pricing-grid">
 
 
-              <h3>
-                {plan.price}
-                <small>
-                  /month
-                </small>
-              </h3>
+          {
+            plans.map((plan,index)=>(
 
-
-              <p>
-                {plan.text}
-              </p>
-
-
-              <ul>
+              <div 
+              className={`price-card ${plan.popular ? "popular":""}`}
+              key={index}
+              >
 
                 {
-                  plan.features.map((item)=>(
+                  plan.popular &&
+                  <div className="badge">
+                    Most Popular
+                  </div>
+                }
 
-                    <li key={item}>
-                      ✓ {item}
+
+                <h2>
+                  {plan.name}
+                </h2>
+
+
+                <h3>
+                  {plan.price}
+                  {
+                    plan.price !== "Custom" &&
+                    <small>/month</small>
+                  }
+                </h3>
+
+
+                <p>
+                  {plan.description}
+                </p>
+
+
+                <ul>
+
+                {
+                  plan.features.map((feature,i)=>(
+
+                    <li key={i}>
+                      ✓ {feature}
                     </li>
 
                   ))
                 }
 
-              </ul>
+                </ul>
 
 
-              <a href="/register">
-                Start Now →
-              </a>
+                <button>
+                  Get Started
+                </button>
 
 
-            </div>
-
-          ))
-        }
-
-      </section>
+              </div>
 
 
+            ))
+          }
 
-      <section className="payment-trust">
-
-        <h2>
-          Secure Payments
-        </h2>
-
-        <p>
-          Protected payments with trusted methods
-        </p>
-
-
-        <div className="payment-box">
-
-          <span>VISA</span>
-          <span>MasterCard</span>
-          <span>JazzCash</span>
-          <span>Easypaisa</span>
 
         </div>
 
@@ -157,11 +144,47 @@ function Pricing(){
       </section>
 
 
+
+
+      <section className="pricing-benefits">
+
+        <h2>
+          Simple, Transparent & Scalable
+        </h2>
+
+        <p>
+          Briqona OS pricing is designed to support businesses
+          from startups to enterprise organizations with flexible
+          solutions.
+        </p>
+
+      </section>
+
+
+
+
+      <section className="pricing-cta">
+
+        <h2>
+          Ready To Grow Your Business?
+        </h2>
+
+        <p>
+          Start your journey with Briqona OS today.
+        </p>
+
+        <button>
+          Start Free
+        </button>
+
+      </section>
+
+
+
     </main>
 
   );
 
 }
-
 
 export default Pricing;
