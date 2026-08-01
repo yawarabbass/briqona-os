@@ -81,22 +81,6 @@ const navItems = [
   },
 ];
 
-  {
-    label: "Industries",
-    dropdown: [
-      "Healthcare",
-      "Construction",
-      "Real Estate",
-      "Retail & E-commerce",
-      "Education",
-      "Other"
-    ]
-  },
-
-  { label: "Pricing", href: "#pricing" },
-  { label: "About", href: "#about" },
-];
-
 
 function Header() {
 
