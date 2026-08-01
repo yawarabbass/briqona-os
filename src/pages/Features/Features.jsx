@@ -1,6 +1,5 @@
 import "./Features.css";
 
-
 const featureList = [
   {
     icon: "📊",
