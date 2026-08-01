@@ -465,29 +465,6 @@
 
 }
 
-
-
-.nav-dropdown__menu {
-
-
- position:static;
-
- width:100%;
-
- margin-top:5px;
-
- background:transparent;
-
- border:0;
-
- box-shadow:none;
-
- display:block;
-
-}
-
-
-
 }
 
 
@@ -519,5 +496,51 @@
 
 }
 
+}
+
+.dropdown-menu a{
+
+  padding:12px;
+
+}
+
+}
+
+.dropdown-menu a{
+
+ padding:10px;
+
+}
+
+}
+@media(max-width:900px){
+
+.nav-dropdown{
+  width:100%;
+}
+
+.dropdown-menu{
+
+  position:static;
+
+  display:block;
+
+  width:100%;
+
+  padding-left:15px;
+
+  background:transparent;
+
+  border:0;
+
+  box-shadow:none;
+
+}
+
+.dropdown-menu a{
+
+  padding:12px;
+
+}
 
 }
