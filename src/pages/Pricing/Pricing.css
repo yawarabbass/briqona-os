@@ -7,7 +7,6 @@ padding:80px 8%;
 }
 
 
-
 .pricing-hero{
 
 text-align:center;
@@ -15,7 +14,6 @@ max-width:900px;
 margin:auto;
 
 }
-
 
 
 .pricing-hero span{
@@ -26,14 +24,12 @@ letter-spacing:3px;
 }
 
 
-
 .pricing-hero h1{
 
-font-size:52px;
+font-size:55px;
 margin:25px 0;
 
 }
-
 
 
 .pricing-hero strong{
@@ -43,7 +39,6 @@ color:#8cff3d;
 }
 
 
-
 .pricing-hero p{
 
 color:#9ca3af;
@@ -51,7 +46,6 @@ font-size:18px;
 line-height:1.7;
 
 }
-
 
 
 
@@ -67,117 +61,250 @@ margin-top:80px;
 
 display:grid;
 grid-template-columns:repeat(3,1fr);
-gap:25px;
+gap:30px;
+align-items:center;
 
 }
 
 
 
-.price-card{
+.pricing-card{
 
-background:#071525;
-border:1px solid #183044;
-padding:35px;
-border-radius:25px;
 position:relative;
 
+background:#071525;
+
+border:1px solid #183044;
+
+padding:35px;
+
+border-radius:25px;
+
+min-height:450px;
+
+transition:0.3s ease;
+
+overflow:hidden;
+
 }
 
 
 
-.price-card h3{
+.pricing-card:hover{
 
-font-size:42px;
+transform:translateY(-10px);
+
+border-color:#8cff3d;
+
+}
+
+
+
+
+/* Premium Animated Border */
+
+.pricing-card.popular{
+
+border:none;
+
+}
+
+
+
+.pricing-card.popular::before{
+
+content:"";
+
+position:absolute;
+
+inset:-2px;
+
+background:linear-gradient(
+90deg,
+#8cff3d,
+#20d9ff,
+#8cff3d
+);
+
+background-size:300%;
+
+animation:borderMove 5s linear infinite;
+
+z-index:0;
+
+border-radius:25px;
+
+}
+
+
+
+.pricing-card.popular::after{
+
+content:"";
+
+position:absolute;
+
+inset:3px;
+
+background:#071525;
+
+border-radius:22px;
+
+z-index:0;
+
+}
+
+
+
+.pricing-card>*{
+
+position:relative;
+
+z-index:1;
+
+}
+
+
+
+@keyframes borderMove{
+
+0%{
+
+background-position:0%;
+
+}
+
+100%{
+
+background-position:300%;
+
+}
+
+}
+
+
+
+.popular-badge{
+
+display:inline-block;
+
+background:#8cff3d;
+
+color:#020817;
+
+padding:8px 18px;
+
+border-radius:20px;
+
+font-size:12px;
+
+font-weight:bold;
+
+margin-bottom:15px;
+
+}
+
+
+
+.pricing-card h2{
+
+font-size:28px;
+
+}
+
+
+
+.pricing-card h3{
+
+font-size:55px;
+
 margin:20px 0;
 
 }
 
 
 
-.price-card small{
+.pricing-card h3 span{
 
 font-size:16px;
+
 color:#9ca3af;
 
 }
 
 
 
-.price-card p{
+.pricing-card p{
 
 color:#9ca3af;
+
 line-height:1.6;
 
 }
 
 
 
-.price-card ul{
+.pricing-card ul{
+
+list-style:none;
 
 padding:0;
-list-style:none;
+
+margin-top:25px;
 
 }
 
 
 
-.price-card li{
+.pricing-card li{
 
 margin:15px 0;
+
 color:#d1d5db;
 
 }
 
 
 
-.price-card button,
+.pricing-card button,
 .pricing-cta button{
 
 margin-top:20px;
-padding:14px 35px;
+
+width:100%;
+
+padding:14px;
+
 border:none;
+
 border-radius:30px;
+
 background:#8cff3d;
+
 font-weight:bold;
 
-}
-
-
-
-.popular{
-
-border:1px solid #8cff3d;
+cursor:pointer;
 
 }
 
 
 
-.badge{
+.pricing-cta{
 
-position:absolute;
-top:-15px;
-right:25px;
-background:#8cff3d;
-color:#020817;
-padding:7px 15px;
-border-radius:20px;
-font-size:13px;
-
-}
-
-
-
-
-.pricing-benefits{
+margin-top:90px;
 
 text-align:center;
-margin:90px 0;
+
+background:#06252c;
+
+padding:60px;
+
+border-radius:30px;
 
 }
 
 
 
-.pricing-benefits h2,
 .pricing-cta h2{
 
 font-size:38px;
@@ -186,7 +313,7 @@ font-size:38px;
 
 
 
-.pricing-benefits p{
+.pricing-cta p{
 
 color:#9ca3af;
 
@@ -194,12 +321,11 @@ color:#9ca3af;
 
 
 
-.pricing-cta{
+.pricing-cta button{
 
-text-align:center;
-background:#06252c;
-padding:60px;
-border-radius:30px;
+width:auto;
+
+padding:14px 40px;
 
 }
 
