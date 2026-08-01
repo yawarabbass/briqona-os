@@ -8,6 +8,15 @@ import Register from "./pages/Register/Register";
 import Pricing from "./pages/Pricing/Pricing";
 import About from "./pages/About/About";
 import Contact from "./pages/Contact/Contact";
+import Platform from "./pages/Platform/Platform";
+import Features from "./pages/Features/Features";
+import Solutions from "./pages/Solutions/Solutions";
+import Security from "./pages/Security/Security";
+import Privacy from "./pages/Privacy/Privacy";
+import Blog from "./pages/Blog/Blog";
+import HelpCenter from "./pages/HelpCenter/HelpCenter";
+import Careers from "./pages/Careers/Careers";
+import Partners from "./pages/Partners/Partners";
 
 function App() {
   const path = window.location.pathname;
@@ -69,7 +78,103 @@ if (path === "/contact") {
   );
         }
 
+if (path === "/platform") {
+  return (
+    <div className="app">
+      <Header />
+      <Platform />
+      <Footer />
+    </div>
+  );
+}
 
+
+if (path === "/features") {
+  return (
+    <div className="app">
+      <Header />
+      <Features />
+      <Footer />
+    </div>
+  );
+}
+
+
+if (path === "/solutions") {
+  return (
+    <div className="app">
+      <Header />
+      <Solutions />
+      <Footer />
+    </div>
+  );
+}
+
+
+if (path === "/security") {
+  return (
+    <div className="app">
+      <Header />
+      <Security />
+      <Footer />
+    </div>
+  );
+}
+
+
+if (path === "/privacy") {
+  return (
+    <div className="app">
+      <Header />
+      <Privacy />
+      <Footer />
+    </div>
+  );
+}
+
+
+if (path === "/blog") {
+  return (
+    <div className="app">
+      <Header />
+      <Blog />
+      <Footer />
+    </div>
+  );
+}
+
+
+if (path === "/help") {
+  return (
+    <div className="app">
+      <Header />
+      <HelpCenter />
+      <Footer />
+    </div>
+  );
+}
+
+
+if (path === "/careers") {
+  return (
+    <div className="app">
+      <Header />
+      <Careers />
+      <Footer />
+    </div>
+  );
+}
+
+
+if (path === "/partners") {
+  return (
+    <div className="app">
+      <Header />
+      <Partners />
+      <Footer />
+    </div>
+  );
+    }
 
   
   return (
