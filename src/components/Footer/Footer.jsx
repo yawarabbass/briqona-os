@@ -43,10 +43,9 @@ function Footer() {
               Solutions
             </a>
 
-            <a href="#pricing">
-              Pricing
-            </a>
-
+            <a href="/pricing">
+  Pricing
+</a>
             <a href="#features">
               Features
             </a>
