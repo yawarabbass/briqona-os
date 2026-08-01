@@ -17,7 +17,8 @@ import Blog from "./pages/Blog/Blog";
 import HelpCenter from "./pages/HelpCenter/HelpCenter";
 import Careers from "./pages/Careers/Careers";
 import Partners from "./pages/Partners/Partners";
-
+import Industries from "./pages/Industries/Industries";
+import Terms from "./pages/Terms/Terms";
 function App() {
   const path = window.location.pathname;
 
@@ -175,7 +176,26 @@ if (path === "/partners") {
     </div>
   );
     }
+if (path === "/industries") {
+  return (
+    <div className="app">
+      <Header />
+      <Industries />
+      <Footer />
+    </div>
+  );
+}
 
+
+if (path === "/terms") {
+  return (
+    <div className="app">
+      <Header />
+      <Terms />
+      <Footer />
+    </div>
+  );
+    }
   
   return (
     <div className="app">
