@@ -39,7 +39,15 @@ if (path === "/register") {
     </div>
   );
 }
-
+if (path === "/pricing") {
+  return (
+    <div className="app">
+      <Header />
+      <Pricing />
+      <Footer />
+    </div>
+  );
+}
 
   return (
     <div className="app">
