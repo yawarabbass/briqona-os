@@ -5,6 +5,7 @@ import Demo from "./pages/Demo/Demo";
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
+import Pricing from "./pages/Pricing/Pricing";
 
 function App() {
   const path = window.location.pathname;
@@ -38,7 +39,16 @@ if (path === "/register") {
     </div>
   );
 }
-  
+  if (path === "/pricing") {
+  return (
+    <div className="app">
+      <Header />
+      <Pricing />
+      <Footer />
+      <WhatsApp />
+    </div>
+  );
+      }
 
   return (
     <div className="app">
