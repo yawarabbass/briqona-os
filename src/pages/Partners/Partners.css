@@ -1,0 +1,280 @@
+/* =====================================
+   BRIQONA OS — PARTNERS PAGE
+===================================== */
+
+
+.partners-page {
+
+  min-height:100vh;
+
+  padding:100px 20px;
+
+  background:
+  radial-gradient(
+    circle at top,
+    rgba(141,242,61,.10),
+    transparent 45%
+  );
+
+}
+
+
+
+/* HERO */
+
+
+.partners-hero {
+
+  max-width:850px;
+
+  margin:auto;
+
+  text-align:center;
+
+}
+
+
+.partners-hero span {
+
+  color:var(--cyan);
+
+  font-size:12px;
+
+  letter-spacing:2px;
+
+}
+
+
+
+.partners-hero h1 {
+
+  margin-top:25px;
+
+  font-size:52px;
+
+  line-height:1.1;
+
+}
+
+
+
+.partners-hero em {
+
+  color:var(--green);
+
+  font-style:normal;
+
+}
+
+
+
+.partners-hero p {
+
+  max-width:720px;
+
+  margin:25px auto;
+
+  color:var(--text-muted);
+
+  font-size:18px;
+
+  line-height:1.7;
+
+}
+
+
+
+/* GRID */
+
+
+.partners-grid {
+
+  max-width:1000px;
+
+  margin:70px auto;
+
+  display:grid;
+
+  grid-template-columns:repeat(4,1fr);
+
+  gap:20px;
+
+}
+
+
+
+.partner-card {
+
+  padding:30px 22px;
+
+  border-radius:22px;
+
+
+  background:
+
+  rgba(8,20,34,.78);
+
+
+  border:
+
+  1px solid rgba(143,184,224,.15);
+
+
+  transition:.3s;
+
+}
+
+
+
+.partner-card:hover {
+
+  transform:translateY(-8px);
+
+  border-color:var(--green);
+
+}
+
+
+
+.partner-icon {
+
+  font-size:38px;
+
+}
+
+
+
+.partner-card h3 {
+
+  margin:20px 0 10px;
+
+  font-size:20px;
+
+}
+
+
+
+.partner-card p {
+
+  color:var(--text-muted);
+
+  line-height:1.6;
+
+  font-size:14px;
+
+}
+
+
+
+.partner-card a {
+
+  display:inline-block;
+
+  margin-top:18px;
+
+  color:var(--cyan);
+
+  font-weight:600;
+
+}
+
+
+
+/* CTA */
+
+
+.partners-cta {
+
+  max-width:900px;
+
+  margin:80px auto 20px;
+
+  padding:45px 30px;
+
+  text-align:center;
+
+  border-radius:28px;
+
+
+  background:
+
+  linear-gradient(
+    135deg,
+    rgba(21,217,255,.12),
+    rgba(141,242,61,.08)
+  );
+
+}
+
+
+
+.partners-cta h2 {
+
+  font-size:36px;
+
+}
+
+
+
+.partners-cta p {
+
+  color:var(--text-muted);
+
+  margin:15px 0 30px;
+
+}
+
+
+
+.partners-cta a {
+
+  display:inline-flex;
+
+  padding:14px 28px;
+
+  border-radius:12px;
+
+
+  background:
+
+  linear-gradient(
+    100deg,
+    var(--green),
+    var(--cyan)
+  );
+
+
+  color:#031018;
+
+  font-weight:700;
+
+}
+
+
+
+/* MOBILE */
+
+
+@media(max-width:900px){
+
+.partners-hero h1{
+
+font-size:38px;
+
+}
+
+
+.partners-grid{
+
+grid-template-columns:1fr;
+
+}
+
+
+.partners-cta h2{
+
+font-size:28px;
+
+}
+
+}
