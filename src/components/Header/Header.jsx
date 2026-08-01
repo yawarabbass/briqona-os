@@ -1,7 +1,6 @@
 import { useState } from "react";
 import "./Header.css";
 
-
 const navItems = [
   {
     label: "Home",
