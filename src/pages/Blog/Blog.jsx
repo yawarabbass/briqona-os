@@ -1,125 +1,149 @@
 import "./Blog.css";
 
+function Blog() {
 
-const posts = [
-
-  {
-    title:"The Future of Business Automation",
-    text:"Discover how intelligent automation is changing modern business operations.",
-    date:"July 2026",
-  },
-
-  {
-    title:"Why Businesses Need One Operating System",
-    text:"Learn why companies are moving towards unified business platforms.",
-    date:"July 2026",
-  },
-
-  {
-    title:"AI Transformation For Companies",
-    text:"How artificial intelligence helps teams work smarter and faster.",
-    date:"June 2026",
-  },
-
-];
-
-
-function Blog(){
-
-return (
-
-<main className="blog-page">
+  const articles = [
+    {
+      title: "How AI Is Transforming Modern Businesses",
+      text: "Discover how artificial intelligence helps companies automate tasks, improve decisions, and increase productivity.",
+      category: "AI & Technology"
+    },
+    {
+      title: "The Future Of Business Automation",
+      text: "Learn why automation is becoming essential for businesses that want faster and smarter operations.",
+      category: "Automation"
+    },
+    {
+      title: "Building Secure Digital Workflows",
+      text: "Explore best practices for creating secure and efficient business processes.",
+      category: "Security"
+    },
+    {
+      title: "Why Businesses Need Intelligent Platforms",
+      text: "Understand how connected business platforms help organizations scale successfully.",
+      category: "Business Growth"
+    }
+  ];
 
 
-<section className="blog-hero">
+  return (
 
-<span>
-BRIQONA OS BLOG
-</span>
+    <main className="blog-page">
 
 
-<h1>
-Insights For
-<em> Modern Businesses</em>
-</h1>
+      <section className="blog-hero">
 
+        <span>
+          BRIQONA OS BLOG
+        </span>
 
-<p>
-Read the latest updates, strategies and ideas
-about business technology and automation.
-</p>
+        <h1>
+          Insights For
+          <br />
+          <strong>Smarter Business Decisions</strong>
+        </h1>
 
+        <p>
+          Explore the latest insights about AI, automation,
+          technology, and strategies to help businesses grow.
+        </p>
 
-</section>
+      </section>
 
 
 
 
-<section className="blog-grid">
+      <section className="blog-section">
+
+        <h2>
+          Latest Articles
+        </h2>
 
 
-{posts.map((post)=>(
+        <div className="blog-grid">
 
-<article
-className="blog-card"
-key={post.title}
->
+          {
+            articles.map((article,index)=>(
 
+              <article
+              className="blog-card"
+              key={index}
+              >
 
-<small>
-{post.date}
-</small>
+                <span>
+                  {article.category}
+                </span>
 
+                <h3>
+                  {article.title}
+                </h3>
 
-<h2>
-{post.title}
-</h2>
-
-
-<p>
-{post.text}
-</p>
-
-
-<a href="#">
-Read More →
-</a>
+                <p>
+                  {article.text}
+                </p>
 
 
-</article>
-
-))}
-
-
-</section>
+                <button>
+                  Read More
+                </button>
 
 
+              </article>
+
+            ))
+          }
+
+        </div>
 
 
-<section className="blog-cta">
-
-<h2>
-Stay Updated With Briqona OS
-</h2>
-
-
-<p>
-Follow the latest trends in business technology.
-</p>
-
-
-<a href="/contact">
-Subscribe →
-</a>
-
-
-</section>
+      </section>
 
 
 
-</main>
 
-);
+      <section className="blog-categories">
+
+        <h2>
+          Explore Topics
+        </h2>
+
+        <div className="category-list">
+
+          <div>AI & Technology</div>
+          <div>Business Automation</div>
+          <div>Security</div>
+          <div>Digital Transformation</div>
+
+        </div>
+
+
+      </section>
+
+
+
+
+      <section className="blog-cta">
+
+        <h2>
+          Stay Updated With Briqona OS
+        </h2>
+
+        <p>
+          Get the latest business technology insights and updates.
+        </p>
+
+
+        <button>
+          Subscribe
+        </button>
+
+      </section>
+
+
+
+    </main>
+
+  );
 
 }
 
