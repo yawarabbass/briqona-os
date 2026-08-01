@@ -1,0 +1,277 @@
+/* =====================================
+   BRIQONA OS — BLOG PAGE
+===================================== */
+
+
+.blog-page {
+
+  min-height:100vh;
+
+  padding:100px 20px;
+
+  background:
+  radial-gradient(
+    circle at top,
+    rgba(21,217,255,.10),
+    transparent 45%
+  );
+
+}
+
+
+
+/* HERO */
+
+.blog-hero {
+
+  max-width:850px;
+
+  margin:auto;
+
+  text-align:center;
+
+}
+
+
+.blog-hero span {
+
+  color:var(--cyan);
+
+  font-size:12px;
+
+  letter-spacing:2px;
+
+}
+
+
+
+.blog-hero h1 {
+
+  margin-top:25px;
+
+  font-size:52px;
+
+  line-height:1.1;
+
+}
+
+
+
+.blog-hero em {
+
+  color:var(--green);
+
+  font-style:normal;
+
+}
+
+
+
+.blog-hero p {
+
+  max-width:720px;
+
+  margin:25px auto;
+
+  color:var(--text-muted);
+
+  font-size:18px;
+
+  line-height:1.7;
+
+}
+
+
+
+/* BLOG GRID */
+
+
+.blog-grid {
+
+  max-width:1100px;
+
+  margin:70px auto;
+
+  display:grid;
+
+  grid-template-columns:repeat(3,1fr);
+
+  gap:25px;
+
+}
+
+
+
+.blog-card {
+
+  padding:30px;
+
+  border-radius:22px;
+
+
+  background:
+
+  rgba(8,20,34,.78);
+
+
+  border:
+
+  1px solid rgba(143,184,224,.15);
+
+
+  transition:.3s;
+
+}
+
+
+
+.blog-card:hover {
+
+  transform:translateY(-8px);
+
+  border-color:var(--cyan);
+
+}
+
+
+
+.blog-card small {
+
+  color:var(--green);
+
+}
+
+
+
+.blog-card h2 {
+
+  margin:18px 0;
+
+  font-size:22px;
+
+}
+
+
+
+.blog-card p {
+
+  color:var(--text-muted);
+
+  line-height:1.6;
+
+}
+
+
+
+.blog-card a {
+
+  display:inline-block;
+
+  margin-top:20px;
+
+  color:var(--cyan);
+
+  font-weight:600;
+
+}
+
+
+
+/* CTA */
+
+
+.blog-cta {
+
+  max-width:900px;
+
+  margin:80px auto 20px;
+
+  padding:45px 30px;
+
+  text-align:center;
+
+  border-radius:28px;
+
+
+  background:
+
+  linear-gradient(
+    135deg,
+    rgba(21,217,255,.12),
+    rgba(141,242,61,.08)
+  );
+
+}
+
+
+
+.blog-cta h2 {
+
+  font-size:36px;
+
+}
+
+
+
+.blog-cta p {
+
+  color:var(--text-muted);
+
+  margin:15px 0 30px;
+
+}
+
+
+
+.blog-cta a {
+
+  display:inline-flex;
+
+  padding:14px 28px;
+
+  border-radius:12px;
+
+
+  background:
+
+  linear-gradient(
+    100deg,
+    var(--green),
+    var(--cyan)
+  );
+
+
+  color:#031018;
+
+  font-weight:700;
+
+}
+
+
+
+/* MOBILE */
+
+
+@media(max-width:900px){
+
+.blog-hero h1{
+
+font-size:38px;
+
+}
+
+
+.blog-grid{
+
+grid-template-columns:1fr;
+
+}
+
+
+.blog-cta h2{
+
+font-size:28px;
+
+}
+
+}
