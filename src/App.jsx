@@ -39,16 +39,7 @@ if (path === "/register") {
     </div>
   );
 }
-  if (path === "/pricing") {
-  return (
-    <div className="app">
-      <Header />
-      <Pricing />
-      <Footer />
-      <WhatsApp />
-    </div>
-  );
-      }
+
 
   return (
     <div className="app">
