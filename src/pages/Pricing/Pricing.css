@@ -1,340 +1,230 @@
-/* =====================================
-   BRIQONA OS — PRICING PAGE
-===================================== */
+.pricing-page{
 
-.pricing-page {
-
-  min-height:100vh;
-
-  padding:100px 20px;
-
-  background:
-  radial-gradient(
-    circle at top,
-    rgba(22,217,255,.12),
-    transparent 40%
-  );
-
-}
-
-
-/* HERO */
-
-.pricing-hero {
-
-  max-width:800px;
-
-  margin:0 auto 70px;
-
-  text-align:center;
-
-}
-
-
-.pricing-hero span {
-
-  color:var(--cyan);
-
-  font-size:12px;
-
-  letter-spacing:2px;
-
-}
-
-
-.pricing-hero h1 {
-
-  margin-top:20px;
-
-  font-size:52px;
-
-  line-height:1.1;
-
-}
-
-
-.pricing-hero em {
-
-  color:var(--green);
-
-  font-style:normal;
-
-}
-
-
-.pricing-hero p {
-
-  margin-top:20px;
-
-  color:var(--text-muted);
-
-  font-size:18px;
+background:#020817;
+color:white;
+padding:80px 8%;
 
 }
 
 
 
-/* CARDS */
+.pricing-hero{
 
-
-.pricing-cards {
-
-  max-width:1100px;
-
-  margin:auto;
-
-  display:grid;
-
-  grid-template-columns:repeat(3,1fr);
-
-  gap:25px;
+text-align:center;
+max-width:900px;
+margin:auto;
 
 }
 
 
 
-.pricing-card {
+.pricing-hero span{
 
-  position:relative;
-
-  padding:35px 30px;
-
-  border-radius:24px;
-
-  background:
-  rgba(8,20,34,.75);
-
-
-  border:
-
-  1px solid rgba(143,184,224,.15);
-
-
-  backdrop-filter:blur(15px);
-
-  transition:.3s;
+color:#39d9ff;
+letter-spacing:3px;
 
 }
 
 
 
-.pricing-card:hover {
+.pricing-hero h1{
 
-  transform:translateY(-8px);
-
-  border-color:var(--cyan);
-
-}
-
-
-
-.pricing-card h2 {
-
-  font-size:25px;
-
-}
-
-
-.pricing-card h3 {
-
-  margin:20px 0;
-
-  font-size:42px;
-
-  color:var(--cyan);
+font-size:52px;
+margin:25px 0;
 
 }
 
 
 
-.pricing-card h3 small {
+.pricing-hero strong{
 
-  font-size:15px;
-
-  color:white;
+color:#8cff3d;
 
 }
 
 
 
-.pricing-card p {
+.pricing-hero p{
 
-  color:var(--text-muted);
-
-}
-
-
-.pricing-card ul {
-
-  list-style:none;
-
-  padding:25px 0;
+color:#9ca3af;
+font-size:18px;
+line-height:1.7;
 
 }
 
 
 
-.pricing-card li {
 
-  margin:12px 0;
+.pricing-section{
 
-  color:#dbe7f5;
-
-}
-
-
-
-.pricing-card a {
-
-  display:block;
-
-  text-align:center;
-
-  padding:14px;
-
-  border-radius:12px;
-
-  background:
-  linear-gradient(
-    100deg,
-    var(--green),
-    var(--cyan)
-  );
-
-
-  color:#031018;
-
-  font-weight:700;
+margin-top:80px;
 
 }
 
 
 
-/* POPULAR */
+.pricing-grid{
 
-
-.pricing-card.popular {
-
-  border:
-
-  1px solid var(--green);
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:25px;
 
 }
 
 
 
-.badge {
+.price-card{
 
-  position:absolute;
-
-  top:-15px;
-
-  right:20px;
-
-  padding:6px 15px;
-
-  border-radius:20px;
-
-  background:var(--green);
-
-  color:#031018;
-
-  font-size:12px;
-
-  font-weight:bold;
+background:#071525;
+border:1px solid #183044;
+padding:35px;
+border-radius:25px;
+position:relative;
 
 }
 
 
 
-/* PAYMENT */
+.price-card h3{
 
-
-.payment-trust {
-
-  margin:90px auto 0;
-
-  text-align:center;
-
-}
-
-
-.payment-trust h2 {
-
-  font-size:32px;
-
-}
-
-
-.payment-trust p {
-
-  color:var(--text-muted);
-
-}
-
-
-.payment-box {
-
-  margin-top:30px;
-
-  display:flex;
-
-  justify-content:center;
-
-  gap:20px;
-
-  flex-wrap:wrap;
+font-size:42px;
+margin:20px 0;
 
 }
 
 
 
-.payment-box span {
+.price-card small{
 
-  padding:15px 30px;
-
-  border-radius:14px;
-
-  background:
-
-  rgba(255,255,255,.05);
-
-
-  border:
-
-  1px solid var(--border);
+font-size:16px;
+color:#9ca3af;
 
 }
 
 
 
-/* MOBILE */
+.price-card p{
 
-
-@media(max-width:900px){
-
-
-.pricing-hero h1 {
-
- font-size:36px;
+color:#9ca3af;
+line-height:1.6;
 
 }
 
 
-.pricing-cards {
 
- grid-template-columns:1fr;
+.price-card ul{
 
- max-width:420px;
-
-}
-
-
-.pricing-page {
-
- padding-top:70px;
+padding:0;
+list-style:none;
 
 }
 
 
-  }
+
+.price-card li{
+
+margin:15px 0;
+color:#d1d5db;
+
+}
+
+
+
+.price-card button,
+.pricing-cta button{
+
+margin-top:20px;
+padding:14px 35px;
+border:none;
+border-radius:30px;
+background:#8cff3d;
+font-weight:bold;
+
+}
+
+
+
+.popular{
+
+border:1px solid #8cff3d;
+
+}
+
+
+
+.badge{
+
+position:absolute;
+top:-15px;
+right:25px;
+background:#8cff3d;
+color:#020817;
+padding:7px 15px;
+border-radius:20px;
+font-size:13px;
+
+}
+
+
+
+
+.pricing-benefits{
+
+text-align:center;
+margin:90px 0;
+
+}
+
+
+
+.pricing-benefits h2,
+.pricing-cta h2{
+
+font-size:38px;
+
+}
+
+
+
+.pricing-benefits p{
+
+color:#9ca3af;
+
+}
+
+
+
+.pricing-cta{
+
+text-align:center;
+background:#06252c;
+padding:60px;
+border-radius:30px;
+
+}
+
+
+
+@media(max-width:768px){
+
+.pricing-page{
+
+padding:50px 20px;
+
+}
+
+
+.pricing-hero h1{
+
+font-size:34px;
+
+}
+
+
+.pricing-grid{
+
+grid-template-columns:1fr;
+
+}
+
+   }
