@@ -35,18 +35,18 @@ function Footer() {
               Product
             </h4>
 
-            <a href="#platform">
+            <a href="/platform">
               Platform
             </a>
 
-            <a href="#solutions">
+            <a href="/solutions">
               Solutions
             </a>
 
             <a href="/pricing">
   Pricing
 </a>
-            <a href="#features">
+            <a href="/features">
               Features
             </a>
 
@@ -63,15 +63,15 @@ function Footer() {
   About Us
 </a>
 
-            <a href="#careers">
+            <a href="/careers">
               Careers
             </a>
 
-            <a href="#contact">
+            <a href="/contact">
               Contact
             </a>
 
-            <a href="#partners">
+            <a href="/partners">
               Partners
             </a>
 
@@ -85,19 +85,19 @@ function Footer() {
               Resources
             </h4>
 
-            <a href="#blog">
+            <a href="/blog">
               Blog
             </a>
 
-            <a href="#help">
+            <a href="/help">
               Help Center
             </a>
 
-            <a href="#security">
+            <a href="/security">
               Security
             </a>
 
-            <a href="#privacy">
+            <a href="/privacy">
               Privacy
             </a>
 
