@@ -1,0 +1,265 @@
+/* =====================================
+   BRIQONA OS — SECURITY PAGE
+===================================== */
+
+
+.security-page {
+
+  min-height:100vh;
+
+  padding:100px 20px;
+
+  background:
+  radial-gradient(
+    circle at top,
+    rgba(21,217,255,.10),
+    transparent 45%
+  );
+
+}
+
+
+
+/* HERO */
+
+.security-hero {
+
+  max-width:850px;
+
+  margin:auto;
+
+  text-align:center;
+
+}
+
+
+.security-hero span {
+
+  color:var(--cyan);
+
+  font-size:12px;
+
+  letter-spacing:2px;
+
+}
+
+
+
+.security-hero h1 {
+
+  margin-top:25px;
+
+  font-size:52px;
+
+  line-height:1.1;
+
+}
+
+
+
+.security-hero em {
+
+  color:var(--green);
+
+  font-style:normal;
+
+}
+
+
+
+.security-hero p {
+
+  max-width:720px;
+
+  margin:25px auto;
+
+  color:var(--text-muted);
+
+  font-size:18px;
+
+  line-height:1.7;
+
+}
+
+
+
+/* GRID */
+
+
+.security-grid {
+
+  max-width:1000px;
+
+  margin:70px auto;
+
+  display:grid;
+
+  grid-template-columns:repeat(4,1fr);
+
+  gap:20px;
+
+}
+
+
+
+.security-card {
+
+  padding:30px 22px;
+
+  border-radius:22px;
+
+
+  background:
+
+  rgba(8,20,34,.78);
+
+
+  border:
+
+  1px solid rgba(143,184,224,.15);
+
+
+  transition:.3s;
+
+}
+
+
+
+.security-card:hover {
+
+  transform:translateY(-8px);
+
+  border-color:var(--green);
+
+}
+
+
+
+.security-icon {
+
+  font-size:38px;
+
+}
+
+
+
+.security-card h3 {
+
+  margin:20px 0 10px;
+
+  font-size:19px;
+
+}
+
+
+
+.security-card p {
+
+  color:var(--text-muted);
+
+  line-height:1.6;
+
+  font-size:14px;
+
+}
+
+
+
+/* CTA */
+
+
+.security-cta {
+
+  max-width:900px;
+
+  margin:80px auto 20px;
+
+  padding:45px 30px;
+
+  text-align:center;
+
+  border-radius:28px;
+
+
+  background:
+
+  linear-gradient(
+    135deg,
+    rgba(21,217,255,.12),
+    rgba(141,242,61,.08)
+  );
+
+}
+
+
+
+.security-cta h2 {
+
+  font-size:36px;
+
+}
+
+
+
+.security-cta p {
+
+  color:var(--text-muted);
+
+  margin:15px 0 30px;
+
+}
+
+
+
+.security-cta a {
+
+  display:inline-flex;
+
+  padding:14px 28px;
+
+  border-radius:12px;
+
+
+  background:
+
+  linear-gradient(
+    100deg,
+    var(--green),
+    var(--cyan)
+  );
+
+
+  color:#031018;
+
+  font-weight:700;
+
+}
+
+
+
+/* MOBILE */
+
+
+@media(max-width:900px){
+
+.security-hero h1{
+
+font-size:38px;
+
+}
+
+
+.security-grid{
+
+grid-template-columns:1fr;
+
+}
+
+
+.security-cta h2{
+
+font-size:28px;
+
+}
+
+  }
