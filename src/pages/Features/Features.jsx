@@ -1,45 +1,34 @@
 import "./Features.css";
 
-const featureList = [
-  {
-    icon: "📊",
-    title: "Advanced Analytics",
-    text: "Understand your business performance with powerful real-time insights.",
-  },
+function Features() {
 
-  {
-    icon: "🤖",
-    title: "AI Automation",
-    text: "Automate daily operations and improve team productivity.",
-  },
+  const features = [
+    {
+      title: "AI Automation",
+      text: "Automate repetitive tasks, improve workflows, and increase business productivity with intelligent automation."
+    },
+    {
+      title: "Workflow Management",
+      text: "Create efficient processes and manage daily operations from one connected platform."
+    },
+    {
+      title: "Business Analytics",
+      text: "Turn business data into meaningful insights and make smarter decisions."
+    },
+    {
+      title: "Team Collaboration",
+      text: "Help teams work together with connected tools and organized business operations."
+    },
+    {
+      title: "Data Management",
+      text: "Manage important business information securely with centralized data control."
+    },
+    {
+      title: "Smart Integrations",
+      text: "Connect your favorite tools and build a flexible business ecosystem."
+    }
+  ];
 
-  {
-    icon: "👥",
-    title: "Team Management",
-    text: "Connect teams and manage workflows from one place.",
-  },
-
-  {
-    icon: "💰",
-    title: "Financial Management",
-    text: "Track finances and improve business control.",
-  },
-
-  {
-    icon: "📦",
-    title: "Inventory Control",
-    text: "Manage products, stock and operations efficiently.",
-  },
-
-  {
-    icon: "🔐",
-    title: "Enterprise Security",
-    text: "Keep your business data protected with modern security.",
-  },
-];
-
-
-function Features(){
 
   return (
 
@@ -52,51 +41,102 @@ function Features(){
           BRIQONA OS FEATURES
         </span>
 
-
         <h1>
-          Powerful Features Built
-          <em> For Modern Businesses</em>
+          Powerful Features For
+          <br />
+          <strong>Smarter Business Growth</strong>
         </h1>
 
-
         <p>
-          Everything you need to manage, automate and grow
-          your business from one intelligent platform.
+          Briqona OS combines artificial intelligence, automation,
+          analytics, and secure business tools into one powerful
+          operating system.
         </p>
 
       </section>
 
 
 
-      <section className="features-grid">
+      <section className="features-section">
+
+        <h2>
+          Everything You Need In One Platform
+        </h2>
 
 
-        {featureList.map((item)=>(
+        <div className="features-grid">
 
-          <div
-            className="feature-card"
-            key={item.title}
-          >
+          {
+            features.map((item,index)=>(
 
-            <div className="feature-icon">
-              {item.icon}
-            </div>
+              <div 
+              className="feature-card"
+              key={index}
+              >
+
+                <h3>
+                  {item.title}
+                </h3>
+
+                <p>
+                  {item.text}
+                </p>
+
+              </div>
+
+            ))
+          }
+
+        </div>
+
+      </section>
 
 
-            <h3>
-              {item.title}
-            </h3>
 
 
-            <p>
-              {item.text}
-            </p>
+      <section className="automation-section">
+
+        <div>
+
+          <h2>
+            Automate. Analyze. Grow.
+          </h2>
+
+          <p>
+            Reduce manual work, improve efficiency, and give your
+            team powerful tools to focus on growth.
+          </p>
+
+        </div>
 
 
-          </div>
+        <div className="feature-box">
 
-        ))}
+          <h3>
+            Intelligent Operations
+          </h3>
 
+          <p>
+            A connected system designed for modern businesses.
+          </p>
+
+        </div>
+
+      </section>
+
+
+
+
+      <section className="security-feature">
+
+        <h2>
+          Built With Security In Mind
+        </h2>
+
+        <p>
+          Protect your business operations with reliable technology,
+          secure access controls, and responsible data practices.
+        </p>
 
       </section>
 
@@ -106,19 +146,16 @@ function Features(){
       <section className="features-cta">
 
         <h2>
-          Everything Your Business Needs
+          Ready To Transform Your Business?
         </h2>
 
-
         <p>
-          Start using Briqona OS and experience smarter operations.
+          Start using Briqona OS today.
         </p>
 
-
-        <a href="/register">
-          Start Free →
-        </a>
-
+        <button>
+          Start Free
+        </button>
 
       </section>
 
@@ -128,6 +165,5 @@ function Features(){
   );
 
 }
-
 
 export default Features;
