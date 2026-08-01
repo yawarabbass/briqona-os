@@ -1,258 +1,169 @@
-/* =====================================
-   BRIQONA OS — FEATURES PAGE
-===================================== */
+.features-page{
 
-
-.features-page {
-
-  min-height:100vh;
-
-  padding:100px 20px;
-
-  background:
-  radial-gradient(
-    circle at top,
-    rgba(21,217,255,.12),
-    transparent 45%
-  );
+background:#020817;
+color:white;
+padding:80px 8%;
 
 }
 
 
+.features-hero{
 
-/* HERO */
-
-.features-hero {
-
-  max-width:850px;
-
-  margin:auto;
-
-  text-align:center;
+text-align:center;
+max-width:900px;
+margin:auto;
 
 }
 
 
-.features-hero span {
+.features-hero span{
 
-  color:var(--cyan);
-
-  font-size:12px;
-
-  letter-spacing:2px;
+color:#39d9ff;
+letter-spacing:3px;
 
 }
 
-
-
-.features-hero h1 {
-
-  margin-top:25px;
-
-  font-size:52px;
-
-  line-height:1.1;
-
-}
-
-
-
-.features-hero em {
-
-  color:var(--green);
-
-  font-style:normal;
-
-}
-
-
-
-.features-hero p {
-
-  margin:25px auto;
-
-  max-width:700px;
-
-  color:var(--text-muted);
-
-  font-size:18px;
-
-  line-height:1.7;
-
-}
-
-
-
-/* FEATURES GRID */
-
-
-.features-grid {
-
-  max-width:1100px;
-
-  margin:70px auto;
-
-  display:grid;
-
-  grid-template-columns:repeat(3,1fr);
-
-  gap:25px;
-
-}
-
-
-
-.feature-card {
-
-  padding:32px 25px;
-
-  border-radius:22px;
-
-  background:
-
-  rgba(8,20,34,.78);
-
-
-  border:
-
-  1px solid rgba(143,184,224,.15);
-
-  transition:.3s;
-
-}
-
-
-
-.feature-card:hover {
-
-  transform:translateY(-8px);
-
-  border-color:var(--cyan);
-
-}
-
-
-
-.feature-icon {
-
-  font-size:38px;
-
-}
-
-
-
-.feature-card h3 {
-
-  margin:20px 0 10px;
-
-  font-size:20px;
-
-}
-
-
-
-.feature-card p {
-
-  color:var(--text-muted);
-
-  line-height:1.6;
-
-}
-
-
-
-/* CTA */
-
-
-.features-cta {
-
-  max-width:900px;
-
-  margin:80px auto 20px;
-
-  padding:45px 30px;
-
-  text-align:center;
-
-  border-radius:28px;
-
-
-  background:
-
-  linear-gradient(
-    135deg,
-    rgba(21,217,255,.12),
-    rgba(141,242,61,.08)
-  );
-
-}
-
-
-
-.features-cta h2 {
-
-  font-size:36px;
-
-}
-
-
-
-.features-cta p {
-
-  color:var(--text-muted);
-
-  margin:15px 0 30px;
-
-}
-
-
-
-.features-cta a {
-
-  display:inline-flex;
-
-  padding:14px 28px;
-
-  border-radius:12px;
-
-  background:
-
-  linear-gradient(
-    100deg,
-    var(--green),
-    var(--cyan)
-  );
-
-  color:#031018;
-
-  font-weight:700;
-
-}
-
-
-
-/* MOBILE */
-
-
-@media(max-width:900px){
 
 .features-hero h1{
 
- font-size:38px;
+font-size:52px;
+margin:25px 0;
 
 }
+
+
+.features-hero strong{
+
+color:#8cff3d;
+
+}
+
+
+.features-hero p{
+
+color:#9ca3af;
+font-size:18px;
+line-height:1.7;
+
+}
+
+
+
+.features-section{
+
+margin-top:90px;
+
+}
+
+
+.features-section h2,
+.automation-section h2,
+.security-feature h2{
+
+font-size:38px;
+
+}
+
 
 
 .features-grid{
 
- grid-template-columns:1fr;
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:25px;
+margin-top:40px;
 
 }
 
 
-.features-cta h2{
 
- font-size:28px;
+.feature-card,
+.feature-box{
+
+background:#071525;
+border:1px solid #183044;
+padding:30px;
+border-radius:20px;
+
+}
+
+
+
+.feature-card p,
+.automation-section p,
+.security-feature p{
+
+color:#9ca3af;
+line-height:1.7;
+
+}
+
+
+
+.automation-section{
+
+margin:90px 0;
+display:grid;
+grid-template-columns:1fr 350px;
+gap:40px;
+
+}
+
+
+
+.security-feature{
+
+margin:80px 0;
+
+}
+
+
+
+.features-cta{
+
+text-align:center;
+background:#06252c;
+padding:60px;
+border-radius:30px;
+
+}
+
+
+
+.features-cta button{
+
+margin-top:20px;
+padding:14px 35px;
+border:none;
+border-radius:30px;
+background:#8cff3d;
+font-weight:bold;
+
+}
+
+
+
+
+@media(max-width:768px){
+
+.features-page{
+
+padding:50px 20px;
+
+}
+
+
+.features-hero h1{
+
+font-size:34px;
+
+}
+
+
+.features-grid,
+.automation-section{
+
+grid-template-columns:1fr;
 
 }
 
