@@ -1,38 +1,44 @@
 import "./Terms.css";
 
+function Terms(){
 
-const terms = [
-  {
-    title: "Acceptance of Terms",
-    text: "By using Briqona OS services, you agree to follow these terms and conditions."
-  },
-
-  {
-    title: "Use of Platform",
-    text: "Users must use the platform responsibly and only for lawful business activities."
-  },
-
-  {
-    title: "Account Responsibility",
-    text: "You are responsible for maintaining your account information and security credentials."
-  },
-
-  {
-    title: "Service Availability",
-    text: "We continuously improve our platform but cannot guarantee uninterrupted service at all times."
-  },
-
-  {
-    title: "Data Usage",
-    text: "Data is handled according to our privacy policy and security standards."
-  },
-
+const sections = [
+{
+title:"Acceptance Of Terms",
+text:"By accessing Briqona OS services, you agree to follow these terms and conditions. If you do not agree with these terms, please do not use our services."
+},
+{
+title:"Use Of Platform",
+text:"Users must use Briqona OS responsibly and only for lawful business purposes. Misuse of the platform is not permitted."
+},
+{
+title:"Account Responsibility",
+text:"Users are responsible for maintaining account security and protecting login information."
+},
+{
+title:"Subscriptions & Payments",
+text:"Pricing, subscriptions, and payments are handled according to the selected service plan and applicable agreements."
+},
+{
+title:"Intellectual Property",
+text:"Briqona OS technology, design, branding, and software remain the property of Briqona OS."
+},
+{
+title:"Service Availability",
+text:"We continuously improve our platform but cannot guarantee uninterrupted availability at all times."
+},
+{
+title:"Limitation Of Liability",
+text:"Briqona OS is not responsible for indirect losses resulting from misuse or unauthorized access."
+},
+{
+title:"Contact Information",
+text:"For questions regarding these terms, please contact our support team."
+}
 ];
 
 
-function Terms(){
-
-return (
+return(
 
 <main className="terms-page">
 
@@ -43,18 +49,16 @@ return (
 BRIQONA OS TERMS
 </span>
 
-
 <h1>
 Terms &
-<em> Conditions</em>
+<br/>
+<strong>Conditions</strong>
 </h1>
 
-
 <p>
-Please review our terms to understand the rules,
-responsibilities and guidelines for using Briqona OS.
+Understand the rules and guidelines for using Briqona OS
+services and technology solutions.
 </p>
-
 
 </section>
 
@@ -63,28 +67,37 @@ responsibilities and guidelines for using Briqona OS.
 
 <section className="terms-content">
 
-
-{terms.map((item)=>(
-
-<div
-className="terms-box"
-key={item.title}
->
-
-
 <h2>
-{item.title}
+Terms Of Service
 </h2>
 
+<p>
+These Terms and Conditions explain the relationship between
+Briqona OS and users of our platform.
+</p>
+
+
+<div className="terms-grid">
+
+{
+sections.map((item,index)=>(
+
+<div className="terms-card" key={index}>
+
+<h3>
+{item.title}
+</h3>
 
 <p>
 {item.text}
 </p>
 
-
 </div>
 
-))}
+))
+}
+
+</div>
 
 
 </section>
@@ -95,19 +108,16 @@ key={item.title}
 <section className="terms-cta">
 
 <h2>
-Need More Information?
+Questions About Our Terms?
 </h2>
 
-
 <p>
-Our team is available to answer your questions.
+Our team is available to provide clarification.
 </p>
 
-
-<a href="/contact">
-Contact Us →
-</a>
-
+<button>
+Contact Us
+</button>
 
 </section>
 
@@ -118,6 +128,5 @@ Contact Us →
 );
 
 }
-
 
 export default Terms;
