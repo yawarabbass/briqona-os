@@ -1,154 +1,199 @@
-.demo-page {
+.demo-page{
 
-  min-height:100vh;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  padding:50px 20px;
-
-  background:
-
-  radial-gradient(
-    circle at top,
-    rgba(22,217,255,.14),
-    transparent 45%
-  ),
-  var(--bg);
+background:#020817;
+color:white;
+padding:80px 8%;
 
 }
 
 
 
-.demo-card {
+.demo-hero{
 
-  width:100%;
-
-  max-width:650px;
-
-  padding:45px;
-
-  border-radius:28px;
-
-  background:
-
-  rgba(255,255,255,.05);
-
-  border:
-
-  1px solid var(--border);
+text-align:center;
+max-width:900px;
+margin:auto;
 
 }
 
 
 
-.demo-card > span {
+.demo-hero span{
 
-  color:var(--cyan);
-
-  font-size:12px;
-
-  letter-spacing:.15em;
+color:#39d9ff;
+letter-spacing:3px;
 
 }
 
 
 
-.demo-card h1 {
+.demo-hero h1{
 
-  margin:20px 0;
-
-  font-size:clamp(32px,5vw,48px);
-
-  line-height:1.15;
+font-size:55px;
+margin:25px 0;
 
 }
 
 
 
-.demo-card h1 strong {
+.demo-hero strong{
 
-  display:block;
-
-  color:var(--green);
+color:#8cff3d;
 
 }
 
 
 
-.demo-card p {
+.demo-hero p{
 
-  color:var(--text-soft);
-
-  line-height:1.8;
-
-}
-
-
-
-.demo-card form {
-
-  margin-top:30px;
+color:#9ca3af;
+font-size:18px;
+line-height:1.7;
 
 }
 
 
 
-.demo-card input,
-.demo-card select,
-.demo-card textarea {
+.demo-hero button,
+.demo-form button,
+.demo-cta button{
 
-  width:100%;
-
-  padding:15px;
-
-  margin-bottom:15px;
-
-  border-radius:12px;
-
-  border:1px solid var(--border);
-
-  background:rgba(255,255,255,.04);
-
-  color:white;
+margin-top:25px;
+padding:14px 35px;
+border:none;
+border-radius:30px;
+background:#8cff3d;
+font-weight:bold;
 
 }
 
 
 
-.demo-card select option {
 
-  color:#000;
+.demo-benefits,
+.demo-form-section{
+
+margin-top:90px;
 
 }
 
 
 
-.demo-card button {
+.demo-benefits h2,
+.demo-form h2,
+.demo-cta h2{
 
-  width:100%;
+font-size:38px;
 
-  padding:16px;
+}
 
-  border:0;
 
-  border-radius:12px;
 
-  font-weight:700;
+.demo-grid{
 
-  color:#031018;
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:25px;
+margin-top:40px;
 
-  cursor:pointer;
+}
 
-  background:
 
-  linear-gradient(
-    100deg,
-    var(--green),
-    var(--cyan)
-  );
 
-    }
+.demo-card,
+.demo-form{
+
+background:#071525;
+border:1px solid #183044;
+padding:30px;
+border-radius:25px;
+
+}
+
+
+
+.demo-card p{
+
+color:#9ca3af;
+line-height:1.7;
+
+}
+
+
+
+.demo-form{
+
+max-width:600px;
+margin:auto;
+
+}
+
+
+
+.demo-form input,
+.demo-form textarea,
+.demo-form select{
+
+width:100%;
+margin:10px 0;
+
+padding:15px;
+
+background:#020817;
+
+border:1px solid #183044;
+
+border-radius:10px;
+
+color:white;
+
+}
+
+
+
+.demo-cta{
+
+margin-top:90px;
+text-align:center;
+
+background:#06252c;
+
+padding:60px;
+
+border-radius:30px;
+
+}
+
+
+
+.demo-cta p{
+
+color:#9ca3af;
+
+}
+
+
+
+@media(max-width:768px){
+
+.demo-page{
+
+padding:50px 20px;
+
+}
+
+
+.demo-hero h1{
+
+font-size:34px;
+
+}
+
+
+.demo-grid{
+
+grid-template-columns:1fr;
+
+}
+
+}
