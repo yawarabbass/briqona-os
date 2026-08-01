@@ -49,7 +49,9 @@ function Footer() {
             <a href="/features">
               Features
             </a>
-
+<a href="/integrations">
+  Integrations
+</a>
           </div>
 
 
@@ -102,7 +104,9 @@ function Footer() {
             <a href="/privacy">
               Privacy
             </a>
-
+<a href="/documentation">
+  Documentation
+</a>
           </div>
 
 
