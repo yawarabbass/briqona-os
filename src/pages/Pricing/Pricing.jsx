@@ -2,189 +2,192 @@ import "./Pricing.css";
 
 function Pricing() {
 
-  const plans = [
-    {
-      name: "Starter",
-      price: "$19",
-      description: "Perfect for small teams starting with digital business management.",
-      features: [
-        "Basic Business Tools",
-        "Workflow Management",
-        "Essential Analytics",
-        "Email Support"
-      ]
-    },
+const plans = [
 
-    {
-      name: "Professional",
-      price: "$49",
-      description: "Powerful tools for growing businesses that need automation.",
-      features: [
-        "AI Automation",
-        "Advanced Analytics",
-        "Team Collaboration",
-        "Priority Support",
-        "Business Integrations"
-      ],
-      popular:true
-    },
-
-    {
-      name: "Enterprise",
-      price: "Custom",
-      description: "Advanced solutions for large organizations and complex operations.",
-      features: [
-        "Enterprise Security",
-        "Custom Solutions",
-        "Dedicated Support",
-        "Advanced Integrations"
-      ]
-    }
-  ];
+{
+name:"Starter",
+price:"$5",
+desc:"Perfect for startups and small teams beginning their digital journey.",
+features:[
+"Business Dashboard",
+"Basic AI Insights",
+"Workflow Automation",
+"Email Support"
+],
+button:"Start Free"
+},
 
 
-  return (
-
-    <main className="pricing-page">
-
-
-      <section className="pricing-hero">
-
-        <span>
-          BRIQONA OS PRICING
-        </span>
-
-        <h1>
-          Flexible Plans For
-          <br />
-          <strong>Every Growing Business</strong>
-        </h1>
-
-        <p>
-          Choose a plan that fits your business needs and scale
-          with powerful AI-driven tools and automation.
-        </p>
-
-      </section>
+{
+name:"Growth",
+price:"$15",
+desc:"Powerful tools for growing businesses that need automation.",
+popular:true,
+features:[
+"Everything in Starter",
+"Advanced Analytics",
+"AI Business Assistant",
+"Team Collaboration",
+"Priority Support"
+],
+button:"Get Started"
+},
 
 
+{
+name:"Enterprise",
+price:"$30",
+desc:"Complete business solution for scaling organizations.",
+features:[
+"Unlimited Users",
+"Custom Solutions",
+"Advanced Security",
+"API Integrations",
+"Dedicated Support"
+],
+button:"Contact Sales"
+}
+
+];
 
 
-      <section className="pricing-section">
+return (
+
+<main className="pricing-page">
 
 
-        <div className="pricing-grid">
+<section className="pricing-hero">
+
+<span>
+BRIQONA OS PRICING
+</span>
 
 
-          {
-            plans.map((plan,index)=>(
-
-              <div 
-              className={`price-card ${plan.popular ? "popular":""}`}
-              key={index}
-              >
-
-                {
-                  plan.popular &&
-                  <div className="badge">
-                    Most Popular
-                  </div>
-                }
+<h1>
+Simple Pricing For
+<br/>
+<strong>Smarter Businesses</strong>
+</h1>
 
 
-                <h2>
-                  {plan.name}
-                </h2>
+<p>
+Choose a flexible plan designed to help your business grow
+with AI-powered automation and intelligent tools.
+</p>
 
 
-                <h3>
-                  {plan.price}
-                  {
-                    plan.price !== "Custom" &&
-                    <small>/month</small>
-                  }
-                </h3>
-
-
-                <p>
-                  {plan.description}
-                </p>
-
-
-                <ul>
-
-                {
-                  plan.features.map((feature,i)=>(
-
-                    <li key={i}>
-                      ✓ {feature}
-                    </li>
-
-                  ))
-                }
-
-                </ul>
-
-
-                <button>
-                  Get Started
-                </button>
-
-
-              </div>
-
-
-            ))
-          }
-
-
-        </div>
-
-
-      </section>
+</section>
 
 
 
+<section className="pricing-section">
 
-      <section className="pricing-benefits">
 
-        <h2>
-          Simple, Transparent & Scalable
-        </h2>
+<div className="pricing-grid">
 
-        <p>
-          Briqona OS pricing is designed to support businesses
-          from startups to enterprise organizations with flexible
-          solutions.
-        </p>
 
-      </section>
+{
+plans.map((plan,index)=>(
+
+
+<div
+key={index}
+className={`pricing-card ${plan.popular ? "popular":""}`}
+>
+
+
+{
+plan.popular &&
+<div className="popular-badge">
+MOST POPULAR
+</div>
+}
+
+
+
+<h2>
+{plan.name}
+</h2>
+
+
+<h3>
+{plan.price}
+<span>
+/month
+</span>
+</h3>
+
+
+<p>
+{plan.desc}
+</p>
+
+
+
+<ul>
+
+{
+plan.features.map((feature,i)=>(
+
+<li key={i}>
+✓ {feature}
+</li>
+
+))
+}
+
+</ul>
+
+
+
+<button>
+{plan.button}
+</button>
+
+
+
+</div>
+
+
+))
+}
+
+
+</div>
+
+
+</section>
 
 
 
 
-      <section className="pricing-cta">
-
-        <h2>
-          Ready To Grow Your Business?
-        </h2>
-
-        <p>
-          Start your journey with Briqona OS today.
-        </p>
-
-        <button>
-          Start Free
-        </button>
-
-      </section>
+<section className="pricing-cta">
 
 
+<h2>
+Ready To Grow Your Business?
+</h2>
 
-    </main>
 
-  );
+<p>
+Start with Briqona OS today and build smarter workflows.
+</p>
+
+
+<button>
+Start Free
+</button>
+
+
+</section>
+
+
+
+</main>
+
+);
 
 }
+
 
 export default Pricing;
