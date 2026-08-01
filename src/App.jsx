@@ -25,7 +25,7 @@ import Integrations from "./pages/Integrations/Integrations";
 
 
 function App() {
-  const path = window.location.pathname;
+  const path = window.location.pathname.replace("/briqona-os", "") || "/";
 
   if (path === "/login") {
   return (
