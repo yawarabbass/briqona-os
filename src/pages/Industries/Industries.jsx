@@ -1,46 +1,34 @@
 import "./Industries.css";
 
+function Industries() {
 
-const industries = [
-  {
-    icon: "🏥",
-    title: "Healthcare",
-    text: "Manage healthcare operations, patient workflows and business processes with smarter digital tools.",
-  },
+  const industries = [
+    {
+      title: "Healthcare",
+      text: "Manage healthcare operations with intelligent workflows, secure data management, and connected business tools."
+    },
+    {
+      title: "Retail",
+      text: "Optimize retail operations, customer management, and business performance with smart automation."
+    },
+    {
+      title: "Real Estate",
+      text: "Improve property management, client relationships, and operational efficiency with powerful solutions."
+    },
+    {
+      title: "Education",
+      text: "Support modern education systems with organized data, automation, and better collaboration."
+    },
+    {
+      title: "Construction",
+      text: "Manage projects, teams, and workflows with a centralized business operating system."
+    },
+    {
+      title: "Professional Services",
+      text: "Help service-based businesses improve productivity and deliver better customer experiences."
+    }
+  ];
 
-  {
-    icon: "🏗️",
-    title: "Construction",
-    text: "Improve project management, teams collaboration and operational efficiency.",
-  },
-
-  {
-    icon: "🏢",
-    title: "Real Estate",
-    text: "Manage properties, customers and business activities from one intelligent platform.",
-  },
-
-  {
-    icon: "🛒",
-    title: "Retail & E-Commerce",
-    text: "Optimize inventory, sales and customer experiences with connected solutions.",
-  },
-
-  {
-    icon: "🎓",
-    title: "Education",
-    text: "Simplify administration, communication and management for educational organizations.",
-  },
-
-  {
-    icon: "💼",
-    title: "Professional Services",
-    text: "Empower service businesses with automation and powerful insights.",
-  },
-];
-
-
-function Industries(){
 
   return (
 
@@ -50,83 +38,112 @@ function Industries(){
       <section className="industries-hero">
 
         <span>
-          INDUSTRIES WE SERVE
+          BRIQONA OS INDUSTRIES
         </span>
 
-
         <h1>
-          Built For Every
-          <em> Modern Industry</em>
+          Intelligent Solutions
+          <br />
+          <strong>For Every Industry</strong>
         </h1>
 
-
         <p>
-          Briqona OS adapts to different industries,
-          helping organizations automate operations,
-          improve efficiency and scale faster.
+          Briqona OS helps organizations across different industries
+          automate operations, manage data, and build smarter workflows.
         </p>
 
-
       </section>
 
 
 
 
-      <section className="industries-grid">
-
-
-        {industries.map((item)=>(
-
-          <div
-            className="industry-card"
-            key={item.title}
-          >
-
-            <div className="industry-icon">
-              {item.icon}
-            </div>
-
-
-            <h3>
-              {item.title}
-            </h3>
-
-
-            <p>
-              {item.text}
-            </p>
-
-
-            <a href="/register">
-              Explore →
-            </a>
-
-
-          </div>
-
-        ))}
-
-
-      </section>
-
-
-
-
-      <section className="industries-cta">
+      <section className="industries-section">
 
         <h2>
-          Your Industry. One Intelligent System.
+          Industries We Serve
         </h2>
 
 
+        <div className="industries-grid">
+
+          {
+            industries.map((item,index)=>(
+
+              <div 
+              className="industry-card"
+              key={index}
+              >
+
+                <h3>
+                  {item.title}
+                </h3>
+
+                <p>
+                  {item.text}
+                </p>
+
+              </div>
+
+            ))
+          }
+
+        </div>
+
+
+      </section>
+
+
+
+
+      <section className="industry-benefits">
+
+        <div>
+
+          <h2>
+            Built For Modern Business Challenges
+          </h2>
+
+          <p>
+            Every organization has unique needs. Briqona OS provides
+            flexible tools that adapt to different industries and
+            business models.
+          </p>
+
+        </div>
+
+
+        <div className="industry-box">
+
+          <h3>
+            One Platform. Multiple Industries.
+          </h3>
+
+          <p>
+            Connect teams, automate processes, and improve productivity.
+          </p>
+
+        </div>
+
+
+      </section>
+
+
+
+
+      <section className="industry-cta">
+
+        <h2>
+          Transform Your Industry With Briqona OS
+        </h2>
+
         <p>
-          Start managing your business smarter with Briqona OS.
+          Discover smarter ways to manage your business operations.
         </p>
 
 
-        <a href="/demo">
-          Book Demo →
-        </a>
+        <button>
+          Start Free
+        </button>
 
 
       </section>
@@ -137,6 +154,5 @@ function Industries(){
   );
 
 }
-
 
 export default Industries;
