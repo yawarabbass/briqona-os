@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./Header.css";
 
 const navItems = [
+
   {
     label: "Home",
     href: "/",
@@ -78,6 +79,7 @@ const navItems = [
     label: "Contact",
     href: "/contact",
   },
+
 ];
 
 
@@ -158,8 +160,12 @@ key={item.label}
 
 {item.dropdown.map((sub)=>(
 
-<a key={sub} href="#">
-{sub}
+<a
+  key={sub.label}
+  href={sub.href}
+  onClick={closeMenu}
+>
+  {sub.label}
 </a>
 
 ))}
