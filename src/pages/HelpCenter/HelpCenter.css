@@ -1,0 +1,280 @@
+/* =====================================
+   BRIQONA OS — HELP CENTER PAGE
+===================================== */
+
+
+.help-page {
+
+  min-height:100vh;
+
+  padding:100px 20px;
+
+  background:
+  radial-gradient(
+    circle at top,
+    rgba(21,217,255,.10),
+    transparent 45%
+  );
+
+}
+
+
+
+/* HERO */
+
+
+.help-hero {
+
+  max-width:850px;
+
+  margin:auto;
+
+  text-align:center;
+
+}
+
+
+.help-hero span {
+
+  color:var(--cyan);
+
+  font-size:12px;
+
+  letter-spacing:2px;
+
+}
+
+
+
+.help-hero h1 {
+
+  margin-top:25px;
+
+  font-size:52px;
+
+  line-height:1.1;
+
+}
+
+
+
+.help-hero em {
+
+  color:var(--green);
+
+  font-style:normal;
+
+}
+
+
+
+.help-hero p {
+
+  max-width:720px;
+
+  margin:25px auto;
+
+  color:var(--text-muted);
+
+  font-size:18px;
+
+  line-height:1.7;
+
+}
+
+
+
+/* GRID */
+
+
+.help-grid {
+
+  max-width:1000px;
+
+  margin:70px auto;
+
+  display:grid;
+
+  grid-template-columns:repeat(4,1fr);
+
+  gap:20px;
+
+}
+
+
+
+.help-card {
+
+  padding:30px 22px;
+
+  border-radius:22px;
+
+
+  background:
+
+  rgba(8,20,34,.78);
+
+
+  border:
+
+  1px solid rgba(143,184,224,.15);
+
+
+  transition:.3s;
+
+}
+
+
+
+.help-card:hover {
+
+  transform:translateY(-8px);
+
+  border-color:var(--cyan);
+
+}
+
+
+
+.help-icon {
+
+  font-size:38px;
+
+}
+
+
+
+.help-card h3 {
+
+  margin:20px 0 10px;
+
+  font-size:20px;
+
+}
+
+
+
+.help-card p {
+
+  color:var(--text-muted);
+
+  line-height:1.6;
+
+  font-size:14px;
+
+}
+
+
+
+.help-card a {
+
+  display:inline-block;
+
+  margin-top:18px;
+
+  color:var(--cyan);
+
+  font-weight:600;
+
+}
+
+
+
+/* CTA */
+
+
+.help-cta {
+
+  max-width:900px;
+
+  margin:80px auto 20px;
+
+  padding:45px 30px;
+
+  text-align:center;
+
+  border-radius:28px;
+
+
+  background:
+
+  linear-gradient(
+    135deg,
+    rgba(21,217,255,.12),
+    rgba(141,242,61,.08)
+  );
+
+}
+
+
+
+.help-cta h2 {
+
+  font-size:36px;
+
+}
+
+
+
+.help-cta p {
+
+  color:var(--text-muted);
+
+  margin:15px 0 30px;
+
+}
+
+
+
+.help-cta a {
+
+  display:inline-flex;
+
+  padding:14px 28px;
+
+  border-radius:12px;
+
+
+  background:
+
+  linear-gradient(
+    100deg,
+    var(--green),
+    var(--cyan)
+  );
+
+
+  color:#031018;
+
+  font-weight:700;
+
+}
+
+
+
+/* MOBILE */
+
+
+@media(max-width:900px){
+
+.help-hero h1{
+
+font-size:38px;
+
+}
+
+
+.help-grid{
+
+grid-template-columns:1fr;
+
+}
+
+
+.help-cta h2{
+
+font-size:28px;
+
+}
+
+}
