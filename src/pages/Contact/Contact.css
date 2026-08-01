@@ -1,379 +1,191 @@
-/* =====================================
-   BRIQONA OS — CONTACT PAGE
-===================================== */
+.contact-page{
 
-.contact-page {
-
-  min-height:100vh;
-
-  padding:100px 20px;
-
-  background:
-  radial-gradient(
-    circle at top,
-    rgba(21,217,255,.12),
-    transparent 45%
-  );
+background:#020817;
+color:white;
+padding:80px 8%;
 
 }
 
 
+.contact-hero{
 
-/* HERO */
-
-.contact-hero {
-
-  max-width:850px;
-
-  margin:auto;
-
-  text-align:center;
+text-align:center;
+max-width:900px;
+margin:auto;
 
 }
 
 
-.contact-hero span {
+.contact-hero span{
 
-  color:var(--cyan);
-
-  font-size:12px;
-
-  letter-spacing:2px;
+color:#39d9ff;
+letter-spacing:3px;
 
 }
 
-
-.contact-hero h1 {
-
-  margin-top:25px;
-
-  font-size:52px;
-
-  line-height:1.1;
-
-}
-
-
-.contact-hero em {
-
-  color:var(--green);
-
-  font-style:normal;
-
-}
-
-
-.contact-hero p {
-
-  margin:25px auto;
-
-  max-width:700px;
-
-  color:var(--text-muted);
-
-  font-size:18px;
-
-  line-height:1.7;
-
-}
-
-
-
-/* CARDS */
-
-
-.contact-cards {
-
-  max-width:1100px;
-
-  margin:70px auto;
-
-  display:grid;
-
-  grid-template-columns:repeat(3,1fr);
-
-  gap:25px;
-
-}
-
-
-.contact-card {
-
-  padding:30px;
-
-  border-radius:22px;
-
-  background:
-  rgba(8,20,34,.75);
-
-  border:
-  1px solid rgba(143,184,224,.15);
-
-}
-
-
-.contact-icon {
-
-  font-size:35px;
-
-}
-
-
-.contact-card h3 {
-
-  margin:18px 0 10px;
-
-}
-
-
-.contact-card p {
-
-  color:var(--text-muted);
-
-  line-height:1.6;
-
-}
-
-
-.contact-card a {
-
-  display:block;
-
-  margin-top:15px;
-
-  color:var(--cyan);
-
-}
-
-
-
-/* MAIN AREA */
-
-
-.contact-main {
-
-  max-width:1100px;
-
-  margin:80px auto;
-
-  display:grid;
-
-  grid-template-columns:1.3fr .7fr;
-
-  gap:30px;
-
-}
-
-
-
-/* FORM */
-
-
-.contact-form-box {
-
-  padding:35px;
-
-  border-radius:25px;
-
-  background:
-  rgba(8,20,34,.8);
-
-  border:
-  1px solid rgba(143,184,224,.15);
-
-}
-
-
-
-.contact-form-box form {
-
-  display:flex;
-
-  flex-direction:column;
-
-  gap:15px;
-
-}
-
-
-.contact-form-box input,
-.contact-form-box select,
-.contact-form-box textarea {
-
-
-  width:100%;
-
-  padding:15px;
-
-  border-radius:12px;
-
-  border:
-
-  1px solid rgba(143,184,224,.18);
-
-
-  background:
-
-  rgba(255,255,255,.04);
-
-
-  color:white;
-
-}
-
-
-.contact-form-box textarea {
-
-  min-height:140px;
-
-}
-
-
-.contact-form-box button {
-
-  padding:15px;
-
-  border:0;
-
-  border-radius:12px;
-
-  font-weight:700;
-
-  cursor:pointer;
-
-
-  background:
-  linear-gradient(
-    100deg,
-    var(--green),
-    var(--cyan)
-  );
-
-}
-
-
-
-/* INFO */
-
-
-.contact-info {
-
-  padding:35px;
-
-  border-radius:25px;
-
-  background:
-  rgba(8,20,34,.8);
-
-  border:
-  1px solid rgba(143,184,224,.15);
-
-}
-
-
-
-.contact-info p {
-
-  color:var(--text-muted);
-
-  line-height:1.7;
-
-}
-
-
-
-.trust-box {
-
-  margin-top:35px;
-
-  padding:20px;
-
-  border-radius:16px;
-
-  background:
-
-  rgba(255,255,255,.04);
-
-}
-
-
-
-/* CTA */
-
-
-.contact-cta {
-
-  max-width:900px;
-
-  margin:80px auto 20px;
-
-  padding:45px;
-
-  text-align:center;
-
-  border-radius:28px;
-
-  background:
-
-  linear-gradient(
-    135deg,
-    rgba(21,217,255,.12),
-    rgba(141,242,61,.08)
-  );
-
-}
-
-
-.contact-cta a {
-
-  display:inline-flex;
-
-  margin:10px;
-
-  padding:14px 28px;
-
-  border-radius:12px;
-
-  background:
-
-  linear-gradient(
-    100deg,
-    var(--green),
-    var(--cyan)
-  );
-
-  color:#031018;
-
-  font-weight:700;
-
-}
-
-
-
-/* MOBILE */
-
-
-@media(max-width:900px){
 
 .contact-hero h1{
 
- font-size:36px;
+font-size:52px;
+margin:25px 0;
 
 }
 
 
-.contact-cards{
+.contact-hero strong{
 
- grid-template-columns:1fr;
-
-}
-
-
-.contact-main{
-
- grid-template-columns:1fr;
+color:#8cff3d;
 
 }
 
 
-    }
+.contact-hero p{
+
+color:#9ca3af;
+font-size:18px;
+line-height:1.7;
+
+}
+
+
+
+.contact-content{
+
+margin-top:90px;
+display:grid;
+grid-template-columns:1fr 450px;
+gap:50px;
+
+}
+
+
+
+.contact-info h2,
+.contact-form h2{
+
+font-size:38px;
+
+}
+
+
+
+.contact-info p{
+
+color:#9ca3af;
+line-height:1.7;
+
+}
+
+
+
+.info-box{
+
+background:#071525;
+border:1px solid #183044;
+padding:25px;
+border-radius:20px;
+margin-top:20px;
+
+}
+
+
+
+.info-box p{
+
+color:#8cff3d;
+
+}
+
+
+
+.contact-form{
+
+background:#071525;
+border:1px solid #183044;
+padding:35px;
+border-radius:25px;
+
+}
+
+
+
+.contact-form input,
+.contact-form textarea{
+
+width:100%;
+margin:10px 0;
+padding:15px;
+
+background:#020817;
+border:1px solid #183044;
+
+border-radius:10px;
+
+color:white;
+
+}
+
+
+
+.contact-form button,
+.contact-cta button{
+
+margin-top:15px;
+padding:14px 35px;
+
+border:none;
+border-radius:30px;
+
+background:#8cff3d;
+font-weight:bold;
+
+}
+
+
+
+.contact-cta{
+
+margin-top:90px;
+text-align:center;
+
+background:#06252c;
+
+padding:60px;
+
+border-radius:30px;
+
+}
+
+
+
+.contact-cta h2{
+
+font-size:38px;
+
+}
+
+
+
+@media(max-width:768px){
+
+.contact-page{
+
+padding:50px 20px;
+
+}
+
+
+.contact-hero h1{
+
+font-size:34px;
+
+}
+
+
+.contact-content{
+
+grid-template-columns:1fr;
+
+}
+
+}m
