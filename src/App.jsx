@@ -19,6 +19,11 @@ import Careers from "./pages/Careers/Careers";
 import Partners from "./pages/Partners/Partners";
 import Industries from "./pages/Industries/Industries";
 import Terms from "./pages/Terms/Terms";
+import Documentation from "./pages/Documentation/Documentation";
+import Integrations from "./pages/Integrations/Integrations";
+
+
+
 function App() {
   const path = window.location.pathname;
 
@@ -196,6 +201,31 @@ if (path === "/terms") {
     </div>
   );
     }
+
+if (path === "/documentation") {
+  return (
+    <div className="app">
+      <Header />
+      <Documentation />
+      <Footer />
+      <WhatsApp />
+    </div>
+  );
+}
+
+
+if (path === "/integrations") {
+  return (
+    <div className="app">
+      <Header />
+      <Integrations />
+      <Footer />
+      <WhatsApp />
+    </div>
+  );
+      }
+
+
   
   return (
     <div className="app">
