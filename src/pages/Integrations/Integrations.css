@@ -1,0 +1,190 @@
+.integrations-page{
+
+background:#020817;
+color:white;
+padding:80px 8%;
+
+}
+
+
+
+.integrations-hero{
+
+text-align:center;
+max-width:900px;
+margin:auto;
+
+}
+
+
+
+.integrations-hero span{
+
+color:#39d9ff;
+letter-spacing:3px;
+
+}
+
+
+
+.integrations-hero h1{
+
+font-size:55px;
+margin:25px 0;
+
+}
+
+
+
+.integrations-hero strong{
+
+color:#8cff3d;
+
+}
+
+
+
+.integrations-hero p{
+
+color:#9ca3af;
+font-size:18px;
+line-height:1.7;
+
+}
+
+
+
+.integrations-hero button,
+.integration-card button,
+.integration-cta button{
+
+margin-top:25px;
+
+padding:14px 35px;
+
+border:none;
+
+border-radius:30px;
+
+background:#8cff3d;
+
+font-weight:bold;
+
+}
+
+
+
+.integration-section,
+.api-section,
+.ecosystem-section{
+
+margin-top:90px;
+
+}
+
+
+
+.integration-section h2,
+.api-section h2,
+.ecosystem-section h2,
+.integration-cta h2{
+
+font-size:38px;
+
+}
+
+
+
+.integration-grid{
+
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:25px;
+
+margin-top:40px;
+
+}
+
+
+
+.integration-card{
+
+background:#071525;
+
+border:1px solid #183044;
+
+padding:30px;
+
+border-radius:20px;
+
+}
+
+
+
+.integration-card p,
+.api-section p,
+.ecosystem-section p,
+.integration-cta p{
+
+color:#9ca3af;
+
+line-height:1.7;
+
+}
+
+
+
+.api-section,
+.ecosystem-section{
+
+background:#071525;
+
+padding:40px;
+
+border-radius:25px;
+
+}
+
+
+
+.integration-cta{
+
+margin-top:90px;
+
+text-align:center;
+
+background:#06252c;
+
+padding:60px;
+
+border-radius:30px;
+
+}
+
+
+
+@media(max-width:768px){
+
+.integrations-page{
+
+padding:50px 20px;
+
+}
+
+
+
+.integrations-hero h1{
+
+font-size:34px;
+
+}
+
+
+
+.integration-grid{
+
+grid-template-columns:1fr;
+
+}
+
+  }
