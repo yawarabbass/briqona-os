@@ -59,10 +59,9 @@ function Footer() {
             <h4>
               Company
             </h4>
-
-            <a href="#about">
-              About Us
-            </a>
+<a href="/about">
+  About Us
+</a>
 
             <a href="#careers">
               Careers
