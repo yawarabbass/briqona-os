@@ -3,19 +3,83 @@ import "./Header.css";
 
 
 const navItems = [
-  { label: "Home", href: "/" },
-  { label: "Platform", href: "#platform" },
+  {
+    label: "Home",
+    href: "/",
+  },
+
+  {
+    label: "Platform",
+    href: "/platform",
+  },
 
   {
     label: "Solutions",
     dropdown: [
-      "CRM",
-      "Finance",
-      "Inventory",
-      "Analytics",
-      "Briqona AI"
-    ]
+      {
+        label: "CRM",
+        href: "/solutions/crm",
+      },
+      {
+        label: "Finance",
+        href: "/solutions/finance",
+      },
+      {
+        label: "Inventory",
+        href: "/solutions/inventory",
+      },
+      {
+        label: "Analytics",
+        href: "/solutions/analytics",
+      },
+      {
+        label: "Briqona AI",
+        href: "/solutions/ai",
+      },
+    ],
   },
+
+  {
+    label: "Industries",
+    dropdown: [
+      {
+        label: "Healthcare",
+        href: "/industries/healthcare",
+      },
+      {
+        label: "Construction",
+        href: "/industries/construction",
+      },
+      {
+        label: "Real Estate",
+        href: "/industries/real-estate",
+      },
+      {
+        label: "Retail & E-commerce",
+        href: "/industries/retail",
+      },
+      {
+        label: "Education",
+        href: "/industries/education",
+      },
+    ],
+  },
+
+  {
+    label: "Pricing",
+    href: "/pricing",
+  },
+
+  {
+    label: "About",
+    href: "/about",
+  },
+
+  {
+    label: "Contact",
+    href: "/contact",
+  },
+];
 
   {
     label: "Industries",
