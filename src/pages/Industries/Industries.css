@@ -1,0 +1,274 @@
+/* =====================================
+   BRIQONA OS — INDUSTRIES PAGE
+===================================== */
+
+
+.industries-page {
+
+  min-height:100vh;
+
+  padding:100px 20px;
+
+  background:
+  radial-gradient(
+    circle at top,
+    rgba(21,217,255,.10),
+    transparent 45%
+  );
+
+}
+
+
+
+/* HERO */
+
+.industries-hero {
+
+  max-width:850px;
+
+  margin:auto;
+
+  text-align:center;
+
+}
+
+
+.industries-hero span {
+
+  color:var(--cyan);
+
+  font-size:12px;
+
+  letter-spacing:2px;
+
+}
+
+
+
+.industries-hero h1 {
+
+  margin-top:25px;
+
+  font-size:52px;
+
+  line-height:1.1;
+
+}
+
+
+
+.industries-hero em {
+
+  color:var(--green);
+
+  font-style:normal;
+
+}
+
+
+
+.industries-hero p {
+
+  margin:25px auto;
+
+  max-width:720px;
+
+  color:var(--text-muted);
+
+  font-size:18px;
+
+  line-height:1.7;
+
+}
+
+
+
+/* GRID */
+
+.industries-grid {
+
+  max-width:1100px;
+
+  margin:70px auto;
+
+  display:grid;
+
+  grid-template-columns:repeat(3,1fr);
+
+  gap:25px;
+
+}
+
+
+
+.industry-card {
+
+  padding:32px 25px;
+
+  border-radius:24px;
+
+  background:
+
+  rgba(8,20,34,.78);
+
+
+  border:
+
+  1px solid rgba(143,184,224,.15);
+
+  transition:.3s;
+
+}
+
+
+
+.industry-card:hover {
+
+  transform:translateY(-8px);
+
+  border-color:var(--cyan);
+
+}
+
+
+
+.industry-icon {
+
+  font-size:40px;
+
+}
+
+
+
+.industry-card h3 {
+
+  margin:20px 0 12px;
+
+  font-size:21px;
+
+}
+
+
+
+.industry-card p {
+
+  color:var(--text-muted);
+
+  line-height:1.6;
+
+}
+
+
+
+.industry-card a {
+
+  display:inline-block;
+
+  margin-top:20px;
+
+  color:var(--cyan);
+
+  font-weight:600;
+
+}
+
+
+
+/* CTA */
+
+
+.industries-cta {
+
+  max-width:900px;
+
+  margin:80px auto 20px;
+
+  padding:45px 30px;
+
+  text-align:center;
+
+  border-radius:28px;
+
+
+  background:
+
+  linear-gradient(
+    135deg,
+    rgba(21,217,255,.12),
+    rgba(141,242,61,.08)
+  );
+
+}
+
+
+
+.industries-cta h2 {
+
+  font-size:36px;
+
+}
+
+
+
+.industries-cta p {
+
+  color:var(--text-muted);
+
+  margin:15px 0 30px;
+
+}
+
+
+
+.industries-cta a {
+
+  display:inline-flex;
+
+  padding:14px 28px;
+
+  border-radius:12px;
+
+
+  background:
+
+  linear-gradient(
+    100deg,
+    var(--green),
+    var(--cyan)
+  );
+
+
+  color:#031018;
+
+  font-weight:700;
+
+}
+
+
+
+/* MOBILE */
+
+
+@media(max-width:900px){
+
+.industries-hero h1{
+
+font-size:38px;
+
+}
+
+
+.industries-grid{
+
+grid-template-columns:1fr;
+
+}
+
+
+.industries-cta h2{
+
+font-size:28px;
+
+}
+
+  }
