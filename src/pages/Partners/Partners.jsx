@@ -1,36 +1,30 @@
 import "./Partners.css";
 
+function Partners() {
 
-const partners = [
-
-  {
-    icon:"🤝",
-    title:"Technology Partners",
-    text:"Collaborate with us to build powerful business solutions."
-  },
-
-  {
-    icon:"🌎",
-    title:"Business Partners",
-    text:"Help organizations transform their operations with Briqona OS."
-  },
-
-  {
-    icon:"🚀",
-    title:"Solution Partners",
-    text:"Deliver industry-focused solutions with our platform."
-  },
-
-  {
-    icon:"💡",
-    title:"Innovation Partners",
-    text:"Create the future of intelligent business technology."
-  },
-
+const partnerTypes = [
+{
+title:"Technology Partners",
+text:"Build powerful integrations and help businesses achieve more with connected technology solutions."
+},
+{
+title:"Solution Partners",
+text:"Deliver intelligent business solutions by combining your expertise with Briqona OS."
+},
+{
+title:"Referral Partners",
+text:"Grow together by introducing businesses to modern AI-powered operations."
+}
 ];
 
 
-function Partners(){
+const benefits = [
+"Expand your business opportunities",
+"Access modern AI business technology",
+"Create valuable customer solutions",
+"Grow with a global technology ecosystem"
+];
+
 
 return (
 
@@ -43,17 +37,54 @@ return (
 BRIQONA OS PARTNERS
 </span>
 
-
 <h1>
-Grow Together
-<em> With Briqona</em>
+Build Stronger
+<br/>
+<strong>Business Partnerships</strong>
 </h1>
 
+<p>
+Join the Briqona OS partner ecosystem and help businesses
+transform their operations with intelligent technology.
+</p>
+
+<button>
+Become A Partner
+</button>
+
+</section>
+
+
+
+
+<section className="partner-types">
+
+<h2>
+Partner Programs
+</h2>
+
+
+<div className="partner-grid">
+
+{
+partnerTypes.map((item,index)=>(
+
+<div className="partner-card" key={index}>
+
+<h3>
+{item.title}
+</h3>
 
 <p>
-Join our partner ecosystem and help businesses
-achieve more with intelligent digital solutions.
+{item.text}
 </p>
+
+</div>
+
+))
+}
+
+</div>
 
 
 </section>
@@ -61,40 +92,67 @@ achieve more with intelligent digital solutions.
 
 
 
-<section className="partners-grid">
+<section className="partner-benefits">
+
+<h2>
+Why Partner With Briqona OS?
+</h2>
 
 
-{partners.map((item)=>(
+<ul>
 
-<div
-className="partner-card"
-key={item.title}
->
+{
+benefits.map((item,index)=>(
+
+<li key={index}>
+✓ {item}
+</li>
+
+))
+}
+
+</ul>
 
 
-<div className="partner-icon">
-{item.icon}
+</section>
+
+
+
+
+<section className="partner-process">
+
+<h2>
+Partnership Process
+</h2>
+
+
+<div className="process-grid">
+
+<div>
+<strong>01</strong>
+<p>Submit Partnership Request</p>
 </div>
 
 
-<h3>
-{item.title}
-</h3>
+<div>
+<strong>02</strong>
+<p>Discuss Opportunities</p>
+</div>
 
 
-<p>
-{item.text}
-</p>
+<div>
+<strong>03</strong>
+<p>Launch Partnership</p>
+</div>
 
 
-<a href="/contact">
-Become Partner →
-</a>
+<div>
+<strong>04</strong>
+<p>Grow Together</p>
+</div>
 
 
 </div>
-
-))}
 
 
 </section>
@@ -105,19 +163,16 @@ Become Partner →
 <section className="partners-cta">
 
 <h2>
-Build The Future Together
+Ready To Partner With Briqona OS?
 </h2>
 
-
 <p>
-Partner with Briqona OS and create meaningful business impact.
+Let's create smarter solutions for businesses worldwide.
 </p>
 
-
-<a href="/contact">
-Contact Partnership Team →
-</a>
-
+<button>
+Apply Now
+</button>
 
 </section>
 
@@ -128,6 +183,5 @@ Contact Partnership Team →
 );
 
 }
-
 
 export default Partners;
