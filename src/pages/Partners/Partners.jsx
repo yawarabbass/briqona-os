@@ -48,8 +48,8 @@ Join the Briqona OS partner ecosystem and help businesses
 transform their operations with intelligent technology.
 </p>
 
-<button>
-Become A Partner
+<button onClick={() => window.location.href="/contact"}>
+  Become A Partner
 </button>
 
 </section>
@@ -170,8 +170,8 @@ Ready To Partner With Briqona OS?
 Let's create smarter solutions for businesses worldwide.
 </p>
 
-<button>
-Apply Now
+<button onClick={() => window.location.href="/contact"}>
+  Apply Now
 </button>
 
 </section>
