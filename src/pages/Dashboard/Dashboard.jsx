@@ -1,1409 +1,946 @@
 import React, { useState } from "react";
 import "./Dashboard.css";
 
+const sidebarItems = [
+  { icon: "⌂", label: "Dashboard", active: true },
+  { icon: "✦", label: "AI Command Center", badge: "New" },
+  { icon: "♧", label: "AI Workforce", dropdown: true },
+  { icon: "◎", label: "Outcome Center" },
+  { icon: "▦", label: "Industries Hub", dropdown: true },
+  { icon: "♙", label: "CRM" },
+  { icon: "$", label: "Finance" },
+  { icon: "♟", label: "HR" },
+  { icon: "◆", label: "Inventory" },
+  { icon: "✓", label: "Projects & Tasks" },
+  { icon: "▤", label: "Documents" },
+  { icon: "ϟ", label: "Automation" },
+  { icon: "▥", label: "Analytics" },
+  { icon: "▣", label: "Communication" },
+  { icon: "◉", label: "Support / Helpdesk" },
+  { icon: "⌘", label: "Integrations" },
+  { icon: "⚙", label: "Settings" },
+];
+
+const quickActions = [
+  { icon: "$", label: "New Invoice", color: "green" },
+  { icon: "♙", label: "New Lead", color: "blue" },
+  { icon: "▤", label: "New Expense", color: "orange" },
+  { icon: "✓", label: "New Task", color: "purple" },
+  { icon: "♟", label: "Add Employee", color: "cyan" },
+  { icon: "♙", label: "Add Customer", color: "pink" },
+  { icon: "▦", label: "More Actions", color: "neutral" },
+];
+
+const industries = [
+  { icon: "▥", label: "Office", color: "green", active: true },
+  { icon: "♙", label: "HR", color: "blue" },
+  { icon: "▥", label: "Hospital", color: "cyan" },
+  { icon: "♧", label: "Restaurant", color: "pink" },
+  { icon: "▱", label: "Retail", color: "purple" },
+  { icon: "⚒", label: "Construction", color: "orange" },
+  { icon: "⌂", label: "Real Estate", color: "purple" },
+  { icon: "◇", label: "Education", color: "cyan" },
+  { icon: "▥", label: "Manufacturing", color: "green" },
+  { icon: "♧", label: "Professional Services", color: "purple" },
+  { icon: "•••", label: "More", color: "neutral" },
+];
+
+const activities = [
+  {
+    icon: "▤",
+    text: "Invoice #INV-2026-1256 created",
+    time: "2 min ago",
+    color: "cyan",
+  },
+  {
+    icon: "$",
+    text: "Payment received from Ahmed Co.",
+    time: "18 min ago",
+    color: "green",
+  },
+  {
+    icon: "♙",
+    text: "New lead from Website",
+    time: "45 min ago",
+    color: "purple",
+  },
+  {
+    icon: "✓",
+    text: 'Task "Follow up with client"',
+    time: "1 hour ago",
+    color: "green",
+  },
+  {
+    icon: "▤",
+    text: "Expense $250 added",
+    time: "2 hours ago",
+    color: "orange",
+  },
+];
+
+const notifications = [
+  {
+    icon: "♧",
+    text: "Overdue invoice from Ali Traders",
+    time: "2 min ago",
+    color: "red",
+  },
+  {
+    icon: "⚠",
+    text: "Low stock alert for 3 products",
+    time: "25 min ago",
+    color: "orange",
+  },
+  {
+    icon: "♙",
+    text: "Leave request from Sara Khan",
+    time: "1 hour ago",
+    color: "cyan",
+  },
+  {
+    icon: "▣",
+    text: "System backup completed",
+    time: "2 hours ago",
+    color: "green",
+  },
+];
+
+const customers = [
+  { letter: "A", name: "Ahmed Corporation", amount: "$5,780", color: "blue" },
+  { letter: "G", name: "Global Solutions", amount: "$4,230", color: "green" },
+  { letter: "T", name: "TechNova LLC", amount: "$3,620", color: "yellow" },
+  { letter: "A", name: "Al-Barkat Traders", amount: "$2,890", color: "cyan" },
+  { letter: "F", name: "Future Enterprises", amount: "$2,450", color: "red" },
+];
+
 function Dashboard() {
-  const [activeMenu, setActiveMenu] = useState("Dashboard");
-  const [activeIndustry, setActiveIndustry] = useState("Office");
+  const [period, setPeriod] = useState("This Month");
+  const [showPeriod, setShowPeriod] = useState(false);
+  const [showProfile, setShowProfile] = useState(false);
   const [showNotifications, setShowNotifications] = useState(false);
   const [showMessages, setShowMessages] = useState(false);
-  const [showProfile, setShowProfile] = useState(false);
-  const [showSearch, setShowSearch] = useState(false);
-  const [showCustomize, setShowCustomize] = useState(false);
   const [showMoreActions, setShowMoreActions] = useState(false);
-  const [aiInput, setAiInput] = useState("");
-  const [toast, setToast] = useState("");
+  const [command, setCommand] = useState("");
 
-  const notify = (message) => {
-    setToast(message);
-
-    setTimeout(() => {
-      setToast("");
-    }, 2800);
+  const handleAction = (label) => {
+    console.log(`Action selected: ${label}`);
   };
 
-  const handleMenu = (menu) => {
-    setActiveMenu(menu);
-    notify(`${menu} workspace selected`);
+  const handleCommand = (event) => {
+    if (event.key === "Enter") {
+      console.log("AI Command:", command);
+    }
   };
-
-  const handleQuickAction = (action) => {
-    notify(`${action} opened`);
-  };
-
-  const handleAiAction = (action) => {
-    setAiInput(action);
-    notify(`AI Copilot: ${action}`);
-  };
-
-  const industries = [
-    { name: "Office", icon: "▣", color: "green" },
-    { name: "HR", icon: "♙", color: "blue" },
-    { name: "Hospital", icon: "▥", color: "cyan" },
-    { name: "Restaurant", icon: "♧", color: "pink" },
-    { name: "Retail", icon: "🛒", color: "purple" },
-    { name: "Construction", icon: "⌁", color: "orange" },
-    { name: "Real Estate", icon: "⌂", color: "violet" },
-    { name: "Education", icon: "◇", color: "cyan" },
-    { name: "Manufacturing", icon: "▤", color: "green" },
-    { name: "Professional Services", icon: "♧", color: "purple" },
-    { name: "More", icon: "•••", color: "gray" },
-  ];
-
-  const sidebarItems = [
-    { name: "Dashboard", icon: "⌂" },
-    { name: "AI Command Center", icon: "✦", badge: "New" },
-    { name: "AI Workforce", icon: "♙", dropdown: true },
-    { name: "Outcome Center", icon: "◎" },
-    { name: "Industries Hub", icon: "▦", dropdown: true },
-    { name: "CRM", icon: "♟" },
-    { name: "Finance", icon: "$" },
-    { name: "HR", icon: "♙" },
-    { name: "Inventory", icon: "▣" },
-    { name: "Projects & Tasks", icon: "☑" },
-    { name: "Documents", icon: "▤" },
-    { name: "Automation", icon: "ϟ" },
-    { name: "Analytics", icon: "▥" },
-    { name: "Communication", icon: "▣" },
-    { name: "Support / Helpdesk", icon: "◉" },
-    { name: "Integrations", icon: "⌘" },
-    { name: "Settings", icon: "⚙" },
-  ];
-
-  const quickActions = [
-    {
-      title: "New Invoice",
-      icon: "$",
-      color: "green",
-    },
-    {
-      title: "New Lead",
-      icon: "♙",
-      color: "blue",
-    },
-    {
-      title: "New Expense",
-      icon: "▤",
-      color: "orange",
-    },
-    {
-      title: "New Task",
-      icon: "☑",
-      color: "purple",
-    },
-    {
-      title: "Add Employee",
-      icon: "♙",
-      color: "cyan",
-    },
-    {
-      title: "Add Customer",
-      icon: "♙",
-      color: "pink",
-    },
-  ];
-
-  const missions = [
-    {
-      title: "Recover overdue payments",
-      status: "In Progress",
-      progress: 65,
-      color: "green",
-    },
-    {
-      title: "Increase this month sales",
-      status: "In Progress",
-      progress: 40,
-      color: "purple",
-    },
-    {
-      title: "Reduce expenses",
-      status: "Planned",
-      progress: 20,
-      color: "orange",
-    },
-  ];
-
-  const activities = [
-    {
-      icon: "▤",
-      text: "Invoice #INV-2026-1256 created",
-      time: "2 min ago",
-      color: "cyan",
-    },
-    {
-      icon: "$",
-      text: "Payment received from Ahmed Co.",
-      time: "18 min ago",
-      color: "green",
-    },
-    {
-      icon: "♙",
-      text: "New lead from Website",
-      time: "45 min ago",
-      color: "purple",
-    },
-    {
-      icon: "✓",
-      text: 'Task "Follow up with client"',
-      time: "1 hour ago",
-      color: "green",
-    },
-    {
-      icon: "▤",
-      text: "Expense $250 added",
-      time: "2 hours ago",
-      color: "orange",
-    },
-  ];
-
-  const notifications = [
-    {
-      icon: "◉",
-      text: "Overdue invoice from Ali Traders",
-      time: "2 min ago",
-      color: "red",
-    },
-    {
-      icon: "⚠",
-      text: "Low stock alert for 3 products",
-      time: "25 min ago",
-      color: "orange",
-    },
-    {
-      icon: "♙",
-      text: "Leave request from Sara Khan",
-      time: "1 hour ago",
-      color: "cyan",
-    },
-    {
-      icon: "▣",
-      text: "System backup completed",
-      time: "2 hours ago",
-      color: "green",
-    },
-  ];
-
-  const customers = [
-    {
-      initial: "A",
-      name: "Ahmed Corporation",
-      amount: "$5,780",
-      color: "blue",
-    },
-    {
-      initial: "G",
-      name: "Global Solutions",
-      amount: "$4,230",
-      color: "green",
-    },
-    {
-      initial: "T",
-      name: "TechNova LLC",
-      amount: "$3,620",
-      color: "purple",
-    },
-    {
-      initial: "A",
-      name: "Al-Barkat Traders",
-      amount: "$2,890",
-      color: "cyan",
-    },
-    {
-      initial: "F",
-      name: "Future Enterprises",
-      amount: "$2,450",
-      color: "red",
-    },
-  ];
 
   return (
-    <div className="briqona-dashboard">
+    <div className="dashboard-page">
+      <div className="dashboard-shell">
+        {/* ================= SIDEBAR ================= */}
+        <aside className="dashboard-sidebar">
+          <div className="sidebar-brand">
+            <div className="brand-mark">
+              <span className="brand-shape brand-shape-one"></span>
+              <span className="brand-shape brand-shape-two"></span>
+              <span className="brand-shape brand-shape-three"></span>
+            </div>
 
-      {/* =========================================================
-          SIDEBAR
-      ========================================================= */}
-
-      <aside className="dashboard-sidebar">
-
-        <div className="sidebar-brand">
-          <div className="briqona-logo-mark">
-            <span></span>
-            <span></span>
-            <span></span>
+            <div className="brand-copy">
+              <strong>BRIQONA</strong>
+              <span>OS</span>
+              <small>All-in-One Business Operating System</small>
+            </div>
           </div>
 
-          <div className="brand-text">
-            <strong>BRIQONA</strong>
-            <span>OS</span>
-            <small>All-in-One Business Operating System</small>
-          </div>
-        </div>
+          <nav className="sidebar-navigation">
+            {sidebarItems.map((item) => (
+              <button
+                type="button"
+                key={item.label}
+                className={`sidebar-link ${item.active ? "active" : ""}`}
+                onClick={() => handleAction(item.label)}
+              >
+                <span className="sidebar-icon">{item.icon}</span>
 
-        <nav className="sidebar-navigation">
+                <span className="sidebar-label">{item.label}</span>
 
-          {sidebarItems.map((item) => (
+                {item.badge && (
+                  <span className="sidebar-badge">{item.badge}</span>
+                )}
+
+                {item.dropdown && (
+                  <span className="sidebar-chevron">⌄</span>
+                )}
+              </button>
+            ))}
+          </nav>
+
+          <div className="sidebar-divider"></div>
+
+          <div className="current-plan-card">
             <button
-              key={item.name}
-              className={`sidebar-item ${
-                activeMenu === item.name ? "active" : ""
-              }`}
-              onClick={() => handleMenu(item.name)}
+              type="button"
+              className="plan-close"
+              onClick={() => handleAction("Close plan")}
             >
-              <span className={`sidebar-icon ${item.name === "AI Command Center" ? "ai-icon" : ""}`}>
-                {item.icon}
-              </span>
-
-              <span className="sidebar-item-label">
-                {item.name}
-              </span>
-
-              {item.badge && (
-                <span className="sidebar-new-badge">
-                  {item.badge}
-                </span>
-              )}
-
-              {item.dropdown && (
-                <span className="sidebar-chevron">
-                  ⌄
-                </span>
-              )}
-            </button>
-          ))}
-
-        </nav>
-
-        <div className="sidebar-plan-card">
-
-          <button
-            className="plan-close"
-            onClick={() => notify("Plan card hidden")}
-          >
-            ×
-          </button>
-
-          <div className="plan-diamond">
-            ◇
-          </div>
-
-          <div className="plan-label">
-            Current Plan
-          </div>
-
-          <h3>
-            Growth
-          </h3>
-
-          <div className="plan-price">
-            <strong>$15</strong>
-            <span>/ month</span>
-          </div>
-
-          <button
-            className="upgrade-plan-button"
-            onClick={() => notify("Upgrade Plan opened")}
-          >
-            <span>Upgrade Plan</span>
-            <span>→</span>
-          </button>
-
-        </div>
-
-      </aside>
-
-
-      {/* =========================================================
-          MAIN AREA
-      ========================================================= */}
-
-      <main className="dashboard-main">
-
-        {/* =======================================================
-            HEADER
-        ======================================================= */}
-
-        <header className="dashboard-header">
-
-          <div
-            className={`dashboard-search ${
-              showSearch ? "search-open" : ""
-            }`}
-          >
-
-            <span className="search-icon">
-              ⌕
-            </span>
-
-            <input
-              type="text"
-              placeholder="Ask Briqona AI or type a command..."
-              onFocus={() => setShowSearch(true)}
-            />
-
-            <span className="search-shortcut">
-              ⌘ K
-            </span>
-
-          </div>
-
-          <button
-            className="header-ai-button copilot"
-            onClick={() => notify("AI Copilot opened")}
-          >
-            <span>✦</span>
-            AI Copilot
-          </button>
-
-          <button
-            className="header-ai-button mission"
-            onClick={() => notify("AI Mission Center opened")}
-          >
-            <span>✦</span>
-            AI Mission Center
-          </button>
-
-          <div className="header-spacer"></div>
-
-          <div className="header-action-wrapper">
-
-            <button
-              className="header-icon-button"
-              onClick={() =>
-                setShowNotifications(!showNotifications)
-              }
-            >
-              ♧
-              <span className="notification-count red">
-                5
-              </span>
+              ×
             </button>
 
-            {showNotifications && (
-              <div className="header-popup notification-popup">
+            <div className="plan-icon">◇</div>
 
-                <div className="popup-header">
-                  <strong>Notifications</strong>
+            <div className="plan-label">Current Plan</div>
+
+            <div className="plan-name">Growth</div>
+
+            <div className="plan-price">
+              <strong>$15</strong>
+              <span>/ month</span>
+            </div>
+
+            <button
+              type="button"
+              className="plan-button"
+              onClick={() => handleAction("Upgrade Plan")}
+            >
+              <span>Upgrade Plan</span>
+              <span>→</span>
+            </button>
+          </div>
+        </aside>
+
+        {/* ================= MAIN AREA ================= */}
+        <div className="dashboard-main">
+          {/* ================= HEADER ================= */}
+          <header className="dashboard-header">
+            <div className="command-search">
+              <span className="search-icon">⌕</span>
+
+              <input
+                type="text"
+                value={command}
+                onChange={(event) => setCommand(event.target.value)}
+                onKeyDown={handleCommand}
+                placeholder="Ask Briqona AI or type a command..."
+              />
+
+              <span className="keyboard-shortcut">⌘ K</span>
+            </div>
+
+            <div className="header-actions">
+              <button
+                type="button"
+                className="header-ai-button copilot"
+                onClick={() => handleAction("AI Copilot")}
+              >
+                <span>✦</span>
+                <strong>AI Copilot</strong>
+              </button>
+
+              <button
+                type="button"
+                className="header-ai-button mission"
+                onClick={() => handleAction("AI Mission Center")}
+              >
+                <span>✦</span>
+                <strong>AI Mission Center</strong>
+              </button>
+
+              <div className="header-icon-wrapper">
+                <button
+                  type="button"
+                  className="header-icon-button"
+                  onClick={() =>
+                    setShowNotifications(!showNotifications)
+                  }
+                  aria-label="Notifications"
+                >
+                  ♧
+                  <span className="notification-count red-count">5</span>
+                </button>
+
+                {showNotifications && (
+                  <div className="header-popover notification-popover">
+                    <div className="popover-title">
+                      <strong>Notifications</strong>
+                      <span>5 new</span>
+                    </div>
+
+                    {notifications.slice(0, 3).map((item) => (
+                      <div className="popover-item" key={item.text}>
+                        <span className={`popover-dot ${item.color}`}>
+                          {item.icon}
+                        </span>
+                        <div>
+                          <strong>{item.text}</strong>
+                          <small>{item.time}</small>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              <div className="header-icon-wrapper">
+                <button
+                  type="button"
+                  className="header-icon-button"
+                  onClick={() => setShowMessages(!showMessages)}
+                  aria-label="Messages"
+                >
+                  ▱
+                  <span className="notification-count blue-count">3</span>
+                </button>
+
+                {showMessages && (
+                  <div className="header-popover message-popover">
+                    <div className="popover-title">
+                      <strong>Messages</strong>
+                      <span>3 unread</span>
+                    </div>
+
+                    <div className="message-item">
+                      <div className="message-avatar">S</div>
+                      <div>
+                        <strong>Sarah Khan</strong>
+                        <small>Can you review the HR report?</small>
+                      </div>
+                    </div>
+
+                    <div className="message-item">
+                      <div className="message-avatar">A</div>
+                      <div>
+                        <strong>Ahmed Corporation</strong>
+                        <small>Payment confirmation received.</small>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              <div className="profile-wrapper">
+                <button
+                  type="button"
+                  className="profile-button"
+                  onClick={() => setShowProfile(!showProfile)}
+                >
+                  <div className="profile-text">
+                    <strong>Ali Raza</strong>
+                    <span>Owner</span>
+                  </div>
+
+                  <div className="profile-avatar">AR</div>
+
+                  <span className="profile-chevron">⌄</span>
+                </button>
+
+                {showProfile && (
+                  <div className="profile-dropdown">
+                    <button
+                      type="button"
+                      onClick={() => handleAction("My Profile")}
+                    >
+                      My Profile
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => handleAction("Account Settings")}
+                    >
+                      Account Settings
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => handleAction("Billing")}
+                    >
+                      Billing & Plan
+                    </button>
+                    <div className="dropdown-line"></div>
+                    <button
+                      type="button"
+                      onClick={() => handleAction("Logout")}
+                    >
+                      Logout
+                    </button>
+                  </div>
+                )}
+              </div>
+            </div>
+          </header>
+
+          {/* ================= CONTENT ================= */}
+          <main className="dashboard-content">
+            {/* ================= HERO ================= */}
+            <section className="dashboard-hero">
+              <div className="hero-background-grid"></div>
+
+              <div className="hero-heading">
+                <div className="hero-title-block">
+                  <h1>Good morning, Ali Raza! 👋</h1>
+                  <p>
+                    Here's what's happening with your business today.
+                  </p>
+                </div>
+
+                <div className="hero-controls">
+                  <div className="period-dropdown">
+                    <button
+                      type="button"
+                      className="period-button"
+                      onClick={() => setShowPeriod(!showPeriod)}
+                    >
+                      <span>▣</span>
+                      <strong>{period}</strong>
+                      <span>⌄</span>
+                    </button>
+
+                    {showPeriod && (
+                      <div className="period-menu">
+                        {["Today", "This Week", "This Month", "This Year"].map(
+                          (item) => (
+                            <button
+                              type="button"
+                              key={item}
+                              onClick={() => {
+                                setPeriod(item);
+                                setShowPeriod(false);
+                              }}
+                            >
+                              {item}
+                            </button>
+                          )
+                        )}
+                      </div>
+                    )}
+                  </div>
+
                   <button
-                    onClick={() => setShowNotifications(false)}
+                    type="button"
+                    className="customize-button"
+                    onClick={() => handleAction("Customize Dashboard")}
                   >
-                    ×
+                    ✣
+                    <span>Customize</span>
                   </button>
                 </div>
-
-                <div className="popup-item">
-                  <span className="popup-dot red"></span>
-                  <div>
-                    <strong>5 notifications</strong>
-                    <small>Need your attention</small>
-                  </div>
-                </div>
-
-                <button
-                  className="popup-link"
-                  onClick={() => handleMenu("Notifications")}
-                >
-                  View all notifications →
-                </button>
-
-              </div>
-            )}
-
-          </div>
-
-
-          <div className="header-action-wrapper">
-
-            <button
-              className="header-icon-button"
-              onClick={() =>
-                setShowMessages(!showMessages)
-              }
-            >
-              ▢
-              <span className="notification-count blue">
-                3
-              </span>
-            </button>
-
-            {showMessages && (
-              <div className="header-popup message-popup">
-
-                <div className="popup-header">
-                  <strong>Messages</strong>
-                  <button
-                    onClick={() => setShowMessages(false)}
-                  >
-                    ×
-                  </button>
-                </div>
-
-                <div className="popup-item">
-                  <span className="popup-avatar">
-                    A
-                  </span>
-
-                  <div>
-                    <strong>3 new messages</strong>
-                    <small>Business communication</small>
-                  </div>
-                </div>
-
-                <button
-                  className="popup-link"
-                  onClick={() => handleMenu("Communication")}
-                >
-                  Open communication →
-                </button>
-
-              </div>
-            )}
-
-          </div>
-
-
-          <div className="profile-wrapper">
-
-            <button
-              className="profile-button"
-              onClick={() =>
-                setShowProfile(!showProfile)
-              }
-            >
-
-              <div className="profile-name">
-                <strong>Ali Raza</strong>
-                <span>Owner</span>
               </div>
 
-              <div className="profile-avatar">
-                AR
+              <div className="hero-visual">
+                <div className="wave wave-one"></div>
+                <div className="wave wave-two"></div>
+                <div className="wave wave-three"></div>
+
+                <span className="hero-star star-one">✦</span>
+                <span className="hero-star star-two">✦</span>
+                <span className="hero-star star-three">✦</span>
               </div>
-
-              <span className="profile-chevron">
-                ⌄
-              </span>
-
-            </button>
-
-            {showProfile && (
-              <div className="profile-menu">
-
-                <button
-                  onClick={() => notify("Profile opened")}
-                >
-                  My Profile
-                </button>
-
-                <button
-                  onClick={() => handleMenu("Settings")}
-                >
-                  Account Settings
-                </button>
-
-                <button
-                  onClick={() => notify("Logout action")}
-                >
-                  Logout
-                </button>
-
-              </div>
-            )}
-
-          </div>
-
-        </header>
-
-
-        {/* =======================================================
-            DASHBOARD CONTENT
-        ======================================================= */}
-
-        <div className="dashboard-content">
-
-
-          {/* =====================================================
-              HERO
-          ===================================================== */}
-
-          <section className="dashboard-hero">
-
-            <div className="hero-content">
-
-              <h1>
-                Good morning, Ali Raza! 👋
-              </h1>
-
-              <p>
-                Here's what's happening with your business today.
-              </p>
 
               <div className="business-pulse">
-
-                <span>
-                  AI Business Pulse
-                </span>
-
-                <strong>
-                  Excellent
-                </strong>
-
-                <b>
-                  87
-                </b>
-
-                <small>
-                  /100
-                </small>
-
+                <span className="pulse-label">AI Business Pulse</span>
+                <span className="pulse-status">Excellent</span>
+                <strong>87</strong>
+                <span>/100</span>
               </div>
 
-            </div>
+              <div className="hero-metrics">
+                <MetricCard
+                  title="Total Revenue"
+                  value="$24,780"
+                  change="12.6%"
+                  positive
+                  icon="↗"
+                  graph="revenue"
+                />
 
+                <MetricCard
+                  title="Total Profit"
+                  value="$8,430"
+                  change="8.3%"
+                  positive
+                  icon="↗"
+                  graph="profit"
+                />
 
-            <div className="hero-controls">
+                <MetricCard
+                  title="Total Expenses"
+                  value="$6,350"
+                  change="-3.4%"
+                  positive={false}
+                  icon="▼"
+                  graph="expenses"
+                />
 
-              <button
-                className="date-filter"
-                onClick={() => notify("Date filter opened")}
-              >
-                <span>▣</span>
-                This Month
-                <span>⌄</span>
-              </button>
-
-              <button
-                className="customize-button"
-                onClick={() =>
-                  setShowCustomize(!showCustomize)
-                }
-              >
-                ✣
-                Customize
-              </button>
-
-            </div>
-
-
-            {showCustomize && (
-              <div className="customize-panel">
-
-                <strong>
-                  Customize Dashboard
-                </strong>
-
-                <label>
-                  <input type="checkbox" defaultChecked />
-                  Business Pulse
-                </label>
-
-                <label>
-                  <input type="checkbox" defaultChecked />
-                  AI Insights
-                </label>
-
-                <label>
-                  <input type="checkbox" defaultChecked />
-                  Recent Activities
-                </label>
-
-                <label>
-                  <input type="checkbox" defaultChecked />
-                  Top Customers
-                </label>
-
+                <MetricCard
+                  title="Open Invoices"
+                  value="23"
+                  change="$14,560 overdue"
+                  positive={false}
+                  icon="↗"
+                  graph="invoices"
+                  danger
+                />
               </div>
-            )}
+            </section>
 
-
-            <div className="hero-visual">
-
-              <div className="wave wave-one"></div>
-              <div className="wave wave-two"></div>
-              <div className="wave wave-three"></div>
-
-              <div className="wave-particle particle-one"></div>
-              <div className="wave-particle particle-two"></div>
-              <div className="wave-particle particle-three"></div>
-
-            </div>
-
-
-            <div className="hero-stat-grid">
-
-              <div className="hero-stat revenue-stat">
-
-                <span>Total Revenue</span>
-
-                <strong>
-                  $24,780
-                </strong>
-
-                <small>
-                  ▲ 12.6% vs last month
-                </small>
-
-                <div className="mini-chart green-chart">
-                  <i></i>
-                  <i></i>
-                  <i></i>
-                  <i></i>
-                  <i></i>
-                  <i></i>
-                </div>
-
+            {/* ================= QUICK ACTIONS ================= */}
+            <section className="quick-actions-section dashboard-panel">
+              <div className="section-heading">
+                <h2>Quick Actions</h2>
               </div>
 
-
-              <div className="hero-stat profit-stat">
-
-                <span>Total Profit</span>
-
-                <strong>
-                  $8,430
-                </strong>
-
-                <small>
-                  ▲ 8.3% vs last month
-                </small>
-
-                <div className="mini-chart purple-chart">
-                  <i></i>
-                  <i></i>
-                  <i></i>
-                  <i></i>
-                  <i></i>
-                  <i></i>
-                </div>
-
-              </div>
-
-
-              <div className="hero-stat expense-stat">
-
-                <span>Total Expenses</span>
-
-                <strong>
-                  $6,350
-                </strong>
-
-                <small className="negative">
-                  ▼ -3.4% vs last month
-                </small>
-
-                <div className="mini-chart orange-chart">
-                  <i></i>
-                  <i></i>
-                  <i></i>
-                  <i></i>
-                  <i></i>
-                  <i></i>
-                </div>
-
-              </div>
-
-
-              <div className="hero-stat invoice-stat">
-
-                <span>Open Invoices</span>
-
-                <strong>
-                  23
-                </strong>
-
-                <small className="negative">
-                  $14,560 overdue
-                </small>
-
-                <div className="mini-chart blue-chart">
-                  <i></i>
-                  <i></i>
-                  <i></i>
-                  <i></i>
-                  <i></i>
-                  <i></i>
-                </div>
-
-              </div>
-
-            </div>
-
-          </section>
-
-
-          {/* =====================================================
-              QUICK ACTIONS
-          ===================================================== */}
-
-          <section className="dashboard-panel quick-actions-panel">
-
-            <div className="panel-title">
-              <h2>
-                Quick Actions
-              </h2>
-            </div>
-
-            <div className="quick-actions">
-
-              {quickActions.map((action) => (
-                <button
-                  key={action.title}
-                  className={`quick-action ${action.color}`}
-                  onClick={() =>
-                    handleQuickAction(action.title)
-                  }
-                >
-
-                  <span className="quick-action-icon">
-                    {action.icon}
-                  </span>
-
-                  <span>
-                    + {action.title}
-                  </span>
-
-                </button>
-              ))}
-
-
-              <button
-                className="quick-action more-action"
-                onClick={() =>
-                  setShowMoreActions(!showMoreActions)
-                }
-              >
-
-                <span className="quick-action-icon">
-                  ▦
-                </span>
-
-                <span>
-                  More Actions
-                </span>
-
-              </button>
-
-            </div>
-
-
-            {showMoreActions && (
-              <div className="more-actions-menu">
-
-                <button onClick={() => notify("Create quote opened")}>
-                  + New Quote
-                </button>
-
-                <button onClick={() => notify("New project opened")}>
-                  + New Project
-                </button>
-
-                <button onClick={() => notify("New document opened")}>
-                  + New Document
-                </button>
-
-                <button onClick={() => notify("Report builder opened")}>
-                  + New Report
-                </button>
-
-              </div>
-            )}
-
-          </section>
-
-
-          {/* =====================================================
-              MAIN GRID
-          ===================================================== */}
-
-          <div className="dashboard-main-grid">
-
-
-            {/* ===================================================
-                LEFT COLUMN
-            =================================================== */}
-
-            <div className="dashboard-left-column">
-
-
-              {/* ===============================================
-                  AI COMMAND CENTER
-              =============================================== */}
-
-              <section className="dashboard-panel ai-command-panel">
-
-                <div className="panel-heading">
-
-                  <div>
-
-                    <h2>
-                      <span className="heading-icon">
-                        ✦
-                      </span>
-
-                      AI Command Center
-                    </h2>
-
-                    <p>
-                      Ask anything. Briqona AI is ready to help.
-                    </p>
-
-                  </div>
-
-                </div>
-
-
-                <div className="ai-input-wrapper">
-
-                  <input
-                    value={aiInput}
-                    onChange={(e) =>
-                      setAiInput(e.target.value)
-                    }
-                    placeholder="e.g. Show me sales trend, top customers, overdue invoices..."
-                    onKeyDown={(e) => {
-                      if (e.key === "Enter") {
-                        notify(
-                          aiInput
-                            ? `AI analysing: ${aiInput}`
-                            : "Ask Briqona AI anything"
-                        );
+              <div className="quick-actions-grid">
+                {quickActions.map((action) => (
+                  <button
+                    type="button"
+                    key={action.label}
+                    className={`quick-action ${action.color}`}
+                    onClick={() => {
+                      if (action.label === "More Actions") {
+                        setShowMoreActions(!showMoreActions);
+                      } else {
+                        handleAction(action.label);
                       }
                     }}
+                  >
+                    <span className="quick-action-icon">
+                      {action.icon}
+                    </span>
+
+                    <span>
+                      {action.label === "More Actions"
+                        ? "More Actions"
+                        : `+ ${action.label}`}
+                    </span>
+                  </button>
+                ))}
+              </div>
+
+              {showMoreActions && (
+                <div className="more-actions-menu">
+                  <button
+                    type="button"
+                    onClick={() => handleAction("New Purchase")}
+                  >
+                    New Purchase
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => handleAction("Create Report")}
+                  >
+                    Create Report
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => handleAction("Send Message")}
+                  >
+                    Send Message
+                  </button>
+                </div>
+              )}
+            </section>
+
+            {/* ================= AI ROW ================= */}
+            <div className="dashboard-grid-two">
+              {/* AI COMMAND CENTER */}
+              <section className="ai-command-card dashboard-panel">
+                <div className="ai-card-glow"></div>
+
+                <div className="panel-heading">
+                  <div>
+                    <h2>
+                      <span className="cyan-icon">✦</span>
+                      AI Command Center
+                    </h2>
+                    <p>Ask anything. Briqona AI is ready to help.</p>
+                  </div>
+                </div>
+
+                <div className="ai-command-input">
+                  <input
+                    type="text"
+                    placeholder="e.g. Show me sales trend, top customers, overdue invoices..."
                   />
 
                   <button
-                    className="ai-mic-button"
-                    onClick={() =>
-                      notify("Voice assistant activated")
-                    }
+                    type="button"
+                    className="voice-button"
+                    onClick={() => handleAction("Voice Search")}
                   >
-                    ♫
+                    ◉
                   </button>
 
                   <button
-                    className="ai-send-button"
-                    onClick={() =>
-                      notify(
-                        aiInput
-                          ? `AI analysing: ${aiInput}`
-                          : "Ask Briqona AI anything"
-                      )
-                    }
+                    type="button"
+                    className="send-ai-button"
+                    onClick={() => handleAction("Run AI Command")}
                   >
                     ↗
                   </button>
-
                 </div>
-
 
                 <div className="ai-shortcuts">
-
-                  <button
-                    onClick={() =>
-                      handleAiAction("Sales Summary")
-                    }
-                  >
-                    Sales Summary
-                  </button>
-
-                  <button
-                    onClick={() =>
-                      handleAiAction("Overdue Invoices")
-                    }
-                  >
-                    Overdue Invoices
-                  </button>
-
-                  <button
-                    onClick={() =>
-                      handleAiAction("Cash Flow")
-                    }
-                  >
-                    Cash Flow
-                  </button>
-
-                  <button
-                    onClick={() =>
-                      handleAiAction("Inventory Alert")
-                    }
-                  >
-                    Inventory Alert
-                  </button>
-
-                  <button
-                    onClick={() =>
-                      handleAiAction("HR Report")
-                    }
-                  >
-                    HR Report
-                  </button>
-
+                  {[
+                    "Sales Summary",
+                    "Overdue Invoices",
+                    "Cash Flow",
+                    "Inventory Alert",
+                    "HR Report",
+                  ].map((item) => (
+                    <button
+                      type="button"
+                      key={item}
+                      onClick={() => handleAction(item)}
+                    >
+                      {item}
+                    </button>
+                  ))}
                 </div>
-
-                <div className="ai-orb orb-one"></div>
-                <div className="ai-orb orb-two"></div>
-
               </section>
 
-
-              {/* ===============================================
-                  BOTTOM GRID
-              =============================================== */}
-
-              <div className="bottom-dashboard-grid">
-
-
-                {/* =============================================
-                    RECENT ACTIVITIES
-                ============================================= */}
-
-                <section className="dashboard-panel list-panel">
-
-                  <div className="panel-header-row">
-
+              {/* AI MISSIONS */}
+              <section className="ai-missions-card dashboard-panel">
+                <div className="panel-heading mission-heading">
+                  <div>
                     <h2>
-                      Recent Activities
+                      <span className="green-icon">✦</span>
+                      AI Missions
+                      <span className="beta-badge">Beta</span>
                     </h2>
-
-                    <button
-                      onClick={() =>
-                        handleMenu("Recent Activities")
-                      }
-                    >
-                      View All
-                    </button>
-
                   </div>
-
-
-                  <div className="activity-list">
-
-                    {activities.map((item, index) => (
-                      <button
-                        className="activity-item"
-                        key={index}
-                        onClick={() =>
-                          notify(item.text)
-                        }
-                      >
-
-                        <span
-                          className={`activity-icon ${item.color}`}
-                        >
-                          {item.icon}
-                        </span>
-
-                        <span className="activity-text">
-                          {item.text}
-                        </span>
-
-                        <small>
-                          {item.time}
-                        </small>
-
-                      </button>
-                    ))}
-
-                  </div>
-
-                </section>
-
-
-                {/* =============================================
-                    NOTIFICATIONS
-                ============================================= */}
-
-                <section className="dashboard-panel list-panel">
-
-                  <div className="panel-header-row">
-
-                    <h2>
-                      Notifications
-                    </h2>
-
-                    <button
-                      onClick={() =>
-                        handleMenu("Notifications")
-                      }
-                    >
-                      View All
-                    </button>
-
-                  </div>
-
-
-                  <div className="activity-list">
-
-                    {notifications.map((item, index) => (
-                      <button
-                        className="activity-item"
-                        key={index}
-                        onClick={() =>
-                          notify(item.text)
-                        }
-                      >
-
-                        <span
-                          className={`activity-icon ${item.color}`}
-                        >
-                          {item.icon}
-                        </span>
-
-                        <span className="activity-text">
-                          {item.text}
-                        </span>
-
-                        <small>
-                          {item.time}
-                        </small>
-
-                      </button>
-                    ))}
-
-                  </div>
-
-                </section>
-
-
-                {/* =============================================
-                    TOP CUSTOMERS
-                ============================================= */}
-
-                <section className="dashboard-panel customers-panel">
-
-                  <div className="panel-header-row">
-
-                    <h2>
-                      Top Customers
-                    </h2>
-
-                    <button
-                      onClick={() =>
-                        handleMenu("CRM")
-                      }
-                    >
-                      View All
-                    </button>
-
-                  </div>
-
-
-                  <div className="customer-list">
-
-                    {customers.map((customer, index) => (
-                      <button
-                        className="customer-row"
-                        key={index}
-                        onClick={() =>
-                          notify(
-                            `${customer.name} customer profile`
-                          )
-                        }
-                      >
-
-                        <span
-                          className={`customer-avatar ${customer.color}`}
-                        >
-                          {customer.initial}
-                        </span>
-
-                        <span className="customer-name">
-                          {customer.name}
-                        </span>
-
-                        <strong>
-                          {customer.amount}
-                        </strong>
-
-                      </button>
-                    ))}
-
-                  </div>
-
-                </section>
-
-
-                {/* =============================================
-                    AI INSIGHTS
-                ============================================= */}
-
-                <section className="dashboard-panel ai-insights-panel">
-
-                  <div className="panel-header-row">
-
-                    <h2>
-                      <span className="heading-icon">
-                        ✦
-                      </span>
-
-                      AI Insights
-                    </h2>
-
-                    <span className="new-tag">
-                      New
-                    </span>
-
-                  </div>
-
-
-                  <div className="insight-content">
-
-                    <p>
-                      Your sales are up
-                      <strong> 12.6%</strong>
-                      {" "}this month.
-                    </p>
-
-                    <p>
-                      Focus on recovering
-                      <strong> $14,560</strong>
-                      {" "}in overdue invoices to improve cash flow.
-                    </p>
-
-                  </div>
-
 
                   <button
-                    className="insight-button"
-                    onClick={() =>
-                      notify("AI Business Analyst opened")
-                    }
+                    type="button"
+                    onClick={() => handleAction("View All Missions")}
+                  >
+                    View All
+                  </button>
+                </div>
+
+                <MissionItem
+                  icon="◎"
+                  title="Recover overdue payments"
+                  status="In Progress"
+                  percentage="65%"
+                  width="65%"
+                  color="green"
+                />
+
+                <MissionItem
+                  icon="◎"
+                  title="Increase this month sales"
+                  status="In Progress"
+                  percentage="40%"
+                  width="40%"
+                  color="purple"
+                />
+
+                <MissionItem
+                  icon="▤"
+                  title="Reduce expenses"
+                  status="Planned"
+                  percentage="20%"
+                  width="20%"
+                  color="orange"
+                />
+              </section>
+            </div>
+
+            {/* ================= LOWER CONTENT ================= */}
+            <div className="dashboard-lower-grid">
+              {/* RECENT ACTIVITIES */}
+              <section className="dashboard-panel list-panel">
+                <PanelTitle
+                  title="Recent Activities"
+                  onClick={() => handleAction("View All Activities")}
+                />
+
+                <div className="activity-list">
+                  {activities.map((item) => (
+                    <div className="activity-row" key={item.text}>
+                      <div className={`activity-icon ${item.color}`}>
+                        {item.icon}
+                      </div>
+
+                      <span className="activity-text">{item.text}</span>
+
+                      <span className="activity-time">{item.time}</span>
+                    </div>
+                  ))}
+                </div>
+              </section>
+
+              {/* NOTIFICATIONS */}
+              <section className="dashboard-panel list-panel">
+                <PanelTitle
+                  title="Notifications"
+                  onClick={() => handleAction("View All Notifications")}
+                />
+
+                <div className="activity-list">
+                  {notifications.map((item) => (
+                    <div className="activity-row" key={item.text}>
+                      <div className={`activity-icon ${item.color}`}>
+                        {item.icon}
+                      </div>
+
+                      <span className="activity-text">{item.text}</span>
+
+                      <span className="activity-time">{item.time}</span>
+                    </div>
+                  ))}
+                </div>
+              </section>
+
+              {/* TOP CUSTOMERS */}
+              <section className="dashboard-panel list-panel">
+                <PanelTitle
+                  title="Top Customers"
+                  onClick={() => handleAction("View All Customers")}
+                />
+
+                <div className="customer-list">
+                  {customers.map((customer) => (
+                    <div
+                      className="customer-row"
+                      key={customer.name}
+                    >
+                      <span
+                        className={`customer-avatar ${customer.color}`}
+                      >
+                        {customer.letter}
+                      </span>
+
+                      <span className="customer-name">
+                        {customer.name}
+                      </span>
+
+                      <strong className="customer-amount">
+                        {customer.amount}
+                      </strong>
+                    </div>
+                  ))}
+                </div>
+              </section>
+
+              {/* AI INSIGHTS */}
+              <section className="dashboard-panel insights-panel">
+                <div className="panel-heading">
+                  <h2>
+                    <span className="cyan-icon">✦</span>
+                    AI Insights
+                    <span className="new-badge">New</span>
+                  </h2>
+                </div>
+
+                <div className="insight-content">
+                  <p>
+                    Your sales are up{" "}
+                    <strong>12.6%</strong> this month.
+                  </p>
+
+                  <p>
+                    Focus on recovering{" "}
+                    <strong>$14,560</strong> in overdue invoices to
+                    improve cash flow.
+                  </p>
+
+                  <button
+                    type="button"
+                    onClick={() => handleAction("View AI Insights")}
                   >
                     View All Insights →
                   </button>
 
-
-                  <div className="ai-brain">
-                    ✦
+                  <div className="insight-orb">
+                    <span>✦</span>
                   </div>
-
-                </section>
-
-              </div>
-
+                </div>
+              </section>
             </div>
 
-
-            {/* ===================================================
-                RIGHT COLUMN
-            =================================================== */}
-
+            {/* ================= RIGHT PACKAGE / INDUSTRIES ================= */}
             <aside className="dashboard-right-column">
-
-
-              {/* =================================================
-                  PACKAGE ACCESS
-              ================================================= */}
-
               <section className="dashboard-panel package-panel">
-
-                <div className="panel-header-row">
-
-                  <h2>
-                    Package & Access
-                  </h2>
-
+                <div className="panel-heading">
+                  <h2>Package & Access</h2>
                 </div>
 
                 <div className="package-title">
-
-                  <span className="package-icon">
-                    ◇
-                  </span>
-
-                  <strong>
-                    Growth Plan
-                  </strong>
-
+                  <span className="package-icon">◇</span>
+                  <strong>Growth Plan</strong>
                   <span className="package-price">
-                    $15
-                    <small>
-                      / month
-                    </small>
+                    <strong>$15</strong> / month
                   </span>
-
                 </div>
 
-
                 <div className="access-row">
-
-                  <span>
-                    Access
-                  </span>
-
+                  <span>Access</span>
                   <strong>
                     <b>38</b> / 60 Features
                   </strong>
-
                 </div>
 
-
                 <button
+                  type="button"
                   className="upgrade-button"
-                  onClick={() =>
-                    notify("Upgrade to Pro opened")
-                  }
+                  onClick={() => handleAction("Upgrade to Pro")}
                 >
-                  🚀
+                  <span>♢</span>
                   Upgrade to Pro
                 </button>
 
-
                 <button
-                  className="all-features-button"
-                  onClick={() =>
-                    handleMenu("Features")
-                  }
+                  type="button"
+                  className="features-link"
+                  onClick={() => handleAction("View All Features")}
                 >
                   View All Features →
                 </button>
-
               </section>
 
-
-              {/* =================================================
-                  INDUSTRIES HUB
-              ================================================= */}
-
               <section className="dashboard-panel industries-panel">
-
-                <div className="panel-header-row">
-
-                  <h2>
-                    Industries Hub
-                  </h2>
+                <div className="panel-heading">
+                  <h2>Industries Hub</h2>
 
                   <button
-                    onClick={() =>
-                      handleMenu("Industries Hub")
-                    }
+                    type="button"
+                    onClick={() => handleAction("Manage Industries")}
                   >
                     Manage
                   </button>
-
                 </div>
-
 
                 <div className="industry-grid">
-
                   {industries.map((industry) => (
                     <button
-                      key={industry.name}
-                      className={`industry-card ${
-                        activeIndustry === industry.name
-                          ? "selected"
-                          : ""
+                      type="button"
+                      key={industry.label}
+                      className={`industry-button ${industry.color} ${
+                        industry.active ? "active" : ""
                       }`}
-                      onClick={() => {
-                        setActiveIndustry(industry.name);
-                        notify(
-                          `${industry.name} industry selected`
-                        );
-                      }}
+                      onClick={() =>
+                        handleAction(`Industry: ${industry.label}`)
+                      }
                     >
-
-                      <span
-                        className={`industry-icon ${industry.color}`}
-                      >
-                        {industry.icon}
-                      </span>
-
-                      <span>
-                        {industry.name}
-                      </span>
-
+                      <span>{industry.icon}</span>
+                      <small>{industry.label}</small>
                     </button>
                   ))}
-
                 </div>
-
               </section>
-
             </aside>
+          </main>
+        </div>
+      </div>
 
-          </div>
+      {/* ================= FOOTER ================= */}
+      <footer className="dashboard-footer">
+        <div>© 2026 Briqona OS. All rights reserved.</div>
 
+        <div>Version 1.0.0</div>
 
-          {/* =====================================================
-              ACTIVE MENU STATE
-          ===================================================== */}
+        <div className="footer-links">
+          <button
+            type="button"
+            onClick={() => handleAction("Privacy Policy")}
+          >
+            Privacy Policy
+          </button>
 
-          {activeMenu !== "Dashboard" && (
-            <div className="dashboard-active-state">
+          <button
+            type="button"
+            onClick={() => handleAction("Terms of Service")}
+          >
+            Terms of Service
+          </button>
 
-              <span>
-                Active workspace:
-              </span>
+          <button
+            type="button"
+            onClick={() => handleAction("Support")}
+          >
+            Support
+          </button>
+        </div>
+      </footer>
+    </div>
+  );
+}
 
-              <strong>
-                {activeMenu}
-              </strong>
+/* ================= REUSABLE COMPONENTS ================= */
 
-              <button
-                onClick={() =>
-                  setActiveMenu("Dashboard")
-                }
-              >
-                ← Back to Dashboard
-              </button>
+function MetricCard({
+  title,
+  value,
+  change,
+  positive,
+  icon,
+  graph,
+  danger,
+}) {
+  return (
+    <div className="metric-card">
+      <div className="metric-top">
+        <span>{title}</span>
+        <strong className={danger ? "danger-icon" : ""}>{icon}</strong>
+      </div>
 
-            </div>
-          )}
+      <div className="metric-value">{value}</div>
 
+      <div className={`metric-change ${positive ? "positive" : "negative"}`}>
+        <strong>{positive ? "▲" : "▼"} {change}</strong>
+
+        {!danger && <span>vs last month</span>}
+      </div>
+
+      <div className={`mini-chart ${graph}`}>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  );
+}
+
+function MissionItem({
+  icon,
+  title,
+  status,
+  percentage,
+  width,
+  color,
+}) {
+  return (
+    <div className="mission-item">
+      <div className={`mission-icon ${color}`}>{icon}</div>
+
+      <div className="mission-main">
+        <div className="mission-title">
+          <strong>{title}</strong>
+          <span>{status}</span>
         </div>
 
-
-        {/* =======================================================
-            FOOTER
-        ======================================================= */}
-
-        <footer className="dashboard-footer">
-
-          <span>
-            © 2026 Briqona OS. All rights reserved.
-          </span>
-
-          <span>
-            Version 1.0.0
-          </span>
-
-          <div className="footer-links">
-
-            <button
-              onClick={() => notify("Privacy Policy opened")}
-            >
-              Privacy Policy
-            </button>
-
-            <button
-              onClick={() => notify("Terms of Service opened")}
-            >
-              Terms of Service
-            </button>
-
-            <button
-              onClick={() => notify("Support opened")}
-            >
-              Support
-            </button>
-
-          </div>
-
-        </footer>
-
-      </main>
-
-
-      {/* =========================================================
-          TOAST
-      ========================================================= */}
-
-      {toast && (
-        <div className="dashboard-toast">
-          <span>✓</span>
-          {toast}
+        <div className="mission-progress">
+          <div
+            className={`mission-progress-bar ${color}`}
+            style={{ width }}
+          ></div>
         </div>
-      )}
+      </div>
 
+      <strong className="mission-percentage">{percentage}</strong>
+    </div>
+  );
+}
+
+function PanelTitle({ title, onClick }) {
+  return (
+    <div className="panel-heading simple-heading">
+      <h2>{title}</h2>
+
+      <button type="button" onClick={onClick}>
+        View All
+      </button>
     </div>
   );
 }
