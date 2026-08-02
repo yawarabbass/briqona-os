@@ -1,928 +1,578 @@
-import React from "react";
+import React, { useState } from "react";
+import "./Dashboard.css";
+
+const sidebarItems = [
+  { icon: "⌂", label: "Dashboard" },
+  { icon: "✦", label: "AI Command Center", badge: "New" },
+  { icon: "♙", label: "AI Workforce", expandable: true },
+  { icon: "◎", label: "Outcome Center" },
+  { icon: "▦", label: "Industries Hub", expandable: true },
+  { icon: "♟", label: "CRM" },
+  { icon: "$", label: "Finance" },
+  { icon: "♟", label: "HR" },
+  { icon: "▣", label: "Inventory" },
+  { icon: "✓", label: "Projects & Tasks" },
+  { icon: "▤", label: "Documents" },
+  { icon: "ϟ", label: "Automation" },
+  { icon: "▥", label: "Analytics" },
+  { icon: "▣", label: "Communication" },
+  { icon: "◉", label: "Support / Helpdesk" },
+  { icon: "⌘", label: "Integrations" },
+  { icon: "⚙", label: "Settings" },
+];
 
 const stats = [
-  { label: "Revenue", value: "$48,260", change: "+18.4%", icon: "↗" },
-  { label: "Customers", value: "2,846", change: "+12.8%", icon: "◎" },
-  { label: "Open Tasks", value: "126", change: "24 today", icon: "✓" },
-  { label: "Business Health", value: "92/100", change: "Excellent", icon: "✦" },
+  {
+    title: "Total Revenue",
+    value: "$24,780",
+    change: "12.6%",
+    color: "green",
+    points: "0,38 18,28 34,34 52,15 70,22 88,9 106,20 124,3 142,17",
+  },
+  {
+    title: "Total Profit",
+    value: "$8,430",
+    change: "8.3%",
+    color: "purple",
+    points: "0,42 18,31 34,35 52,19 70,27 88,13 106,24 124,8 142,18",
+  },
+  {
+    title: "Total Expenses",
+    value: "$6,350",
+    change: "-3.4%",
+    color: "orange",
+    points: "0,42 18,27 34,34 52,15 70,31 88,13 106,29 124,10 142,22",
+  },
+  {
+    title: "Open Invoices",
+    value: "23",
+    change: "$14,560 overdue",
+    color: "blue",
+    points: "0,41 18,35 34,17 52,26 70,10 88,30 106,5 124,20 142,14",
+  },
 ];
 
 const quickActions = [
-  "Create Invoice",
-  "Add Customer",
-  "Create Task",
-  "Run AI Analysis",
+  { icon: "$", label: "New Invoice", color: "green" },
+  { icon: "♙", label: "New Lead", color: "blue" },
+  { icon: "▤", label: "New Expense", color: "orange" },
+  { icon: "✓", label: "New Task", color: "purple" },
+  { icon: "♟", label: "Add Employee", color: "cyan" },
+  { icon: "♙", label: "Add Customer", color: "pink" },
+  { icon: "▦", label: "More Actions", color: "gray" },
 ];
 
-const modules = [
-  { name: "CRM", icon: "◉", desc: "Customers & leads", status: "Active" },
-  { name: "Finance", icon: "$", desc: "Cash flow & invoices", status: "Active" },
-  { name: "Inventory", icon: "▦", desc: "Stock & products", status: "Growth" },
-  { name: "HR", icon: "♙", desc: "People & payroll", status: "Pro" },
+const industries = [
+  { icon: "▥", label: "Office", color: "green" },
+  { icon: "♙", label: "HR", color: "blue" },
+  { icon: "▣", label: "Hospital", color: "cyan" },
+  { icon: "♧", label: "Restaurant", color: "pink" },
+  { icon: "▰", label: "Retail", color: "purple" },
+  { icon: "⚖", label: "Construction", color: "orange" },
+  { icon: "⌂", label: "Real Estate", color: "purple" },
+  { icon: "◇", label: "Education", color: "cyan" },
+  { icon: "▥", label: "Manufacturing", color: "green" },
+  { icon: "♙", label: "Professional Services", color: "purple" },
+  { icon: "•••", label: "More", color: "gray" },
 ];
+
+function MiniChart({ points, color }) {
+  return (
+    <svg
+      className={`mini-chart mini-${color}`}
+      viewBox="0 0 142 48"
+      preserveAspectRatio="none"
+    >
+      <defs>
+        <linearGradient id={`gradient-${color}`} x1="0" x2="0" y1="0" y2="1">
+          <stop offset="0%" stopOpacity="0.35" />
+          <stop offset="100%" stopOpacity="0" />
+        </linearGradient>
+      </defs>
+
+      <polyline
+        points={points}
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2.2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+
+      <polygon
+        points={`${points} 142,48 0,48`}
+        fill={`url(#gradient-${color})`}
+      />
+    </svg>
+  );
+}
 
 function Dashboard() {
-  return (
-    <div style={styles.page}>
-      <div style={styles.backgroundGlowOne} />
-      <div style={styles.backgroundGlowTwo} />
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
-      <main style={styles.container}>
-        {/* HEADER */}
-        <header style={styles.header}>
-          <div>
-            <div style={styles.eyebrow}>BRIQONA OS • MASTER WORKSPACE</div>
-            <h1 style={styles.title}>Good morning, welcome back.</h1>
-            <p style={styles.subtitle}>
-              Your business command center is ready. Here is what needs your
-              attention today.
-            </p>
+  return (
+    <div className="dashboard-shell">
+      {/* Mobile Overlay */}
+      <div
+        className={`sidebar-overlay ${sidebarOpen ? "show" : ""}`}
+        onClick={() => setSidebarOpen(false)}
+      />
+
+      {/* SIDEBAR */}
+      <aside className={`dashboard-sidebar ${sidebarOpen ? "open" : ""}`}>
+        <div className="sidebar-brand">
+          <div className="brand-mark">
+            <span />
+            <span />
+            <span />
           </div>
 
-          <div style={styles.headerActions}>
-            <button style={styles.iconButton}>⌕</button>
-            <button style={styles.iconButton}>♧</button>
+          <div>
+            <div className="brand-name">
+              BRIQONA <strong>OS</strong>
+            </div>
+            <div className="brand-tagline">
+              All-in-One Business Operating System
+            </div>
+          </div>
 
-            <div style={styles.profile}>
-              <div style={styles.avatar}>A</div>
-              <div>
-                <strong style={styles.profileName}>Admin</strong>
-                <span style={styles.profileRole}>Owner</span>
+          <button
+            className="mobile-close"
+            onClick={() => setSidebarOpen(false)}
+          >
+            ×
+          </button>
+        </div>
+
+        <nav className="sidebar-nav">
+          {sidebarItems.map((item, index) => (
+            <button
+              className={`sidebar-item ${index === 0 ? "active" : ""}`}
+              key={item.label}
+              onClick={() => setSidebarOpen(false)}
+            >
+              <span className="sidebar-icon">{item.icon}</span>
+              <span>{item.label}</span>
+
+              {item.badge && <small>{item.badge}</small>}
+
+              {item.expandable && (
+                <span className="sidebar-arrow">⌄</span>
+              )}
+            </button>
+          ))}
+        </nav>
+
+        <div className="sidebar-plan">
+          <div className="plan-top">
+            <div className="diamond-icon">◇</div>
+            <button>×</button>
+          </div>
+
+          <span className="plan-label">Current Plan</span>
+          <strong>Growth</strong>
+          <span className="plan-price">
+            <b>$15</b> / month
+          </span>
+
+          <button className="upgrade-btn">
+            Upgrade Plan
+            <span>→</span>
+          </button>
+        </div>
+      </aside>
+
+      {/* MAIN */}
+      <main className="dashboard-main">
+        {/* HEADER */}
+        <header className="dashboard-header">
+          <button
+            className="mobile-menu"
+            onClick={() => setSidebarOpen(true)}
+            aria-label="Open menu"
+          >
+            ☰
+          </button>
+
+          <div className="dashboard-search">
+            <span>⌕</span>
+            <input
+              type="text"
+              placeholder="Ask Briqona AI or type a command..."
+            />
+            <kbd>⌘ K</kbd>
+          </div>
+
+          <div className="header-actions">
+            <button className="header-ai-btn copilot">
+              ✦ <span>AI Copilot</span>
+            </button>
+
+            <button className="header-ai-btn mission">
+              ✦ <span>AI Mission Center</span>
+            </button>
+
+            <button className="header-icon notification">
+              ♧
+              <b>5</b>
+            </button>
+
+            <button className="header-icon messages">
+              ▱
+              <b>3</b>
+            </button>
+
+            <div className="profile-box">
+              <div className="profile-info">
+                <strong>Ali Raza</strong>
+                <span>Owner</span>
               </div>
+
+              <div className="profile-avatar">AR</div>
+              <span className="profile-arrow">⌄</span>
             </div>
           </div>
         </header>
 
-        {/* AI COMMAND CENTER */}
-        <section style={styles.aiCard}>
-          <div style={styles.aiOrb}>
-            <span>✦</span>
-          </div>
-
-          <div style={styles.aiContent}>
-            <div style={styles.aiLabel}>BRIQONA AI COMMAND CENTER</div>
-            <h2 style={styles.aiTitle}>What should we take care of?</h2>
-            <p style={styles.aiText}>
-              Ask Briqona to analyse your business, find opportunities or
-              perform an approved action.
-            </p>
-
-            <div style={styles.commandBox}>
-              <span style={styles.commandIcon}>✦</span>
-              <span style={styles.commandPlaceholder}>
-                Ask anything about your business...
-              </span>
-              <button style={styles.commandButton}>→</button>
+        {/* CONTENT */}
+        <div className="dashboard-content">
+          {/* HERO */}
+          <section className="hero-section">
+            <div className="hero-heading">
+              <h1>Good morning, Ali Raza! 👋</h1>
+              <p>Here's what's happening with your business today.</p>
             </div>
 
-            <div style={styles.aiSuggestions}>
-              <button>Show today's priorities</button>
-              <button>Analyse revenue</button>
-              <button>Find overdue invoices</button>
-            </div>
-          </div>
-
-          <div style={styles.aiBadge}>
-            <span style={styles.liveDot} />
-            AI Online
-          </div>
-        </section>
-
-        {/* STATS */}
-        <section style={styles.statsGrid}>
-          {stats.map((item) => (
-            <div style={styles.statCard} key={item.label}>
-              <div style={styles.statTop}>
-                <span style={styles.statLabel}>{item.label}</span>
-                <span style={styles.statIcon}>{item.icon}</span>
-              </div>
-
-              <div style={styles.statValue}>{item.value}</div>
-
-              <div style={styles.statBottom}>
-                <span style={styles.statChange}>{item.change}</span>
-                <span style={styles.statPeriod}>vs last period</span>
-              </div>
-            </div>
-          ))}
-        </section>
-
-        {/* MAIN GRID */}
-        <section style={styles.mainGrid}>
-          {/* BUSINESS PULSE */}
-          <div style={styles.panel}>
-            <div style={styles.panelHeader}>
-              <div>
-                <span style={styles.panelEyebrow}>BUSINESS PULSE</span>
-                <h3 style={styles.panelTitle}>Performance overview</h3>
-              </div>
-
-              <button style={styles.smallButton}>Last 30 days ▾</button>
+            <div className="hero-actions">
+              <button>▣ &nbsp; This Month &nbsp;⌄</button>
+              <button>✣ &nbsp; Customize</button>
             </div>
 
-            <div style={styles.chartArea}>
-              <div style={styles.chartLine}>
-                <span style={{ left: "0%" }} />
-                <span style={{ left: "14%" }} />
-                <span style={{ left: "28%" }} />
-                <span style={{ left: "42%" }} />
-                <span style={{ left: "56%" }} />
-                <span style={{ left: "70%" }} />
-                <span style={{ left: "84%" }} />
-                <span style={{ left: "100%" }} />
-              </div>
-
-              <svg
-                viewBox="0 0 700 220"
-                preserveAspectRatio="none"
-                style={styles.chartSvg}
-              >
-                <defs>
-                  <linearGradient id="chartFill" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="#18e0ff" stopOpacity="0.24" />
-                    <stop offset="100%" stopColor="#18e0ff" stopOpacity="0" />
-                  </linearGradient>
-                </defs>
-
-                <path
-                  d="M0 175 C80 155 90 160 145 130 C205 95 225 145 285 120 C345 95 360 105 415 75 C470 45 510 95 555 65 C610 28 645 55 700 20 L700 220 L0 220 Z"
-                  fill="url(#chartFill)"
-                />
-
-                <path
-                  d="M0 175 C80 155 90 160 145 130 C205 95 225 145 285 120 C345 95 360 105 415 75 C470 45 510 95 555 65 C610 28 645 55 700 20"
-                  fill="none"
-                  stroke="#18e0ff"
-                  strokeWidth="4"
-                  strokeLinecap="round"
-                />
-              </svg>
-
-              <div style={styles.chartLabels}>
-                <span>01</span>
-                <span>05</span>
-                <span>10</span>
-                <span>15</span>
-                <span>20</span>
-                <span>25</span>
-                <span>30</span>
-              </div>
-            </div>
-          </div>
-
-          {/* AI INSIGHTS */}
-          <div style={styles.panel}>
-            <div style={styles.panelHeader}>
-              <div>
-                <span style={styles.panelEyebrow}>AI INSIGHTS</span>
-                <h3 style={styles.panelTitle}>Business intelligence</h3>
-              </div>
-
-              <span style={styles.aiMiniBadge}>AI</span>
+            <div className="hero-wave">
+              <span className="wave wave-one" />
+              <span className="wave wave-two" />
+              <span className="wave wave-three" />
+              <i className="wave-dot dot-one" />
+              <i className="wave-dot dot-two" />
+              <i className="wave-dot dot-three" />
             </div>
 
-            <div style={styles.insight}>
-              <div style={styles.insightIcon}>↗</div>
-              <div>
-                <strong>Revenue is trending upward</strong>
-                <p>Revenue increased 18.4% compared with the previous period.</p>
-              </div>
+            <div className="business-pulse">
+              <span>AI Business Pulse</span>
+              <b>Excellent</b>
+              <strong>87</strong>
+              <small>/100</small>
             </div>
 
-            <div style={styles.insight}>
-              <div style={styles.insightIconGreen}>!</div>
-              <div>
-                <strong>3 invoices need attention</strong>
-                <p>Briqona found overdue payments requiring follow-up.</p>
-              </div>
+            <div className="hero-stats">
+              {stats.map((stat) => (
+                <div className={`stat-card ${stat.color}`} key={stat.title}>
+                  <span>{stat.title}</span>
+                  <strong>{stat.value}</strong>
+
+                  <small
+                    className={
+                      stat.change.startsWith("-") ? "negative" : ""
+                    }
+                  >
+                    {stat.change.startsWith("-") ? "▼" : "▲"}{" "}
+                    {stat.change}
+                    {!stat.change.includes("overdue") && " vs last month"}
+                  </small>
+
+                  <MiniChart
+                    points={stat.points}
+                    color={stat.color}
+                  />
+                </div>
+              ))}
             </div>
+          </section>
 
-            <button style={styles.fullButton}>
-              Open AI Business Analyst →
-            </button>
-          </div>
-        </section>
+          {/* QUICK ACTIONS */}
+          <section className="quick-actions-panel">
+            <div className="section-title">Quick Actions</div>
 
-        {/* QUICK ACTIONS */}
-        <section style={styles.section}>
-          <div style={styles.sectionHeading}>
-            <div>
-              <span style={styles.panelEyebrow}>ONE-CLICK ACTIONS</span>
-              <h3 style={styles.panelTitle}>Get things done faster</h3>
+            <div className="quick-actions">
+              {quickActions.map((action) => (
+                <button
+                  className={`quick-action ${action.color}`}
+                  key={action.label}
+                >
+                  <span className="quick-icon">{action.icon}</span>
+                  <span>+ {action.label}</span>
+                </button>
+              ))}
             </div>
-          </div>
+          </section>
 
-          <div style={styles.actionsGrid}>
-            {quickActions.map((action, index) => (
-              <button style={styles.actionCard} key={action}>
-                <span style={styles.actionNumber}>0{index + 1}</span>
-                <span style={styles.actionText}>{action}</span>
-                <span style={styles.actionArrow}>→</span>
-              </button>
-            ))}
-          </div>
-        </section>
-
-        {/* MODULES */}
-        <section style={styles.section}>
-          <div style={styles.sectionHeading}>
-            <div>
-              <span style={styles.panelEyebrow}>MASTER BUSINESS OS</span>
-              <h3 style={styles.panelTitle}>Your workspace</h3>
-            </div>
-
-            <button style={styles.textButton}>View all modules →</button>
-          </div>
-
-          <div style={styles.moduleGrid}>
-            {modules.map((module) => (
-              <div style={styles.moduleCard} key={module.name}>
-                <div style={styles.moduleIcon}>{module.icon}</div>
-
-                <div style={styles.moduleInfo}>
-                  <strong>{module.name}</strong>
-                  <span>{module.desc}</span>
+          <div className="dashboard-grid">
+            {/* LEFT / CENTER */}
+            <div className="dashboard-center">
+              {/* AI COMMAND CENTER */}
+              <section className="glass-card ai-command">
+                <div className="card-heading">
+                  <div>
+                    <h2>✦ &nbsp; AI Command Center</h2>
+                    <p>Ask anything. Briqona AI is ready to help.</p>
+                  </div>
                 </div>
 
-                <span style={styles.moduleStatus}>{module.status}</span>
+                <div className="ai-input">
+                  <span>✦</span>
+                  <input
+                    placeholder="e.g. Show me sales trend, top customers, overdue invoices..."
+                  />
+                  <button>♩</button>
+                  <button className="send-ai">➤</button>
+                </div>
 
-                <button style={styles.moduleArrow}>→</button>
+                <div className="ai-shortcuts">
+                  <button>Sales Summary</button>
+                  <button>Overdue Invoices</button>
+                  <button>Cash Flow</button>
+                  <button>Inventory Alert</button>
+                  <button>HR Report</button>
+                </div>
+
+                <div className="ai-orb">
+                  <span>✦</span>
+                </div>
+              </section>
+
+              {/* LOWER CARDS */}
+              <div className="lower-grid">
+                {/* Recent */}
+                <section className="glass-card list-card">
+                  <div className="card-header">
+                    <h3>Recent Activities</h3>
+                    <button>View All</button>
+                  </div>
+
+                  <div className="activity-list">
+                    <div>
+                      <span>▤</span>
+                      <p>Invoice #INV-2026-1256 created</p>
+                      <small>2 min ago</small>
+                    </div>
+                    <div>
+                      <span>$</span>
+                      <p>Payment received from Ahmed Co.</p>
+                      <small>18 min ago</small>
+                    </div>
+                    <div>
+                      <span>♙</span>
+                      <p>New lead from Website</p>
+                      <small>45 min ago</small>
+                    </div>
+                    <div>
+                      <span>✓</span>
+                      <p>Task “Follow up with client”</p>
+                      <small>1 hour ago</small>
+                    </div>
+                    <div>
+                      <span>▤</span>
+                      <p>Expense $250 added</p>
+                      <small>2 hours ago</small>
+                    </div>
+                  </div>
+                </section>
+
+                {/* Notifications */}
+                <section className="glass-card list-card">
+                  <div className="card-header">
+                    <h3>Notifications</h3>
+                    <button>View All</button>
+                  </div>
+
+                  <div className="activity-list">
+                    <div>
+                      <span className="red">♧</span>
+                      <p>Overdue invoice from Ali Traders</p>
+                      <small>2 min ago</small>
+                    </div>
+                    <div>
+                      <span className="yellow">⚠</span>
+                      <p>Low stock alert for 3 products</p>
+                      <small>25 min ago</small>
+                    </div>
+                    <div>
+                      <span className="blue">♙</span>
+                      <p>Leave request from Sara Khan</p>
+                      <small>1 hour ago</small>
+                    </div>
+                    <div>
+                      <span className="green">✓</span>
+                      <p>System backup completed</p>
+                      <small>2 hours ago</small>
+                    </div>
+                  </div>
+                </section>
+
+                {/* Customers */}
+                <section className="glass-card list-card">
+                  <div className="card-header">
+                    <h3>Top Customers</h3>
+                    <button>View All</button>
+                  </div>
+
+                  <div className="customer-list">
+                    {[
+                      ["A", "Ahmed Corporation", "$5,780"],
+                      ["G", "Global Solutions", "$4,230"],
+                      ["T", "TechNova LLC", "$3,620"],
+                      ["A", "Al-Barkat Traders", "$2,890"],
+                      ["F", "Future Enterprises", "$2,450"],
+                    ].map(([letter, name, amount]) => (
+                      <div key={name}>
+                        <span className="customer-avatar">{letter}</span>
+                        <p>{name}</p>
+                        <strong>{amount}</strong>
+                      </div>
+                    ))}
+                  </div>
+                </section>
               </div>
-            ))}
-          </div>
-        </section>
-
-        {/* AI MISSION */}
-        <section style={styles.missionCard}>
-          <div style={styles.missionLeft}>
-            <span style={styles.panelEyebrow}>AI MISSION</span>
-            <h2 style={styles.missionTitle}>
-              Recover overdue payments this week
-            </h2>
-            <p style={styles.missionText}>
-              Briqona found 14 overdue invoices and prepared a suggested
-              recovery workflow.
-            </p>
-          </div>
-
-          <div style={styles.missionProgress}>
-            <div style={styles.progressTrack}>
-              <div style={styles.progressBar} />
             </div>
 
-            <div style={styles.progressLabels}>
-              <span>Analyse</span>
-              <span>Prepare</span>
-              <span>Review</span>
-              <span>Execute</span>
-            </div>
+            {/* RIGHT COLUMN */}
+            <aside className="dashboard-right">
+              {/* AI MISSIONS */}
+              <section className="glass-card missions-card">
+                <div className="card-header">
+                  <div>
+                    <h3>✦ AI Missions <small>Beta</small></h3>
+                  </div>
+                  <button>View All</button>
+                </div>
+
+                <div className="mission-item">
+                  <span className="mission-icon green">◎</span>
+                  <div>
+                    <strong>Recover overdue payments</strong>
+                    <small>In Progress</small>
+                    <div className="progress">
+                      <i style={{ width: "65%" }} />
+                    </div>
+                  </div>
+                  <b>65%</b>
+                </div>
+
+                <div className="mission-item">
+                  <span className="mission-icon purple">◎</span>
+                  <div>
+                    <strong>Increase this month sales</strong>
+                    <small>In Progress</small>
+                    <div className="progress">
+                      <i style={{ width: "40%" }} />
+                    </div>
+                  </div>
+                  <b>40%</b>
+                </div>
+
+                <div className="mission-item">
+                  <span className="mission-icon orange">◎</span>
+                  <div>
+                    <strong>Reduce expenses</strong>
+                    <small>Planned</small>
+                    <div className="progress">
+                      <i style={{ width: "20%" }} />
+                    </div>
+                  </div>
+                  <b>20%</b>
+                </div>
+              </section>
+
+              {/* AI INSIGHTS */}
+              <section className="glass-card insight-card">
+                <div className="card-header">
+                  <h3>✦ AI Insights <small>New</small></h3>
+                </div>
+
+                <p>
+                  Your sales are up <strong>12.6%</strong> this month.
+                </p>
+
+                <p>
+                  Focus on recovering <strong>$14,560</strong> in overdue
+                  invoices to improve cash flow.
+                </p>
+
+                <button className="outline-btn">
+                  View All Insights →
+                </button>
+
+                <div className="brain">◉</div>
+              </section>
+            </aside>
           </div>
 
-          <button style={styles.missionButton}>Review Mission →</button>
-        </section>
+          {/* PACKAGE + INDUSTRIES */}
+          <div className="bottom-grid">
+            <section className="glass-card package-card">
+              <div className="card-header">
+                <h3>Package & Access</h3>
+              </div>
+
+              <div className="package-title">
+                <span>◇</span>
+                <strong>Growth Plan</strong>
+                <b>$15 <small>/ month</small></b>
+              </div>
+
+              <div className="access-row">
+                <span>Access</span>
+                <strong>38 <small>/ 60 Features</small></strong>
+              </div>
+
+              <div className="access-bar">
+                <span />
+              </div>
+
+              <button className="pro-button">
+                ◇ &nbsp; Upgrade to Pro
+              </button>
+
+              <button className="view-features">
+                View All Features →
+              </button>
+            </section>
+
+            <section className="glass-card industry-card">
+              <div className="card-header">
+                <h3>Industries Hub</h3>
+                <button>Manage</button>
+              </div>
+
+              <div className="industry-grid">
+                {industries.map((industry) => (
+                  <button
+                    className={`industry-item ${industry.color}`}
+                    key={industry.label}
+                  >
+                    <span>{industry.icon}</span>
+                    <small>{industry.label}</small>
+                  </button>
+                ))}
+              </div>
+            </section>
+          </div>
+        </div>
 
         {/* FOOTER */}
-        <footer style={styles.footer}>
-          <span>BRIQONA OS</span>
-          <span>Master Workspace</span>
-          <span>System Online • Secure</span>
+        <footer className="dashboard-footer">
+          <span>© 2026 Briqona OS. All rights reserved.</span>
+          <span>Version 1.0.0</span>
+
+          <div>
+            <a href="#privacy">Privacy Policy</a>
+            <a href="#terms">Terms of Service</a>
+            <a href="#support">Support</a>
+          </div>
         </footer>
       </main>
     </div>
   );
 }
-
-const styles = {
-  page: {
-    minHeight: "100vh",
-    position: "relative",
-    overflow: "hidden",
-    background:
-      "radial-gradient(circle at 75% 0%, rgba(24,224,255,.08), transparent 30%), radial-gradient(circle at 15% 35%, rgba(141,242,61,.05), transparent 25%), #020711",
-    color: "#edf7ff",
-    fontFamily:
-      "Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif",
-  },
-
-  backgroundGlowOne: {
-    position: "fixed",
-    width: 420,
-    height: 420,
-    borderRadius: "50%",
-    background: "rgba(24,224,255,.05)",
-    filter: "blur(100px)",
-    top: -180,
-    right: -100,
-    pointerEvents: "none",
-  },
-
-  backgroundGlowTwo: {
-    position: "fixed",
-    width: 360,
-    height: 360,
-    borderRadius: "50%",
-    background: "rgba(141,242,61,.035)",
-    filter: "blur(100px)",
-    bottom: -160,
-    left: -100,
-    pointerEvents: "none",
-  },
-
-  container: {
-    width: "min(1400px, calc(100% - 48px))",
-    margin: "0 auto",
-    padding: "42px 0 32px",
-    position: "relative",
-    zIndex: 1,
-  },
-
-  header: {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "flex-start",
-    gap: 30,
-    marginBottom: 30,
-  },
-
-  eyebrow: {
-    color: "#18e0ff",
-    fontSize: 11,
-    fontWeight: 800,
-    letterSpacing: ".16em",
-    marginBottom: 10,
-  },
-
-  title: {
-    margin: 0,
-    fontSize: "clamp(28px, 4vw, 46px)",
-    letterSpacing: "-.045em",
-    lineHeight: 1.05,
-  },
-
-  subtitle: {
-    margin: "13px 0 0",
-    maxWidth: 680,
-    color: "#7f91a8",
-    fontSize: 14,
-    lineHeight: 1.7,
-  },
-
-  headerActions: {
-    display: "flex",
-    alignItems: "center",
-    gap: 10,
-  },
-
-  iconButton: {
-    width: 42,
-    height: 42,
-    borderRadius: 12,
-    border: "1px solid rgba(143,184,224,.14)",
-    background: "rgba(255,255,255,.035)",
-    color: "#dcecff",
-    cursor: "pointer",
-    fontSize: 18,
-  },
-
-  profile: {
-    display: "flex",
-    alignItems: "center",
-    gap: 10,
-    marginLeft: 8,
-    padding: "6px 10px 6px 6px",
-    borderRadius: 14,
-    border: "1px solid rgba(143,184,224,.12)",
-    background: "rgba(255,255,255,.025)",
-  },
-
-  avatar: {
-    width: 34,
-    height: 34,
-    display: "grid",
-    placeItems: "center",
-    borderRadius: 10,
-    background: "linear-gradient(135deg,#18e0ff,#8df23d)",
-    color: "#031018",
-    fontWeight: 900,
-  },
-
-  profileName: {
-    display: "block",
-    fontSize: 12,
-  },
-
-  profileRole: {
-    display: "block",
-    marginTop: 2,
-    color: "#73869c",
-    fontSize: 10,
-  },
-
-  aiCard: {
-    position: "relative",
-    display: "flex",
-    alignItems: "center",
-    gap: 24,
-    padding: 28,
-    borderRadius: 24,
-    border: "1px solid rgba(24,224,255,.18)",
-    background:
-      "linear-gradient(135deg, rgba(24,224,255,.08), rgba(141,242,61,.035) 55%, rgba(255,255,255,.025))",
-    boxShadow: "0 24px 80px rgba(0,0,0,.24)",
-    marginBottom: 18,
-  },
-
-  aiOrb: {
-    width: 70,
-    height: 70,
-    flex: "0 0 70px",
-    display: "grid",
-    placeItems: "center",
-    borderRadius: 22,
-    background:
-      "radial-gradient(circle, rgba(24,224,255,.25), rgba(24,224,255,.04) 65%, transparent)",
-    border: "1px solid rgba(24,224,255,.25)",
-    color: "#18e0ff",
-    fontSize: 28,
-    boxShadow: "0 0 50px rgba(24,224,255,.14)",
-  },
-
-  aiContent: {
-    flex: 1,
-    minWidth: 0,
-  },
-
-  aiLabel: {
-    color: "#8df23d",
-    fontSize: 10,
-    fontWeight: 800,
-    letterSpacing: ".15em",
-  },
-
-  aiTitle: {
-    margin: "6px 0 5px",
-    fontSize: 24,
-    letterSpacing: "-.025em",
-  },
-
-  aiText: {
-    margin: 0,
-    color: "#8497ad",
-    fontSize: 12,
-  },
-
-  commandBox: {
-    display: "flex",
-    alignItems: "center",
-    gap: 10,
-    marginTop: 18,
-    padding: 7,
-    borderRadius: 14,
-    background: "rgba(1,6,14,.68)",
-    border: "1px solid rgba(143,184,224,.14)",
-  },
-
-  commandIcon: {
-    color: "#18e0ff",
-    paddingLeft: 10,
-  },
-
-  commandPlaceholder: {
-    flex: 1,
-    color: "#64778d",
-    fontSize: 12,
-  },
-
-  commandButton: {
-    width: 36,
-    height: 36,
-    border: 0,
-    borderRadius: 10,
-    background: "linear-gradient(135deg,#18e0ff,#8df23d)",
-    color: "#031018",
-    fontWeight: 900,
-    cursor: "pointer",
-  },
-
-  aiSuggestions: {
-    display: "flex",
-    flexWrap: "wrap",
-    gap: 7,
-    marginTop: 10,
-  },
-
-  aiMiniBadge: {
-    padding: "5px 8px",
-    borderRadius: 8,
-    color: "#18e0ff",
-    background: "rgba(24,224,255,.08)",
-    border: "1px solid rgba(24,224,255,.16)",
-    fontSize: 10,
-    fontWeight: 800,
-  },
-
-  aiSuggestionsButton: {},
-
-  aiBadge: {
-    alignSelf: "flex-start",
-    display: "flex",
-    alignItems: "center",
-    gap: 7,
-    padding: "7px 10px",
-    borderRadius: 10,
-    color: "#8df23d",
-    background: "rgba(141,242,61,.06)",
-    border: "1px solid rgba(141,242,61,.12)",
-    fontSize: 10,
-    fontWeight: 700,
-  },
-
-  liveDot: {
-    width: 6,
-    height: 6,
-    borderRadius: "50%",
-    background: "#8df23d",
-    boxShadow: "0 0 10px #8df23d",
-  },
-
-  statsGrid: {
-    display: "grid",
-    gridTemplateColumns: "repeat(4, 1fr)",
-    gap: 14,
-    marginBottom: 18,
-  },
-
-  statCard: {
-    padding: 20,
-    borderRadius: 18,
-    background: "rgba(255,255,255,.028)",
-    border: "1px solid rgba(143,184,224,.1)",
-  },
-
-  statTop: {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
-
-  statLabel: {
-    color: "#788ba0",
-    fontSize: 11,
-  },
-
-  statIcon: {
-    color: "#18e0ff",
-    fontSize: 17,
-  },
-
-  statValue: {
-    marginTop: 14,
-    fontSize: 28,
-    fontWeight: 800,
-    letterSpacing: "-.035em",
-  },
-
-  statBottom: {
-    display: "flex",
-    alignItems: "center",
-    gap: 7,
-    marginTop: 8,
-  },
-
-  statChange: {
-    color: "#8df23d",
-    fontSize: 10,
-    fontWeight: 800,
-  },
-
-  statPeriod: {
-    color: "#52657b",
-    fontSize: 10,
-  },
-
-  mainGrid: {
-    display: "grid",
-    gridTemplateColumns: "1.6fr 1fr",
-    gap: 18,
-  },
-
-  panel: {
-    minWidth: 0,
-    padding: 22,
-    borderRadius: 20,
-    background: "rgba(255,255,255,.025)",
-    border: "1px solid rgba(143,184,224,.1)",
-  },
-
-  panelHeader: {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "flex-start",
-    gap: 15,
-  },
-
-  panelEyebrow: {
-    color: "#18e0ff",
-    fontSize: 9,
-    fontWeight: 800,
-    letterSpacing: ".14em",
-  },
-
-  panelTitle: {
-    margin: "6px 0 0",
-    fontSize: 17,
-    letterSpacing: "-.025em",
-  },
-
-  smallButton: {
-    padding: "8px 10px",
-    borderRadius: 9,
-    border: "1px solid rgba(143,184,224,.12)",
-    background: "rgba(255,255,255,.025)",
-    color: "#8b9db1",
-    fontSize: 10,
-  },
-
-  chartArea: {
-    position: "relative",
-    height: 230,
-    marginTop: 18,
-  },
-
-  chartLine: {
-    position: "absolute",
-    inset: "10px 0 30px",
-    background:
-      "repeating-linear-gradient(to bottom, rgba(143,184,224,.08) 0 1px, transparent 1px 48px)",
-  },
-
-  chartSvg: {
-    position: "absolute",
-    left: 0,
-    top: 10,
-    width: "100%",
-    height: 185,
-  },
-
-  chartLabels: {
-    position: "absolute",
-    bottom: 0,
-    left: 0,
-    right: 0,
-    display: "flex",
-    justifyContent: "space-between",
-    color: "#52657b",
-    fontSize: 9,
-  },
-
-  insight: {
-    display: "flex",
-    gap: 12,
-    marginTop: 18,
-    padding: 13,
-    borderRadius: 13,
-    background: "rgba(255,255,255,.025)",
-    border: "1px solid rgba(143,184,224,.07)",
-  },
-
-  insightIcon: {
-    width: 30,
-    height: 30,
-    flex: "0 0 30px",
-    display: "grid",
-    placeItems: "center",
-    borderRadius: 9,
-    background: "rgba(24,224,255,.08)",
-    color: "#18e0ff",
-  },
-
-  insightIconGreen: {
-    width: 30,
-    height: 30,
-    flex: "0 0 30px",
-    display: "grid",
-    placeItems: "center",
-    borderRadius: 9,
-    background: "rgba(141,242,61,.08)",
-    color: "#8df23d",
-  },
-
-  insightStrong: {
-    fontSize: 12,
-  },
-
-  insightText: {
-    margin: "4px 0 0",
-    color: "#72859a",
-    fontSize: 10,
-    lineHeight: 1.5,
-  },
-
-  fullButton: {
-    width: "100%",
-    marginTop: 15,
-    padding: 12,
-    borderRadius: 11,
-    border: "1px solid rgba(24,224,255,.16)",
-    background: "rgba(24,224,255,.05)",
-    color: "#18e0ff",
-    fontSize: 11,
-    fontWeight: 700,
-    cursor: "pointer",
-  },
-
-  section: {
-    marginTop: 18,
-  },
-
-  sectionHeading: {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "flex-end",
-    marginBottom: 12,
-  },
-
-  textButton: {
-    border: 0,
-    background: "transparent",
-    color: "#18e0ff",
-    fontSize: 11,
-    cursor: "pointer",
-  },
-
-  actionsGrid: {
-    display: "grid",
-    gridTemplateColumns: "repeat(4, 1fr)",
-    gap: 12,
-  },
-
-  actionCard: {
-    minHeight: 82,
-    display: "flex",
-    alignItems: "center",
-    gap: 12,
-    padding: 16,
-    borderRadius: 15,
-    border: "1px solid rgba(143,184,224,.1)",
-    background: "rgba(255,255,255,.025)",
-    color: "#edf7ff",
-    cursor: "pointer",
-    textAlign: "left",
-  },
-
-  actionNumber: {
-    color: "#18e0ff",
-    fontSize: 9,
-    fontWeight: 800,
-  },
-
-  actionText: {
-    flex: 1,
-    fontSize: 11,
-    fontWeight: 700,
-  },
-
-  actionArrow: {
-    color: "#71859b",
-  },
-
-  moduleGrid: {
-    display: "grid",
-    gridTemplateColumns: "repeat(4, 1fr)",
-    gap: 12,
-  },
-
-  moduleCard: {
-    position: "relative",
-    padding: 17,
-    borderRadius: 16,
-    border: "1px solid rgba(143,184,224,.1)",
-    background: "rgba(255,255,255,.025)",
-  },
-
-  moduleIcon: {
-    width: 34,
-    height: 34,
-    display: "grid",
-    placeItems: "center",
-    borderRadius: 10,
-    background: "rgba(24,224,255,.07)",
-    color: "#18e0ff",
-    fontWeight: 800,
-  },
-
-  moduleInfo: {
-    display: "flex",
-    flexDirection: "column",
-    gap: 4,
-    marginTop: 14,
-  },
-
-  moduleInfoStrong: {
-    fontSize: 12,
-  },
-
-  moduleInfoSpan: {
-    color: "#708297",
-    fontSize: 10,
-  },
-
-  moduleStatus: {
-    display: "inline-block",
-    marginTop: 12,
-    padding: "4px 7px",
-    borderRadius: 6,
-    color: "#8df23d",
-    background: "rgba(141,242,61,.06)",
-    fontSize: 8,
-    fontWeight: 800,
-  },
-
-  moduleArrow: {
-    position: "absolute",
-    right: 14,
-    bottom: 15,
-    border: 0,
-    background: "transparent",
-    color: "#66798e",
-    cursor: "pointer",
-  },
-
-  missionCard: {
-    display: "grid",
-    gridTemplateColumns: "1.2fr 1fr auto",
-    alignItems: "center",
-    gap: 28,
-    marginTop: 18,
-    padding: 23,
-    borderRadius: 20,
-    border: "1px solid rgba(141,242,61,.14)",
-    background:
-      "linear-gradient(100deg, rgba(141,242,61,.06), rgba(24,224,255,.035))",
-  },
-
-  missionTitle: {
-    margin: "7px 0 5px",
-    fontSize: 18,
-    letterSpacing: "-.025em",
-  },
-
-  missionText: {
-    margin: 0,
-    color: "#73869b",
-    fontSize: 10,
-    lineHeight: 1.6,
-  },
-
-  missionProgress: {
-    minWidth: 0,
-  },
-
-  progressTrack: {
-    height: 6,
-    borderRadius: 20,
-    background: "rgba(255,255,255,.07)",
-    overflow: "hidden",
-  },
-
-  progressBar: {
-    width: "68%",
-    height: "100%",
-    borderRadius: 20,
-    background: "linear-gradient(90deg,#18e0ff,#8df23d)",
-    boxShadow: "0 0 18px rgba(24,224,255,.25)",
-  },
-
-  progressLabels: {
-    display: "flex",
-    justifyContent: "space-between",
-    marginTop: 8,
-    color: "#607388",
-    fontSize: 8,
-  },
-
-  missionButton: {
-    padding: "12px 15px",
-    borderRadius: 10,
-    border: 0,
-    background: "linear-gradient(100deg,#8df23d,#18e0ff)",
-    color: "#031018",
-    fontWeight: 800,
-    fontSize: 10,
-    cursor: "pointer",
-    whiteSpace: "nowrap",
-  },
-
-  footer: {
-    display: "flex",
-    justifyContent: "space-between",
-    gap: 15,
-    marginTop: 28,
-    paddingTop: 18,
-    borderTop: "1px solid rgba(143,184,224,.08)",
-    color: "#52657b",
-    fontSize: 9,
-  },
-};
 
 export default Dashboard;
