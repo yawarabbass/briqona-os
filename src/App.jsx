@@ -23,7 +23,7 @@ import Documentation from "./pages/Documentation/Documentation";
 import Integrations from "./pages/Integrations/Integrations";
 import Dashboard from "./pages/Dashboard/Dashboard";
 
-
+import Business from "./pages/Business/Business";
 function App() {
 const path = window.location.pathname;
 
@@ -227,7 +227,9 @@ if (path === "/integrations") {
 if (path === "/dashboard") {
   return <Dashboard />;
 }
-
+if (path === "/business") {
+  return <Business />;
+      }
 
 
 
