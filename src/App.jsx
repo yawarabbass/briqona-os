@@ -21,7 +21,7 @@ import Industries from "./pages/Industries/Industries";
 import Terms from "./pages/Terms/Terms";
 import Documentation from "./pages/Documentation/Documentation";
 import Integrations from "./pages/Integrations/Integrations";
-
+import Dashboard from "./pages/Dashboard/Dashboard";
 
 
 function App() {
@@ -224,8 +224,15 @@ if (path === "/integrations") {
     </div>
   );
       }
+if (path === "/dashboard") {
+  return <Dashboard />;
+}
 
 
+
+
+
+  
   
   return (
     <div className="app">
