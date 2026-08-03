@@ -8,8 +8,8 @@ function Dashboard() {
     <div className="dashboard-page">
 
       {/* =========================================================
-          SECTION 1 START — SIDEBAR
-          Next section will be added AFTER this exact marker.
+          SECTION 01 — SIDEBAR
+          START
           ========================================================= */}
 
       {/* Mobile Hamburger */}
@@ -17,16 +17,18 @@ function Dashboard() {
         type="button"
         className="mobile-menu-button"
         onClick={() => setMobileSidebarOpen(true)}
-        aria-label="Open sidebar"
+        aria-label="Open navigation"
       >
         ☰
       </button>
 
       {/* Mobile Overlay */}
       {mobileSidebarOpen && (
-        <div
+        <button
+          type="button"
           className="sidebar-overlay"
           onClick={() => setMobileSidebarOpen(false)}
+          aria-label="Close navigation overlay"
         />
       )}
 
@@ -36,10 +38,10 @@ function Dashboard() {
         }`}
       >
 
-        {/* Sidebar Header */}
+        {/* Sidebar Brand */}
         <div className="sidebar-brand">
 
-          <div className="brand-logo">
+          <div className="brand-mark">
             <span>◆</span>
           </div>
 
@@ -53,9 +55,9 @@ function Dashboard() {
             type="button"
             className="mobile-close-button"
             onClick={() => setMobileSidebarOpen(false)}
-            aria-label="Close sidebar"
+            aria-label="Close navigation"
           >
-            ✕
+            ❌
           </button>
 
         </div>
@@ -66,20 +68,20 @@ function Dashboard() {
         <nav className="sidebar-navigation">
 
           <button className="sidebar-item active">
-            <span className="sidebar-icon cyan">⌂</span>
+            <span className="sidebar-icon">⌂</span>
             <span className="sidebar-label">Dashboard</span>
           </button>
 
           <button className="sidebar-item">
             <span className="sidebar-icon purple">✦</span>
             <span className="sidebar-label">AI Command Center</span>
-            <span className="new-badge">New</span>
+            <span className="sidebar-badge">New</span>
           </button>
 
           <button className="sidebar-item">
             <span className="sidebar-icon yellow">♙</span>
             <span className="sidebar-label">AI Workforce</span>
-            <span className="dropdown-arrow">⌄</span>
+            <span className="sidebar-arrow">⌄</span>
           </button>
 
           <button className="sidebar-item">
@@ -90,11 +92,11 @@ function Dashboard() {
           <button className="sidebar-item">
             <span className="sidebar-icon cyan">▦</span>
             <span className="sidebar-label">Industries Hub</span>
-            <span className="dropdown-arrow">⌄</span>
+            <span className="sidebar-arrow">⌄</span>
           </button>
 
           <button className="sidebar-item">
-            <span className="sidebar-icon teal">♟</span>
+            <span className="sidebar-icon cyan">♟</span>
             <span className="sidebar-label">CRM</span>
           </button>
 
@@ -139,12 +141,12 @@ function Dashboard() {
           </button>
 
           <button className="sidebar-item">
-            <span className="sidebar-icon red">♧</span>
+            <span className="sidebar-icon red">◉</span>
             <span className="sidebar-label">Support / Helpdesk</span>
           </button>
 
           <button className="sidebar-item">
-            <span className="sidebar-icon blue">⌘</span>
+            <span className="sidebar-icon blue">✣</span>
             <span className="sidebar-label">Integrations</span>
           </button>
 
@@ -166,9 +168,9 @@ function Dashboard() {
             ×
           </button>
 
-          <div className="plan-heading">Current Plan</div>
+          <div className="plan-title">CURRENT PLAN</div>
 
-          <div className="plan-info">
+          <div className="plan-main">
 
             <div className="plan-icon">
               ◇
@@ -186,9 +188,12 @@ function Dashboard() {
             <span>/ month</span>
           </div>
 
-          <button type="button" className="upgrade-button">
+          <button
+            type="button"
+            className="upgrade-plan-button"
+          >
             <span>Upgrade Plan</span>
-            <span className="upgrade-arrow">→</span>
+            <span>→</span>
           </button>
 
         </div>
@@ -196,12 +201,36 @@ function Dashboard() {
       </aside>
 
       {/* =========================================================
-          SECTION 1 END — SIDEBAR
+          SECTION 01 — SIDEBAR
+          END
 
-          NEXT STEP:
-          SECTION 2 — HEADER
-          will be added BELOW this line.
+          NEXT SECTION:
+          SECTION 02 — HEADER
+          YAHAN SE START HOGA
           ========================================================= */}
+
+
+      {/* =========================================================
+          SECTION 02 — HEADER
+          START
+          ========================================================= */}
+
+      <main className="dashboard-main">
+
+        <div className="section-placeholder">
+          SECTION 02 — HEADER
+          <span>Next section will be added here.</span>
+        </div>
+
+        {/* =======================================================
+            SECTION 02 — HEADER
+            END
+
+            NEXT SECTION:
+            SECTION 03 — HERO / OVERVIEW
+            ======================================================= */}
+
+      </main>
 
     </div>
   );
