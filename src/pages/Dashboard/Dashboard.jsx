@@ -3,13 +3,22 @@ import "./Dashboard.css";
 
 function Dashboard() {
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
+  const [openMenu, setOpenMenu] = useState(null);
+
+  const toggleMenu = (menu) => {
+    setOpenMenu(openMenu === menu ? null : menu);
+  };
+
+  const closeMobileSidebar = () => {
+    setMobileSidebarOpen(false);
+  };
 
   const menuItems = [
     { icon: "⌂", label: "Dashboard" },
     { icon: "✦", label: "AI Command Center", badge: "New" },
-    { icon: "♙", label: "AI Workforce", dropdown: true },
+    { icon: "♙", label: "AI Workforce", dropdown: "workforce" },
     { icon: "◎", label: "Outcome Center" },
-    { icon: "▦", label: "Industries Hub", dropdown: true },
+    { icon: "▦", label: "Industries Hub", dropdown: "industries" },
     { icon: "♟", label: "CRM" },
     { icon: "$", label: "Finance" },
     { icon: "♙", label: "HR" },
@@ -24,14 +33,29 @@ function Dashboard() {
     { icon: "⚙", label: "Settings" },
   ];
 
+  const workforceItems = [
+    "AI Employees",
+    "Teams",
+    "Workforce Tasks",
+  ];
+
+  const industryItems = [
+    "Office",
+    "HR",
+    "Hospital",
+    "Restaurant",
+    "Retail",
+    "Construction",
+  ];
+
   const quickActions = [
-    { icon: "$", label: "New Invoice" },
-    { icon: "♙", label: "New Lead" },
-    { icon: "▤", label: "New Expense" },
-    { icon: "☑", label: "New Task" },
-    { icon: "♙", label: "Add Employee" },
-    { icon: "♙", label: "Add Customer" },
-    { icon: "▦", label: "More Actions" },
+    ["$", "New Invoice"],
+    ["♙", "New Lead"],
+    ["▤", "New Expense"],
+    ["☑", "New Task"],
+    ["♙", "Add Employee"],
+    ["♙", "Add Customer"],
+    ["▦", "More Actions"],
   ];
 
   const activities = [
@@ -63,19 +87,13 @@ function Dashboard() {
     ["▣", "Reduce expenses", "Planned", "20%"],
   ];
 
-  const closeMobileSidebar = () => {
-    setMobileSidebarOpen(false);
-  };
-
   return (
     <div className="dashboard-page">
 
       {/* =====================================================
-          STEP 3 WILL GO HERE:
-          Dashboard Header / Top Navigation
+          MOBILE SIDEBAR OVERLAY
           ===================================================== */}
 
-      {/* Mobile Overlay */}
       {mobileSidebarOpen && (
         <button
           type="button"
@@ -88,109 +106,186 @@ function Dashboard() {
       {/* =====================================================
           SIDEBAR
           ===================================================== */}
+
       <aside
         className={`dashboard-sidebar ${
           mobileSidebarOpen ? "mobile-sidebar-open" : ""
         }`}
       >
-        <div className="sidebar-logo">
-          <div className="logo-mark">
-            <span>◆</span>
-          </div>
 
-          <div className="logo-text">
-            <strong>BRIQONA OS</strong>
-            <small>All-in-One Business Operating System</small>
-          </div>
+        <div className="sidebar-content">
 
-          <button
-            type="button"
-            className="mobile-sidebar-close"
-            onClick={closeMobileSidebar}
-            aria-label="Close menu"
-          >
-            ×
-          </button>
-        </div>
+          <div className="sidebar-brand">
 
-        <nav className="sidebar-navigation">
-          {menuItems.map((item, index) => (
+            <div className="sidebar-logo">
+              <span>◆</span>
+            </div>
+
+            <div className="sidebar-brand-text">
+              <strong>BRIQONA OS</strong>
+              <small>
+                All-in-One Business Operating System
+              </small>
+            </div>
+
             <button
               type="button"
-              key={item.label}
-              className={`sidebar-menu-item ${
-                index === 0 ? "active" : ""
-              }`}
+              className="mobile-sidebar-close"
               onClick={closeMobileSidebar}
+              aria-label="Close menu"
             >
-              <span className="sidebar-menu-icon">{item.icon}</span>
-
-              <span className="sidebar-menu-label">
-                {item.label}
-              </span>
-
-              {item.badge && (
-                <span className="sidebar-new-badge">
-                  {item.badge}
-                </span>
-              )}
-
-              {item.dropdown && (
-                <span className="sidebar-dropdown-icon">
-                  ˅
-                </span>
-              )}
+              ×
             </button>
-          ))}
-        </nav>
 
-        <div className="sidebar-plan-card">
-          <button
-            type="button"
-            className="plan-close"
-            aria-label="Close plan"
-          >
-            ×
-          </button>
+          </div>
 
-          <div className="plan-icon">◇</div>
+          <nav className="sidebar-nav">
 
-          <span className="plan-small-title">
-            Current Plan
-          </span>
+            {menuItems.map((item, index) => (
+              <React.Fragment key={item.label}>
 
-          <strong className="plan-name">
-            Growth
-          </strong>
+                <button
+                  type="button"
+                  className={`sidebar-item ${
+                    index === 0 ? "active" : ""
+                  }`}
+                  onClick={() => {
+                    if (item.dropdown) {
+                      toggleMenu(item.dropdown);
+                    } else {
+                      closeMobileSidebar();
+                    }
+                  }}
+                >
 
-          <span className="plan-price">
-            $15 <small>/ month</small>
-          </span>
+                  <span className="sidebar-icon">
+                    {item.icon}
+                  </span>
 
-          <button type="button" className="upgrade-plan-button">
-            Upgrade Plan
-            <span>→</span>
-          </button>
+                  <span>{item.label}</span>
+
+                  {item.badge && (
+                    <span className="sidebar-badge">
+                      {item.badge}
+                    </span>
+                  )}
+
+                  {item.dropdown && (
+                    <span
+                      className={`sidebar-arrow ${
+                        openMenu === item.dropdown
+                          ? "arrow-open"
+                          : ""
+                      }`}
+                    >
+                      ⌄
+                    </span>
+                  )}
+
+                </button>
+
+                {item.dropdown === "workforce" &&
+                  openMenu === "workforce" && (
+                    <div className="sidebar-submenu">
+
+                      {workforceItems.map((subItem) => (
+                        <button
+                          type="button"
+                          key={subItem}
+                          onClick={closeMobileSidebar}
+                        >
+                          {subItem}
+                        </button>
+                      ))}
+
+                    </div>
+                  )}
+
+                {item.dropdown === "industries" &&
+                  openMenu === "industries" && (
+                    <div className="sidebar-submenu">
+
+                      {industryItems.map((subItem) => (
+                        <button
+                          type="button"
+                          key={subItem}
+                          onClick={closeMobileSidebar}
+                        >
+                          {subItem}
+                        </button>
+                      ))}
+
+                    </div>
+                  )}
+
+              </React.Fragment>
+            ))}
+
+          </nav>
+
+          {/* Current Plan */}
+
+          <div className="sidebar-plan">
+
+            <button
+              type="button"
+              className="plan-close"
+              aria-label="Close plan"
+            >
+              ×
+            </button>
+
+            <div className="plan-icon">
+              ◇
+            </div>
+
+            <div className="plan-label">
+              Current Plan
+            </div>
+
+            <div className="plan-name">
+              Growth
+            </div>
+
+            <div className="plan-price">
+              <strong>$15</strong> / month
+            </div>
+
+            <button
+              type="button"
+              className="upgrade-button"
+            >
+              <span>Upgrade Plan</span>
+              <span>→</span>
+            </button>
+
+          </div>
+
         </div>
+
       </aside>
 
       {/* =====================================================
           MAIN AREA
           ===================================================== */}
+
       <div className="dashboard-main">
 
         {/* ===================================================
             HEADER
-            NEXT STEP WILL CONTINUE HERE:
-            Header / Search / AI Copilot / Notifications
+
+            NEXT STEP LOCATION:
+            Header ka final approved design isi section mein
+            continue hoga.
             =================================================== */}
+
         <header className="dashboard-header">
 
           <button
             type="button"
             className="mobile-menu-button"
             onClick={() =>
-              setMobileSidebarOpen(!mobileSidebarOpen)
+              setMobileSidebarOpen(true)
             }
             aria-label="Open menu"
           >
@@ -200,7 +295,10 @@ function Dashboard() {
           </button>
 
           <div className="dashboard-search">
-            <span className="search-icon">⌕</span>
+
+            <span className="search-icon">
+              ⌕
+            </span>
 
             <input
               type="text"
@@ -210,20 +308,26 @@ function Dashboard() {
             <span className="search-shortcut">
               ⌘ K
             </span>
+
           </div>
 
-          <button type="button" className="header-ai-button">
-            ✨ AI Copilot
+          <button
+            type="button"
+            className="header-ai-button"
+          >
+            ✦ AI Copilot
           </button>
 
-          <button type="button" className="header-mission-button">
+          <button
+            type="button"
+            className="header-mission-button"
+          >
             ✦ AI Mission Center
           </button>
 
           <button
             type="button"
-            className="header-icon-button notification-button"
-            aria-label="Notifications"
+            className="header-icon-button"
           >
             ♧
             <span className="notification-count red">
@@ -234,7 +338,6 @@ function Dashboard() {
           <button
             type="button"
             className="header-icon-button"
-            aria-label="Messages"
           >
             ▢
             <span className="notification-count blue">
@@ -242,7 +345,11 @@ function Dashboard() {
             </span>
           </button>
 
-          <button type="button" className="profile-button">
+          <button
+            type="button"
+            className="profile-button"
+          >
+
             <span className="profile-details">
               <strong>Ali Raza</strong>
               <small>Owner</small>
@@ -255,18 +362,23 @@ function Dashboard() {
             <span className="profile-arrow">
               ˅
             </span>
+
           </button>
+
         </header>
 
         {/* ===================================================
-            DASHBOARD CONTENT
+            MAIN CONTENT
             =================================================== */}
+
         <main className="dashboard-content">
 
-          {/* Hero */}
+          {/* HERO */}
+
           <section className="dashboard-hero">
 
             <div className="hero-heading">
+
               <h1>
                 Good morning, Ali Raza! 👋
               </h1>
@@ -274,6 +386,7 @@ function Dashboard() {
               <p>
                 Here's what's happening with your business today.
               </p>
+
             </div>
 
             <div className="hero-wave">
@@ -284,7 +397,10 @@ function Dashboard() {
             </div>
 
             <div className="business-pulse">
-              <span className="pulse-star">✦</span>
+
+              <span className="pulse-star">
+                ✦
+              </span>
 
               <span className="pulse-title">
                 AI Business Pulse
@@ -297,11 +413,15 @@ function Dashboard() {
               <strong>
                 87 <small>/100</small>
               </strong>
+
             </div>
+
           </section>
 
-          {/* Filters */}
+          {/* FILTERS */}
+
           <div className="dashboard-filters">
+
             <button type="button">
               ▣ &nbsp; This Month &nbsp;⌄
             </button>
@@ -309,9 +429,11 @@ function Dashboard() {
             <button type="button">
               ✣ &nbsp; Customize
             </button>
+
           </div>
 
-          {/* Stats */}
+          {/* STATS */}
+
           <section className="stats-grid">
 
             <div className="stat-card revenue">
@@ -352,7 +474,8 @@ function Dashboard() {
 
           </section>
 
-          {/* Quick Actions */}
+          {/* QUICK ACTIONS */}
+
           <section className="dashboard-panel quick-actions-panel">
 
             <div className="panel-title">
@@ -360,237 +483,344 @@ function Dashboard() {
             </div>
 
             <div className="quick-actions-grid">
-              {quickActions.map((action) => (
+
+              {quickActions.map(([icon, label]) => (
                 <button
                   type="button"
                   className="quick-action"
-                  key={action.label}
+                  key={label}
                 >
+
                   <span className="quick-action-icon">
-                    {action.icon}
+                    {icon}
                   </span>
 
                   <span>
-                    + {action.label}
+                    + {label}
                   </span>
+
                 </button>
               ))}
+
             </div>
 
           </section>
 
-          {/* AI Area */}
+          {/* AI SECTION */}
+
           <section className="ai-grid">
 
-            {/* AI Command Center */}
             <div className="dashboard-panel ai-command-panel">
 
               <div className="panel-heading">
+
                 <div>
-                  <h2>✦ &nbsp;AI Command Center</h2>
+                  <h2>
+                    ✦ &nbsp;AI Command Center
+                  </h2>
+
                   <p>
                     Ask anything. Briqona AI is ready to help.
                   </p>
                 </div>
+
               </div>
 
               <div className="ai-command-input">
+
                 <input
                   type="text"
                   placeholder="e.g. Show me sales trend, top customers, overdue invoices..."
                 />
 
-                <button type="button" aria-label="Voice">
+                <button type="button">
                   ♫
                 </button>
 
-                <button type="button" aria-label="Send">
+                <button type="button">
                   ➤
                 </button>
+
               </div>
 
               <div className="ai-shortcuts">
-                <button type="button">Sales Summary</button>
-                <button type="button">Overdue Invoices</button>
-                <button type="button">Cash Flow</button>
-                <button type="button">Inventory Alert</button>
-                <button type="button">HR Report</button>
+
+                <button type="button">
+                  Sales Summary
+                </button>
+
+                <button type="button">
+                  Overdue Invoices
+                </button>
+
+                <button type="button">
+                  Cash Flow
+                </button>
+
+                <button type="button">
+                  Inventory Alert
+                </button>
+
+                <button type="button">
+                  HR Report
+                </button>
+
               </div>
 
               <div className="ai-glow-circle"></div>
+
             </div>
 
-            {/* AI Missions */}
             <div className="dashboard-panel ai-missions-panel">
 
               <div className="panel-heading-row">
-                <h2>✦ AI Missions</h2>
+
+                <h2>
+                  ✦ AI Missions
+                </h2>
 
                 <span className="beta-badge">
                   Beta
                 </span>
 
-                <button type="button" className="view-all">
+                <button
+                  type="button"
+                  className="view-all"
+                >
                   View All
                 </button>
+
               </div>
 
               <div className="missions-list">
-                {missions.map((mission, index) => (
-                  <div
-                    className="mission-item"
-                    key={mission[1]}
-                  >
-                    <div className={`mission-icon mission-${index}`}>
-                      {mission[0]}
-                    </div>
 
-                    <div className="mission-info">
-                      <div className="mission-top">
-                        <span>{mission[1]}</span>
-                        <small>{mission[2]}</small>
+                {missions.map(
+                  ([icon, title, status, progress], index) => (
+                    <div
+                      className="mission-item"
+                      key={title}
+                    >
+
+                      <div
+                        className={`mission-icon mission-${index}`}
+                      >
+                        {icon}
                       </div>
 
-                      <div className="mission-progress-row">
-                        <div className="mission-progress">
-                          <span
-                            style={{
-                              width: mission[3],
-                            }}
-                          ></span>
+                      <div className="mission-info">
+
+                        <div className="mission-top">
+                          <span>{title}</span>
+                          <small>{status}</small>
                         </div>
 
-                        <strong>{mission[3]}</strong>
+                        <div className="mission-progress-row">
+
+                          <div className="mission-progress">
+                            <span
+                              style={{
+                                width: progress,
+                              }}
+                            ></span>
+                          </div>
+
+                          <strong>
+                            {progress}
+                          </strong>
+
+                        </div>
+
                       </div>
+
                     </div>
-                  </div>
-                ))}
+                  )
+                )}
+
               </div>
 
             </div>
 
           </section>
 
-          {/* Lower Grid */}
+          {/* LOWER GRID */}
+
           <section className="lower-dashboard-grid">
 
             {/* Recent Activities */}
+
             <div className="dashboard-panel list-panel">
 
               <div className="panel-heading-row">
-                <h2>Recent Activities</h2>
-                <button type="button" className="view-all">
+
+                <h2>
+                  Recent Activities
+                </h2>
+
+                <button
+                  type="button"
+                  className="view-all"
+                >
                   View All
                 </button>
+
               </div>
 
               <div className="activity-list">
-                {activities.map((activity) => (
-                  <div className="activity-item" key={activity[1]}>
-                    <span className="activity-icon">
-                      {activity[0]}
-                    </span>
 
-                    <span className="activity-text">
-                      {activity[1]}
-                    </span>
+                {activities.map(
+                  ([icon, text, time]) => (
+                    <div
+                      className="activity-item"
+                      key={text}
+                    >
 
-                    <small>{activity[2]}</small>
-                  </div>
-                ))}
+                      <span className="activity-icon">
+                        {icon}
+                      </span>
+
+                      <span className="activity-text">
+                        {text}
+                      </span>
+
+                      <small>
+                        {time}
+                      </small>
+
+                    </div>
+                  )
+                )}
+
               </div>
 
             </div>
 
             {/* Notifications */}
+
             <div className="dashboard-panel list-panel">
 
               <div className="panel-heading-row">
-                <h2>Notifications</h2>
-                <button type="button" className="view-all">
+
+                <h2>
+                  Notifications
+                </h2>
+
+                <button
+                  type="button"
+                  className="view-all"
+                >
                   View All
                 </button>
+
               </div>
 
               <div className="notification-list">
-                {notifications.map((notification) => (
-                  <div
-                    className="notification-item"
-                    key={notification[1]}
-                  >
-                    <span className="notification-icon">
-                      {notification[0]}
-                    </span>
 
-                    <div>
-                      <span>{notification[1]}</span>
-                      <small>{notification[2]}</small>
+                {notifications.map(
+                  ([icon, text, time]) => (
+                    <div
+                      className="notification-item"
+                      key={text}
+                    >
+
+                      <span className="notification-icon">
+                        {icon}
+                      </span>
+
+                      <div>
+                        <span>{text}</span>
+                        <small>{time}</small>
+                      </div>
+
                     </div>
-                  </div>
-                ))}
+                  )
+                )}
+
               </div>
 
             </div>
 
-            {/* Top Customers */}
+            {/* Customers */}
+
             <div className="dashboard-panel list-panel">
 
               <div className="panel-heading-row">
-                <h2>Top Customers</h2>
-                <button type="button" className="view-all">
+
+                <h2>
+                  Top Customers
+                </h2>
+
+                <button
+                  type="button"
+                  className="view-all"
+                >
                   View All
                 </button>
+
               </div>
 
               <div className="customer-list">
-                {customers.map((customer) => (
-                  <div
-                    className="customer-item"
-                    key={customer[1]}
-                  >
-                    <span className="customer-avatar">
-                      {customer[0]}
-                    </span>
 
-                    <span className="customer-name">
-                      {customer[1]}
-                    </span>
+                {customers.map(
+                  ([initial, name, amount]) => (
+                    <div
+                      className="customer-item"
+                      key={name}
+                    >
 
-                    <strong>
-                      {customer[2]}
-                    </strong>
-                  </div>
-                ))}
+                      <span className="customer-avatar">
+                        {initial}
+                      </span>
+
+                      <span className="customer-name">
+                        {name}
+                      </span>
+
+                      <strong>
+                        {amount}
+                      </strong>
+
+                    </div>
+                  )
+                )}
+
               </div>
 
             </div>
 
             {/* AI Insights */}
+
             <div className="dashboard-panel insights-panel">
 
               <div className="panel-heading-row">
-                <h2>✦ AI Insights</h2>
+
+                <h2>
+                  ✦ AI Insights
+                </h2>
 
                 <span className="new-badge">
                   New
                 </span>
+
               </div>
 
               <div className="insight-content">
+
                 <p>
                   Your sales are up{" "}
-                  <strong>12.6%</strong> this month.
+                  <strong>12.6%</strong>{" "}
+                  this month.
                 </p>
 
                 <p>
                   Focus on recovering{" "}
-                  <strong>$14,560</strong> in overdue
-                  invoices to improve cash flow.
+                  <strong>$14,560</strong>{" "}
+                  in overdue invoices to improve cash flow.
                 </p>
 
                 <button type="button">
                   View All Insights →
                 </button>
+
               </div>
 
               <div className="insight-glow"></div>
@@ -599,109 +829,121 @@ function Dashboard() {
 
           </section>
 
-          {/* =================================================
-              RIGHT SIDE / BOTTOM CARDS
-              ================================================= */}
+          {/* BOTTOM */}
+
           <section className="bottom-dashboard-grid">
 
-            {/* Package & Access */}
+            {/* Package */}
+
             <div className="dashboard-panel package-panel">
 
               <div className="panel-heading-row">
-                <h2>Package & Access</h2>
+
+                <h2>
+                  Package & Access
+                </h2>
+
               </div>
 
               <div className="package-name">
-                <span className="package-icon">◇</span>
 
-                <strong>Growth Plan</strong>
+                <span className="package-icon">
+                  ◇
+                </span>
+
+                <strong>
+                  Growth Plan
+                </strong>
 
                 <span>
                   <b>$15</b> / month
                 </span>
+
               </div>
 
               <div className="access-row">
-                <span>Access</span>
-                <strong>38 / 60 Features</strong>
+
+                <span>
+                  Access
+                </span>
+
+                <strong>
+                  38 / 60 Features
+                </strong>
+
               </div>
 
-              <button type="button" className="pro-button">
+              <button
+                type="button"
+                className="pro-button"
+              >
                 🚀 Upgrade to Pro
               </button>
 
-              <button type="button" className="features-button">
+              <button
+                type="button"
+                className="features-button"
+              >
                 View All Features →
               </button>
 
             </div>
 
             {/* Industries */}
+
             <div className="dashboard-panel industries-panel">
 
               <div className="panel-heading-row">
-                <h2>Industries Hub</h2>
 
-                <button type="button" className="view-all">
+                <h2>
+                  Industries Hub
+                </h2>
+
+                <button
+                  type="button"
+                  className="view-all"
+                >
                   Manage
                 </button>
+
               </div>
 
               <div className="industry-grid">
-                <button type="button" className="industry-active">
-                  ▥
-                  <span>Office</span>
-                </button>
 
-                <button type="button">
-                  ♙
-                  <span>HR</span>
-                </button>
+                {[
+                  ["▥", "Office"],
+                  ["♙", "HR"],
+                  ["▥", "Hospital"],
+                  ["♧", "Restaurant"],
+                  ["🛒", "Retail"],
+                  ["⚖", "Construction"],
+                  ["⌂", "Real Estate"],
+                  ["🎓", "Education"],
+                  ["▥", "Manufacturing"],
+                  ["♧", "Professional Services"],
+                  ["•••", "More"],
+                ].map(([icon, label], index) => (
+                  <button
+                    type="button"
+                    key={label}
+                    className={
+                      index === 0
+                        ? "industry-active"
+                        : ""
+                    }
+                  >
 
-                <button type="button">
-                  ▥
-                  <span>Hospital</span>
-                </button>
+                    <span>
+                      {icon}
+                    </span>
 
-                <button type="button">
-                  ♧
-                  <span>Restaurant</span>
-                </button>
+                    <small>
+                      {label}
+                    </small>
 
-                <button type="button">
-                  🛒
-                  <span>Retail</span>
-                </button>
+                  </button>
+                ))}
 
-                <button type="button">
-                  ⚖
-                  <span>Construction</span>
-                </button>
-
-                <button type="button">
-                  ⌂
-                  <span>Real Estate</span>
-                </button>
-
-                <button type="button">
-                  🎓
-                  <span>Education</span>
-                </button>
-
-                <button type="button">
-                  ▥
-                  <span>Manufacturing</span>
-                </button>
-
-                <button type="button">
-                  ♧
-                  <span>Professional Services</span>
-                </button>
-
-                <button type="button">
-                  •••
-                  <span>More</span>
-                </button>
               </div>
 
             </div>
@@ -712,8 +954,8 @@ function Dashboard() {
 
         {/* ===================================================
             FOOTER
-            NEXT STEP AFTER DASHBOARD DESIGN WILL GO HERE
             =================================================== */}
+
         <footer className="dashboard-footer">
 
           <span>
@@ -725,6 +967,7 @@ function Dashboard() {
           </span>
 
           <div className="footer-links">
+
             <button type="button">
               Privacy Policy
             </button>
@@ -736,6 +979,7 @@ function Dashboard() {
             <button type="button">
               Support
             </button>
+
           </div>
 
         </footer>
