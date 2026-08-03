@@ -10,24 +10,19 @@
 |
 */
 
+import Header from "../components/Header/Header";
+import Sidebar from "../components/Sidebar/Sidebar";
+
 export default function MasterLayout({ children }) {
   return (
     <div className="master-layout">
 
-      {/* Sidebar */}
-      <aside className="master-sidebar">
+      <Sidebar />
 
-      </aside>
-
-      {/* Main Area */}
       <div className="master-main">
 
-        {/* Header */}
-        <header className="master-header">
+        <Header />
 
-        </header>
-
-        {/* Page Content */}
         <main className="master-content">
           {children}
         </main>
