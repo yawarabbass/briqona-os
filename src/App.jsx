@@ -1,11 +1,10 @@
 import Header from "./components/Header/Header";
-import Home from "./pages/Home/Home";
 
 function App() {
   return (
     <div className="app">
       <Header />
-      <Home />
+      <h1>Briqona Header Test</h1>
     </div>
   );
 }
