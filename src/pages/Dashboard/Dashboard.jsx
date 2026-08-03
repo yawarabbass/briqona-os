@@ -2,12 +2,34 @@ import React from "react";
 import "./Dashboard.css";
 
 function Dashboard() {
+    const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState(null);
+
+  const toggleDropdown = (name) => {
+    setOpenDropdown(openDropdown === name ? null : name);
+  };
   return (
     <div className="dashboard-page">
 
       {/* Sidebar */}
-      <aside className="dashboard-sidebar">
+      <aside
+  {mobileSidebarOpen && (
+  <button
+    type="button"
+    className="mobile-sidebar-overlay"
+    onClick={() => setMobileSidebarOpen(false)}
+    aria-label="Close sidebar"
+  />
+)}
         <div className="sidebar-content">
+          <button
+  type="button"
+  className="mobile-sidebar-close"
+  onClick={() => setMobileSidebarOpen(false)}
+  aria-label="Close menu"
+>
+  ×
+</button>
           <div className="sidebar-brand">
   <div className="sidebar-logo">
     <span>◆</span>
@@ -31,23 +53,63 @@ function Dashboard() {
     <span>AI Command Center</span>
     <span className="sidebar-badge">New</span>
   </button>
+    <button
+  type="button"
+  className="sidebar-item"
+  onClick={() => toggleDropdown("workforce")}
+>
+  <span className="sidebar-icon yellow">♙</span>
+  <span>AI Workforce</span>
 
-  <button className="sidebar-item">
-    <span className="sidebar-icon yellow">♙</span>
-    <span>AI Workforce</span>
-    <span className="sidebar-arrow">⌄</span>
-  </button>
+  <span
+    className={`sidebar-arrow ${
+      openDropdown === "workforce" ? "arrow-open" : ""
+    }`}
+  >
+    ⌄
+  </span>
+</button>
+
+{openDropdown === "workforce" && (
+  <div className="sidebar-submenu">
+    <button type="button">AI Employees</button>
+    <button type="button">Teams</button>
+    <button type="button">Workforce Tasks</button>
+  </div>
+)}
 
   <button className="sidebar-item">
     <span className="sidebar-icon red">◎</span>
     <span>Outcome Center</span>
   </button>
+  
+  <button
+  type="button"
+  className="sidebar-item"
+  onClick={() => toggleDropdown("industries")}
+>
+  <span className="sidebar-icon cyan">▦</span>
+  <span>Industries Hub</span>
 
-  <button className="sidebar-item">
-    <span className="sidebar-icon cyan">▦</span>
-    <span>Industries Hub</span>
-    <span className="sidebar-arrow">⌄</span>
-  </button>
+  <span
+    className={`sidebar-arrow ${
+      openDropdown === "industries" ? "arrow-open" : ""
+    }`}
+  >
+    ⌄
+  </span>
+</button>
+
+{openDropdown === "industries" && (
+  <div className="sidebar-submenu">
+    <button type="button">Office</button>
+    <button type="button">HR</button>
+    <button type="button">Hospital</button>
+    <button type="button">Restaurant</button>
+    <button type="button">Retail</button>
+    <button type="button">Construction</button>
+  </div>
+)}
 
   <button className="sidebar-item">
     <span className="sidebar-icon cyan">♟</span>
@@ -141,8 +203,21 @@ function Dashboard() {
 
         {/* Header */}
         <header className="dashboard-header">
-          {/* Header will be built in Step 3 */}
-        </header>
+
+  <button
+    type="button"
+    className="mobile-menu-button"
+    onClick={() => setMobileSidebarOpen(true)}
+    aria-label="Open menu"
+  >
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  {/* Header will be built in Step 3 */}
+
+</header>
 
         {/* Dashboard Content */}
         <main className="dashboard-content">
