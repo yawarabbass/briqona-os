@@ -1,6 +1,5 @@
 /* =========================================================
-   BRIQONA OS DASHBOARD
-   SECTION 01 — SIDEBAR CSS START
+   SECTION 01 — SIDEBAR START
    ========================================================= */
 
 * {
@@ -8,84 +7,83 @@
 }
 
 .dashboard-page {
-  width: 100%;
   min-height: 100vh;
-  background: #020a15;
-  color: #ffffff;
+  width: 100%;
+  background:
+    radial-gradient(
+      circle at 70% 10%,
+      rgba(0, 89, 170, 0.08),
+      transparent 35%
+    ),
+    #020b16;
+  color: #f4f8ff;
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  display: flex;
   position: relative;
   overflow-x: hidden;
 }
-
 
 /* =========================================================
    SIDEBAR
    ========================================================= */
 
 .dashboard-sidebar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-
-  width: 270px;
+  width: 272px;
+  min-width: 272px;
   height: 100vh;
+  min-height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1000;
 
-  background: #04101e;
-  border-right: 1px solid rgba(67, 118, 153, 0.22);
+  background:
+    linear-gradient(
+      180deg,
+      rgba(4, 18, 34, 0.98) 0%,
+      rgba(2, 13, 25, 0.99) 100%
+    );
+
+  border-right: 1px solid rgba(70, 143, 197, 0.20);
 
   display: flex;
   flex-direction: column;
 
-  z-index: 1000;
+  padding: 18px 10px 16px;
 
-  overflow-y: auto;
-  overflow-x: hidden;
-
-  scrollbar-width: thin;
-  scrollbar-color: rgba(32, 191, 209, 0.25) transparent;
+  box-shadow:
+    8px 0 35px rgba(0, 0, 0, 0.20);
 }
-
-.dashboard-sidebar::-webkit-scrollbar {
-  width: 4px;
-}
-
-.dashboard-sidebar::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.dashboard-sidebar::-webkit-scrollbar-thumb {
-  background: rgba(32, 191, 209, 0.25);
-  border-radius: 20px;
-}
-
 
 /* =========================================================
    BRAND
    ========================================================= */
 
 .sidebar-brand {
-  width: 100%;
-  min-height: 86px;
-
-  padding: 18px 17px;
-
+  height: 72px;
   display: flex;
   align-items: center;
+  gap: 12px;
 
-  gap: 11px;
+  padding: 4px 10px 16px;
 
-  position: relative;
+  border-bottom: 1px solid rgba(71, 133, 175, 0.12);
 
-  border-bottom: 1px solid rgba(69, 119, 150, 0.10);
+  flex-shrink: 0;
 }
 
-.sidebar-brand-mark {
-  width: 42px;
-  height: 42px;
+.brand-logo {
+  width: 48px;
+  height: 48px;
 
-  flex: 0 0 42px;
+  flex-shrink: 0;
 
-  border-radius: 11px;
+  border-radius: 12px;
 
   display: flex;
   align-items: center;
@@ -93,252 +91,220 @@
 
   background:
     linear-gradient(
-      145deg,
-      #15e0d2 0%,
-      #168bdc 55%,
-      #4c51ef 100%
+      135deg,
+      #0be0ca 0%,
+      #118eff 100%
     );
 
   box-shadow:
-    0 0 22px rgba(14, 206, 218, 0.20);
+    0 0 18px rgba(0, 209, 255, 0.25);
+
+  transform: rotate(0deg);
 }
 
-.brand-mark-shape {
-  color: #ffffff;
-
-  font-size: 22px;
-  font-weight: 800;
-
-  line-height: 1;
-}
-
-.sidebar-brand-copy {
-  min-width: 0;
+.brand-logo-inner {
+  width: 25px;
+  height: 25px;
 
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
-  gap: 4px;
+  color: white;
+
+  font-size: 27px;
+  line-height: 1;
+
+  transform: rotate(45deg);
 }
 
-.sidebar-brand-name {
-  color: #f5fbff;
-
-  font-size: 17px;
-  font-weight: 800;
-
-  letter-spacing: 0.4px;
+.brand-text {
+  min-width: 0;
 }
 
-.sidebar-brand-subtitle {
-  color: #687d92;
+.brand-name {
+  color: #ffffff;
 
-  font-size: 6.5px;
-  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.1;
 
-  letter-spacing: 0.45px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
 
   white-space: nowrap;
 }
 
+.brand-tagline {
+  margin-top: 4px;
 
-/* =========================================================
-   CLOSE BUTTON
-   ========================================================= */
+  color: rgba(191, 210, 229, 0.55);
 
-.mobile-sidebar-close {
-  display: none;
+  font-size: 7px;
+  line-height: 1.2;
 
-  margin-left: auto;
+  letter-spacing: 0.35px;
 
-  width: 34px;
-  height: 34px;
-
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 8px;
-
-  background: rgba(255, 255, 255, 0.04);
-
-  color: #ffffff;
-
-  align-items: center;
-  justify-content: center;
-
-  cursor: pointer;
+  white-space: nowrap;
 }
-
-.mobile-sidebar-close span {
-  font-size: 25px;
-  line-height: 1;
-}
-
 
 /* =========================================================
    NAVIGATION
    ========================================================= */
 
 .sidebar-navigation {
-  width: 100%;
+  flex: 1;
 
-  padding: 10px 9px 12px;
+  overflow-y: auto;
+  overflow-x: hidden;
 
-  display: flex;
-  flex-direction: column;
+  padding: 14px 0 14px;
 
-  gap: 3px;
+  scrollbar-width: thin;
+  scrollbar-color:
+    rgba(47, 183, 230, 0.20)
+    transparent;
 }
 
-.sidebar-nav-item {
-  width: 100%;
-  min-height: 41px;
+.sidebar-navigation::-webkit-scrollbar {
+  width: 3px;
+}
 
-  padding: 0 11px;
+.sidebar-navigation::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidebar-navigation::-webkit-scrollbar-thumb {
+  background: rgba(47, 183, 230, 0.20);
+  border-radius: 10px;
+}
+
+/* =========================================================
+   MENU ITEM
+   ========================================================= */
+
+.sidebar-item {
+  width: 100%;
+  min-height: 42px;
+
+  margin: 2px 0;
+
+  padding: 0 12px;
 
   border: 1px solid transparent;
   border-radius: 7px;
 
   background: transparent;
 
-  color: #8294a9;
+  color: rgba(221, 232, 245, 0.82);
 
   display: flex;
   align-items: center;
-
-  gap: 11px;
-
-  cursor: pointer;
+  gap: 13px;
 
   font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
 
   text-align: left;
 
+  cursor: pointer;
+
   transition:
     background 0.18s ease,
+    border-color 0.18s ease,
     color 0.18s ease,
-    border-color 0.18s ease;
+    transform 0.18s ease;
 }
 
-.sidebar-nav-item:hover {
-  color: #eafaff;
+.sidebar-item:hover {
+  background: rgba(15, 111, 157, 0.10);
 
-  background: rgba(20, 117, 145, 0.10);
+  border-color:
+    rgba(44, 189, 223, 0.10);
 
-  border-color: rgba(32, 182, 205, 0.12);
+  color: #ffffff;
 }
 
-.sidebar-nav-active {
-  color: #ffffff !important;
-
+.sidebar-item.active {
   background:
     linear-gradient(
       90deg,
-      rgba(10, 194, 178, 0.26),
-      rgba(11, 103, 133, 0.10)
-    ) !important;
+      rgba(0, 207, 191, 0.25),
+      rgba(0, 114, 161, 0.14)
+    );
 
-  border-color: rgba(17, 209, 197, 0.24) !important;
+  border-color:
+    rgba(19, 221, 206, 0.42);
+
+  color: #ffffff;
 
   box-shadow:
-    inset 3px 0 0 #18d8c5;
+    inset 3px 0 0 #14d6c5,
+    0 0 20px rgba(0, 212, 199, 0.05);
 }
 
+.sidebar-item:active {
+  transform: scale(0.985);
+}
 
 /* =========================================================
    ICON
    ========================================================= */
 
-.sidebar-nav-icon {
-  width: 21px;
-  min-width: 21px;
-  height: 21px;
+.sidebar-icon {
+  width: 20px;
+  min-width: 20px;
 
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
 
-  color: #19d5d5;
+  color: #1ed7cc;
 
   font-size: 16px;
+  font-weight: 700;
 
-  line-height: 1;
+  text-align: center;
 }
 
-.sidebar-nav-item:nth-child(2) .sidebar-nav-icon {
-  color: #c65cff;
+.sidebar-icon.purple {
+  color: #c75cff;
 }
 
-.sidebar-nav-item:nth-child(3) .sidebar-nav-icon {
-  color: #d6ee35;
+.sidebar-icon.yellow {
+  color: #d6e63e;
 }
 
-.sidebar-nav-item:nth-child(4) .sidebar-nav-icon {
-  color: #ff4660;
+.sidebar-icon.red {
+  color: #ff4e73;
 }
 
-.sidebar-nav-item:nth-child(5) .sidebar-nav-icon {
-  color: #14d9d1;
+.sidebar-icon.cyan {
+  color: #11d9e8;
 }
 
-.sidebar-nav-item:nth-child(6) .sidebar-nav-icon {
-  color: #24dfbd;
+.sidebar-icon.green {
+  color: #22db9a;
 }
 
-.sidebar-nav-item:nth-child(7) .sidebar-nav-icon {
-  color: #27d99f;
+.sidebar-icon.blue {
+  color: #20baff;
 }
 
-.sidebar-nav-item:nth-child(8) .sidebar-nav-icon {
-  color: #23bde6;
+.sidebar-icon.orange {
+  color: #ffad2f;
 }
 
-.sidebar-nav-item:nth-child(9) .sidebar-nav-icon {
-  color: #ffad32;
+.sidebar-icon.gray {
+  color: #aebdca;
 }
-
-.sidebar-nav-item:nth-child(10) .sidebar-nav-icon {
-  color: #9b5eff;
-}
-
-.sidebar-nav-item:nth-child(11) .sidebar-nav-icon {
-  color: #1fd1de;
-}
-
-.sidebar-nav-item:nth-child(12) .sidebar-nav-icon {
-  color: #ffc329;
-}
-
-.sidebar-nav-item:nth-child(13) .sidebar-nav-icon {
-  color: #65e640;
-}
-
-.sidebar-nav-item:nth-child(14) .sidebar-nav-icon {
-  color: #22d7d8;
-}
-
-.sidebar-nav-item:nth-child(15) .sidebar-nav-icon {
-  color: #ff436b;
-}
-
-.sidebar-nav-item:nth-child(16) .sidebar-nav-icon {
-  color: #1ac9e6;
-}
-
-.sidebar-nav-item:nth-child(17) .sidebar-nav-icon {
-  color: #a8b7c7;
-}
-
 
 /* =========================================================
    LABEL
    ========================================================= */
 
-.sidebar-nav-label {
+.sidebar-label {
   flex: 1;
-
-  min-width: 0;
-
-  font-size: 12px;
-  font-weight: 500;
 
   white-space: nowrap;
 
@@ -346,125 +312,124 @@
   text-overflow: ellipsis;
 }
 
-
 /* =========================================================
    NEW BADGE
    ========================================================= */
 
-.sidebar-nav-badge {
-  padding: 3px 6px;
+.sidebar-new {
+  padding: 4px 7px;
 
-  border-radius: 4px;
+  border-radius: 5px;
 
-  background: rgba(17, 199, 207, 0.13);
+  background:
+    rgba(8, 207, 211, 0.13);
 
-  color: #28ddd9;
+  color: #23e0dc;
 
-  font-size: 7px;
+  font-size: 10px;
   font-weight: 700;
 
-  letter-spacing: 0.3px;
+  line-height: 1;
 }
-
 
 /* =========================================================
-   CHEVRON
+   DROPDOWN ARROW
    ========================================================= */
 
-.sidebar-nav-chevron {
-  width: 15px;
-  min-width: 15px;
+.sidebar-arrow {
+  width: 20px;
 
-  color: #73879c;
+  color: rgba(213, 230, 242, 0.70);
 
-  font-size: 20px;
+  font-size: 13px;
 
-  line-height: 1;
+  text-align: center;
 
-  transform: rotate(0deg);
-
-  transition: transform 0.18s ease;
+  transition: transform 0.2s ease;
 }
 
-.sidebar-nav-chevron.chevron-open {
-  transform: rotate(90deg);
+.sidebar-arrow.arrow-open {
+  transform: rotate(180deg);
 }
-
 
 /* =========================================================
    SUBMENU
    ========================================================= */
 
 .sidebar-submenu {
-  margin: 0 8px 4px 32px;
-
-  padding: 3px 0 3px 9px;
-
-  border-left: 1px solid rgba(29, 190, 204, 0.20);
+  margin: 1px 10px 6px 45px;
 
   display: flex;
   flex-direction: column;
 
-  gap: 2px;
+  border-left: 1px solid rgba(23, 211, 207, 0.20);
 }
 
 .sidebar-submenu button {
-  width: 100%;
-  min-height: 30px;
+  min-height: 31px;
+
+  padding: 5px 10px;
 
   border: 0;
-  border-radius: 5px;
-
-  padding: 0 8px;
 
   background: transparent;
 
-  color: #71859a;
+  color: rgba(190, 209, 226, 0.62);
 
   font-family: inherit;
-
-  font-size: 10px;
+  font-size: 12px;
 
   text-align: left;
 
   cursor: pointer;
+
+  border-radius: 4px;
+
+  transition:
+    color 0.18s ease,
+    background 0.18s ease;
 }
 
 .sidebar-submenu button:hover {
   color: #ffffff;
 
-  background: rgba(17, 177, 198, 0.09);
+  background:
+    rgba(22, 203, 198, 0.07);
 }
 
-
 /* =========================================================
-   PLAN CARD
+   CURRENT PLAN CARD
    ========================================================= */
 
-.sidebar-plan-card {
-  position: relative;
+.current-plan-card {
+  width: 100%;
 
-  margin: auto 12px 15px;
+  flex-shrink: 0;
+
+  position: relative;
 
   padding: 15px;
 
-  border: 1px solid rgba(44, 112, 151, 0.28);
-
   border-radius: 9px;
+
+  border: 1px solid rgba(53, 128, 175, 0.24);
 
   background:
     linear-gradient(
       145deg,
-      rgba(7, 36, 62, 0.95),
-      rgba(3, 18, 34, 0.98)
+      rgba(7, 32, 55, 0.96),
+      rgba(3, 19, 35, 0.98)
     );
+
+  box-shadow:
+    0 12px 35px rgba(0, 0, 0, 0.25);
 }
 
-.sidebar-plan-close {
+.plan-close {
   position: absolute;
 
-  top: 8px;
-  right: 9px;
+  top: 9px;
+  right: 10px;
 
   width: 22px;
   height: 22px;
@@ -473,149 +438,182 @@
 
   background: transparent;
 
-  color: #75889d;
+  color: rgba(210, 225, 240, 0.72);
 
-  font-size: 18px;
+  font-size: 17px;
 
   cursor: pointer;
 }
 
-.sidebar-plan-label {
-  color: #6e849a;
+.plan-small-title {
+  color: rgba(171, 196, 218, 0.62);
 
   font-size: 8px;
   font-weight: 700;
 
-  letter-spacing: 0.7px;
+  letter-spacing: 0.8px;
 
-  margin-bottom: 5px;
+  margin-bottom: 8px;
 }
 
-.sidebar-plan-title {
+.plan-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.plan-diamond {
+  width: 34px;
+  height: 34px;
+
+  border-radius: 9px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #25e4d5;
+
+  background:
+    rgba(21, 219, 205, 0.08);
+
+  border: 1px solid rgba(34, 211, 205, 0.16);
+
+  font-size: 23px;
+}
+
+.plan-label {
+  color: rgba(192, 211, 229, 0.70);
+
+  font-size: 10px;
+}
+
+.plan-name {
+  margin-top: 2px;
+
   color: #ffffff;
 
-  font-size: 17px;
+  font-size: 18px;
   font-weight: 700;
-
-  margin-bottom: 3px;
 }
 
-.sidebar-plan-price {
+.plan-price {
+  margin-top: 10px;
+
   display: flex;
   align-items: baseline;
-
   gap: 4px;
-
-  color: #8295aa;
-
-  font-size: 9px;
-
-  margin-bottom: 13px;
 }
 
-.sidebar-plan-price strong {
-  color: #19d8cf;
+.plan-price strong {
+  color: #20d9d0;
 
   font-size: 14px;
 }
 
-.sidebar-plan-progress {
-  width: 100%;
-  height: 4px;
+.plan-price span {
+  color: rgba(185, 208, 227, 0.65);
 
-  border-radius: 20px;
-
-  background: rgba(255, 255, 255, 0.07);
-
-  overflow: hidden;
-
-  margin-bottom: 7px;
+  font-size: 10px;
 }
 
-.sidebar-plan-progress span {
-  display: block;
+.upgrade-plan-button {
+  width: 100%;
 
-  width: 63%;
+  margin-top: 12px;
 
-  height: 100%;
+  min-height: 38px;
 
-  border-radius: inherit;
+  border: 0;
+  border-radius: 5px;
 
   background:
     linear-gradient(
       90deg,
-      #17d9c6,
-      #168edb
-    );
-}
-
-.sidebar-plan-access {
-  display: flex;
-  justify-content: space-between;
-
-  color: #71869c;
-
-  font-size: 9px;
-
-  margin-bottom: 12px;
-}
-
-.sidebar-plan-access strong {
-  color: #b9c9d9;
-}
-
-.sidebar-upgrade-button {
-  width: 100%;
-  height: 36px;
-
-  border: 0;
-  border-radius: 6px;
-
-  background:
-    linear-gradient(
-      100deg,
-      #12c9b0,
-      #167fd9
+      #1ad3b4,
+      #147ce7
     );
 
-  color: #ffffff;
+  color: white;
 
   font-family: inherit;
-
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 700;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  padding: 0 11px;
+  padding: 0 12px;
 
   cursor: pointer;
+
+  box-shadow:
+    0 5px 18px rgba(11, 145, 211, 0.16);
+
+  transition:
+    transform 0.18s ease,
+    filter 0.18s ease;
 }
 
-.sidebar-upgrade-button span {
-  font-size: 16px;
+.upgrade-plan-button:hover {
+  filter: brightness(1.08);
 }
 
+.upgrade-plan-button:active {
+  transform: scale(0.98);
+}
 
 /* =========================================================
    MAIN AREA
+   SECTION 02 WILL BE ADDED HERE
    ========================================================= */
 
 .dashboard-main {
-  width: calc(100% - 270px);
+  width: calc(100% - 272px);
 
   min-height: 100vh;
 
-  margin-left: 270px;
+  margin-left: 272px;
 
-  position: relative;
+  padding: 24px;
+
+  background:
+    radial-gradient(
+      circle at 50% 10%,
+      rgba(8, 65, 112, 0.07),
+      transparent 35%
+    );
 }
 
+.next-section-placeholder {
+  min-height: 90px;
+
+  border: 1px dashed rgba(42, 148, 194, 0.12);
+
+  border-radius: 10px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  color: rgba(124, 164, 191, 0.30);
+
+  gap: 5px;
+}
+
+.next-section-placeholder span {
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.next-section-placeholder small {
+  font-size: 10px;
+}
 
 /* =========================================================
-   MOBILE HAMBURGER
+   MOBILE MENU BUTTON
    ========================================================= */
 
 .mobile-menu-button {
@@ -623,132 +621,223 @@
 
   position: fixed;
 
-  top: 12px;
-  left: 12px;
+  top: 14px;
+  left: 14px;
 
-  width: 42px;
-  height: 42px;
+  width: 44px;
+  height: 44px;
 
   z-index: 1100;
 
-  border: 1px solid rgba(35, 206, 216, 0.25);
+  border: 1px solid rgba(47, 204, 211, 0.35);
 
-  border-radius: 8px;
+  border-radius: 9px;
 
-  background: #06192b;
+  background:
+    rgba(3, 20, 36, 0.96);
+
+  color: #ffffff;
+
+  font-size: 23px;
 
   cursor: pointer;
 
-  align-items: center;
-  justify-content: center;
-
-  flex-direction: column;
-
-  gap: 5px;
+  box-shadow:
+    0 8px 25px rgba(0, 0, 0, 0.35);
 }
 
-.hamburger-line {
-  display: block;
+/* =========================================================
+   MOBILE CLOSE
+   ========================================================= */
 
-  width: 19px;
-  height: 2px;
+.mobile-sidebar-close {
+  display: none;
 
-  border-radius: 3px;
+  position: absolute;
 
-  background: #ffffff;
+  top: 15px;
+  right: 13px;
+
+  width: 38px;
+  height: 38px;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  border-radius: 8px;
+
+  background:
+    rgba(255, 255, 255, 0.04);
+
+  color: #ffffff;
+
+  font-size: 15px;
+
+  cursor: pointer;
+
+  z-index: 5;
 }
-
 
 /* =========================================================
    MOBILE OVERLAY
    ========================================================= */
 
 .sidebar-overlay {
+  display: none;
+
   position: fixed;
 
   inset: 0;
 
   z-index: 950;
 
-  width: 100%;
-  height: 100%;
-
-  padding: 0;
-
   border: 0;
 
-  background: rgba(0, 5, 14, 0.72);
+  background:
+    rgba(0, 0, 0, 0.68);
 
-  cursor: pointer;
+  backdrop-filter: blur(2px);
 }
 
-
 /* =========================================================
-   MOBILE
+   TABLET
    ========================================================= */
 
 @media (max-width: 900px) {
 
   .dashboard-sidebar {
-    width: 270px;
-    max-width: 86vw;
-
-    transform: translateX(-110%);
-
-    transition: transform 0.25s ease;
-
-    box-shadow:
-      18px 0 45px rgba(0, 0, 0, 0.42);
-  }
-
-  .dashboard-sidebar.sidebar-mobile-open {
-    transform: translateX(0);
-  }
-
-  .mobile-menu-button {
-    display: flex;
-  }
-
-  .mobile-sidebar-close {
-    display: flex;
+    width: 245px;
+    min-width: 245px;
   }
 
   .dashboard-main {
-    width: 100%;
+    width: calc(100% - 245px);
+    margin-left: 245px;
+  }
 
-    margin-left: 0;
+  .sidebar-item {
+    font-size: 13px;
+  }
+
+  .brand-name {
+    font-size: 18px;
   }
 
 }
 
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+  .dashboard-page {
+    min-height: 100vh;
+  }
+
+  /* MAIN */
+  .dashboard-main {
+    width: 100%;
+    margin-left: 0;
+
+    padding:
+      76px
+      12px
+      20px;
+  }
+
+  /* HAMBURGER */
+  .mobile-menu-button {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* SIDEBAR CLOSED */
+  .dashboard-sidebar {
+    width: min(82vw, 310px);
+    min-width: min(82vw, 310px);
+
+    left: 0;
+
+    transform: translateX(-105%);
+
+    transition:
+      transform 0.25s ease;
+
+    box-shadow:
+      15px 0 45px rgba(0, 0, 0, 0.55);
+  }
+
+  /* SIDEBAR OPEN */
+  .dashboard-sidebar.mobile-sidebar-open {
+    transform: translateX(0);
+  }
+
+  /* CLOSE BUTTON */
+  .mobile-sidebar-close {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* OVERLAY */
+  .sidebar-overlay {
+    display: block;
+  }
+
+  /* BRAND */
+  .sidebar-brand {
+    padding-right: 48px;
+  }
+
+  /* MENU */
+  .sidebar-item {
+    min-height: 45px;
+
+    font-size: 14px;
+  }
+
+  /* PLAN */
+  .current-plan-card {
+    margin-top: 4px;
+  }
+
+}
 
 /* =========================================================
    SMALL MOBILE
    ========================================================= */
 
-@media (max-width: 480px) {
+@media (max-width: 400px) {
 
   .dashboard-sidebar {
-    width: 282px;
-    max-width: 88vw;
+    width: 88vw;
+    min-width: 88vw;
   }
 
-  .sidebar-brand {
-    padding-left: 14px;
+  .dashboard-main {
+    padding-left: 10px;
     padding-right: 10px;
   }
 
-  .sidebar-nav-item {
-    min-height: 40px;
+  .brand-name {
+    font-size: 17px;
   }
 
-  .sidebar-nav-label {
-    font-size: 11.5px;
+  .sidebar-item {
+    font-size: 13px;
   }
 
 }
 
+/* =========================================================
+   SECTION 01 — SIDEBAR END
+   ========================================================= */
+
 
 /* =========================================================
-   SECTION 01 — SIDEBAR CSS END
+   SECTION 02 — HEADER
+   PASTE NEXT CSS SECTION HERE
    ========================================================= */
