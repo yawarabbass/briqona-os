@@ -232,3 +232,399 @@
   }
 
 }
+/* =========================================================
+   STEP 2 — SIDEBAR
+   ========================================================= */
+
+.sidebar-content {
+  display: flex;
+  flex-direction: column;
+
+  height: 100vh;
+  min-height: 100vh;
+
+  box-sizing: border-box;
+  padding: 18px 10px 14px;
+}
+
+
+/* ---------------------------------------------------------
+   BRAND
+   --------------------------------------------------------- */
+
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 4px 8px 20px;
+}
+
+.sidebar-logo {
+  width: 38px;
+  height: 38px;
+
+  flex: 0 0 38px;
+
+  display: grid;
+  place-items: center;
+
+  border: 1px solid rgba(31, 215, 232, 0.35);
+  border-radius: 10px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(21, 216, 232, 0.2),
+      rgba(24, 101, 224, 0.12)
+    );
+
+  box-shadow:
+    0 0 18px rgba(20, 200, 255, 0.08);
+
+  color: #19d9e9;
+  font-size: 24px;
+}
+
+.sidebar-brand-text {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-brand-text strong {
+  color: #f2f7ff;
+
+  font-size: 16px;
+  line-height: 1.1;
+  letter-spacing: 0.3px;
+}
+
+.sidebar-brand-text small {
+  margin-top: 4px;
+
+  color: #6f8499;
+
+  font-size: 7px;
+  line-height: 1.25;
+  white-space: nowrap;
+}
+
+
+/* ---------------------------------------------------------
+   NAVIGATION
+   --------------------------------------------------------- */
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+
+  flex: 1;
+
+  min-height: 0;
+}
+
+
+.sidebar-item {
+  position: relative;
+
+  width: 100%;
+  min-height: 39px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 11px;
+
+  padding: 0 10px;
+
+  border: 1px solid transparent;
+  border-radius: 7px;
+
+  background: transparent;
+
+  color: #d7e2ee;
+
+  font: inherit;
+  font-size: 12px;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+
+.sidebar-item:hover {
+  background: rgba(18, 58, 85, 0.35);
+  border-color: rgba(37, 112, 148, 0.2);
+}
+
+
+.sidebar-item.active {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(18, 214, 189, 0.22),
+      rgba(10, 89, 111, 0.16)
+    );
+
+  border-color: rgba(25, 216, 207, 0.25);
+
+  box-shadow:
+    inset 3px 0 0 #20d8c5,
+    0 0 18px rgba(13, 209, 191, 0.04);
+
+  color: #ffffff;
+}
+
+
+.sidebar-icon {
+  width: 18px;
+  min-width: 18px;
+
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  color: #17d8e8;
+
+  font-size: 17px;
+  line-height: 1;
+}
+
+
+.sidebar-icon.purple {
+  color: #bf4cff;
+}
+
+.sidebar-icon.yellow {
+  color: #d9e52c;
+}
+
+.sidebar-icon.red {
+  color: #ed3d65;
+}
+
+.sidebar-icon.cyan {
+  color: #12d8df;
+}
+
+.sidebar-icon.green {
+  color: #29dba8;
+}
+
+.sidebar-icon.blue {
+  color: #25aeea;
+}
+
+.sidebar-icon.orange {
+  color: #ffab22;
+}
+
+.sidebar-icon.gray {
+  color: #9aa9bb;
+}
+
+
+.sidebar-badge {
+  margin-left: auto;
+
+  padding: 3px 6px;
+
+  border-radius: 4px;
+
+  background: rgba(9, 194, 205, 0.16);
+
+  color: #20dce4;
+
+  font-size: 8px;
+  font-weight: 600;
+}
+
+
+.sidebar-arrow {
+  margin-left: auto;
+
+  color: #8ca0b4;
+
+  font-size: 13px;
+}
+
+
+/* ---------------------------------------------------------
+   CURRENT PLAN
+   --------------------------------------------------------- */
+
+.sidebar-plan {
+  position: relative;
+
+  margin-top: 12px;
+  padding: 14px 12px 12px;
+
+  border: 1px solid rgba(42, 93, 132, 0.32);
+  border-radius: 8px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(8, 36, 61, 0.92),
+      rgba(3, 20, 37, 0.95)
+    );
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.18);
+}
+
+
+.plan-close {
+  position: absolute;
+
+  top: 7px;
+  right: 8px;
+
+  border: 0;
+  background: transparent;
+
+  color: #9aabbc;
+
+  font-size: 16px;
+  line-height: 1;
+
+  cursor: pointer;
+}
+
+
+.plan-icon {
+  width: 34px;
+  height: 34px;
+
+  display: grid;
+  place-items: center;
+
+  margin-bottom: 8px;
+
+  border: 1px solid rgba(24, 216, 232, 0.25);
+  border-radius: 8px;
+
+  background: rgba(18, 180, 220, 0.08);
+
+  color: #1ed8e8;
+
+  font-size: 24px;
+}
+
+
+.plan-label {
+  color: #74899d;
+
+  font-size: 10px;
+}
+
+
+.plan-name {
+  margin-top: 2px;
+
+  color: #f0f6ff;
+
+  font-size: 19px;
+  font-weight: 600;
+}
+
+
+.plan-price {
+  margin-top: 3px;
+
+  color: #71879c;
+
+  font-size: 10px;
+}
+
+
+.plan-price strong {
+  color: #18d8df;
+
+  font-size: 12px;
+}
+
+
+.upgrade-button {
+  width: 100%;
+  height: 36px;
+
+  margin-top: 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 11px;
+
+  border: 0;
+  border-radius: 5px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #15bfa3,
+      #167fe0
+    );
+
+  color: #ffffff;
+
+  font: inherit;
+  font-size: 11px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 5px 18px rgba(14, 143, 204, 0.15);
+}
+
+
+.upgrade-button:hover {
+  filter: brightness(1.08);
+}
+
+
+/* ---------------------------------------------------------
+   SIDEBAR RESPONSIVE
+   --------------------------------------------------------- */
+
+@media (max-width: 900px) {
+
+  .sidebar-content {
+    padding: 14px 8px;
+  }
+
+  .sidebar-brand-text strong {
+    font-size: 14px;
+  }
+
+  .sidebar-item {
+    min-height: 36px;
+
+    font-size: 11px;
+  }
+
+  .sidebar-icon {
+    font-size: 15px;
+  }
+
+}
+
+
+@media (max-width: 600px) {
+
+  .dashboard-sidebar {
+    display: none;
+  }
+
+}
