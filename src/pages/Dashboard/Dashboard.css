@@ -1,5 +1,5 @@
 /* =========================================================
-   SECTION 01 — SIDEBAR START
+   SECTION 1 START — SIDEBAR CSS
    ========================================================= */
 
 * {
@@ -9,496 +9,370 @@
 .dashboard-page {
   min-height: 100vh;
   width: 100%;
-  background:
-    radial-gradient(
-      circle at 70% 10%,
-      rgba(0, 89, 170, 0.08),
-      transparent 35%
-    ),
-    #020b16;
-  color: #f4f8ff;
-  font-family:
-    Inter,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    sans-serif;
-  display: flex;
-  position: relative;
+  background: #020b17;
+  color: #ffffff;
+  font-family: Arial, Helvetica, sans-serif;
   overflow-x: hidden;
 }
 
-/* =========================================================
+/* ---------------------------------------------------------
    SIDEBAR
-   ========================================================= */
+   --------------------------------------------------------- */
 
 .dashboard-sidebar {
-  width: 272px;
-  min-width: 272px;
-  height: 100vh;
-  min-height: 100vh;
   position: fixed;
-  left: 0;
   top: 0;
+  left: 0;
+  width: 272px;
+  height: 100vh;
+  min-height: 700px;
   z-index: 1000;
-
-  background:
-    linear-gradient(
-      180deg,
-      rgba(4, 18, 34, 0.98) 0%,
-      rgba(2, 13, 25, 0.99) 100%
-    );
-
-  border-right: 1px solid rgba(70, 143, 197, 0.20);
 
   display: flex;
   flex-direction: column;
 
-  padding: 18px 10px 16px;
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(0, 116, 190, 0.10),
+      transparent 35%
+    ),
+    #03101e;
 
-  box-shadow:
-    8px 0 35px rgba(0, 0, 0, 0.20);
+  border: 1px solid rgba(71, 151, 204, 0.18);
+  border-radius: 0 10px 10px 0;
+
+  padding: 18px 16px 14px;
+
+  overflow: hidden;
 }
 
-/* =========================================================
+/* ---------------------------------------------------------
    BRAND
-   ========================================================= */
+   --------------------------------------------------------- */
 
 .sidebar-brand {
-  height: 72px;
+  min-height: 62px;
   display: flex;
   align-items: center;
   gap: 12px;
-
-  padding: 4px 10px 16px;
-
-  border-bottom: 1px solid rgba(71, 133, 175, 0.12);
-
-  flex-shrink: 0;
+  position: relative;
 }
 
 .brand-logo {
   width: 48px;
   height: 48px;
-
-  flex-shrink: 0;
-
-  border-radius: 12px;
+  flex: 0 0 48px;
 
   display: flex;
   align-items: center;
   justify-content: center;
+
+  border-radius: 12px;
 
   background:
     linear-gradient(
       135deg,
-      #0be0ca 0%,
-      #118eff 100%
+      #16d7c4 0%,
+      #078eea 55%,
+      #1963e9 100%
     );
 
   box-shadow:
-    0 0 18px rgba(0, 209, 255, 0.25);
-
-  transform: rotate(0deg);
-}
-
-.brand-logo-inner {
-  width: 25px;
-  height: 25px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    0 0 18px rgba(0, 205, 255, 0.28),
+    inset 0 0 15px rgba(255, 255, 255, 0.12);
 
   color: white;
-
-  font-size: 27px;
-  line-height: 1;
-
-  transform: rotate(45deg);
+  font-size: 22px;
 }
 
 .brand-text {
   min-width: 0;
+  display: flex;
+  flex-direction: column;
 }
 
-.brand-name {
-  color: #ffffff;
-
-  font-size: 20px;
-  line-height: 1.1;
-
+.brand-text strong {
+  color: #f4f8ff;
+  font-size: 16px;
   font-weight: 700;
-  letter-spacing: 0.2px;
-
+  letter-spacing: 0.3px;
+  line-height: 20px;
   white-space: nowrap;
 }
 
-.brand-tagline {
-  margin-top: 4px;
-
-  color: rgba(191, 210, 229, 0.55);
-
-  font-size: 7px;
-  line-height: 1.2;
-
-  letter-spacing: 0.35px;
-
+.brand-text small {
+  margin-top: 2px;
+  color: #6e8198;
+  font-size: 6px;
+  line-height: 9px;
   white-space: nowrap;
 }
 
-/* =========================================================
+/* ---------------------------------------------------------
+   DIVIDER
+   --------------------------------------------------------- */
+
+.sidebar-divider {
+  width: 100%;
+  height: 1px;
+  margin: 16px 0 10px;
+
+  background: rgba(91, 142, 177, 0.15);
+}
+
+/* ---------------------------------------------------------
    NAVIGATION
-   ========================================================= */
+   --------------------------------------------------------- */
 
 .sidebar-navigation {
-  flex: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
 
   overflow-y: auto;
   overflow-x: hidden;
 
-  padding: 14px 0 14px;
-
-  scrollbar-width: thin;
-  scrollbar-color:
-    rgba(47, 183, 230, 0.20)
-    transparent;
+  scrollbar-width: none;
 }
 
 .sidebar-navigation::-webkit-scrollbar {
-  width: 3px;
+  display: none;
 }
-
-.sidebar-navigation::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.sidebar-navigation::-webkit-scrollbar-thumb {
-  background: rgba(47, 183, 230, 0.20);
-  border-radius: 10px;
-}
-
-/* =========================================================
-   MENU ITEM
-   ========================================================= */
 
 .sidebar-item {
   width: 100%;
-  min-height: 42px;
+  min-height: 39px;
 
-  margin: 2px 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
 
-  padding: 0 12px;
+  position: relative;
+
+  padding: 0 10px;
 
   border: 1px solid transparent;
   border-radius: 7px;
 
   background: transparent;
+  color: #77899e;
 
-  color: rgba(221, 232, 245, 0.82);
-
-  display: flex;
-  align-items: center;
-  gap: 13px;
-
-  font-family: inherit;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 500;
 
   text-align: left;
-
   cursor: pointer;
 
   transition:
-    background 0.18s ease,
-    border-color 0.18s ease,
-    color 0.18s ease,
-    transform 0.18s ease;
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
 }
 
 .sidebar-item:hover {
-  background: rgba(15, 111, 157, 0.10);
-
-  border-color:
-    rgba(44, 189, 223, 0.10);
-
-  color: #ffffff;
+  color: #dcecff;
+  background: rgba(13, 92, 137, 0.14);
 }
 
 .sidebar-item.active {
+  color: #ffffff;
+
   background:
     linear-gradient(
       90deg,
-      rgba(0, 207, 191, 0.25),
-      rgba(0, 114, 161, 0.14)
+      rgba(0, 202, 184, 0.25),
+      rgba(0, 112, 158, 0.13)
     );
 
-  border-color:
-    rgba(19, 221, 206, 0.42);
-
-  color: #ffffff;
+  border-color: rgba(0, 213, 211, 0.35);
 
   box-shadow:
-    inset 3px 0 0 #14d6c5,
-    0 0 20px rgba(0, 212, 199, 0.05);
+    inset 3px 0 0 #13d8c4,
+    0 0 15px rgba(0, 201, 204, 0.08);
 }
-
-.sidebar-item:active {
-  transform: scale(0.985);
-}
-
-/* =========================================================
-   ICON
-   ========================================================= */
 
 .sidebar-icon {
-  width: 20px;
-  min-width: 20px;
+  width: 18px;
+  min-width: 18px;
 
   display: inline-flex;
   align-items: center;
   justify-content: center;
 
-  color: #1ed7cc;
-
   font-size: 16px;
-  font-weight: 700;
-
-  text-align: center;
+  font-weight: 600;
 }
-
-.sidebar-icon.purple {
-  color: #c75cff;
-}
-
-.sidebar-icon.yellow {
-  color: #d6e63e;
-}
-
-.sidebar-icon.red {
-  color: #ff4e73;
-}
-
-.sidebar-icon.cyan {
-  color: #11d9e8;
-}
-
-.sidebar-icon.green {
-  color: #22db9a;
-}
-
-.sidebar-icon.blue {
-  color: #20baff;
-}
-
-.sidebar-icon.orange {
-  color: #ffad2f;
-}
-
-.sidebar-icon.gray {
-  color: #aebdca;
-}
-
-/* =========================================================
-   LABEL
-   ========================================================= */
 
 .sidebar-label {
   flex: 1;
-
-  white-space: nowrap;
+  min-width: 0;
 
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-/* =========================================================
-   NEW BADGE
-   ========================================================= */
+.dropdown-arrow {
+  color: #8395a8;
+  font-size: 13px;
+  margin-left: auto;
+}
 
-.sidebar-new {
+.new-badge {
+  margin-left: auto;
+
   padding: 4px 7px;
 
   border-radius: 5px;
 
-  background:
-    rgba(8, 207, 211, 0.13);
-
-  color: #23e0dc;
+  background: rgba(0, 197, 221, 0.16);
+  color: #20dce4;
 
   font-size: 10px;
   font-weight: 700;
-
-  line-height: 1;
 }
 
-/* =========================================================
-   DROPDOWN ARROW
-   ========================================================= */
+/* ---------------------------------------------------------
+   ICON COLORS
+   --------------------------------------------------------- */
 
-.sidebar-arrow {
-  width: 20px;
-
-  color: rgba(213, 230, 242, 0.70);
-
-  font-size: 13px;
-
-  text-align: center;
-
-  transition: transform 0.2s ease;
+.cyan {
+  color: #1cd5e6;
 }
 
-.sidebar-arrow.arrow-open {
-  transform: rotate(180deg);
+.purple {
+  color: #bb4cff;
 }
 
-/* =========================================================
-   SUBMENU
-   ========================================================= */
-
-.sidebar-submenu {
-  margin: 1px 10px 6px 45px;
-
-  display: flex;
-  flex-direction: column;
-
-  border-left: 1px solid rgba(23, 211, 207, 0.20);
+.yellow {
+  color: #e5e934;
 }
 
-.sidebar-submenu button {
-  min-height: 31px;
-
-  padding: 5px 10px;
-
-  border: 0;
-
-  background: transparent;
-
-  color: rgba(190, 209, 226, 0.62);
-
-  font-family: inherit;
-  font-size: 12px;
-
-  text-align: left;
-
-  cursor: pointer;
-
-  border-radius: 4px;
-
-  transition:
-    color 0.18s ease,
-    background 0.18s ease;
+.red {
+  color: #ff4c75;
 }
 
-.sidebar-submenu button:hover {
-  color: #ffffff;
-
-  background:
-    rgba(22, 203, 198, 0.07);
+.teal {
+  color: #13d7c3;
 }
 
-/* =========================================================
-   CURRENT PLAN CARD
-   ========================================================= */
+.green {
+  color: #38df8d;
+}
+
+.blue {
+  color: #22aef5;
+}
+
+.orange {
+  color: #ff9b25;
+}
+
+.gray {
+  color: #a1adbb;
+}
+
+/* ---------------------------------------------------------
+   CURRENT PLAN
+   --------------------------------------------------------- */
 
 .current-plan-card {
-  width: 100%;
+  position: relative;
 
   flex-shrink: 0;
 
-  position: relative;
+  width: 100%;
+  margin-top: auto;
+  padding: 16px;
 
-  padding: 15px;
-
+  border: 1px solid rgba(79, 146, 195, 0.24);
   border-radius: 9px;
-
-  border: 1px solid rgba(53, 128, 175, 0.24);
 
   background:
     linear-gradient(
       145deg,
-      rgba(7, 32, 55, 0.96),
-      rgba(3, 19, 35, 0.98)
+      rgba(9, 47, 78, 0.82),
+      rgba(3, 20, 38, 0.94)
     );
 
   box-shadow:
-    0 12px 35px rgba(0, 0, 0, 0.25);
+    inset 0 1px 0 rgba(255, 255, 255, 0.03),
+    0 10px 30px rgba(0, 0, 0, 0.18);
 }
 
 .plan-close {
   position: absolute;
-
-  top: 9px;
-  right: 10px;
-
-  width: 22px;
-  height: 22px;
+  right: 13px;
+  top: 10px;
 
   border: 0;
-
   background: transparent;
 
-  color: rgba(210, 225, 240, 0.72);
+  color: #a9b8c8;
 
-  font-size: 17px;
+  font-size: 20px;
+  line-height: 20px;
 
   cursor: pointer;
 }
 
-.plan-small-title {
-  color: rgba(171, 196, 218, 0.62);
+.plan-heading {
+  margin-bottom: 12px;
 
-  font-size: 8px;
+  color: #71859b;
+
+  font-size: 10px;
   font-weight: 700;
 
-  letter-spacing: 0.8px;
-
-  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
-.plan-row {
+.plan-info {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-.plan-diamond {
-  width: 34px;
-  height: 34px;
-
-  border-radius: 9px;
+.plan-icon {
+  width: 42px;
+  height: 42px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  color: #25e4d5;
+  border: 1px solid rgba(0, 218, 215, 0.28);
+  border-radius: 10px;
 
-  background:
-    rgba(21, 219, 205, 0.08);
+  background: rgba(0, 194, 207, 0.08);
 
-  border: 1px solid rgba(34, 211, 205, 0.16);
-
-  font-size: 23px;
+  color: #20ddd4;
+  font-size: 27px;
 }
 
-.plan-label {
-  color: rgba(192, 211, 229, 0.70);
+.plan-small {
+  display: block;
 
-  font-size: 10px;
+  color: #8999aa;
+  font-size: 11px;
+  margin-bottom: 2px;
 }
 
-.plan-name {
-  margin-top: 2px;
+.plan-info strong {
+  display: block;
 
-  color: #ffffff;
+  color: #f5f8fc;
 
-  font-size: 18px;
-  font-weight: 700;
+  font-size: 20px;
+  line-height: 22px;
 }
 
 .plan-price {
-  margin-top: 10px;
+  margin: 14px 0;
 
   display: flex;
   align-items: baseline;
@@ -506,39 +380,18 @@
 }
 
 .plan-price strong {
-  color: #20d9d0;
-
-  font-size: 14px;
+  color: #12ded3;
+  font-size: 18px;
 }
 
 .plan-price span {
-  color: rgba(185, 208, 227, 0.65);
-
-  font-size: 10px;
+  color: #7f91a5;
+  font-size: 11px;
 }
 
-.upgrade-plan-button {
+.upgrade-button {
   width: 100%;
-
-  margin-top: 12px;
-
-  min-height: 38px;
-
-  border: 0;
-  border-radius: 5px;
-
-  background:
-    linear-gradient(
-      90deg,
-      #1ad3b4,
-      #147ce7
-    );
-
-  color: white;
-
-  font-family: inherit;
-  font-size: 12px;
-  font-weight: 700;
+  height: 38px;
 
   display: flex;
   align-items: center;
@@ -546,298 +399,345 @@
 
   padding: 0 12px;
 
+  border: 0;
+  border-radius: 5px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #12cfae,
+      #157ce9
+    );
+
+  color: white;
+
+  font-size: 12px;
+  font-weight: 700;
+
   cursor: pointer;
 
   box-shadow:
-    0 5px 18px rgba(11, 145, 211, 0.16);
+    0 7px 18px rgba(0, 132, 231, 0.18);
 
-  transition:
-    transform 0.18s ease,
-    filter 0.18s ease;
+  transition: transform 0.2s ease;
 }
 
-.upgrade-plan-button:hover {
-  filter: brightness(1.08);
+.upgrade-button:hover {
+  transform: translateY(-1px);
 }
 
-.upgrade-plan-button:active {
-  transform: scale(0.98);
+.upgrade-arrow {
+  font-size: 18px;
 }
 
-/* =========================================================
-   MAIN AREA
-   SECTION 02 WILL BE ADDED HERE
-   ========================================================= */
-
-.dashboard-main {
-  width: calc(100% - 272px);
-
-  min-height: 100vh;
-
-  margin-left: 272px;
-
-  padding: 24px;
-
-  background:
-    radial-gradient(
-      circle at 50% 10%,
-      rgba(8, 65, 112, 0.07),
-      transparent 35%
-    );
-}
-
-.next-section-placeholder {
-  min-height: 90px;
-
-  border: 1px dashed rgba(42, 148, 194, 0.12);
-
-  border-radius: 10px;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  color: rgba(124, 164, 191, 0.30);
-
-  gap: 5px;
-}
-
-.next-section-placeholder span {
-  font-size: 12px;
-  letter-spacing: 1px;
-}
-
-.next-section-placeholder small {
-  font-size: 10px;
-}
-
-/* =========================================================
-   MOBILE MENU BUTTON
-   ========================================================= */
+/* ---------------------------------------------------------
+   MOBILE BUTTONS
+   --------------------------------------------------------- */
 
 .mobile-menu-button {
   display: none;
 
   position: fixed;
+  top: 18px;
+  left: 20px;
 
-  top: 14px;
-  left: 14px;
+  z-index: 1200;
 
-  width: 44px;
-  height: 44px;
+  width: 64px;
+  height: 64px;
 
-  z-index: 1100;
-
-  border: 1px solid rgba(47, 204, 211, 0.35);
-
-  border-radius: 9px;
+  border: 1px solid rgba(38, 192, 224, 0.45);
+  border-radius: 18px;
 
   background:
-    rgba(3, 20, 36, 0.96);
+    linear-gradient(
+      145deg,
+      rgba(10, 46, 73, 0.98),
+      rgba(3, 18, 32, 0.98)
+    );
 
-  color: #ffffff;
+  color: white;
 
-  font-size: 23px;
+  font-size: 38px;
+  line-height: 1;
 
   cursor: pointer;
 
   box-shadow:
-    0 8px 25px rgba(0, 0, 0, 0.35);
+    0 10px 30px rgba(0, 0, 0, 0.28);
 }
 
-/* =========================================================
-   MOBILE CLOSE
-   ========================================================= */
-
-.mobile-sidebar-close {
+.mobile-close-button {
   display: none;
-
-  position: absolute;
-
-  top: 15px;
-  right: 13px;
-
-  width: 38px;
-  height: 38px;
-
-  border: 1px solid rgba(255, 255, 255, 0.12);
-
-  border-radius: 8px;
-
-  background:
-    rgba(255, 255, 255, 0.04);
-
-  color: #ffffff;
-
-  font-size: 15px;
-
-  cursor: pointer;
-
-  z-index: 5;
 }
 
-/* =========================================================
+/* ---------------------------------------------------------
    MOBILE OVERLAY
-   ========================================================= */
+   --------------------------------------------------------- */
 
 .sidebar-overlay {
   display: none;
-
-  position: fixed;
-
-  inset: 0;
-
-  z-index: 950;
-
-  border: 0;
-
-  background:
-    rgba(0, 0, 0, 0.68);
-
-  backdrop-filter: blur(2px);
 }
 
 /* =========================================================
-   TABLET
+   SECTION 1 END — SIDEBAR CSS
+
+   NEXT STEP:
+   SECTION 2 CSS will be added BELOW this line.
    ========================================================= */
 
-@media (max-width: 900px) {
-
-  .dashboard-sidebar {
-    width: 245px;
-    min-width: 245px;
-  }
-
-  .dashboard-main {
-    width: calc(100% - 245px);
-    margin-left: 245px;
-  }
-
-  .sidebar-item {
-    font-size: 13px;
-  }
-
-  .brand-name {
-    font-size: 18px;
-  }
-
-}
 
 /* =========================================================
-   MOBILE
+   MOBILE RESPONSIVE — SECTION 1
    ========================================================= */
 
-@media (max-width: 700px) {
+@media (max-width: 768px) {
 
-  .dashboard-page {
-    min-height: 100vh;
-  }
-
-  /* MAIN */
-  .dashboard-main {
-    width: 100%;
-    margin-left: 0;
-
-    padding:
-      76px
-      12px
-      20px;
-  }
-
-  /* HAMBURGER */
   .mobile-menu-button {
     display: flex;
-
     align-items: center;
     justify-content: center;
   }
 
-  /* SIDEBAR CLOSED */
   .dashboard-sidebar {
-    width: min(82vw, 310px);
-    min-width: min(82vw, 310px);
+    width: min(730px, 88vw);
+    max-width: 730px;
 
+    height: 100vh;
+    min-height: 100vh;
+
+    top: 0;
     left: 0;
+
+    padding: 28px 22px 24px;
+
+    border-radius: 0 18px 18px 0;
 
     transform: translateX(-105%);
 
-    transition:
-      transform 0.25s ease;
+    transition: transform 0.28s ease;
 
-    box-shadow:
-      15px 0 45px rgba(0, 0, 0, 0.55);
+    z-index: 1100;
+
+    overflow-y: auto;
   }
 
-  /* SIDEBAR OPEN */
   .dashboard-sidebar.mobile-sidebar-open {
     transform: translateX(0);
   }
 
-  /* CLOSE BUTTON */
-  .mobile-sidebar-close {
+  .sidebar-brand {
+    min-height: 100px;
+    padding-right: 76px;
+  }
+
+  .brand-logo {
+    width: 100px;
+    height: 100px;
+    flex-basis: 100px;
+    border-radius: 22px;
+    font-size: 42px;
+  }
+
+  .brand-text strong {
+    font-size: 28px;
+    line-height: 34px;
+  }
+
+  .brand-text small {
+    font-size: 12px;
+    line-height: 17px;
+  }
+
+  .mobile-close-button {
     display: flex;
+
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    width: 64px;
+    height: 64px;
 
     align-items: center;
     justify-content: center;
+
+    border: 1px solid rgba(123, 159, 191, 0.3);
+    border-radius: 16px;
+
+    background: rgba(9, 29, 48, 0.9);
+
+    color: #ff5555;
+
+    font-size: 39px;
+    line-height: 1;
+
+    cursor: pointer;
   }
 
-  /* OVERLAY */
-  .sidebar-overlay {
-    display: block;
+  .sidebar-divider {
+    margin: 25px 0 20px;
   }
 
-  /* BRAND */
-  .sidebar-brand {
-    padding-right: 48px;
+  .sidebar-navigation {
+    gap: 6px;
   }
 
-  /* MENU */
   .sidebar-item {
-    min-height: 45px;
+    min-height: 62px;
 
+    padding: 0 20px;
+
+    border-radius: 12px;
+
+    font-size: 21px;
+
+    gap: 22px;
+  }
+
+  .sidebar-icon {
+    width: 28px;
+    min-width: 28px;
+    font-size: 23px;
+  }
+
+  .new-badge {
+    font-size: 14px;
+    padding: 7px 10px;
+  }
+
+  .dropdown-arrow {
+    font-size: 19px;
+  }
+
+  .current-plan-card {
+    margin-top: 30px;
+    padding: 26px;
+    border-radius: 15px;
+  }
+
+  .plan-heading {
     font-size: 14px;
   }
 
-  /* PLAN */
-  .current-plan-card {
-    margin-top: 4px;
+  .plan-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 34px;
   }
 
+  .plan-small {
+    font-size: 16px;
+  }
+
+  .plan-info strong {
+    font-size: 28px;
+  }
+
+  .plan-price {
+    margin: 20px 0;
+  }
+
+  .plan-price strong {
+    font-size: 28px;
+  }
+
+  .plan-price span {
+    font-size: 17px;
+  }
+
+  .upgrade-button {
+    height: 64px;
+    padding: 0 22px;
+    font-size: 20px;
+    border-radius: 9px;
+  }
+
+  .plan-close {
+    font-size: 28px;
+    right: 18px;
+    top: 16px;
+  }
+
+  .sidebar-overlay {
+    display: block;
+
+    position: fixed;
+    inset: 0;
+
+    z-index: 1050;
+
+    background: rgba(0, 4, 12, 0.68);
+
+    backdrop-filter: blur(2px);
+  }
 }
+
 
 /* =========================================================
    SMALL MOBILE
    ========================================================= */
 
-@media (max-width: 400px) {
+@media (max-width: 480px) {
+
+  .mobile-menu-button {
+    width: 58px;
+    height: 58px;
+    left: 16px;
+    top: 16px;
+    border-radius: 16px;
+    font-size: 34px;
+  }
 
   .dashboard-sidebar {
-    width: 88vw;
-    min-width: 88vw;
+    width: 92vw;
+    padding: 22px 18px 20px;
   }
 
-  .dashboard-main {
-    padding-left: 10px;
-    padding-right: 10px;
+  .sidebar-brand {
+    min-height: 82px;
   }
 
-  .brand-name {
-    font-size: 17px;
+  .brand-logo {
+    width: 74px;
+    height: 74px;
+    flex-basis: 74px;
+    border-radius: 18px;
+  }
+
+  .brand-text strong {
+    font-size: 22px;
+  }
+
+  .brand-text small {
+    font-size: 9px;
+  }
+
+  .mobile-close-button {
+    width: 54px;
+    height: 54px;
+    font-size: 31px;
   }
 
   .sidebar-item {
-    font-size: 13px;
+    min-height: 53px;
+    font-size: 17px;
+    gap: 16px;
+    padding: 0 14px;
   }
 
+  .sidebar-icon {
+    width: 24px;
+    min-width: 24px;
+    font-size: 19px;
+  }
+
+  .current-plan-card {
+    padding: 20px;
+  }
+
+  .upgrade-button {
+    height: 54px;
+    font-size: 17px;
+  }
 }
-
-/* =========================================================
-   SECTION 01 — SIDEBAR END
-   ========================================================= */
-
-
-/* =========================================================
-   SECTION 02 — HEADER
-   PASTE NEXT CSS SECTION HERE
-   ========================================================= */
