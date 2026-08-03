@@ -1,119 +1,39 @@
-import React, { useState } from "react";
- 
-/*
-===========================================================
-BRIQONA OS — MASTER DASHBOARD
-FINAL SINGLE-FILE VERSION
-===========================================================
-
-IMPORTANT:
-1. No Dashboard.css required.
-2. All styling is inside this file.
-3. Mobile sidebar is included.
-4. Dropdowns are included.
-5. Buttons are functional at UI level.
-6. Keep this file as the locked dashboard base.
-
-NEXT STEP:
-Future dashboard functionality/API work will be added
-inside the marked sections below without rebuilding the
-entire design.
-===========================================================
-*/
+import React, { useEffect, useState } from "react";
 
 function Dashboard() {
-  /* ======================================================
-     STATE
-     ====================================================== */
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [month, setMonth] = useState("This Month");
+  const [command, setCommand] = useState("");
 
-  const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
-  const [periodOpen, setPeriodOpen] = useState(false);
-  const [profileOpen, setProfileOpen] = useState(false);
-  const [industryOpen, setIndustryOpen] = useState(false);
-  const [workforceOpen, setWorkforceOpen] = useState(false);
-
-  const [selectedPeriod, setSelectedPeriod] = useState("This Month");
-
-  const closeMobileSidebar = () => {
-    setMobileSidebarOpen(false);
-  };
-
-  /* ======================================================
-     SIDEBAR MENU
-     ====================================================== */
-
-  const menuItems = [
-    { icon: "⌂", label: "Dashboard", active: true },
-    { icon: "✦", label: "AI Command Center", badge: "New" },
-    { icon: "♙", label: "AI Workforce", dropdown: true },
-    { icon: "◎", label: "Outcome Center" },
-    { icon: "▦", label: "Industries Hub", dropdown: true },
-    { icon: "♟", label: "CRM" },
-    { icon: "$", label: "Finance" },
-    { icon: "♙", label: "HR" },
-    { icon: "▣", label: "Inventory" },
-    { icon: "☑", label: "Projects & Tasks" },
-    { icon: "▤", label: "Documents" },
-    { icon: "ϟ", label: "Automation" },
-    { icon: "▥", label: "Analytics" },
-    { icon: "▣", label: "Communication" },
-    { icon: "◉", label: "Support / Helpdesk" },
-    { icon: "⌘", label: "Integrations" },
-    { icon: "⚙", label: "Settings" },
+  const menu = [
+    ["⌂", "Dashboard"],
+    ["✦", "AI Command Center", "New"],
+    ["♙", "AI Workforce", "⌄"],
+    ["◎", "Outcome Center"],
+    ["▦", "Industries Hub", "⌄"],
+    ["♟", "CRM"],
+    ["$", "Finance"],
+    ["♙", "HR"],
+    ["▣", "Inventory"],
+    ["☑", "Projects & Tasks"],
+    ["▤", "Documents"],
+    ["ϟ", "Automation"],
+    ["▥", "Analytics"],
+    ["▣", "Communication"],
+    ["◉", "Support / Helpdesk"],
+    ["⌘", "Integrations"],
+    ["⚙", "Settings"],
   ];
-
-  /* ======================================================
-     QUICK ACTIONS
-     ====================================================== */
 
   const quickActions = [
-    { icon: "$", label: "+ New Invoice", type: "green" },
-    { icon: "♙", label: "+ New Lead", type: "blue" },
-    { icon: "▤", label: "+ New Expense", type: "orange" },
-    { icon: "☑", label: "+ New Task", type: "purple" },
-    { icon: "♙", label: "+ Add Employee", type: "cyan" },
-    { icon: "♙", label: "+ Add Customer", type: "pink" },
-    { icon: "▦", label: "More Actions", type: "gray" },
+    ["$", "New Invoice"],
+    ["♙", "New Lead"],
+    ["▤", "New Expense"],
+    ["☑", "New Task"],
+    ["♙", "Add Employee"],
+    ["♙", "Add Customer"],
+    ["▦", "More Actions"],
   ];
-
-  /* ======================================================
-     METRIC CARDS
-     ====================================================== */
-
-  const metrics = [
-    {
-      title: "Total Revenue",
-      value: "$24,780",
-      change: "▲ 12.6% vs last month",
-      type: "green",
-      points: "M8 70 L30 55 L50 65 L70 35 L90 45 L110 20 L130 38 L150 12 L170 28",
-    },
-    {
-      title: "Total Profit",
-      value: "$8,430",
-      change: "▲ 8.3% vs last month",
-      type: "purple",
-      points: "M8 72 L30 48 L50 58 L70 35 L90 47 L110 20 L130 30 L150 12 L170 26",
-    },
-    {
-      title: "Total Expenses",
-      value: "$6,350",
-      change: "▼ -3.4% vs last month",
-      type: "orange",
-      points: "M8 65 L30 45 L50 52 L70 20 L90 40 L110 18 L130 48 L150 25 L170 40",
-    },
-    {
-      title: "Open Invoices",
-      value: "23",
-      change: "$14,560 overdue",
-      type: "blue",
-      points: "M8 70 L30 55 L50 65 L70 35 L90 45 L110 25 L130 35 L150 15 L170 40",
-    },
-  ];
-
-  /* ======================================================
-     RECENT ACTIVITIES
-     ====================================================== */
 
   const activities = [
     ["▤", "Invoice #INV-2026-1256 created", "2 min ago"],
@@ -123,20 +43,12 @@ function Dashboard() {
     ["▤", "Expense $250 added", "2 hours ago"],
   ];
 
-  /* ======================================================
-     NOTIFICATIONS
-     ====================================================== */
-
   const notifications = [
-    ["●", "Overdue invoice from Al Traders", "2 min ago", "red"],
-    ["▲", "Low stock alert for 3 products", "25 min ago", "orange"],
-    ["♙", "Leave request from Sara Khan", "1 hour ago", "purple"],
-    ["▣", "System backup completed", "2 hours ago", "green"],
+    ["●", "Overdue invoice from Al Traders", "2 min ago"],
+    ["⚠", "Low stock alert for 3 products", "25 min ago"],
+    ["♙", "Leave request from Sara Khan", "1 hour ago"],
+    ["▣", "System backup completed", "2 hours ago"],
   ];
-
-  /* ======================================================
-     TOP CUSTOMERS
-     ====================================================== */
 
   const customers = [
     ["A", "Ahmed Corporation", "$5,780"],
@@ -145,10 +57,6 @@ function Dashboard() {
     ["A", "Al-Barkat Traders", "$2,890"],
     ["F", "Future Enterprises", "$2,450"],
   ];
-
-  /* ======================================================
-     INDUSTRIES
-     ====================================================== */
 
   const industries = [
     ["▥", "Office"],
@@ -164,43 +72,47 @@ function Dashboard() {
     ["•••", "More"],
   ];
 
+  const missions = [
+    ["◉", "Recover overdue payments", "In Progress", "65%", "green"],
+    ["◎", "Increase this month sales", "In Progress", "40%", "purple"],
+    ["▣", "Reduce expenses", "Planned", "20%", "orange"],
+  ];
+
+  const runCommand = () => {
+    if (!command.trim()) return;
+    alert(`Briqona AI received: ${command}`);
+    setCommand("");
+  };
+
+  const quickAction = (name) => {
+    alert(`${name} action opened`);
+  };
+
+  useEffect(() => {
+    const close = () => setMobileOpen(false);
+    window.addEventListener("resize", close);
+    return () => window.removeEventListener("resize", close);
+  }, []);
+
   return (
-    <>
+    <div className="briqona-app">
       <style>{`
-
-        /* ==================================================
-           GLOBAL
-        ================================================== */
-
         * {
           box-sizing: border-box;
         }
 
-        html,
-        body,
-        #root {
+        html, body, #root {
           margin: 0;
-          padding: 0;
-          width: 100%;
           min-height: 100%;
-          font-family:
-            Inter,
-            ui-sans-serif,
-            system-ui,
-            -apple-system,
-            BlinkMacSystemFont,
-            "Segoe UI",
-            sans-serif;
           background: #020b18;
-          color: #f5f9ff;
         }
 
         body {
-          overflow-x: hidden;
+          font-family: Inter, Arial, Helvetica, sans-serif;
+          color: #edf7ff;
         }
 
-        button,
-        input {
+        button, input {
           font: inherit;
         }
 
@@ -208,404 +120,306 @@ function Dashboard() {
           cursor: pointer;
         }
 
-        /* ==================================================
-           MAIN APP
-        ================================================== */
-
-        .dashboard-page {
-          min-height: 100vh;
-          background:
-            radial-gradient(
-              circle at 72% 12%,
-              rgba(0, 98, 190, 0.12),
-              transparent 28%
-            ),
-            radial-gradient(
-              circle at 80% 75%,
-              rgba(0, 220, 190, 0.05),
-              transparent 25%
-            ),
-            #020b18;
+        a {
+          color: inherit;
+          text-decoration: none;
         }
 
-        .dashboard-layout {
+        .briqona-app {
+          min-height: 100vh;
+          background:
+            radial-gradient(circle at 70% 10%, rgba(0, 144, 255, .06), transparent 28%),
+            radial-gradient(circle at 90% 80%, rgba(123, 58, 237, .05), transparent 30%),
+            #020b18;
+          overflow-x: hidden;
+        }
+
+        .dashboard-shell {
           min-height: 100vh;
           display: flex;
         }
 
-        /* ==================================================
-           SIDEBAR
-        ================================================== */
+        /* ================= SIDEBAR ================= */
 
-        .dashboard-sidebar {
+        .sidebar {
+          width: 272px;
+          min-width: 272px;
+          min-height: 100vh;
+          background:
+            linear-gradient(180deg, rgba(3, 17, 32, .98), rgba(1, 10, 21, .99));
+          border-right: 1px solid rgba(70, 135, 190, .22);
           position: fixed;
           left: 0;
           top: 0;
           bottom: 0;
-          width: 272px;
           z-index: 100;
           display: flex;
           flex-direction: column;
-          padding: 18px 12px 16px;
-          background:
-            linear-gradient(
-              180deg,
-              rgba(3, 16, 32, 0.99),
-              rgba(2, 12, 25, 0.99)
-            );
-          border-right: 1px solid rgba(69, 126, 181, 0.18);
-          overflow-y: auto;
+          padding: 17px 16px;
         }
 
         .brand {
+          height: 64px;
           display: flex;
           align-items: center;
-          gap: 11px;
-          padding: 3px 10px 20px;
-          min-height: 65px;
+          gap: 12px;
+          padding: 2px 8px 12px;
+          margin-bottom: 10px;
         }
 
-        .brand-mark {
-          width: 40px;
-          height: 40px;
-          flex-shrink: 0;
-          display: grid;
-          place-items: center;
-          border-radius: 11px;
-          color: #b8ffff;
+        .brand-logo {
+          width: 42px;
+          height: 42px;
+          border-radius: 12px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
           font-size: 25px;
           font-weight: 800;
+          color: #fff;
           background:
-            linear-gradient(145deg, #13e3c3, #1479ff);
-          box-shadow:
-            0 0 20px rgba(0, 209, 255, 0.25);
+            linear-gradient(145deg, #00e0c5, #118eff);
+          box-shadow: 0 0 24px rgba(0, 220, 255, .25);
         }
 
         .brand-name {
           font-size: 20px;
-          line-height: 1;
           font-weight: 700;
-          letter-spacing: -0.5px;
+          letter-spacing: -.5px;
         }
 
         .brand-subtitle {
-          margin-top: 5px;
-          color: #8392a8;
+          color: #8395a9;
           font-size: 7px;
-          letter-spacing: 0.1px;
+          margin-top: 3px;
           white-space: nowrap;
         }
 
-        .sidebar-menu {
+        .nav {
           display: flex;
           flex-direction: column;
-          gap: 3px;
+          gap: 4px;
+          overflow-y: auto;
+          padding-right: 2px;
         }
 
-        .sidebar-item {
+        .nav-item {
           width: 100%;
-          min-height: 42px;
-          padding: 9px 12px;
+          min-height: 40px;
           border: 1px solid transparent;
           border-radius: 7px;
           background: transparent;
-          color: #d6e0ec;
+          color: #b4c1d0;
           display: flex;
           align-items: center;
           gap: 13px;
+          padding: 8px 11px;
           text-align: left;
-          transition: 0.2s ease;
+          transition: .2s ease;
+          font-size: 14px;
         }
 
-        .sidebar-item:hover {
-          background: rgba(15, 53, 81, 0.55);
-          border-color: rgba(45, 174, 209, 0.16);
+        .nav-item:hover {
+          color: #fff;
+          background: rgba(19, 103, 147, .15);
+          border-color: rgba(39, 210, 222, .15);
         }
 
-        .sidebar-item.active {
+        .nav-item.active {
+          color: #fff;
           background:
-            linear-gradient(
-              90deg,
-              rgba(14, 203, 186, 0.24),
-              rgba(13, 77, 102, 0.25)
-            );
-          border-color: rgba(19, 220, 205, 0.28);
-          box-shadow:
-            inset 3px 0 0 #17dbc5,
-            0 0 20px rgba(0, 216, 195, 0.06);
+            linear-gradient(90deg, rgba(0, 216, 190, .22), rgba(0, 116, 165, .12));
+          border-color: rgba(0, 225, 205, .32);
+          box-shadow: inset 3px 0 0 #1ee0ca;
         }
 
-        .sidebar-icon {
+        .nav-icon {
           width: 20px;
           min-width: 20px;
           text-align: center;
-          color: #16d9c2;
-          font-size: 18px;
+          font-size: 17px;
+          color: #12d8c4;
         }
 
-        .sidebar-item:nth-child(2) .sidebar-icon {
-          color: #d65cff;
-        }
+        .nav-item:nth-child(2) .nav-icon { color: #c54cff; }
+        .nav-item:nth-child(3) .nav-icon { color: #d8e52b; }
+        .nav-item:nth-child(4) .nav-icon { color: #ff456f; }
+        .nav-item:nth-child(7) .nav-icon { color: #2cf0a7; }
+        .nav-item:nth-child(9) .nav-icon { color: #ffb329; }
 
-        .sidebar-item:nth-child(3) .sidebar-icon {
-          color: #d5e72f;
-        }
-
-        .sidebar-item:nth-child(4) .sidebar-icon {
-          color: #ff4b65;
-        }
-
-        .sidebar-item:nth-child(6) .sidebar-icon {
-          color: #2de0ce;
-        }
-
-        .sidebar-item:nth-child(7) .sidebar-icon {
-          color: #31e397;
-        }
-
-        .sidebar-label {
+        .nav-label {
           flex: 1;
-          font-size: 14px;
-          font-weight: 500;
-          white-space: nowrap;
         }
 
-        .sidebar-chevron {
-          color: #c3ccd9;
-          font-size: 13px;
-        }
-
-        .new-badge {
-          padding: 3px 7px;
-          border-radius: 5px;
-          background: rgba(0, 216, 205, 0.12);
-          color: #19d9cb;
+        .nav-badge {
           font-size: 10px;
-          font-weight: 700;
+          padding: 4px 7px;
+          border-radius: 5px;
+          color: #7effee;
+          background: rgba(0, 213, 197, .14);
         }
 
-        .sidebar-bottom {
-          margin-top: auto;
-          padding-top: 18px;
-        }
+        /* ================= PLAN ================= */
 
         .plan-card {
-          padding: 17px;
-          border: 1px solid rgba(69, 136, 197, 0.24);
+          margin-top: auto;
+          border: 1px solid rgba(71, 130, 190, .3);
           border-radius: 9px;
           background:
-            radial-gradient(
-              circle at 85% 20%,
-              rgba(21, 102, 190, 0.16),
-              transparent 35%
-            ),
-            linear-gradient(
-              145deg,
-              rgba(7, 31, 56, 0.95),
-              rgba(3, 18, 36, 0.98)
-            );
-        }
-
-        .plan-card-top {
-          display: flex;
-          justify-content: space-between;
-          color: #a8b6c8;
-          font-size: 12px;
+            radial-gradient(circle at 15% 20%, rgba(0, 205, 207, .10), transparent 35%),
+            linear-gradient(145deg, rgba(5, 30, 54, .96), rgba(2, 14, 28, .98));
+          padding: 15px;
+          position: relative;
         }
 
         .plan-close {
+          position: absolute;
+          right: 12px;
+          top: 10px;
+          color: #8392a4;
+          background: none;
           border: 0;
-          background: transparent;
-          color: #9aa7b8;
-          font-size: 18px;
+          font-size: 17px;
         }
 
-        .plan-diamond {
-          margin-top: 13px;
-          color: #2ee6d2;
-          font-size: 29px;
-        }
-
-        .plan-label {
-          color: #aeb9c9;
+        .plan-small {
+          color: #8396aa;
           font-size: 12px;
-          margin-top: -28px;
-          margin-left: 38px;
         }
 
         .plan-name {
-          margin-left: 38px;
-          margin-top: 3px;
           font-size: 20px;
           font-weight: 700;
+          margin-top: 5px;
         }
 
         .plan-price {
-          margin-top: 12px;
-          color: #20dfd0;
-          font-size: 13px;
+          color: #20e2d0;
+          font-size: 14px;
+          margin: 7px 0 13px;
         }
 
-        .plan-price span {
-          color: #9aa9bc;
+        .plan-button,
+        .upgrade-button {
+          border: 0;
+          border-radius: 6px;
+          color: white;
+          font-weight: 600;
+          background: linear-gradient(100deg, #16cdb9, #176fe8);
+          box-shadow: 0 5px 20px rgba(15, 160, 255, .18);
         }
 
         .plan-button {
           width: 100%;
-          margin-top: 16px;
-          padding: 11px 13px;
-          border: 0;
-          border-radius: 5px;
-          color: #fff;
-          font-weight: 700;
-          background:
-            linear-gradient(90deg, #14cfae, #176cf0);
-          box-shadow:
-            0 7px 25px rgba(0, 133, 255, 0.18);
+          padding: 10px;
+          text-align: center;
         }
 
-        /* ==================================================
-           MOBILE SIDEBAR OVERLAY
-        ================================================== */
+        /* ================= MAIN ================= */
 
-        .mobile-overlay {
-          display: none;
-        }
-
-        .mobile-menu-button {
-          display: none;
-        }
-
-        /* ==================================================
-           MAIN
-        ================================================== */
-
-        .dashboard-main {
-          margin-left: 272px;
+        .main {
           width: calc(100% - 272px);
-          min-width: 0;
+          margin-left: 272px;
+          min-height: 100vh;
+          padding: 18px 28px 0;
         }
 
-        .dashboard-header {
-          height: 86px;
-          padding: 18px 22px;
+        .topbar {
+          height: 64px;
           display: flex;
           align-items: center;
           gap: 12px;
-          border-bottom: 1px solid rgba(56, 108, 155, 0.16);
-          background: rgba(2, 11, 24, 0.82);
+          margin-bottom: 5px;
+        }
+
+        .mobile-menu {
+          display: none;
         }
 
         .search-box {
           flex: 1;
           max-width: 575px;
-          height: 50px;
+          height: 48px;
+          border: 1px solid rgba(77, 127, 173, .34);
+          background: rgba(4, 20, 39, .75);
+          border-radius: 9px;
           display: flex;
           align-items: center;
           gap: 12px;
           padding: 0 15px;
-          border: 1px solid rgba(73, 124, 174, 0.28);
-          border-radius: 9px;
-          background: rgba(5, 20, 39, 0.82);
+          color: #94a9bc;
         }
 
-        .search-icon {
-          color: #aebdce;
-          font-size: 22px;
-        }
-
-        .search-input {
+        .search-box input {
           flex: 1;
           min-width: 0;
+          background: transparent;
           border: 0;
           outline: 0;
-          color: #e8f1fc;
-          background: transparent;
+          color: #fff;
           font-size: 14px;
         }
 
-        .search-input::placeholder {
-          color: #9ba9bc;
+        .search-box input::placeholder {
+          color: #8ea0b4;
         }
 
         .shortcut {
-          color: #aeb9c9;
-          padding: 4px 7px;
-          border: 1px solid rgba(95, 127, 163, 0.3);
+          border: 1px solid rgba(100, 140, 180, .25);
           border-radius: 5px;
+          padding: 4px 7px;
           font-size: 11px;
-          white-space: nowrap;
+          color: #8fa0b2;
         }
 
-        .header-button {
-          height: 50px;
+        .top-button {
+          height: 48px;
           padding: 0 18px;
+          border: 1px solid rgba(61, 110, 166, .5);
           border-radius: 8px;
-          border: 1px solid rgba(65, 125, 190, 0.42);
-          background: rgba(5, 20, 39, 0.82);
-          color: #eaf4ff;
-          font-weight: 600;
+          background: rgba(4, 18, 36, .75);
+          color: #e7f3ff;
           white-space: nowrap;
         }
 
-        .header-button.ai {
-          border-color: #0ed4ae;
-          background:
-            linear-gradient(
-              135deg,
-              rgba(0, 194, 169, 0.15),
-              rgba(0, 75, 100, 0.18)
-            );
+        .top-button.ai {
+          border-color: #00d8ba;
+          background: rgba(0, 198, 168, .08);
         }
 
-        .header-button.mission {
-          color: #eaf3ff;
+        .top-button:hover {
+          border-color: #17d9d1;
         }
 
-        .header-right {
-          margin-left: auto;
-          display: flex;
-          align-items: center;
-          gap: 12px;
-        }
-
-        .icon-button {
-          position: relative;
-          width: 43px;
-          height: 43px;
+        .top-icon {
+          width: 42px;
+          height: 42px;
           border: 0;
-          border-radius: 8px;
           background: transparent;
-          color: #dbe7f5;
-          font-size: 20px;
+          color: white;
+          position: relative;
+          font-size: 19px;
         }
 
         .notification-count {
           position: absolute;
+          right: 0;
           top: 0;
-          right: -1px;
-          min-width: 17px;
-          height: 17px;
-          padding: 0 4px;
-          display: grid;
-          place-items: center;
-          border-radius: 20px;
-          background: #ef4762;
-          color: #fff;
-          font-size: 9px;
-          font-weight: 700;
-        }
-
-        .notification-count.blue {
-          background: #159be7;
+          width: 18px;
+          height: 18px;
+          border-radius: 50%;
+          background: #ed3d52;
+          font-size: 10px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
 
         .profile {
-          position: relative;
           display: flex;
           align-items: center;
-          gap: 9px;
-          margin-left: 5px;
+          gap: 10px;
+          padding-left: 6px;
         }
 
         .profile-text {
@@ -613,650 +427,493 @@ function Dashboard() {
         }
 
         .profile-name {
-          font-size: 14px;
-          font-weight: 600;
-        }
-
-        .profile-role {
-          margin-top: 2px;
-          color: #7f90a5;
-          font-size: 11px;
-        }
-
-        .profile-avatar {
-          width: 43px;
-          height: 43px;
-          display: grid;
-          place-items: center;
-          border-radius: 50%;
-          border: 2px solid rgba(105, 133, 163, 0.45);
-          background:
-            radial-gradient(circle at 50% 35%, #c58f6d, #4e3025 42%, #141b25 43%);
-          color: #fff;
-          font-size: 18px;
-        }
-
-        .profile-arrow {
-          border: 0;
-          background: transparent;
-          color: #d5e0ed;
           font-size: 13px;
         }
 
-        .profile-menu {
-          position: absolute;
-          right: 0;
-          top: 53px;
-          z-index: 200;
-          width: 180px;
-          padding: 8px;
-          border: 1px solid rgba(67, 125, 175, 0.35);
-          border-radius: 9px;
-          background: #071a30;
-          box-shadow: 0 20px 50px rgba(0,0,0,.45);
+        .profile-role {
+          font-size: 10px;
+          color: #8b9caf;
+          margin-top: 3px;
         }
 
-        .profile-menu button {
-          width: 100%;
-          padding: 10px;
-          border: 0;
-          border-radius: 6px;
-          background: transparent;
-          color: #dce7f3;
-          text-align: left;
+        .avatar {
+          width: 42px;
+          height: 42px;
+          border-radius: 50%;
+          border: 2px solid rgba(111, 139, 165, .5);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: linear-gradient(145deg, #9b735b, #2d1e19);
+          font-size: 20px;
         }
 
-        .profile-menu button:hover {
-          background: rgba(36, 104, 143, .25);
-        }
+        /* ================= HERO ================= */
 
-        /* ==================================================
-           CONTENT
-        ================================================== */
-
-        .dashboard-content {
-          padding: 0 30px 18px;
-        }
-
-        .hero-row {
-          display: grid;
-          grid-template-columns: minmax(420px, 1.45fr) repeat(4, minmax(130px, .62fr));
-          gap: 10px;
-          margin-top: 0;
-        }
-
-        .hero-card {
-          min-height: 263px;
-          padding: 32px 28px 18px;
+        .hero {
+          min-height: 264px;
+          border: 1px solid rgba(74, 134, 190, .35);
+          border-radius: 10px;
+          padding: 29px 27px;
           position: relative;
           overflow: hidden;
-          border: 1px solid rgba(61, 121, 181, 0.34);
-          border-radius: 11px;
           background:
-            radial-gradient(circle at 72% 35%, rgba(9, 215, 255, .08), transparent 28%),
-            linear-gradient(135deg, #071a34, #031326);
+            radial-gradient(circle at 52% 50%, rgba(0, 224, 196, .12), transparent 24%),
+            radial-gradient(circle at 78% 15%, rgba(0, 138, 255, .10), transparent 30%),
+            linear-gradient(120deg, #04182e, #020d1d 75%);
         }
 
-        .hero-card::before {
+        .hero::before {
           content: "";
           position: absolute;
-          left: -8%;
-          right: -5%;
-          bottom: 18px;
-          height: 110px;
-          opacity: .7;
-          background:
-            radial-gradient(
-              ellipse at 50% 100%,
-              rgba(21, 95, 255, .22),
-              transparent 62%
-            );
-        }
-
-        .hero-card::after {
-          content: "";
-          position: absolute;
-          left: 10%;
-          right: -10%;
-          bottom: 45px;
-          height: 90px;
-          border-top: 1px solid rgba(22, 177, 255, .5);
+          width: 110%;
+          height: 100px;
+          left: -4%;
+          bottom: 20px;
+          border-top: 2px solid rgba(17, 157, 255, .55);
           border-radius: 50%;
           transform: rotate(-3deg);
           box-shadow:
-            0 -17px 0 rgba(22, 91, 255, .24),
-            0 -33px 0 rgba(20, 220, 198, .11);
+            0 -15px 0 rgba(0, 125, 255, .18),
+            0 -30px 0 rgba(0, 214, 198, .10);
+        }
+
+        .hero::after {
+          content: "";
+          position: absolute;
+          width: 8px;
+          height: 8px;
+          background: #4eefff;
+          border-radius: 50%;
+          top: 63px;
+          left: 43%;
+          box-shadow: 0 0 18px #20e8ff;
+        }
+
+        .hero-content {
+          position: relative;
+          z-index: 2;
         }
 
         .hero-title {
-          position: relative;
-          z-index: 2;
-          margin: 0;
           font-size: 25px;
-          letter-spacing: -0.6px;
+          margin: 0;
+          font-weight: 700;
         }
 
         .hero-subtitle {
-          position: relative;
-          z-index: 2;
-          margin: 8px 0 0;
-          color: #d1dbe7;
+          color: #c1d0de;
           font-size: 14px;
+          margin-top: 8px;
         }
 
         .pulse {
           position: absolute;
           z-index: 4;
           left: 27px;
-          bottom: 17px;
+          bottom: 27px;
+          height: 54px;
+          min-width: 322px;
+          border: 1px solid rgba(37, 132, 181, .38);
+          border-radius: 8px;
+          background: rgba(3, 26, 48, .88);
           display: flex;
           align-items: center;
-          gap: 12px;
-          padding: 12px 15px;
-          border: 1px solid rgba(49, 137, 186, .35);
-          border-radius: 7px;
-          background: rgba(4, 27, 50, .9);
-        }
-
-        .pulse-star {
-          color: #10d6ea;
-          font-size: 19px;
+          padding: 0 14px;
+          gap: 16px;
         }
 
         .pulse-title {
-          color: #11cfe7;
+          color: #2be2e2;
           font-size: 14px;
         }
 
-        .pulse-status {
-          padding: 5px 10px;
+        .excellent {
+          background: rgba(26, 196, 155, .18);
+          color: #52e7c1;
+          padding: 6px 9px;
           border-radius: 5px;
-          color: #43dfba;
-          background: rgba(17, 194, 145, .13);
           font-size: 11px;
-          font-weight: 700;
         }
 
         .pulse-score {
-          padding-left: 16px;
-          border-left: 1px solid rgba(90, 126, 157, .28);
-          color: #42e5b9;
-          font-size: 26px;
+          font-size: 27px;
+          color: #44e8b9;
+          margin-left: auto;
         }
 
-        .pulse-score span {
-          color: #a6b5c5;
+        .pulse-score small {
+          color: #8b9bab;
           font-size: 12px;
         }
 
-        /* ==================================================
-           METRICS
-        ================================================== */
+        /* ================= CONTROLS ================= */
 
-        .metric-card {
-          min-height: 174px;
-          padding: 17px 16px 9px;
-          display: flex;
-          flex-direction: column;
-          overflow: hidden;
-          border: 1px solid rgba(59, 111, 161, .29);
-          border-radius: 9px;
-          background:
-            linear-gradient(
-              145deg,
-              rgba(8, 25, 48, .95),
-              rgba(3, 16, 32, .96)
-            );
-        }
-
-        .metric-title {
-          color: #aebdce;
-          font-size: 11px;
-        }
-
-        .metric-value {
-          margin-top: 8px;
-          font-size: 24px;
-          font-weight: 650;
-        }
-
-        .metric-change {
-          margin-top: 4px;
-          font-size: 10px;
-        }
-
-        .metric-change.green {
-          color: #34dfa9;
-        }
-
-        .metric-change.purple {
-          color: #43dfb7;
-        }
-
-        .metric-change.orange,
-        .metric-change.red {
-          color: #ff5d70;
-        }
-
-        .metric-change.blue {
-          color: #ff526b;
-        }
-
-        .chart {
-          margin-top: auto;
-          width: 100%;
-          height: 65px;
-          overflow: visible;
-        }
-
-        .chart path {
-          fill: none;
-          stroke-width: 2.4;
-          stroke-linecap: round;
-          stroke-linejoin: round;
-        }
-
-        .chart.green path {
-          stroke: #32e4a6;
-        }
-
-        .chart.purple path {
-          stroke: #ce4fff;
-        }
-
-        .chart.orange path {
-          stroke: #ff9d0a;
-        }
-
-        .chart.blue path {
-          stroke: #2f9df5;
-        }
-
-        /* ==================================================
-           TOOLBAR
-        ================================================== */
-
-        .toolbar {
+        .controls {
           display: flex;
           justify-content: flex-end;
           gap: 10px;
-          margin: 13px 0 11px;
+          margin: 12px 0;
         }
 
-        .dropdown-wrap {
-          position: relative;
-        }
-
-        .toolbar-button {
-          min-height: 36px;
-          padding: 0 14px;
-          border: 1px solid rgba(64, 112, 157, .34);
+        .control-button {
+          height: 38px;
+          padding: 0 15px;
+          border: 1px solid rgba(77, 129, 177, .35);
+          background: rgba(4, 18, 35, .75);
+          color: #dbe9f5;
           border-radius: 7px;
-          background: #07182d;
-          color: #e0e9f4;
-          font-size: 12px;
         }
 
-        .dropdown-menu {
-          position: absolute;
-          right: 0;
-          top: calc(100% + 6px);
-          z-index: 150;
-          width: 150px;
-          padding: 5px;
-          border: 1px solid rgba(67, 126, 177, .36);
+        /* ================= STAT CARDS ================= */
+
+        .stats {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 10px;
+        }
+
+        .stat-card {
+          min-height: 174px;
+          border: 1px solid rgba(69, 122, 173, .32);
           border-radius: 8px;
-          background: #071a30;
-          box-shadow: 0 20px 45px rgba(0,0,0,.45);
+          padding: 18px 16px 8px;
+          background:
+            linear-gradient(145deg, rgba(5, 22, 43, .95), rgba(3, 15, 30, .92));
+          position: relative;
+          overflow: hidden;
         }
 
-        .dropdown-menu button {
-          width: 100%;
-          padding: 9px 10px;
-          border: 0;
-          border-radius: 5px;
-          background: transparent;
-          color: #dce7f2;
-          text-align: left;
+        .stat-title {
+          color: #aab9c9;
           font-size: 12px;
         }
 
-        .dropdown-menu button:hover {
-          background: rgba(26, 105, 145, .28);
+        .stat-value {
+          font-size: 24px;
+          font-weight: 700;
+          margin-top: 7px;
         }
 
-        /* ==================================================
-           QUICK ACTIONS
-        ================================================== */
+        .stat-change {
+          font-size: 10px;
+          margin-top: 5px;
+        }
 
-        .quick-actions {
-          padding: 11px 13px 13px;
-          border: 1px solid rgba(58, 116, 169, .29);
+        .positive {
+          color: #3be0a6;
+        }
+
+        .negative {
+          color: #ff5267;
+        }
+
+        .chart {
+          position: absolute;
+          left: 14px;
+          right: 14px;
+          bottom: 10px;
+          height: 57px;
+          display: flex;
+          align-items: flex-end;
+          gap: 9px;
+        }
+
+        .chart span {
+          display: block;
+          width: 9px;
+          border-radius: 5px;
+          transform: rotate(38deg);
+        }
+
+        .chart.green span { background: #26df9f; }
+        .chart.purple span { background: #c34cff; }
+        .chart.orange span { background: #ff9d19; }
+        .chart.blue span { background: #39a5ff; }
+
+        /* ================= SECTION CARD ================= */
+
+        .section-card {
+          border: 1px solid rgba(70, 122, 170, .32);
           border-radius: 9px;
-          background: rgba(4, 18, 35, .8);
+          background:
+            linear-gradient(145deg, rgba(4, 22, 42, .94), rgba(2, 14, 28, .96));
         }
 
         .section-title {
-          margin: 0 0 10px;
-          color: #e2ebf6;
-          font-size: 13px;
-          font-weight: 650;
+          font-size: 15px;
+          font-weight: 600;
+        }
+
+        .section-header {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 10px;
+        }
+
+        .view-all {
+          border: 0;
+          background: none;
+          color: #28cfff;
+          font-size: 11px;
+        }
+
+        /* ================= QUICK ACTIONS ================= */
+
+        .quick {
+          margin-top: 10px;
+          padding: 12px;
         }
 
         .quick-grid {
           display: grid;
           grid-template-columns: repeat(7, 1fr);
           gap: 12px;
+          margin-top: 12px;
         }
 
         .quick-button {
-          min-height: 69px;
-          padding: 8px;
+          min-height: 68px;
+          border: 1px solid rgba(63, 120, 169, .35);
+          border-radius: 6px;
+          color: #edf8ff;
+          background: rgba(6, 25, 47, .75);
           display: flex;
           flex-direction: column;
           align-items: center;
           justify-content: center;
           gap: 6px;
-          border: 1px solid rgba(68, 127, 174, .28);
-          border-radius: 6px;
-          background: rgba(6, 24, 45, .75);
-          color: #edf4fc;
           font-size: 11px;
-          text-align: center;
         }
 
         .quick-button:hover {
+          border-color: #16d4c9;
           transform: translateY(-1px);
-          background: rgba(12, 43, 67, .9);
         }
 
         .quick-icon {
-          width: 31px;
-          height: 31px;
-          display: grid;
-          place-items: center;
+          width: 30px;
+          height: 30px;
           border-radius: 50%;
-          font-size: 17px;
-          background: rgba(24, 173, 143, .16);
-          color: #35e2b5;
-        }
-
-        .quick-button.blue .quick-icon {
-          color: #38a9ff;
-          background: rgba(28, 116, 218, .16);
-        }
-
-        .quick-button.orange .quick-icon {
-          color: #ff9a2b;
-          background: rgba(255, 139, 32, .15);
-        }
-
-        .quick-button.purple .quick-icon {
-          color: #c65aff;
-          background: rgba(153, 48, 226, .15);
-        }
-
-        .quick-button.cyan .quick-icon {
-          color: #24dfdf;
-          background: rgba(0, 192, 203, .14);
-        }
-
-        .quick-button.pink .quick-icon {
-          color: #ff6fa4;
-          background: rgba(218, 48, 121, .15);
-        }
-
-        .quick-button.gray .quick-icon {
-          color: #b8c6d6;
-          background: rgba(112, 137, 160, .14);
-        }
-
-        /* ==================================================
-           MIDDLE GRID
-        ================================================== */
-
-        .middle-grid {
-          display: grid;
-          grid-template-columns: minmax(0, 1.4fr) minmax(300px, .75fr);
-          gap: 12px;
-          margin-top: 12px;
-        }
-
-        .panel {
-          border: 1px solid rgba(59, 117, 171, .28);
-          border-radius: 9px;
-          background:
-            linear-gradient(
-              145deg,
-              rgba(6, 25, 48, .94),
-              rgba(3, 16, 33, .97)
-            );
-        }
-
-        /* ==================================================
-           AI COMMAND
-        ================================================== */
-
-        .command-panel {
-          min-height: 228px;
-          padding: 19px 21px;
-          position: relative;
-          overflow: hidden;
-        }
-
-        .command-panel::after {
-          content: "";
-          position: absolute;
-          right: 35px;
-          top: 38px;
-          width: 130px;
-          height: 130px;
-          border-radius: 50%;
-          background:
-            radial-gradient(
-              circle,
-              rgba(69, 118, 255, .34),
-              rgba(142, 29, 255, .18) 35%,
-              transparent 68%
-            );
-          box-shadow:
-            0 0 40px rgba(72, 102, 255, .2);
-        }
-
-        .panel-heading {
           display: flex;
           align-items: center;
-          gap: 10px;
-          font-size: 19px;
-          font-weight: 650;
+          justify-content: center;
+          background: rgba(0, 200, 180, .13);
+          color: #36e5c5;
+          font-size: 17px;
         }
 
-        .spark {
-          color: #2bddec;
+        /* ================= TWO COLUMN ================= */
+
+        .main-grid {
+          display: grid;
+          grid-template-columns: 1.55fr 1fr;
+          gap: 12px;
+          margin-top: 10px;
         }
 
-        .panel-subtitle {
-          margin-top: 6px;
-          color: #aab8c9;
-          font-size: 12px;
+        .ai-command {
+          min-height: 229px;
+          padding: 17px 21px;
+          position: relative;
+          overflow: hidden;
+          background:
+            radial-gradient(circle at 75% 65%, rgba(112, 45, 255, .18), transparent 26%),
+            radial-gradient(circle at 63% 50%, rgba(0, 207, 255, .10), transparent 25%),
+            linear-gradient(145deg, rgba(5, 24, 47, .98), rgba(3, 14, 29, .97));
         }
 
-        .command-input-row {
+        .ai-command::after {
+          content: "";
+          position: absolute;
+          width: 100px;
+          height: 100px;
+          right: 40px;
+          bottom: 25px;
+          border-radius: 50%;
+          background: radial-gradient(circle, rgba(22, 214, 255, .3), rgba(127, 39, 255, .18), transparent 70%);
+          filter: blur(3px);
+        }
+
+        .ai-heading {
+          font-size: 20px;
+          font-weight: 700;
           position: relative;
           z-index: 2;
-          display: flex;
-          gap: 0;
-          margin-top: 14px;
         }
 
-        .command-input {
+        .ai-heading span {
+          color: #25dff3;
+        }
+
+        .ai-desc {
+          color: #a9b9ca;
+          font-size: 12px;
+          margin-top: 8px;
+          position: relative;
+          z-index: 2;
+        }
+
+        .command-row {
+          display: flex;
+          margin-top: 15px;
+          position: relative;
+          z-index: 4;
+        }
+
+        .command-row input {
           flex: 1;
           min-width: 0;
-          height: 51px;
-          padding: 0 15px;
-          border: 1px solid rgba(61, 119, 170, .38);
+          height: 52px;
+          border: 1px solid rgba(77, 128, 174, .35);
           border-radius: 7px 0 0 7px;
-          outline: 0;
-          background: rgba(3, 17, 34, .84);
+          background: rgba(1, 12, 26, .72);
           color: white;
+          outline: none;
+          padding: 0 13px;
         }
 
-        .command-input::placeholder {
-          color: #8998ab;
-        }
-
-        .mic-button,
-        .send-button {
+        .mic-button {
           width: 48px;
-          height: 51px;
-          border: 1px solid rgba(62, 120, 172, .3);
-          color: #fff;
-          background: #0a2944;
+          border: 1px solid rgba(69, 128, 176, .35);
+          background: #071d35;
+          color: #25d7ef;
         }
 
         .send-button {
+          width: 52px;
+          border: 0;
           border-radius: 0 7px 7px 0;
-          background: linear-gradient(135deg, #12d8c1, #2069ed);
+          background: linear-gradient(145deg, #1be2d2, #2475ff);
+          color: white;
           font-size: 20px;
         }
 
-        .command-shortcuts {
-          position: relative;
-          z-index: 3;
+        .suggestions {
           display: flex;
           flex-wrap: wrap;
           gap: 8px;
-          margin-top: 14px;
+          margin-top: 15px;
+          position: relative;
+          z-index: 5;
         }
 
-        .command-chip {
-          padding: 8px 10px;
-          border: 1px solid rgba(69, 126, 176, .3);
+        .suggestion {
+          border: 1px solid rgba(78, 123, 169, .35);
           border-radius: 6px;
-          color: #d4dfec;
-          background: rgba(5, 21, 40, .78);
+          background: rgba(5, 23, 43, .7);
+          color: #d2dfeb;
+          padding: 7px 10px;
           font-size: 10px;
         }
 
-        /* ==================================================
-           MISSIONS
-        ================================================== */
+        /* ================= MISSIONS ================= */
 
-        .missions-panel {
-          padding: 17px;
-          min-height: 228px;
-        }
-
-        .panel-heading-row {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-        }
-
-        .view-all {
-          border: 0;
-          background: transparent;
-          color: #24c8f4;
-          font-size: 11px;
-        }
-
-        .beta {
-          margin-left: 4px;
-          padding: 3px 6px;
-          border-radius: 4px;
-          color: #d6b7ff;
-          background: rgba(155, 59, 255, .17);
-          font-size: 9px;
-          vertical-align: middle;
+        .missions {
+          min-height: 229px;
+          padding: 17px 11px;
         }
 
         .mission {
-          padding: 12px 10px;
-          margin-top: 10px;
-          border: 1px solid rgba(68, 122, 168, .25);
+          min-height: 58px;
+          border: 1px solid rgba(66, 113, 157, .28);
           border-radius: 7px;
-          background: rgba(5, 21, 40, .65);
-        }
-
-        .mission-top {
-          display: flex;
-          align-items: center;
+          background: rgba(4, 20, 38, .7);
+          margin-top: 9px;
+          padding: 10px;
+          display: grid;
+          grid-template-columns: 30px 1fr 75px;
           gap: 9px;
+          align-items: center;
         }
 
         .mission-icon {
-          width: 26px;
-          height: 26px;
-          display: grid;
-          place-items: center;
-          border-radius: 7px;
-          color: #36e3ba;
-          background: rgba(20, 199, 160, .13);
+          width: 30px;
+          height: 30px;
+          border-radius: 8px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: rgba(0, 218, 183, .12);
+          color: #25e0b6;
         }
 
-        .mission-title {
-          flex: 1;
+        .mission:nth-child(3) .mission-icon {
+          color: #9e55ff;
+          background: rgba(137, 48, 255, .12);
+        }
+
+        .mission:nth-child(4) .mission-icon {
+          color: #ffa31b;
+          background: rgba(255, 146, 23, .12);
+        }
+
+        .mission-name {
           font-size: 11px;
-        }
-
-        .mission-status {
-          color: #37d6aa;
-          font-size: 9px;
-        }
-
-        .mission-percent {
-          color: #c3cfdd;
-          font-size: 10px;
+          margin-bottom: 7px;
         }
 
         .progress {
-          height: 4px;
-          margin: 8px 27px 0 36px;
-          border-radius: 10px;
-          background: rgba(61, 92, 120, .3);
+          height: 5px;
+          border-radius: 5px;
+          background: #102b43;
           overflow: hidden;
         }
 
-        .progress-bar {
+        .progress span {
           height: 100%;
+          display: block;
           border-radius: inherit;
-          background: #2ddbb0;
+          background: #22d9a4;
         }
 
-        .progress-bar.purple {
-          background: #a74bff;
+        .mission:nth-child(3) .progress span {
+          background: #9b42ff;
         }
 
-        .progress-bar.orange {
-          background: #f9a51a;
+        .mission:nth-child(4) .progress span {
+          background: #ff9f16;
         }
 
-        /* ==================================================
-           LOWER GRID
-        ================================================== */
+        .mission-status {
+          text-align: right;
+          font-size: 9px;
+          color: #44d9b4;
+        }
+
+        .mission-status small {
+          display: block;
+          color: #b8c6d2;
+          font-size: 9px;
+          margin-top: 8px;
+        }
+
+        /* ================= LOWER GRID ================= */
 
         .lower-grid {
           display: grid;
-          grid-template-columns: 1fr 1fr .95fr .95fr;
-          gap: 12px;
-          margin-top: 12px;
+          grid-template-columns: 1fr 1fr 1fr 1fr;
+          gap: 10px;
+          margin-top: 10px;
         }
 
-        .small-panel {
-          min-height: 200px;
-          padding: 17px;
+        .list-card {
+          min-height: 202px;
+          padding: 15px;
         }
 
         .list {
-          margin-top: 5px;
+          margin-top: 10px;
         }
 
         .list-row {
+          min-height: 34px;
+          border-bottom: 1px solid rgba(65, 106, 142, .18);
           display: flex;
           align-items: center;
-          gap: 9px;
-          min-height: 36px;
-          border-bottom: 1px solid rgba(72, 111, 143, .16);
+          gap: 8px;
+          font-size: 10px;
         }
 
         .list-row:last-child {
@@ -1264,532 +921,417 @@ function Dashboard() {
         }
 
         .list-icon {
-          width: 22px;
-          color: #11d6c6;
+          width: 20px;
+          min-width: 20px;
           text-align: center;
-          font-size: 13px;
+          color: #25d7d1;
         }
 
         .list-text {
           flex: 1;
-          color: #cbd7e5;
-          font-size: 10px;
+          color: #c9d5df;
         }
 
         .list-time {
-          color: #75869b;
-          font-size: 9px;
+          color: #77899b;
+          font-size: 8px;
           white-space: nowrap;
         }
 
-        .notification-dot {
-          width: 23px;
-          height: 23px;
-          display: grid;
-          place-items: center;
-          border-radius: 50%;
-          font-size: 10px;
-          background: rgba(220, 54, 75, .14);
-          color: #ff5b70;
-        }
-
-        .notification-dot.orange {
-          color: #ffad25;
-          background: rgba(255, 158, 25, .12);
-        }
-
-        .notification-dot.purple {
-          color: #c25aff;
-          background: rgba(156, 45, 224, .12);
-        }
-
-        .notification-dot.green {
-          color: #20dfb1;
-          background: rgba(17, 199, 151, .12);
-        }
-
-        /* ==================================================
-           CUSTOMERS
-        ================================================== */
-
-        .customer-row {
-          display: flex;
-          align-items: center;
-          gap: 8px;
-          min-height: 34px;
-          border-bottom: 1px solid rgba(72, 111, 143, .16);
-        }
-
-        .customer-row:last-child {
-          border-bottom: 0;
+        .notification .list-icon {
+          color: #ef4763;
         }
 
         .customer-avatar {
           width: 22px;
           height: 22px;
-          display: grid;
-          place-items: center;
           border-radius: 50%;
-          color: #d8efff;
-          background: #244d73;
+          background: #183b60;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #cfeaff;
           font-size: 9px;
         }
 
-        .customer-name {
-          flex: 1;
-          color: #d5dfeb;
-          font-size: 10px;
+        .customer-money {
+          color: #38d9ae;
+          font-size: 9px;
         }
 
-        .customer-value {
-          color: #42dcb1;
-          font-size: 10px;
-        }
+        /* ================= INSIGHTS ================= */
 
-        /* ==================================================
-           AI INSIGHTS
-        ================================================== */
-
-        .insights-panel {
+        .insights {
           position: relative;
           overflow: hidden;
           background:
-            radial-gradient(
-              circle at 80% 80%,
-              rgba(112, 32, 213, .2),
-              transparent 36%
-            ),
-            linear-gradient(
-              145deg,
-              rgba(6, 25, 49, .97),
-              rgba(15, 15, 50, .9)
-            );
-        }
-
-        .insight-new {
-          padding: 4px 7px;
-          border-radius: 5px;
-          background: rgba(30, 209, 174, .12);
-          color: #35dfbd;
-          font-size: 9px;
+            radial-gradient(circle at 85% 75%, rgba(192, 50, 255, .19), transparent 32%),
+            linear-gradient(145deg, rgba(5, 23, 45, .97), rgba(13, 12, 45, .97));
         }
 
         .insight-text {
-          margin-top: 26px;
-          color: #ccd8e7;
+          color: #b6c5d4;
           font-size: 11px;
           line-height: 1.7;
+          margin-top: 20px;
         }
 
         .insight-text strong {
-          color: #31dfb4;
+          color: #28d9aa;
         }
 
         .insight-button {
-          margin-top: 16px;
-          padding: 8px 11px;
-          border: 1px solid rgba(38, 143, 200, .3);
-          border-radius: 5px;
-          background: rgba(5, 26, 48, .7);
-          color: #29d2ef;
+          margin-top: 13px;
+          padding: 8px 10px;
+          border: 1px solid rgba(43, 123, 185, .4);
+          border-radius: 6px;
+          background: rgba(3, 23, 44, .75);
+          color: #36cfff;
           font-size: 10px;
         }
 
-        .insight-orb {
+        .insight-glow {
           position: absolute;
-          right: 19px;
-          bottom: 13px;
-          width: 58px;
-          height: 58px;
+          right: 20px;
+          bottom: 17px;
+          width: 55px;
+          height: 55px;
           border-radius: 50%;
-          background:
-            radial-gradient(
-              circle,
-              #e36dff 0 6%,
-              rgba(187, 64, 255, .45) 10%,
-              rgba(83, 58, 255, .2) 40%,
-              transparent 68%
-            );
-          box-shadow: 0 0 30px rgba(158, 66, 255, .35);
+          background: radial-gradient(circle, #d44cff 0, rgba(212, 76, 255, .18) 30%, transparent 70%);
+          box-shadow: 0 0 35px rgba(190, 60, 255, .4);
         }
 
-        /* ==================================================
-           BOTTOM AREA
-        ================================================== */
+        /* ================= BOTTOM ================= */
 
         .bottom-grid {
           display: grid;
-          grid-template-columns: 1fr 1.1fr;
-          gap: 12px;
-          margin-top: 12px;
+          grid-template-columns: 1fr 1fr;
+          gap: 10px;
+          margin-top: 10px;
         }
 
-        .package-panel,
-        .industries-panel {
-          padding: 16px;
-          min-height: 180px;
+        .package,
+        .industries {
+          min-height: 204px;
+          padding: 15px;
         }
 
-        .package-content {
-          margin-top: 13px;
+        .package-plan {
           display: flex;
           align-items: center;
-          gap: 12px;
+          gap: 10px;
+          margin-top: 14px;
           padding: 10px;
-          border: 1px solid rgba(60, 117, 166, .23);
+          border: 1px solid rgba(60, 112, 160, .25);
           border-radius: 6px;
-          background: rgba(4, 19, 36, .75);
         }
 
-        .package-icon {
-          color: #29e1d1;
-          font-size: 28px;
+        .diamond {
+          color: #25e2d4;
+          font-size: 24px;
         }
 
         .package-name {
+          font-weight: 600;
+          font-size: 14px;
           flex: 1;
-          font-size: 13px;
-          font-weight: 650;
         }
 
         .package-price {
-          color: #27dec1;
+          color: #1ce2ce;
           font-size: 11px;
-        }
-
-        .package-price span {
-          color: #7f91a6;
         }
 
         .access {
-          margin-top: 11px;
-          color: #aab8ca;
+          display: flex;
+          justify-content: space-between;
+          color: #a5b4c4;
           font-size: 10px;
+          margin-top: 15px;
         }
 
         .access strong {
-          float: right;
-          color: #35d8bc;
+          color: #34e2c2;
         }
 
-        .upgrade-small {
-          width: 100%;
-          margin-top: 11px;
-          padding: 9px;
-          border: 0;
+        .access-bar {
+          height: 5px;
           border-radius: 5px;
-          background: linear-gradient(90deg, #17cfae, #1c70e9);
-          color: #fff;
-          font-size: 11px;
-          font-weight: 700;
+          background: #102940;
+          margin-top: 7px;
+          overflow: hidden;
         }
 
-        .industries-header {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
+        .access-bar span {
+          display: block;
+          width: 63%;
+          height: 100%;
+          background: #20d9bf;
         }
 
-        .manage {
-          border: 0;
-          background: transparent;
-          color: #26cbe9;
+        .upgrade-button {
+          width: 100%;
+          height: 37px;
+          margin-top: 13px;
+        }
+
+        .feature-link {
+          display: block;
+          text-align: center;
+          color: #28d4e8;
           font-size: 10px;
+          margin-top: 10px;
         }
 
         .industry-grid {
-          margin-top: 12px;
           display: grid;
           grid-template-columns: repeat(6, 1fr);
-          gap: 8px;
+          gap: 7px;
+          margin-top: 13px;
         }
 
-        .industry-item {
-          min-height: 55px;
-          padding: 6px;
+        .industry {
+          min-height: 57px;
+          border: 1px solid rgba(61, 113, 162, .3);
+          border-radius: 6px;
+          background: rgba(5, 23, 43, .7);
           display: flex;
           flex-direction: column;
-          align-items: center;
           justify-content: center;
-          gap: 4px;
-          border: 1px solid rgba(65, 120, 165, .25);
-          border-radius: 6px;
-          background: rgba(5, 22, 42, .75);
-          color: #d7e1ed;
-          font-size: 9px;
+          align-items: center;
+          gap: 5px;
+          font-size: 8px;
           text-align: center;
         }
 
-        .industry-item:first-child {
-          border-color: rgba(21, 218, 180, .48);
-          color: #34dfb7;
-        }
-
         .industry-icon {
-          font-size: 16px;
-          color: #28c9f0;
+          color: #19d6c2;
+          font-size: 18px;
         }
 
-        /* ==================================================
-           FOOTER
-        ================================================== */
+        .industry:first-child {
+          border-color: #14d8b8;
+          background: rgba(0, 212, 181, .08);
+        }
 
-        .dashboard-footer {
+        /* ================= FOOTER ================= */
+
+        .footer {
           min-height: 54px;
-          margin-top: 16px;
-          padding: 0 28px;
+          margin: 18px -28px 0;
+          border-top: 1px solid rgba(66, 108, 145, .2);
+          background: rgba(2, 10, 20, .75);
           display: flex;
           align-items: center;
           justify-content: space-between;
-          border-top: 1px solid rgba(62, 108, 151, .2);
-          background: rgba(2, 11, 23, .85);
-          color: #8190a2;
+          padding: 0 28px;
+          color: #77899b;
           font-size: 10px;
         }
 
         .footer-links {
           display: flex;
-          gap: 34px;
+          gap: 25px;
         }
 
-        .footer-links button {
-          border: 0;
-          background: transparent;
-          color: #9aa8b9;
-          font-size: 10px;
+        .footer a:hover {
+          color: #27d9d0;
         }
 
-        .footer-links button:hover {
-          color: #27d8e0;
+        /* ================= MOBILE ================= */
+
+        .overlay {
+          display: none;
         }
 
-        /* ==================================================
-           RESPONSIVE — TABLET
-        ================================================== */
-
-        @media (max-width: 1200px) {
-
-          .dashboard-sidebar {
+        @media (max-width: 1100px) {
+          .sidebar {
             width: 230px;
+            min-width: 230px;
           }
 
-          .dashboard-main {
-            margin-left: 230px;
+          .main {
             width: calc(100% - 230px);
-          }
-
-          .dashboard-header {
-            padding: 15px;
-          }
-
-          .header-button {
-            padding: 0 11px;
-          }
-
-          .profile-text {
-            display: none;
-          }
-
-          .dashboard-content {
-            padding: 0 16px 16px;
-          }
-
-          .hero-row {
-            grid-template-columns: 1.6fr repeat(2, 1fr);
-          }
-
-          .hero-card {
-            grid-row: span 2;
+            margin-left: 230px;
+            padding-left: 18px;
+            padding-right: 18px;
           }
 
           .lower-grid {
             grid-template-columns: 1fr 1fr;
           }
 
-          .industry-grid {
-            grid-template-columns: repeat(4, 1fr);
+          .top-button {
+            padding: 0 10px;
+          }
+
+          .profile-text {
+            display: none;
           }
         }
 
-        /* ==================================================
-           RESPONSIVE — MOBILE
-        ================================================== */
-
-        @media (max-width: 760px) {
-
-          body {
-            overflow-x: hidden;
-          }
-
-          .dashboard-layout {
-            display: block;
-          }
-
-          /* Mobile sidebar */
-          .dashboard-sidebar {
-            width: 285px;
-            transform: translateX(-105%);
+        @media (max-width: 850px) {
+          .sidebar {
+            transform: translateX(-100%);
             transition: transform .25s ease;
-            box-shadow: 15px 0 50px rgba(0,0,0,.45);
+            width: 270px;
+            min-width: 270px;
+            box-shadow: 15px 0 45px rgba(0,0,0,.45);
           }
 
-          .dashboard-sidebar.mobile-open {
+          .sidebar.mobile-open {
             transform: translateX(0);
           }
 
-          .mobile-overlay {
+          .overlay {
             display: block;
             position: fixed;
             inset: 0;
+            background: rgba(0, 5, 12, .62);
             z-index: 90;
-            background: rgba(0, 5, 12, .68);
-            backdrop-filter: blur(2px);
           }
 
-          .mobile-menu-button {
-            display: grid;
-            place-items: center;
-            width: 42px;
-            height: 42px;
-            flex-shrink: 0;
-            border: 1px solid rgba(61, 121, 176, .34);
-            border-radius: 8px;
-            background: #07182d;
-            color: #e8f2fd;
+          .main {
+            width: 100%;
+            margin-left: 0;
+            padding: 10px 12px 0;
+          }
+
+          .mobile-menu {
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(65, 123, 174, .35);
+            background: rgba(5, 24, 43, .8);
+            color: #fff;
+            border-radius: 7px;
             font-size: 22px;
           }
 
-          .dashboard-main {
-            width: 100%;
-            margin-left: 0;
-          }
-
-          .dashboard-header {
-            position: sticky;
-            top: 0;
-            z-index: 80;
-            height: 65px;
-            padding: 10px;
+          .topbar {
             gap: 7px;
           }
 
           .search-box {
-            height: 42px;
-            padding: 0 9px;
+            height: 44px;
           }
 
-          .search-icon {
-            font-size: 17px;
-          }
-
-          .search-input {
+          .top-button {
+            height: 44px;
+            padding: 0 10px;
             font-size: 11px;
           }
 
-          .shortcut {
-            display: none;
-          }
-
-          .header-button {
-            width: 42px;
-            height: 42px;
-            padding: 0;
+          .top-button.ai {
             font-size: 0;
+            width: 44px;
           }
 
-          .header-button.ai::after {
-            content: "✦";
+          .top-button.ai:first-letter {
             font-size: 18px;
-          }
-
-          .header-button.mission::after {
-            content: "✧";
-            font-size: 18px;
-          }
-
-          .header-right {
-            gap: 0;
-          }
-
-          .header-right .icon-button {
-            display: none;
           }
 
           .profile {
-            margin-left: 0;
-          }
-
-          .profile-avatar {
-            width: 39px;
-            height: 39px;
-          }
-
-          .profile-arrow {
             display: none;
           }
 
-          .dashboard-content {
-            padding: 10px;
+          .hero {
+            min-height: 280px;
           }
 
-          .hero-row {
-            display: block;
+          .stats {
+            grid-template-columns: 1fr 1fr;
           }
 
-          .hero-card {
-            min-height: 260px;
-            margin-bottom: 10px;
-            padding: 26px 20px;
+          .quick-grid {
+            grid-template-columns: repeat(4, 1fr);
+          }
+
+          .main-grid {
+            grid-template-columns: 1fr;
+          }
+
+          .bottom-grid {
+            grid-template-columns: 1fr;
+          }
+
+          .footer {
+            margin-left: -12px;
+            margin-right: -12px;
+          }
+        }
+
+        @media (max-width: 600px) {
+          .topbar {
+            height: auto;
+            flex-wrap: wrap;
+          }
+
+          .mobile-menu {
+            order: 0;
+          }
+
+          .search-box {
+            order: 1;
+            flex: 1;
+            max-width: none;
+          }
+
+          .top-button {
+            order: 2;
+          }
+
+          .top-icon {
+            display: none;
+          }
+
+          .hero {
+            min-height: 290px;
+            padding: 23px 18px;
           }
 
           .hero-title {
-            font-size: 23px;
+            font-size: 22px;
           }
 
           .hero-subtitle {
             font-size: 12px;
-            max-width: 250px;
+            max-width: 270px;
+            line-height: 1.5;
           }
 
           .pulse {
-            left: 15px;
-            right: 15px;
-            bottom: 13px;
-            gap: 7px;
-            padding: 10px;
+            left: 18px;
+            right: 18px;
+            bottom: 18px;
+            min-width: 0;
+            width: auto;
           }
 
           .pulse-title {
-            font-size: 11px;
-          }
-
-          .pulse-status {
-            font-size: 9px;
-            padding: 4px 6px;
+            font-size: 12px;
           }
 
           .pulse-score {
-            font-size: 21px;
-            padding-left: 8px;
+            font-size: 23px;
           }
 
-          .metric-card {
-            min-height: 145px;
-            margin-bottom: 10px;
-          }
-
-          .metric-value {
-            font-size: 28px;
-          }
-
-          .toolbar {
+          .controls {
             justify-content: stretch;
-            margin-top: 8px;
           }
 
-          .toolbar .dropdown-wrap,
-          .toolbar-button {
+          .control-button {
             flex: 1;
+          }
+
+          .stats {
+            grid-template-columns: 1fr;
+          }
+
+          .stat-card {
+            min-height: 135px;
           }
 
           .quick-grid {
@@ -1800,1197 +1342,565 @@ function Dashboard() {
             grid-column: span 2;
           }
 
-          .middle-grid,
-          .lower-grid,
-          .bottom-grid {
+          .lower-grid {
             grid-template-columns: 1fr;
-          }
-
-          .command-panel,
-          .missions-panel,
-          .small-panel,
-          .package-panel,
-          .industries-panel {
-            min-height: auto;
-          }
-
-          .command-panel {
-            min-height: 250px;
-          }
-
-          .command-panel::after {
-            right: 15px;
-            top: 80px;
-          }
-
-          .command-input-row {
-            position: relative;
-          }
-
-          .command-shortcuts {
-            position: relative;
           }
 
           .industry-grid {
             grid-template-columns: repeat(3, 1fr);
           }
 
-          .dashboard-footer {
-            min-height: 80px;
-            padding: 14px 10px;
+          .footer {
             flex-direction: column;
             gap: 10px;
-            justify-content: center;
+            padding: 14px;
           }
 
           .footer-links {
-            gap: 17px;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
           }
         }
 
-        /* ==================================================
-           SMALL PHONES
-        ================================================== */
+        @media (max-width: 390px) {
+          .main {
+            padding-left: 8px;
+            padding-right: 8px;
+          }
 
-        @media (max-width: 420px) {
+          .search-box {
+            font-size: 11px;
+          }
 
-          .header-button.ai,
-          .header-button.mission {
+          .top-button {
             display: none;
           }
 
-          .hero-card {
-            min-height: 245px;
-          }
-
-          .hero-title {
-            font-size: 20px;
-          }
-
-          .pulse-title {
-            display: none;
+          .hero {
+            min-height: 300px;
           }
 
           .pulse {
-            justify-content: space-between;
+            gap: 7px;
+          }
+
+          .pulse-title {
+            font-size: 10px;
+          }
+
+          .excellent {
+            font-size: 9px;
+            padding: 5px;
+          }
+
+          .pulse-score {
+            font-size: 20px;
           }
 
           .quick-grid {
             gap: 6px;
           }
 
-          .quick-button {
-            min-height: 65px;
-            font-size: 10px;
-          }
-
-          .industry-grid {
-            grid-template-columns: repeat(2, 1fr);
-          }
-
-          .footer-links {
-            flex-wrap: wrap;
-            justify-content: center;
+          .mission {
+            grid-template-columns: 28px 1fr 55px;
           }
         }
-
       `}</style>
 
-      <div className="dashboard-page">
+      <div className="dashboard-shell">
 
-        {/* ==================================================
-            MOBILE OVERLAY
-            NEXT STEP: MOBILE NAVIGATION LOGIC CAN BE EXTENDED HERE
-        ================================================== */}
-
-        {mobileSidebarOpen && (
+        {mobileOpen && (
           <button
-            type="button"
-            className="mobile-overlay"
-            aria-label="Close navigation"
-            onClick={closeMobileSidebar}
+            className="overlay"
+            aria-label="Close menu"
+            onClick={() => setMobileOpen(false)}
           />
         )}
 
-        <div className="dashboard-layout">
+        {/* =========================================================
+            SIDEBAR
+            NEXT STEP: Sidebar navigation functionality will be
+            connected here after the visual design is locked.
+        ========================================================= */}
+        <aside className={`sidebar ${mobileOpen ? "mobile-open" : ""}`}>
 
-          {/* ==================================================
-              SIDEBAR
-          ================================================== */}
+          <div className="brand">
+            <div className="brand-logo">◇</div>
+            <div>
+              <div className="brand-name">BRIQONA OS</div>
+              <div className="brand-subtitle">
+                All-in-One Business Operating System
+              </div>
+            </div>
+          </div>
 
-          <aside
-            className={`dashboard-sidebar ${
-              mobileSidebarOpen ? "mobile-open" : ""
-            }`}
-          >
+          <nav className="nav">
+            {menu.map((item, index) => (
+              <button
+                key={item[1]}
+                className={`nav-item ${index === 0 ? "active" : ""}`}
+                onClick={() => {
+                  if (index !== 0) alert(`${item[1]} module selected`);
+                  setMobileOpen(false);
+                }}
+              >
+                <span className="nav-icon">{item[0]}</span>
+                <span className="nav-label">{item[1]}</span>
+                {item[2] && (
+                  <span className="nav-badge">
+                    {item[2]}
+                  </span>
+                )}
+              </button>
+            ))}
+          </nav>
 
-            <div className="brand">
-              <div className="brand-mark">◇</div>
+          <div className="plan-card">
+            <button className="plan-close">×</button>
+            <div className="plan-small">Current Plan</div>
+            <div className="plan-name">◇ Growth</div>
+            <div className="plan-price">$15 / month</div>
+            <button
+              className="plan-button"
+              onClick={() => alert("Upgrade Plan")}
+            >
+              Upgrade Plan →
+            </button>
+          </div>
+        </aside>
 
-              <div>
-                <div className="brand-name">BRIQONA OS</div>
-                <div className="brand-subtitle">
-                  All-in-One Business Operating System
-                </div>
+        <main className="main">
+
+          {/* =======================================================
+              HEADER
+              NEXT STEP: Header real search/notifications/profile
+              functionality will be connected here.
+          ======================================================= */}
+          <header className="topbar">
+
+            <button
+              className="mobile-menu"
+              onClick={() => setMobileOpen(!mobileOpen)}
+              aria-label="Open navigation"
+            >
+              {mobileOpen ? "×" : "☰"}
+            </button>
+
+            <div className="search-box">
+              <span>⌕</span>
+              <input
+                value={command}
+                onChange={(e) => setCommand(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") runCommand();
+                }}
+                placeholder="Ask Briqona AI or type a command..."
+              />
+              <span className="shortcut">⌘ K</span>
+            </div>
+
+            <button
+              className="top-button ai"
+              onClick={() => alert("AI Copilot opened")}
+            >
+              ✨ AI Copilot
+            </button>
+
+            <button
+              className="top-button"
+              onClick={() => alert("AI Mission Center opened")}
+            >
+              ✦ AI Mission Center
+            </button>
+
+            <button
+              className="top-icon"
+              onClick={() => alert("Notifications opened")}
+            >
+              ♧
+              <span className="notification-count">5</span>
+            </button>
+
+            <button
+              className="top-icon"
+              onClick={() => alert("Messages opened")}
+            >
+              ▢
+              <span className="notification-count" style={{ background: "#168fe5" }}>
+                3
+              </span>
+            </button>
+
+            <div className="profile">
+              <div className="profile-text">
+                <div className="profile-name">Ali Raza</div>
+                <div className="profile-role">Owner</div>
+              </div>
+              <div className="avatar">👨🏻</div>
+              <span>⌄</span>
+            </div>
+          </header>
+
+          {/* =======================================================
+              HERO
+              FINAL MOCKUP SECTION
+          ======================================================= */}
+          <section className="hero">
+
+            <div className="hero-content">
+              <h1 className="hero-title">
+                Good morning, Ali Raza! 👋
+              </h1>
+
+              <div className="hero-subtitle">
+                Here's what's happening with your business today.
               </div>
             </div>
 
-            <nav className="sidebar-menu">
+            <div className="pulse">
+              <div className="pulse-title">✦ AI Business Pulse</div>
+              <div className="excellent">Excellent</div>
+              <div className="pulse-score">
+                87 <small>/100</small>
+              </div>
+            </div>
+          </section>
 
-              {menuItems.map((item, index) => (
+          <div className="controls">
+            <select
+              className="control-button"
+              value={month}
+              onChange={(e) => setMonth(e.target.value)}
+            >
+              <option>This Month</option>
+              <option>Last Month</option>
+              <option>This Year</option>
+              <option>Last Year</option>
+            </select>
+
+            <button
+              className="control-button"
+              onClick={() => alert("Dashboard customization")}
+            >
+              ✣ Customize
+            </button>
+          </div>
+
+          {/* =======================================================
+              STATISTICS
+              NEXT STEP: Real business data/API will replace these
+              static numbers.
+          ======================================================= */}
+          <section className="stats">
+
+            <div className="stat-card">
+              <div className="stat-title">Total Revenue</div>
+              <div className="stat-value">$24,780</div>
+              <div className="stat-change positive">▲ 12.6% vs last month</div>
+              <div className="chart green">
+                {[30, 18, 43, 28, 54, 39, 63, 47, 70, 55].map((h, i) => (
+                  <span key={i} style={{ height: `${h}%` }} />
+                ))}
+              </div>
+            </div>
+
+            <div className="stat-card">
+              <div className="stat-title">Total Profit</div>
+              <div className="stat-value">$8,430</div>
+              <div className="stat-change positive">▲ 8.3% vs last month</div>
+              <div className="chart purple">
+                {[22, 45, 35, 60, 43, 66, 54, 72, 61, 78].map((h, i) => (
+                  <span key={i} style={{ height: `${h}%` }} />
+                ))}
+              </div>
+            </div>
+
+            <div className="stat-card">
+              <div className="stat-title">Total Expenses</div>
+              <div className="stat-value">$6,350</div>
+              <div className="stat-change negative">▼ -3.4% vs last month</div>
+              <div className="chart orange">
+                {[28, 45, 32, 63, 44, 57, 36, 61, 45, 68].map((h, i) => (
+                  <span key={i} style={{ height: `${h}%` }} />
+                ))}
+              </div>
+            </div>
+
+            <div className="stat-card">
+              <div className="stat-title">Open Invoices</div>
+              <div className="stat-value">23</div>
+              <div className="stat-change negative">$14,560 overdue</div>
+              <div className="chart blue">
+                {[18, 33, 47, 30, 59, 50, 72, 43, 60, 48].map((h, i) => (
+                  <span key={i} style={{ height: `${h}%` }} />
+                ))}
+              </div>
+            </div>
+
+          </section>
+
+          {/* QUICK ACTIONS */}
+          <section className="section-card quick">
+            <div className="section-title">Quick Actions</div>
+
+            <div className="quick-grid">
+              {quickActions.map(([icon, name]) => (
                 <button
-                  key={item.label}
-                  type="button"
-                  className={`sidebar-item ${
-                    item.active ? "active" : ""
-                  }`}
-                  onClick={() => {
-                    if (item.label === "AI Workforce") {
-                      setWorkforceOpen(!workforceOpen);
-                    }
-
-                    if (item.label === "Industries Hub") {
-                      setIndustryOpen(!industryOpen);
-                    }
-
-                    if (window.innerWidth <= 760) {
-                      closeMobileSidebar();
-                    }
-                  }}
+                  key={name}
+                  className="quick-button"
+                  onClick={() => quickAction(name)}
                 >
-
-                  <span className="sidebar-icon">
-                    {item.icon}
-                  </span>
-
-                  <span className="sidebar-label">
-                    {item.label}
-                  </span>
-
-                  {item.badge && (
-                    <span className="new-badge">
-                      {item.badge}
-                    </span>
-                  )}
-
-                  {item.dropdown && (
-                    <span className="sidebar-chevron">
-                      {item.label === "AI Workforce"
-                        ? workforceOpen
-                          ? "⌃"
-                          : "⌄"
-                        : industryOpen
-                        ? "⌃"
-                        : "⌄"}
-                    </span>
-                  )}
-
+                  <span className="quick-icon">{icon}</span>
+                  <span>+ {name}</span>
                 </button>
               ))}
-
-            </nav>
-
-            {/* ==================================================
-                OPTIONAL SIDEBAR DROPDOWN PREVIEW
-                NEXT STEP: REAL ROUTING CAN BE CONNECTED HERE
-            ================================================== */}
-
-            {workforceOpen && (
-              <div
-                style={{
-                  margin: "2px 12px 6px 44px",
-                  padding: "7px 0",
-                  borderLeft: "1px solid rgba(45,210,190,.22)",
-                }}
-              >
-                <button
-                  type="button"
-                  style={subMenuStyle}
-                  onClick={closeMobileSidebar}
-                >
-                  Workforce Overview
-                </button>
-
-                <button
-                  type="button"
-                  style={subMenuStyle}
-                  onClick={closeMobileSidebar}
-                >
-                  AI Employees
-                </button>
-              </div>
-            )}
-
-            {industryOpen && (
-              <div
-                style={{
-                  margin: "2px 12px 6px 44px",
-                  padding: "7px 0",
-                  borderLeft: "1px solid rgba(45,210,190,.22)",
-                }}
-              >
-                <button
-                  type="button"
-                  style={subMenuStyle}
-                  onClick={closeMobileSidebar}
-                >
-                  Office
-                </button>
-
-                <button
-                  type="button"
-                  style={subMenuStyle}
-                  onClick={closeMobileSidebar}
-                >
-                  Hospital
-                </button>
-
-                <button
-                  type="button"
-                  style={subMenuStyle}
-                  onClick={closeMobileSidebar}
-                >
-                  Retail
-                </button>
-              </div>
-            )}
-
-            <div className="sidebar-bottom">
-
-              <div className="plan-card">
-
-                <div className="plan-card-top">
-                  <span>Current Plan</span>
-
-                  <button
-                    type="button"
-                    className="plan-close"
-                    aria-label="Close"
-                  >
-                    ×
-                  </button>
-                </div>
-
-                <div className="plan-diamond">
-                  ◇
-                </div>
-
-                <div className="plan-label">
-                  Current Plan
-                </div>
-
-                <div className="plan-name">
-                  Growth
-                </div>
-
-                <div className="plan-price">
-                  $15 <span>/ month</span>
-                </div>
-
-                <button
-                  type="button"
-                  className="plan-button"
-                  onClick={() =>
-                    alert("Upgrade Plan selected")
-                  }
-                >
-                  Upgrade Plan →
-                </button>
-
-              </div>
-
             </div>
+          </section>
 
-          </aside>
+          {/* AI AREA */}
+          <section className="main-grid">
 
-          {/* ==================================================
-              MAIN AREA
-          ================================================== */}
+            <div className="section-card ai-command">
+              <div className="ai-heading">
+                <span>✦</span> AI Command Center
+              </div>
 
-          <main className="dashboard-main">
+              <div className="ai-desc">
+                Ask anything. Briqona AI is ready to help.
+              </div>
 
-            {/* ==================================================
-                HEADER
-            ================================================== */}
-
-            <header className="dashboard-header">
-
-              {/* MOBILE HAMBURGER */}
-              <button
-                type="button"
-                className="mobile-menu-button"
-                aria-label="Open menu"
-                onClick={() =>
-                  setMobileSidebarOpen(true)
-                }
-              >
-                ☰
-              </button>
-
-              <div className="search-box">
-
-                <span className="search-icon">
-                  ⌕
-                </span>
-
+              <div className="command-row">
                 <input
-                  className="search-input"
-                  type="text"
-                  placeholder="Ask Briqona AI or type a command..."
+                  value={command}
+                  onChange={(e) => setCommand(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") runCommand();
+                  }}
+                  placeholder="e.g. Show me sales trend, top customers, overdue invoices..."
                 />
 
-                <span className="shortcut">
-                  ⌘ K
-                </span>
-
-              </div>
-
-              <button
-                type="button"
-                className="header-button ai"
-                onClick={() =>
-                  alert("AI Copilot opened")
-                }
-              >
-                ✨ AI Copilot
-              </button>
-
-              <button
-                type="button"
-                className="header-button mission"
-                onClick={() =>
-                  alert("AI Mission Center opened")
-                }
-              >
-                ✦ AI Mission Center
-              </button>
-
-              <div className="header-right">
-
                 <button
-                  type="button"
-                  className="icon-button"
-                  aria-label="Notifications"
+                  className="mic-button"
+                  onClick={() => alert("Voice input")}
                 >
-                  ♧
-                  <span className="notification-count">
-                    5
-                  </span>
+                  ♫
                 </button>
 
                 <button
-                  type="button"
-                  className="icon-button"
-                  aria-label="Messages"
+                  className="send-button"
+                  onClick={runCommand}
                 >
-                  ▢
-                  <span className="notification-count blue">
-                    3
-                  </span>
+                  ➤
                 </button>
-
-                <div className="profile">
-
-                  <div className="profile-text">
-                    <div className="profile-name">
-                      Ali Raza
-                    </div>
-
-                    <div className="profile-role">
-                      Owner
-                    </div>
-                  </div>
-
-                  <button
-                    type="button"
-                    className="profile-avatar"
-                    onClick={() =>
-                      setProfileOpen(!profileOpen)
-                    }
-                    aria-label="Profile"
-                  >
-                    👨🏻
-                  </button>
-
-                  <button
-                    type="button"
-                    className="profile-arrow"
-                    onClick={() =>
-                      setProfileOpen(!profileOpen)
-                    }
-                  >
-                    {profileOpen ? "⌃" : "⌄"}
-                  </button>
-
-                  {profileOpen && (
-                    <div className="profile-menu">
-
-                      <button
-                        type="button"
-                        onClick={() =>
-                          alert("Profile")
-                        }
-                      >
-                        Profile
-                      </button>
-
-                      <button
-                        type="button"
-                        onClick={() =>
-                          alert("Account Settings")
-                        }
-                      >
-                        Account Settings
-                      </button>
-
-                      <button
-                        type="button"
-                        onClick={() =>
-                          alert("Logout")
-                        }
-                      >
-                        Logout
-                      </button>
-
-                    </div>
-                  )}
-
-                </div>
-
               </div>
 
-            </header>
-
-            {/* ==================================================
-                DASHBOARD CONTENT
-                NEXT STEP: API DATA WILL BE CONNECTED HERE
-            ================================================== */}
-
-            <section className="dashboard-content">
-
-              {/* ==================================================
-                  HERO + METRICS
-              ================================================== */}
-
-              <div className="hero-row">
-
-                <div className="hero-card">
-
-                  <h1 className="hero-title">
-                    Good morning, Ali Raza! 👋
-                  </h1>
-
-                  <p className="hero-subtitle">
-                    Here's what's happening with your
-                    business today.
-                  </p>
-
-                  <div className="pulse">
-
-                    <span className="pulse-star">
-                      ✦
-                    </span>
-
-                    <span className="pulse-title">
-                      AI Business Pulse
-                    </span>
-
-                    <span className="pulse-status">
-                      Excellent
-                    </span>
-
-                    <span className="pulse-score">
-                      87 <span>/100</span>
-                    </span>
-
-                  </div>
-
-                </div>
-
-                {metrics.map((metric) => (
-                  <div
-                    className="metric-card"
-                    key={metric.title}
+              <div className="suggestions">
+                {[
+                  "Sales Summary",
+                  "Overdue Invoices",
+                  "Cash Flow",
+                  "Inventory Alert",
+                  "HR Report",
+                ].map((x) => (
+                  <button
+                    className="suggestion"
+                    key={x}
+                    onClick={() => setCommand(x)}
                   >
-
-                    <div className="metric-title">
-                      {metric.title}
-                    </div>
-
-                    <div className="metric-value">
-                      {metric.value}
-                    </div>
-
-                    <div
-                      className={`metric-change ${metric.type}`}
-                    >
-                      {metric.change}
-                    </div>
-
-                    <svg
-                      className={`chart ${metric.type}`}
-                      viewBox="0 0 180 80"
-                      preserveAspectRatio="none"
-                    >
-                      <path d={metric.points} />
-                    </svg>
-
-                  </div>
+                    {x}
+                  </button>
                 ))}
+              </div>
+            </div>
 
+            <div className="section-card missions">
+              <div className="section-header">
+                <div className="section-title">✦ AI Missions <small style={{ color: "#c14cff" }}>Beta</small></div>
+                <button className="view-all">View All</button>
               </div>
 
-              {/* ==================================================
-                  TOOLBAR
-              ================================================== */}
-
-              <div className="toolbar">
-
-                <div className="dropdown-wrap">
-
-                  <button
-                    type="button"
-                    className="toolbar-button"
-                    onClick={() =>
-                      setPeriodOpen(!periodOpen)
-                    }
-                  >
-                    ▣ &nbsp; {selectedPeriod} &nbsp;
-                    {periodOpen ? "⌃" : "⌄"}
-                  </button>
-
-                  {periodOpen && (
-                    <div className="dropdown-menu">
-
-                      {[
-                        "This Month",
-                        "Last Month",
-                        "This Quarter",
-                        "This Year",
-                      ].map((period) => (
-                        <button
-                          key={period}
-                          type="button"
-                          onClick={() => {
-                            setSelectedPeriod(period);
-                            setPeriodOpen(false);
-                          }}
-                        >
-                          {period}
-                        </button>
-                      ))}
-
-                    </div>
-                  )}
-
-                </div>
-
-                <button
-                  type="button"
-                  className="toolbar-button"
-                  onClick={() =>
-                    alert("Customize dashboard")
-                  }
-                >
-                  ✣ &nbsp; Customize
-                </button>
-
-              </div>
-
-              {/* ==================================================
-                  QUICK ACTIONS
-              ================================================== */}
-
-              <section className="quick-actions">
-
-                <h2 className="section-title">
-                  Quick Actions
-                </h2>
-
-                <div className="quick-grid">
-
-                  {quickActions.map((action) => (
-                    <button
-                      key={action.label}
-                      type="button"
-                      className={`quick-button ${action.type}`}
-                      onClick={() =>
-                        alert(`${action.label} selected`)
-                      }
-                    >
-
-                      <span className="quick-icon">
-                        {action.icon}
-                      </span>
-
-                      <span>
-                        {action.label}
-                      </span>
-
-                    </button>
-                  ))}
-
-                </div>
-
-              </section>
-
-              {/* ==================================================
-                  AI COMMAND + AI MISSIONS
-              ================================================== */}
-
-              <div className="middle-grid">
-
-                <section className="panel command-panel">
-
-                  <div className="panel-heading">
-                    <span className="spark">
-                      ✦
-                    </span>
-
-                    AI Command Center
-                  </div>
-
-                  <div className="panel-subtitle">
-                    Ask anything. Briqona AI is ready to help.
-                  </div>
-
-                  <div className="command-input-row">
-
-                    <input
-                      className="command-input"
-                      type="text"
-                      placeholder="e.g. Show me sales trend, top customers, overdue invoices..."
-                    />
-
-                    <button
-                      type="button"
-                      className="mic-button"
-                      onClick={() =>
-                        alert("Voice input")
-                      }
-                    >
-                      ♫
-                    </button>
-
-                    <button
-                      type="button"
-                      className="send-button"
-                      onClick={() =>
-                        alert("Command sent")
-                      }
-                    >
-                      ➤
-                    </button>
-
-                  </div>
-
-                  <div className="command-shortcuts">
-
-                    {[
-                      "Sales Summary",
-                      "Overdue Invoices",
-                      "Cash Flow",
-                      "Inventory Alert",
-                      "HR Report",
-                    ].map((item) => (
-                      <button
-                        key={item}
-                        type="button"
-                        className="command-chip"
-                        onClick={() =>
-                          alert(`${item} selected`)
-                        }
-                      >
-                        {item}
-                      </button>
-                    ))}
-
-                  </div>
-
-                </section>
-
-                <section className="panel missions-panel">
-
-                  <div className="panel-heading-row">
-
-                    <div className="panel-heading">
-                      <span className="spark">
-                        ✦
-                      </span>
-
-                      AI Missions
-
-                      <span className="beta">
-                        Beta
-                      </span>
-                    </div>
-
-                    <button
-                      type="button"
-                      className="view-all"
-                    >
-                      View All
-                    </button>
-
-                  </div>
-
-                  <Mission
-                    icon="◎"
-                    title="Recover overdue payments"
-                    status="In Progress"
-                    percent="65%"
-                    width="65%"
-                  />
-
-                  <Mission
-                    icon="◎"
-                    title="Increase this month sales"
-                    status="In Progress"
-                    percent="40%"
-                    width="40%"
-                    color="purple"
-                  />
-
-                  <Mission
-                    icon="▣"
-                    title="Reduce expenses"
-                    status="Planned"
-                    percent="20%"
-                    width="20%"
-                    color="orange"
-                  />
-
-                </section>
-
-              </div>
-
-              {/* ==================================================
-                  LOWER INFORMATION GRID
-              ================================================== */}
-
-              <div className="lower-grid">
-
-                {/* Recent Activities */}
-
-                <section className="panel small-panel">
-
-                  <div className="panel-heading-row">
-
-                    <div className="section-title">
-                      Recent Activities
-                    </div>
-
-                    <button
-                      type="button"
-                      className="view-all"
-                    >
-                      View All
-                    </button>
-
-                  </div>
-
-                  <div className="list">
-
-                    {activities.map(
-                      ([icon, text, time]) => (
-                        <div
-                          className="list-row"
-                          key={text}
-                        >
-
-                          <span className="list-icon">
-                            {icon}
-                          </span>
-
-                          <span className="list-text">
-                            {text}
-                          </span>
-
-                          <span className="list-time">
-                            {time}
-                          </span>
-
-                        </div>
-                      )
-                    )}
-
-                  </div>
-
-                </section>
-
-                {/* Notifications */}
-
-                <section className="panel small-panel">
-
-                  <div className="panel-heading-row">
-
-                    <div className="section-title">
-                      Notifications
-                    </div>
-
-                    <button
-                      type="button"
-                      className="view-all"
-                    >
-                      View All
-                    </button>
-
-                  </div>
-
-                  <div className="list">
-
-                    {notifications.map(
-                      ([icon, text, time, type]) => (
-                        <div
-                          className="list-row"
-                          key={text}
-                        >
-
-                          <span
-                            className={`notification-dot ${type}`}
-                          >
-                            {icon}
-                          </span>
-
-                          <span className="list-text">
-                            {text}
-                          </span>
-
-                          <span className="list-time">
-                            {time}
-                          </span>
-
-                        </div>
-                      )
-                    )}
-
-                  </div>
-
-                </section>
-
-                {/* Top Customers */}
-
-                <section className="panel small-panel">
-
-                  <div className="panel-heading-row">
-
-                    <div className="section-title">
-                      Top Customers
-                    </div>
-
-                    <button
-                      type="button"
-                      className="view-all"
-                    >
-                      View All
-                    </button>
-
-                  </div>
+              {missions.map(([icon, name, status, percent]) => (
+                <div className="mission" key={name}>
+                  <div className="mission-icon">{icon}</div>
 
                   <div>
-
-                    {customers.map(
-                      ([letter, name, value]) => (
-                        <div
-                          className="customer-row"
-                          key={name}
-                        >
-
-                          <span className="customer-avatar">
-                            {letter}
-                          </span>
-
-                          <span className="customer-name">
-                            {name}
-                          </span>
-
-                          <span className="customer-value">
-                            {value}
-                          </span>
-
-                        </div>
-                      )
-                    )}
-
-                  </div>
-
-                </section>
-
-                {/* AI Insights */}
-
-                <section className="panel small-panel insights-panel">
-
-                  <div className="panel-heading-row">
-
-                    <div className="panel-heading">
-                      <span className="spark">
-                        ✦
-                      </span>
-
-                      AI Insights
+                    <div className="mission-name">{name}</div>
+                    <div className="progress">
+                      <span style={{ width: percent }} />
                     </div>
-
-                    <span className="insight-new">
-                      New
-                    </span>
-
                   </div>
 
-                  <div className="insight-text">
-
-                    Your sales are up{" "}
-                    <strong>12.6%</strong> this month.
-
-                    <br />
-
-                    Focus on recovering{" "}
-                    <strong>$14,560</strong> in overdue
-                    invoices to improve cash flow.
-
+                  <div className="mission-status">
+                    {status}
+                    <small>{percent}</small>
                   </div>
+                </div>
+              ))}
+            </div>
 
+          </section>
+
+          {/* LOWER CARDS */}
+          <section className="lower-grid">
+
+            <div className="section-card list-card">
+              <div className="section-header">
+                <div className="section-title">Recent Activities</div>
+                <button className="view-all">View All</button>
+              </div>
+
+              <div className="list">
+                {activities.map(([icon, text, time]) => (
+                  <div className="list-row" key={text}>
+                    <span className="list-icon">{icon}</span>
+                    <span className="list-text">{text}</span>
+                    <span className="list-time">{time}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="section-card list-card">
+              <div className="section-header">
+                <div className="section-title">Notifications</div>
+                <button className="view-all">View All</button>
+              </div>
+
+              <div className="list notification">
+                {notifications.map(([icon, text, time]) => (
+                  <div className="list-row" key={text}>
+                    <span className="list-icon">{icon}</span>
+                    <span className="list-text">{text}</span>
+                    <span className="list-time">{time}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="section-card list-card">
+              <div className="section-header">
+                <div className="section-title">Top Customers</div>
+                <button className="view-all">View All</button>
+              </div>
+
+              <div className="list">
+                {customers.map(([letter, name, money]) => (
+                  <div className="list-row" key={name}>
+                    <span className="customer-avatar">{letter}</span>
+                    <span className="list-text">{name}</span>
+                    <span className="customer-money">{money}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="section-card list-card insights">
+              <div className="section-header">
+                <div className="section-title">✦ AI Insights</div>
+                <span className="nav-badge">New</span>
+              </div>
+
+              <div className="insight-text">
+                Your sales are up <strong>12.6%</strong> this month.
+                <br />
+                Focus on recovering <strong>$14,560</strong> in overdue
+                invoices to improve cash flow.
+              </div>
+
+              <button
+                className="insight-button"
+                onClick={() => alert("AI Insights opened")}
+              >
+                View All Insights →
+              </button>
+
+              <div className="insight-glow" />
+            </div>
+
+          </section>
+
+          {/* BOTTOM */}
+          <section className="bottom-grid">
+
+            <div className="section-card package">
+              <div className="section-header">
+                <div className="section-title">Package & Access</div>
+              </div>
+
+              <div className="package-plan">
+                <span className="diamond">◇</span>
+                <span className="package-name">Growth Plan</span>
+                <span className="package-price">$15 / month</span>
+              </div>
+
+              <div className="access">
+                <span>Access</span>
+                <strong>38 / 60 Features</strong>
+              </div>
+
+              <div className="access-bar">
+                <span />
+              </div>
+
+              <button
+                className="upgrade-button"
+                onClick={() => alert("Upgrade to Pro")}
+              >
+                🚀 Upgrade to Pro
+              </button>
+
+              <button
+                className="feature-link"
+                onClick={() => alert("All features")}
+              >
+                View All Features →
+              </button>
+            </div>
+
+            <div className="section-card industries">
+              <div className="section-header">
+                <div className="section-title">Industries Hub</div>
+                <button className="view-all">Manage</button>
+              </div>
+
+              <div className="industry-grid">
+                {industries.map(([icon, name]) => (
                   <button
-                    type="button"
-                    className="insight-button"
-                    onClick={() =>
-                      alert("AI Insights opened")
-                    }
+                    className="industry"
+                    key={name}
+                    onClick={() => alert(`${name} industry selected`)}
                   >
-                    View All Insights →
+                    <span className="industry-icon">{icon}</span>
+                    <span>{name}</span>
                   </button>
-
-                  <div className="insight-orb">
-                    ◉
-                  </div>
-
-                </section>
-
+                ))}
               </div>
+            </div>
 
-              {/* ==================================================
-                  PACKAGE + INDUSTRIES
-              ================================================== */}
+          </section>
 
-              <div className="bottom-grid">
+          {/* =======================================================
+              FOOTER
+              NEXT STEP: Real Privacy / Terms / Support routes
+              will be connected here.
+          ======================================================= */}
+          <footer className="footer">
+            <span>© 2026 Briqona OS. All rights reserved.</span>
 
-                <section className="panel package-panel">
+            <span>Version 1.0.0</span>
 
-                  <div className="section-title">
-                    Package & Access
-                  </div>
+            <div className="footer-links">
+              <a href="#privacy">Privacy Policy</a>
+              <a href="#terms">Terms of Service</a>
+              <a href="#support">Support</a>
+            </div>
+          </footer>
 
-                  <div className="package-content">
-
-                    <div className="package-icon">
-                      ◇
-                    </div>
-
-                    <div className="package-name">
-                      Growth Plan
-                    </div>
-
-                    <div className="package-price">
-                      $15 <span>/ month</span>
-                    </div>
-
-                  </div>
-
-                  <div className="access">
-                    Access
-                    <strong>
-                      38 / 60 Features
-                    </strong>
-                  </div>
-
-                  <button
-                    type="button"
-                    className="upgrade-small"
-                    onClick={() =>
-                      alert("Upgrade to Pro")
-                    }
-                  >
-                    🚀 Upgrade to Pro
-                  </button>
-
-                </section>
-
-                <section className="panel industries-panel">
-
-                  <div className="industries-header">
-
-                    <div className="section-title">
-                      Industries Hub
-                    </div>
-
-                    <button
-                      type="button"
-                      className="manage"
-                      onClick={() =>
-                        alert("Manage industries")
-                      }
-                    >
-                      Manage
-                    </button>
-
-                  </div>
-
-                  <div className="industry-grid">
-
-                    {industries.map(
-                      ([icon, name]) => (
-                        <button
-                          type="button"
-                          className="industry-item"
-                          key={name}
-                          onClick={() =>
-                            alert(`${name} selected`)
-                          }
-                        >
-
-                          <span className="industry-icon">
-                            {icon}
-                          </span>
-
-                          <span>
-                            {name}
-                          </span>
-
-                        </button>
-                      )
-                    )}
-
-                  </div>
-
-                </section>
-
-              </div>
-
-            </section>
-
-            {/* ==================================================
-                FOOTER
-            ================================================== */}
-
-            <footer className="dashboard-footer">
-
-              <span>
-                © 2026 Briqona OS. All rights reserved.
-              </span>
-
-              <span>
-                Version 1.0.0
-              </span>
-
-              <div className="footer-links">
-
-                <button
-                  type="button"
-                  onClick={() =>
-                    alert("Privacy Policy")
-                  }
-                >
-                  Privacy Policy
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() =>
-                    alert("Terms of Service")
-                  }
-                >
-                  Terms of Service
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() =>
-                    alert("Support")
-                  }
-                >
-                  Support
-                </button>
-
-              </div>
-
-            </footer>
-
-          </main>
-
-        </div>
-
+        </main>
       </div>
-    </>
-  );
-}
-
-
-/* ==========================================================
-   MISSION COMPONENT
-   ========================================================== */
-
-function Mission({
-  icon,
-  title,
-  status,
-  percent,
-  width,
-  color = "",
-}) {
-  return (
-    <div className="mission">
-
-      <div className="mission-top">
-
-        <span className="mission-icon">
-          {icon}
-        </span>
-
-        <span className="mission-title">
-          {title}
-        </span>
-
-        <span className="mission-status">
-          {status}
-        </span>
-
-        <span className="mission-percent">
-          {percent}
-        </span>
-
-      </div>
-
-      <div className="progress">
-
-        <div
-          className={`progress-bar ${color}`}
-          style={{ width }}
-        />
-
-      </div>
-
     </div>
   );
 }
-
-
-/* ==========================================================
-   SIDEBAR SUBMENU STYLE
-   ========================================================== */
-
-const subMenuStyle = {
-  width: "100%",
-  padding: "7px 10px",
-  border: 0,
-  background: "transparent",
-  color: "#8fa3b9",
-  textAlign: "left",
-  fontSize: "11px",
-  cursor: "pointer",
-};
-
-
-/* ==========================================================
-   EXPORT
-========================================================== */
 
 export default Dashboard;
