@@ -2,304 +2,342 @@ import React, { useState } from "react";
 import "./Dashboard.css";
 
 function Dashboard() {
-  /* =========================================================
-     SECTION 01 — SIDEBAR LOGIC START
-     ========================================================= */
-
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
+  const [workforceOpen, setWorkforceOpen] = useState(false);
+  const [industriesOpen, setIndustriesOpen] = useState(false);
 
-  const [openDropdown, setOpenDropdown] = useState(null);
-
-  const toggleDropdown = (name) => {
-    setOpenDropdown((current) =>
-      current === name ? null : name
-    );
-  };
-
-  const closeSidebar = () => {
+  const closeMobileSidebar = () => {
     setMobileSidebarOpen(false);
   };
-
-  /* =========================================================
-     SECTION 01 — SIDEBAR LOGIC END
-     ========================================================= */
-
-
-  /* =========================================================
-     SECTION 01 — SIDEBAR DATA START
-     ========================================================= */
-
-  const sidebarItems = [
-    { label: "Dashboard", icon: "▦", active: true },
-    { label: "AI Command Center", icon: "✦", badge: "NEW" },
-    { label: "AI Workforce", icon: "♙", dropdown: "workforce" },
-    { label: "Outcome Center", icon: "◎" },
-    { label: "Industries Hub", icon: "▦", dropdown: "industries" },
-    { label: "CRM", icon: "♙" },
-    { label: "Finance", icon: "$" },
-    { label: "HR", icon: "♙" },
-    { label: "Inventory", icon: "▣" },
-    { label: "Projects & Tasks", icon: "☑" },
-    { label: "Documents", icon: "▤" },
-    { label: "Automation", icon: "ϟ" },
-    { label: "Analytics", icon: "▥" },
-    { label: "Communication", icon: "▣" },
-    { label: "Support / Helpdesk", icon: "◉" },
-    { label: "Integrations", icon: "⌘" },
-    { label: "Settings", icon: "⚙" },
-  ];
-
-  /* =========================================================
-     SECTION 01 — SIDEBAR DATA END
-     ========================================================= */
-
 
   return (
     <div className="dashboard-page">
 
-      {/* =====================================================
-          SECTION 01 — MOBILE OPEN BUTTON START
-          ===================================================== */}
+      {/* =========================================================
+          SECTION 01 — SIDEBAR START
+          ========================================================= */}
 
+      {/* MOBILE HAMBURGER */}
       <button
-        type="button"
         className="mobile-menu-button"
+        type="button"
         onClick={() => setMobileSidebarOpen(true)}
-        aria-label="Open navigation"
+        aria-label="Open sidebar"
       >
-        <span className="hamburger-line"></span>
-        <span className="hamburger-line"></span>
-        <span className="hamburger-line"></span>
+        ☰
       </button>
 
-      {/* =====================================================
-          SECTION 01 — MOBILE OPEN BUTTON END
-          ===================================================== */}
-
-
-      {/* =====================================================
-          SECTION 01 — MOBILE OVERLAY START
-          ===================================================== */}
-
+      {/* MOBILE OVERLAY */}
       {mobileSidebarOpen && (
         <button
-          type="button"
           className="sidebar-overlay"
-          onClick={closeSidebar}
-          aria-label="Close navigation"
+          type="button"
+          aria-label="Close sidebar"
+          onClick={closeMobileSidebar}
         />
       )}
 
-      {/* =====================================================
-          SECTION 01 — MOBILE OVERLAY END
-          ===================================================== */}
-
-
-      {/* =====================================================
-          SECTION 01 — SIDEBAR START
-          ===================================================== */}
-
+      {/* SIDEBAR */}
       <aside
         className={`dashboard-sidebar ${
-          mobileSidebarOpen ? "sidebar-mobile-open" : ""
+          mobileSidebarOpen ? "mobile-sidebar-open" : ""
         }`}
       >
 
-        {/* -----------------------------------------------------
-            SIDEBAR BRAND
-            ----------------------------------------------------- */}
+        {/* MOBILE CLOSE BUTTON */}
+        <button
+          className="mobile-sidebar-close"
+          type="button"
+          onClick={closeMobileSidebar}
+          aria-label="Close sidebar"
+        >
+          ❌
+        </button>
 
+        {/* BRAND */}
         <div className="sidebar-brand">
 
-          <div className="sidebar-brand-mark">
-            <span className="brand-mark-shape">B</span>
+          <div className="brand-logo">
+            <span className="brand-logo-inner">◆</span>
           </div>
 
-          <div className="sidebar-brand-copy">
-            <div className="sidebar-brand-name">
-              BRIQONA
-            </div>
-
-            <div className="sidebar-brand-subtitle">
-              BUSINESS OPERATING SYSTEM
+          <div className="brand-text">
+            <div className="brand-name">BRIQONA OS</div>
+            <div className="brand-tagline">
+              All-in-One Business Operating System
             </div>
           </div>
-
-          {/* Mobile close button */}
-          <button
-            type="button"
-            className="mobile-sidebar-close"
-            onClick={closeSidebar}
-            aria-label="Close sidebar"
-          >
-            <span>×</span>
-          </button>
 
         </div>
 
-
-        {/* -----------------------------------------------------
-            SIDEBAR NAVIGATION
-            ----------------------------------------------------- */}
-
+        {/* MENU */}
         <nav className="sidebar-navigation">
 
-          {sidebarItems.map((item) => (
-            <React.Fragment key={item.label}>
+          {/* Dashboard */}
+          <button
+            type="button"
+            className="sidebar-item active"
+            onClick={closeMobileSidebar}
+          >
+            <span className="sidebar-icon">⌂</span>
+            <span className="sidebar-label">Dashboard</span>
+          </button>
 
-              <button
-                type="button"
-                className={`sidebar-nav-item ${
-                  item.active ? "sidebar-nav-active" : ""
-                }`}
-                onClick={() => {
-                  if (item.dropdown) {
-                    toggleDropdown(item.dropdown);
-                  }
-                }}
-              >
+          {/* AI Command Center */}
+          <button
+            type="button"
+            className="sidebar-item"
+            onClick={closeMobileSidebar}
+          >
+            <span className="sidebar-icon purple">✦</span>
+            <span className="sidebar-label">AI Command Center</span>
+            <span className="sidebar-new">New</span>
+          </button>
 
-                <span className="sidebar-nav-icon">
-                  {item.icon}
-                </span>
+          {/* AI Workforce */}
+          <button
+            type="button"
+            className="sidebar-item"
+            onClick={() => setWorkforceOpen(!workforceOpen)}
+          >
+            <span className="sidebar-icon yellow">♙</span>
+            <span className="sidebar-label">AI Workforce</span>
+            <span
+              className={`sidebar-arrow ${
+                workforceOpen ? "arrow-open" : ""
+              }`}
+            >
+              ⌄
+            </span>
+          </button>
 
-                <span className="sidebar-nav-label">
-                  {item.label}
-                </span>
-
-                {item.badge && (
-                  <span className="sidebar-nav-badge">
-                    {item.badge}
-                  </span>
-                )}
-
-                {item.dropdown && (
-                  <span
-                    className={`sidebar-nav-chevron ${
-                      openDropdown === item.dropdown
-                        ? "chevron-open"
-                        : ""
-                    }`}
-                  >
-                    ›
-                  </span>
-                )}
-
+          {workforceOpen && (
+            <div className="sidebar-submenu">
+              <button type="button" onClick={closeMobileSidebar}>
+                AI Employees
               </button>
+              <button type="button" onClick={closeMobileSidebar}>
+                Workforce Planning
+              </button>
+              <button type="button" onClick={closeMobileSidebar}>
+                Performance
+              </button>
+            </div>
+          )}
 
+          {/* Outcome Center */}
+          <button
+            type="button"
+            className="sidebar-item"
+            onClick={closeMobileSidebar}
+          >
+            <span className="sidebar-icon red">◎</span>
+            <span className="sidebar-label">Outcome Center</span>
+          </button>
 
-              {/* -------------------------------------------------
-                  AI WORKFORCE DROPDOWN
-                  ------------------------------------------------- */}
+          {/* Industries Hub */}
+          <button
+            type="button"
+            className="sidebar-item"
+            onClick={() => setIndustriesOpen(!industriesOpen)}
+          >
+            <span className="sidebar-icon cyan">▦</span>
+            <span className="sidebar-label">Industries Hub</span>
+            <span
+              className={`sidebar-arrow ${
+                industriesOpen ? "arrow-open" : ""
+              }`}
+            >
+              ⌄
+            </span>
+          </button>
 
-              {item.dropdown === "workforce" &&
-                openDropdown === "workforce" && (
-                  <div className="sidebar-submenu">
+          {industriesOpen && (
+            <div className="sidebar-submenu">
+              <button type="button" onClick={closeMobileSidebar}>
+                Office
+              </button>
+              <button type="button" onClick={closeMobileSidebar}>
+                HR
+              </button>
+              <button type="button" onClick={closeMobileSidebar}>
+                Hospital
+              </button>
+              <button type="button" onClick={closeMobileSidebar}>
+                Restaurant
+              </button>
+              <button type="button" onClick={closeMobileSidebar}>
+                Retail
+              </button>
+              <button type="button" onClick={closeMobileSidebar}>
+                Construction
+              </button>
+            </div>
+          )}
 
-                    <button type="button">
-                      AI Employees
-                    </button>
+          {/* CRM */}
+          <button
+            type="button"
+            className="sidebar-item"
+            onClick={closeMobileSidebar}
+          >
+            <span className="sidebar-icon cyan">♟</span>
+            <span className="sidebar-label">CRM</span>
+          </button>
 
-                    <button type="button">
-                      Workforce Overview
-                    </button>
+          {/* Finance */}
+          <button
+            type="button"
+            className="sidebar-item"
+            onClick={closeMobileSidebar}
+          >
+            <span className="sidebar-icon green">$</span>
+            <span className="sidebar-label">Finance</span>
+          </button>
 
-                    <button type="button">
-                      AI Tasks
-                    </button>
+          {/* HR */}
+          <button
+            type="button"
+            className="sidebar-item"
+            onClick={closeMobileSidebar}
+          >
+            <span className="sidebar-icon blue">♙</span>
+            <span className="sidebar-label">HR</span>
+          </button>
 
-                  </div>
-                )}
+          {/* Inventory */}
+          <button
+            type="button"
+            className="sidebar-item"
+            onClick={closeMobileSidebar}
+          >
+            <span className="sidebar-icon orange">▣</span>
+            <span className="sidebar-label">Inventory</span>
+          </button>
 
+          {/* Projects */}
+          <button
+            type="button"
+            className="sidebar-item"
+            onClick={closeMobileSidebar}
+          >
+            <span className="sidebar-icon purple">☑</span>
+            <span className="sidebar-label">Projects & Tasks</span>
+          </button>
 
-              {/* -------------------------------------------------
-                  INDUSTRIES DROPDOWN
-                  ------------------------------------------------- */}
+          {/* Documents */}
+          <button
+            type="button"
+            className="sidebar-item"
+            onClick={closeMobileSidebar}
+          >
+            <span className="sidebar-icon cyan">▤</span>
+            <span className="sidebar-label">Documents</span>
+          </button>
 
-              {item.dropdown === "industries" &&
-                openDropdown === "industries" && (
-                  <div className="sidebar-submenu">
+          {/* Automation */}
+          <button
+            type="button"
+            className="sidebar-item"
+            onClick={closeMobileSidebar}
+          >
+            <span className="sidebar-icon yellow">ϟ</span>
+            <span className="sidebar-label">Automation</span>
+          </button>
 
-                    <button type="button">
-                      Office
-                    </button>
+          {/* Analytics */}
+          <button
+            type="button"
+            className="sidebar-item"
+            onClick={closeMobileSidebar}
+          >
+            <span className="sidebar-icon green">▥</span>
+            <span className="sidebar-label">Analytics</span>
+          </button>
 
-                    <button type="button">
-                      HR
-                    </button>
+          {/* Communication */}
+          <button
+            type="button"
+            className="sidebar-item"
+            onClick={closeMobileSidebar}
+          >
+            <span className="sidebar-icon cyan">▣</span>
+            <span className="sidebar-label">Communication</span>
+          </button>
 
-                    <button type="button">
-                      Hospital
-                    </button>
+          {/* Support */}
+          <button
+            type="button"
+            className="sidebar-item"
+            onClick={closeMobileSidebar}
+          >
+            <span className="sidebar-icon red">●</span>
+            <span className="sidebar-label">Support / Helpdesk</span>
+          </button>
 
-                    <button type="button">
-                      Restaurant
-                    </button>
+          {/* Integrations */}
+          <button
+            type="button"
+            className="sidebar-item"
+            onClick={closeMobileSidebar}
+          >
+            <span className="sidebar-icon blue">✣</span>
+            <span className="sidebar-label">Integrations</span>
+          </button>
 
-                    <button type="button">
-                      Retail
-                    </button>
-
-                    <button type="button">
-                      Construction
-                    </button>
-
-                    <button type="button">
-                      Real Estate
-                    </button>
-
-                    <button type="button">
-                      Education
-                    </button>
-
-                  </div>
-                )}
-
-            </React.Fragment>
-          ))}
+          {/* Settings */}
+          <button
+            type="button"
+            className="sidebar-item"
+            onClick={closeMobileSidebar}
+          >
+            <span className="sidebar-icon gray">⚙</span>
+            <span className="sidebar-label">Settings</span>
+          </button>
 
         </nav>
 
-
-        {/* -----------------------------------------------------
-            CURRENT PLAN
-            ----------------------------------------------------- */}
-
-        <div className="sidebar-plan-card">
+        {/* CURRENT PLAN */}
+        <div className="current-plan-card">
 
           <button
             type="button"
-            className="sidebar-plan-close"
-            aria-label="Hide plan card"
+            className="plan-close"
+            aria-label="Close plan card"
           >
             ×
           </button>
 
-          <div className="sidebar-plan-label">
+          <div className="plan-small-title">
             CURRENT PLAN
           </div>
 
-          <div className="sidebar-plan-title">
-            Growth
+          <div className="plan-row">
+
+            <div className="plan-diamond">
+              ◇
+            </div>
+
+            <div>
+              <div className="plan-label">
+                Current Plan
+              </div>
+
+              <div className="plan-name">
+                Growth
+              </div>
+            </div>
+
           </div>
 
-          <div className="sidebar-plan-price">
+          <div className="plan-price">
             <strong>$15</strong>
             <span>/ month</span>
           </div>
 
-          <div className="sidebar-plan-progress">
-            <span></span>
-          </div>
-
-          <div className="sidebar-plan-access">
-            <span>Access</span>
-            <strong>38 / 60</strong>
-          </div>
-
           <button
             type="button"
-            className="sidebar-upgrade-button"
+            className="upgrade-plan-button"
           >
             Upgrade Plan
             <span>→</span>
@@ -309,43 +347,24 @@ function Dashboard() {
 
       </aside>
 
-      {/* =====================================================
+      {/* =========================================================
           SECTION 01 — SIDEBAR END
-          ===================================================== */}
+          ========================================================= */}
 
 
-      {/* =====================================================
-          SECTION 02 — HEADER WILL START HERE
-          DO NOT DELETE
-          ===================================================== */}
+      {/* =========================================================
+          NEXT SECTION LOCATION
+          SECTION 02 — HEADER WILL BE ADDED HERE
+          ========================================================= */}
 
       <main className="dashboard-main">
 
-        {/* SECTION 02 — HEADER START HERE */}
-
-
-        {/* SECTION 03 — HERO START HERE */}
-
-
-        {/* SECTION 04 — KPI START HERE */}
-
-
-        {/* SECTION 05 — QUICK ACTIONS START HERE */}
-
-
-        {/* SECTION 06 — AI CENTER START HERE */}
-
-
-        {/* SECTION 07 — ACTIVITIES START HERE */}
-
-
-        {/* SECTION 08 — CUSTOMERS / INSIGHTS START HERE */}
-
-
-        {/* SECTION 09 — RIGHT PANELS START HERE */}
-
-
-        {/* SECTION 10 — FOOTER START HERE */}
+        <div className="next-section-placeholder">
+          <span>SECTION 02 — HEADER</span>
+          <small>
+            Next section will be added here.
+          </small>
+        </div>
 
       </main>
 
