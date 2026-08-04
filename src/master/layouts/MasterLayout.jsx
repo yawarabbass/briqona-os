@@ -12,7 +12,7 @@
 
 import Header from "../components/Header/Header";
 import Sidebar from "../components/Sidebar/Sidebar";
-
+import "../styles/master.css";
 export default function MasterLayout({ children }) {
   return (
     <div className="master-layout">
