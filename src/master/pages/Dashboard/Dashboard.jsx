@@ -9,6 +9,9 @@
 import MasterLayout from "../../layouts/MasterLayout";
 import "./Dashboard.css";
 import StatsCard from "../../components/StatsCard/StatsCard";
+import DashboardCharts from "../../components/DashboardCharts/DashboardCharts";
+
+
 export default function Dashboard() {
   return (
     <MasterLayout>
