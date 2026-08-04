@@ -22,7 +22,35 @@ export default function Dashboard() {
         <p className="master-dashboard-subtitle">
           Welcome to the BRIQONA OS Master Panel.
         </p>
+<div className="master-dashboard-stats">
 
+  <StatsCard
+    title="Total Companies"
+    value="128"
+    description="Active companies"
+  />
+
+  <StatsCard
+    title="Total Users"
+    value="8,542"
+    description="Registered users"
+  />
+
+  <StatsCard
+    title="Monthly Revenue"
+    value="$48,200"
+    description="Current month"
+  />
+
+  <StatsCard
+    title="AI Requests"
+    value="1.2M"
+    description="Processed this month"
+  />
+
+</div>
+
+        
       </section>
 
     </MasterLayout>
