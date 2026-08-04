@@ -10,7 +10,7 @@ import MasterLayout from "../../layouts/MasterLayout";
 import "./Dashboard.css";
 import StatsCard from "../../components/StatsCard/StatsCard";
 import DashboardCharts from "../../components/DashboardCharts/DashboardCharts";
-
+import RecentActivity from "../../components/RecentActivity/RecentActivity";
 
 export default function Dashboard() {
   return (
@@ -52,7 +52,17 @@ export default function Dashboard() {
   />
 
 </div>
-<DashboardCharts />
+
+        <RecentActivity />
+        <DashboardCharts />
+
+
+
+
+
+
+
+        
         
       </section>
 
