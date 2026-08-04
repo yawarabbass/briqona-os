@@ -22,7 +22,7 @@ import Terms from "./pages/Terms/Terms";
 import Documentation from "./pages/Documentation/Documentation";
 import Integrations from "./pages/Integrations/Integrations";
 import Dashboard from "./pages/Dashboard/Dashboard";
-
+import PublicLayout from "./public/layouts/PublicLayout";
 import Business from "./pages/Business/Business";
 function App() {
 const path = window.location.pathname;
@@ -237,16 +237,9 @@ if (path === "/business") {
   
   
   return (
-    <div className="app">
-      <Header />
-
-      <Home />
-
-      <Footer />
-
-      <WhatsApp />
-    </div>
-  );
-}
+  <PublicLayout>
+    <Home />
+  </PublicLayout>
+);
 
 export default App;
