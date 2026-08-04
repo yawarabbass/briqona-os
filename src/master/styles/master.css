@@ -1,0 +1,23 @@
+/*
+|--------------------------------------------------------------------------
+| BRIQONA OS
+|--------------------------------------------------------------------------
+| Master Panel Global Styles
+|--------------------------------------------------------------------------
+*/
+
+@import "../../shared/styles/theme.css";
+@import "../../shared/styles/typography.css";
+@import "../../shared/styles/spacing.css";
+
+.master-layout{
+    min-height:100vh;
+}
+
+.master-main{
+    min-height:100vh;
+}
+
+.master-content{
+    min-height:100vh;
+}
