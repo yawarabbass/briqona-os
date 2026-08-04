@@ -1,0 +1,27 @@
+.latest-companies{
+    background:var(--color-surface);
+    border:1px solid var(--color-border);
+    border-radius:var(--radius-lg);
+    padding:24px;
+    box-shadow:var(--shadow-sm);
+}
+
+.latest-companies-header{
+    margin-bottom:20px;
+}
+
+.latest-companies-table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.latest-companies-table th,
+.latest-companies-table td{
+    text-align:left;
+    padding:14px;
+    border-bottom:1px solid var(--color-border);
+}
+
+.latest-companies-table th{
+    font-weight:600;
+}
