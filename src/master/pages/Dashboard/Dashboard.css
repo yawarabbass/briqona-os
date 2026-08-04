@@ -1,0 +1,27 @@
+/*
+|--------------------------------------------------------------------------
+| BRIQONA OS
+|--------------------------------------------------------------------------
+| Master Dashboard Styles
+|--------------------------------------------------------------------------
+*/
+
+.master-dashboard{
+    display:flex;
+    flex-direction:column;
+    gap:var(--space-6);
+    padding:var(--space-6);
+}
+
+.master-dashboard-title{
+    font-family:var(--font-family);
+    font-size:var(--font-size-3xl);
+    font-weight:var(--font-weight-bold);
+    color:var(--color-text);
+}
+
+.master-dashboard-subtitle{
+    font-family:var(--font-family);
+    font-size:var(--font-size-md);
+    color:var(--color-text-light);
+}
