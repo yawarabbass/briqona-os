@@ -1,0 +1,27 @@
+.industry-table{
+    background:var(--color-surface);
+    border:1px solid var(--color-border);
+    border-radius:var(--radius-lg);
+    padding:24px;
+    box-shadow:var(--shadow-sm);
+}
+
+.industry-table-header{
+    margin-bottom:20px;
+}
+
+.industry-table table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.industry-table th,
+.industry-table td{
+    padding:16px;
+    text-align:left;
+    border-bottom:1px solid var(--color-border);
+}
+
+.industry-table tr:last-child td{
+    border-bottom:none;
+}
