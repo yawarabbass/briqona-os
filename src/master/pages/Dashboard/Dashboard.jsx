@@ -11,6 +11,14 @@ import "./Dashboard.css";
 import StatsCard from "../../components/StatsCard/StatsCard";
 import DashboardCharts from "../../components/DashboardCharts/DashboardCharts";
 import RecentActivity from "../../components/RecentActivity/RecentActivity";
+import KpiCards from "../../components/KpiCards/KpiCards";
+import RevenueChart from "../../components/RevenueChart/RevenueChart";
+
+
+
+
+
+
 
 export default function Dashboard() {
   return (
@@ -25,31 +33,22 @@ export default function Dashboard() {
         <p className="master-dashboard-subtitle">
           Welcome to the BRIQONA OS Master Panel.
         </p>
-<div className="master-dashboard-stats">
 
-  <StatsCard
-    title="Total Companies"
-    value="128"
-    description="Active companies"
-  />
+        
 
-  <StatsCard
-    title="Total Users"
-    value="8,542"
-    description="Registered users"
-  />
+  
 
-  <StatsCard
-    title="Monthly Revenue"
-    value="$48,200"
-    description="Current month"
-  />
+  <KpiCards />
 
-  <StatsCard
-    title="AI Requests"
-    value="1.2M"
-    description="Processed this month"
-  />
+<div className="dashboard-grid">
+
+  <div className="dashboard-main">
+    <RevenueChart />
+  </div>
+
+  <div className="dashboard-side">
+    <RecentActivity />
+  </div>
 
 </div>
 
