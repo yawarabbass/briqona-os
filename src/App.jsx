@@ -23,6 +23,7 @@ import Documentation from "./pages/Documentation/Documentation";
 import Integrations from "./pages/Integrations/Integrations";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import PublicLayout from "./public/layouts/PublicLayout";
+import PublicRoutes from "./app/router/PublicRoutes";
 import Business from "./pages/Business/Business";
 function App() {
 const path = window.location.pathname;
