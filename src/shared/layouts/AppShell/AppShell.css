@@ -6,6 +6,8 @@
 
     background:#f8fafc;
 
+    position:relative;
+
 }
 
 .app-shell-main{
@@ -20,6 +22,8 @@
 
     min-height:100vh;
 
+    overflow:hidden;
+
 }
 
 .app-shell-content{
@@ -28,31 +32,53 @@
 
     padding:24px;
 
-    overflow-x:auto;
-
     background:#f8fafc;
 
-}
-
-/* Large Desktop */
-
-@media (min-width:1400px){
-
-    .app-shell-content{
-
-        padding:32px;
-
-    }
+    overflow-x:auto;
 
 }
 
-/* Laptop */
+/* Overlay */
 
-@media (max-width:1200px){
+.mobile-overlay{
 
-    .app-shell-content{
+    position:fixed;
 
-        padding:20px;
+    inset:0;
+
+    background:rgba(15,23,42,.45);
+
+    backdrop-filter:blur(2px);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    pointer-events:none;
+
+    transition:.30s;
+
+    z-index:900;
+
+}
+
+.mobile-overlay.active{
+
+    opacity:1;
+
+    visibility:visible;
+
+    pointer-events:auto;
+
+}
+
+/* Desktop */
+
+@media (min-width:992px){
+
+    .mobile-overlay{
+
+        display:none;
 
     }
 
@@ -76,7 +102,7 @@
 
     .app-shell-content{
 
-        padding:16px;
+        padding:18px;
 
     }
 
