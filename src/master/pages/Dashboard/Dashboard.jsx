@@ -7,12 +7,23 @@
 */
 
 import MasterLayout from "../../layouts/MasterLayout";
+import "./Dashboard.css";
 
 export default function Dashboard() {
   return (
     <MasterLayout>
 
-      <h1>Master Dashboard</h1>
+      <section className="master-dashboard">
+
+        <h1 className="master-dashboard-title">
+          Master Dashboard
+        </h1>
+
+        <p className="master-dashboard-subtitle">
+          Welcome to the BRIQONA OS Master Panel.
+        </p>
+
+      </section>
 
     </MasterLayout>
   );
