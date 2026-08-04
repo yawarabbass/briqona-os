@@ -1,28 +1,7 @@
 import "./CompanyTable.css";
 
 const companies = [
-  {
-    id: 1,
-    company: "Alpha Technologies",
-    owner: "John Smith",
-    plan: "Enterprise",
-    status: "Active",
-  },
-  {
-    id: 2,
-    company: "Bright Solutions",
-    owner: "Sarah Khan",
-    plan: "Business",
-    status: "Active",
-  },
-  {
-    id: 3,
-    company: "Cloud Nexus",
-    owner: "Ali Raza",
-    plan: "Starter",
-    status: "Pending",
-  },
-  {
+import companies from "../../data/companies";
     id: 4,
     company: "Digital One",
     owner: "Ahmed Hassan",
