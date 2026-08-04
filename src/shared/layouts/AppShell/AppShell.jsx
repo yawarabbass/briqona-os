@@ -1,34 +1,32 @@
 import "./AppShell.css";
 
+import Sidebar from "../Sidebar/Sidebar";
+import Header from "../Header/Header";
+
 export default function AppShell({
-  sidebar,
-  header,
   children,
-  footer,
 }) {
+
   return (
+
     <div className="app-shell">
 
-      <aside className="app-shell-sidebar">
-        {sidebar}
-      </aside>
+      <Sidebar />
 
       <div className="app-shell-main">
 
-        <header className="app-shell-header">
-          {header}
-        </header>
+        <Header />
 
         <main className="app-shell-content">
-          {children}
-        </main>
 
-        <footer className="app-shell-footer">
-          {footer}
-        </footer>
+          {children}
+
+        </main>
 
       </div>
 
     </div>
+
   );
+
 }
