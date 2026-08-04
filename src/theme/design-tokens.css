@@ -1,0 +1,50 @@
+:root{
+
+/* Brand */
+
+--color-primary:#2563eb;
+--color-primary-hover:#1d4ed8;
+
+--color-secondary:#7c3aed;
+
+--color-success:#16a34a;
+--color-warning:#f59e0b;
+--color-danger:#dc2626;
+
+--color-background:#f8fafc;
+--color-surface:#ffffff;
+
+--color-border:#e2e8f0;
+
+--color-text:#0f172a;
+--color-text-light:#64748b;
+
+/* Radius */
+
+--radius-xs:6px;
+--radius-sm:8px;
+--radius-md:12px;
+--radius-lg:18px;
+--radius-xl:24px;
+
+/* Shadows */
+
+--shadow-sm:0 2px 8px rgba(0,0,0,.05);
+
+--shadow-md:0 8px 24px rgba(0,0,0,.08);
+
+--shadow-lg:0 20px 40px rgba(0,0,0,.12);
+
+/* Layout */
+
+--sidebar-width:280px;
+
+--header-height:72px;
+
+--content-width:1600px;
+
+/* Animation */
+
+--transition:.25s ease;
+
+}
