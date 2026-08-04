@@ -1,0 +1,27 @@
+.module-table{
+    background:var(--color-surface);
+    border:1px solid var(--color-border);
+    border-radius:var(--radius-lg);
+    padding:24px;
+    box-shadow:var(--shadow-sm);
+}
+
+.module-table-header{
+    margin-bottom:20px;
+}
+
+.module-table table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.module-table th,
+.module-table td{
+    padding:16px;
+    text-align:left;
+    border-bottom:1px solid var(--color-border);
+}
+
+.module-table tr:last-child td{
+    border-bottom:none;
+}
