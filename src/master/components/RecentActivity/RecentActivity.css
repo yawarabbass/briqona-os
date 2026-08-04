@@ -1,0 +1,26 @@
+.recent-activity{
+    margin-top:var(--space-6);
+    background:var(--color-surface);
+    border:1px solid var(--color-border);
+    border-radius:var(--radius-lg);
+    padding:var(--space-6);
+}
+
+.activity-list{
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+    margin-top:20px;
+}
+
+.activity-item{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding-bottom:12px;
+    border-bottom:1px solid var(--color-border);
+}
+
+.activity-item:last-child{
+    border-bottom:none;
+}
