@@ -242,5 +242,5 @@ if (path === "/business") {
     <Home />
   </PublicLayout>
 );
-
+}
 export default App;
