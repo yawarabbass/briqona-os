@@ -1,7 +1,9 @@
 import "./Header.css";
 import { useState } from "react";
 
-export default function Header() {
+export default function Header({
+  toggleSidebar,
+}) {
 
   const [search, setSearch] = useState("");
 
@@ -14,7 +16,8 @@ export default function Header() {
         <button
           className="hamburger-button"
           type="button"
-          aria-label="Open Menu"
+          aria-label="Open Sidebar"
+          onClick={toggleSidebar}
         >
           ☰
         </button>
@@ -45,13 +48,10 @@ export default function Header() {
           type="button"
           aria-label="Notifications"
         >
-
           🔔
-
           <span className="notification-dot">
             3
           </span>
-
         </button>
 
         <button
@@ -59,13 +59,10 @@ export default function Header() {
           type="button"
           aria-label="Messages"
         >
-
           💬
-
           <span className="notification-dot">
             5
           </span>
-
         </button>
 
         <button
@@ -73,31 +70,21 @@ export default function Header() {
           type="button"
           aria-label="Theme"
         >
-
           🌙
-
         </button>
 
         <div className="header-profile">
 
           <div className="profile-avatar">
-
             BO
-
           </div>
 
           <div className="profile-info">
 
-            <h4>
-
-              Admin
-
-            </h4>
+            <h4>Admin</h4>
 
             <span>
-
               Super Administrator
-
             </span>
 
           </div>
