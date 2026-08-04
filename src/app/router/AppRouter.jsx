@@ -6,10 +6,12 @@
 |--------------------------------------------------------------------------
 */
 
-export default function AppRouter() {
+import { BrowserRouter } from "react-router-dom";
+
+export default function AppRouter({ children }) {
   return (
-    <>
-      Router Loading...
-    </>
+    <BrowserRouter>
+      {children}
+    </BrowserRouter>
   );
 }
