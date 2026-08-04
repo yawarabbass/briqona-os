@@ -2,84 +2,44 @@ import "./Sidebar.css";
 import { useState } from "react";
 
 const menuItems = [
-  {
-    id: 1,
-    title: "Dashboard",
-    icon: "🏠",
-    active: true,
-  },
-  {
-    id: 2,
-    title: "Workspace",
-    icon: "💼",
-    active: false,
-  },
-  {
-    id: 3,
-    title: "Companies",
-    icon: "🏢",
-    active: false,
-  },
-  {
-    id: 4,
-    title: "Plans",
-    icon: "📦",
-    active: false,
-  },
-  {
-    id: 5,
-    title: "Industries",
-    icon: "🏭",
-    active: false,
-  },
-  {
-    id: 6,
-    title: "Modules",
-    icon: "🧩",
-    active: false,
-  },
-  {
-    id: 7,
-    title: "Users",
-    icon: "👥",
-    active: false,
-  },
-  {
-    id: 8,
-    title: "Reports",
-    icon: "📊",
-    active: false,
-  },
-  {
-    id: 9,
-    title: "Billing",
-    icon: "💳",
-    active: false,
-  },
-  {
-    id: 10,
-    title: "Settings",
-    icon: "⚙️",
-    active: false,
-  },
+  { id: 1, title: "Dashboard", icon: "🏠" },
+  { id: 2, title: "Workspace", icon: "💼" },
+  { id: 3, title: "Companies", icon: "🏢" },
+  { id: 4, title: "Plans", icon: "📦" },
+  { id: 5, title: "Industries", icon: "🏭" },
+  { id: 6, title: "Modules", icon: "🧩" },
+  { id: 7, title: "Users", icon: "👥" },
+  { id: 8, title: "Reports", icon: "📊" },
+  { id: 9, title: "Billing", icon: "💳" },
+  { id: 10, title: "Settings", icon: "⚙️" },
 ];
 
-export default function Sidebar() {
+export default function Sidebar({
+  sidebarOpen,
+  closeSidebar,
+}) {
 
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] =
+    useState(false);
 
-  const toggleSidebar = () => {
+  const toggleCollapse = () => {
+
     setCollapsed(!collapsed);
+
   };
 
   return (
 
     <aside
+
       className={
-        collapsed
-          ? "sidebar collapsed"
-          : "sidebar"
+        `
+        sidebar
+        ${collapsed ? "collapsed" : ""}
+        ${sidebarOpen ? "mobile-open" : ""}
+        `
       }
+
     >
 
       <div className="sidebar-top">
@@ -97,11 +57,15 @@ export default function Sidebar() {
             <div className="sidebar-brand-text">
 
               <h2>
+
                 BRIQONA OS
+
               </h2>
 
               <span>
+
                 Enterprise Platform
+
               </span>
 
             </div>
@@ -111,9 +75,13 @@ export default function Sidebar() {
         </div>
 
         <button
+
           className="collapse-button"
-          onClick={toggleSidebar}
+
           type="button"
+
+          onClick={toggleCollapse}
+
         >
 
           {collapsed ? "➜" : "⬅"}
@@ -122,40 +90,28 @@ export default function Sidebar() {
 
       </div>
 
-      <div className="sidebar-search">
-
-        {!collapsed && (
-
-          <input
-            type="text"
-            placeholder="Search menu..."
-          />
-
-        )}
-
-      </div>
-
       <nav className="sidebar-menu">
                 {menuItems.map((item) => (
 
           <button
             key={item.id}
-            className={
-              item.active
-                ? "sidebar-item active"
-                : "sidebar-item"
-            }
             type="button"
+            className="sidebar-item"
+            onClick={closeSidebar}
           >
 
             <span className="sidebar-item-icon">
+
               {item.icon}
+
             </span>
 
             {!collapsed && (
 
               <span className="sidebar-item-title">
+
                 {item.title}
+
               </span>
 
             )}
@@ -180,7 +136,9 @@ export default function Sidebar() {
           {!collapsed && (
 
             <span className="sidebar-item-title">
+
               Theme
+
             </span>
 
           )}
@@ -199,7 +157,9 @@ export default function Sidebar() {
           {!collapsed && (
 
             <span className="sidebar-item-title">
-              Help Center
+
+              Help
+
             </span>
 
           )}
@@ -209,6 +169,7 @@ export default function Sidebar() {
         <button
           className="sidebar-item logout"
           type="button"
+          onClick={closeSidebar}
         >
 
           <span className="sidebar-item-icon">
@@ -218,7 +179,9 @@ export default function Sidebar() {
           {!collapsed && (
 
             <span className="sidebar-item-title">
+
               Logout
+
             </span>
 
           )}
