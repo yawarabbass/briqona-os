@@ -1,0 +1,25 @@
+.module-search{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    flex-wrap:wrap;
+}
+
+.module-search-input{
+    flex:1;
+    min-width:280px;
+    padding:12px 16px;
+    border:1px solid var(--color-border);
+    border-radius:var(--radius-md);
+    background:var(--color-surface);
+    color:var(--color-text);
+}
+
+.module-search-button{
+    padding:12px 20px;
+    border:none;
+    border-radius:var(--radius-md);
+    background:var(--color-primary);
+    color:#fff;
+    cursor:pointer;
+}
