@@ -1,0 +1,51 @@
+/*
+
+Mobile
+0-575
+
+*/
+
+@media(max-width:575px){
+
+}
+
+/*
+
+Large Mobile
+576-767
+
+*/
+
+@media(min-width:576px) and (max-width:767px){
+
+}
+
+/*
+
+Tablet
+
+*/
+
+@media(min-width:768px) and (max-width:991px){
+
+}
+
+/*
+
+Laptop
+
+*/
+
+@media(min-width:992px) and (max-width:1199px){
+
+}
+
+/*
+
+Desktop
+
+*/
+
+@media(min-width:1200px){
+
+}
