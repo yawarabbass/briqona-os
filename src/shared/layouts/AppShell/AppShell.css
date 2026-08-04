@@ -4,19 +4,7 @@
 
     min-height:100vh;
 
-    background:var(--color-background);
-
-}
-
-.app-shell-sidebar{
-
-    width:var(--sidebar-width);
-
-    flex-shrink:0;
-
-    background:var(--color-surface);
-
-    border-right:1px solid var(--color-border);
+    background:#f8fafc;
 
 }
 
@@ -30,15 +18,7 @@
 
     min-width:0;
 
-}
-
-.app-shell-header{
-
-    height:var(--header-height);
-
-    background:var(--color-surface);
-
-    border-bottom:1px solid var(--color-border);
+    min-height:100vh;
 
 }
 
@@ -48,30 +28,68 @@
 
     padding:24px;
 
-}
+    overflow-x:auto;
 
-.app-shell-footer{
-
-    border-top:1px solid var(--color-border);
-
-    background:var(--color-surface);
-
-    padding:16px 24px;
+    background:#f8fafc;
 
 }
+
+/* Large Desktop */
+
+@media (min-width:1400px){
+
+    .app-shell-content{
+
+        padding:32px;
+
+    }
+
+}
+
+/* Laptop */
+
+@media (max-width:1200px){
+
+    .app-shell-content{
+
+        padding:20px;
+
+    }
+
+}
+
+/* Tablet */
 
 @media (max-width:991px){
 
-.app-shell-sidebar{
+    .app-shell{
 
-display:none;
+        display:block;
+
+    }
+
+    .app-shell-main{
+
+        width:100%;
+
+    }
+
+    .app-shell-content{
+
+        padding:16px;
+
+    }
 
 }
 
-.app-shell-content{
+/* Mobile */
 
-padding:16px;
+@media (max-width:576px){
 
-}
+    .app-shell-content{
+
+        padding:14px;
+
+    }
 
 }
