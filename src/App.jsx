@@ -25,6 +25,12 @@ import Dashboard from "./pages/Dashboard/Dashboard";
 import PublicLayout from "./public/layouts/PublicLayout";
 import PublicRoutes from "./app/router/PublicRoutes";
 import Business from "./pages/Business/Business";
+import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
+
+
+
+
+
 function App() {
 const path = window.location.pathname;
 
@@ -37,7 +43,18 @@ const path = window.location.pathname;
     </div>
   );
 }
+  
+if (path === "/forgot-password") {
+  return (
+    <div className="app">
+      <Header />
+      <ForgotPassword />
+      <Footer />
+    </div>
+  );
+}
 
+  
 if (path === "/demo") {
   return (
     <div className="app">
