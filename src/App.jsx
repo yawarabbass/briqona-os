@@ -27,7 +27,7 @@ import PublicRoutes from "./app/router/PublicRoutes";
 import Business from "./pages/Business/Business";
 import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
  import ChoosePlan from "./pages/ChoosePlan/ChoosePlan";
-
+import Billing from "./pages/Billing/Billing";
 
 
 
@@ -257,7 +257,27 @@ if (path === "/choose-plan") {
   );
 }
 
+if (path === "/billing") {
+  return (
+    <div className="app">
+      <Header />
+      <Billing />
+      <Footer />
+    </div>
+  );
+}
 
+
+
+
+
+
+
+
+
+
+
+ 
   
   
   return (
