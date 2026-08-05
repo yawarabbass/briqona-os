@@ -72,21 +72,25 @@ export default function ChoosePlan() {
 
   const choosePlan = (plan) => {
 
-    localStorage.setItem(
-      "selectedPlan",
-      JSON.stringify({
-        plan: plan.id,
-        price:
-          billing === "monthly"
-            ? plan.monthly
-            : plan.yearly,
-        billing
-      })
-    );
+  localStorage.setItem(
+    "selectedPlan",
+    JSON.stringify({
+      id: plan.id,
+      name: plan.title,
+      price:
+        billing === "monthly"
+          ? `$${plan.monthly}`
+          : `$${plan.yearly}`,
+      billing:
+        billing === "monthly"
+          ? "Monthly"
+          : "Yearly"
+    })
+  );
 
-    window.location.href = "/billing";
+  window.location.href = "/billing";
 
-  };
+};
 
   return (
 
