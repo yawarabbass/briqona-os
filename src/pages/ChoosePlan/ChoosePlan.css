@@ -1,0 +1,290 @@
+/*
+|--------------------------------------------------------------------------
+| BRIQONA OS
+|--------------------------------------------------------------------------
+| Choose Plan
+|--------------------------------------------------------------------------
+*/
+
+.plan-page{
+    min-height:100vh;
+    padding:120px 6%;
+    background:#050816;
+    color:#fff;
+    overflow:hidden;
+}
+
+.plan-header{
+    text-align:center;
+    max-width:760px;
+    margin:0 auto 60px;
+}
+
+.mini-title{
+    display:inline-flex;
+    padding:8px 18px;
+    border-radius:40px;
+    background:rgba(0,255,170,.12);
+    color:#22d3ee;
+    border:1px solid rgba(34,211,238,.35);
+    font-size:.85rem;
+    letter-spacing:1px;
+    margin-bottom:18px;
+}
+
+.plan-header h1{
+    font-size:3rem;
+    font-weight:800;
+    line-height:1.15;
+    margin-bottom:18px;
+}
+
+.plan-header p{
+    color:#9ca3af;
+    line-height:1.8;
+    font-size:1.05rem;
+}
+
+.billing-switch{
+    width:280px;
+    margin:0 auto 60px;
+    display:flex;
+    background:#0f172a;
+    border-radius:60px;
+    padding:6px;
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.billing-switch button{
+    flex:1;
+    border:none;
+    background:none;
+    color:#cbd5e1;
+    cursor:pointer;
+    border-radius:40px;
+    padding:13px 0;
+    font-weight:600;
+    transition:.3s;
+}
+
+.billing-switch button.active{
+    background:linear-gradient(135deg,#00e5ff,#2563eb);
+    color:#fff;
+}
+
+.plans-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:35px;
+}
+
+.plan-card{
+    position:relative;
+    background:#0b1220;
+    border:1px solid rgba(255,255,255,.06);
+    border-radius:28px;
+    padding:40px 34px;
+    transition:.35s;
+    overflow:hidden;
+}
+
+.plan-card:hover{
+    transform:translateY(-8px);
+    border-color:#00d4ff;
+    box-shadow:0 25px 70px rgba(0,212,255,.18);
+}
+
+.featured{
+    border:2px solid #00d4ff;
+    transform:scale(1.04);
+}
+
+.plan-badge{
+    position:absolute;
+    top:18px;
+    right:18px;
+    background:linear-gradient(135deg,#00d4ff,#2563eb);
+    color:#fff;
+    padding:7px 16px;
+    border-radius:30px;
+    font-size:.75rem;
+    font-weight:700;
+}
+
+.plan-icon{
+    width:70px;
+    height:70px;
+    border-radius:18px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:rgba(0,212,255,.12);
+    color:#00d4ff;
+    margin-bottom:22px;
+}
+
+.plan-card h2{
+    font-size:1.8rem;
+    margin-bottom:12px;
+}
+
+.plan-description{
+    color:#94a3b8;
+    line-height:1.7;
+    margin-bottom:28px;
+}
+.plan-price{
+    display:flex;
+    align-items:flex-end;
+    margin:30px 0;
+    gap:6px;
+}
+
+.currency{
+    font-size:1.6rem;
+    font-weight:700;
+    margin-bottom:10px;
+    color:#38bdf8;
+}
+
+.amount{
+    font-size:4rem;
+    line-height:1;
+    font-weight:800;
+}
+
+.duration{
+    margin-bottom:10px;
+    color:#94a3b8;
+    font-size:1rem;
+}
+
+.plan-features{
+    list-style:none;
+    padding:0;
+    margin:35px 0;
+}
+
+.plan-features li{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:18px;
+    color:#dbe4ee;
+}
+
+.plan-features svg{
+    color:#22c55e;
+    flex-shrink:0;
+}
+
+.choose-btn{
+    width:100%;
+    border:none;
+    cursor:pointer;
+    padding:16px;
+    border-radius:14px;
+    font-size:1rem;
+    font-weight:700;
+    transition:.35s;
+    background:#172033;
+    color:#fff;
+}
+
+.choose-btn:hover{
+    background:#243147;
+}
+
+.choose-btn.primary{
+    background:linear-gradient(135deg,#00d4ff,#2563eb);
+    color:#fff;
+    box-shadow:0 15px 35px rgba(37,99,235,.35);
+}
+
+.choose-btn.primary:hover{
+    transform:translateY(-2px);
+    box-shadow:0 20px 45px rgba(37,99,235,.45);
+}
+
+.plan-footer{
+    margin-top:90px;
+    text-align:center;
+    padding:50px;
+    border-radius:28px;
+    background:#0b1220;
+    border:1px solid rgba(255,255,255,.06);
+}
+
+.plan-footer h3{
+    font-size:2rem;
+    margin-bottom:18px;
+}
+
+.plan-footer p{
+    max-width:760px;
+    margin:0 auto 35px;
+    line-height:1.9;
+    color:#94a3b8;
+}
+
+.contact-sales-btn{
+    border:none;
+    cursor:pointer;
+    padding:16px 34px;
+    border-radius:14px;
+    background:linear-gradient(135deg,#7c3aed,#2563eb);
+    color:#fff;
+    font-size:1rem;
+    font-weight:700;
+    transition:.35s;
+}
+
+.contact-sales-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 20px 40px rgba(124,58,237,.35);
+}
+
+@media(max-width:1100px){
+
+    .plans-grid{
+        grid-template-columns:1fr;
+    }
+
+    .featured{
+        transform:none;
+    }
+
+}
+
+@media(max-width:768px){
+
+    .plan-page{
+        padding:90px 20px;
+    }
+
+    .plan-header h1{
+        font-size:2.2rem;
+    }
+
+    .billing-switch{
+        width:100%;
+        max-width:320px;
+    }
+
+    .plan-card{
+        padding:30px 24px;
+    }
+
+    .amount{
+        font-size:3.2rem;
+    }
+
+    .plan-footer{
+        padding:35px 22px;
+    }
+
+    .plan-footer h3{
+        font-size:1.6rem;
+    }
+
+}
