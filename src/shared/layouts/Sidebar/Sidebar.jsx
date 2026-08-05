@@ -1,30 +1,93 @@
 import "./Sidebar.css";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 
-const menuItems = [
-  { id: 1, title: "Dashboard", icon: "🏠" },
-  { id: 2, title: "Workspace", icon: "💼" },
-  { id: 3, title: "Companies", icon: "🏢" },
-  { id: 4, title: "Plans", icon: "📦" },
-  { id: 5, title: "Industries", icon: "🏭" },
-  { id: 6, title: "Modules", icon: "🧩" },
-  { id: 7, title: "Users", icon: "👥" },
-  { id: 8, title: "Reports", icon: "📊" },
-  { id: 9, title: "Billing", icon: "💳" },
-  { id: 10, title: "Settings", icon: "⚙️" },
+const navigation = [
+
+  {
+    id: "dashboard",
+    title: "Dashboard",
+    icon: "🏠",
+    path: "/dashboard",
+  },
+
+  {
+    id: "companies",
+    title: "Companies",
+    icon: "🏢",
+    path: "/companies",
+  },
+
+  {
+    id: "plans",
+    title: "Plans",
+    icon: "📦",
+    path: "/plans",
+  },
+
+  {
+    id: "industries",
+    title: "Industries",
+    icon: "🏭",
+    path: "/industries",
+  },
+
+  {
+    id: "modules",
+    title: "Modules",
+    icon: "🧩",
+    path: "/modules",
+  },
+
+  {
+    id: "users",
+    title: "Users",
+    icon: "👥",
+    path: "/users",
+  },
+
+  {
+    id: "reports",
+    title: "Reports",
+    icon: "📊",
+    path: "/reports",
+  },
+
+  {
+    id: "billing",
+    title: "Billing",
+    icon: "💳",
+    path: "/billing-admin",
+  },
+
+  {
+    id: "settings",
+    title: "Settings",
+    icon: "⚙️",
+    path: "/settings",
+  },
+
 ];
 
 export default function Sidebar({
+
   sidebarOpen,
+
   closeSidebar,
+
 }) {
 
   const [collapsed, setCollapsed] =
     useState(false);
 
+  const currentPath = useMemo(() => {
+
+    return window.location.pathname;
+
+  }, []);
+
   const toggleCollapse = () => {
 
-    setCollapsed(!collapsed);
+    setCollapsed((prev) => !prev);
 
   };
 
@@ -32,13 +95,7 @@ export default function Sidebar({
 
     <aside
 
-      className={
-        `
-        sidebar
-        ${collapsed ? "collapsed" : ""}
-        ${sidebarOpen ? "mobile-open" : ""}
-        `
-      }
+      className={`sidebar ${collapsed ? "collapsed" : ""} ${sidebarOpen ? "mobile-open" : ""}`}
 
     >
 
@@ -76,9 +133,9 @@ export default function Sidebar({
 
         <button
 
-          className="collapse-button"
-
           type="button"
+
+          className="collapse-button"
 
           onClick={toggleCollapse}
 
@@ -91,46 +148,69 @@ export default function Sidebar({
       </div>
 
       <nav className="sidebar-menu">
-                {menuItems.map((item) => (
+                {navigation.map((item) => {
 
-          <button
-            key={item.id}
-            type="button"
-            className="sidebar-item"
-            onClick={closeSidebar}
-          >
+          const isActive =
+            currentPath === item.path;
 
-            <span className="sidebar-item-icon">
+          return (
 
-              {item.icon}
+            <button
 
-            </span>
+              key={item.id}
 
-            {!collapsed && (
+              type="button"
 
-              <span className="sidebar-item-title">
+              className={`sidebar-item ${
+                isActive ? "active" : ""
+              }`}
 
-                {item.title}
+              onClick={() => {
+
+                window.location.href =
+                  item.path;
+
+                closeSidebar();
+
+              }}
+
+            >
+
+              <span className="sidebar-item-icon">
+
+                {item.icon}
 
               </span>
 
-            )}
+              {!collapsed && (
 
-          </button>
+                <span className="sidebar-item-title">
 
-        ))}
+                  {item.title}
+
+                </span>
+
+              )}
+
+            </button>
+
+          );
+
+        })}
 
       </nav>
 
       <div className="sidebar-footer">
 
         <button
-          className="sidebar-item"
           type="button"
+          className="sidebar-item"
         >
 
           <span className="sidebar-item-icon">
+
             🌙
+
           </span>
 
           {!collapsed && (
@@ -146,34 +226,43 @@ export default function Sidebar({
         </button>
 
         <button
-          className="sidebar-item"
           type="button"
+          className="sidebar-item"
         >
 
           <span className="sidebar-item-icon">
+
             ❓
+
           </span>
 
           {!collapsed && (
 
             <span className="sidebar-item-title">
 
-              Help
+              Help Center
 
             </span>
 
           )}
 
         </button>
-
-        <button
-          className="sidebar-item logout"
+                <button
           type="button"
-          onClick={closeSidebar}
+          className="sidebar-item logout"
+          onClick={() => {
+
+            closeSidebar();
+
+            window.location.href = "/login";
+
+          }}
         >
 
           <span className="sidebar-item-icon">
+
             ⏻
+
           </span>
 
           {!collapsed && (
