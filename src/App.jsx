@@ -43,7 +43,15 @@ const path = window.location.pathname;
     </div>
   );
 }
-
+if (path === "/forgot-password") {
+  return (
+    <div className="app">
+      <Header />
+      <ForgotPassword />
+      <Footer />
+    </div>
+  );
+}
   
 if (path === "/demo") {
   return (
