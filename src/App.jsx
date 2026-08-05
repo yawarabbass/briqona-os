@@ -25,7 +25,7 @@ import Dashboard from "./pages/Dashboard/Dashboard";
 import PublicLayout from "./public/layouts/PublicLayout";
 import PublicRoutes from "./app/router/PublicRoutes";
 import Business from "./pages/Business/Business";
-import ForgotPassword from "./pages/ForgotPassword/ForgotPassword.jsx";
+
 
 
 
@@ -39,16 +39,6 @@ const path = window.location.pathname;
     <div className="app">
       <Header />
       <Login />
-      <Footer />
-    </div>
-  );
-}
-  
-if (path === "/forgot-password") {
-  return (
-    <div className="app">
-      <Header />
-      <ForgotPassword />
       <Footer />
     </div>
   );
