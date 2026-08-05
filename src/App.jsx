@@ -26,7 +26,7 @@ import PublicLayout from "./public/layouts/PublicLayout";
 import PublicRoutes from "./app/router/PublicRoutes";
 import Business from "./pages/Business/Business";
 import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
- 
+ import ChoosePlan from "./pages/ChoosePlan/ChoosePlan";
 
 
 
@@ -247,7 +247,15 @@ if (path === "/business") {
   return <Business />;
       }
 
-
+if (path === "/choose-plan") {
+  return (
+    <div className="app">
+      <Header />
+      <ChoosePlan />
+      <Footer />
+    </div>
+  );
+}
 
 
   
