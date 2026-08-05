@@ -56,11 +56,20 @@ export default function Register() {
 
   const handleSubmit = (e) => {
 
-    e.preventDefault();
+  e.preventDefault();
 
-    console.log(form);
+  console.log(form);
 
-  };
+  // Save registration data temporarily
+  localStorage.setItem(
+    "registerData",
+    JSON.stringify(form)
+  );
+
+  // Go to Choose Plan page
+  window.location.href = "/choose-plan";
+
+};
 
   return (
 
