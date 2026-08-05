@@ -28,7 +28,7 @@ import Business from "./pages/Business/Business";
 import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
  import ChoosePlan from "./pages/ChoosePlan/ChoosePlan";
 import Billing from "./pages/Billing/Billing";
-
+import Payment from "./pages/Payment/Payment";
 
 
 function App() {
@@ -267,6 +267,15 @@ if (path === "/billing") {
   );
 }
 
+ if (path === "/payment") {
+  return (
+    <div className="app">
+      <Header />
+      <Payment />
+      <Footer />
+    </div>
+  );
+       }
 
 
 
