@@ -21,40 +21,96 @@ export default function ControlCenter() {
 
       <section className="cc-hero">
 
-        <div className="cc-hero-left">
+  <div className="cc-hero-left">
 
-          <span className="cc-badge">
+    <span className="cc-badge">
 
-            BRIQONA OS
+      🚀 BRIQONA OS Enterprise
 
-          </span>
+    </span>
 
-          <h1>
+    <h1>
 
-            Welcome back,
-            <br />
-            System Owner
+      Control Your
+      <br />
+      Entire Business
+      <br />
+      From One Place
 
-          </h1>
+    </h1>
 
-          <p>
+    <p>
 
-            Monitor your companies, subscriptions,
-            platform health, AI insights and business
-            operations from one intelligent control
-            center.
+      Welcome back.
 
-          </p>
+      Monitor companies,
+      subscriptions,
+      AI intelligence,
+      financial insights,
+      platform health
+      and complete business
+      operations through your
+      intelligent enterprise
+      control center.
 
-        </div>
+    </p>
 
-        <div className="cc-hero-right">
+    <div className="cc-hero-actions">
 
-          AI STATUS
+      <button className="cc-primary-btn">
 
-        </div>
+        Create Company
 
-      </section>
+      </button>
+
+      <button className="cc-secondary-btn">
+
+        View Reports
+
+      </button>
+
+    </div>
+
+  </div>
+
+  <div className="cc-hero-right">
+
+    <div className="cc-ai-card">
+
+      <span>
+
+        🤖 AI Assistant
+
+      </span>
+
+      <h3>
+
+        Everything
+        looks healthy.
+
+      </h3>
+
+      <p>
+
+        No critical alerts.
+
+        4 companies are growing.
+
+        Revenue increased this month.
+
+      </p>
+
+      <div className="cc-ai-status">
+
+        ● AI Online
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
 
       {/* KPI */}
 
