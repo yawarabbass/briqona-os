@@ -1,27 +1,21 @@
-/*
-|--------------------------------------------------------------------------
-| BRIQONA OS
-|--------------------------------------------------------------------------
-| Master Layout
-|--------------------------------------------------------------------------
-|
-| Platform Owner Layout
-| Used by all Master Panel pages.
-|
-*/
-
-import Header from "../components/Header/Header";
 import Sidebar from "../components/Sidebar/Sidebar";
+import Header from "../components/Header/Header";
+
 import "../styles/master.css";
+
 export default function MasterLayout({ children }) {
   return (
     <div className="master-layout">
 
-      <Sidebar />
+      <aside className="master-sidebar">
+        <Sidebar />
+      </aside>
 
-      <div className="master-main">
+      <div className="master-wrapper">
 
-        <Header />
+        <header className="master-header">
+          <Header />
+        </header>
 
         <main className="master-content">
           {children}
