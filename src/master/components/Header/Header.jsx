@@ -1,36 +1,59 @@
-/*
-|--------------------------------------------------------------------------
-| BRIQONA OS
-|--------------------------------------------------------------------------
-| Master Header
-|--------------------------------------------------------------------------
-*/
-
+import { useState } from "react";
 import "./Header.css";
 
 export default function Header() {
+  const [search, setSearch] = useState("");
+
   return (
-    <header className="master-header">
+    <header className="master-topbar">
 
-      <div className="master-header-left">
-        <h1 className="master-page-title">
-          Dashboard
-        </h1>
-      </div>
+      <div className="topbar-left">
 
-      <div className="master-header-center">
-
-      </div>
-
-      <div className="master-header-right">
-
-        <button className="master-header-btn">
-          Notifications
+        <button className="menu-btn">
+          ☰
         </button>
 
-        <button className="master-header-btn">
-          Profile
+        <div className="search-box">
+          <input
+            type="text"
+            placeholder="Search anything..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+        </div>
+
+      </div>
+
+      <div className="topbar-right">
+
+        <button className="ai-btn">
+          AI Copilot
         </button>
+
+        <button className="mission-btn">
+          AI Mission Center
+        </button>
+
+        <button className="icon-btn">
+          🔔
+        </button>
+
+        <button className="icon-btn">
+          💬
+        </button>
+
+        <div className="profile-box">
+
+          <div className="avatar">
+            A
+          </div>
+
+          <div className="profile-info">
+            <strong>Administrator</strong>
+            <span>Super Admin</span>
+          </div>
+
+        </div>
 
       </div>
 
