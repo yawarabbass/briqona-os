@@ -4,16 +4,13 @@
 |--------------------------------------------------------------------------
 | Dashboard Charts
 |--------------------------------------------------------------------------
-| Enterprise Analytics Preview
+| Enterprise Analytics Container
 |--------------------------------------------------------------------------
 */
 
-import {
-  TrendingUp,
-  Users,
-} from "lucide-react";
-
 import "./DashboardCharts.css";
+
+import RevenueChart from "../RevenueChart/RevenueChart";
 
 export default function DashboardCharts() {
 
@@ -21,101 +18,33 @@ export default function DashboardCharts() {
 
     <section className="dashboard-charts">
 
-      <article className="chart-card">
+      <RevenueChart />
 
-        <div className="chart-header">
+      <article className="chart-coming-card">
 
-          <div>
+        <div className="coming-header">
 
-            <span className="chart-label">
+          <span>
 
-              Revenue Analytics
+            Coming Soon
 
-            </span>
+          </span>
 
-            <h3>
+          <h3>
 
-              Sales Overview
+            User Growth Analytics
 
-            </h3>
-
-          </div>
-
-          <div className="chart-icon">
-
-            <TrendingUp size={22} />
-
-          </div>
+          </h3>
 
         </div>
 
-        <div className="chart-placeholder">
+        <div className="coming-body">
 
-          <div className="chart-line"></div>
-
-          <div className="chart-line short"></div>
-
-          <div className="chart-line"></div>
-
-          <div className="chart-line medium"></div>
-
-        </div>
-
-        <div className="chart-footer">
-
-          <strong>+18.4%</strong>
-
-          <span>Compared with last month</span>
-
-        </div>
-
-      </article>
-
-      <article className="chart-card">
-
-        <div className="chart-header">
-
-          <div>
-
-            <span className="chart-label">
-
-              Customer Analytics
-
-            </span>
-
-            <h3>
-
-              User Growth
-
-            </h3>
-
-          </div>
-
-          <div className="chart-icon">
-
-            <Users size={22} />
-
-          </div>
-
-        </div>
-
-        <div className="chart-placeholder">
-
-          <div className="chart-line"></div>
-
-          <div className="chart-line medium"></div>
-
-          <div className="chart-line short"></div>
-
-          <div className="chart-line"></div>
-
-        </div>
-
-        <div className="chart-footer">
-
-          <strong>+324</strong>
-
-          <span>New users today</span>
+          This widget will display user growth,
+          customer acquisition,
+          active sessions,
+          retention
+          and engagement analytics.
 
         </div>
 
