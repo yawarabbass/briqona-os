@@ -242,51 +242,145 @@ Performance
 
       <section className="cc-grid">
 
-        <div className="cc-left">
+  <div className="cc-left">
 
-          <div className="cc-card cc-large">
+    <div className="cc-card cc-large">
 
-            Analytics Area
+      <h3 className="cc-section-title">
 
-          </div>
+        📈 Business Analytics
 
-          <div className="cc-card cc-large">
+      </h3>
 
-            Recent Activity
+      <p className="cc-placeholder">
 
-          </div>
+        Revenue charts, subscriptions,
+        company growth and business insights
+        will appear here.
 
-        </div>
+      </p>
 
-        <div className="cc-right">
+    </div>
 
-          <div className="cc-card">
+    <div className="cc-card cc-large">
 
-            AI Copilot
+      <h3 className="cc-section-title">
 
-          </div>
+        📝 Recent Activity
 
-          <div className="cc-card">
+      </h3>
 
-            Quick Actions
+      <p className="cc-placeholder">
 
-          </div>
+        Latest logins, new companies,
+        payments and system events
+        will appear here.
 
-          <div className="cc-card">
+      </p>
 
-            Notifications
+    </div>
 
-          </div>
+  </div>
 
-          <div className="cc-card">
+  <div className="cc-right">
 
-            System Health
+    <div className="cc-card">
 
-          </div>
+      <h3 className="cc-section-title">
 
-        </div>
+        🤖 AI Copilot
 
-      </section>
+      </h3>
+
+      <p className="cc-placeholder">
+
+        AI suggestions and recommendations.
+
+      </p>
+
+    </div>
+
+    <div className="cc-card">
+
+      <h3 className="cc-section-title">
+
+        ⚡ Quick Actions
+
+      </h3>
+
+      <div className="cc-actions">
+
+        <button className="cc-action-btn">
+
+          <span>🏢</span>
+
+          Company
+
+        </button>
+
+        <button className="cc-action-btn">
+
+          <span>📦</span>
+
+          Plan
+
+        </button>
+
+        <button className="cc-action-btn">
+
+          <span>👤</span>
+
+          User
+
+        </button>
+
+        <button className="cc-action-btn">
+
+          <span>🤖</span>
+
+          AI
+
+        </button>
+
+      </div>
+
+    </div>
+
+    <div className="cc-card">
+
+      <h3 className="cc-section-title">
+
+        🔔 Notifications
+
+      </h3>
+
+      <p className="cc-placeholder">
+
+        Latest platform notifications.
+
+      </p>
+
+    </div>
+
+    <div className="cc-card">
+
+      <h3 className="cc-section-title">
+
+        ❤️ System Health
+
+      </h3>
+
+      <p className="cc-placeholder">
+
+        All services are running normally.
+
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
 
     </div>
 
