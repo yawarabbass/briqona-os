@@ -1,34 +1,263 @@
+/*
+==========================================================
+BRIQONA OS
+Dashboard Charts
+Enterprise Edition
+==========================================================
+*/
+
 .dashboard-charts{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:var(--space-5);
-    margin-top:var(--space-6);
+
+display:grid;
+
+grid-template-columns:repeat(2,minmax(0,1fr));
+
+gap:24px;
+
+margin:32px 0;
+
 }
 
 .chart-card{
-    background:var(--color-surface);
-    border:1px solid var(--color-border);
-    border-radius:var(--radius-lg);
-    padding:var(--space-6);
-    box-shadow:var(--shadow-sm);
+
+position:relative;
+
+overflow:hidden;
+
+background:var(--color-card);
+
+border:1px solid var(--color-border);
+
+border-radius:24px;
+
+padding:28px;
+
+box-shadow:var(--shadow-sm);
+
+transition:.35s;
+
 }
 
-.chart-card h3{
-    margin-bottom:var(--space-4);
+.chart-card::before{
+
+content:"";
+
+position:absolute;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+height:4px;
+
+background:linear-gradient(
+90deg,
+#2563eb,
+#7c3aed
+);
+
+}
+
+.chart-card:hover{
+
+transform:translateY(-8px);
+
+border-color:var(--color-primary);
+
+box-shadow:0 24px 60px rgba(37,99,235,.14);
+
+}
+
+.chart-header{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:flex-start;
+
+margin-bottom:26px;
+
+}
+
+.chart-label{
+
+display:block;
+
+font-size:13px;
+
+font-weight:600;
+
+color:var(--color-text-light);
+
+margin-bottom:8px;
+
+letter-spacing:.4px;
+
+}
+
+.chart-header h3{
+
+margin:0;
+
+font-size:22px;
+
+font-weight:700;
+
+color:var(--color-heading);
+
+}
+
+.chart-icon{
+
+width:52px;
+
+height:52px;
+
+border-radius:16px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+background:linear-gradient(
+135deg,
+#2563eb,
+#7c3aed
+);
+
+color:#fff;
+
 }
 
 .chart-placeholder{
-    height:300px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    border:2px dashed var(--color-border);
-    border-radius:var(--radius-md);
-    color:var(--color-text-light);
+
+height:260px;
+
+border-radius:18px;
+
+background:linear-gradient(
+180deg,
+rgba(37,99,235,.05),
+transparent
+);
+
+border:1px dashed var(--color-border);
+
+padding:24px;
+
+display:flex;
+
+flex-direction:column;
+
+justify-content:flex-end;
+
+gap:18px;
+
 }
 
-@media (max-width:1024px){
-    .dashboard-charts{
-        grid-template-columns:1fr;
-    }
+.chart-line{
+
+height:12px;
+
+border-radius:999px;
+
+background:linear-gradient(
+90deg,
+#2563eb,
+#7c3aed
+);
+
+width:100%;
+
+opacity:.85;
+
+}
+
+.chart-line.medium{
+
+width:72%;
+
+}
+
+.chart-line.short{
+
+width:48%;
+
+}
+
+.chart-footer{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+margin-top:22px;
+
+padding-top:18px;
+
+border-top:1px solid var(--color-border);
+
+}
+
+.chart-footer strong{
+
+font-size:20px;
+
+color:#16a34a;
+
+}
+
+.chart-footer span{
+
+font-size:14px;
+
+color:var(--color-text-light);
+
+}
+
+@media(max-width:1024px){
+
+.dashboard-charts{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.dashboard-charts{
+
+gap:18px;
+
+margin:24px 0;
+
+}
+
+.chart-card{
+
+padding:22px;
+
+}
+
+.chart-placeholder{
+
+height:220px;
+
+}
+
+.chart-header h3{
+
+font-size:20px;
+
+}
+
 }
