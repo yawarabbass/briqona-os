@@ -1,51 +1,94 @@
-/*
- 
-Mobile
-0-575
+/* =====================================================
+   BRIQONA OS
+   Responsive Breakpoints
+===================================================== */
 
-*/
+/* ===============================
+   Extra Large Desktop
+================================ */
 
-@media(max-width:575px){
+@media (min-width:1600px){
 
-}
+.container{
 
-/*
-
-Large Mobile
-576-767
-
-*/
-
-@media(min-width:576px) and (max-width:767px){
+max-width:1500px;
 
 }
 
-/*
+}
 
-Tablet
+/* ===============================
+   Desktop
+================================ */
 
-*/
+@media (min-width:1200px) and (max-width:1599px){
 
-@media(min-width:768px) and (max-width:991px){
+.container{
+
+max-width:1400px;
 
 }
 
-/*
+}
 
-Laptop
+/* ===============================
+   Laptop
+================================ */
 
-*/
+@media (min-width:992px) and (max-width:1199px){
 
-@media(min-width:992px) and (max-width:1199px){
+.container{
+
+max-width:960px;
+
+padding-inline:24px;
 
 }
 
-/*
+}
 
-Desktop
+/* ===============================
+   Tablet
+================================ */
 
-*/
+@media (min-width:768px) and (max-width:991px){
 
-@media(min-width:1200px){
+.container{
+
+max-width:720px;
+
+padding-inline:20px;
+
+}
+
+}
+
+/* ===============================
+   Mobile
+================================ */
+
+@media (max-width:767px){
+
+.container{
+
+width:100%;
+
+padding-inline:16px;
+
+}
+
+}
+
+/* ===============================
+   Small Mobile
+================================ */
+
+@media (max-width:480px){
+
+.container{
+
+padding-inline:14px;
+
+}
 
 }
