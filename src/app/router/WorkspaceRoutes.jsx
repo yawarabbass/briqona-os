@@ -1,5 +1,5 @@
 import { Routes, Route, Navigate } from "react-router-dom";
- 
+  
 import WorkspaceLayout from "../../workspace/layouts/WorkspaceLayout";
 
 export default function WorkspaceRoutes() {
