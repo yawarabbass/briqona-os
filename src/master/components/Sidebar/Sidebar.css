@@ -1,112 +1,602 @@
+/* ======================================================
+   BRIQONA OS
+   Premium Sidebar
+   Part 1
+====================================================== */
+
 .sidebar{
-  width:100%;
-  height:100vh;
-  background:#0D1628;
-  display:flex;
-  flex-direction:column;
-  border-right:1px solid #22314E;
-  position:sticky;
-  top:0;
-  left:0;
-  overflow-y:auto;
+
+width:290px;
+
+height:100vh;
+
+background:var(--color-card);
+
+border-right:1px solid var(--color-border);
+
+display:flex;
+
+flex-direction:column;
+
+position:sticky;
+
+top:0;
+
+left:0;
+
+transition:var(--transition);
+
+overflow:hidden;
+
+z-index:200;
+
+}
+
+.sidebar.collapsed{
+
+width:88px;
+
+}
+
+/* ==========================
+   Top
+========================== */
+
+.sidebar-top{
+
+height:76px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
+padding:0 18px;
+
+border-bottom:1px solid var(--color-border);
+
+flex-shrink:0;
+
+}
+
+/* ==========================
+   Logo
+========================== */
+
+.sidebar-logo-wrapper{
+
+display:flex;
+
+align-items:center;
+
+gap:14px;
+
 }
 
 .sidebar-logo{
-  padding:28px 24px;
-  border-bottom:1px solid #22314E;
+
+width:48px;
+
+height:48px;
+
+border-radius:14px;
+
+background:linear-gradient(
+135deg,
+var(--color-primary),
+var(--color-secondary)
+);
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+font-size:18px;
+
+font-weight:700;
+
+color:#fff;
+
+flex-shrink:0;
+
+box-shadow:var(--shadow-sm);
+
 }
 
-.sidebar-logo h2{
-  margin:0;
-  color:#fff;
-  font-size:24px;
-  font-weight:700;
-  letter-spacing:.5px;
+.sidebar-logo-text{
+
+display:flex;
+
+flex-direction:column;
+
 }
 
-.sidebar-logo span{
-  display:block;
-  margin-top:6px;
-  color:#94A3B8;
-  font-size:13px;
+.sidebar-logo-text h2{
+
+font-size:18px;
+
+font-weight:700;
+
+color:var(--color-heading);
+
+line-height:1;
+
 }
+
+.sidebar-logo-text span{
+
+margin-top:4px;
+
+font-size:12px;
+
+color:var(--color-text-light);
+
+}
+
+/* ==========================
+   Collapse
+========================== */
+
+.collapse-button{
+
+width:40px;
+
+height:40px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+border-radius:10px;
+
+background:var(--color-surface);
+
+color:var(--color-heading);
+
+transition:var(--transition);
+
+}
+
+.collapse-button:hover{
+
+background:var(--color-primary);
+
+color:#fff;
+
+}
+
+/* ==========================
+   Menu
+========================== */
 
 .sidebar-menu{
-  flex:1;
-  padding:20px 14px;
+
+flex:1;
+
+padding:20px 14px;
+
+display:flex;
+
+flex-direction:column;
+
+gap:8px;
+
+overflow-y:auto;
+
 }
 
-.sidebar-link{
-  display:flex;
-  align-items:center;
-  gap:14px;
-  text-decoration:none;
-  color:#AEB8CC;
-  padding:14px 16px;
-  border-radius:12px;
-  margin-bottom:8px;
-  transition:.25s;
-  font-size:15px;
-  font-weight:500;
+.sidebar-item{
+
+height:50px;
+
+display:flex;
+
+align-items:center;
+
+gap:14px;
+
+padding:0 16px;
+
+border-radius:14px;
+
+text-decoration:none;
+
+color:var(--color-text-light);
+
+transition:var(--transition);
+
+font-weight:500;
+
 }
 
-.sidebar-link:hover{
-  background:#162440;
-  color:#fff;
+.sidebar-item-icon{
+
+width:22px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+flex-shrink:0;
+
 }
 
-.sidebar-link.active{
-  background:#2D7DFF;
-  color:#fff;
+.sidebar-item-title{
+
+white-space:nowrap;
+
+overflow:hidden;
+
+text-overflow:ellipsis;
+
+font-size:15px;
+
+}
+/* ======================================================
+   BRIQONA OS
+   Premium Sidebar
+   Part 2
+====================================================== */
+
+/* ==========================
+   Hover
+========================== */
+
+.sidebar-item:hover{
+
+background:var(--color-surface);
+
+color:var(--color-heading);
+
+transform:translateX(4px);
+
 }
 
-.sidebar-plan{
-  margin:18px;
-  padding:18px;
-  border-radius:18px;
-  background:#131F36;
-  border:1px solid #22314E;
+/* ==========================
+   Active Menu
+========================== */
+
+.sidebar-item.active{
+
+background:linear-gradient(
+90deg,
+rgba(37,99,235,.18),
+rgba(139,92,246,.12)
+);
+
+color:var(--color-primary);
+
+border:1px solid rgba(37,99,235,.25);
+
+box-shadow:0 8px 18px rgba(37,99,235,.12);
+
 }
 
-.sidebar-plan h4{
-  margin:0;
-  color:#fff;
-  font-size:16px;
+.sidebar-item.active .sidebar-item-icon{
+
+color:var(--color-primary);
+
 }
 
-.sidebar-plan p{
-  margin:10px 0 18px;
-  color:#94A3B8;
-  font-size:14px;
+/* ==========================
+   Footer
+========================== */
+
+.sidebar-footer{
+
+padding:16px;
+
+border-top:1px solid var(--color-border);
+
+display:flex;
+
+flex-direction:column;
+
+gap:10px;
+
 }
 
-.sidebar-plan button{
-  width:100%;
-  height:44px;
-  border:none;
-  border-radius:12px;
-  background:#18D8A5;
-  color:#07111F;
-  font-weight:700;
-  cursor:pointer;
+.sidebar-footer .sidebar-item{
+
+margin:0;
+
 }
 
-.sidebar-plan button:hover{
-  opacity:.9;
+/* ==========================
+   Logout
+========================== */
+
+.sidebar-item.logout{
+
+color:var(--color-danger);
+
 }
 
-@media (max-width:992px){
+.sidebar-item.logout:hover{
+
+background:rgba(239,68,68,.10);
+
+color:var(--color-danger);
+
+}
+
+/* ==========================
+   Collapsed
+========================== */
+
+.sidebar.collapsed .sidebar-top{
+
+justify-content:center;
+
+padding:0;
+
+}
+
+.sidebar.collapsed .sidebar-logo-wrapper{
+
+justify-content:center;
+
+}
+
+.sidebar.collapsed .sidebar-menu{
+
+padding-inline:10px;
+
+}
+
+.sidebar.collapsed .sidebar-item{
+
+justify-content:center;
+
+padding:0;
+
+}
+
+.sidebar.collapsed .sidebar-item-title{
+
+display:none;
+
+}
+
+.sidebar.collapsed .sidebar-footer{
+
+padding:12px 10px;
+
+}
+
+.sidebar.collapsed .collapse-button{
+
+position:absolute;
+
+top:18px;
+
+right:-18px;
+
+width:36px;
+
+height:36px;
+
+border-radius:50%;
+
+background:var(--color-primary);
+
+color:#fff;
+
+box-shadow:var(--shadow-md);
+
+}
+
+/* ==========================
+   Smooth Animation
+========================== */
+
+.sidebar,
+.sidebar-item,
+.sidebar-logo,
+.collapse-button{
+
+transition:all .30s ease;
+
+               }
+/* ======================================================
+   BRIQONA OS
+   Premium Sidebar
+   Part 3 (Responsive)
+====================================================== */
+
+/* ==========================
+   Mobile Drawer
+========================== */
+
+@media (max-width:991px){
 
 .sidebar{
-  position:fixed;
-  width:280px;
-  transform:translateX(-100%);
-  transition:.3s;
-  z-index:999;
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+width:290px;
+
+height:100vh;
+
+transform:translateX(-100%);
+
+box-shadow:var(--shadow-lg);
+
+z-index:1001;
+
 }
 
-.sidebar.open{
-  transform:translateX(0);
+.sidebar.mobile-open{
+
+transform:translateX(0);
+
 }
+
+.sidebar.collapsed{
+
+width:290px;
+
+}
+
+.sidebar.collapsed .sidebar-item-title{
+
+display:block;
+
+}
+
+.sidebar.collapsed .sidebar-top{
+
+justify-content:space-between;
+
+padding:0 18px;
+
+}
+
+.sidebar.collapsed .sidebar-logo-wrapper{
+
+justify-content:flex-start;
+
+}
+
+.sidebar.collapsed .collapse-button{
+
+display:none;
+
+}
+
+}
+
+/* ==========================
+   Desktop
+========================== */
+
+@media (min-width:992px){
+
+.sidebar{
+
+transform:none !important;
+
+}
+
+}
+
+/* ==========================
+   Scrollbar
+========================== */
+
+.sidebar-menu::-webkit-scrollbar{
+
+width:6px;
+
+}
+
+.sidebar-menu::-webkit-scrollbar-track{
+
+background:transparent;
+
+}
+
+.sidebar-menu::-webkit-scrollbar-thumb{
+
+background:var(--color-border);
+
+border-radius:100px;
+
+}
+
+.sidebar-menu::-webkit-scrollbar-thumb:hover{
+
+background:var(--color-primary);
+
+}
+
+/* ==========================
+   Overlay
+========================== */
+
+.master-overlay{
+
+position:fixed;
+
+inset:0;
+
+background:rgba(0,0,0,.45);
+
+opacity:0;
+
+visibility:hidden;
+
+transition:var(--transition);
+
+z-index:1000;
+
+}
+
+.master-overlay.show{
+
+opacity:1;
+
+visibility:visible;
+
+}
+
+@media(min-width:992px){
+
+.master-overlay{
+
+display:none;
+
+}
+
+}
+
+/* ==========================
+   Accessibility
+========================== */
+
+.sidebar-item:focus-visible{
+
+outline:2px solid var(--color-primary);
+
+outline-offset:2px;
+
+}
+
+/* ==========================
+   Final Polish
+========================== */
+
+.sidebar{
+
+backdrop-filter:blur(18px);
+
+}
+
+.sidebar-logo{
+
+user-select:none;
+
+}
+
+.sidebar-item{
+
+user-select:none;
+
+}
+
+.sidebar-item-icon svg{
+
+stroke-width:2.2;
 
 }
