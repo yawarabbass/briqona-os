@@ -2,7 +2,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
  
 import MasterLayout from "../../master/layouts/MasterLayout";
 
-import Dashboard from "../../master/pages/Dashboard/Dashboard";
+import ControlCenter from "../../master/pages/ControlCenter/ControlCenter";
 import Companies from "../../master/pages/Companies/Companies";
 import Plans from "../../master/pages/Plans/Plans";
 import Industries from "../../master/pages/Industries/Industries";
@@ -15,7 +15,9 @@ export default function MasterRoutes() {
 
         <Route index element={<Navigate to="dashboard" replace />} />
 
-        <Route path="dashboard" element={<Dashboard />} />
+        <Route index element={<Navigate to="control-center" replace />} />
+
+        <Route path="control-center" element={<ControlCenter />} />
         <Route path="companies" element={<Companies />} />
         <Route path="plans" element={<Plans />} />
         <Route path="industries" element={<Industries />} />
