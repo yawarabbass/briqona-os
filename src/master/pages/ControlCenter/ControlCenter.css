@@ -940,3 +940,14 @@ color:#16a34a;
 font-weight:700;
 
 }
+.cc-placeholder{
+
+margin-top:14px;
+
+font-size:15px;
+
+line-height:1.8;
+
+color:var(--color-text-light);
+
+}
