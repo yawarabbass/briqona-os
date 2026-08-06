@@ -4,11 +4,13 @@ import companies from "../../data/companies";
 export default function CompanyTable() {
   return (
     <section className="company-table">
+
       <div className="company-table-header">
-        <h2>Companies</h2>
+        <h3>Companies</h3>
       </div>
 
       <table>
+
         <thead>
           <tr>
             <th>Company</th>
@@ -28,7 +30,9 @@ export default function CompanyTable() {
             </tr>
           ))}
         </tbody>
+
       </table>
+
     </section>
   );
 }
