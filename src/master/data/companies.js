@@ -1,4 +1,4 @@
-const companies = [
+const companies = [ 
   {
     id: 1,
     company: "Alpha Technologies",
