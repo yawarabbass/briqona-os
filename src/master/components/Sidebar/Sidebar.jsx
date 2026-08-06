@@ -1,66 +1,51 @@
-/*
-|--------------------------------------------------------------------------
-| BRIQONA OS
-|--------------------------------------------------------------------------
-| Master Sidebar
-|--------------------------------------------------------------------------
-*/
-
-import "./Sidebar.css";
+import { NavLink } from "react-router-dom";
+import sidebarMenu from "../../data/sidebarMenu";
 
 export default function Sidebar() {
   return (
-    <aside className="master-sidebar">
+    <div className="sidebar">
 
-      <div className="master-sidebar-logo">
+      <div className="sidebar-logo">
+
         <h2>BRIQONA OS</h2>
-        <span>Master Panel</span>
+
+        <span>Enterprise SaaS</span>
+
       </div>
 
-      <nav className="master-sidebar-nav">
+      <nav className="sidebar-menu">
 
-        <button className="sidebar-item active">
-          Dashboard
-        </button>
+        {sidebarMenu.map((item) => (
 
-        <button className="sidebar-item">
-          Companies
-        </button>
+          <NavLink
+            key={item.path}
+            to={item.path}
+            className={({ isActive }) =>
+              isActive ? "sidebar-link active" : "sidebar-link"
+            }
+          >
+            <span>{item.icon}</span>
 
-        <button className="sidebar-item">
-          Plans
-        </button>
+            <span>{item.title}</span>
 
-        <button className="sidebar-item">
-          Industries
-        </button>
+          </NavLink>
 
-        <button className="sidebar-item">
-          Modules
-        </button>
-
-        <button className="sidebar-item">
-          Users
-        </button>
-
-        <button className="sidebar-item">
-          Billing
-        </button>
-
-        <button className="sidebar-item">
-          Reports
-        </button>
-
-        <button className="sidebar-item">
-          AI Center
-        </button>
-
-        <button className="sidebar-item">
-          Settings
-        </button>
+        ))}
 
       </nav>
 
-    </aside>
+      <div className="sidebar-plan">
+
+        <h4>Professional Plan</h4>
+
+        <p>Unlimited Companies</p>
+
+        <button>
+          Manage Plan
+        </button>
+
+      </div>
+
+    </div>
   );
-          }
+}
