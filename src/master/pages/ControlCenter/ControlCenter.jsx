@@ -8,7 +8,6 @@
 
 import "./ControlCenter.css";
 
-import ControlHero from "../../components/ControlHero/ControlHero";
 import KpiCards from "../../components/KpiCards/KpiCards";
 import DashboardCharts from "../../components/DashboardCharts/DashboardCharts";
 import LatestCompanies from "../../components/LatestCompanies/LatestCompanies";
@@ -22,7 +21,6 @@ return(
 
 <div className="control-center">
 
-<ControlHero />
 
 <KpiCards />
 
