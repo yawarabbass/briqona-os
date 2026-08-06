@@ -1,176 +1,455 @@
-/* =========================================================
-   BRIQONA OS — GLOBAL FOUNDATION
-   Shared foundation only.
-   Page-specific styling stays inside each page.
-========================================================= */
+/* ==========================================================
+   BRIQONA OS
+   Global Styles
+========================================================== */
 
-:root {
-  --bg: #020712;
-  --bg-soft: #06101d;
-  --surface: #091525;
-  --surface-light: #0d1b2d;
+@import "../theme/design-tokens.css";
+@import "../theme/typography.css";
+@import "../theme/breakpoints.css";
 
-  --text: #f5f8ff;
-  --text-soft: #a5b2c5;
-  --text-muted: #718096;
-
-  --cyan: #16d9ff;
-  --cyan-dark: #0aa9d0;
-  --green: #8df23d;
-  --purple: #8a5cff;
-
-  --border: rgba(143, 184, 224, 0.16);
-
-  --container: 1440px;
-
-  --radius-sm: 8px;
-  --radius-md: 14px;
-  --radius-lg: 20px;
-  --radius-xl: 28px;
-
-  --transition: 250ms ease;
-}
-
-/* ---------- Reset ---------- */
+/* ==========================================================
+   RESET
+========================================================== */
 
 *,
 *::before,
-*::after {
-  box-sizing: border-box;
+*::after{
+
+margin:0;
+
+padding:0;
+
+box-sizing:border-box;
+
 }
 
-html {
-  scroll-behavior: smooth;
+html{
+
+scroll-behavior:smooth;
+
 }
 
-body {
-  margin: 0;
-  min-width: 320px;
-  min-height: 100vh;
+body{
 
-  background: var(--bg);
-  color: var(--text);
+min-height:100vh;
 
-  font-family:
-    Inter,
-    ui-sans-serif,
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    sans-serif;
+background:var(--color-background);
 
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
+color:var(--color-text);
 
-  overflow-x: hidden;
+overflow-x:hidden;
+
 }
 
-body,
-button,
+img{
+
+display:block;
+
+max-width:100%;
+
+height:auto;
+
+}
+
+svg{
+
+display:block;
+
+}
+
+a{
+
+text-decoration:none;
+
+color:inherit;
+
+transition:var(--transition);
+
+}
+
+button{
+
+border:none;
+
+outline:none;
+
+background:none;
+
+cursor:pointer;
+
+font:inherit;
+
+transition:var(--transition);
+
+}
+
 input,
 textarea,
-select {
-  font: inherit;
+select{
+
+font:inherit;
+
+outline:none;
+
+border:none;
+
+background:none;
+
 }
 
-button,
-input,
-textarea,
-select {
-  outline: none;
+ul,
+ol{
+
+list-style:none;
+
 }
 
-button {
-  cursor: pointer;
+table{
+
+border-collapse:collapse;
+
+width:100%;
+
 }
 
-img,
-svg {
-  display: block;
-  max-width: 100%;
+/* ==========================================================
+   SCROLLBAR
+========================================================== */
+
+::-webkit-scrollbar{
+
+width:10px;
+
+height:10px;
+
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+::-webkit-scrollbar-track{
+
+background:var(--color-surface);
+
 }
 
-/* ---------- Root ---------- */
+::-webkit-scrollbar-thumb{
 
-#root {
-  min-height: 100vh;
+background:var(--color-border);
+
+border-radius:100px;
+
 }
 
-.app {
-  min-height: 100vh;
+::-webkit-scrollbar-thumb:hover{
+
+background:var(--color-primary);
+
 }
 
-/* ---------- Shared container ---------- */
+/* ==========================================================
+   CONTAINER
+========================================================== */
 
-.container {
-  width: min(
-    calc(100% - 48px),
-    var(--container)
-  );
+.container{
 
-  margin-inline: auto;
+width:100%;
+
+max-width:var(--container-width);
+
+margin-inline:auto;
+
+padding-inline:24px;
+
 }
 
-/* ---------- Accessibility ---------- */
+/* ==========================================================
+   SECTION
+========================================================== */
 
-:focus-visible {
-  outline: 2px solid var(--cyan);
-  outline-offset: 4px;
+.section{
+
+padding:80px 0;
+
 }
 
-/* ---------- Selection ---------- */
+/* ==========================================================
+   GRID
+========================================================== */
 
-::selection {
-  background: var(--cyan);
-  color: #031019;
+.grid{
+
+display:grid;
+
+gap:24px;
+
 }
 
-/* ---------- Scrollbar ---------- */
+.flex{
 
-::-webkit-scrollbar {
-  width: 8px;
+display:flex;
+
 }
 
-::-webkit-scrollbar-track {
-  background: var(--bg);
+.flex-center{
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
 }
 
-::-webkit-scrollbar-thumb {
-  background: #1b3048;
-  border-radius: 999px;
+.flex-between{
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #274763;
+/* ==========================================================
+   CARDS
+========================================================== */
+
+.card{
+
+background:var(--color-card);
+
+border:1px solid var(--color-border);
+
+border-radius:var(--radius-lg);
+
+box-shadow:var(--shadow-sm);
+
+transition:var(--transition);
+
 }
 
-/* ---------- Responsive ---------- */
+.card:hover{
 
-@media (max-width: 768px) {
-  .container {
-    width: min(
-      calc(100% - 32px),
-      var(--container)
-    );
-  }
+background:var(--color-card-hover);
+
+box-shadow:var(--shadow-md);
+
 }
 
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
+/* ==========================================================
+   BUTTONS
+========================================================== */
 
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-  }
+.btn{
+
+display:inline-flex;
+
+align-items:center;
+
+justify-content:center;
+
+gap:10px;
+
+padding:12px 20px;
+
+border-radius:var(--radius-md);
+
+font-weight:600;
+
+transition:var(--transition);
+
+}
+
+.btn-primary{
+
+background:var(--color-primary);
+
+color:#fff;
+
+}
+
+.btn-primary:hover{
+
+background:var(--color-primary-hover);
+
+}
+
+.btn-secondary{
+
+background:var(--color-surface);
+
+border:1px solid var(--color-border);
+
+color:var(--color-heading);
+
+}
+
+.btn-secondary:hover{
+
+border-color:var(--color-primary);
+
+}
+
+/* ==========================================================
+   INPUTS
+========================================================== */
+
+.input{
+
+width:100%;
+
+padding:14px 16px;
+
+background:var(--color-surface);
+
+border:1px solid var(--color-border);
+
+border-radius:var(--radius-md);
+
+color:var(--color-text);
+
+transition:var(--transition);
+
+}
+
+.input:focus{
+
+border-color:var(--color-primary);
+
+}
+
+/* ==========================================================
+   BADGE
+========================================================== */
+
+.badge{
+
+display:inline-flex;
+
+align-items:center;
+
+padding:6px 12px;
+
+border-radius:999px;
+
+font-size:13px;
+
+font-weight:600;
+
+}
+
+.badge-success{
+
+background:rgba(34,197,94,.15);
+
+color:var(--color-success);
+
+}
+
+.badge-warning{
+
+background:rgba(245,158,11,.15);
+
+color:var(--color-warning);
+
+}
+
+.badge-danger{
+
+background:rgba(239,68,68,.15);
+
+color:var(--color-danger);
+
+}
+
+/* ==========================================================
+   UTILITIES
+========================================================== */
+
+.text-center{
+
+text-align:center;
+
+}
+
+.text-right{
+
+text-align:right;
+
+}
+
+.w-100{
+
+width:100%;
+
+}
+
+.hidden{
+
+display:none!important;
+
+}
+
+/* ==========================================================
+   SELECTION
+========================================================== */
+
+::selection{
+
+background:var(--color-primary);
+
+color:#fff;
+
+}
+
+/* ==========================================================
+   FOCUS
+========================================================== */
+
+:focus-visible{
+
+outline:2px solid var(--color-primary);
+
+outline-offset:2px;
+
+}
+
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+
+@media(max-width:991px){
+
+.section{
+
+padding:60px 0;
+
+}
+
+.container{
+
+padding-inline:20px;
+
+}
+
+}
+
+@media(max-width:575px){
+
+.section{
+
+padding:40px 0;
+
+}
+
+.container{
+
+padding-inline:16px;
+
+}
+
+.btn{
+
+width:100%;
+
+}
+
+}
