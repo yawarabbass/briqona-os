@@ -1,50 +1,90 @@
 :root{
- 
-/* Brand */
 
---color-primary:#2563eb;
---color-primary-hover:#1d4ed8;
+/* ===================================================
+   BRIQONA OS
+   PREMIUM DESIGN SYSTEM
+=================================================== */
 
---color-secondary:#7c3aed;
+/* ---------- Brand ---------- */
 
---color-success:#16a34a;
---color-warning:#f59e0b;
---color-danger:#dc2626;
+--color-primary:#2563EB;
+--color-primary-hover:#1D4ED8;
+--color-secondary:#8B5CF6;
 
---color-background:#f8fafc;
---color-surface:#ffffff;
+--color-success:#22C55E;
+--color-warning:#F59E0B;
+--color-danger:#EF4444;
+--color-info:#38BDF8;
 
---color-border:#e2e8f0;
+/* ---------- Background ---------- */
 
---color-text:#0f172a;
---color-text-light:#64748b;
+--color-background:#040E1F;
+--color-surface:#071326;
+--color-surface-2:#0B1830;
+--color-card:#101C35;
+--color-card-hover:#132345;
 
-/* Radius */
+/* ---------- Text ---------- */
+
+--color-heading:#FFFFFF;
+--color-text:#E2E8F0;
+--color-text-light:#94A3B8;
+--color-text-muted:#64748B;
+
+/* ---------- Border ---------- */
+
+--color-border:#1E2D4D;
+--color-border-light:#31466D;
+
+/* ---------- Radius ---------- */
 
 --radius-xs:6px;
---radius-sm:8px;
---radius-md:12px;
+--radius-sm:10px;
+--radius-md:14px;
 --radius-lg:18px;
 --radius-xl:24px;
+--radius-2xl:32px;
 
-/* Shadows */
+/* ---------- Shadow ---------- */
 
---shadow-sm:0 2px 8px rgba(0,0,0,.05);
+--shadow-xs:0 2px 6px rgba(0,0,0,.15);
 
---shadow-md:0 8px 24px rgba(0,0,0,.08);
+--shadow-sm:0 6px 16px rgba(0,0,0,.22);
 
---shadow-lg:0 20px 40px rgba(0,0,0,.12);
+--shadow-md:0 12px 28px rgba(0,0,0,.30);
 
-/* Layout */
+--shadow-lg:0 22px 50px rgba(0,0,0,.40);
 
---sidebar-width:280px;
+/* ---------- Layout ---------- */
 
---header-height:72px;
+--sidebar-width:290px;
 
---content-width:1600px;
+--header-height:76px;
 
-/* Animation */
+--container-width:1440px;
 
---transition:.25s ease;
+/* ---------- Transition ---------- */
+
+--transition-fast:.20s ease;
+
+--transition:.30s ease;
+
+--transition-slow:.45s ease;
+
+/* ---------- Z Index ---------- */
+
+--z-header:100;
+
+--z-sidebar:200;
+
+--z-overlay:300;
+
+--z-modal:500;
+
+/* ---------- Glass ---------- */
+
+--glass:rgba(255,255,255,.04);
+
+--glass-border:rgba(255,255,255,.08);
 
 }
