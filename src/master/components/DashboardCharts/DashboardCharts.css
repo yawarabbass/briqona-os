@@ -1,28 +1,12 @@
 /*
 ==========================================================
 BRIQONA OS
-Dashboard Charts
+Revenue Chart
 Enterprise Edition
 ==========================================================
 */
 
-.dashboard-charts{
-
-display:grid;
-
-grid-template-columns:repeat(2,minmax(0,1fr));
-
-gap:24px;
-
-margin:32px 0;
-
-}
-
-.chart-card{
-
-position:relative;
-
-overflow:hidden;
+.revenue-chart{
 
 background:var(--color-card);
 
@@ -36,9 +20,13 @@ box-shadow:var(--shadow-sm);
 
 transition:.35s;
 
+position:relative;
+
+overflow:hidden;
+
 }
 
-.chart-card::before{
+.revenue-chart::before{
 
 content:"";
 
@@ -60,7 +48,7 @@ background:linear-gradient(
 
 }
 
-.chart-card:hover{
+.revenue-chart:hover{
 
 transform:translateY(-8px);
 
@@ -70,19 +58,19 @@ box-shadow:0 24px 60px rgba(37,99,235,.14);
 
 }
 
-.chart-header{
+.revenue-header{
 
 display:flex;
 
 justify-content:space-between;
 
-align-items:flex-start;
+align-items:center;
 
-margin-bottom:26px;
+margin-bottom:30px;
 
 }
 
-.chart-label{
+.revenue-label{
 
 display:block;
 
@@ -94,11 +82,9 @@ color:var(--color-text-light);
 
 margin-bottom:8px;
 
-letter-spacing:.4px;
-
 }
 
-.chart-header h3{
+.revenue-header h3{
 
 margin:0;
 
@@ -110,11 +96,11 @@ color:var(--color-heading);
 
 }
 
-.chart-icon{
+.revenue-icon{
 
-width:52px;
+width:54px;
 
-height:52px;
+height:54px;
 
 border-radius:16px;
 
@@ -134,35 +120,53 @@ color:#fff;
 
 }
 
-.chart-placeholder{
-
-height:260px;
-
-border-radius:18px;
-
-background:linear-gradient(
-180deg,
-rgba(37,99,235,.05),
-transparent
-);
-
-border:1px dashed var(--color-border);
-
-padding:24px;
+.revenue-body{
 
 display:flex;
 
 flex-direction:column;
 
-justify-content:flex-end;
-
-gap:18px;
+gap:22px;
 
 }
 
-.chart-line{
+.revenue-bar{
+
+display:grid;
+
+grid-template-columns:90px 1fr;
+
+gap:18px;
+
+align-items:center;
+
+}
+
+.revenue-bar span{
+
+font-size:14px;
+
+font-weight:600;
+
+color:var(--color-text-light);
+
+}
+
+.bar{
 
 height:12px;
+
+border-radius:999px;
+
+background:rgba(37,99,235,.08);
+
+overflow:hidden;
+
+}
+
+.bar div{
+
+height:100%;
 
 border-radius:999px;
 
@@ -172,25 +176,15 @@ background:linear-gradient(
 #7c3aed
 );
 
-width:100%;
-
-opacity:.85;
-
 }
 
-.chart-line.medium{
+.revenue-footer{
 
-width:72%;
+margin-top:28px;
 
-}
+padding-top:18px;
 
-.chart-line.short{
-
-width:48%;
-
-}
-
-.chart-footer{
+border-top:1px solid var(--color-border);
 
 display:flex;
 
@@ -198,23 +192,17 @@ justify-content:space-between;
 
 align-items:center;
 
-margin-top:22px;
-
-padding-top:18px;
-
-border-top:1px solid var(--color-border);
-
 }
 
-.chart-footer strong{
+.revenue-footer strong{
 
-font-size:20px;
+font-size:28px;
 
 color:#16a34a;
 
 }
 
-.chart-footer span{
+.revenue-footer span{
 
 font-size:14px;
 
@@ -222,41 +210,17 @@ color:var(--color-text-light);
 
 }
 
-@media(max-width:1024px){
-
-.dashboard-charts{
-
-grid-template-columns:1fr;
-
-}
-
-}
-
 @media(max-width:768px){
 
-.dashboard-charts{
-
-gap:18px;
-
-margin:24px 0;
-
-}
-
-.chart-card{
+.revenue-chart{
 
 padding:22px;
 
 }
 
-.chart-placeholder{
+.revenue-bar{
 
-height:220px;
-
-}
-
-.chart-header h3{
-
-font-size:20px;
+grid-template-columns:70px 1fr;
 
 }
 
