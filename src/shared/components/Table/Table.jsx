@@ -1,46 +1,87 @@
 import "./Table.css";
 
 export default function Table({
-  columns = [],
-  data = [],
-}) {
-  return (
-    <div className="table-wrapper">
 
-      <table className="table">
+columns=[],
 
-        <thead>
-          <tr>
-            {columns.map((column) => (
-              <th key={column.key}>
-                {column.title}
-              </th>
-            ))}
-          </tr>
-        </thead>
+data=[],
 
-        <tbody>
+emptyText="No Data Found",
 
-          {data.map((row, index) => (
+}){
 
-            <tr key={index}>
+return(
 
-              {columns.map((column) => (
+<div className="table-wrapper">
 
-                <td key={column.key}>
-                  {row[column.key]}
-                </td>
+<table className="table">
 
-              ))}
+<thead>
 
-            </tr>
+<tr>
 
-          ))}
+{columns.map((column,index)=>(
 
-        </tbody>
+<th key={index}>
 
-      </table>
+{column.header}
 
-    </div>
-  );
-                            }
+</th>
+
+))}
+
+</tr>
+
+</thead>
+
+<tbody>
+
+{data.length>0 ? (
+
+data.map((row,rowIndex)=>(
+
+<tr key={rowIndex}>
+
+{columns.map((column,colIndex)=>(
+
+<td key={colIndex}>
+
+{row[column.accessor]}
+
+</td>
+
+))}
+
+</tr>
+
+))
+
+):(
+
+<tr>
+
+<td
+
+colSpan={columns.length}
+
+className="table-empty"
+
+>
+
+{emptyText}
+
+</td>
+
+</tr>
+
+)}
+
+</tbody>
+
+</table>
+
+</div>
+
+);
+
+}
