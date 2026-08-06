@@ -1,70 +1,191 @@
+/*
+|--------------------------------------------------------------------------
+| BRIQONA OS
+|--------------------------------------------------------------------------
+| Latest Companies
+|--------------------------------------------------------------------------
+| Enterprise Edition
+|--------------------------------------------------------------------------
+*/
+
+import { Eye } from "lucide-react";
+
 import "./LatestCompanies.css";
 
 const companies = [
+
   {
-    id: 1,
-    name: "Alpha Technologies",
-    plan: "Enterprise",
-    status: "Active",
+    id:1,
+    name:"Alpha Technologies",
+    industry:"Software",
+    plan:"Enterprise",
+    revenue:"$18,420",
+    status:"Active"
   },
+
   {
-    id: 2,
-    name: "Bright Solutions",
-    plan: "Business",
-    status: "Active",
+    id:2,
+    name:"Bright Solutions",
+    industry:"Retail",
+    plan:"Business",
+    revenue:"$9,840",
+    status:"Active"
   },
+
   {
-    id: 3,
-    name: "Cloud Nexus",
-    plan: "Starter",
-    status: "Pending",
+    id:3,
+    name:"Cloud Nexus",
+    industry:"Healthcare",
+    plan:"Starter",
+    revenue:"$2,430",
+    status:"Pending"
   },
+
   {
-    id: 4,
-    name: "Digital One",
-    plan: "Professional",
-    status: "Active",
-  },
+    id:4,
+    name:"Digital One",
+    industry:"Education",
+    plan:"Professional",
+    revenue:"$6,280",
+    status:"Active"
+  }
+
 ];
 
-export default function LatestCompanies() {
-  return (
-    <section className="latest-companies">
+export default function LatestCompanies(){
 
-      <div className="latest-companies-header">
-        <h3>Latest Companies</h3>
-      </div>
+return(
 
-      <table className="latest-companies-table">
+<section className="latest-companies">
 
-        <thead>
-          <tr>
-            <th>Company</th>
-            <th>Plan</th>
-            <th>Status</th>
-          </tr>
-        </thead>
+<div className="latest-header">
 
-        <tbody>
+<div>
 
-          {companies.map((company) => (
+<span>
 
-            <tr key={company.id}>
+Latest Clients
 
-              <td>{company.name}</td>
+</span>
 
-              <td>{company.plan}</td>
+<h3>
 
-              <td>{company.status}</td>
+Latest Companies
 
-            </tr>
+</h3>
 
-          ))}
+</div>
 
-        </tbody>
+</div>
 
-      </table>
+<table className="latest-table">
 
-    </section>
-  );
+<thead>
+
+<tr>
+
+<th>Company</th>
+
+<th>Industry</th>
+
+<th>Plan</th>
+
+<th>Revenue</th>
+
+<th>Status</th>
+
+<th></th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+{companies.map(company=>(
+
+<tr key={company.id}>
+
+<td>
+
+<div className="company-info">
+
+<div className="company-avatar">
+
+{company.name.charAt(0)}
+
+</div>
+
+<div>
+
+<strong>
+
+{company.name}
+
+</strong>
+
+</div>
+
+</div>
+
+</td>
+
+<td>
+
+<span className="industry-badge">
+
+{company.industry}
+
+</span>
+
+</td>
+
+<td>
+
+<span className="plan-badge">
+
+{company.plan}
+
+</span>
+
+</td>
+
+<td>
+
+{company.revenue}
+
+</td>
+
+<td>
+
+<span className={`status ${company.status.toLowerCase()}`}>
+
+{company.status}
+
+</span>
+
+</td>
+
+<td>
+
+<button className="view-btn">
+
+<Eye size={18}/>
+
+</button>
+
+</td>
+
+</tr>
+
+))}
+
+</tbody>
+
+</table>
+
+</section>
+
+);
+
 }
