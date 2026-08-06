@@ -680,95 +680,142 @@ translateY(0);
 }
 
 }
-<section className="cc-hero">
+/* ===================================
+Hero Buttons
+=================================== */
 
-  <div className="cc-hero-left">
+.cc-hero-actions{
 
-    <span className="cc-badge">
+display:flex;
 
-      🚀 BRIQONA OS Enterprise
+gap:16px;
 
-    </span>
+margin-top:34px;
 
-    <h1>
+flex-wrap:wrap;
 
-      Control Your
-      <br />
-      Entire Business
-      <br />
-      From One Place
+}
 
-    </h1>
+.cc-primary-btn{
 
-    <p>
+height:52px;
 
-      Welcome back.
+padding:0 28px;
 
-      Monitor companies,
-      subscriptions,
-      AI intelligence,
-      financial insights,
-      platform health
-      and complete business
-      operations through your
-      intelligent enterprise
-      control center.
+border-radius:14px;
 
-    </p>
+background:#fff;
 
-    <div className="cc-hero-actions">
+color:#2563eb;
 
-      <button className="cc-primary-btn">
+font-weight:700;
 
-        Create Company
+transition:.30s;
 
-      </button>
+}
 
-      <button className="cc-secondary-btn">
+.cc-primary-btn:hover{
 
-        View Reports
+transform:translateY(-3px);
 
-      </button>
+}
 
-    </div>
+.cc-secondary-btn{
 
-  </div>
+height:52px;
 
-  <div className="cc-hero-right">
+padding:0 28px;
 
-    <div className="cc-ai-card">
+border-radius:14px;
 
-      <span>
+background:rgba(255,255,255,.12);
 
-        🤖 AI Assistant
+backdrop-filter:blur(12px);
 
-      </span>
+border:1px solid rgba(255,255,255,.2);
 
-      <h3>
+color:#fff;
 
-        Everything
-        looks healthy.
+font-weight:600;
 
-      </h3>
+transition:.30s;
 
-      <p>
+}
 
-        No critical alerts.
+.cc-secondary-btn:hover{
 
-        4 companies are growing.
+background:rgba(255,255,255,.20);
 
-        Revenue increased this month.
+}
 
-      </p>
+/* ===================================
+AI Card
+=================================== */
 
-      <div className="cc-ai-status">
+.cc-ai-card{
 
-        ● AI Online
+padding:30px;
 
-      </div>
+display:flex;
 
-    </div>
+flex-direction:column;
 
-  </div>
+justify-content:center;
 
-</section>
+height:100%;
+
+}
+
+.cc-ai-card span{
+
+font-size:13px;
+
+font-weight:600;
+
+color:var(--color-primary);
+
+margin-bottom:18px;
+
+}
+
+.cc-ai-card h3{
+
+font-size:28px;
+
+margin-bottom:16px;
+
+color:var(--color-heading);
+
+}
+
+.cc-ai-card p{
+
+font-size:15px;
+
+line-height:1.8;
+
+margin-bottom:28px;
+
+}
+
+.cc-ai-status{
+
+display:inline-flex;
+
+align-items:center;
+
+padding:10px 18px;
+
+border-radius:999px;
+
+background:rgba(34,197,94,.10);
+
+color:#16a34a;
+
+font-size:14px;
+
+font-weight:700;
+
+width:max-content;
+
+}
