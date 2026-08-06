@@ -1,26 +1,187 @@
+/*
+==========================================================
+BRIQONA OS
+Recent Activity
+Enterprise Edition
+==========================================================
+*/
+
 .recent-activity{
-    margin-top:var(--space-6);
-    background:var(--color-surface);
-    border:1px solid var(--color-border);
-    border-radius:var(--radius-lg);
-    padding:var(--space-6);
+
+background:var(--color-card);
+
+border:1px solid var(--color-border);
+
+border-radius:24px;
+
+padding:28px;
+
+box-shadow:var(--shadow-sm);
+
+margin:32px 0;
+
+}
+
+.activity-header{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+margin-bottom:26px;
+
+}
+
+.activity-header span{
+
+display:block;
+
+font-size:13px;
+
+font-weight:600;
+
+color:var(--color-primary);
+
+margin-bottom:8px;
+
+}
+
+.activity-header h3{
+
+margin:0;
+
+font-size:24px;
+
+font-weight:700;
+
+color:var(--color-heading);
+
 }
 
 .activity-list{
-    display:flex;
-    flex-direction:column;
-    gap:16px;
-    margin-top:20px;
+
+display:flex;
+
+flex-direction:column;
+
+gap:18px;
+
 }
 
 .activity-item{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding-bottom:12px;
-    border-bottom:1px solid var(--color-border);
+
+display:grid;
+
+grid-template-columns:56px 1fr auto;
+
+gap:18px;
+
+align-items:center;
+
+padding:18px;
+
+border:1px solid var(--color-border);
+
+border-radius:18px;
+
+transition:.30s;
+
 }
 
-.activity-item:last-child{
-    border-bottom:none;
+.activity-item:hover{
+
+transform:translateX(6px);
+
+border-color:var(--color-primary);
+
+background:rgba(37,99,235,.03);
+
+}
+
+.activity-icon{
+
+width:52px;
+
+height:52px;
+
+border-radius:16px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+background:linear-gradient(
+135deg,
+#2563eb,
+#7c3aed
+);
+
+color:#fff;
+
+}
+
+.activity-content h4{
+
+margin:0 0 6px;
+
+font-size:16px;
+
+font-weight:700;
+
+color:var(--color-heading);
+
+}
+
+.activity-content p{
+
+margin:0;
+
+font-size:14px;
+
+line-height:1.7;
+
+color:var(--color-text-light);
+
+}
+
+.activity-time{
+
+font-size:13px;
+
+font-weight:600;
+
+color:var(--color-text-light);
+
+white-space:nowrap;
+
+}
+
+@media(max-width:768px){
+
+.recent-activity{
+
+padding:22px;
+
+margin:24px 0;
+
+}
+
+.activity-item{
+
+grid-template-columns:52px 1fr;
+
+}
+
+.activity-time{
+
+grid-column:2;
+
+margin-top:8px;
+
+}
+
 }
