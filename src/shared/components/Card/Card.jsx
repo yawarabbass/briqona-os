@@ -1,42 +1,98 @@
 import "./Card.css";
 
 export default function Card({
-  title,
-  subtitle,
-  children,
-  footer,
-}) {
-  return (
-    <section className="card">
 
-      {(title || subtitle) && (
-        <div className="card-header">
+children,
 
-          {title && (
-            <h3 className="card-title">
-              {title}
-            </h3>
-          )}
+title,
 
-          {subtitle && (
-            <p className="card-subtitle">
-              {subtitle}
-            </p>
-          )}
+subtitle,
 
-        </div>
-      )}
+headerAction,
 
-      <div className="card-body">
-        {children}
-      </div>
+footer,
 
-      {footer && (
-        <div className="card-footer">
-          {footer}
-        </div>
-      )}
+hover=true,
 
-    </section>
-  );
+padding="md",
+
+className="",
+
+}){
+
+return(
+
+<div
+
+className={`
+card
+card-padding-${padding}
+${hover ? "card-hover" : ""}
+${className}
+`}
+
+>
+
+{(title || subtitle || headerAction) && (
+
+<div className="card-header">
+
+<div className="card-header-left">
+
+{title && (
+
+<h3 className="card-title">
+
+{title}
+
+</h3>
+
+)}
+
+{subtitle && (
+
+<p className="card-subtitle">
+
+{subtitle}
+
+</p>
+
+)}
+
+</div>
+
+{headerAction && (
+
+<div className="card-header-right">
+
+{headerAction}
+
+</div>
+
+)}
+
+</div>
+
+)}
+
+<div className="card-body">
+
+{children}
+
+</div>
+
+{footer && (
+
+<div className="card-footer">
+
+{footer}
+
+</div>
+
+)}
+
+</div>
+
+);
+
 }
