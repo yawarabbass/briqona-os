@@ -116,31 +116,127 @@ export default function ControlCenter() {
 
       <section className="cc-kpi-grid">
 
-        <div className="cc-card">
+<div className="cc-kpi-card">
 
-          Companies
+<div className="cc-kpi-top">
 
-        </div>
+<span>🏢</span>
 
-        <div className="cc-card">
+<p>Companies</p>
 
-          Active Users
+</div>
 
-        </div>
+<h2>24</h2>
 
-        <div className="cc-card">
+<div className="cc-kpi-bottom">
 
-          Revenue
+<span className="up">
 
-        </div>
++12.8%
 
-        <div className="cc-card">
+</span>
 
-          Growth
+<span>
 
-        </div>
+This Month
 
-      </section>
+</span>
+
+</div>
+
+</div>
+
+<div className="cc-kpi-card">
+
+<div className="cc-kpi-top">
+
+<span>👥</span>
+
+<p>Users</p>
+
+</div>
+
+<h2>8,420</h2>
+
+<div className="cc-kpi-bottom">
+
+<span className="up">
+
++6.2%
+
+</span>
+
+<span>
+
+Active
+
+</span>
+
+</div>
+
+</div>
+
+<div className="cc-kpi-card">
+
+<div className="cc-kpi-top">
+
+<span>💰</span>
+
+<p>Revenue</p>
+
+</div>
+
+<h2>$84K</h2>
+
+<div className="cc-kpi-bottom">
+
+<span className="up">
+
++18%
+
+</span>
+
+<span>
+
+Monthly
+
+</span>
+
+</div>
+
+</div>
+
+<div className="cc-kpi-card">
+
+<div className="cc-kpi-top">
+
+<span>📈</span>
+
+<p>Growth</p>
+
+</div>
+
+<h2>96%</h2>
+
+<div className="cc-kpi-bottom">
+
+<span className="up">
+
+Excellent
+
+</span>
+
+<span>
+
+Performance
+
+</span>
+
+</div>
+
+</div>
+
+</section>
 
       {/* Main Grid */}
 
