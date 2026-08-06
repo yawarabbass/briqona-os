@@ -1,12 +1,31 @@
 import "./Badge.css";
 
 export default function Badge({
-  children,
-  variant = "neutral",
-}) {
-  return (
-    <span className={`badge badge-${variant}`}>
-      {children}
-    </span>
-  );
+
+children,
+
+variant="primary",
+
+size="md",
+
+}){
+
+return(
+
+<span
+
+className={`
+badge
+badge-${variant}
+badge-${size}
+`}
+
+>
+
+{children}
+
+</span>
+
+);
+
 }
