@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-
+ 
 import PublicLayout from "../../public/layouts/PublicLayout";
 
 import Home from "../../pages/Home/Home";
