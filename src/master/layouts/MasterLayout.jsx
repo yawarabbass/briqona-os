@@ -1,28 +1,82 @@
-import Sidebar from "../components/Sidebar/Sidebar";
+/*
+|--------------------------------------------------------------------------
+| BRIQONA OS
+|--------------------------------------------------------------------------
+| Master Layout
+|--------------------------------------------------------------------------
+|
+| Enterprise SaaS Layout
+|
+*/
+
+import { useState } from "react";
+
 import Header from "../components/Header/Header";
+import Sidebar from "../components/Sidebar/Sidebar";
 
 import "../styles/master.css";
 
-export default function MasterLayout({ children }) {
-  return (
-    <div className="master-layout">
+export default function MasterLayout({
 
-      <aside className="master-sidebar">
-        <Sidebar />
-      </aside>
+children,
 
-      <div className="master-wrapper">
+}){
 
-        <header className="master-header">
-          <Header />
-        </header>
+const [sidebarOpen,setSidebarOpen]=useState(false);
 
-        <main className="master-content">
-          {children}
-        </main>
+const openSidebar=()=>{
 
-      </div>
+setSidebarOpen(true);
 
-    </div>
-  );
+};
+
+const closeSidebar=()=>{
+
+setSidebarOpen(false);
+
+};
+
+return(
+
+<div className="master-layout">
+
+<Sidebar
+
+sidebarOpen={sidebarOpen}
+
+closeSidebar={closeSidebar}
+
+/>
+
+<div
+
+className={`
+master-overlay
+${sidebarOpen ? "show" : ""}
+`}
+
+onClick={closeSidebar}
+
+/>
+
+<div className="master-main">
+
+<Header
+
+openSidebar={openSidebar}
+
+/>
+
+<main className="master-content">
+
+{children}
+
+</main>
+
+</div>
+
+</div>
+
+);
+
 }
