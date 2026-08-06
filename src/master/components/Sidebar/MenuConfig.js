@@ -21,11 +21,11 @@ const menuConfig = [
   },
 
   {
-    id: 2,
-    title: "Dashboard",
-    path: "/master/dashboard",
-    icon: LayoutDashboard,
-  },
+  id: 2,
+  title: "Control Center",
+  path: "/master/control-center",
+  icon: LayoutDashboard,
+},
 
   {
     id: 3,
