@@ -216,3 +216,467 @@ box-shadow:var(--shadow-lg);
 border-color:var(--color-primary);
 
 }
+/* ======================================================
+   Control Center
+   Part 2
+====================================================== */
+
+/* ==========================
+   Main Grid
+========================== */
+
+.cc-grid{
+
+display:grid;
+
+grid-template-columns:2fr 1fr;
+
+gap:24px;
+
+align-items:start;
+
+}
+
+.cc-left{
+
+display:flex;
+
+flex-direction:column;
+
+gap:24px;
+
+}
+
+.cc-right{
+
+display:flex;
+
+flex-direction:column;
+
+gap:24px;
+
+}
+
+/* ==========================
+   Large Cards
+========================== */
+
+.cc-large{
+
+min-height:360px;
+
+}
+
+/* ==========================
+   Small Cards
+========================== */
+
+.cc-right .cc-card{
+
+min-height:165px;
+
+display:flex;
+
+align-items:flex-start;
+
+justify-content:flex-start;
+
+font-size:18px;
+
+font-weight:600;
+
+color:var(--color-heading);
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+/* ==========================
+   Glass Hover
+========================== */
+
+.cc-card{
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+.cc-card::before{
+
+content:"";
+
+position:absolute;
+
+left:-120%;
+
+top:0;
+
+width:80%;
+
+height:100%;
+
+background:
+
+linear-gradient(
+
+90deg,
+
+transparent,
+
+rgba(255,255,255,.28),
+
+transparent
+
+);
+
+transition:.8s;
+
+}
+
+.cc-card:hover::before{
+
+left:140%;
+
+}
+
+/* ==========================
+   Premium Border Glow
+========================== */
+
+.cc-card:hover{
+
+box-shadow:
+
+0 20px 45px rgba(37,99,235,.12);
+
+}
+
+/* ==========================
+   AI Panel
+========================== */
+
+.cc-hero-right{
+
+background:
+
+linear-gradient(
+
+180deg,
+
+var(--color-card),
+
+var(--color-surface)
+
+);
+
+}
+
+/* ==========================
+   Soft Gradient Background
+========================== */
+
+.control-center{
+
+position:relative;
+
+}
+
+.control-center::before{
+
+content:"";
+
+position:absolute;
+
+top:-120px;
+
+right:-120px;
+
+width:320px;
+
+height:320px;
+
+border-radius:50%;
+
+background:
+
+rgba(37,99,235,.05);
+
+filter:blur(80px);
+
+pointer-events:none;
+
+}
+
+.control-center::after{
+
+content:"";
+
+position:absolute;
+
+bottom:-140px;
+
+left:-140px;
+
+width:320px;
+
+height:320px;
+
+border-radius:50%;
+
+background:
+
+rgba(124,58,237,.05);
+
+filter:blur(90px);
+
+pointer-events:none;
+
+}
+/* ======================================================
+   Control Center
+   Part 3 (Responsive & Final)
+====================================================== */
+
+/* ==========================
+   1400px
+========================== */
+
+@media(max-width:1400px){
+
+.cc-hero{
+
+grid-template-columns:1fr;
+
+}
+
+.cc-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.cc-hero-right{
+
+min-height:220px;
+
+}
+
+}
+
+/* ==========================
+   Laptop
+========================== */
+
+@media(max-width:1200px){
+
+.control-center{
+
+padding:24px;
+
+}
+
+.cc-kpi-grid{
+
+grid-template-columns:
+
+repeat(2,1fr);
+
+}
+
+.cc-hero-left{
+
+padding:34px;
+
+}
+
+.cc-hero-left h1{
+
+font-size:40px;
+
+}
+
+}
+
+/* ==========================
+   Tablet
+========================== */
+
+@media(max-width:991px){
+
+.control-center{
+
+padding:20px;
+
+gap:20px;
+
+}
+
+.cc-kpi-grid{
+
+grid-template-columns:1fr 1fr;
+
+gap:18px;
+
+}
+
+.cc-grid{
+
+gap:20px;
+
+}
+
+.cc-left,
+
+.cc-right{
+
+gap:20px;
+
+}
+
+.cc-large{
+
+min-height:300px;
+
+}
+
+}
+
+/* ==========================
+   Mobile
+========================== */
+
+@media(max-width:768px){
+
+.control-center{
+
+padding:16px;
+
+}
+
+.cc-hero-left{
+
+padding:26px;
+
+border-radius:22px;
+
+}
+
+.cc-hero-left h1{
+
+font-size:32px;
+
+line-height:1.25;
+
+}
+
+.cc-hero-left p{
+
+font-size:15px;
+
+}
+
+.cc-kpi-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.cc-card{
+
+padding:20px;
+
+border-radius:20px;
+
+}
+
+.cc-right .cc-card{
+
+min-height:130px;
+
+}
+
+.cc-large{
+
+min-height:250px;
+
+}
+
+}
+
+/* ==========================
+   Small Mobile
+========================== */
+
+@media(max-width:480px){
+
+.cc-hero-left{
+
+padding:22px;
+
+}
+
+.cc-badge{
+
+font-size:11px;
+
+padding:6px 14px;
+
+}
+
+.cc-hero-left h1{
+
+font-size:28px;
+
+}
+
+.cc-hero-left p{
+
+font-size:14px;
+
+line-height:1.7;
+
+}
+
+}
+
+/* ==========================
+   Animation
+========================== */
+
+.cc-hero,
+
+.cc-card{
+
+animation:
+
+fadeUp .45s ease;
+
+}
+
+@keyframes fadeUp{
+
+from{
+
+opacity:0;
+
+transform:
+
+translateY(18px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:
+
+translateY(0);
+
+}
+
+}
