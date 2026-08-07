@@ -1,21 +1,36 @@
+import { useState } from "react";
 import "./CompanySearch.css";
 
-export default function CompanySearch() {
+export default function CompanySearch({ onSearch }) {
+
+  const [value, setValue] = useState("");
+
+  function handleChange(e) {
+
+    const keyword = e.target.value;
+
+    setValue(keyword);
+
+    if (onSearch) {
+      onSearch(keyword);
+    }
+
+  }
+
   return (
-    <section className="company-search">
+
+    <div className="company-search">
 
       <input
         type="text"
-        placeholder="Search company, owner or email..."
+        placeholder="Search company, owner, email or phone..."
         className="company-search-input"
+        value={value}
+        onChange={handleChange}
       />
 
-      <button
-        className="company-search-button"
-      >
-        Search
-      </button>
+    </div>
 
-    </section>
   );
+
 }
