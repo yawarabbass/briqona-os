@@ -1,95 +1,610 @@
-.control-center{
+/* ==========================================================
+   BRIQONA OS
+   MASTER CONTROL CENTER
+========================================================== */
 
-width:100%;
+.control-center {
 
-max-width:1700px;
+  width: 100%;
+  max-width: 1700px;
 
-margin:auto;
+  margin: 0 auto;
 
-padding:32px;
+  padding: 32px;
 
-display:flex;
+  display: flex;
+  flex-direction: column;
 
-flex-direction:column;
-
-gap:32px;
-
-}
-
-.cc-grid{
-
-display:grid;
-
-grid-template-columns:2fr 1fr;
-
-gap:24px;
-
-align-items:start;
+  gap: 30px;
 
 }
 
-.cc-left{
 
-display:flex;
+/* ==========================================================
+   PAGE HEADER
+========================================================== */
 
-flex-direction:column;
+.cc-page-header {
 
-gap:24px;
+  display: flex;
 
-}
+  align-items: center;
+  justify-content: space-between;
 
-.cc-right{
+  gap: 24px;
 
-display:flex;
-
-flex-direction:column;
-
-gap:24px;
-
-position:sticky;
-
-top:24px;
+  padding: 4px 0 8px;
 
 }
 
-@media(max-width:1200px){
+.cc-heading {
 
-.cc-grid{
-
-grid-template-columns:1fr;
+  min-width: 0;
 
 }
 
-.cc-right{
+.cc-eyebrow {
 
-position:static;
+  display: inline-flex;
 
-}
+  margin-bottom: 8px;
 
-}
+  color: var(--color-primary);
 
-@media(max-width:768px){
+  font-size: 11px;
 
-.control-center{
+  font-weight: 800;
 
-padding:18px;
-
-gap:22px;
+  letter-spacing: .12em;
 
 }
 
-.cc-grid{
+.cc-heading h1 {
 
-gap:20px;
+  margin: 0;
+
+  color: var(--color-heading);
+
+  font-size: clamp(28px, 3vw, 38px);
+
+  line-height: 1.15;
+
+  font-weight: 750;
+
+  letter-spacing: -.025em;
 
 }
 
-.cc-left,
+.cc-heading p {
 
-.cc-right{
+  max-width: 650px;
 
-gap:20px;
+  margin: 10px 0 0;
+
+  color: var(--color-text-light);
+
+  font-size: 14px;
+
+  line-height: 1.65;
 
 }
+
+
+/* ==========================================================
+   HEADER SYSTEM STATUS
+========================================================== */
+
+.cc-header-status {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  min-width: 245px;
+
+  padding: 14px 16px;
+
+  background: var(--color-surface);
+
+  border: 1px solid var(--color-border);
+
+  border-radius: var(--radius-lg);
+
+  box-shadow: var(--shadow-sm);
+
+}
+
+.cc-status-dot {
+
+  width: 9px;
+  height: 9px;
+
+  flex: 0 0 auto;
+
+  border-radius: 50%;
+
+  background: #16a34a;
+
+  box-shadow: 0 0 0 4px rgba(22, 163, 74, .12);
+
+}
+
+.cc-header-status div {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 3px;
+
+}
+
+.cc-header-status strong {
+
+  color: var(--color-heading);
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+}
+
+.cc-header-status span {
+
+  color: var(--color-text-light);
+
+  font-size: 11px;
+
+}
+
+
+/* ==========================================================
+   SECTION
+========================================================== */
+
+.cc-section {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 16px;
+
+}
+
+.cc-section-heading {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 20px;
+
+}
+
+.cc-section-label {
+
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: var(--color-primary);
+
+  font-size: 10px;
+
+  font-weight: 800;
+
+  letter-spacing: .12em;
+
+}
+
+.cc-section-heading h2 {
+
+  margin: 0;
+
+  color: var(--color-heading);
+
+  font-size: 20px;
+
+  font-weight: 700;
+
+}
+
+.cc-live-indicator {
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  min-width: 52px;
+
+  padding: 5px 9px;
+
+  border: 1px solid rgba(22, 163, 74, .2);
+
+  border-radius: 999px;
+
+  background: rgba(22, 163, 74, .08);
+
+  color: #15803d;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+}
+
+
+/* ==========================================================
+   MAIN GRID
+========================================================== */
+
+.cc-grid {
+
+  display: grid;
+
+  grid-template-columns: minmax(0, 2fr) minmax(300px, 1fr);
+
+  gap: 24px;
+
+  align-items: start;
+
+}
+
+.cc-left {
+
+  min-width: 0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 24px;
+
+}
+
+.cc-right {
+
+  min-width: 0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 24px;
+
+  position: sticky;
+
+  top: 24px;
+
+}
+
+
+/* ==========================================================
+   PANELS
+========================================================== */
+
+.cc-panel {
+
+  min-width: 0;
+
+  overflow: hidden;
+
+  background: var(--color-surface);
+
+  border: 1px solid var(--color-border);
+
+  border-radius: var(--radius-lg);
+
+  box-shadow: var(--shadow-sm);
+
+}
+
+.cc-panel-header {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 18px;
+
+  padding: 20px 22px;
+
+  border-bottom: 1px solid var(--color-border);
+
+}
+
+.cc-panel-header h2 {
+
+  margin: 0;
+
+  color: var(--color-heading);
+
+  font-size: 18px;
+
+  line-height: 1.3;
+
+  font-weight: 700;
+
+}
+
+.cc-panel-meta {
+
+  color: var(--color-text-light);
+
+  font-size: 11px;
+
+  font-weight: 600;
+
+  white-space: nowrap;
+
+}
+
+.cc-panel-body {
+
+  min-width: 0;
+
+  padding: 20px;
+
+}
+
+
+/* ==========================================================
+   QUICK ACTION PANEL
+========================================================== */
+
+.cc-quick-panel {
+
+  border-color: rgba(37, 99, 235, .18);
+
+}
+
+
+/* ==========================================================
+   BOTTOM STATUS
+========================================================== */
+
+.cc-bottom-status {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 16px;
+
+  padding: 13px 16px;
+
+  border-top: 1px solid var(--color-border);
+
+  color: var(--color-text-light);
+
+  font-size: 11px;
+
+}
+
+.cc-bottom-status-left {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+}
+
+.cc-bottom-status-left .cc-status-dot {
+
+  width: 7px;
+  height: 7px;
+
+  box-shadow: none;
+
+}
+
+.cc-version {
+
+  color: var(--color-text-light);
+
+  font-weight: 600;
+
+}
+
+
+/* ==========================================================
+   LARGE TABLET
+========================================================== */
+
+@media (max-width: 1200px) {
+
+  .control-center {
+
+    padding: 26px;
+
+  }
+
+  .cc-grid {
+
+    grid-template-columns: 1fr;
+
+  }
+
+  .cc-right {
+
+    position: static;
+
+    display: grid;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  }
+
+}
+
+
+/* ==========================================================
+   TABLET
+========================================================== */
+
+@media (max-width: 768px) {
+
+  .control-center {
+
+    padding: 18px;
+
+    gap: 22px;
+
+  }
+
+  .cc-page-header {
+
+    align-items: stretch;
+
+    flex-direction: column;
+
+  }
+
+  .cc-header-status {
+
+    width: 100%;
+
+  }
+
+  .cc-grid {
+
+    gap: 20px;
+
+  }
+
+  .cc-left,
+
+  .cc-right {
+
+    gap: 20px;
+
+  }
+
+  .cc-right {
+
+    display: flex;
+
+    flex-direction: column;
+
+  }
+
+  .cc-panel-header {
+
+    padding: 18px;
+
+  }
+
+  .cc-panel-body {
+
+    padding: 16px;
+
+  }
+
+}
+
+
+/* ==========================================================
+   MOBILE
+========================================================== */
+
+@media (max-width: 575px) {
+
+  .control-center {
+
+    padding: 14px;
+
+    gap: 18px;
+
+  }
+
+  .cc-heading h1 {
+
+    font-size: 27px;
+
+  }
+
+  .cc-heading p {
+
+    font-size: 13px;
+
+  }
+
+  .cc-section-heading {
+
+    align-items: flex-start;
+
+  }
+
+  .cc-section-heading h2 {
+
+    font-size: 18px;
+
+  }
+
+  .cc-panel-header {
+
+    align-items: flex-start;
+
+  }
+
+  .cc-panel-meta {
+
+    display: none;
+
+  }
+
+  .cc-panel-body {
+
+    padding: 14px;
+
+  }
+
+  .cc-bottom-status {
+
+    align-items: flex-start;
+
+    flex-direction: column;
+
+  }
+
+}
+
+
+/* ==========================================================
+   VERY SMALL DEVICES
+========================================================== */
+
+@media (max-width: 380px) {
+
+  .control-center {
+
+    padding: 12px;
+
+  }
+
+  .cc-heading h1 {
+
+    font-size: 24px;
+
+  }
+
+  .cc-header-status {
+
+    padding: 12px;
+
+  }
 
 }
