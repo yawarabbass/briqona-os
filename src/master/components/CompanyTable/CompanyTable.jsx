@@ -10,6 +10,8 @@ const ITEMS_PER_PAGE = 5;
 
 export default function CompanyTable() {
 
+  const [companyList, setCompanyList] = useState(companies);
+
   const [search, setSearch] = useState("");
   const [status, setStatus] = useState("all");
   const [plan, setPlan] = useState("all");
@@ -22,7 +24,7 @@ export default function CompanyTable() {
 
     const keyword = search.trim().toLowerCase();
 
-    return companies.filter((company) => {
+    return companyList.filter((company) => {
 
       const matchesSearch =
         !keyword ||
@@ -47,7 +49,7 @@ export default function CompanyTable() {
 
     });
 
-  }, [search, status, plan]);
+  }, [companyList, search, status, plan]);
 
   const totalPages = Math.max(
     1,
@@ -87,7 +89,23 @@ export default function CompanyTable() {
 
   const handleAddCompany = (company) => {
 
-    console.log("New company:", company);
+    const newCompany = {
+
+      ...company,
+
+      id: Date.now(),
+
+    };
+
+    setCompanyList((current) => [
+
+      newCompany,
+
+      ...current,
+
+    ]);
+
+    setCurrentPage(1);
 
     setShowAddForm(false);
 
@@ -96,6 +114,10 @@ export default function CompanyTable() {
   return (
 
     <section className="company-table">
+
+      {/* ==========================
+          Header
+      ========================== */}
 
       <div className="company-table-header">
 
@@ -121,6 +143,11 @@ export default function CompanyTable() {
 
       </div>
 
+
+      {/* ==========================
+          Search & Filters
+      ========================== */}
+
       <div className="company-table-controls">
 
         <div className="company-table-search">
@@ -135,6 +162,7 @@ export default function CompanyTable() {
           />
 
         </div>
+
 
         <select
           value={status}
@@ -161,6 +189,7 @@ export default function CompanyTable() {
           </option>
 
         </select>
+
 
         <select
           value={plan}
@@ -194,6 +223,11 @@ export default function CompanyTable() {
 
       </div>
 
+
+      {/* ==========================
+          Result Count
+      ========================== */}
+
       <div className="company-table-result">
 
         Showing{" "}
@@ -215,6 +249,11 @@ export default function CompanyTable() {
 
       </div>
 
+
+      {/* ==========================
+          Table
+      ========================== */}
+
       <div className="company-table-wrapper">
 
         <table className="company-table-grid">
@@ -223,19 +262,30 @@ export default function CompanyTable() {
 
             <tr>
 
-              <th>Company</th>
+              <th>
+                Company
+              </th>
 
-              <th>Owner</th>
+              <th>
+                Owner
+              </th>
 
-              <th>Plan</th>
+              <th>
+                Plan
+              </th>
 
-              <th>Status</th>
+              <th>
+                Status
+              </th>
 
-              <th>Action</th>
+              <th>
+                Action
+              </th>
 
             </tr>
 
           </thead>
+
 
           <tbody>
 
@@ -243,7 +293,9 @@ export default function CompanyTable() {
 
               visibleCompanies.map((company) => (
 
-                <tr key={company.id}>
+                <tr
+                  key={company.id}
+                >
 
                   <td>
                     {company.company}
@@ -306,11 +358,21 @@ export default function CompanyTable() {
 
       </div>
 
+
+      {/* ==========================
+          Pagination
+      ========================== */}
+
       <CompanyPagination
         currentPage={currentPage}
         totalPages={totalPages}
         onPageChange={setCurrentPage}
       />
+
+
+      {/* ==========================
+          Company Details
+      ========================== */}
 
       {selectedCompany && (
 
@@ -320,10 +382,17 @@ export default function CompanyTable() {
 
       )}
 
+
+      {/* ==========================
+          Add Company Form
+      ========================== */}
+
       {showAddForm && (
 
         <CompanyForm
-          onClose={() => setShowAddForm(false)}
+          onClose={() =>
+            setShowAddForm(false)
+          }
           onSave={handleAddCompany}
         />
 
