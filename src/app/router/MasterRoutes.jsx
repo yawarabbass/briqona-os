@@ -49,12 +49,10 @@ export default function MasterRoutes() {
         <Route
           index
           element={
-            <Navigate
-              to="control-center"
-              replace
-            />
-          }
-        />
+            navigate
+            ("/master/control-center", {
+             replace: true,
+               });
 
         <Route
           path="control-center"
