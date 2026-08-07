@@ -3,19 +3,21 @@ import "./CompanySearch.css";
 
 export default function CompanySearch({ onSearch }) {
 
-  const [value, setValue] = useState("");
+  const [search, setSearch] = useState("");
 
-  function handleChange(e) {
+  const handleSearch = (e) => {
 
-    const keyword = e.target.value;
+    const value = e.target.value;
 
-    setValue(keyword);
+    setSearch(value);
 
     if (onSearch) {
-      onSearch(keyword);
+
+      onSearch(value);
+
     }
 
-  }
+  };
 
   return (
 
@@ -23,10 +25,10 @@ export default function CompanySearch({ onSearch }) {
 
       <input
         type="text"
-        placeholder="Search company, owner, email or phone..."
         className="company-search-input"
-        value={value}
-        onChange={handleChange}
+        placeholder="Search company, owner, email or phone..."
+        value={search}
+        onChange={handleSearch}
       />
 
     </div>
