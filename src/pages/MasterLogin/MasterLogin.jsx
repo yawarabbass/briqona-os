@@ -19,13 +19,7 @@ export default function MasterLogin() {
       return;
     }
 
-    /*
-      PROTOTYPE AUTHENTICATION
-
-      Later:
-      API authentication will replace this block.
-    */
-
+    // Prototype authentication
     localStorage.setItem(
       "briqona_master_auth",
       "true"
@@ -41,13 +35,16 @@ export default function MasterLogin() {
 
       <div className="master-login-shell">
 
+        {/* Brand */}
+
         <div className="master-login-brand">
 
           <div className="master-login-logo">
             B
           </div>
 
-          <div>
+          <div className="master-login-brand-text">
+
             <strong>
               BRIQONA OS
             </strong>
@@ -55,15 +52,18 @@ export default function MasterLogin() {
             <span>
               Control Center
             </span>
+
           </div>
 
         </div>
+
+        {/* Login Card */}
 
         <div className="master-login-card">
 
           <div className="master-login-heading">
 
-            <span>
+            <span className="master-login-eyebrow">
               MASTER CONTROL
             </span>
 
@@ -72,7 +72,8 @@ export default function MasterLogin() {
             </h1>
 
             <p>
-              Sign in to access the BRIQONA OS Control Center.
+              Sign in to securely access the
+              BRIQONA OS Control Center.
             </p>
 
           </div>
@@ -81,6 +82,8 @@ export default function MasterLogin() {
             className="master-login-form"
             onSubmit={handleSubmit}
           >
+
+            {/* Email */}
 
             <label>
 
@@ -100,6 +103,8 @@ export default function MasterLogin() {
 
             </label>
 
+            {/* Password */}
+
             <label>
 
               <span>
@@ -118,11 +123,15 @@ export default function MasterLogin() {
 
             </label>
 
+            {/* Error */}
+
             {error && (
               <div className="master-login-error">
                 {error}
               </div>
             )}
+
+            {/* Login */}
 
             <button
               type="submit"
@@ -132,6 +141,8 @@ export default function MasterLogin() {
             </button>
 
           </form>
+
+          {/* Security */}
 
           <div className="master-login-security">
 
@@ -143,11 +154,25 @@ export default function MasterLogin() {
 
           </div>
 
-        </div>
+          {/* Company Credit */}
 
-        <p className="master-login-footer">
-          BRIQONA OS · Master Administration
-        </p>
+          <div className="master-login-credit">
+
+            <span className="credit-label">
+              Designed &amp; Developed by
+            </span>
+
+            <strong>
+              YAB IT HOUSE (SMC) PVT LTD
+            </strong>
+
+            <span className="credit-powered">
+              Powered by BRIQONA OS
+            </span>
+
+          </div>
+
+        </div>
 
       </div>
 
