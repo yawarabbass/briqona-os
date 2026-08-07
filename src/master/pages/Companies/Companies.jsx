@@ -1,4 +1,3 @@
-import MasterLayout from "../../layouts/MasterLayout";
 import "./Companies.css";
 
 import CompanySearch from "../../components/CompanySearch/CompanySearch";
@@ -6,12 +5,14 @@ import CompanyFilters from "../../components/CompanyFilters/CompanyFilters";
 import CompanyTable from "../../components/CompanyTable/CompanyTable";
 
 export default function Companies() {
+
   return (
-    <MasterLayout>
 
-      <section className="master-companies">
+    <section className="master-companies">
 
-        <div className="master-page-header">
+      <div className="master-page-header">
+
+        <div>
 
           <h1>Companies</h1>
 
@@ -21,18 +22,24 @@ export default function Companies() {
 
         </div>
 
-        <div className="companies-toolbar">
+        <button className="primary-btn">
+          + Add Company
+        </button>
 
-          <CompanySearch />
+      </div>
 
-          <CompanyFilters />
+      <div className="companies-toolbar">
 
-        </div>
+        <CompanySearch />
 
-        <CompanyTable />
+        <CompanyFilters />
 
-      </section>
+      </div>
 
-    </MasterLayout>
+      <CompanyTable />
+
+    </section>
+
   );
+
 }
