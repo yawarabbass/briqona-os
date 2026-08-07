@@ -2,43 +2,23 @@ import "./CompanyFilters.css";
 
 export default function CompanyFilters() {
   return (
-    <section className="company-filters">
+    <div className="company-filters">
 
-      <div className="company-filter-group">
+      <select className="company-filter-select" defaultValue="all">
+        <option value="all">All Status</option>
+        <option value="Active">Active</option>
+        <option value="Pending">Pending</option>
+        <option value="Suspended">Suspended</option>
+      </select>
 
-        <label htmlFor="company-status">
-          Status
-        </label>
+      <select className="company-filter-select" defaultValue="all-plans">
+        <option value="all-plans">All Plans</option>
+        <option value="Starter">Starter</option>
+        <option value="Business">Business</option>
+        <option value="Professional">Professional</option>
+        <option value="Enterprise">Enterprise</option>
+      </select>
 
-        <select id="company-status">
-
-          <option>All Status</option>
-          <option>Active</option>
-          <option>Pending</option>
-          <option>Suspended</option>
-
-        </select>
-
-      </div>
-
-      <div className="company-filter-group">
-
-        <label htmlFor="company-plan">
-          Plan
-        </label>
-
-        <select id="company-plan">
-
-          <option>All Plans</option>
-          <option>Starter</option>
-          <option>Business</option>
-          <option>Professional</option>
-          <option>Enterprise</option>
-
-        </select>
-
-      </div>
-
-    </section>
+    </div>
   );
 }
