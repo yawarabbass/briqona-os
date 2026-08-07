@@ -3,149 +3,89 @@
 }
 
 body{
-
   margin:0;
-
-  font-family:
-  Inter,
-  "Segoe UI",
-  Arial,
-  sans-serif;
-
+  font-family:Inter,"Segoe UI",Arial,sans-serif;
   background:#07111F;
-
-  color:#FFFFFF;
-
+  color:#fff;
 }
 
-
 .master-layout{
-
   min-height:100vh;
-
-  display:grid;
-
-  grid-template-columns:280px 1fr;
-
-  background:#07111F;
-
-}
-
-
-.master-sidebar{
-
-  width:280px;
-
-}
-
-
-.master-wrapper{
-
-  min-width:0;
-
   display:flex;
-
-  flex-direction:column;
-
+  background:#07111F;
 }
 
-
-.master-header{
-
-  position:sticky;
-
-  top:0;
-
-  z-index:50;
-
-}
-
-
-.master-content{
-
+.master-main{
   flex:1;
-
-  padding:28px;
-
-  min-height:calc(100vh - 82px);
-
-  background:#07111F;
-
+  min-width:0;
+  display:flex;
+  flex-direction:column;
 }
-
-
-
-/* Scrollbar */
-
-::-webkit-scrollbar{
-
-  width:8px;
-
-}
-
-
-::-webkit-scrollbar-track{
-
-  background:#07111F;
-
-}
-
-
-::-webkit-scrollbar-thumb{
-
-  background:#22314E;
-
-  border-radius:10px;
-
-}
-
-
-
-/* Buttons */
-
-button{
-
-  font-family:inherit;
-
-}
-
-
-
-/* Responsive */
-
-@media(max-width:992px){
-
-.master-layout{
-
-  grid-template-columns:1fr;
-
-}
-
-
-.master-sidebar{
-
-  display:none;
-
-}
-
 
 .master-content{
-
-  padding:18px;
-
+  flex:1;
+  padding:28px;
+  min-height:calc(100vh - 82px);
 }
 
-
+.master-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.45);
+  opacity:0;
+  visibility:hidden;
+  transition:.3s;
+  z-index:999;
 }
 
+.master-overlay.show{
+  opacity:1;
+  visibility:visible;
+}
 
+@media(min-width:992px){
+  .master-overlay{
+    display:none;
+  }
+}
+
+@media(max-width:991px){
+
+  .master-layout{
+    display:block;
+  }
+
+  .master-main{
+    width:100%;
+  }
+
+  .master-content{
+    padding:18px;
+  }
+
+}
 
 @media(max-width:600px){
 
-.master-content{
-
-  padding:14px;
+  .master-content{
+    padding:14px;
+  }
 
 }
 
+::-webkit-scrollbar{
+  width:8px;
+}
+
+::-webkit-scrollbar-track{
+  background:#07111F;
+}
+
+::-webkit-scrollbar-thumb{
+  background:#22314E;
+  border-radius:10px;
+}
+
+button{
+  font-family:inherit;
 }
