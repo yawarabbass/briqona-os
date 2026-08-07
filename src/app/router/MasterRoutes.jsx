@@ -1,5 +1,7 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 
+import MasterLogin from "../../master/pages/MasterLogin/MasterLogin";
+
 import MasterLayout from "../../master/layouts/MasterLayout";
 
 import ControlCenter from "../../master/pages/ControlCenter/ControlCenter";
@@ -10,79 +12,161 @@ import Modules from "../../master/pages/Modules/Modules";
 
 export default function MasterRoutes() {
   return (
-    <MasterLayout>
+    <Routes>
 
-      <Routes>
+      {/* ================================
+          MASTER LOGIN
+          No Header / Sidebar
+      ================================= */}
 
-        {/* Master Home */}
-        <Route
-          index
-          element={
-            <Navigate
-              to="control-center"
-              replace
-            />
-          }
-        />
+      <Route
+        path="login"
+        element={<MasterLogin />}
+      />
 
-        {/* Control Center */}
-        <Route
-          path="control-center"
-          element={<ControlCenter />}
-        />
+      {/* ================================
+          MASTER HOME
+          /master → /master/login
+      ================================= */}
 
-        {/* Companies */}
-        <Route
-          path="companies"
-          element={<Companies />}
-        />
+      <Route
+        index
+        element={
+          <Navigate
+            to="login"
+            replace
+          />
+        }
+      />
 
-        {/* Plans */}
-        <Route
-          path="plans"
-          element={<Plans />}
-        />
+      {/* ================================
+          CONTROL CENTER
+      ================================= */}
 
-        {/* Industries */}
-        <Route
-          path="industries"
-          element={<Industries />}
-        />
+      <Route
+        path="control-center"
+        element={
+          <MasterLayout>
+            <ControlCenter />
+          </MasterLayout>
+        }
+      />
 
-        {/* Modules */}
-        <Route
-          path="modules"
-          element={<Modules />}
-        />
+      {/* ================================
+          COMPANIES
+      ================================= */}
 
-        {/* Future Pages */}
-        <Route
-          path="users"
-          element={<h2>Users</h2>}
-        />
+      <Route
+        path="companies"
+        element={
+          <MasterLayout>
+            <Companies />
+          </MasterLayout>
+        }
+      />
 
-        <Route
-          path="billing"
-          element={<h2>Billing</h2>}
-        />
+      {/* ================================
+          PLANS
+      ================================= */}
 
-        <Route
-          path="reports"
-          element={<h2>Reports</h2>}
-        />
+      <Route
+        path="plans"
+        element={
+          <MasterLayout>
+            <Plans />
+          </MasterLayout>
+        }
+      />
 
-        <Route
-          path="ai"
-          element={<h2>AI Center</h2>}
-        />
+      {/* ================================
+          INDUSTRIES
+      ================================= */}
 
-        <Route
-          path="settings"
-          element={<h2>Settings</h2>}
-        />
+      <Route
+        path="industries"
+        element={
+          <MasterLayout>
+            <Industries />
+          </MasterLayout>
+        }
+      />
 
-      </Routes>
+      {/* ================================
+          MODULES
+      ================================= */}
 
-    </MasterLayout>
+      <Route
+        path="modules"
+        element={
+          <MasterLayout>
+            <Modules />
+          </MasterLayout>
+        }
+      />
+
+      {/* ================================
+          FUTURE MASTER PAGES
+      ================================= */}
+
+      <Route
+        path="users"
+        element={
+          <MasterLayout>
+            <h2>Users</h2>
+          </MasterLayout>
+        }
+      />
+
+      <Route
+        path="billing"
+        element={
+          <MasterLayout>
+            <h2>Billing</h2>
+          </MasterLayout>
+        }
+      />
+
+      <Route
+        path="reports"
+        element={
+          <MasterLayout>
+            <h2>Reports</h2>
+          </MasterLayout>
+        }
+      />
+
+      <Route
+        path="ai"
+        element={
+          <MasterLayout>
+            <h2>AI Center</h2>
+          </MasterLayout>
+        }
+      />
+
+      <Route
+        path="settings"
+        element={
+          <MasterLayout>
+            <h2>Settings</h2>
+          </MasterLayout>
+        }
+      />
+
+      {/* ================================
+          UNKNOWN MASTER ROUTE
+      ================================= */}
+
+      <Route
+        path="*"
+        element={
+          <Navigate
+            to="login"
+            replace
+          />
+        }
+      />
+
+    </Routes>
   );
 }
