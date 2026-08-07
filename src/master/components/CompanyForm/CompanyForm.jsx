@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./CompanyForm.css";
 
 const initialForm = {
@@ -10,9 +10,36 @@ const initialForm = {
   status: "Active",
 };
 
-export default function CompanyForm({ onClose, onSave }) {
+export default function CompanyForm({
+  company = null,
+  onClose,
+  onSave,
+}) {
 
   const [form, setForm] = useState(initialForm);
+
+  const isEditMode = Boolean(company);
+
+  useEffect(() => {
+
+    if (company) {
+
+      setForm({
+        company: company.company || "",
+        owner: company.owner || "",
+        email: company.email || "",
+        phone: company.phone || "",
+        plan: company.plan || "Starter",
+        status: company.status || "Active",
+      });
+
+    } else {
+
+      setForm(initialForm);
+
+    }
+
+  }, [company]);
 
   const handleChange = (event) => {
 
@@ -38,11 +65,18 @@ export default function CompanyForm({ onClose, onSave }) {
     }
 
     onSave({
+
       ...form,
+
+      ...(company
+        ? { id: company.id }
+        : {}),
+
       company: form.company.trim(),
       owner: form.owner.trim(),
       email: form.email.trim(),
       phone: form.phone.trim(),
+
     });
 
   };
@@ -62,7 +96,9 @@ export default function CompanyForm({ onClose, onSave }) {
             </span>
 
             <h2>
-              Add Company
+              {isEditMode
+                ? "Edit Company"
+                : "Add Company"}
             </h2>
 
           </div>
@@ -87,7 +123,9 @@ export default function CompanyForm({ onClose, onSave }) {
 
             <label>
 
-              <span>Company Name</span>
+              <span>
+                Company Name
+              </span>
 
               <input
                 name="company"
@@ -102,7 +140,9 @@ export default function CompanyForm({ onClose, onSave }) {
 
             <label>
 
-              <span>Owner</span>
+              <span>
+                Owner
+              </span>
 
               <input
                 name="owner"
@@ -117,7 +157,9 @@ export default function CompanyForm({ onClose, onSave }) {
 
             <label>
 
-              <span>Email</span>
+              <span>
+                Email
+              </span>
 
               <input
                 name="email"
@@ -132,7 +174,9 @@ export default function CompanyForm({ onClose, onSave }) {
 
             <label>
 
-              <span>Phone</span>
+              <span>
+                Phone
+              </span>
 
               <input
                 name="phone"
@@ -146,7 +190,9 @@ export default function CompanyForm({ onClose, onSave }) {
 
             <label>
 
-              <span>Plan</span>
+              <span>
+                Plan
+              </span>
 
               <select
                 name="plan"
@@ -176,7 +222,9 @@ export default function CompanyForm({ onClose, onSave }) {
 
             <label>
 
-              <span>Status</span>
+              <span>
+                Status
+              </span>
 
               <select
                 name="status"
@@ -216,7 +264,9 @@ export default function CompanyForm({ onClose, onSave }) {
               type="submit"
               className="company-form-save"
             >
-              Save Company
+              {isEditMode
+                ? "Update Company"
+                : "Save Company"}
             </button>
 
           </div>
