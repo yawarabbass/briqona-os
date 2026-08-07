@@ -1,25 +1,52 @@
-.kpi-cards{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:24px;
-}
+/* ==========================================================
+   BRIQONA OS
+   KPI CARDS
+========================================================== */
 
-@media(max-width:1200px){
+.kpi-cards {
 
-.kpi-cards{
+  width: 100%;
 
-grid-template-columns:repeat(2,1fr);
+  display: grid;
 
-}
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
 
-}
-
-@media(max-width:768px){
-
-.kpi-cards{
-
-grid-template-columns:1fr;
+  gap: 20px;
 
 }
+
+
+/* ==========================================================
+   TABLET / LARGE SCREEN
+========================================================== */
+
+@media (max-width: 1200px) {
+
+  .kpi-cards {
+
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 18px;
+
+  }
+
+}
+
+
+/* ==========================================================
+   MOBILE
+========================================================== */
+
+@media (max-width: 768px) {
+
+  .kpi-cards {
+
+    grid-template-columns: 1fr;
+
+    gap: 16px;
+
+  }
 
 }
