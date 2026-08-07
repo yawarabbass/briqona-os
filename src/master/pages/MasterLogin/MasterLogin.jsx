@@ -10,25 +10,26 @@ export default function MasterLogin() {
   const [error, setError] = useState("");
 
   const handleSubmit = (event) => {
-    event.preventDefault();
+  event.preventDefault();
 
-    setError("");
+  setError("");
 
-    if (!email.trim() || !password.trim()) {
-      setError("Please enter your email and password.");
-      return;
-    }
+  if (!email.trim() || !password.trim()) {
+    setError("Please enter your email and password.");
+    return;
+  }
 
-    // Prototype authentication
-    localStorage.setItem(
-      "briqona_master_auth",
-      "true"
-    );
+  // Prototype authentication
+  localStorage.setItem(
+    "briqona_master_auth",
+    "true"
+  );
 
-    navigate("/master", {
-      replace: true,
-    });
-  };
+  // Login successful → Control Center
+  navigate("/master/control-center", {
+    replace: true,
+  });
+};
 
   return (
     <main className="master-login-page">
