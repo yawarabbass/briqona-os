@@ -1,20 +1,52 @@
-/*
-|--------------------------------------------------------------------------
-| BRIQONA OS
-|--------------------------------------------------------------------------
-| Company Table
-|--------------------------------------------------------------------------
-*/
-
+import { useMemo, useState } from "react";
 import "./CompanyTable.css";
 import companies from "../../data/companies";
 
 export default function CompanyTable() {
+
+  const [search, setSearch] = useState("");
+  const [status, setStatus] = useState("all");
+  const [plan, setPlan] = useState("all");
+
+  const filteredCompanies = useMemo(() => {
+
+    const keyword = search.trim().toLowerCase();
+
+    return companies.filter((company) => {
+
+      const matchesSearch =
+        !keyword ||
+        company.company?.toLowerCase().includes(keyword) ||
+        company.owner?.toLowerCase().includes(keyword) ||
+        company.email?.toLowerCase().includes(keyword) ||
+        company.phone?.toLowerCase().includes(keyword);
+
+      const matchesStatus =
+        status === "all" ||
+        company.status === status;
+
+      const matchesPlan =
+        plan === "all" ||
+        company.plan === plan;
+
+      return (
+        matchesSearch &&
+        matchesStatus &&
+        matchesPlan
+      );
+
+    });
+
+  }, [search, status, plan]);
+
   return (
+
     <section className="company-table">
 
       <div className="company-table-header">
+
         <div>
+
           <span className="company-table-label">
             Companies
           </span>
@@ -22,6 +54,7 @@ export default function CompanyTable() {
           <h2>
             Company Directory
           </h2>
+
         </div>
 
         <button
@@ -30,6 +63,86 @@ export default function CompanyTable() {
         >
           + Add Company
         </button>
+
+      </div>
+
+      <div className="company-table-controls">
+
+        <div className="company-table-search">
+
+          <input
+            type="text"
+            placeholder="Search company, owner, email or phone..."
+            value={search}
+            onChange={(event) =>
+              setSearch(event.target.value)
+            }
+          />
+
+        </div>
+
+        <select
+          value={status}
+          onChange={(event) =>
+            setStatus(event.target.value)
+          }
+          className="company-table-filter"
+        >
+
+          <option value="all">
+            All Status
+          </option>
+
+          <option value="Active">
+            Active
+          </option>
+
+          <option value="Pending">
+            Pending
+          </option>
+
+          <option value="Suspended">
+            Suspended
+          </option>
+
+        </select>
+
+        <select
+          value={plan}
+          onChange={(event) =>
+            setPlan(event.target.value)
+          }
+          className="company-table-filter"
+        >
+
+          <option value="all">
+            All Plans
+          </option>
+
+          <option value="Starter">
+            Starter
+          </option>
+
+          <option value="Business">
+            Business
+          </option>
+
+          <option value="Professional">
+            Professional
+          </option>
+
+          <option value="Enterprise">
+            Enterprise
+          </option>
+
+        </select>
+
+      </div>
+
+      <div className="company-table-result">
+
+        Showing {filteredCompanies.length} of {companies.length} companies
+
       </div>
 
       <div className="company-table-wrapper">
@@ -39,39 +152,67 @@ export default function CompanyTable() {
           <thead>
 
             <tr>
+
               <th>Company</th>
+
               <th>Owner</th>
+
               <th>Plan</th>
+
               <th>Status</th>
+
             </tr>
 
           </thead>
 
           <tbody>
 
-            {companies.map((company) => (
+            {filteredCompanies.length > 0 ? (
 
-              <tr key={company.id}>
+              filteredCompanies.map((company) => (
 
-                <td>{company.company}</td>
+                <tr key={company.id}>
 
-                <td>{company.owner}</td>
+                  <td>
+                    {company.company}
+                  </td>
 
-                <td>{company.plan}</td>
+                  <td>
+                    {company.owner}
+                  </td>
 
-                <td>
+                  <td>
+                    {company.plan}
+                  </td>
 
-                  <span
-                    className={`status-badge ${company.status.toLowerCase()}`}
-                  >
-                    {company.status}
-                  </span>
+                  <td>
 
+                    <span
+                      className={`status-badge ${company.status.toLowerCase()}`}
+                    >
+                      {company.status}
+                    </span>
+
+                  </td>
+
+                </tr>
+
+              ))
+
+            ) : (
+
+              <tr>
+
+                <td
+                  colSpan="4"
+                  className="company-table-empty"
+                >
+                  No companies found.
                 </td>
 
               </tr>
 
-            ))}
+            )}
 
           </tbody>
 
@@ -80,5 +221,7 @@ export default function CompanyTable() {
       </div>
 
     </section>
+
   );
+
 }
