@@ -4,6 +4,7 @@ import "./CompanyTable.css";
 import companies from "../../data/companies";
 import CompanyPagination from "../CompanyPagination/CompanyPagination";
 import CompanyDetails from "../CompanyDetails/CompanyDetails";
+import CompanyForm from "../CompanyForm/CompanyForm";
 
 const ITEMS_PER_PAGE = 5;
 
@@ -19,7 +20,8 @@ export default function CompanyTable() {
   const filteredCompanies = useMemo(() => {
 
     const keyword = search.trim().toLowerCase();
-
+    const [showAddForm, setShowAddForm] = useState(false);
+    
     return companies.filter((company) => {
 
       const matchesSearch =
