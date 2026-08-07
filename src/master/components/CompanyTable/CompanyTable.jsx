@@ -405,8 +405,7 @@ const handleEditCompany = (company) => {
       {/* ==========================
           Add Company Form
       ========================== */}
-
-            {showAddForm && (
+{showAddForm && (
 
   <CompanyForm
     onClose={() =>
@@ -443,4 +442,4 @@ const handleEditCompany = (company) => {
 )}
 
 </section>
-
+            
