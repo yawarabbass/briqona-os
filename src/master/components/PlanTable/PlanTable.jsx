@@ -2,31 +2,70 @@ import { useMemo, useState } from "react";
 import "./PlanTable.css";
 
 import plans from "../../data/plans";
+import PlanForm from "../PlanForm/PlanForm";
 
 export default function PlanTable() {
 
   const [planList, setPlanList] = useState(plans);
 
   const [selectedPlan, setSelectedPlan] = useState(null);
+
   const [editingPlan, setEditingPlan] = useState(null);
 
   const [deletePlan, setDeletePlan] = useState(null);
 
+  const [showAddForm, setShowAddForm] = useState(false);
+
+
+  /* ==========================================================
+     VISIBLE PLANS
+  ========================================================== */
+
   const visiblePlans = useMemo(() => {
+
     return planList;
+
   }, [planList]);
 
+
+  /* ==========================================================
+     VIEW
+  ========================================================== */
+
   const handleView = (plan) => {
+
     setSelectedPlan(plan);
+
   };
+
+
+  /* ==========================================================
+     EDIT
+  ========================================================== */
 
   const handleEdit = (plan) => {
+
     setEditingPlan(plan);
+
+    setSelectedPlan(null);
+
   };
 
+
+  /* ==========================================================
+     DELETE REQUEST
+  ========================================================== */
+
   const handleDeleteRequest = (plan) => {
+
     setDeletePlan(plan);
+
   };
+
+
+  /* ==========================================================
+     DELETE CONFIRM
+  ========================================================== */
 
   const handleDeleteConfirm = () => {
 
@@ -36,7 +75,8 @@ export default function PlanTable() {
 
     setPlanList((current) =>
       current.filter(
-        (plan) => plan.id !== deletePlan.id
+        (plan) =>
+          plan.id !== deletePlan.id
       )
     );
 
@@ -44,21 +84,94 @@ export default function PlanTable() {
 
   };
 
-  const handleCloseView = () => {
-    setSelectedPlan(null);
+
+  /* ==========================================================
+     ADD PLAN
+  ========================================================== */
+
+  const handleAddPlan = (newPlan) => {
+
+    const plan = {
+
+      ...newPlan,
+
+      id: Date.now(),
+
+    };
+
+    setPlanList((current) => [
+
+      plan,
+
+      ...current,
+
+    ]);
+
+    setShowAddForm(false);
+
   };
 
-  const handleCloseEdit = () => {
+
+  /* ==========================================================
+     UPDATE PLAN
+  ========================================================== */
+
+  const handleUpdatePlan = (updatedPlan) => {
+
+    setPlanList((current) =>
+      current.map((plan) =>
+        plan.id === updatedPlan.id
+          ? updatedPlan
+          : plan
+      )
+    );
+
     setEditingPlan(null);
+
   };
+
+
+  /* ==========================================================
+     CLOSE VIEW
+  ========================================================== */
+
+  const handleCloseView = () => {
+
+    setSelectedPlan(null);
+
+  };
+
+
+  /* ==========================================================
+     CLOSE EDIT
+  ========================================================== */
+
+  const handleCloseEdit = () => {
+
+    setEditingPlan(null);
+
+  };
+
+
+  /* ==========================================================
+     CLOSE ADD
+  ========================================================== */
+
+  const handleCloseAdd = () => {
+
+    setShowAddForm(false);
+
+  };
+
 
   return (
 
     <section className="plan-table">
 
-      {/* ==========================
+
+      {/* ======================================================
           HEADER
-      ========================== */}
+      ====================================================== */}
 
       <div className="plan-table-header">
 
@@ -73,17 +186,29 @@ export default function PlanTable() {
           </h2>
 
           <p>
-            Manage subscription plans and their limits.
+            Manage subscription plans
+            and their limits.
           </p>
 
         </div>
 
+
+        <button
+          type="button"
+          className="plan-table-add-button"
+          onClick={() =>
+            setShowAddForm(true)
+          }
+        >
+          + Add Plan
+        </button>
+
       </div>
 
 
-      {/* ==========================
+      {/* ======================================================
           RESULT
-      ========================== */}
+      ====================================================== */}
 
       <div className="plan-table-result">
 
@@ -97,14 +222,15 @@ export default function PlanTable() {
 
         {visiblePlans.length === 1
           ? "plan"
-          : "plans"}
+          : "plans"
+        }
 
       </div>
 
 
-      {/* ==========================
+      {/* ======================================================
           TABLE
-      ========================== */}
+      ====================================================== */}
 
       <div className="plan-table-wrapper">
 
@@ -155,6 +281,9 @@ export default function PlanTable() {
 
                 <tr key={plan.id}>
 
+
+                  {/* PLAN */}
+
                   <td data-label="Plan">
 
                     <div className="plan-name-cell">
@@ -168,6 +297,8 @@ export default function PlanTable() {
                   </td>
 
 
+                  {/* PRICE */}
+
                   <td data-label="Price">
 
                     <strong className="plan-price">
@@ -177,12 +308,16 @@ export default function PlanTable() {
                   </td>
 
 
+                  {/* BILLING */}
+
                   <td data-label="Billing">
 
                     {plan.billing}
 
                   </td>
 
+
+                  {/* COMPANIES */}
 
                   <td data-label="Companies">
 
@@ -191,12 +326,16 @@ export default function PlanTable() {
                   </td>
 
 
+                  {/* USERS */}
+
                   <td data-label="Users">
 
                     {plan.users}
 
                   </td>
 
+
+                  {/* STATUS */}
 
                   <td data-label="Status">
 
@@ -212,12 +351,15 @@ export default function PlanTable() {
                   </td>
 
 
+                  {/* ACTION */}
+
                   <td
                     data-label="Action"
                     className="plan-action-cell"
                   >
 
                     <div className="plan-table-actions">
+
 
                       <button
                         type="button"
@@ -251,6 +393,7 @@ export default function PlanTable() {
                         Delete
                       </button>
 
+
                     </div>
 
                   </td>
@@ -281,15 +424,16 @@ export default function PlanTable() {
       </div>
 
 
-      {/* ==========================
-          VIEW PANEL
-      ========================== */}
+      {/* ======================================================
+          VIEW PLAN
+      ====================================================== */}
 
       {selectedPlan && (
 
         <div className="plan-preview-overlay">
 
           <div className="plan-preview-modal">
+
 
             <div className="plan-preview-header">
 
@@ -310,7 +454,7 @@ export default function PlanTable() {
                 type="button"
                 className="plan-preview-close"
                 onClick={handleCloseView}
-                aria-label="Close"
+                aria-label="Close plan details"
               >
                 ×
               </button>
@@ -320,7 +464,9 @@ export default function PlanTable() {
 
             <div className="plan-preview-grid">
 
+
               <div>
+
                 <span>
                   Price
                 </span>
@@ -328,10 +474,12 @@ export default function PlanTable() {
                 <strong>
                   {selectedPlan.price}
                 </strong>
+
               </div>
 
 
               <div>
+
                 <span>
                   Billing
                 </span>
@@ -339,10 +487,12 @@ export default function PlanTable() {
                 <strong>
                   {selectedPlan.billing}
                 </strong>
+
               </div>
 
 
               <div>
+
                 <span>
                   Companies
                 </span>
@@ -350,10 +500,12 @@ export default function PlanTable() {
                 <strong>
                   {selectedPlan.companies}
                 </strong>
+
               </div>
 
 
               <div>
+
                 <span>
                   Users
                 </span>
@@ -361,10 +513,12 @@ export default function PlanTable() {
                 <strong>
                   {selectedPlan.users}
                 </strong>
+
               </div>
 
 
               <div>
+
                 <span>
                   Status
                 </span>
@@ -372,12 +526,15 @@ export default function PlanTable() {
                 <strong>
                   {selectedPlan.status}
                 </strong>
+
               </div>
+
 
             </div>
 
 
             <div className="plan-preview-actions">
+
 
               <button
                 type="button"
@@ -387,20 +544,20 @@ export default function PlanTable() {
                 Close
               </button>
 
+
               <button
                 type="button"
                 className="plan-preview-primary"
-                onClick={() => {
-
-                  setEditingPlan(selectedPlan);
-                  setSelectedPlan(null);
-
-                }}
+                onClick={() =>
+                  handleEdit(selectedPlan)
+                }
               >
                 Edit Plan
               </button>
 
+
             </div>
+
 
           </div>
 
@@ -409,81 +566,38 @@ export default function PlanTable() {
       )}
 
 
-      {/* ==========================
-          EDIT TEST PANEL
-      ========================== */}
+      {/* ======================================================
+          ADD PLAN FORM
+      ====================================================== */}
+
+      {showAddForm && (
+
+        <PlanForm
+          onClose={handleCloseAdd}
+          onSave={handleAddPlan}
+        />
+
+      )}
+
+
+      {/* ======================================================
+          EDIT PLAN FORM
+      ====================================================== */}
 
       {editingPlan && (
 
-        <div className="plan-preview-overlay">
-
-          <div className="plan-preview-modal">
-
-            <div className="plan-preview-header">
-
-              <div>
-
-                <span className="plan-preview-label">
-                  PLAN MANAGEMENT
-                </span>
-
-                <h3>
-                  Edit {editingPlan.name}
-                </h3>
-
-              </div>
-
-
-              <button
-                type="button"
-                className="plan-preview-close"
-                onClick={handleCloseEdit}
-                aria-label="Close"
-              >
-                ×
-              </button>
-
-            </div>
-
-
-            <div className="plan-edit-message">
-
-              <p>
-                Plan editing form will be connected
-                in the next step with
-                <strong> PlanForm </strong>.
-              </p>
-
-              <span>
-                The current plan is selected correctly
-                and ready for the final form integration.
-              </span>
-
-            </div>
-
-
-            <div className="plan-preview-actions">
-
-              <button
-                type="button"
-                className="plan-preview-secondary"
-                onClick={handleCloseEdit}
-              >
-                Close
-              </button>
-
-            </div>
-
-          </div>
-
-        </div>
+        <PlanForm
+          plan={editingPlan}
+          onClose={handleCloseEdit}
+          onSave={handleUpdatePlan}
+        />
 
       )}
 
 
-      {/* ==========================
+      {/* ======================================================
           DELETE CONFIRMATION
-      ========================== */}
+      ====================================================== */}
 
       {deletePlan && (
 
@@ -491,25 +605,31 @@ export default function PlanTable() {
 
           <div className="plan-delete-modal">
 
+
             <div className="plan-delete-icon">
               !
             </div>
+
 
             <span className="plan-preview-label">
               DELETE PLAN
             </span>
 
+
             <h3>
               Delete {deletePlan.name}?
             </h3>
 
+
             <p>
-              This frontend test action will remove
-              the plan from the current list.
+              This frontend test action will
+              remove the plan from the current
+              list.
             </p>
 
 
             <div className="plan-preview-actions">
+
 
               <button
                 type="button"
@@ -530,7 +650,9 @@ export default function PlanTable() {
                 Delete Plan
               </button>
 
+
             </div>
+
 
           </div>
 
@@ -538,7 +660,9 @@ export default function PlanTable() {
 
       )}
 
+
     </section>
 
   );
+
 }
