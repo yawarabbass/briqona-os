@@ -1,6 +1,8 @@
 import { Routes, Route, Navigate } from "react-router-dom";
- 
+
 import MasterLayout from "../../master/layouts/MasterLayout";
+
+import MasterLogin from "../../master/pages/MasterLogin/MasterLogin";
 
 import ControlCenter from "../../master/pages/ControlCenter/ControlCenter";
 import Companies from "../../master/pages/Companies/Companies";
@@ -10,27 +12,113 @@ import Modules from "../../master/pages/Modules/Modules";
 
 export default function MasterRoutes() {
   return (
-    <MasterLayout>
-      <Routes>
+    <Routes>
 
-        <Route index element={<Navigate to="dashboard" replace />} />
+      {/* =========================================
+          MASTER LOGIN
+      ========================================= */}
 
-        <Route index element={<Navigate to="control-center" replace />} />
+      <Route
+        path="login"
+        element={<MasterLogin />}
+      />
 
-        <Route path="control-center" element={<ControlCenter />} />
-        <Route path="companies" element={<Companies />} />
-        <Route path="plans" element={<Plans />} />
-        <Route path="industries" element={<Industries />} />
-        <Route path="modules" element={<Modules />} />
+      {/* =========================================
+          MASTER CONTROL CENTER
+      ========================================= */}
 
-        {/* Future Pages */}
-        <Route path="users" element={<h2>Users</h2>} />
-        <Route path="billing" element={<h2>Billing</h2>} />
-        <Route path="reports" element={<h2>Reports</h2>} />
-        <Route path="ai" element={<h2>AI Center</h2>} />
-        <Route path="settings" element={<h2>Settings</h2>} />
+      <Route
+        path="*"
+        element={
+          <MasterLayout>
 
-      </Routes>
-    </MasterLayout>
-  );
+            <Routes>
+
+              {/* Master Home */}
+              <Route
+                index
+                element={
+                  <Navigate
+                    to="control-center"
+                    replace
+                  />
+                }
+              />
+
+              {/* Control Center */}
+              <Route
+                path="control-center"
+                element={<ControlCenter />}
+              />
+
+              {/* Companies */}
+              <Route
+                path="companies"
+                element={<Companies />}
+              />
+
+              {/* Plans */}
+              <Route
+                path="plans"
+                element={<Plans />}
+              />
+
+              {/* Industries */}
+              <Route
+                path="industries"
+                element={<Industries />}
+              />
+
+              {/* Modules */}
+              <Route
+                path="modules"
+                element={<Modules />}
+              />
+
+              {/* Future Pages */}
+
+              <Route
+                path="users"
+                element={<h2>Users</h2>}
+              />
+
+              <Route
+                path="billing"
+                element={<h2>Billing</h2>}
+              />
+
+              <Route
+                path="reports"
+                element={<h2>Reports</h2>}
+              />
+
+              <Route
+                path="ai"
+                element={<h2>AI Center</h2>}
+              />
+
+              <Route
+                path="settings"
+                element={<h2>Settings</h2>}
+              />
+
+              {/* Unknown Master Page */}
+              <Route
+                path="*"
+                element={
+                  <Navigate
+                    to="control-center"
+                    replace
+                  />
+                }
+              />
+
+            </Routes>
+
+          </MasterLayout>
         }
+      />
+
+    </Routes>
+  );
+}
