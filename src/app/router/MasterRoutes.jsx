@@ -10,156 +10,113 @@ import Plans from "../../master/pages/Plans/Plans";
 import Industries from "../../master/pages/Industries/Industries";
 import Modules from "../../master/pages/Modules/Modules";
 
+function MasterAuthGuard({ children }) {
+  const authenticated =
+    localStorage.getItem("briqona_master_auth") === "true";
+
+  if (!authenticated) {
+    return <Navigate to="/master/login" replace />;
+  }
+
+  return children;
+}
+
 export default function MasterRoutes() {
   return (
     <Routes>
 
-      {/* =========================
+      {/* ==============================
           MASTER LOGIN
-      ========================= */}
+      ============================== */}
 
       <Route
         path="login"
         element={<MasterLogin />}
       />
 
-      {/* =========================
-          MASTER CONTROL CENTER
-      ========================= */}
+      {/* ==============================
+          PROTECTED MASTER CONTROL CENTER
+      ============================== */}
 
       <Route
-        path="control-center"
         element={
-          <MasterLayout>
-            <ControlCenter />
-          </MasterLayout>
+          <MasterAuthGuard>
+            <MasterLayout />
+          </MasterAuthGuard>
         }
-      />
+      >
 
-      {/* =========================
-          COMPANIES
-      ========================= */}
+        <Route
+          index
+          element={
+            <Navigate
+              to="control-center"
+              replace
+            />
+          }
+        />
 
-      <Route
-        path="companies"
-        element={
-          <MasterLayout>
-            <Companies />
-          </MasterLayout>
-        }
-      />
+        <Route
+          path="control-center"
+          element={<ControlCenter />}
+        />
 
-      {/* =========================
-          PLANS
-      ========================= */}
+        <Route
+          path="companies"
+          element={<Companies />}
+        />
 
-      <Route
-        path="plans"
-        element={
-          <MasterLayout>
-            <Plans />
-          </MasterLayout>
-        }
-      />
+        <Route
+          path="plans"
+          element={<Plans />}
+        />
 
-      {/* =========================
-          INDUSTRIES
-      ========================= */}
+        <Route
+          path="industries"
+          element={<Industries />}
+        />
 
-      <Route
-        path="industries"
-        element={
-          <MasterLayout>
-            <Industries />
-          </MasterLayout>
-        }
-      />
+        <Route
+          path="modules"
+          element={<Modules />}
+        />
 
-      {/* =========================
-          MODULES
-      ========================= */}
+        {/* Future Pages */}
 
-      <Route
-        path="modules"
-        element={
-          <MasterLayout>
-            <Modules />
-          </MasterLayout>
-        }
-      />
+        <Route
+          path="users"
+          element={<h2>Users</h2>}
+        />
 
-      {/* =========================
-          FUTURE PAGES
-      ========================= */}
+        <Route
+          path="billing"
+          element={<h2>Billing</h2>}
+        />
 
-      <Route
-        path="users"
-        element={
-          <MasterLayout>
-            <h2>Users</h2>
-          </MasterLayout>
-        }
-      />
+        <Route
+          path="reports"
+          element={<h2>Reports</h2>}
+        />
 
-      <Route
-        path="billing"
-        element={
-          <MasterLayout>
-            <h2>Billing</h2>
-          </MasterLayout>
-        }
-      />
+        <Route
+          path="ai"
+          element={<h2>AI Center</h2>}
+        />
 
-      <Route
-        path="reports"
-        element={
-          <MasterLayout>
-            <h2>Reports</h2>
-          </MasterLayout>
-        }
-      />
+        <Route
+          path="settings"
+          element={<h2>Settings</h2>}
+        />
 
-      <Route
-        path="ai"
-        element={
-          <MasterLayout>
-            <h2>AI Center</h2>
-          </MasterLayout>
-        }
-      />
+      </Route>
 
-      <Route
-        path="settings"
-        element={
-          <MasterLayout>
-            <h2>Settings</h2>
-          </MasterLayout>
-        }
-      />
-
-      {/* =========================
-          MASTER ROOT
-      ========================= */}
-
-      <Route
-        index
-        element={
-          <Navigate
-            to="control-center"
-            replace
-          />
-        }
-      />
-
-      {/* =========================
-          UNKNOWN MASTER ROUTE
-      ========================= */}
+      {/* Unknown master route */}
 
       <Route
         path="*"
         element={
           <Navigate
-            to="control-center"
+            to="login"
             replace
           />
         }
