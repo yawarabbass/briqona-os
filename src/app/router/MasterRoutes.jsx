@@ -2,85 +2,60 @@ import { Routes, Route, Navigate } from "react-router-dom";
 
 import MasterLayout from "../../master/layouts/MasterLayout";
 
-import MasterLogin from "../../master/pages/MasterLogin/MasterLogin";
-
 import ControlCenter from "../../master/pages/ControlCenter/ControlCenter";
 import Companies from "../../master/pages/Companies/Companies";
 import Plans from "../../master/pages/Plans/Plans";
 import Industries from "../../master/pages/Industries/Industries";
 import Modules from "../../master/pages/Modules/Modules";
 
-function MasterAuthGuard({ children }) {
-  const authenticated =
-    localStorage.getItem("briqona_master_auth") === "true";
-
-  if (!authenticated) {
-    return <Navigate to="/master/login" replace />;
-  }
-
-  return children;
-}
-
 export default function MasterRoutes() {
   return (
-    <Routes>
+    <MasterLayout>
 
-      {/* ==============================
-          MASTER LOGIN
-      ============================== */}
+      <Routes>
 
-      <Route
-        path="login"
-        element={<MasterLogin />}
-      />
-
-      {/* ==============================
-          PROTECTED MASTER CONTROL CENTER
-      ============================== */}
-
-      <Route
-        element={
-          <MasterAuthGuard>
-            <MasterLayout />
-          </MasterAuthGuard>
-        }
-      >
-
+        {/* Master Home */}
         <Route
           index
           element={
-            navigate
-            ("/master/control-center", {
-             replace: true,
-               });
+            <Navigate
+              to="control-center"
+              replace
+            />
+          }
+        />
 
+        {/* Control Center */}
         <Route
           path="control-center"
           element={<ControlCenter />}
         />
 
+        {/* Companies */}
         <Route
           path="companies"
           element={<Companies />}
         />
 
+        {/* Plans */}
         <Route
           path="plans"
           element={<Plans />}
         />
 
+        {/* Industries */}
         <Route
           path="industries"
           element={<Industries />}
         />
 
+        {/* Modules */}
         <Route
           path="modules"
           element={<Modules />}
         />
 
         {/* Future Pages */}
-
         <Route
           path="users"
           element={<h2>Users</h2>}
@@ -106,20 +81,8 @@ export default function MasterRoutes() {
           element={<h2>Settings</h2>}
         />
 
-      </Route>
+      </Routes>
 
-      {/* Unknown master route */}
-
-      <Route
-        path="*"
-        element={
-          <Navigate
-            to="login"
-            replace
-          />
-        }
-      />
-
-    </Routes>
+    </MasterLayout>
   );
 }
