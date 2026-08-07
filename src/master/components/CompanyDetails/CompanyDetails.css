@@ -1,5 +1,5 @@
 .company-details {
- 
+
   background: var(--color-surface);
 
   border: 1px solid var(--color-border);
@@ -11,6 +11,7 @@
   box-shadow: var(--shadow-sm);
 
 }
+
 
 .company-details-header {
 
@@ -25,6 +26,7 @@
   margin-bottom: 24px;
 
 }
+
 
 .company-details-label {
 
@@ -42,6 +44,7 @@
 
 }
 
+
 .company-details h2 {
 
   margin: 0;
@@ -51,6 +54,64 @@
   color: var(--color-heading);
 
 }
+
+
+.company-details-header-actions {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  flex-shrink: 0;
+
+}
+
+
+.company-details-close {
+
+  width: 38px;
+
+  height: 38px;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border: 1px solid var(--color-border);
+
+  border-radius: 10px;
+
+  background: var(--color-surface);
+
+  color: var(--color-text);
+
+  font-size: 23px;
+
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition: .2s ease;
+
+}
+
+
+.company-details-close:hover {
+
+  background: var(--color-primary);
+
+  border-color: var(--color-primary);
+
+  color: #fff;
+
+  transform: translateY(-1px);
+
+}
+
 
 .company-details-grid {
 
@@ -67,6 +128,7 @@
   border-radius: var(--radius-md);
 
 }
+
 
 .company-details-grid div {
 
@@ -86,6 +148,7 @@
 
 }
 
+
 .company-details-grid span {
 
   font-size: 13px;
@@ -93,6 +156,7 @@
   color: var(--color-text-light);
 
 }
+
 
 .company-details-grid strong {
 
@@ -104,7 +168,14 @@
 
 }
 
+
 .company-details-status {
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
 
   padding: 7px 12px;
 
@@ -114,7 +185,10 @@
 
   font-weight: 600;
 
+  white-space: nowrap;
+
 }
+
 
 .company-details-status.active {
 
@@ -124,6 +198,7 @@
 
 }
 
+
 .company-details-status.pending {
 
   color: #b45309;
@@ -131,6 +206,7 @@
   background: rgba(245, 158, 11, .12);
 
 }
+
 
 .company-details-status.suspended {
 
@@ -140,6 +216,7 @@
 
 }
 
+
 .company-details-empty {
 
   margin: 0;
@@ -147,6 +224,7 @@
   color: var(--color-text-light);
 
 }
+
 
 @media (max-width: 768px) {
 
@@ -156,11 +234,22 @@
 
   }
 
+
   .company-details-header {
 
     flex-direction: column;
 
   }
+
+
+  .company-details-header-actions {
+
+    width: 100%;
+
+    justify-content: space-between;
+
+  }
+
 
   .company-details-grid {
 
