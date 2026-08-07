@@ -1,45 +1,117 @@
 import "./CompanyDetails.css";
 
-export default function CompanyDetails() {
+export default function CompanyDetails({ company }) {
+
+  if (!company) {
+
+    return (
+
+      <section className="company-details">
+
+        <h2>Company Details</h2>
+
+        <p className="company-details-empty">
+          Select a company to view its details.
+        </p>
+
+      </section>
+
+    );
+
+  }
+
   return (
+
     <section className="company-details">
 
-      <h2>Company Details</h2>
+      <div className="company-details-header">
+
+        <div>
+
+          <span className="company-details-label">
+            COMPANY PROFILE
+          </span>
+
+          <h2>
+            Company Details
+          </h2>
+
+        </div>
+
+        <span
+          className={`company-details-status ${company.status.toLowerCase()}`}
+        >
+          {company.status}
+        </span>
+
+      </div>
 
       <div className="company-details-grid">
 
         <div>
+
           <span>Company</span>
-          <strong>Alpha Technologies</strong>
+
+          <strong>
+            {company.company}
+          </strong>
+
         </div>
 
         <div>
+
           <span>Owner</span>
-          <strong>John Smith</strong>
+
+          <strong>
+            {company.owner}
+          </strong>
+
         </div>
 
         <div>
+
           <span>Email</span>
-          <strong>john@alpha.com</strong>
+
+          <strong>
+            {company.email}
+          </strong>
+
         </div>
 
         <div>
+
           <span>Phone</span>
-          <strong>+1 234 567 890</strong>
+
+          <strong>
+            {company.phone}
+          </strong>
+
         </div>
 
         <div>
+
           <span>Plan</span>
-          <strong>Enterprise</strong>
+
+          <strong>
+            {company.plan}
+          </strong>
+
         </div>
 
         <div>
+
           <span>Status</span>
-          <strong>Active</strong>
+
+          <strong>
+            {company.status}
+          </strong>
+
         </div>
 
       </div>
 
     </section>
+
   );
+
 }
