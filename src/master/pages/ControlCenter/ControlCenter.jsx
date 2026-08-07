@@ -1,9 +1,6 @@
 /*
-|--------------------------------------------------------------------------
-| BRIQONA OS
-|--------------------------------------------------------------------------
-| Master Control Center
-|--------------------------------------------------------------------------
+  BRIQONA OS
+  Master Control Center
 */
 
 import "./ControlCenter.css";
@@ -15,39 +12,258 @@ import RecentActivity from "../../components/RecentActivity/RecentActivity";
 import QuickActions from "../../components/QuickActions/QuickActions";
 import SystemStatus from "../../components/SystemStatus/SystemStatus";
 
-export default function ControlCenter(){
+export default function ControlCenter() {
+  return (
+    <main className="control-center">
 
-return(
+      {/* =====================================================
+          PAGE HEADER
+      ===================================================== */}
 
-<div className="control-center">
+      <section className="cc-page-header">
+
+        <div className="cc-heading">
+
+          <span className="cc-eyebrow">
+            MASTER CONTROL CENTER
+          </span>
+
+          <h1>
+            Control Center
+          </h1>
+
+          <p>
+            Monitor and manage the complete BRIQONA OS
+            platform from one central control point.
+          </p>
+
+        </div>
+
+        <div className="cc-header-status">
+
+          <span className="cc-status-dot" />
+
+          <div>
+            <strong>
+              System Operational
+            </strong>
+
+            <span>
+              All core services running normally
+            </span>
+          </div>
+
+        </div>
+
+      </section>
 
 
-<KpiCards />
+      {/* =====================================================
+          KPI OVERVIEW
+      ===================================================== */}
 
-<DashboardCharts />
+      <section className="cc-section">
 
-<div className="cc-grid">
+        <div className="cc-section-heading">
 
-<div className="cc-left">
+          <div>
+            <span className="cc-section-label">
+              OVERVIEW
+            </span>
 
-<LatestCompanies />
+            <h2>
+              Platform Overview
+            </h2>
+          </div>
 
-<RecentActivity />
+          <span className="cc-live-indicator">
+            Live
+          </span>
 
-</div>
+        </div>
 
-<div className="cc-right">
+        <KpiCards />
 
-<QuickActions />
+      </section>
 
-<SystemStatus />
 
-</div>
+      {/* =====================================================
+          MAIN DASHBOARD GRID
+      ===================================================== */}
 
-</div>
+      <section className="cc-grid">
 
-</div>
+        {/* ===================================================
+            LEFT COLUMN
+        =================================================== */}
 
-);
+        <div className="cc-left">
 
+          <div className="cc-panel">
+
+            <div className="cc-panel-header">
+
+              <div>
+                <span className="cc-section-label">
+                  ANALYTICS
+                </span>
+
+                <h2>
+                  Platform Analytics
+                </h2>
+              </div>
+
+              <span className="cc-panel-meta">
+                Overview
+              </span>
+
+            </div>
+
+            <div className="cc-panel-body">
+              <DashboardCharts />
+            </div>
+
+          </div>
+
+
+          <div className="cc-panel">
+
+            <div className="cc-panel-header">
+
+              <div>
+                <span className="cc-section-label">
+                  COMPANIES
+                </span>
+
+                <h2>
+                  Latest Companies
+                </h2>
+              </div>
+
+              <span className="cc-panel-meta">
+                Recent
+              </span>
+
+            </div>
+
+            <div className="cc-panel-body">
+              <LatestCompanies />
+            </div>
+
+          </div>
+
+
+          <div className="cc-panel">
+
+            <div className="cc-panel-header">
+
+              <div>
+                <span className="cc-section-label">
+                  ACTIVITY
+                </span>
+
+                <h2>
+                  Recent Activity
+                </h2>
+              </div>
+
+              <span className="cc-panel-meta">
+                Latest
+              </span>
+
+            </div>
+
+            <div className="cc-panel-body">
+              <RecentActivity />
+            </div>
+
+          </div>
+
+        </div>
+
+
+        {/* ===================================================
+            RIGHT COLUMN
+        =================================================== */}
+
+        <aside className="cc-right">
+
+          <div className="cc-panel cc-quick-panel">
+
+            <div className="cc-panel-header">
+
+              <div>
+                <span className="cc-section-label">
+                  ACTIONS
+                </span>
+
+                <h2>
+                  Quick Actions
+                </h2>
+              </div>
+
+            </div>
+
+            <div className="cc-panel-body">
+              <QuickActions />
+            </div>
+
+          </div>
+
+
+          <div className="cc-panel">
+
+            <div className="cc-panel-header">
+
+              <div>
+                <span className="cc-section-label">
+                  INFRASTRUCTURE
+                </span>
+
+                <h2>
+                  System Status
+                </h2>
+              </div>
+
+              <span className="cc-live-indicator">
+                Live
+              </span>
+
+            </div>
+
+            <div className="cc-panel-body">
+              <SystemStatus />
+            </div>
+
+          </div>
+
+        </aside>
+
+      </section>
+
+
+      {/* =====================================================
+          FOOTER STATUS
+      ===================================================== */}
+
+      <section className="cc-bottom-status">
+
+        <div className="cc-bottom-status-left">
+
+          <span className="cc-status-dot" />
+
+          <span>
+            BRIQONA OS Control Center is operational
+          </span>
+
+        </div>
+
+        <span className="cc-version">
+          Master Console
+        </span>
+
+      </section>
+
+    </main>
+  );
 }
