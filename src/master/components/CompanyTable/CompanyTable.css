@@ -539,8 +539,8 @@
 }
 
 
-/* ==========================================================
-   TABLET
+ /* ==========================================================
+   TABLET / MOBILE
 ========================================================== */
 
 @media (max-width: 768px) {
@@ -589,21 +589,147 @@
 
   }
 
-  .company-table-grid {
+  /* Mobile par horizontal scrolling band */
 
-    min-width: 680px;
+  .company-table-wrapper {
+
+    overflow-x: visible;
 
   }
 
-  .company-table-grid th {
+  /* Table ko normal responsive layout */
 
-    padding: 13px 18px;
+  .company-table-grid {
+
+    min-width: 0;
+
+    width: 100%;
+
+    border-collapse: separate;
+
+    border-spacing: 0;
+
+  }
+
+  .company-table-grid thead {
+
+    display: none;
+
+  }
+
+  .company-table-grid tbody {
+
+    display: block;
+
+    width: 100%;
+
+  }
+
+  .company-table-grid tr {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 0;
+
+    width: 100%;
+
+    padding: 16px;
+
+    border-top: 1px solid var(--color-border);
 
   }
 
   .company-table-grid td {
 
-    padding: 15px 18px;
+    display: block;
+
+    padding: 7px 4px;
+
+    border: none;
+
+    min-width: 0;
+
+  }
+
+  /* Company */
+
+  .company-table-grid td:nth-child(1) {
+
+    grid-column: 1 / -1;
+
+    padding-top: 2px;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    color: var(--color-heading);
+
+  }
+
+  /* Owner */
+
+  .company-table-grid td:nth-child(2) {
+
+    color: var(--color-text);
+
+  }
+
+  /* Plan */
+
+  .company-table-grid td:nth-child(3) {
+
+    color: var(--color-text);
+
+  }
+
+  /* Status */
+
+  .company-table-grid td:nth-child(4) {
+
+    display: flex;
+
+    align-items: center;
+
+  }
+
+  /* Action */
+
+  .company-table-grid td:nth-child(5) {
+
+    grid-column: 1 / -1;
+
+    padding-top: 12px;
+
+  }
+
+  .company-table-actions {
+
+    display: flex;
+
+    width: 100%;
+
+    gap: 8px;
+
+  }
+
+  .company-view-button,
+
+  .company-edit-button {
+
+    flex: 1;
+
+    min-height: 38px;
+
+  }
+
+  .company-table-empty {
+
+    display: block !important;
+
+    padding: 30px 16px !important;
 
   }
 
@@ -611,7 +737,7 @@
 
 
 /* ==========================================================
-   MOBILE
+   SMALL MOBILE
 ========================================================== */
 
 @media (max-width: 520px) {
@@ -664,55 +790,29 @@
 
   }
 
-  .company-table-actions {
+  .company-table-grid tr {
 
-    gap: 6px;
-
-  }
-
-  .company-view-button,
-  .company-edit-button {
-
-    min-height: 36px;
-
-    padding: 0 11px;
-
-    font-size: 12px;
+    padding: 15px 16px;
 
   }
-
-  .company-table-grid {
-
-    min-width: 650px;
-
-  }
-
-}
-
-
-/* ==========================================================
-   SMALL MOBILE
-========================================================== */
-
-@media (max-width: 380px) {
 
   .company-table-actions {
-
-    flex-direction: column;
-
-    align-items: stretch;
-
-    width: 100%;
-
-    min-width: 76px;
-
-  }
-
-  .company-view-button,
-  .company-edit-button {
 
     width: 100%;
 
   }
 
-}
+  .company-view-button,
+
+  .company-edit-button {
+
+    width: 50%;
+
+    min-height: 38px;
+
+    padding: 0 10px;
+
+  }
+
+}  
+    
