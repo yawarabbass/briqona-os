@@ -7,7 +7,7 @@ import PlanTable from "../../components/PlanTable/PlanTable";
 
 export default function Plans() {
   return (
-    <MasterLayout>
+  
 
       <section className="master-plans">
 
