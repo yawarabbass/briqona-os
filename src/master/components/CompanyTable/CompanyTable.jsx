@@ -3,6 +3,7 @@ import "./CompanyTable.css";
 
 import companies from "../../data/companies";
 import CompanyPagination from "../CompanyPagination/CompanyPagination";
+import CompanyDetails from "../CompanyDetails/CompanyDetails";
 
 const ITEMS_PER_PAGE = 5;
 
@@ -12,6 +13,8 @@ export default function CompanyTable() {
   const [status, setStatus] = useState("all");
   const [plan, setPlan] = useState("all");
   const [currentPage, setCurrentPage] = useState(1);
+
+  const [selectedCompany, setSelectedCompany] = useState(null);
 
   const filteredCompanies = useMemo(() => {
 
@@ -71,6 +74,12 @@ export default function CompanyTable() {
       startIndex,
       startIndex + ITEMS_PER_PAGE
     );
+
+  const handleView = (company) => {
+
+    setSelectedCompany(company);
+
+  };
 
   return (
 
@@ -203,6 +212,8 @@ export default function CompanyTable() {
 
               <th>Status</th>
 
+              <th>Action</th>
+
             </tr>
 
           </thead>
@@ -237,6 +248,18 @@ export default function CompanyTable() {
 
                   </td>
 
+                  <td>
+
+                    <button
+                      type="button"
+                      className="company-view-button"
+                      onClick={() => handleView(company)}
+                    >
+                      View
+                    </button>
+
+                  </td>
+
                 </tr>
 
               ))
@@ -246,7 +269,7 @@ export default function CompanyTable() {
               <tr>
 
                 <td
-                  colSpan="4"
+                  colSpan="5"
                   className="company-table-empty"
                 >
                   No companies found.
@@ -267,6 +290,14 @@ export default function CompanyTable() {
         totalPages={totalPages}
         onPageChange={setCurrentPage}
       />
+
+      {selectedCompany && (
+
+        <CompanyDetails
+          company={selectedCompany}
+        />
+
+      )}
 
     </section>
 
