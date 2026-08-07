@@ -1,42 +1,39 @@
-import MasterLayout from "../../layouts/MasterLayout";
 import "./Companies.css";
 
+import CompanySearch from "../../components/CompanySearch/CompanySearch";
+import CompanyFilters from "../../components/CompanyFilters/CompanyFilters";
 import CompanyTable from "../../components/CompanyTable/CompanyTable";
 
 export default function Companies() {
-
   return (
+    <section className="master-companies">
 
-    <MasterLayout>
+      <div className="master-page-header">
 
-      <section className="master-companies">
+        <div>
 
-        <div className="master-page-header">
+          <h1>
+            Companies
+          </h1>
 
-          <div>
-
-            <span className="master-page-eyebrow">
-              MASTER PANEL
-            </span>
-
-            <h1>
-              Companies
-            </h1>
-
-            <p>
-              Manage all registered companies from one place.
-            </p>
-
-          </div>
+          <p>
+            Manage all registered companies from one place.
+          </p>
 
         </div>
 
-        <CompanyTable />
+      </div>
 
-      </section>
+      <div className="companies-toolbar">
 
-    </MasterLayout>
+        <CompanySearch />
 
+        <CompanyFilters />
+
+      </div>
+
+      <CompanyTable />
+
+    </section>
   );
-
 }
