@@ -393,13 +393,14 @@ const handleEditCompany = (company) => {
           Company Details
       ========================== */}
 
-      {selectedCompany && (
+ {selectedCompany && (
 
-        <CompanyDetails
-          company={selectedCompany}
-        />
+  <CompanyDetails
+    company={selectedCompany}
+    onClose={() => setSelectedCompany(null)}
+  />
 
-      )}
+)}
 
 
       {/* ==========================
