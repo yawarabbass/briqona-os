@@ -14,20 +14,25 @@ export default function MasterRoutes() {
   return (
     <Routes>
 
-      {/* ================================
+      {/* =========================================
           MASTER LOGIN
-          No Header / Sidebar
-      ================================= */}
+          URL: /master/login
+
+          Login page has NO Header / Sidebar.
+      ========================================= */}
 
       <Route
         path="login"
         element={<MasterLogin />}
       />
 
-      {/* ================================
+
+      {/* =========================================
           MASTER HOME
-          /master → /master/login
-      ================================= */}
+          URL: /master
+
+          Always open Master Login first.
+      ========================================= */}
 
       <Route
         index
@@ -39,9 +44,11 @@ export default function MasterRoutes() {
         }
       />
 
-      {/* ================================
+
+      {/* =========================================
           CONTROL CENTER
-      ================================= */}
+          URL: /master/control-center
+      ========================================= */}
 
       <Route
         path="control-center"
@@ -52,9 +59,11 @@ export default function MasterRoutes() {
         }
       />
 
-      {/* ================================
+
+      {/* =========================================
           COMPANIES
-      ================================= */}
+          URL: /master/companies
+      ========================================= */}
 
       <Route
         path="companies"
@@ -65,9 +74,11 @@ export default function MasterRoutes() {
         }
       />
 
-      {/* ================================
+
+      {/* =========================================
           PLANS
-      ================================= */}
+          URL: /master/plans
+      ========================================= */}
 
       <Route
         path="plans"
@@ -78,9 +89,11 @@ export default function MasterRoutes() {
         }
       />
 
-      {/* ================================
+
+      {/* =========================================
           INDUSTRIES
-      ================================= */}
+          URL: /master/industries
+      ========================================= */}
 
       <Route
         path="industries"
@@ -91,9 +104,11 @@ export default function MasterRoutes() {
         }
       />
 
-      {/* ================================
+
+      {/* =========================================
           MODULES
-      ================================= */}
+          URL: /master/modules
+      ========================================= */}
 
       <Route
         path="modules"
@@ -104,9 +119,10 @@ export default function MasterRoutes() {
         }
       />
 
-      {/* ================================
+
+      {/* =========================================
           FUTURE MASTER PAGES
-      ================================= */}
+      ========================================= */}
 
       <Route
         path="users"
@@ -153,9 +169,14 @@ export default function MasterRoutes() {
         }
       />
 
-      {/* ================================
+
+      {/* =========================================
           UNKNOWN MASTER ROUTE
-      ================================= */}
+          Example:
+          /master/abc
+
+          → Login
+      ========================================= */}
 
       <Route
         path="*"
