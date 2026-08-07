@@ -1,47 +1,91 @@
-.company-filters{
+.company-filters {
 
-    display:flex;
+  display: flex;
 
-    gap:20px;
+  align-items: center;
 
-    align-items:end;
+  gap: 12px;
 
-    flex-wrap:wrap;
-
-}
-
-.company-filter-group{
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:8px;
+  flex-wrap: wrap;
 
 }
 
-.company-filter-group label{
+.company-filter-select {
 
-    font-size:14px;
+  min-width: 150px;
 
-    font-weight:600;
+  height: 48px;
 
-    color:var(--color-text);
+  padding: 0 14px;
+
+  border: 1px solid var(--color-border);
+
+  border-radius: var(--radius-md);
+
+  background: var(--color-surface);
+
+  color: var(--color-text);
+
+  font-size: 14px;
+
+  font-family: inherit;
+
+  outline: none;
+
+  cursor: pointer;
+
+  transition: .25s;
 
 }
 
-.company-filter-group select{
+.company-filter-select:hover {
 
-    min-width:180px;
+  border-color: var(--color-primary);
 
-    padding:12px;
+}
 
-    border:1px solid var(--color-border);
+.company-filter-select:focus {
 
-    border-radius:var(--radius-md);
+  border-color: var(--color-primary);
 
-    background:var(--color-surface);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, .15);
 
-    color:var(--color-text);
+}
+
+.company-filter-select option {
+
+  background: var(--color-surface);
+
+  color: var(--color-text);
+
+}
+
+@media (max-width: 768px) {
+
+  .company-filters {
+
+    width: 100%;
+
+  }
+
+  .company-filter-select {
+
+    flex: 1;
+
+    min-width: 140px;
+
+  }
+
+}
+
+@media (max-width: 480px) {
+
+  .company-filter-select {
+
+    width: 100%;
+
+    flex: none;
+
+  }
 
 }
