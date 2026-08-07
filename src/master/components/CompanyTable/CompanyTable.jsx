@@ -16,12 +16,12 @@ export default function CompanyTable() {
   const [currentPage, setCurrentPage] = useState(1);
 
   const [selectedCompany, setSelectedCompany] = useState(null);
+  const [showAddForm, setShowAddForm] = useState(false);
 
   const filteredCompanies = useMemo(() => {
 
     const keyword = search.trim().toLowerCase();
-    const [showAddForm, setShowAddForm] = useState(false);
-    
+
     return companies.filter((company) => {
 
       const matchesSearch =
@@ -51,7 +51,9 @@ export default function CompanyTable() {
 
   const totalPages = Math.max(
     1,
-    Math.ceil(filteredCompanies.length / ITEMS_PER_PAGE)
+    Math.ceil(
+      filteredCompanies.length / ITEMS_PER_PAGE
+    )
   );
 
   useEffect(() => {
@@ -83,6 +85,14 @@ export default function CompanyTable() {
 
   };
 
+  const handleAddCompany = (company) => {
+
+    console.log("New company:", company);
+
+    setShowAddForm(false);
+
+  };
+
   return (
 
     <section className="company-table">
@@ -104,6 +114,7 @@ export default function CompanyTable() {
         <button
           type="button"
           className="company-table-button"
+          onClick={() => setShowAddForm(true)}
         >
           + Add Company
         </button>
@@ -186,14 +197,20 @@ export default function CompanyTable() {
       <div className="company-table-result">
 
         Showing{" "}
+
         {filteredCompanies.length === 0
           ? 0
           : startIndex + 1}
+
         {" - "}
+
         {Math.min(
           startIndex + ITEMS_PER_PAGE,
           filteredCompanies.length
-        )}{" "}
+        )}
+
+        {" "}
+
         of {filteredCompanies.length} companies
 
       </div>
@@ -255,7 +272,9 @@ export default function CompanyTable() {
                     <button
                       type="button"
                       className="company-view-button"
-                      onClick={() => handleView(company)}
+                      onClick={() =>
+                        handleView(company)
+                      }
                     >
                       View
                     </button>
@@ -297,6 +316,15 @@ export default function CompanyTable() {
 
         <CompanyDetails
           company={selectedCompany}
+        />
+
+      )}
+
+      {showAddForm && (
+
+        <CompanyForm
+          onClose={() => setShowAddForm(false)}
+          onSave={handleAddCompany}
         />
 
       )}
