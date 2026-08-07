@@ -1,25 +1,33 @@
 import { useState } from "react";
 import "./Header.css";
 
-export default function Header() {
+export default function Header({ openSidebar }) {
+
   const [search, setSearch] = useState("");
 
   return (
-    <header className="master-topbar">
+
+    <header className="master-header">
 
       <div className="topbar-left">
 
-        <button className="menu-btn">
+        <button
+          type="button"
+          className="menu-btn"
+          onClick={openSidebar}
+        >
           ☰
         </button>
 
         <div className="search-box">
+
           <input
             type="text"
             placeholder="Search anything..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
+
         </div>
 
       </div>
@@ -58,5 +66,7 @@ export default function Header() {
       </div>
 
     </header>
+
   );
+
 }
