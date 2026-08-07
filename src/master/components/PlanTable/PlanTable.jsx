@@ -175,35 +175,29 @@ export default function PlanTable() {
 
       <div className="plan-table-header">
 
-        <div>
+  <div className="plan-table-heading">
 
-          <span className="plan-table-label">
-            PLAN MANAGEMENT
-          </span>
+    <span className="plan-table-label">
+      SUBSCRIPTION MANAGEMENT
+    </span>
 
-          <h2>
-            Plans
-          </h2>
+    <p>
+      Configure plans, pricing and workspace limits.
+    </p>
 
-          <p>
-            Manage subscription plans
-            and their limits.
-          </p>
+  </div>
 
-        </div>
+  <button
+    type="button"
+    className="plan-table-add-button"
+    onClick={() =>
+      setShowAddForm(true)
+    }
+  >
+    + Add Plan
+  </button>
 
-
-        <button
-          type="button"
-          className="plan-table-add-button"
-          onClick={() =>
-            setShowAddForm(true)
-          }
-        >
-          + Add Plan
-        </button>
-
-      </div>
+</div>
 
 
       {/* ======================================================
