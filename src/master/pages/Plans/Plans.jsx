@@ -1,4 +1,4 @@
-import MasterLayout from "../../layouts/MasterLayout";
+
 import "./Plans.css";
 
 import PlanSearch from "../../components/PlanSearch/PlanSearch";
@@ -33,6 +33,5 @@ export default function Plans() {
 
       </section>
 
-    </MasterLayout>
   );
 }
