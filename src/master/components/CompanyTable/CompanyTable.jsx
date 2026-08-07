@@ -443,3 +443,5 @@ const handleEditCompany = (company) => {
 
 </section>
             
+);
+}
