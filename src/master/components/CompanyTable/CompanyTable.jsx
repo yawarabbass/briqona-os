@@ -20,6 +20,11 @@ export default function CompanyTable() {
   const [selectedCompany, setSelectedCompany] = useState(null);
   const [showAddForm, setShowAddForm] = useState(false);
   const [editingCompany, setEditingCompany] = useState(null);
+
+  /* ==========================================================
+     FILTER COMPANIES
+  ========================================================== */
+
   const filteredCompanies = useMemo(() => {
 
     const keyword = search.trim().toLowerCase();
@@ -51,6 +56,10 @@ export default function CompanyTable() {
 
   }, [companyList, search, status, plan]);
 
+  /* ==========================================================
+     PAGINATION
+  ========================================================== */
+
   const totalPages = Math.max(
     1,
     Math.ceil(
@@ -67,7 +76,9 @@ export default function CompanyTable() {
   useEffect(() => {
 
     if (currentPage > totalPages) {
+
       setCurrentPage(totalPages);
+
     }
 
   }, [currentPage, totalPages]);
@@ -81,17 +92,30 @@ export default function CompanyTable() {
       startIndex + ITEMS_PER_PAGE
     );
 
+  /* ==========================================================
+     VIEW COMPANY
+  ========================================================== */
+
   const handleView = (company) => {
 
     setSelectedCompany(company);
 
-};
-  
-const handleEditCompany = (company) => {
-  setEditingCompany(company);
-};
+  };
 
-  
+  /* ==========================================================
+     EDIT COMPANY
+  ========================================================== */
+
+  const handleEditCompany = (company) => {
+
+    setEditingCompany(company);
+
+  };
+
+  /* ==========================================================
+     ADD COMPANY
+  ========================================================== */
+
   const handleAddCompany = (company) => {
 
     const newCompany = {
@@ -116,17 +140,37 @@ const handleEditCompany = (company) => {
 
   };
 
+  /* ==========================================================
+     UPDATE COMPANY
+  ========================================================== */
+
+  const handleUpdateCompany = (updatedCompany) => {
+
+    setCompanyList((current) =>
+      current.map((company) =>
+        company.id === updatedCompany.id
+          ? updatedCompany
+          : company
+      )
+    );
+
+    setSelectedCompany(null);
+
+    setEditingCompany(null);
+
+  };
+
   return (
 
     <section className="company-table">
 
-      {/* ==========================
-          Header
-      ========================== */}
+      {/* ======================================================
+          HEADER
+      ====================================================== */}
 
       <div className="company-table-header">
 
-        <div>
+        <div className="company-table-heading">
 
           <span className="company-table-label">
             Companies
@@ -143,15 +187,22 @@ const handleEditCompany = (company) => {
           className="company-table-button"
           onClick={() => setShowAddForm(true)}
         >
-          + Add Company
+          <span className="company-table-button-icon">
+            +
+          </span>
+
+          <span>
+            Add Company
+          </span>
+
         </button>
 
       </div>
 
 
-      {/* ==========================
-          Search & Filters
-      ========================== */}
+      {/* ======================================================
+          SEARCH & FILTERS
+      ====================================================== */}
 
       <div className="company-table-controls">
 
@@ -164,6 +215,7 @@ const handleEditCompany = (company) => {
             onChange={(event) =>
               setSearch(event.target.value)
             }
+            aria-label="Search companies"
           />
 
         </div>
@@ -175,6 +227,7 @@ const handleEditCompany = (company) => {
             setStatus(event.target.value)
           }
           className="company-table-filter"
+          aria-label="Filter by status"
         >
 
           <option value="all">
@@ -202,6 +255,7 @@ const handleEditCompany = (company) => {
             setPlan(event.target.value)
           }
           className="company-table-filter"
+          aria-label="Filter by plan"
         >
 
           <option value="all">
@@ -229,9 +283,9 @@ const handleEditCompany = (company) => {
       </div>
 
 
-      {/* ==========================
-          Result Count
-      ========================== */}
+      {/* ======================================================
+          RESULT COUNT
+      ====================================================== */}
 
       <div className="company-table-result">
 
@@ -255,9 +309,9 @@ const handleEditCompany = (company) => {
       </div>
 
 
-      {/* ==========================
-          Table
-      ========================== */}
+      {/* ======================================================
+          TABLE
+      ====================================================== */}
 
       <div className="company-table-wrapper">
 
@@ -326,30 +380,30 @@ const handleEditCompany = (company) => {
 
                   <td>
 
-                    <button
-                      type="button"
-                      className="company-view-button"
-                      onClick={() =>
-                        handleView(company)
-                      }
-                    >
-                      View
-                    </button>
- <button
-  type="button"
-  className="company-edit-button"
-  onClick={() =>
-    handleEditCompany(company)
-  }
->
-  Edit
-</button>
+                    <div className="company-table-actions">
 
+                      <button
+                        type="button"
+                        className="company-view-button"
+                        onClick={() =>
+                          handleView(company)
+                        }
+                      >
+                        View
+                      </button>
 
+                      <button
+                        type="button"
+                        className="company-edit-button"
+                        onClick={() =>
+                          handleEditCompany(company)
+                        }
+                      >
+                        Edit
+                      </button>
 
+                    </div>
 
-
-                    
                   </td>
 
                 </tr>
@@ -378,9 +432,9 @@ const handleEditCompany = (company) => {
       </div>
 
 
-      {/* ==========================
-          Pagination
-      ========================== */}
+      {/* ======================================================
+          PAGINATION
+      ====================================================== */}
 
       <CompanyPagination
         currentPage={currentPage}
@@ -389,60 +443,56 @@ const handleEditCompany = (company) => {
       />
 
 
-      {/* ==========================
-          Company Details
-      ========================== */}
+      {/* ======================================================
+          COMPANY DETAILS
+      ====================================================== */}
 
- {selectedCompany && (
+      {selectedCompany && (
 
-  <CompanyDetails
-    company={selectedCompany}
-    onClose={() => setSelectedCompany(null)}
-  />
+        <CompanyDetails
+          company={selectedCompany}
+          onClose={() =>
+            setSelectedCompany(null)
+          }
+        />
 
-)}
+      )}
 
 
-      {/* ==========================
-          Add Company Form
-      ========================== */}
-{showAddForm && (
+      {/* ======================================================
+          ADD COMPANY
+      ====================================================== */}
 
-  <CompanyForm
-    onClose={() =>
-      setShowAddForm(false)
-    }
-    onSave={handleAddCompany}
-  />
+      {showAddForm && (
 
-)}
+        <CompanyForm
+          onClose={() =>
+            setShowAddForm(false)
+          }
+          onSave={handleAddCompany}
+        />
 
-{editingCompany && (
+      )}
 
-  <CompanyForm
-    company={editingCompany}
-    onClose={() =>
-      setEditingCompany(null)
-    }
-    onSave={(updatedCompany) => {
 
-      setCompanyList((current) =>
-        current.map((company) =>
-          company.id === updatedCompany.id
-            ? updatedCompany
-            : company
-        )
-      );
+      {/* ======================================================
+          EDIT COMPANY
+      ====================================================== */}
 
-      setSelectedCompany(null);
-      setEditingCompany(null);
+      {editingCompany && (
 
-    }}
-  />
+        <CompanyForm
+          company={editingCompany}
+          onClose={() =>
+            setEditingCompany(null)
+          }
+          onSave={handleUpdateCompany}
+        />
 
-)}
+      )}
 
-</section>
-            
-);
+    </section>
+
+  );
+
 }
