@@ -19,7 +19,7 @@ export default function CompanyTable() {
 
   const [selectedCompany, setSelectedCompany] = useState(null);
   const [showAddForm, setShowAddForm] = useState(false);
-
+  const [editingCompany, setEditingCompany] = useState(null);
   const filteredCompanies = useMemo(() => {
 
     const keyword = search.trim().toLowerCase();
@@ -85,8 +85,13 @@ export default function CompanyTable() {
 
     setSelectedCompany(company);
 
-  };
+};
+  
+const handleEditCompany = (company) => {
+  setEditingCompany(company);
+};
 
+  
   const handleAddCompany = (company) => {
 
     const newCompany = {
@@ -330,7 +335,21 @@ export default function CompanyTable() {
                     >
                       View
                     </button>
+ <button
+  type="button"
+  className="company-edit-button"
+  onClick={() =>
+    handleEditCompany(company)
+  }
+>
+  Edit
+</button>
 
+
+
+
+
+                    
                   </td>
 
                 </tr>
@@ -400,6 +419,32 @@ export default function CompanyTable() {
 
     </section>
 
+
+{editingCompany && (
+
+  <CompanyForm
+    company={editingCompany}
+    onClose={() =>
+      setEditingCompany(null)
+    }
+    onSave={(updatedCompany) => {
+
+      setCompanyList((current) =>
+        current.map((company) =>
+          company.id === updatedCompany.id
+            ? updatedCompany
+            : company
+        )
+      );
+
+      setSelectedCompany(null);
+      setEditingCompany(null);
+
+    }}
+  />
+
+)}
+    
   );
 
 }
