@@ -17,44 +17,53 @@ export default function CompanyStats() {
     (company) => company.status === "Suspended"
   ).length;
 
-  return (
+  const stats = [
+    {
+      key: "total",
+      title: "Total Companies",
+      value: total,
+    },
+    {
+      key: "active",
+      title: "Active",
+      value: active,
+    },
+    {
+      key: "pending",
+      title: "Pending",
+      value: pending,
+    },
+    {
+      key: "suspended",
+      title: "Suspended",
+      value: suspended,
+    },
+  ];
 
+  return (
     <section className="company-stats">
 
-      <div className="company-stat-card">
+      {stats.map((stat) => (
+        <article
+          key={stat.key}
+          className={`company-stat-card ${stat.key}`}
+        >
 
-        <h4>Total Companies</h4>
+          <div className="company-stat-content">
 
-        <h2>{total}</h2>
+            <span className="company-stat-title">
+              {stat.title}
+            </span>
 
-      </div>
+            <strong className="company-stat-value">
+              {stat.value}
+            </strong>
 
-      <div className="company-stat-card active">
+          </div>
 
-        <h4>Active</h4>
-
-        <h2>{active}</h2>
-
-      </div>
-
-      <div className="company-stat-card pending">
-
-        <h4>Pending</h4>
-
-        <h2>{pending}</h2>
-
-      </div>
-
-      <div className="company-stat-card suspended">
-
-        <h4>Suspended</h4>
-
-        <h2>{suspended}</h2>
-
-      </div>
+        </article>
+      ))}
 
     </section>
-
   );
-
 }
