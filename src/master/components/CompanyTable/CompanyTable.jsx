@@ -1,12 +1,17 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import "./CompanyTable.css";
+
 import companies from "../../data/companies";
+import CompanyPagination from "../CompanyPagination/CompanyPagination";
+
+const ITEMS_PER_PAGE = 5;
 
 export default function CompanyTable() {
 
   const [search, setSearch] = useState("");
   const [status, setStatus] = useState("all");
   const [plan, setPlan] = useState("all");
+  const [currentPage, setCurrentPage] = useState(1);
 
   const filteredCompanies = useMemo(() => {
 
@@ -38,6 +43,34 @@ export default function CompanyTable() {
     });
 
   }, [search, status, plan]);
+
+  const totalPages = Math.max(
+    1,
+    Math.ceil(filteredCompanies.length / ITEMS_PER_PAGE)
+  );
+
+  useEffect(() => {
+
+    setCurrentPage(1);
+
+  }, [search, status, plan]);
+
+  useEffect(() => {
+
+    if (currentPage > totalPages) {
+      setCurrentPage(totalPages);
+    }
+
+  }, [currentPage, totalPages]);
+
+  const startIndex =
+    (currentPage - 1) * ITEMS_PER_PAGE;
+
+  const visibleCompanies =
+    filteredCompanies.slice(
+      startIndex,
+      startIndex + ITEMS_PER_PAGE
+    );
 
   return (
 
@@ -141,7 +174,16 @@ export default function CompanyTable() {
 
       <div className="company-table-result">
 
-        Showing {filteredCompanies.length} of {companies.length} companies
+        Showing{" "}
+        {filteredCompanies.length === 0
+          ? 0
+          : startIndex + 1}
+        {" - "}
+        {Math.min(
+          startIndex + ITEMS_PER_PAGE,
+          filteredCompanies.length
+        )}{" "}
+        of {filteredCompanies.length} companies
 
       </div>
 
@@ -167,9 +209,9 @@ export default function CompanyTable() {
 
           <tbody>
 
-            {filteredCompanies.length > 0 ? (
+            {visibleCompanies.length > 0 ? (
 
-              filteredCompanies.map((company) => (
+              visibleCompanies.map((company) => (
 
                 <tr key={company.id}>
 
@@ -219,6 +261,12 @@ export default function CompanyTable() {
         </table>
 
       </div>
+
+      <CompanyPagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={setCurrentPage}
+      />
 
     </section>
 
