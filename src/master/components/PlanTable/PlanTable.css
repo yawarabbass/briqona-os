@@ -1062,3 +1062,21 @@
   }
 
 }
+.plan-table-heading {
+  min-width: 0;
+}
+
+.plan-table-heading p {
+  margin: 0;
+  color: var(--color-text-light);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+@media (max-width: 650px) {
+
+  .plan-table-heading p {
+    max-width: 100%;
+  }
+
+}
