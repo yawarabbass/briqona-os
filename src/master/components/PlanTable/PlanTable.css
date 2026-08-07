@@ -1,27 +1,1007 @@
-.plan-table{
-    background:var(--color-surface);
-    border:1px solid var(--color-border);
-    border-radius:var(--radius-lg);
-    padding:24px;
-    box-shadow:var(--shadow-sm);
+/* ==========================================================
+   BRIQONA OS
+   PLAN TABLE
+========================================================== */
+
+.plan-table {
+
+  width: 100%;
+
+  background: var(--color-surface);
+
+  border: 1px solid var(--color-border);
+
+  border-radius: var(--radius-lg);
+
+  box-shadow: var(--shadow-sm);
+
+  overflow: hidden;
+
 }
 
-.plan-table-header{
-    margin-bottom:20px;
+
+/* ==========================================================
+   HEADER
+========================================================== */
+
+.plan-table-header {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding: 24px;
+
+  border-bottom: 1px solid var(--color-border);
+
 }
 
-.plan-table table{
-    width:100%;
-    border-collapse:collapse;
+.plan-table-label {
+
+  display: block;
+
+  margin-bottom: 6px;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  letter-spacing: .1em;
+
+  color: var(--color-primary);
+
 }
 
-.plan-table th,
-.plan-table td{
-    padding:16px;
-    text-align:left;
-    border-bottom:1px solid var(--color-border);
+.plan-table-header h2 {
+
+  margin: 0;
+
+  color: var(--color-heading);
+
+  font-size: 22px;
+
 }
 
-.plan-table tr:last-child td{
-    border-bottom:none;
+.plan-table-header p {
+
+  margin: 7px 0 0;
+
+  color: var(--color-text-light);
+
+  font-size: 13px;
+
+}
+
+
+/* ==========================================================
+   RESULT
+========================================================== */
+
+.plan-table-result {
+
+  padding: 14px 24px;
+
+  color: var(--color-text-light);
+
+  font-size: 13px;
+
+  border-bottom: 1px solid var(--color-border);
+
+}
+
+.plan-table-result strong {
+
+  color: var(--color-heading);
+
+}
+
+
+/* ==========================================================
+   TABLE WRAPPER
+========================================================== */
+
+.plan-table-wrapper {
+
+  width: 100%;
+
+  overflow-x: auto;
+
+  -webkit-overflow-scrolling: touch;
+
+}
+
+
+/* ==========================================================
+   TABLE
+========================================================== */
+
+.plan-table-grid {
+
+  width: 100%;
+
+  min-width: 850px;
+
+  border-collapse: collapse;
+
+}
+
+.plan-table-grid th {
+
+  padding: 14px 20px;
+
+  background: var(--color-card);
+
+  color: var(--color-text-light);
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  text-align: left;
+
+  white-space: nowrap;
+
+}
+
+.plan-table-grid td {
+
+  padding: 16px 20px;
+
+  border-top: 1px solid var(--color-border);
+
+  color: var(--color-text);
+
+  font-size: 14px;
+
+  vertical-align: middle;
+
+}
+
+.plan-table-grid tbody tr {
+
+  transition: .2s ease;
+
+}
+
+.plan-table-grid tbody tr:hover {
+
+  background: rgba(37, 99, 235, .035);
+
+}
+
+
+/* ==========================================================
+   PLAN NAME
+========================================================== */
+
+.plan-name-cell {
+
+  display: flex;
+
+  align-items: center;
+
+  min-width: 120px;
+
+}
+
+.plan-name-cell strong {
+
+  color: var(--color-heading);
+
+  font-size: 14px;
+
+}
+
+
+/* ==========================================================
+   PRICE
+========================================================== */
+
+.plan-price {
+
+  color: var(--color-heading);
+
+  white-space: nowrap;
+
+}
+
+
+/* ==========================================================
+   STATUS
+========================================================== */
+
+.plan-status {
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  min-width: 70px;
+
+  padding: 6px 10px;
+
+  border-radius: 999px;
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+}
+
+.plan-status.active {
+
+  background: rgba(22, 163, 74, .12);
+
+  color: #15803d;
+
+}
+
+.plan-status.inactive {
+
+  background: rgba(100, 116, 139, .12);
+
+  color: #475569;
+
+}
+
+.plan-status.pending {
+
+  background: rgba(245, 158, 11, .12);
+
+  color: #b45309;
+
+}
+
+
+/* ==========================================================
+   ACTIONS
+========================================================== */
+
+.plan-table-actions {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  white-space: nowrap;
+
+}
+
+.plan-table-actions button {
+
+  min-height: 34px;
+
+  padding: 6px 11px;
+
+  border-radius: var(--radius-md);
+
+  font-family: inherit;
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: .2s ease;
+
+}
+
+
+/* VIEW */
+
+.plan-view-button {
+
+  border: 1px solid var(--color-border);
+
+  background: var(--color-surface);
+
+  color: var(--color-primary);
+
+}
+
+.plan-view-button:hover {
+
+  background: var(--color-primary);
+
+  border-color: var(--color-primary);
+
+  color: #fff;
+
+}
+
+
+/* EDIT */
+
+.plan-edit-button {
+
+  border: 1px solid rgba(37, 99, 235, .25);
+
+  background: rgba(37, 99, 235, .08);
+
+  color: var(--color-primary);
+
+}
+
+.plan-edit-button:hover {
+
+  background: var(--color-primary);
+
+  border-color: var(--color-primary);
+
+  color: #fff;
+
+}
+
+
+/* DELETE */
+
+.plan-delete-button {
+
+  border: 1px solid rgba(220, 38, 38, .2);
+
+  background: rgba(220, 38, 38, .07);
+
+  color: #dc2626;
+
+}
+
+.plan-delete-button:hover {
+
+  background: #dc2626;
+
+  border-color: #dc2626;
+
+  color: #fff;
+
+}
+
+
+/* ==========================================================
+   EMPTY
+========================================================== */
+
+.plan-table-empty {
+
+  padding: 40px 24px !important;
+
+  text-align: center !important;
+
+  color: var(--color-text-light) !important;
+
+}
+
+
+/* ==========================================================
+   MODAL OVERLAY
+========================================================== */
+
+.plan-preview-overlay {
+
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 4000;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 20px;
+
+  background: rgba(0, 0, 0, .55);
+
+  backdrop-filter: blur(6px);
+
+}
+
+
+/* ==========================================================
+   VIEW / EDIT MODAL
+========================================================== */
+
+.plan-preview-modal {
+
+  width: 100%;
+
+  max-width: 620px;
+
+  max-height: calc(100vh - 40px);
+
+  overflow-y: auto;
+
+  padding: 24px;
+
+  background: var(--color-surface);
+
+  border: 1px solid var(--color-border);
+
+  border-radius: var(--radius-lg);
+
+  box-shadow: var(--shadow-lg);
+
+}
+
+.plan-preview-header {
+
+  display: flex;
+
+  align-items: flex-start;
+
+  justify-content: space-between;
+
+  gap: 20px;
+
+  margin-bottom: 24px;
+
+  padding-bottom: 18px;
+
+  border-bottom: 1px solid var(--color-border);
+
+}
+
+.plan-preview-label {
+
+  display: block;
+
+  margin-bottom: 6px;
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  letter-spacing: .1em;
+
+  color: var(--color-primary);
+
+}
+
+.plan-preview-header h3 {
+
+  margin: 0;
+
+  color: var(--color-heading);
+
+  font-size: 21px;
+
+}
+
+.plan-preview-close {
+
+  flex: 0 0 auto;
+
+  width: 38px;
+
+  height: 38px;
+
+  border: 1px solid var(--color-border);
+
+  border-radius: 10px;
+
+  background: var(--color-surface);
+
+  color: var(--color-text);
+
+  font-size: 23px;
+
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition: .2s ease;
+
+}
+
+.plan-preview-close:hover {
+
+  background: var(--color-card);
+
+  border-color: var(--color-primary);
+
+  color: var(--color-primary);
+
+}
+
+
+/* ==========================================================
+   PREVIEW GRID
+========================================================== */
+
+.plan-preview-grid {
+
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 1px;
+
+  overflow: hidden;
+
+  border: 1px solid var(--color-border);
+
+  border-radius: var(--radius-md);
+
+}
+
+.plan-preview-grid div {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 7px;
+
+  padding: 16px;
+
+  background: var(--color-surface);
+
+}
+
+.plan-preview-grid span {
+
+  color: var(--color-text-light);
+
+  font-size: 12px;
+
+}
+
+.plan-preview-grid strong {
+
+  color: var(--color-heading);
+
+  font-size: 15px;
+
+  overflow-wrap: anywhere;
+
+}
+
+
+/* ==========================================================
+   EDIT MESSAGE
+========================================================== */
+
+.plan-edit-message {
+
+  padding: 18px;
+
+  border: 1px solid var(--color-border);
+
+  border-radius: var(--radius-md);
+
+  background: var(--color-card);
+
+}
+
+.plan-edit-message p {
+
+  margin: 0 0 8px;
+
+  color: var(--color-text);
+
+  font-size: 14px;
+
+  line-height: 1.6;
+
+}
+
+.plan-edit-message strong {
+
+  color: var(--color-primary);
+
+}
+
+.plan-edit-message span {
+
+  display: block;
+
+  color: var(--color-text-light);
+
+  font-size: 13px;
+
+  line-height: 1.6;
+
+}
+
+
+/* ==========================================================
+   MODAL ACTIONS
+========================================================== */
+
+.plan-preview-actions {
+
+  display: flex;
+
+  justify-content: flex-end;
+
+  gap: 10px;
+
+  margin-top: 22px;
+
+  padding-top: 18px;
+
+  border-top: 1px solid var(--color-border);
+
+}
+
+.plan-preview-actions button {
+
+  min-height: 42px;
+
+  padding: 0 17px;
+
+  border-radius: var(--radius-md);
+
+  font-family: inherit;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: .2s ease;
+
+}
+
+.plan-preview-secondary {
+
+  border: 1px solid var(--color-border);
+
+  background: var(--color-surface);
+
+  color: var(--color-text);
+
+}
+
+.plan-preview-secondary:hover {
+
+  border-color: var(--color-primary);
+
+  color: var(--color-primary);
+
+}
+
+.plan-preview-primary {
+
+  border: 1px solid var(--color-primary);
+
+  background: var(--color-primary);
+
+  color: #fff;
+
+}
+
+.plan-preview-primary:hover {
+
+  background: var(--color-primary-hover);
+
+}
+
+
+/* ==========================================================
+   DELETE MODAL
+========================================================== */
+
+.plan-delete-modal {
+
+  width: 100%;
+
+  max-width: 440px;
+
+  padding: 28px;
+
+  text-align: center;
+
+  background: var(--color-surface);
+
+  border: 1px solid var(--color-border);
+
+  border-radius: var(--radius-lg);
+
+  box-shadow: var(--shadow-lg);
+
+}
+
+.plan-delete-icon {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  width: 46px;
+
+  height: 46px;
+
+  margin: 0 auto 16px;
+
+  border-radius: 50%;
+
+  background: rgba(220, 38, 38, .1);
+
+  color: #dc2626;
+
+  font-size: 22px;
+
+  font-weight: 700;
+
+}
+
+.plan-delete-modal h3 {
+
+  margin: 0;
+
+  color: var(--color-heading);
+
+  font-size: 20px;
+
+}
+
+.plan-delete-modal p {
+
+  margin: 10px 0 0;
+
+  color: var(--color-text-light);
+
+  font-size: 13px;
+
+  line-height: 1.6;
+
+}
+
+.plan-delete-confirm {
+
+  border: 1px solid #dc2626;
+
+  background: #dc2626;
+
+  color: #fff;
+
+}
+
+.plan-delete-confirm:hover {
+
+  background: #b91c1c;
+
+  border-color: #b91c1c;
+
+}
+
+
+/* ==========================================================
+   MOBILE
+========================================================== */
+
+@media (max-width: 768px) {
+
+  .plan-table-header {
+
+    padding: 20px;
+
+  }
+
+  .plan-table-result {
+
+    padding: 12px 16px;
+
+  }
+
+  /*
+     Mobile par table ko horizontal
+     scroll karne ki zarurat nahi.
+     Rows cards ki tarah display hongi.
+  */
+
+  .plan-table-wrapper {
+
+    overflow: visible;
+
+  }
+
+  .plan-table-grid {
+
+    min-width: 0;
+
+    width: 100%;
+
+  }
+
+  .plan-table-grid thead {
+
+    display: none;
+
+  }
+
+  .plan-table-grid,
+  .plan-table-grid tbody,
+  .plan-table-grid tr,
+  .plan-table-grid td {
+
+    display: block;
+
+    width: 100%;
+
+  }
+
+  .plan-table-grid tr {
+
+    padding: 16px;
+
+    border-top: 1px solid var(--color-border);
+
+  }
+
+  .plan-table-grid tbody tr:first-child {
+
+    border-top: none;
+
+  }
+
+  .plan-table-grid td {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 16px;
+
+    padding: 9px 0;
+
+    border: none;
+
+    font-size: 13px;
+
+  }
+
+  .plan-table-grid td::before {
+
+    content: attr(data-label);
+
+    flex: 0 0 auto;
+
+    color: var(--color-text-light);
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+  }
+
+  .plan-name-cell {
+
+    justify-content: flex-end;
+
+  }
+
+  .plan-action-cell {
+
+    align-items: flex-start !important;
+
+    flex-direction: column;
+
+    padding-top: 14px !important;
+
+    margin-top: 7px;
+
+    border-top: 1px solid var(--color-border) !important;
+
+  }
+
+  .plan-action-cell::before {
+
+    display: block;
+
+  }
+
+  .plan-table-actions {
+
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 7px;
+
+  }
+
+  .plan-table-actions button {
+
+    width: 100%;
+
+  }
+
+  .plan-preview-overlay {
+
+    align-items: flex-end;
+
+    padding: 0;
+
+  }
+
+  .plan-preview-modal {
+
+    max-height: 92vh;
+
+    border-radius: 20px 20px 0 0;
+
+    padding: 20px;
+
+  }
+
+  .plan-preview-grid {
+
+    grid-template-columns: 1fr;
+
+  }
+
+  .plan-preview-actions {
+
+    flex-direction: column-reverse;
+
+  }
+
+  .plan-preview-actions button {
+
+    width: 100%;
+
+  }
+
+  .plan-delete-modal {
+
+    width: 100%;
+
+    max-width: none;
+
+    border-radius: 20px 20px 0 0;
+
+    padding: 24px 20px;
+
+  }
+
+}
+
+
+/* ==========================================================
+   SMALL MOBILE
+========================================================== */
+
+@media (max-width: 420px) {
+
+  .plan-table-header {
+
+    padding: 18px 16px;
+
+  }
+
+  .plan-table-header h2 {
+
+    font-size: 20px;
+
+  }
+
+  .plan-table-grid tr {
+
+    padding: 15px 16px;
+
+  }
+
+  .plan-table-actions {
+
+    grid-template-columns: 1fr;
+
+  }
+
 }
