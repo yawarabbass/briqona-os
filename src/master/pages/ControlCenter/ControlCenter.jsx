@@ -2,7 +2,7 @@
   BRIQONA OS
   Master Control Center
 */
-
+ 
 import "./ControlCenter.css";
 
 import KpiCards from "../../components/KpiCards/KpiCards";
