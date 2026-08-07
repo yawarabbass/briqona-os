@@ -1,5 +1,5 @@
 import "./Companies.css";
-
+import CompanyStats from "../../components/CompanyStats/CompanyStats";
 import CompanySearch from "../../components/CompanySearch/CompanySearch";
 import CompanyFilters from "../../components/CompanyFilters/CompanyFilters";
 import CompanyTable from "../../components/CompanyTable/CompanyTable";
@@ -27,7 +27,8 @@ export default function Companies() {
         </button>
 
       </div>
-
+       <CompanyStats />
+      
       <div className="companies-toolbar">
 
         <CompanySearch />
