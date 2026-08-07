@@ -1,117 +1,103 @@
 import "./CompanyDetails.css";
 
-export default function CompanyDetails({ company }) {
-
+export default function CompanyDetails({ company, onClose }) {
   if (!company) {
-
-    return (
-
-      <section className="company-details">
-
-        <h2>Company Details</h2>
-
-        <p className="company-details-empty">
-          Select a company to view its details.
-        </p>
-
-      </section>
-
-    );
-
+    return null;
   }
 
   return (
-
     <section className="company-details">
+
+      {/* =========================
+          Header
+      ========================= */}
 
       <div className="company-details-header">
 
         <div>
 
           <span className="company-details-label">
-            COMPANY PROFILE
+            COMPANY DETAILS
           </span>
 
           <h2>
-            Company Details
+            {company.company || "Company"}
           </h2>
 
         </div>
 
-        <span
-          className={`company-details-status ${company.status.toLowerCase()}`}
-        >
-          {company.status}
-        </span>
+        <div className="company-details-header-actions">
+
+          <span
+            className={`company-details-status ${
+              company.status?.toLowerCase() || ""
+            }`}
+          >
+            {company.status || "Unknown"}
+          </span>
+
+          <button
+            type="button"
+            className="company-details-close"
+            onClick={onClose}
+            aria-label="Close company details"
+          >
+            ×
+          </button>
+
+        </div>
 
       </div>
+
+
+      {/* =========================
+          Company Information
+      ========================= */}
 
       <div className="company-details-grid">
 
         <div>
-
-          <span>Company</span>
-
-          <strong>
-            {company.company}
-          </strong>
-
+          <span>Company Name</span>
+          <strong>{company.company || "—"}</strong>
         </div>
 
         <div>
-
           <span>Owner</span>
-
-          <strong>
-            {company.owner}
-          </strong>
-
+          <strong>{company.owner || "—"}</strong>
         </div>
 
         <div>
-
           <span>Email</span>
-
-          <strong>
-            {company.email}
-          </strong>
-
+          <strong>{company.email || "—"}</strong>
         </div>
 
         <div>
-
           <span>Phone</span>
-
-          <strong>
-            {company.phone}
-          </strong>
-
+          <strong>{company.phone || "—"}</strong>
         </div>
 
         <div>
-
-          <span>Plan</span>
-
-          <strong>
-            {company.plan}
-          </strong>
-
+          <span>Subscription Plan</span>
+          <strong>{company.plan || "—"}</strong>
         </div>
 
         <div>
+          <span>Account Status</span>
+          <strong>{company.status || "—"}</strong>
+        </div>
 
-          <span>Status</span>
+        <div>
+          <span>Company ID</span>
+          <strong>{company.id || "—"}</strong>
+        </div>
 
-          <strong>
-            {company.status}
-          </strong>
-
+        <div>
+          <span>Created At</span>
+          <strong>{company.createdAt || "—"}</strong>
         </div>
 
       </div>
 
     </section>
-
   );
-
 }
