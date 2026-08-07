@@ -1,88 +1,232 @@
+import { useState } from "react";
 import "./CompanyForm.css";
 
-export default function CompanyForm() {
+const initialForm = {
+  company: "",
+  owner: "",
+  email: "",
+  phone: "",
+  plan: "Starter",
+  status: "Active",
+};
+
+export default function CompanyForm({ onClose, onSave }) {
+
+  const [form, setForm] = useState(initialForm);
+
+  const handleChange = (event) => {
+
+    const { name, value } = event.target;
+
+    setForm((current) => ({
+      ...current,
+      [name]: value,
+    }));
+
+  };
+
+  const handleSubmit = (event) => {
+
+    event.preventDefault();
+
+    if (
+      !form.company.trim() ||
+      !form.owner.trim() ||
+      !form.email.trim()
+    ) {
+      return;
+    }
+
+    onSave({
+      ...form,
+      company: form.company.trim(),
+      owner: form.owner.trim(),
+      email: form.email.trim(),
+      phone: form.phone.trim(),
+    });
+
+  };
+
   return (
-    <form className="company-form">
 
-      <div className="company-form-grid">
+    <div className="company-form-overlay">
 
-        <div className="form-group">
-          <label>Company Name</label>
-          <input
-            type="text"
-            placeholder="Enter company name"
-          />
-        </div>
+      <div className="company-form-modal">
 
-        <div className="form-group">
-          <label>Owner Name</label>
-          <input
-            type="text"
-            placeholder="Enter owner name"
-          />
-        </div>
+        <div className="company-form-header">
 
-        <div className="form-group">
-          <label>Email</label>
-          <input
-            type="email"
-            placeholder="Enter email"
-          />
-        </div>
+          <div>
 
-        <div className="form-group">
-          <label>Phone</label>
-          <input
-            type="tel"
-            placeholder="Enter phone number"
-          />
-        </div>
+            <span className="company-form-label">
+              COMPANY MANAGEMENT
+            </span>
 
-        <div className="form-group">
-          <label>Plan</label>
+            <h2>
+              Add Company
+            </h2>
 
-          <select>
-            <option>Starter</option>
-            <option>Business</option>
-            <option>Professional</option>
-            <option>Enterprise</option>
-          </select>
+          </div>
+
+          <button
+            type="button"
+            className="company-form-close"
+            onClick={onClose}
+            aria-label="Close"
+          >
+            ×
+          </button>
 
         </div>
 
-        <div className="form-group">
-          <label>Industry</label>
+        <form
+          className="company-form"
+          onSubmit={handleSubmit}
+        >
 
-          <select>
-            <option>Technology</option>
-            <option>Education</option>
-            <option>Healthcare</option>
-            <option>Retail</option>
-          </select>
+          <div className="company-form-grid">
 
-        </div>
+            <label>
 
-        <div className="form-group">
-          <label>Status</label>
+              <span>Company Name</span>
 
-          <select>
-            <option>Active</option>
-            <option>Pending</option>
-            <option>Suspended</option>
-          </select>
+              <input
+                name="company"
+                type="text"
+                placeholder="Enter company name"
+                value={form.company}
+                onChange={handleChange}
+                required
+              />
 
-        </div>
+            </label>
+
+            <label>
+
+              <span>Owner</span>
+
+              <input
+                name="owner"
+                type="text"
+                placeholder="Enter owner name"
+                value={form.owner}
+                onChange={handleChange}
+                required
+              />
+
+            </label>
+
+            <label>
+
+              <span>Email</span>
+
+              <input
+                name="email"
+                type="email"
+                placeholder="owner@company.com"
+                value={form.email}
+                onChange={handleChange}
+                required
+              />
+
+            </label>
+
+            <label>
+
+              <span>Phone</span>
+
+              <input
+                name="phone"
+                type="tel"
+                placeholder="+92..."
+                value={form.phone}
+                onChange={handleChange}
+              />
+
+            </label>
+
+            <label>
+
+              <span>Plan</span>
+
+              <select
+                name="plan"
+                value={form.plan}
+                onChange={handleChange}
+              >
+
+                <option value="Starter">
+                  Starter
+                </option>
+
+                <option value="Business">
+                  Business
+                </option>
+
+                <option value="Professional">
+                  Professional
+                </option>
+
+                <option value="Enterprise">
+                  Enterprise
+                </option>
+
+              </select>
+
+            </label>
+
+            <label>
+
+              <span>Status</span>
+
+              <select
+                name="status"
+                value={form.status}
+                onChange={handleChange}
+              >
+
+                <option value="Active">
+                  Active
+                </option>
+
+                <option value="Pending">
+                  Pending
+                </option>
+
+                <option value="Suspended">
+                  Suspended
+                </option>
+
+              </select>
+
+            </label>
+
+          </div>
+
+          <div className="company-form-actions">
+
+            <button
+              type="button"
+              className="company-form-cancel"
+              onClick={onClose}
+            >
+              Cancel
+            </button>
+
+            <button
+              type="submit"
+              className="company-form-save"
+            >
+              Save Company
+            </button>
+
+          </div>
+
+        </form>
 
       </div>
 
-      <div className="company-form-actions">
+    </div>
 
-        <button type="submit">
-          Save Company
-        </button>
-
-      </div>
-
-    </form>
   );
-      }
+
+}
