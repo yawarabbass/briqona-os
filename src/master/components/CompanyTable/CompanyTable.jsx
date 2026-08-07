@@ -406,45 +406,33 @@ const handleEditCompany = (company) => {
           Add Company Form
       ========================== */}
 
-      {showAddForm && (
-
+            {showAddForm && (
         <CompanyForm
-          onClose={() =>
-            setShowAddForm(false)
-          }
+          onClose={() => setShowAddForm(false)}
           onSave={handleAddCompany}
         />
+      )}
 
+      {editingCompany && (
+        <CompanyForm
+          company={editingCompany}
+          onClose={() => setEditingCompany(null)}
+          onSave={(updatedCompany) => {
+            setCompanyList((current) =>
+              current.map((company) =>
+                company.id === updatedCompany.id
+                  ? updatedCompany
+                  : company
+              )
+            );
+
+            setSelectedCompany(null);
+            setEditingCompany(null);
+          }}
+        />
       )}
 
     </section>
-
-
-{editingCompany && (
-
-  <CompanyForm
-    company={editingCompany}
-    onClose={() =>
-      setEditingCompany(null)
-    }
-    onSave={(updatedCompany) => {
-
-      setCompanyList((current) =>
-        current.map((company) =>
-          company.id === updatedCompany.id
-            ? updatedCompany
-            : company
-        )
-      );
-
-      setSelectedCompany(null);
-      setEditingCompany(null);
-
-    }}
-  />
-
-)}
-    
   );
-
 }
+
