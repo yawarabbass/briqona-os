@@ -10,19 +10,36 @@ const ITEMS_PER_PAGE = 5;
 
 export default function CompanyTable() {
 
+  /* ==========================================================
+     COMPANY DATA
+  ========================================================== */
+
   const [companyList, setCompanyList] = useState(companies);
+
+  /* ==========================================================
+     SEARCH & FILTERS
+  ========================================================== */
 
   const [search, setSearch] = useState("");
   const [status, setStatus] = useState("all");
   const [plan, setPlan] = useState("all");
+
   const [currentPage, setCurrentPage] = useState(1);
 
+  /* ==========================================================
+     MODALS
+  ========================================================== */
+
   const [selectedCompany, setSelectedCompany] = useState(null);
+
   const [showAddForm, setShowAddForm] = useState(false);
+
   const [editingCompany, setEditingCompany] = useState(null);
 
+  const [deletingCompany, setDeletingCompany] = useState(null);
+
   /* ==========================================================
-     FILTER COMPANIES
+     FILTERED COMPANIES
   ========================================================== */
 
   const filteredCompanies = useMemo(() => {
@@ -54,7 +71,12 @@ export default function CompanyTable() {
 
     });
 
-  }, [companyList, search, status, plan]);
+  }, [
+    companyList,
+    search,
+    status,
+    plan,
+  ]);
 
   /* ==========================================================
      PAGINATION
@@ -71,7 +93,11 @@ export default function CompanyTable() {
 
     setCurrentPage(1);
 
-  }, [search, status, plan]);
+  }, [
+    search,
+    status,
+    plan,
+  ]);
 
   useEffect(() => {
 
@@ -81,7 +107,10 @@ export default function CompanyTable() {
 
     }
 
-  }, [currentPage, totalPages]);
+  }, [
+    currentPage,
+    totalPages,
+  ]);
 
   const startIndex =
     (currentPage - 1) * ITEMS_PER_PAGE;
@@ -103,12 +132,12 @@ export default function CompanyTable() {
   };
 
   /* ==========================================================
-     EDIT COMPANY
+     CLOSE COMPANY DETAILS
   ========================================================== */
 
-  const handleEditCompany = (company) => {
+  const handleCloseDetails = () => {
 
-    setEditingCompany(company);
+    setSelectedCompany(null);
 
   };
 
@@ -141,17 +170,35 @@ export default function CompanyTable() {
   };
 
   /* ==========================================================
+     EDIT COMPANY
+  ========================================================== */
+
+  const handleEditCompany = (company) => {
+
+    setSelectedCompany(null);
+
+    setEditingCompany(company);
+
+  };
+
+  /* ==========================================================
      UPDATE COMPANY
   ========================================================== */
 
   const handleUpdateCompany = (updatedCompany) => {
 
     setCompanyList((current) =>
+
       current.map((company) =>
+
         company.id === updatedCompany.id
+
           ? updatedCompany
+
           : company
+
       )
+
     );
 
     setSelectedCompany(null);
@@ -159,6 +206,88 @@ export default function CompanyTable() {
     setEditingCompany(null);
 
   };
+
+  /* ==========================================================
+     DELETE REQUEST
+  ========================================================== */
+
+  const handleDeleteRequest = (company) => {
+
+    setSelectedCompany(null);
+
+    setDeletingCompany(company);
+
+  };
+
+  /* ==========================================================
+     DELETE COMPANY
+  ========================================================== */
+
+  const handleDeleteCompany = () => {
+
+    if (!deletingCompany) {
+      return;
+    }
+
+    setCompanyList((current) =>
+
+      current.filter(
+        (company) =>
+          company.id !== deletingCompany.id
+      )
+
+    );
+
+    setDeletingCompany(null);
+
+    setCurrentPage(1);
+
+  };
+
+  /* ==========================================================
+     CANCEL DELETE
+  ========================================================== */
+
+  const handleCancelDelete = () => {
+
+    setDeletingCompany(null);
+
+  };
+
+  /* ==========================================================
+     RESET FILTERS
+  ========================================================== */
+
+  const handleResetFilters = () => {
+
+    setSearch("");
+
+    setStatus("all");
+
+    setPlan("all");
+
+    setCurrentPage(1);
+
+  };
+
+  /* ==========================================================
+     RESULT RANGE
+  ========================================================== */
+
+  const resultStart =
+    filteredCompanies.length === 0
+      ? 0
+      : startIndex + 1;
+
+  const resultEnd =
+    Math.min(
+      startIndex + ITEMS_PER_PAGE,
+      filteredCompanies.length
+    );
+
+  /* ==========================================================
+     RENDER
+  ========================================================== */
 
   return (
 
@@ -170,7 +299,7 @@ export default function CompanyTable() {
 
       <div className="company-table-header">
 
-        <div className="company-table-heading">
+        <div>
 
           <span className="company-table-label">
             Companies
@@ -185,16 +314,17 @@ export default function CompanyTable() {
         <button
           type="button"
           className="company-table-button"
-          onClick={() => setShowAddForm(true)}
+          onClick={() => {
+
+            setEditingCompany(null);
+
+            setSelectedCompany(null);
+
+            setShowAddForm(true);
+
+          }}
         >
-          <span className="company-table-button-icon">
-            +
-          </span>
-
-          <span>
-            Add Company
-          </span>
-
+          + Add Company
         </button>
 
       </div>
@@ -280,6 +410,21 @@ export default function CompanyTable() {
 
         </select>
 
+
+        {(search ||
+          status !== "all" ||
+          plan !== "all") && (
+
+          <button
+            type="button"
+            className="company-reset-button"
+            onClick={handleResetFilters}
+          >
+            Reset
+          </button>
+
+        )}
+
       </div>
 
 
@@ -291,20 +436,19 @@ export default function CompanyTable() {
 
         Showing{" "}
 
-        {filteredCompanies.length === 0
-          ? 0
-          : startIndex + 1}
+        {resultStart}
 
         {" - "}
 
-        {Math.min(
-          startIndex + ITEMS_PER_PAGE,
-          filteredCompanies.length
-        )}
+        {resultEnd}
 
         {" "}
 
-        of {filteredCompanies.length} companies
+        of{" "}
+
+        {filteredCompanies.length}
+
+        {" "}companies
 
       </div>
 
@@ -371,7 +515,7 @@ export default function CompanyTable() {
                   <td>
 
                     <span
-                      className={`status-badge ${company.status.toLowerCase()}`}
+                      className={`status-badge ${company.status?.toLowerCase()}`}
                     >
                       {company.status}
                     </span>
@@ -381,6 +525,8 @@ export default function CompanyTable() {
                   <td>
 
                     <div className="company-table-actions">
+
+                      {/* VIEW */}
 
                       <button
                         type="button"
@@ -392,6 +538,9 @@ export default function CompanyTable() {
                         View
                       </button>
 
+
+                      {/* EDIT */}
+
                       <button
                         type="button"
                         className="company-edit-button"
@@ -400,6 +549,19 @@ export default function CompanyTable() {
                         }
                       >
                         Edit
+                      </button>
+
+
+                      {/* DELETE */}
+
+                      <button
+                        type="button"
+                        className="company-delete-button"
+                        onClick={() =>
+                          handleDeleteRequest(company)
+                        }
+                      >
+                        Delete
                       </button>
 
                     </div>
@@ -418,7 +580,33 @@ export default function CompanyTable() {
                   colSpan="5"
                   className="company-table-empty"
                 >
-                  No companies found.
+
+                  <div className="company-empty-content">
+
+                    <strong>
+                      No companies found
+                    </strong>
+
+                    <span>
+                      Try changing your search or filters.
+                    </span>
+
+                    {(search ||
+                      status !== "all" ||
+                      plan !== "all") && (
+
+                      <button
+                        type="button"
+                        className="company-reset-empty"
+                        onClick={handleResetFilters}
+                      >
+                        Reset Filters
+                      </button>
+
+                    )}
+
+                  </div>
+
                 </td>
 
               </tr>
@@ -451,9 +639,9 @@ export default function CompanyTable() {
 
         <CompanyDetails
           company={selectedCompany}
-          onClose={() =>
-            setSelectedCompany(null)
-          }
+          onClose={handleCloseDetails}
+          onEdit={handleEditCompany}
+          onDelete={handleDeleteRequest}
         />
 
       )}
@@ -488,6 +676,82 @@ export default function CompanyTable() {
           }
           onSave={handleUpdateCompany}
         />
+
+      )}
+
+
+      {/* ======================================================
+          DELETE CONFIRMATION
+      ====================================================== */}
+
+      {deletingCompany && (
+
+        <div
+          className="company-delete-overlay"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="company-delete-title"
+        >
+
+          <div className="company-delete-modal">
+
+            <div className="company-delete-icon">
+              !
+            </div>
+
+            <div className="company-delete-content">
+
+              <span className="company-delete-label">
+                COMPANY MANAGEMENT
+              </span>
+
+              <h3 id="company-delete-title">
+                Delete Company?
+              </h3>
+
+              <p>
+
+                Are you sure you want to remove{" "}
+
+                <strong>
+                  {deletingCompany.company}
+                </strong>
+
+                {" "}from the company directory?
+
+              </p>
+
+              <small>
+                This frontend action is for testing.
+                The API/database will be connected later.
+              </small>
+
+            </div>
+
+
+            <div className="company-delete-actions">
+
+              <button
+                type="button"
+                className="company-delete-cancel"
+                onClick={handleCancelDelete}
+              >
+                Cancel
+              </button>
+
+              <button
+                type="button"
+                className="company-delete-confirm"
+                onClick={handleDeleteCompany}
+              >
+                Delete Company
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
 
       )}
 
