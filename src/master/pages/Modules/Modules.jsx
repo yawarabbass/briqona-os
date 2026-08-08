@@ -1,12 +1,11 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import "./Modules.css";
-
-import modules from "../../data/modules";
 
 import ModuleSearch from "../../components/ModuleSearch/ModuleSearch";
 import ModuleFilters from "../../components/ModuleFilters/ModuleFilters";
 import ModuleTable from "../../components/ModuleTable/ModuleTable";
 import ModuleForm from "../../components/ModuleForm/ModuleForm";
+import ModuleDetails from "../../components/ModuleDetails/ModuleDetails";
 
 export default function Modules() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -14,54 +13,45 @@ export default function Modules() {
   const [industryFilter, setIndustryFilter] = useState("All Industries");
 
   const [showForm, setShowForm] = useState(false);
+  const [showDetails, setShowDetails] = useState(false);
+
   const [editingModule, setEditingModule] = useState(null);
+  const [selectedModule, setSelectedModule] = useState(null);
 
-  const filteredModules = useMemo(() => {
-    const search = String(searchTerm || "")
-      .trim()
-      .toLowerCase();
-
-    return modules.filter((module) => {
-      const name = String(module.name || "").toLowerCase();
-      const industry = String(module.industry || "").toLowerCase();
-      const version = String(module.version || "").toLowerCase();
-      const status = String(module.status || "").toLowerCase();
-
-      const matchesSearch =
-        !search ||
-        name.includes(search) ||
-        industry.includes(search) ||
-        version.includes(search);
-
-      const matchesStatus =
-        statusFilter === "All" ||
-        status === String(statusFilter).toLowerCase();
-
-      const matchesIndustry =
-        industryFilter === "All Industries" ||
-        industry === String(industryFilter).toLowerCase();
-
-      return (
-        matchesSearch &&
-        matchesStatus &&
-        matchesIndustry
-      );
-    });
-  }, [searchTerm, statusFilter, industryFilter]);
-
-  const handleAddModule = () => {
+  const handleAdd = () => {
     setEditingModule(null);
+    setShowDetails(false);
     setShowForm(true);
   };
 
-  const handleEditModule = (module) => {
-    setEditingModule(module);
-    setShowForm(true);
-  };
-
-  const handleCloseForm = () => {
+  const handleView = (module) => {
+    setSelectedModule(module);
     setShowForm(false);
+    setShowDetails(true);
+  };
+
+  const handleEdit = (module) => {
+    setEditingModule(module);
+    setShowDetails(false);
+    setShowForm(true);
+  };
+
+  const handleDelete = (module) => {
+    const confirmed = window.confirm(
+      `Delete "${module.name}" module?`
+    );
+
+    if (!confirmed) return;
+
+    // Backend/API delete yahan baad mein connect hoga.
+    console.log("Delete module:", module);
+  };
+
+  const handleClosePanel = () => {
+    setShowForm(false);
+    setShowDetails(false);
     setEditingModule(null);
+    setSelectedModule(null);
   };
 
   return (
@@ -69,29 +59,21 @@ export default function Modules() {
 
       <div className="master-page-header">
 
-        <div className="master-page-header-content">
+        <div>
+          <h1>Modules</h1>
 
-          <div>
-            <span className="master-page-eyebrow">
-              MODULE MANAGEMENT
-            </span>
-
-            <h1>Modules</h1>
-
-            <p>
-              Manage all application modules and their versions.
-            </p>
-          </div>
-
-          <button
-            type="button"
-            className="module-add-button"
-            onClick={handleAddModule}
-          >
-            + Add Module
-          </button>
-
+          <p>
+            Manage all application modules and their versions.
+          </p>
         </div>
+
+        <button
+          type="button"
+          className="master-page-primary-button"
+          onClick={handleAdd}
+        >
+          + Add Module
+        </button>
 
       </div>
 
@@ -112,51 +94,79 @@ export default function Modules() {
       </div>
 
       <ModuleTable
-        modules={filteredModules}
         searchTerm={searchTerm}
         statusFilter={statusFilter}
         industryFilter={industryFilter}
-        onEdit={handleEditModule}
+        onView={handleView}
+        onEdit={handleEdit}
+        onDelete={handleDelete}
       />
 
       {showForm && (
-        <div className="module-form-overlay">
+        <div className="module-panel">
 
-          <div className="module-form-modal">
+          <div className="module-panel-header">
 
-            <div className="module-form-modal-header">
+            <div>
+              <span className="module-panel-label">
+                MODULE MANAGEMENT
+              </span>
 
-              <div>
-                <span className="module-form-eyebrow">
-                  {editingModule
-                    ? "EDIT MODULE"
-                    : "NEW MODULE"}
-                </span>
-
-                <h2>
-                  {editingModule
-                    ? "Edit Module"
-                    : "Add Module"}
-                </h2>
-              </div>
-
-              <button
-                type="button"
-                className="module-form-close"
-                onClick={handleCloseForm}
-                aria-label="Close module form"
-              >
-                ×
-              </button>
-
+              <h2>
+                {editingModule
+                  ? "Edit Module"
+                  : "Add Module"}
+              </h2>
             </div>
 
-            <ModuleForm
-              module={editingModule}
-              onCancel={handleCloseForm}
-            />
+            <button
+              type="button"
+              className="module-panel-close"
+              onClick={handleClosePanel}
+              aria-label="Close"
+            >
+              ×
+            </button>
 
           </div>
+
+          <ModuleForm
+            module={editingModule}
+            onClose={handleClosePanel}
+          />
+
+        </div>
+      )}
+
+      {showDetails && selectedModule && (
+        <div className="module-panel">
+
+          <div className="module-panel-header">
+
+            <div>
+              <span className="module-panel-label">
+                MODULE DETAILS
+              </span>
+
+              <h2>
+                View Module
+              </h2>
+            </div>
+
+            <button
+              type="button"
+              className="module-panel-close"
+              onClick={handleClosePanel}
+              aria-label="Close"
+            >
+              ×
+            </button>
+
+          </div>
+
+          <ModuleDetails
+            module={selectedModule}
+          />
 
         </div>
       )}
