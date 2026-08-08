@@ -6,7 +6,7 @@ import industries from "../../data/industries";
 import IndustrySearch from "../../components/IndustrySearch/IndustrySearch";
 import IndustryFilters from "../../components/IndustryFilters/IndustryFilters";
 import IndustryTable from "../../components/IndustryTable/IndustryTable";
-
+import IndustryForm from "../../components/IndustryForm/IndustryForm";
 export default function Industries() {
 
   const [industryList, setIndustryList] = useState(industries);
