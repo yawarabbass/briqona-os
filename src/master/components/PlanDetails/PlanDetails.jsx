@@ -4,7 +4,19 @@ export default function PlanDetails() {
   return (
     <section className="plan-details">
 
-      <h2>Plan Details</h2>
+      <div className="plan-details-header">
+        <span className="plan-details-label">
+          PLAN INFORMATION
+        </span>
+
+        <h2>
+          Plan Details
+        </h2>
+
+        <p>
+          View subscription plan configuration and limits.
+        </p>
+      </div>
 
       <div className="plan-details-grid">
 
