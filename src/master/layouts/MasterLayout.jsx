@@ -1,14 +1,4 @@
-/*
-|--------------------------------------------------------------------------
-| BRIQONA OS
-|--------------------------------------------------------------------------
-| Master Layout
-|--------------------------------------------------------------------------
-|
-| Enterprise SaaS Layout
-|
-*/
-
+cat > src/master/layouts/MasterLayout.jsx <<'EOF'
 import { useState } from "react";
 
 import Header from "../components/Header/Header";
@@ -16,67 +6,45 @@ import Sidebar from "../components/Sidebar/Sidebar";
 
 import "../styles/master.css";
 
-export default function MasterLayout({
+export default function MasterLayout({ children }) {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
-children,
+  const openSidebar = () => {
+    setSidebarOpen(true);
+  };
 
-}){
+  const closeSidebar = () => {
+    setSidebarOpen(false);
+  };
 
-const [sidebarOpen,setSidebarOpen]=useState(false);
+  return (
+    <div className="master-layout">
 
-const openSidebar=()=>{
+      <Sidebar
+        sidebarOpen={sidebarOpen}
+        closeSidebar={closeSidebar}
+      />
 
-setSidebarOpen(true);
+      <div
+        className={`master-overlay ${
+          sidebarOpen ? "show" : ""
+        }`}
+        onClick={closeSidebar}
+      />
 
-};
+      <div className="master-main">
 
-const closeSidebar=()=>{
+        <Header
+          openSidebar={openSidebar}
+        />
 
-setSidebarOpen(false);
+        <main className="master-content">
+          {children}
+        </main>
 
-};
+      </div>
 
-return(
-
-<div className="master-layout">
-
-<Sidebar
-
-sidebarOpen={sidebarOpen}
-
-closeSidebar={closeSidebar}
-
-/>
-
-<div
-
-className={`
-master-overlay
-${sidebarOpen ? "show" : ""}
-`}
-
-onClick={closeSidebar}
-
-/>
-
-<div className="master-main">
-
-<Header
-
-openSidebar={openSidebar}
-
-/>
-
-<main className="master-content">
-
-{children}
-
-</main>
-
-</div>
-
-</div>
-
-);
-
+    </div>
+  );
 }
+EOF
