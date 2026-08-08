@@ -13,12 +13,17 @@ export default function Industries() {
     <section className="master-industries">
 
       <div className="master-page-header">
-        <h1>Industries</h1>
+
+        <h1>
+          Industries
+        </h1>
 
         <p>
           Manage industries and their assigned modules.
         </p>
+
       </div>
+
 
       <div className="industries-toolbar">
 
@@ -33,6 +38,7 @@ export default function Industries() {
         />
 
       </div>
+
 
       <IndustryTable
         searchTerm={searchTerm}
