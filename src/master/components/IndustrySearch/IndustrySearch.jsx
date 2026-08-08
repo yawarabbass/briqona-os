@@ -21,6 +21,7 @@ export default function IndustrySearch({
       <button
         type="button"
         className="industry-search-button"
+        aria-label="Search industries"
       >
         Search
       </button>
