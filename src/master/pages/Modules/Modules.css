@@ -1,43 +1,108 @@
-.master-modules{
+/* ==========================================================
+   BRIQONA OS
+   MODULES PAGE
+   ========================================================== */
 
-    display:flex;
-
-    flex-direction:column;
-
-    gap:24px;
-
+.master-modules {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
 }
 
-.master-page-header{
 
-    margin-bottom:8px;
+/* ==========================================================
+   PAGE HEADER
+   ========================================================== */
 
+.master-page-header {
+  width: 100%;
+  margin-bottom: 0;
 }
 
-.master-page-header h1{
-
-    margin:0;
-
+.master-page-heading {
+  min-width: 0;
 }
 
-.master-page-header p{
+.master-page-label {
+  display: block;
 
-    margin-top:8px;
+  margin-bottom: 7px;
 
-    color:var(--color-text-light);
+  color: var(--color-primary);
 
+  font-size: 11px;
+  font-weight: 700;
+
+  letter-spacing: 0.1em;
 }
 
-.modules-toolbar{
+.master-page-header h1 {
+  margin: 0;
 
-    display:flex;
+  color: var(--color-heading);
 
-    justify-content:space-between;
+  font-size: 28px;
+  font-weight: 700;
 
-    align-items:flex-end;
+  line-height: 1.25;
+}
 
-    gap:20px;
+.master-page-header p {
+  margin: 8px 0 0;
 
-    flex-wrap:wrap;
+  color: var(--color-text-light);
 
+  font-size: 14px;
+
+  line-height: 1.6;
+}
+
+
+/* ==========================================================
+   TOOLBAR
+   ========================================================== */
+
+.modules-toolbar {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: flex-end;
+
+  gap: 20px;
+
+  width: 100%;
+
+  flex-wrap: wrap;
+}
+
+
+/* ==========================================================
+   RESPONSIVE
+   ========================================================== */
+
+@media (max-width: 900px) {
+  .modules-toolbar {
+    align-items: stretch;
+  }
+}
+
+
+@media (max-width: 650px) {
+  .master-modules {
+    gap: 20px;
+  }
+
+  .master-page-header h1 {
+    font-size: 24px;
+  }
+
+  .master-page-header p {
+    font-size: 13px;
+  }
+
+  .modules-toolbar {
+    flex-direction: column;
+    gap: 14px;
+  }
 }
