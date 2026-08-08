@@ -7,6 +7,7 @@ import IndustrySearch from "../../components/IndustrySearch/IndustrySearch";
 import IndustryFilters from "../../components/IndustryFilters/IndustryFilters";
 import IndustryTable from "../../components/IndustryTable/IndustryTable";
 import IndustryForm from "../../components/IndustryForm/IndustryForm";
+
 export default function Industries() {
 
   const [industryList, setIndustryList] = useState(industries);
@@ -16,7 +17,6 @@ export default function Industries() {
   const [statusFilter, setStatusFilter] = useState("All");
 
   const [showAddForm, setShowAddForm] = useState(false);
-
 
   /* ======================================================
      ADD INDUSTRY
@@ -37,42 +37,17 @@ export default function Industries() {
     setShowAddForm(false);
   };
 
-
   /* ======================================================
-     UPDATE INDUSTRY
+     CLOSE FORM
   ====================================================== */
 
-  const handleUpdateIndustry = (updatedIndustry) => {
-
-    setIndustryList((current) =>
-      current.map((industry) =>
-        industry.id === updatedIndustry.id
-          ? updatedIndustry
-          : industry
-      )
-    );
+  const handleCloseForm = () => {
+    setShowAddForm(false);
   };
-
-
-  /* ======================================================
-     DELETE INDUSTRY
-  ====================================================== */
-
-  const handleDeleteIndustry = (industryId) => {
-
-    setIndustryList((current) =>
-      current.filter(
-        (industry) =>
-          industry.id !== industryId
-      )
-    );
-  };
-
 
   return (
 
     <section className="master-industries">
-
 
       {/* ==================================================
           PAGE HEADER
@@ -81,6 +56,10 @@ export default function Industries() {
       <div className="master-page-header">
 
         <div className="master-page-heading">
+
+          <span className="master-page-label">
+            INDUSTRY MANAGEMENT
+          </span>
 
           <h1>
             Industries
@@ -92,13 +71,10 @@ export default function Industries() {
 
         </div>
 
-
         <button
           type="button"
           className="industry-add-button"
-          onClick={() =>
-            setShowAddForm(true)
-          }
+          onClick={() => setShowAddForm(true)}
         >
           + Add Industry
         </button>
@@ -126,28 +102,24 @@ export default function Industries() {
 
 
       {/* ==================================================
-          TABLE
+          INDUSTRY TABLE
       ================================================== */}
 
       <IndustryTable
         industries={industryList}
         searchTerm={searchTerm}
         statusFilter={statusFilter}
-        onUpdate={handleUpdateIndustry}
-        onDelete={handleDeleteIndustry}
       />
 
 
       {/* ==================================================
-          ADD FORM
+          ADD INDUSTRY FORM
       ================================================== */}
 
       {showAddForm && (
 
         <IndustryForm
-          onClose={() =>
-            setShowAddForm(false)
-          }
+          onClose={handleCloseForm}
           onSave={handleAddIndustry}
         />
 
