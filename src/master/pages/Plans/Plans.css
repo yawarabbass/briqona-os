@@ -1,43 +1,228 @@
-.master-plans{
+/* ==========================================================
+   BRIQONA OS
+   MASTER PLANS PAGE
+========================================================== */
 
-    display:flex;
+.master-plans {
 
-    flex-direction:column;
+  width: 100%;
 
-    gap:24px;
+  display: flex;
 
-}
+  flex-direction: column;
 
-.master-page-header{
-
-    margin-bottom:8px;
-
-}
-
-.master-page-header h1{
-
-    margin:0;
+  gap: 24px;
 
 }
 
-.master-page-header p{
 
-    margin-top:8px;
+/* ==========================================================
+   PAGE HEADER
+========================================================== */
 
-    color:var(--color-text-light);
+.master-page-header {
+
+  width: 100%;
+
+  margin: 0;
 
 }
 
-.plans-toolbar{
 
-    display:flex;
+.master-page-heading {
 
-    justify-content:space-between;
+  display: flex;
 
-    align-items:flex-end;
+  flex-direction: column;
 
-    gap:20px;
+  align-items: flex-start;
 
-    flex-wrap:wrap;
+}
+
+
+.master-page-label {
+
+  display: block;
+
+  margin-bottom: 7px;
+
+  color: var(--color-primary);
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  letter-spacing: .1em;
+
+  line-height: 1.4;
+
+}
+
+
+.master-page-header h1 {
+
+  margin: 0;
+
+  color: var(--color-heading);
+
+  font-size: 28px;
+
+  font-weight: 700;
+
+  line-height: 1.2;
+
+}
+
+
+.master-page-header p {
+
+  max-width: 680px;
+
+  margin: 9px 0 0;
+
+  color: var(--color-text-light);
+
+  font-size: 14px;
+
+  line-height: 1.6;
+
+}
+
+
+/* ==========================================================
+   TOOLBAR
+========================================================== */
+
+.plans-toolbar {
+
+  width: 100%;
+
+  display: flex;
+
+  align-items: flex-end;
+
+  justify-content: space-between;
+
+  gap: 20px;
+
+  flex-wrap: wrap;
+
+  padding: 18px;
+
+  background: var(--color-surface);
+
+  border: 1px solid var(--color-border);
+
+  border-radius: var(--radius-lg);
+
+  box-shadow: var(--shadow-sm);
+
+}
+
+
+.plans-search-section {
+
+  flex: 1 1 360px;
+
+  min-width: 0;
+
+}
+
+
+.plans-filter-section {
+
+  flex: 0 1 auto;
+
+  min-width: 0;
+
+}
+
+
+/* ==========================================================
+   CONTENT
+========================================================== */
+
+.plans-content {
+
+  width: 100%;
+
+  min-width: 0;
+
+}
+
+
+/* ==========================================================
+   MOBILE
+========================================================== */
+
+@media (max-width: 768px) {
+
+  .master-plans {
+
+    gap: 20px;
+
+  }
+
+
+  .master-page-header h1 {
+
+    font-size: 24px;
+
+  }
+
+
+  .master-page-header p {
+
+    font-size: 13px;
+
+  }
+
+
+  .plans-toolbar {
+
+    align-items: stretch;
+
+    flex-direction: column;
+
+    gap: 16px;
+
+    padding: 16px;
+
+  }
+
+
+  .plans-search-section,
+
+  .plans-filter-section {
+
+    width: 100%;
+
+    flex: none;
+
+  }
+
+}
+
+
+/* ==========================================================
+   SMALL MOBILE
+========================================================== */
+
+@media (max-width: 480px) {
+
+  .master-page-header h1 {
+
+    font-size: 22px;
+
+  }
+
+
+  .plans-toolbar {
+
+    padding: 14px;
+
+    border-radius: var(--radius-md);
+
+  }
 
 }
