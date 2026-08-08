@@ -8,166 +8,77 @@ export default function IndustryTable({
   searchTerm = "",
   statusFilter = "All",
 }) {
-
   const [industryList, setIndustryList] = useState(industries);
-
-  const [selectedIndustry, setSelectedIndustry] =
-    useState(null);
-
-  const [editingIndustry, setEditingIndustry] =
-    useState(null);
-
-  const [deleteIndustry, setDeleteIndustry] =
-    useState(null);
-
-  const [showAddForm, setShowAddForm] =
-    useState(false);
-
-
-  /* ======================================================
-     VISIBLE INDUSTRIES
-  ====================================================== */
+  const [selectedIndustry, setSelectedIndustry] = useState(null);
+  const [editingIndustry, setEditingIndustry] = useState(null);
+  const [deleteIndustry, setDeleteIndustry] = useState(null);
+  const [showAddForm, setShowAddForm] = useState(false);
 
   const visibleIndustries = useMemo(() => {
-
     const search = String(searchTerm || "")
       .trim()
       .toLowerCase();
 
     return industryList.filter((industry) => {
-
-      const industryName =
-        String(industry.name || "")
-          .toLowerCase();
-
-      const modules =
-        String(industry.modules || "")
-          .toLowerCase();
-
-      const companies =
-        String(industry.companies || "")
-          .toLowerCase();
-
-      const status =
-        String(industry.status || "")
-          .toLowerCase();
+      const name = String(industry.name || "").toLowerCase();
+      const modules = String(industry.modules || "").toLowerCase();
+      const companies = String(industry.companies || "").toLowerCase();
+      const status = String(industry.status || "").toLowerCase();
 
       const matchesSearch =
         !search ||
-        industryName.includes(search) ||
+        name.includes(search) ||
         modules.includes(search) ||
         companies.includes(search);
 
       const matchesStatus =
         statusFilter === "All" ||
-        status ===
-          String(statusFilter).toLowerCase();
+        status === String(statusFilter).toLowerCase();
 
-      return (
-        matchesSearch &&
-        matchesStatus
-      );
+      return matchesSearch && matchesStatus;
     });
-
-  }, [
-    industryList,
-    searchTerm,
-    statusFilter,
-  ]);
-
-
-  /* ======================================================
-     VIEW
-  ====================================================== */
+  }, [industryList, searchTerm, statusFilter]);
 
   const handleView = (industry) => {
-
     setSelectedIndustry(industry);
-
   };
-
-
-  /* ======================================================
-     EDIT
-  ====================================================== */
 
   const handleEdit = (industry) => {
-
-    setEditingIndustry(industry);
-
     setSelectedIndustry(null);
-
+    setEditingIndustry(industry);
   };
-
-
-  /* ======================================================
-     DELETE REQUEST
-  ====================================================== */
 
   const handleDeleteRequest = (industry) => {
-
     setDeleteIndustry(industry);
-
   };
 
-
-  /* ======================================================
-     DELETE CONFIRM
-  ====================================================== */
-
   const handleDeleteConfirm = () => {
-
-    if (!deleteIndustry) {
-      return;
-    }
+    if (!deleteIndustry) return;
 
     setIndustryList((current) =>
       current.filter(
-        (industry) =>
-          industry.id !== deleteIndustry.id
+        (industry) => industry.id !== deleteIndustry.id
       )
     );
 
     setDeleteIndustry(null);
-
   };
 
-
-  /* ======================================================
-     ADD INDUSTRY
-  ====================================================== */
-
   const handleAddIndustry = (newIndustry) => {
-
     const industry = {
-
       ...newIndustry,
-
       id: Date.now(),
-
     };
 
     setIndustryList((current) => [
-
       industry,
-
       ...current,
-
     ]);
 
     setShowAddForm(false);
-
   };
 
-
-  /* ======================================================
-     UPDATE INDUSTRY
-  ====================================================== */
-
-  const handleUpdateIndustry = (
-    updatedIndustry
-  ) => {
-
+  const handleUpdateIndustry = (updatedIndustry) => {
     setIndustryList((current) =>
       current.map((industry) =>
         industry.id === updatedIndustry.id
@@ -177,59 +88,12 @@ export default function IndustryTable({
     );
 
     setEditingIndustry(null);
-
   };
-
-
-  /* ======================================================
-     CLOSE VIEW
-  ====================================================== */
-
-  const handleCloseView = () => {
-
-    setSelectedIndustry(null);
-
-  };
-
-
-  /* ======================================================
-     CLOSE EDIT
-  ====================================================== */
-
-  const handleCloseEdit = () => {
-
-    setEditingIndustry(null);
-
-  };
-
-
-  /* ======================================================
-     CLOSE ADD
-  ====================================================== */
-
-  const handleCloseAdd = () => {
-
-    setShowAddForm(false);
-
-  };
-
-
-  /* ======================================================
-     FILTER STATE
-  ====================================================== */
-
-  const hasFilters =
-    String(searchTerm || "").trim() !== "" ||
-    statusFilter !== "All";
-
 
   return (
-
     <section className="industry-table">
 
-      {/* ==================================================
-          HEADER
-      ================================================== */}
+      {/* HEADER */}
 
       <div className="industry-table-header">
 
@@ -239,24 +103,18 @@ export default function IndustryTable({
             INDUSTRY MANAGEMENT
           </span>
 
-          <h2>
-            Industries
-          </h2>
+          <h2>Industries</h2>
 
           <p>
-            Manage industries and their assigned
-            modules.
+            Manage industries and their assigned modules.
           </p>
 
         </div>
 
-
         <button
           type="button"
           className="industry-table-add-button"
-          onClick={() =>
-            setShowAddForm(true)
-          }
+          onClick={() => setShowAddForm(true)}
         >
           + Add Industry
         </button>
@@ -264,198 +122,119 @@ export default function IndustryTable({
       </div>
 
 
-      {/* ==================================================
-          RESULT
-      ================================================== */}
+      {/* RESULT */}
 
       <div className="industry-table-result">
-
         Showing{" "}
-
-        <strong>
-          {visibleIndustries.length}
-        </strong>
-
-        {" "}
-
+        <strong>{visibleIndustries.length}</strong>{" "}
         {visibleIndustries.length === 1
           ? "industry"
-          : "industries"
-        }
-
-        {hasFilters && (
-          <>
-            {" "}
-            <span>
-              matching your filters
-            </span>
-          </>
-        )}
-
+          : "industries"}
       </div>
 
 
-      {/* ==================================================
-          TABLE
-      ================================================== */}
+      {/* TABLE */}
 
       <div className="industry-table-wrapper">
 
         <table className="industry-table-grid">
 
           <thead>
-
             <tr>
-
-              <th>
-                Industry
-              </th>
-
-              <th>
-                Modules
-              </th>
-
-              <th>
-                Companies
-              </th>
-
-              <th>
-                Status
-              </th>
-
-              <th>
-                Action
-              </th>
-
+              <th>Industry</th>
+              <th>Modules</th>
+              <th>Companies</th>
+              <th>Status</th>
+              <th>Action</th>
             </tr>
-
           </thead>
-
 
           <tbody>
 
             {visibleIndustries.length > 0 ? (
 
-              visibleIndustries.map(
-                (industry) => (
+              visibleIndustries.map((industry) => (
 
-                  <tr key={industry.id}>
+                <tr key={industry.id}>
 
-                    {/* INDUSTRY */}
+                  <td data-label="Industry">
+                    <strong className="industry-name">
+                      {industry.name}
+                    </strong>
+                  </td>
 
-                    <td
-                      data-label="Industry"
+                  <td data-label="Modules">
+                    {industry.modules}
+                  </td>
+
+                  <td data-label="Companies">
+                    {industry.companies}
+                  </td>
+
+                  <td data-label="Status">
+                    <span
+                      className={`industry-status ${
+                        String(industry.status).toLowerCase()
+                      }`}
                     >
+                      {industry.status}
+                    </span>
+                  </td>
 
-                      <strong
-                        className="industry-name"
+                  {/* ==================================
+                      ACTION BUTTONS
+                  ================================== */}
+
+                  <td
+                    data-label="Action"
+                    className="industry-action-cell"
+                  >
+
+                    <div className="industry-table-actions">
+
+                      <button
+                        type="button"
+                        className="industry-view-button"
+                        onClick={() => handleView(industry)}
                       >
-                        {industry.name}
-                      </strong>
+                        View
+                      </button>
 
-                    </td>
-
-
-                    {/* MODULES */}
-
-                    <td
-                      data-label="Modules"
-                    >
-                      {industry.modules}
-                    </td>
-
-
-                    {/* COMPANIES */}
-
-                    <td
-                      data-label="Companies"
-                    >
-                      {industry.companies}
-                    </td>
-
-
-                    {/* STATUS */}
-
-                    <td
-                      data-label="Status"
-                    >
-
-                      <span
-                        className={`industry-status ${
-                          String(
-                            industry.status
-                          ).toLowerCase()
-                        }`}
+                      <button
+                        type="button"
+                        className="industry-edit-button"
+                        onClick={() => handleEdit(industry)}
                       >
-                        {industry.status}
-                      </span>
+                        Edit
+                      </button>
 
-                    </td>
+                      <button
+                        type="button"
+                        className="industry-delete-button"
+                        onClick={() =>
+                          handleDeleteRequest(industry)
+                        }
+                      >
+                        Delete
+                      </button>
 
+                    </div>
 
-                    {/* ACTION */}
+                  </td>
 
-                    <td
-                      data-label="Action"
-                      className="industry-action-cell"
-                    >
+                </tr>
 
-                      <div className="industry-table-actions">
-
-                        <button
-                          type="button"
-                          className="industry-view-button"
-                          onClick={() =>
-                            handleView(industry)
-                          }
-                        >
-                          View
-                        </button>
-
-
-                        <button
-                          type="button"
-                          className="industry-edit-button"
-                          onClick={() =>
-                            handleEdit(industry)
-                          }
-                        >
-                          Edit
-                        </button>
-
-
-                        <button
-                          type="button"
-                          className="industry-delete-button"
-                          onClick={() =>
-                            handleDeleteRequest(
-                              industry
-                            )
-                          }
-                        >
-                          Delete
-                        </button>
-
-                      </div>
-
-                    </td>
-
-                  </tr>
-
-                )
-              )
+              ))
 
             ) : (
 
               <tr>
-
                 <td
                   colSpan="5"
                   className="industry-table-empty"
                 >
                   No industries found.
                 </td>
-
               </tr>
 
             )}
@@ -467,9 +246,7 @@ export default function IndustryTable({
       </div>
 
 
-      {/* ==================================================
-          VIEW INDUSTRY
-      ================================================== */}
+      {/* VIEW MODAL */}
 
       {selectedIndustry && (
 
@@ -480,7 +257,6 @@ export default function IndustryTable({
             <div className="industry-preview-header">
 
               <div>
-
                 <span className="industry-preview-label">
                   INDUSTRY DETAILS
                 </span>
@@ -488,96 +264,65 @@ export default function IndustryTable({
                 <h3>
                   {selectedIndustry.name}
                 </h3>
-
               </div>
-
 
               <button
                 type="button"
                 className="industry-preview-close"
-                onClick={handleCloseView}
-                aria-label="Close industry details"
+                onClick={() => setSelectedIndustry(null)}
               >
                 ×
               </button>
 
             </div>
 
-
             <div className="industry-preview-grid">
 
               <div>
-
-                <span>
-                  Industry
-                </span>
-
+                <span>Industry</span>
                 <strong>
                   {selectedIndustry.name}
                 </strong>
-
               </div>
 
-
               <div>
-
-                <span>
-                  Modules
-                </span>
-
+                <span>Modules</span>
                 <strong>
                   {selectedIndustry.modules}
                 </strong>
-
               </div>
 
-
               <div>
-
-                <span>
-                  Companies
-                </span>
-
+                <span>Companies</span>
                 <strong>
                   {selectedIndustry.companies}
                 </strong>
-
               </div>
 
-
               <div>
-
-                <span>
-                  Status
-                </span>
-
+                <span>Status</span>
                 <strong>
                   {selectedIndustry.status}
                 </strong>
-
               </div>
 
             </div>
-
 
             <div className="industry-preview-actions">
 
               <button
                 type="button"
                 className="industry-preview-secondary"
-                onClick={handleCloseView}
+                onClick={() => setSelectedIndustry(null)}
               >
                 Close
               </button>
-
 
               <button
                 type="button"
                 className="industry-preview-primary"
                 onClick={() =>
-                  handleEdit(
-                    selectedIndustry
-                  )
+                  handleEdit(selectedIndustry)
                 }
               >
                 Edit Industry
@@ -592,38 +337,28 @@ export default function IndustryTable({
       )}
 
 
-      {/* ==================================================
-          ADD INDUSTRY FORM
-      ================================================== */}
+      {/* ADD */}
 
       {showAddForm && (
-
         <IndustryForm
-          onClose={handleCloseAdd}
+          onClose={() => setShowAddForm(false)}
           onSave={handleAddIndustry}
         />
-
       )}
 
 
-      {/* ==================================================
-          EDIT INDUSTRY FORM
-      ================================================== */}
+      {/* EDIT */}
 
       {editingIndustry && (
-
         <IndustryForm
           industry={editingIndustry}
-          onClose={handleCloseEdit}
+          onClose={() => setEditingIndustry(null)}
           onSave={handleUpdateIndustry}
         />
-
       )}
 
 
-      {/* ==================================================
-          DELETE CONFIRMATION
-      ================================================== */}
+      {/* DELETE */}
 
       {deleteIndustry && (
 
@@ -635,43 +370,33 @@ export default function IndustryTable({
               !
             </div>
 
-
             <span className="industry-preview-label">
               DELETE INDUSTRY
             </span>
-
 
             <h3>
               Delete {deleteIndustry.name}?
             </h3>
 
-
             <p>
-              This frontend test action will
-              remove the industry from the
-              current list.
+              This frontend test action will remove
+              the industry from the current list.
             </p>
-
 
             <div className="industry-preview-actions">
 
               <button
                 type="button"
                 className="industry-preview-secondary"
-                onClick={() =>
-                  setDeleteIndustry(null)
-                }
+                onClick={() => setDeleteIndustry(null)}
               >
                 Cancel
               </button>
 
-
               <button
                 type="button"
                 className="industry-delete-confirm"
-                onClick={
-                  handleDeleteConfirm
-                }
+                onClick={handleDeleteConfirm}
               >
                 Delete Industry
               </button>
@@ -685,7 +410,5 @@ export default function IndustryTable({
       )}
 
     </section>
-
   );
-
 }
