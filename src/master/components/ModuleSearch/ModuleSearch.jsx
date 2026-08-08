@@ -1,29 +1,22 @@
 import "./ModuleSearch.css";
- 
+
 export default function ModuleSearch({
-  value = "",
+  value,
   onChange,
 }) {
   return (
     <div className="module-search">
 
       <input
-        type="text"
+        type="search"
         className="module-search-input"
-        placeholder="Search modules..."
-        aria-label="Search modules"
         value={value}
         onChange={(event) =>
-          onChange?.(event.target.value)
+          onChange(event.target.value)
         }
+        placeholder="Search modules..."
+        aria-label="Search modules"
       />
-
-      <button
-        type="button"
-        className="module-search-button"
-      >
-        Search
-      </button>
 
     </div>
   );
