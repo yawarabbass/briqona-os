@@ -1,215 +1,122 @@
-/* =========================================================
-   MODULE TABLE
-========================================================= */
-
 .module-table {
   width: 100%;
-
   background: var(--color-surface);
-
   border: 1px solid var(--color-border);
-
   border-radius: var(--radius-lg);
-
   overflow: hidden;
-
   box-shadow: var(--shadow-sm);
 }
 
-
-/* =========================================================
-   TABLE HEADER
-========================================================= */
-
 .module-table-header {
   padding: 28px 32px;
-
   border-bottom: 1px solid var(--color-border);
 }
 
 .module-table-eyebrow {
   display: block;
-
   margin-bottom: 8px;
-
   color: var(--color-primary);
-
   font-size: 14px;
-
   font-weight: 700;
-
   letter-spacing: 1.5px;
 }
 
 .module-table-header h2 {
   margin: 0;
-
   color: var(--color-heading);
-
   font-size: 30px;
-
   line-height: 1.2;
 }
 
 .module-table-header p {
   margin: 10px 0 0;
-
   color: var(--color-text-light);
-
   font-size: 16px;
-
   line-height: 1.6;
 }
 
-
-/* =========================================================
-   TABLE WRAPPER
-========================================================= */
-
 .module-table-wrapper {
   width: 100%;
-
   overflow-x: auto;
 }
 
-
-/* =========================================================
-   TABLE
-========================================================= */
-
 .module-table-grid {
   width: 100%;
-
-  border-collapse: collapse;
-
   min-width: 850px;
+  border-collapse: collapse;
 }
 
 .module-table-grid th {
   padding: 18px 24px;
-
   text-align: left;
-
   color: var(--color-text-light);
-
-  font-size: 14px;
-
+  font-size: 13px;
   font-weight: 600;
-
   border-bottom: 1px solid var(--color-border);
-
   white-space: nowrap;
 }
 
 .module-table-grid td {
   padding: 20px 24px;
-
   text-align: left;
-
   color: var(--color-text);
-
   border-bottom: 1px solid var(--color-border);
-
   vertical-align: middle;
 }
 
-.module-table-grid tbody tr:last-child td {
+.module-table-grid tr:last-child td {
   border-bottom: none;
-}
-
-.module-table-grid tbody tr {
-  transition: background 0.2s ease;
-}
-
-.module-table-grid tbody tr:hover {
-  background: rgba(37, 99, 235, 0.035);
 }
 
 .module-table-grid td strong {
   color: var(--color-heading);
-
   font-size: 16px;
-
-  font-weight: 600;
 }
 
-
-/* =========================================================
-   STATUS
-========================================================= */
+/* STATUS */
 
 .module-status {
   display: inline-flex;
-
   align-items: center;
-
   justify-content: center;
-
   min-width: 82px;
-
   padding: 7px 14px;
-
   border-radius: 999px;
-
   font-size: 13px;
-
   font-weight: 600;
-
-  white-space: nowrap;
 }
 
 .module-status.active {
   background: rgba(16, 185, 129, 0.12);
-
   color: #10b981;
 }
 
 .module-status.inactive {
   background: rgba(239, 68, 68, 0.12);
-
   color: #ef4444;
 }
 
-
-/* =========================================================
-   ACTIONS
-========================================================= */
+/* ACTIONS */
 
 .module-actions {
   display: flex;
-
   align-items: center;
-
   gap: 8px;
-
   white-space: nowrap;
 }
 
 .module-action {
-  min-width: 72px;
-
+  min-width: 70px;
   padding: 9px 14px;
-
-  border-radius: 10px;
-
-  background: transparent;
-
   border: 1px solid var(--color-border);
-
+  border-radius: 10px;
+  background: transparent;
   color: var(--color-text);
-
-  cursor: pointer;
-
-  font-family: inherit;
-
   font-size: 13px;
-
-  font-weight: 500;
-
+  cursor: pointer;
   transition:
     background 0.2s ease,
     border-color 0.2s ease,
-    color 0.2s ease,
     transform 0.2s ease;
 }
 
@@ -217,74 +124,51 @@
   transform: translateY(-1px);
 }
 
-.module-action.view {
-  color: var(--color-primary);
-}
-
+.module-action.view,
 .module-action.edit {
   color: var(--color-primary);
-
-  border-color: rgba(37, 99, 235, 0.35);
 }
 
 .module-action.delete {
   color: #ef4444;
-
   border-color: rgba(239, 68, 68, 0.3);
 }
 
 .module-action.view:hover,
 .module-action.edit:hover {
   background: rgba(37, 99, 235, 0.08);
-
-  border-color: rgba(37, 99, 235, 0.5);
 }
 
 .module-action.delete:hover {
   background: rgba(239, 68, 68, 0.08);
-
-  border-color: rgba(239, 68, 68, 0.5);
 }
 
-
-/* =========================================================
-   EMPTY STATE
-========================================================= */
+/* EMPTY */
 
 .module-table-empty {
-  padding: 48px 24px !important;
-
-  text-align: center !important;
-
-  color: var(--color-text-light) !important;
-
-  font-size: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 180px;
+  padding: 40px 20px;
+  color: var(--color-text-light);
+  text-align: center;
 }
 
-
-/* =========================================================
-   MOBILE
-========================================================= */
+.module-table-empty strong {
+  color: var(--color-heading);
+  font-size: 16px;
+}
 
 @media (max-width: 768px) {
-
   .module-table {
     border-radius: var(--radius-lg);
-
-    overflow: hidden;
   }
-
-
-  /* Header */
 
   .module-table-header {
     padding: 24px 20px;
-  }
-
-  .module-table-eyebrow {
-    font-size: 13px;
-
-    letter-spacing: 1.3px;
   }
 
   .module-table-header h2 {
@@ -292,202 +176,79 @@
   }
 
   .module-table-header p {
-    margin-top: 9px;
-
     font-size: 15px;
-
-    line-height: 1.6;
   }
-
-
-  /* Wrapper */
 
   .module-table-wrapper {
-    overflow: visible;
-
     padding: 0 20px 20px;
+    overflow: visible;
   }
-
-
-  /* Turn table into cards */
 
   .module-table-grid {
-    display: block;
-
     min-width: 0;
-
-    width: 100%;
+    display: block;
   }
-
 
   .module-table-grid thead {
     display: none;
   }
 
-
   .module-table-grid tbody {
     display: flex;
-
     flex-direction: column;
-
     gap: 16px;
   }
 
-
-  /* Individual card */
-
-  .module-table-grid tbody tr {
+  .module-table-grid tr {
     display: block;
-
-    width: 100%;
-
     padding: 20px;
-
-    background: var(--color-surface);
-
     border: 1px solid var(--color-border);
-
     border-radius: var(--radius-lg);
-
-    box-sizing: border-box;
-  }
-
-
-  .module-table-grid tbody tr:hover {
     background: var(--color-surface);
   }
-
-
-  /* Card fields */
 
   .module-table-grid td {
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
-
     gap: 16px;
-
-    width: 100%;
-
-    padding: 13px 0;
-
-    text-align: right;
-
+    padding: 12px 0;
     border-bottom: 1px solid var(--color-border);
-
-    box-sizing: border-box;
+    text-align: right;
   }
-
 
   .module-table-grid td:first-child {
     padding-top: 0;
   }
 
-
   .module-table-grid td:last-child {
     padding-bottom: 0;
-
     border-bottom: none;
   }
 
-
-  /* Labels */
-
   .module-table-grid td::before {
     content: attr(data-label);
-
     flex-shrink: 0;
-
     color: var(--color-text-light);
-
     font-size: 14px;
-
     font-weight: 500;
-
     text-align: left;
   }
-
-
-  /* Module name */
 
   .module-table-grid td strong {
-    color: var(--color-heading);
-
     font-size: 17px;
-
-    text-align: right;
   }
-
-
-  /* Status */
-
-  .module-status {
-    min-width: 78px;
-
-    padding: 7px 12px;
-
-    font-size: 12px;
-  }
-
-
-  /* Action row */
-
-  .module-table-grid td.module-action-cell {
-    display: block;
-
-    padding-top: 16px;
-
-    text-align: left;
-  }
-
-
-  .module-table-grid td.module-action-cell::before {
-    display: block;
-
-    margin-bottom: 12px;
-
-    text-align: left;
-  }
-
-
-  /* Buttons */
 
   .module-actions {
     display: grid;
-
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-
+    grid-template-columns: repeat(3, 1fr);
     width: 100%;
-
     gap: 8px;
   }
 
-
   .module-action {
     width: 100%;
-
     min-width: 0;
-
-    padding: 11px 6px;
-
-    font-size: 13px;
+    padding: 11px 8px;
   }
-
-
-  /* Empty */
-
-  .module-table-empty {
-    display: block !important;
-
-    padding: 40px 20px !important;
-
-    text-align: center !important;
-  }
-
-  .module-table-empty::before {
-    display: none !important;
-  }
-
 }
