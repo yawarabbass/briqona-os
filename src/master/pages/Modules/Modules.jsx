@@ -1,4 +1,4 @@
-import MasterLayout from "../../layouts/MasterLayout";
+
 import "./Modules.css";
 
 import ModuleSearch from "../../components/ModuleSearch/ModuleSearch";
@@ -7,7 +7,7 @@ import ModuleTable from "../../components/ModuleTable/ModuleTable";
 
 export default function Modules() {
   return (
-    <MasterLayout>
+    
 
       <section className="master-modules">
 
@@ -33,6 +33,6 @@ export default function Modules() {
 
       </section>
 
-    </MasterLayout>
+    
   );
 }
