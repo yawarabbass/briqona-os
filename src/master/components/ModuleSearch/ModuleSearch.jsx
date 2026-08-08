@@ -1,5 +1,5 @@
 import "./ModuleSearch.css";
-
+ 
 export default function ModuleSearch({
   value = "",
   onChange,
