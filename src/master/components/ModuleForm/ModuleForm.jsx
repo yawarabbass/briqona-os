@@ -1,26 +1,85 @@
+import { useEffect, useState } from "react";
 import "./ModuleForm.css";
 
-export default function ModuleForm({ onSubmit }) {
+const emptyForm = {
+  name: "",
+  industry: "Technology",
+  version: "1.0.0",
+  status: "Active",
+};
+
+export default function ModuleForm({
+  module,
+  onSubmit,
+  onCancel,
+}) {
+  const [form, setForm] = useState(emptyForm);
+
+  useEffect(() => {
+    if (module) {
+      setForm({
+        name: module.name || "",
+        industry: module.industry || "Technology",
+        version: module.version || "1.0.0",
+        status: module.status || "Active",
+      });
+    } else {
+      setForm(emptyForm);
+    }
+  }, [module]);
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setForm((currentForm) => ({
+      ...currentForm,
+      [name]: value,
+    }));
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    if (onSubmit) {
-      onSubmit(event);
+    if (!form.name.trim()) {
+      return;
     }
+
+    onSubmit({
+      ...form,
+      name: form.name.trim(),
+      version: form.version.trim(),
+    });
   };
 
   return (
-    <form className="module-form" onSubmit={handleSubmit}>
+    <form
+      className="module-form"
+      onSubmit={handleSubmit}
+    >
+
       <div className="module-form-header">
-        <span className="module-form-eyebrow">
-          MODULE MANAGEMENT
-        </span>
+        <div>
+          <span>MODULE MANAGEMENT</span>
 
-        <h2>Add Module</h2>
+          <h2>
+            {module
+              ? "Edit Module"
+              : "Add New Module"}
+          </h2>
 
-        <p>
-          Create and configure a new application module.
-        </p>
+          <p>
+            Configure module information and status.
+          </p>
+        </div>
+
+        <button
+          type="button"
+          className="module-form-close"
+          onClick={onCancel}
+          aria-label="Close form"
+        >
+          ×
+        </button>
       </div>
 
       <div className="module-form-grid">
@@ -32,10 +91,12 @@ export default function ModuleForm({ onSubmit }) {
 
           <input
             id="module-name"
+            name="name"
             type="text"
-            name="moduleName"
+            value={form.name}
+            onChange={handleChange}
             placeholder="Enter module name"
-            autoComplete="off"
+            required
           />
         </div>
 
@@ -47,7 +108,8 @@ export default function ModuleForm({ onSubmit }) {
           <select
             id="module-industry"
             name="industry"
-            defaultValue="Technology"
+            value={form.industry}
+            onChange={handleChange}
           >
             <option value="Technology">
               Technology
@@ -74,22 +136,25 @@ export default function ModuleForm({ onSubmit }) {
 
           <input
             id="module-version"
-            type="text"
             name="version"
+            type="text"
+            value={form.version}
+            onChange={handleChange}
             placeholder="1.0.0"
-            autoComplete="off"
+            required
           />
         </div>
 
         <div className="form-group">
-          <label htmlFor="module-status">
+          <label htmlFor="module-form-status">
             Status
           </label>
 
           <select
-            id="module-status"
+            id="module-form-status"
             name="status"
-            defaultValue="Active"
+            value={form.status}
+            onChange={handleChange}
           >
             <option value="Active">
               Active
@@ -104,20 +169,26 @@ export default function ModuleForm({ onSubmit }) {
       </div>
 
       <div className="module-form-actions">
+
         <button
           type="button"
           className="module-form-cancel"
+          onClick={onCancel}
         >
           Cancel
         </button>
 
         <button
           type="submit"
-          className="module-form-submit"
+          className="module-form-save"
         >
-          Save Module
+          {module
+            ? "Update Module"
+            : "Save Module"}
         </button>
+
       </div>
+
     </form>
   );
 }
