@@ -1,6 +1,11 @@
 import "./ModuleFilters.css";
 
-export default function ModuleFilters() {
+export default function ModuleFilters({
+  status,
+  industry,
+  onStatusChange,
+  onIndustryChange,
+}) {
   return (
     <div className="module-filters">
 
@@ -9,7 +14,13 @@ export default function ModuleFilters() {
           Status
         </label>
 
-        <select id="module-status" defaultValue="All">
+        <select
+          id="module-status"
+          value={status}
+          onChange={(event) =>
+            onStatusChange(event.target.value)
+          }
+        >
           <option value="All">All</option>
           <option value="Active">Active</option>
           <option value="Inactive">Inactive</option>
@@ -21,7 +32,13 @@ export default function ModuleFilters() {
           Industry
         </label>
 
-        <select id="module-industry" defaultValue="All Industries">
+        <select
+          id="module-industry"
+          value={industry}
+          onChange={(event) =>
+            onIndustryChange(event.target.value)
+          }
+        >
           <option value="All Industries">
             All Industries
           </option>
