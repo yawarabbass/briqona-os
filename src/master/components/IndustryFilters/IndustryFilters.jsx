@@ -20,6 +20,7 @@ export default function IndustryFilters({
             onStatusChange?.(event.target.value)
           }
         >
+
           <option value="All">
             All
           </option>
@@ -31,6 +32,7 @@ export default function IndustryFilters({
           <option value="Inactive">
             Inactive
           </option>
+
         </select>
 
       </div>
