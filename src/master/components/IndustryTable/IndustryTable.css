@@ -1,49 +1,34 @@
-.industry-table{
-    background:var(--color-surface);
-    border:1px solid var(--color-border);
-    border-radius:var(--radius-lg);
-    padding:24px;
-    box-shadow:var(--shadow-sm);
-}
-
-.industry-table-header{
-    margin-bottom:20px;
-}
-
-.industry-table table{
-    width:100%;
-    border-collapse:collapse;
-}
-
-.industry-table th,
-.industry-table td{
-    padding:16px;
-    text-align:left;
-    border-bottom:1px solid var(--color-border);
-}
-
-.industry-table tr:last-child td{
-    border-bottom:none;
-}
 /* ==========================================================
-   INDUSTRY TABLE - FINAL RESPONSIVE ADDITIONS
+   BRIQONA OS
+   INDUSTRY TABLE
    ========================================================== */
 
 .industry-table {
   width: 100%;
+
   background: var(--color-surface);
+
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
+
   box-shadow: var(--shadow-sm);
+
   overflow: hidden;
 }
+
+/* ==========================================================
+   HEADER
+   ========================================================== */
 
 .industry-table-header {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+
   gap: 20px;
+
   padding: 24px;
+
   border-bottom: 1px solid var(--color-border);
 }
 
@@ -53,30 +38,46 @@
 
 .industry-table-label {
   display: block;
+
   margin-bottom: 6px;
+
   font-size: 11px;
   font-weight: 700;
+
   letter-spacing: .1em;
+
   color: var(--color-primary);
 }
 
 .industry-table-heading h2 {
   margin: 0;
+
   color: var(--color-heading);
+
   font-size: 22px;
 }
 
 .industry-table-heading p {
   margin: 7px 0 0;
+
   color: var(--color-text-light);
+
   font-size: 13px;
+
   line-height: 1.5;
 }
 
+/* ==========================================================
+   RESULT
+   ========================================================== */
+
 .industry-table-result {
   padding: 14px 24px;
+
   color: var(--color-text-light);
+
   font-size: 13px;
+
   border-bottom: 1px solid var(--color-border);
 }
 
@@ -84,72 +85,122 @@
   color: var(--color-heading);
 }
 
+/* ==========================================================
+   TABLE WRAPPER
+   ========================================================== */
+
 .industry-table-wrapper {
   width: 100%;
+
   overflow-x: auto;
+
   -webkit-overflow-scrolling: touch;
 }
 
+/* ==========================================================
+   TABLE
+   ========================================================== */
+
 .industry-table-grid {
   width: 100%;
+
   min-width: 650px;
+
   border-collapse: collapse;
 }
 
 .industry-table-grid th {
   padding: 14px 20px;
+
   background: var(--color-card);
+
   color: var(--color-text-light);
+
   font-size: 12px;
   font-weight: 600;
+
   text-align: left;
+
   white-space: nowrap;
 }
 
 .industry-table-grid td {
   padding: 16px 20px;
+
   border-top: 1px solid var(--color-border);
+
   color: var(--color-text);
+
   font-size: 14px;
+
   vertical-align: middle;
 }
 
 .industry-table-grid tbody tr {
-  transition: .2s ease;
+  transition: background .2s ease;
 }
 
 .industry-table-grid tbody tr:hover {
   background: rgba(37, 99, 235, .035);
 }
 
+/* ==========================================================
+   INDUSTRY NAME
+   ========================================================== */
+
 .industry-name {
   color: var(--color-heading);
+
+  font-size: 14px;
 }
+
+/* ==========================================================
+   STATUS
+   ========================================================== */
 
 .industry-status {
   display: inline-flex;
+
   align-items: center;
   justify-content: center;
+
   min-width: 70px;
+
   padding: 6px 10px;
+
   border-radius: 999px;
+
   font-size: 12px;
   font-weight: 600;
 }
 
 .industry-status.active {
   background: rgba(22, 163, 74, .12);
+
   color: #15803d;
 }
 
 .industry-status.inactive {
   background: rgba(100, 116, 139, .12);
+
   color: #475569;
 }
 
+.industry-status.pending {
+  background: rgba(245, 158, 11, .12);
+
+  color: #b45309;
+}
+
+/* ==========================================================
+   EMPTY
+   ========================================================== */
+
 .industry-table-empty {
   padding: 40px 24px !important;
+
   text-align: center !important;
+
   color: var(--color-text-light) !important;
 }
 
@@ -167,12 +218,18 @@
     padding: 12px 16px;
   }
 
+  /*
+    Mobile par page-level horizontal scrolling nahi.
+    Table rows card-style mein convert hongi.
+  */
+
   .industry-table-wrapper {
     overflow: visible;
   }
 
   .industry-table-grid {
     min-width: 0;
+
     width: 100%;
   }
 
@@ -185,11 +242,13 @@
   .industry-table-grid tr,
   .industry-table-grid td {
     display: block;
+
     width: 100%;
   }
 
   .industry-table-grid tr {
     padding: 16px;
+
     border-top: 1px solid var(--color-border);
   }
 
@@ -199,26 +258,41 @@
 
   .industry-table-grid td {
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
+
     gap: 16px;
+
     padding: 9px 0;
+
     border: none;
+
     font-size: 13px;
   }
 
   .industry-table-grid td::before {
     content: attr(data-label);
+
     flex: 0 0 auto;
+
     color: var(--color-text-light);
+
     font-size: 12px;
+
     font-weight: 600;
   }
 
   .industry-name {
     text-align: right;
   }
+
 }
+
+/* ==========================================================
+   SMALL MOBILE
+   ========================================================== */
 
 @media (max-width: 420px) {
 
@@ -233,4 +307,9 @@
   .industry-table-grid tr {
     padding: 15px 16px;
   }
+
+  .industry-table-grid td {
+    gap: 12px;
+  }
+
 }
