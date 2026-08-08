@@ -1,65 +1,65 @@
 .module-filters {
   display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
   align-items: flex-end;
+  gap: 16px;
+  flex-wrap: wrap;
 }
 
 .module-filter-group {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  min-width: 180px;
 }
 
 .module-filter-group label {
   color: var(--color-text);
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
 }
 
 .module-filter-group select {
-  min-width: 180px;
-  min-height: 46px;
-
-  padding: 12px 14px;
-
+  width: 100%;
+  min-height: 48px;
+  padding: 11px 38px 11px 14px;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
-
-  background: var(--color-surface);
-  color: #ffffff;
-
-  font-family: inherit;
-  font-size: 15px;
-
   outline: none;
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  font-size: 14px;
   cursor: pointer;
 }
 
 .module-filter-group select:focus {
   border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
 }
 
+/* Browser dropdown options */
 .module-filter-group select option {
-  background: #0b162b;
+  background: #0b1628;
   color: #ffffff;
 }
 
 @media (max-width: 768px) {
   .module-filters {
-    width: 100%;
     flex-direction: column;
     align-items: stretch;
-    gap: 18px;
+    gap: 16px;
   }
 
   .module-filter-group {
     width: 100%;
+    min-width: 0;
+  }
+
+  .module-filter-group label {
+    font-size: 15px;
   }
 
   .module-filter-group select {
-    width: 100%;
-    min-width: 0;
     min-height: 54px;
+    font-size: 16px;
   }
 }
