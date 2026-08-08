@@ -5,19 +5,31 @@ export default function ModuleTable() {
   return (
     <section className="module-table">
 
+      {/* =========================
+          TABLE HEADER
+      ========================= */}
+
       <div className="module-table-header">
+
         <div>
           <span className="module-table-eyebrow">
             MODULE MANAGEMENT
           </span>
 
-          <h2>Application Modules</h2>
+          <h2>
+            Application Modules
+          </h2>
 
           <p>
             Manage modules, industries, versions and status.
           </p>
         </div>
+
       </div>
+
+      {/* =========================
+          TABLE / MOBILE CARDS
+      ========================= */}
 
       <div className="module-table-wrapper">
 
@@ -37,68 +49,87 @@ export default function ModuleTable() {
 
             {modules.length > 0 ? (
 
-              modules.map((module) => (
+              modules.map((module) => {
 
-                <tr key={module.id}>
+                const isActive =
+                  module.status?.toLowerCase() === "active";
 
-                  <td data-label="Module">
-                    <strong>{module.name}</strong>
-                  </td>
+                return (
+                  <tr key={module.id}>
 
-                  <td data-label="Industry">
-                    {module.industry}
-                  </td>
+                    {/* Module */}
 
-                  <td data-label="Version">
-                    {module.version}
-                  </td>
+                    <td data-label="Module">
+                      <strong>
+                        {module.name}
+                      </strong>
+                    </td>
 
-                  <td data-label="Status">
+                    {/* Industry */}
 
-                    <span
-                      className={`module-status ${
-                        module.status?.toLowerCase() === "active"
-                          ? "active"
-                          : "inactive"
-                      }`}
+                    <td data-label="Industry">
+                      {module.industry}
+                    </td>
+
+                    {/* Version */}
+
+                    <td data-label="Version">
+                      {module.version}
+                    </td>
+
+                    {/* Status */}
+
+                    <td data-label="Status">
+
+                      <span
+                        className={`module-status ${
+                          isActive
+                            ? "active"
+                            : "inactive"
+                        }`}
+                      >
+                        {module.status}
+                      </span>
+
+                    </td>
+
+                    {/* Actions */}
+
+                    <td
+                      data-label="Action"
+                      className="module-action-cell"
                     >
-                      {module.status}
-                    </span>
 
-                  </td>
+                      <div className="module-actions">
 
-                  <td data-label="Action">
+                        <button
+                          type="button"
+                          className="module-action view"
+                        >
+                          View
+                        </button>
 
-                    <div className="module-actions">
+                        <button
+                          type="button"
+                          className="module-action edit"
+                        >
+                          Edit
+                        </button>
 
-                      <button
-                        type="button"
-                        className="module-action view"
-                      >
-                        View
-                      </button>
+                        <button
+                          type="button"
+                          className="module-action delete"
+                        >
+                          Delete
+                        </button>
 
-                      <button
-                        type="button"
-                        className="module-action edit"
-                      >
-                        Edit
-                      </button>
+                      </div>
 
-                      <button
-                        type="button"
-                        className="module-action delete"
-                      >
-                        Delete
-                      </button>
+                    </td>
 
-                    </div>
-
-                  </td>
-
-                </tr>
-
-              ))
+                  </tr>
+                );
+              })
 
             ) : (
 
