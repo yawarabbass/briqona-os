@@ -1,11 +1,4 @@
-/* ==========================================================
-   BRIQONA OS
-   MODULE TABLE
-   ========================================================== */
-
 .module-table {
-
-  width: 100%;
 
   background: var(--color-surface);
 
@@ -13,163 +6,70 @@
 
   border-radius: var(--radius-lg);
 
-  box-shadow: var(--shadow-sm);
-
   overflow: hidden;
+
+  box-shadow: var(--shadow-sm);
 
 }
 
 
-/* ==========================================================
-   HEADER
-   ========================================================== */
+/* =========================
+   TABLE HEADER
+========================= */
 
 .module-table-header {
 
-  display: flex;
-
-  align-items: flex-start;
-
-  justify-content: space-between;
-
-  gap: 20px;
-
-  padding: 24px;
+  padding: 28px 32px;
 
   border-bottom: 1px solid var(--color-border);
 
 }
 
 
-.module-table-heading {
-
-  min-width: 0;
-
-}
-
-
-.module-table-label {
+.module-table-eyebrow {
 
   display: block;
 
-  margin-bottom: 6px;
+  margin-bottom: 8px;
 
   color: var(--color-primary);
 
-  font-size: 11px;
+  font-size: 14px;
 
   font-weight: 700;
 
-  letter-spacing: .1em;
+  letter-spacing: 1.5px;
 
 }
 
 
-.module-table-heading h2 {
+.module-table-header h2 {
 
   margin: 0;
 
   color: var(--color-heading);
 
-  font-size: 22px;
+  font-size: 30px;
 
-  line-height: 1.25;
+  line-height: 1.2;
 
 }
 
 
-.module-table-heading p {
+.module-table-header p {
 
-  margin: 7px 0 0;
+  margin: 10px 0 0;
 
   color: var(--color-text-light);
 
-  font-size: 13px;
-
-  line-height: 1.5;
+  font-size: 16px;
 
 }
 
 
-/* ==========================================================
-   ADD BUTTON
-   ========================================================== */
-
-.module-add-button {
-
-  flex: 0 0 auto;
-
-  min-height: 44px;
-
-  padding: 0 18px;
-
-  border: 1px solid var(--color-primary);
-
-  border-radius: var(--radius-md);
-
-  background: var(--color-primary);
-
-  color: #fff;
-
-  font-family: inherit;
-
-  font-size: 13px;
-
-  font-weight: 600;
-
-  cursor: pointer;
-
-  transition:
-    background .2s ease,
-    border-color .2s ease,
-    transform .2s ease;
-
-}
-
-
-.module-add-button:hover {
-
-  background: var(--color-primary-hover);
-
-  border-color: var(--color-primary-hover);
-
-}
-
-
-.module-add-button:active {
-
-  transform: translateY(1px);
-
-}
-
-
-/* ==========================================================
-   RESULT
-   ========================================================== */
-
-.module-table-result {
-
-  padding: 14px 24px;
-
-  border-bottom: 1px solid var(--color-border);
-
-  color: var(--color-text-light);
-
-  font-size: 13px;
-
-}
-
-
-.module-table-result strong {
-
-  color: var(--color-heading);
-
-}
-
-
-/* ==========================================================
-   TABLE WRAPPER
-   ========================================================== */
+/* =========================
+   TABLE
+========================= */
 
 .module-table-wrapper {
 
@@ -177,39 +77,33 @@
 
   overflow-x: auto;
 
-  -webkit-overflow-scrolling: touch;
-
 }
 
-
-/* ==========================================================
-   TABLE
-   ========================================================== */
 
 .module-table-grid {
 
   width: 100%;
 
-  min-width: 760px;
-
   border-collapse: collapse;
+
+  min-width: 850px;
 
 }
 
 
 .module-table-grid th {
 
-  padding: 14px 20px;
+  padding: 18px 24px;
 
-  background: var(--color-card);
+  text-align: left;
 
   color: var(--color-text-light);
 
-  font-size: 12px;
+  font-size: 14px;
 
   font-weight: 600;
 
-  text-align: left;
+  border-bottom: 1px solid var(--color-border);
 
   white-space: nowrap;
 
@@ -218,76 +112,38 @@
 
 .module-table-grid td {
 
-  padding: 16px 20px;
+  padding: 20px 24px;
 
-  border-top: 1px solid var(--color-border);
+  text-align: left;
 
   color: var(--color-text);
 
-  font-size: 14px;
+  border-bottom: 1px solid var(--color-border);
 
   vertical-align: middle;
 
 }
 
 
-.module-table-grid tbody tr {
+.module-table-grid tr:last-child td {
 
-  transition: background .2s ease;
-
-}
-
-
-.module-table-grid tbody tr:hover {
-
-  background: rgba(37, 99, 235, .035);
+  border-bottom: none;
 
 }
 
 
-/* ==========================================================
-   MODULE NAME
-   ========================================================== */
-
-.module-name {
+.module-table-grid td strong {
 
   color: var(--color-heading);
 
-  font-size: 14px;
-
-  font-weight: 600;
+  font-size: 16px;
 
 }
 
 
-/* ==========================================================
-   VERSION
-   ========================================================== */
-
-.module-version {
-
-  display: inline-flex;
-
-  align-items: center;
-
-  padding: 5px 9px;
-
-  border-radius: 6px;
-
-  background: var(--color-card);
-
-  color: var(--color-text);
-
-  font-size: 12px;
-
-  font-weight: 600;
-
-}
-
-
-/* ==========================================================
+/* =========================
    STATUS
-   ========================================================== */
+========================= */
 
 .module-status {
 
@@ -297,13 +153,13 @@
 
   justify-content: center;
 
-  min-width: 72px;
+  min-width: 82px;
 
-  padding: 6px 10px;
+  padding: 7px 14px;
 
   border-radius: 999px;
 
-  font-size: 12px;
+  font-size: 13px;
 
   font-weight: 600;
 
@@ -312,48 +168,25 @@
 
 .module-status.active {
 
-  background: rgba(22, 163, 74, .12);
+  background: rgba(16, 185, 129, 0.12);
 
-  color: #15803d;
+  color: #10b981;
 
 }
 
 
 .module-status.inactive {
 
-  background: rgba(100, 116, 139, .12);
+  background: rgba(239, 68, 68, 0.12);
 
-  color: #475569;
-
-}
-
-
-.module-status.pending {
-
-  background: rgba(245, 158, 11, .12);
-
-  color: #b45309;
+  color: #ef4444;
 
 }
 
 
-/* ==========================================================
+/* =========================
    ACTIONS
-   ========================================================== */
-
-.module-actions-heading {
-
-  text-align: right !important;
-
-}
-
-
-.module-actions-cell {
-
-  text-align: right;
-
-}
-
+========================= */
 
 .module-actions {
 
@@ -361,37 +194,35 @@
 
   align-items: center;
 
-  justify-content: flex-end;
-
   gap: 8px;
+
+  white-space: nowrap;
 
 }
 
 
 .module-action {
 
-  min-height: 34px;
+  min-width: 70px;
 
-  padding: 0 11px;
+  padding: 9px 14px;
+
+  border-radius: 10px;
+
+  background: transparent;
 
   border: 1px solid var(--color-border);
 
-  border-radius: 7px;
-
-  background: var(--color-surface);
-
-  font-family: inherit;
-
-  font-size: 12px;
-
-  font-weight: 600;
+  color: var(--color-text);
 
   cursor: pointer;
 
+  font-size: 13px;
+
   transition:
-    background .2s ease,
-    border-color .2s ease,
-    color .2s ease;
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
 
 }
 
@@ -403,393 +234,81 @@
 }
 
 
-.module-action.view:hover {
-
-  border-color: var(--color-primary);
-
-  background: rgba(37, 99, 235, .08);
-
-}
-
-
 .module-action.edit {
 
-  color: var(--color-text);
-
-}
-
-
-.module-action.edit:hover {
-
-  border-color: var(--color-primary);
-
   color: var(--color-primary);
-
-  background: rgba(37, 99, 235, .08);
 
 }
 
 
 .module-action.delete {
 
-  color: #dc2626;
+  color: #ef4444;
+
+  border-color: rgba(239, 68, 68, 0.3);
+
+}
+
+
+.module-action:hover {
+
+  background: rgba(37, 99, 235, 0.08);
 
 }
 
 
 .module-action.delete:hover {
 
-  border-color: #dc2626;
-
-  background: rgba(220, 38, 38, .08);
+  background: rgba(239, 68, 68, 0.08);
 
 }
 
 
-/* ==========================================================
-   EMPTY STATE
-   ========================================================== */
+/* =========================
+   EMPTY
+========================= */
 
 .module-table-empty {
 
-  padding: 48px 24px !important;
+  padding: 40px !important;
 
   text-align: center !important;
 
-}
-
-
-.module-table-empty strong {
-
-  display: block;
-
-  margin-bottom: 6px;
-
-  color: var(--color-heading);
-
-  font-size: 14px;
+  color: var(--color-text-light) !important;
 
 }
 
 
-.module-table-empty span {
-
-  color: var(--color-text-light);
-
-  font-size: 13px;
-
-}
-
-
-/* ==========================================================
-   MODAL BACKDROP
-   ========================================================== */
-
-.module-modal-backdrop {
-
-  position: fixed;
-
-  inset: 0;
-
-  z-index: 1000;
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  padding: 20px;
-
-  background: rgba(15, 23, 42, .48);
-
-  backdrop-filter: blur(4px);
-
-}
-
-
-/* ==========================================================
-   MODAL
-   ========================================================== */
-
-.module-modal {
-
-  position: relative;
-
-  width: min(680px, 100%);
-
-  max-height: calc(100vh - 40px);
-
-  overflow-y: auto;
-
-  padding: 28px;
-
-  border: 1px solid var(--color-border);
-
-  border-radius: var(--radius-lg);
-
-  background: var(--color-surface);
-
-  box-shadow: var(--shadow-lg);
-
-}
-
-
-.module-modal-close {
-
-  position: absolute;
-
-  top: 14px;
-
-  right: 16px;
-
-  width: 34px;
-
-  height: 34px;
-
-  border: 1px solid var(--color-border);
-
-  border-radius: 50%;
-
-  background: var(--color-surface);
-
-  color: var(--color-text-light);
-
-  font-size: 22px;
-
-  line-height: 1;
-
-  cursor: pointer;
-
-}
-
-
-.module-modal-close:hover {
-
-  color: var(--color-text);
-
-  border-color: var(--color-primary);
-
-}
-
-
-/* ==========================================================
-   MODAL TITLE
-   ========================================================== */
-
-.module-modal-title {
-
-  padding-right: 42px;
-
-  margin-bottom: 24px;
-
-}
-
-
-.module-modal-title span {
-
-  display: block;
-
-  margin-bottom: 6px;
-
-  color: var(--color-primary);
-
-  font-size: 11px;
-
-  font-weight: 700;
-
-  letter-spacing: .1em;
-
-}
-
-
-.module-modal-title h2 {
-
-  margin: 0;
-
-  color: var(--color-heading);
-
-  font-size: 22px;
-
-}
-
-
-.module-modal-title p {
-
-  margin: 7px 0 0;
-
-  color: var(--color-text-light);
-
-  font-size: 13px;
-
-}
-
-
-/* ==========================================================
-   DELETE MODAL
-   ========================================================== */
-
-.module-delete-modal {
-
-  width: min(430px, 100%);
-
-  padding: 30px;
-
-  border: 1px solid var(--color-border);
-
-  border-radius: var(--radius-lg);
-
-  background: var(--color-surface);
-
-  box-shadow: var(--shadow-lg);
-
-  text-align: center;
-
-}
-
-
-.module-delete-icon {
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  width: 48px;
-
-  height: 48px;
-
-  margin: 0 auto 18px;
-
-  border-radius: 50%;
-
-  background: rgba(220, 38, 38, .1);
-
-  color: #dc2626;
-
-  font-size: 22px;
-
-  font-weight: 700;
-
-}
-
-
-.module-delete-modal h2 {
-
-  margin: 0;
-
-  color: var(--color-heading);
-
-  font-size: 20px;
-
-}
-
-
-.module-delete-modal p {
-
-  margin: 12px 0 0;
-
-  color: var(--color-text-light);
-
-  font-size: 14px;
-
-  line-height: 1.6;
-
-}
-
-
-.module-delete-modal p strong {
-
-  color: var(--color-heading);
-
-}
-
-
-.module-delete-actions {
-
-  display: flex;
-
-  justify-content: center;
-
-  gap: 10px;
-
-  margin-top: 24px;
-
-}
-
-
-.module-cancel-button,
-
-.module-confirm-delete {
-
-  min-height: 42px;
-
-  padding: 0 18px;
-
-  border-radius: var(--radius-md);
-
-  font-family: inherit;
-
-  font-size: 13px;
-
-  font-weight: 600;
-
-  cursor: pointer;
-
-}
-
-
-.module-cancel-button {
-
-  border: 1px solid var(--color-border);
-
-  background: var(--color-surface);
-
-  color: var(--color-text);
-
-}
-
-
-.module-confirm-delete {
-
-  border: 1px solid #dc2626;
-
-  background: #dc2626;
-
-  color: #fff;
-
-}
-
-
-/* ==========================================================
+/* =========================
    MOBILE
-   Companies-style card layout
-   ========================================================== */
+========================= */
 
 @media (max-width: 768px) {
 
+  .module-table {
+
+    border-radius: var(--radius-lg);
+
+  }
+
+
   .module-table-header {
 
-    padding: 20px;
-
-    flex-direction: column;
-
-    align-items: stretch;
+    padding: 24px 20px;
 
   }
 
 
-  .module-add-button {
+  .module-table-header h2 {
 
-    width: 100%;
+    font-size: 26px;
 
   }
 
 
-  .module-table-result {
+  .module-table-header p {
 
-    padding: 12px 16px;
+    font-size: 15px;
 
   }
 
@@ -798,6 +317,8 @@
 
     overflow: visible;
 
+    padding: 0 20px 20px;
+
   }
 
 
@@ -805,7 +326,7 @@
 
     min-width: 0;
 
-    width: 100%;
+    display: block;
 
   }
 
@@ -817,33 +338,28 @@
   }
 
 
-  .module-table-grid,
+  .module-table-grid tbody {
 
-  .module-table-grid tbody,
+    display: flex;
 
-  .module-table-grid tr,
+    flex-direction: column;
 
-  .module-table-grid td {
-
-    display: block;
-
-    width: 100%;
+    gap: 16px;
 
   }
 
 
   .module-table-grid tr {
 
-    padding: 16px;
+    display: block;
 
-    border-top: 1px solid var(--color-border);
+    padding: 20px;
 
-  }
+    border: 1px solid var(--color-border);
 
+    border-radius: var(--radius-lg);
 
-  .module-table-grid tbody tr:first-child {
-
-    border-top: none;
+    background: var(--color-surface);
 
   }
 
@@ -858,11 +374,27 @@
 
     gap: 16px;
 
-    padding: 9px 0;
+    padding: 12px 0;
 
-    border: none;
+    border-bottom: 1px solid var(--color-border);
 
-    font-size: 13px;
+    text-align: right;
+
+  }
+
+
+  .module-table-grid td:first-child {
+
+    padding-top: 0;
+
+  }
+
+
+  .module-table-grid td:last-child {
+
+    padding-bottom: 0;
+
+    border-bottom: none;
 
   }
 
@@ -871,46 +403,22 @@
 
     content: attr(data-label);
 
-    flex: 0 0 auto;
+    flex-shrink: 0;
 
     color: var(--color-text-light);
 
-    font-size: 12px;
+    font-size: 14px;
 
-    font-weight: 600;
+    font-weight: 500;
 
-  }
-
-
-  .module-name,
-
-  .module-version,
-
-  .module-status {
-
-    text-align: right;
+    text-align: left;
 
   }
 
 
-  .module-actions-cell {
+  .module-table-grid td strong {
 
-    display: block !important;
-
-    padding-top: 14px !important;
-
-    margin-top: 6px;
-
-    border-top: 1px dashed var(--color-border) !important;
-
-  }
-
-
-  .module-actions-cell::before {
-
-    display: block;
-
-    margin-bottom: 9px;
+    font-size: 17px;
 
   }
 
@@ -921,10 +429,10 @@
 
     grid-template-columns: repeat(3, 1fr);
 
+    width: 100%;
+
     gap: 8px;
 
-    width: 100%;
-
   }
 
 
@@ -932,121 +440,25 @@
 
     width: 100%;
 
-    min-height: 38px;
+    min-width: 0;
 
-    padding: 0 8px;
-
-  }
-
-
-  .module-modal-backdrop {
-
-    align-items: flex-start;
-
-    padding: 12px;
-
-    overflow-y: auto;
+    padding: 11px 8px;
 
   }
 
 
-  .module-modal {
+  .module-table-empty {
 
-    width: 100%;
+    display: block !important;
 
-    max-height: none;
-
-    margin: 12px 0;
-
-    padding: 22px 18px;
+    text-align: center !important;
 
   }
 
 
-  .module-delete-modal {
+  .module-table-empty::before {
 
-    padding: 24px 20px;
-
-  }
-
-}
-
-
-/* ==========================================================
-   SMALL MOBILE
-   ========================================================== */
-
-@media (max-width: 520px) {
-
-  .module-table-heading h2 {
-
-    font-size: 20px;
-
-  }
-
-
-  .module-table-grid tr {
-
-    padding: 15px;
-
-  }
-
-
-  .module-table-grid td {
-
-    gap: 12px;
-
-  }
-
-
-  .module-action {
-
-    font-size: 11px;
-
-  }
-
-}
-
-
-/* ==========================================================
-   VERY SMALL MOBILE
-   ========================================================== */
-
-@media (max-width: 380px) {
-
-  .module-table-header {
-
-    padding: 18px 16px;
-
-  }
-
-
-  .module-table-result {
-
-    padding: 12px 16px;
-
-  }
-
-
-  .module-table-grid tr {
-
-    padding: 14px 16px;
-
-  }
-
-
-  .module-actions {
-
-    gap: 6px;
-
-  }
-
-
-  .module-action {
-
-    min-height: 36px;
-
-    padding: 0 5px;
+    display: none;
 
   }
 
