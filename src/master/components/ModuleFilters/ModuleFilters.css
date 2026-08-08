@@ -19,6 +19,7 @@
 
 .module-filter-group select {
   min-width: 180px;
+  min-height: 46px;
 
   padding: 12px 14px;
 
