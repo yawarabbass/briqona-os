@@ -1,43 +1,166 @@
-.master-industries{
+.master-industries {
 
-    display:flex;
+  display: flex;
 
-    flex-direction:column;
+  flex-direction: column;
 
-    gap:24px;
-
-}
-
-.master-page-header{
-
-    margin-bottom:8px;
+  gap: 24px;
 
 }
 
-.master-page-header h1{
 
-    margin:0;
+.master-page-header {
+
+  display: flex;
+
+  align-items: flex-start;
+
+  justify-content: space-between;
+
+  gap: 24px;
+
+  margin-bottom: 8px;
 
 }
 
-.master-page-header p{
 
-    margin-top:8px;
+.master-page-heading {
 
-    color:var(--color-text-light);
+  min-width: 0;
+
+  flex: 1;
 
 }
 
-.industries-toolbar{
 
-    display:flex;
+.master-page-header h1 {
 
-    justify-content:space-between;
+  margin: 0;
 
-    align-items:flex-end;
+  color: var(--color-heading);
 
-    gap:20px;
+}
 
-    flex-wrap:wrap;
+
+.master-page-header p {
+
+  margin-top: 8px;
+
+  color: var(--color-text-light);
+
+  line-height: 1.5;
+
+}
+
+
+.industry-add-button {
+
+  flex: 0 0 auto;
+
+  min-height: 44px;
+
+  padding: 0 20px;
+
+  border: 1px solid var(--color-primary);
+
+  border-radius: var(--radius-md);
+
+  background: var(--color-primary);
+
+  color: #fff;
+
+  font-family: inherit;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  white-space: nowrap;
+
+  cursor: pointer;
+
+  transition:
+
+    background .2s ease,
+
+    border-color .2s ease;
+
+}
+
+
+.industry-add-button:hover {
+
+  background: var(--color-primary-hover);
+
+  border-color: var(--color-primary-hover);
+
+}
+
+
+.industries-toolbar {
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: flex-end;
+
+  gap: 20px;
+
+  flex-wrap: wrap;
+
+}
+
+
+@media (max-width: 650px) {
+
+  .master-page-header {
+
+    flex-direction: column;
+
+    align-items: stretch;
+
+    gap: 16px;
+
+  }
+
+
+  .master-page-heading {
+
+    width: 100%;
+
+  }
+
+
+  .master-page-header h1 {
+
+    font-size: 28px;
+
+  }
+
+
+  .master-page-header p {
+
+    max-width: 100%;
+
+  }
+
+
+  .industry-add-button {
+
+    width: 100%;
+
+    min-height: 46px;
+
+  }
+
+
+  .industries-toolbar {
+
+    flex-direction: column;
+
+    align-items: stretch;
+
+  }
 
 }
