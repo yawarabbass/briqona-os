@@ -1,4 +1,4 @@
-
+import { useState } from "react";
 import "./Industries.css";
 
 import IndustrySearch from "../../components/IndustrySearch/IndustrySearch";
@@ -6,33 +6,39 @@ import IndustryFilters from "../../components/IndustryFilters/IndustryFilters";
 import IndustryTable from "../../components/IndustryTable/IndustryTable";
 
 export default function Industries() {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [statusFilter, setStatusFilter] = useState("All");
+
   return (
-    
+    <section className="master-industries">
 
-      <section className="master-industries">
+      <div className="master-page-header">
+        <h1>Industries</h1>
 
-        <div className="master-page-header">
+        <p>
+          Manage industries and their assigned modules.
+        </p>
+      </div>
 
-          <h1>Industries</h1>
+      <div className="industries-toolbar">
 
-          <p>
-            Manage industries and their assigned modules.
-          </p>
+        <IndustrySearch
+          value={searchTerm}
+          onChange={setSearchTerm}
+        />
 
-        </div>
+        <IndustryFilters
+          status={statusFilter}
+          onStatusChange={setStatusFilter}
+        />
 
-        <div className="industries-toolbar">
+      </div>
 
-          <IndustrySearch />
+      <IndustryTable
+        searchTerm={searchTerm}
+        statusFilter={statusFilter}
+      />
 
-          <IndustryFilters />
-
-        </div>
-
-        <IndustryTable />
-
-      </section>
-
-    
+    </section>
   );
 }
