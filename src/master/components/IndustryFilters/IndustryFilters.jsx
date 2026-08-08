@@ -1,33 +1,40 @@
 import "./IndustryFilters.css";
 
-export default function IndustryFilters() {
+export default function IndustryFilters({
+  status = "All",
+  onStatusChange,
+}) {
   return (
-    <section className="industry-filters">
+    <div className="industry-filters">
 
       <div className="industry-filter-group">
 
-        <label>Status</label>
+        <label htmlFor="industry-status-filter">
+          Status
+        </label>
 
-        <select>
-          <option>All</option>
-          <option>Active</option>
-          <option>Inactive</option>
+        <select
+          id="industry-status-filter"
+          value={status}
+          onChange={(event) =>
+            onStatusChange?.(event.target.value)
+          }
+        >
+          <option value="All">
+            All
+          </option>
+
+          <option value="Active">
+            Active
+          </option>
+
+          <option value="Inactive">
+            Inactive
+          </option>
         </select>
 
       </div>
 
-      <div className="industry-filter-group">
-
-        <label>Modules</label>
-
-        <select>
-          <option>All</option>
-          <option>5+</option>
-          <option>10+</option>
-        </select>
-
-      </div>
-
-    </section>
+    </div>
   );
 }
