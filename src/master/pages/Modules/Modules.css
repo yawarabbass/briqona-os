@@ -1,108 +1,147 @@
-/* ==========================================================
-   BRIQONA OS
-   MODULES PAGE
-   ========================================================== */
-
 .master-modules {
   display: flex;
   flex-direction: column;
   gap: 24px;
-  width: 100%;
 }
-
-
-/* ==========================================================
-   PAGE HEADER
-   ========================================================== */
 
 .master-page-header {
-  width: 100%;
-  margin-bottom: 0;
-}
-
-.master-page-heading {
-  min-width: 0;
-}
-
-.master-page-label {
-  display: block;
-
-  margin-bottom: 7px;
-
-  color: var(--color-primary);
-
-  font-size: 11px;
-  font-weight: 700;
-
-  letter-spacing: 0.1em;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 8px;
 }
 
 .master-page-header h1 {
   margin: 0;
-
   color: var(--color-heading);
-
-  font-size: 28px;
-  font-weight: 700;
-
-  line-height: 1.25;
 }
 
 .master-page-header p {
   margin: 8px 0 0;
-
   color: var(--color-text-light);
-
-  font-size: 14px;
-
-  line-height: 1.6;
 }
 
+.master-page-primary-button {
+  flex: 0 0 auto;
+  min-height: 44px;
+  padding: 0 20px;
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius-md);
+  background: var(--color-primary);
+  color: #fff;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
 
-/* ==========================================================
-   TOOLBAR
-   ========================================================== */
+.master-page-primary-button:hover {
+  background: var(--color-primary-hover);
+  border-color: var(--color-primary-hover);
+}
+
+.master-page-primary-button:active {
+  transform: translateY(1px);
+}
 
 .modules-toolbar {
   display: flex;
-
   justify-content: space-between;
   align-items: flex-end;
-
   gap: 20px;
-
-  width: 100%;
-
   flex-wrap: wrap;
 }
 
-
-/* ==========================================================
-   RESPONSIVE
-   ========================================================== */
-
-@media (max-width: 900px) {
-  .modules-toolbar {
-    align-items: stretch;
-  }
+.module-panel {
+  width: 100%;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
 }
 
+.module-panel-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 24px;
+  border-bottom: 1px solid var(--color-border);
+}
 
-@media (max-width: 650px) {
-  .master-modules {
-    gap: 20px;
+.module-panel-label {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--color-primary);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.module-panel-header h2 {
+  margin: 0;
+  color: var(--color-heading);
+  font-size: 22px;
+}
+
+.module-panel-close {
+  flex: 0 0 auto;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.module-panel-close:hover {
+  background: var(--color-card);
+  border-color: var(--color-primary);
+}
+
+@media (max-width: 768px) {
+  .master-page-header {
+    flex-direction: column;
+    align-items: stretch;
   }
 
-  .master-page-header h1 {
-    font-size: 24px;
-  }
-
-  .master-page-header p {
-    font-size: 13px;
+  .master-page-primary-button {
+    width: 100%;
   }
 
   .modules-toolbar {
     flex-direction: column;
-    gap: 14px;
+    align-items: stretch;
+  }
+
+  .module-panel-header {
+    padding: 20px;
+  }
+
+  .module-panel-header h2 {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 420px) {
+  .module-panel-header {
+    padding: 18px 16px;
+  }
+
+  .module-panel-close {
+    width: 34px;
+    height: 34px;
   }
 }
