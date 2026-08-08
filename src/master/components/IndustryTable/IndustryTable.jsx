@@ -7,37 +7,55 @@ export default function IndustryTable({
   searchTerm = "",
   statusFilter = "All",
 }) {
+
   const visibleIndustries = useMemo(() => {
+
     const search = String(searchTerm || "")
       .trim()
       .toLowerCase();
 
     return industries.filter((industry) => {
 
+      const industryName =
+        String(industry.name || "")
+          .toLowerCase();
+
+      const modules =
+        String(industry.modules || "")
+          .toLowerCase();
+
+      const companies =
+        String(industry.companies || "")
+          .toLowerCase();
+
+      const industryStatus =
+        String(industry.status || "")
+          .toLowerCase();
+
       const matchesSearch =
         !search ||
-        String(industry.name || "")
-          .toLowerCase()
-          .includes(search) ||
-        String(industry.modules || "")
-          .toLowerCase()
-          .includes(search) ||
-        String(industry.companies || "")
-          .toLowerCase()
-          .includes(search);
+        industryName.includes(search) ||
+        modules.includes(search) ||
+        companies.includes(search);
 
       const matchesStatus =
         statusFilter === "All" ||
-        String(industry.status || "").toLowerCase() ===
+        industryStatus ===
           String(statusFilter).toLowerCase();
 
-      return matchesSearch && matchesStatus;
+      return (
+        matchesSearch &&
+        matchesStatus
+      );
     });
+
   }, [searchTerm, statusFilter]);
+
 
   const hasFilters =
     String(searchTerm || "").trim() !== "" ||
     statusFilter !== "All";
+
 
   return (
     <section className="industry-table">
