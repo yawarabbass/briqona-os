@@ -1,19 +1,30 @@
 import "./IndustrySearch.css";
 
-export default function IndustrySearch() {
+export default function IndustrySearch({
+  value = "",
+  onChange,
+}) {
   return (
-    <section className="industry-search">
+    <div className="industry-search">
 
       <input
         type="text"
         className="industry-search-input"
         placeholder="Search industries..."
+        aria-label="Search industries"
+        value={value}
+        onChange={(event) =>
+          onChange?.(event.target.value)
+        }
       />
 
-      <button className="industry-search-button">
+      <button
+        type="button"
+        className="industry-search-button"
+      >
         Search
       </button>
 
-    </section>
+    </div>
   );
 }
