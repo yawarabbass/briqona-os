@@ -1,4 +1,4 @@
-import MasterLayout from "../../layouts/MasterLayout";
+
 import "./Industries.css";
 
 import IndustrySearch from "../../components/IndustrySearch/IndustrySearch";
@@ -7,7 +7,7 @@ import IndustryTable from "../../components/IndustryTable/IndustryTable";
 
 export default function Industries() {
   return (
-    <MasterLayout>
+    
 
       <section className="master-industries">
 
@@ -33,6 +33,6 @@ export default function Industries() {
 
       </section>
 
-    </MasterLayout>
+    
   );
 }
