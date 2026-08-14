@@ -2,9 +2,41 @@
   height: 64px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 20px;
   padding: 0 24px;
   background: var(--bg-secondary);
   border-bottom: 1px solid var(--border-color);
   color: var(--text-primary);
+}
+
+.menuButton {
+  display: none;
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.header span {
+  margin-left: auto;
+}
+
+
+/* Mobile */
+
+@media (max-width: 768px) {
+
+  .header {
+    padding: 0 16px;
+  }
+
+  .menuButton {
+    display: block;
+  }
+
+  .header span {
+    display: none;
+  }
+
 }

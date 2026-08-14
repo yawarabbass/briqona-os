@@ -1,6 +1,10 @@
 import styles from "./Sidebar.module.css";
 
-export default function Sidebar() {
+export default function Sidebar({
+  open = false,
+}: {
+  open?: boolean;
+}) {
   const menu = [
     "Command Center",
     "Company Management",
@@ -13,7 +17,11 @@ export default function Sidebar() {
   ];
 
   return (
-    <aside className={styles.sidebar}>
+    <aside
+      className={`${styles.sidebar} ${
+        open ? styles.open : ""
+      }`}
+    >
       {menu.map((item) => (
         <div key={item}>
           {item}

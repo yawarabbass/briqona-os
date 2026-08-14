@@ -1,32 +1,32 @@
 "use client";
 
 import { useState } from "react";
+
 import Header from "@/components/control-center/header/Header";
 import Sidebar from "@/components/control-center/sidebar/Sidebar";
 
-export default function ControlCenterLayout({
+export default function ControlCenterLayoutClient({
   children,
 }: {
   children: React.ReactNode;
 }) {
-
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [open, setOpen] = useState(false);
 
   return (
     <div className="control-layout">
 
       <Header
-        onMenuClick={() => setSidebarOpen(!sidebarOpen)}
+        onMenuClick={() => setOpen(!open)}
       />
 
       <div className="control-body">
 
-        <Sidebar
-          open={sidebarOpen}
-          onClose={() => setSidebarOpen(false)}
-        />
+        <Sidebar open={open} />
 
-        <main className="control-main">
+        <main
+          className="control-main"
+          onClick={() => open && setOpen(false)}
+        >
           {children}
         </main>
 

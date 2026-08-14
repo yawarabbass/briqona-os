@@ -1,13 +1,9 @@
-export default function CommandCenter() {
-  return (
-    <main>
-      <h1>
-        BRIQONA Command Center
-      </h1>
+import OverviewCards from "@/components/control-center/command-center/OverviewCards/OverviewCards";
 
-      <p>
-        Central intelligence and platform operations center.
-      </p>
-    </main>
+export default function ControlCenterPage() {
+  return (
+    <>
+      <OverviewCards />
+    </>
   );
 }

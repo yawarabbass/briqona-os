@@ -17,3 +17,46 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+.control-layout {
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.control-body {
+  display: flex;
+  width: 100%;
+}
+
+.control-main {
+  flex: 1;
+  min-width: 0;
+}
+
+@media (max-width: 768px) {
+  .control-body {
+    display: block;
+  }
+
+  .control-main {
+    width: 100%;
+  }
+}
+
+
+.control-layout {
+  min-height: 100vh;
+  background: var(--bg-primary);
+}
+
+.control-body {
+  display: flex;
+  min-height: calc(100vh - 64px);
+}
+
+.control-main {
+  flex: 1;
+  padding: 24px;
+  overflow-x: hidden;
+}
