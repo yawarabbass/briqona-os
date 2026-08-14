@@ -1,0 +1,12 @@
+.shell {
+  min-height: 100vh;
+}
+
+.content {
+  display: flex;
+}
+
+.main {
+  flex: 1;
+  padding: 24px;
+}

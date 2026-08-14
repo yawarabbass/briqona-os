@@ -1,0 +1,43 @@
+.hero {
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background:
+    radial-gradient(circle at top, #2563eb33, transparent 40%);
+  animation: glow 8s infinite alternate;
+}
+
+.content {
+  animation: slideUp 1s ease;
+}
+
+.actions {
+  margin-top: 30px;
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes glow {
+  from {
+    background-position: 0% 0%;
+  }
+
+  to {
+    background-position: 100% 100%;
+  }
+}
