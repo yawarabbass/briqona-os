@@ -1,0 +1,18 @@
+:root {
+  --brand-primary: #2563eb;
+  --brand-secondary: #06b6d4;
+
+  --bg-primary: #020617;
+  --bg-secondary: #0f172a;
+
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+
+  --border-color: #1e293b;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+
+  --shadow-card: 0 10px 30px rgba(0,0,0,0.25);
+}
