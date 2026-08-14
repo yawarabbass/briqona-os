@@ -33,13 +33,14 @@
   color: var(--text-secondary);
 }
 
-h1 {
+.title {
   font-size: clamp(42px, 7vw, 80px);
   color: var(--text-primary);
   margin: 30px 0;
+  line-height: 1.1;
 }
 
-h1 span {
+.highlight {
   display: block;
   background: linear-gradient(
     90deg,
@@ -53,6 +54,7 @@ h1 span {
 .description {
   color: var(--text-secondary);
   font-size: 20px;
+  line-height: 1.6;
 }
 
 .actions {
@@ -67,16 +69,18 @@ h1 span {
   padding: 14px 28px;
   border-radius: var(--radius-md);
   cursor: pointer;
+  font-size: 16px;
 }
 
 .primary {
   background: var(--brand-primary);
   color: white;
+  border: none;
 }
 
 .secondary {
   background: transparent;
-  color: white;
+  color: var(--text-primary);
   border: 1px solid var(--border-color);
 }
 
@@ -86,6 +90,7 @@ h1 span {
   border-radius: var(--radius-lg);
   background: var(--bg-secondary);
   border: 1px solid var(--border-color);
+  color: var(--text-primary);
   animation: float 5s infinite ease-in-out;
 }
 
