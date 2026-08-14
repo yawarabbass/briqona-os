@@ -1,26 +1,95 @@
 .hero {
+  position: relative;
   min-height: 90vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
   text-align: center;
-  background:
-    radial-gradient(circle at top, #2563eb33, transparent 40%);
-  animation: glow 8s infinite alternate;
+  background: var(--bg-primary);
+}
+
+.glow {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: var(--brand-primary);
+  opacity: 0.15;
+  filter: blur(120px);
+  animation: moveGlow 8s infinite alternate;
 }
 
 .content {
-  animation: slideUp 1s ease;
+  position: relative;
+  max-width: 900px;
+  animation: fadeUp 1s ease;
+}
+
+.badge {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+}
+
+h1 {
+  font-size: clamp(42px, 7vw, 80px);
+  color: var(--text-primary);
+  margin: 30px 0;
+}
+
+h1 span {
+  display: block;
+  background: linear-gradient(
+    90deg,
+    var(--brand-primary),
+    var(--brand-secondary)
+  );
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.description {
+  color: var(--text-secondary);
+  font-size: 20px;
 }
 
 .actions {
-  margin-top: 30px;
+  margin-top: 40px;
   display: flex;
-  gap: 16px;
   justify-content: center;
+  gap: 20px;
 }
 
-@keyframes slideUp {
+.primary,
+.secondary {
+  padding: 14px 28px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+}
+
+.primary {
+  background: var(--brand-primary);
+  color: white;
+}
+
+.secondary {
+  background: transparent;
+  color: white;
+  border: 1px solid var(--border-color);
+}
+
+.dashboard {
+  margin-top: 70px;
+  padding: 40px;
+  border-radius: var(--radius-lg);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  animation: float 5s infinite ease-in-out;
+}
+
+@keyframes fadeUp {
   from {
     opacity: 0;
     transform: translateY(40px);
@@ -32,12 +101,18 @@
   }
 }
 
-@keyframes glow {
+@keyframes moveGlow {
   from {
-    background-position: 0% 0%;
+    transform: translate(-100px, -50px);
   }
 
   to {
-    background-position: 100% 100%;
+    transform: translate(100px, 50px);
+  }
+}
+
+@keyframes float {
+  50% {
+    transform: translateY(-15px);
   }
 }
